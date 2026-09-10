@@ -1,16 +1,14 @@
 import { redirect } from "next/navigation";
-
 import { getOptionalAuthUser } from "@/lib/supabase/server";
 
 /**
- * Workspace entry — transactional emails link here. Authenticated users land on
- * the AI Reality dashboard; others sign in first.
+ * Workspace entry for v2 dashboard staging.
  */
-export default async function DashboardPage() {
+export default async function V2DashboardPage() {
   const { user } = await getOptionalAuthUser();
   if (!user) {
     redirect("/login?next=/dashboard");
   }
 
-  redirect("/dashboard/ai-reality");
+  redirect("/dashboard/safety");
 }

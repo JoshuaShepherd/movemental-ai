@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .55s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 3% entry 30%; }
+    .mvm-fcard { transition: border-color var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast); }
+    .mvm-fcard:hover { border-color: var(--ink); transform: translateY(-1px); box-shadow: var(--shadow-lift); text-decoration: none; }
+    .mvm-fcard:hover h3 { color: var(--ink-blue); }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Home</x-import>
+  </header>
+
+  <main style="max-width: 1080px; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,3rem) 0;">
+
+    <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+      <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">About</x-import>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,4.8vw,3.3rem); line-height: 1.04; letter-spacing: -.024em; margin: .7rem 0 0; text-wrap: pretty;">It started as a conversation.</h1>
+      <div style="margin-top: 1.1rem; max-width: 62ch;">
+        <sc-for list="{{ founding }}" as="p" hint-placeholder-count="2">
+          <p style="font-size: 1.06rem; line-height: 1.68; color: var(--text-body); margin: 0 0 1rem;">{{ p }}</p>
+        </sc-for>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Who did what</x-import>
+      <div style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem); max-width: 62ch;">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .35rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+        <sc-for list="{{ roles }}" as="p" hint-placeholder-count="2">
+          <p style="font-size: 1.03rem; line-height: 1.68; color: var(--text-body); margin: 0 0 1rem;">{{ p }}</p>
+        </sc-for>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">The three</x-import>
+      <div style="{{ gridStyle }}">
+        <sc-for list="{{ founders }}" as="f" hint-placeholder-count="3">
+          <a class="mvm-fcard" href="{{ f.href }}" style="{{ f.cardStyle }}">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.LeaderFace" src="{{ f.img }}" name="{{ f.name }}" size="{{ portraitSize }}" caption="{{ false }}" hint-size="140px,140px"></x-import>
+            <div style="flex: 1 1 16rem; min-width: 0;">
+              <h3 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.3rem,2.6vw,1.65rem); line-height: 1.12; letter-spacing: -.02em; margin: 0; transition: color var(--dur-fast);">{{ f.name }}</h3>
+              <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body); margin: .45rem 0 0; line-height: 1.5;">{{ f.jobTitle }}</p>
+              <p style="font-size: .99rem; line-height: 1.58; color: var(--text-body); margin: .75rem 0 0; max-width: 46ch;">{{ f.shortBio }}</p>
+              <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: .9rem 0 0;">Read the full profile →</p>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">What Movemental is</x-import>
+      <p style="font-family: var(--font-display), Georgia, serif; font-size: clamp(1.25rem,2.8vw,1.7rem); line-height: 1.34; letter-spacing: -.016em; margin: 0; max-width: 44ch; text-wrap: pretty;">Movemental helps churches, nonprofits, seminaries, institutions, and individual movement leaders meet AI without losing the trust their work depends on.</p>
+      <p style="font-size: 1.02rem; line-height: 1.66; color: var(--text-body); margin: 1.1rem 0 0; max-width: 62ch;">The company is agent-first: the homepage is an agent, not a brochure. The path goes in order — Safety, Sandbox, Training, Tech — because building tools for people who have not decided their boundaries just automates the mess faster.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.3rem;">
+        <a href="Movemental Program.dc.html" style="font-size: .97rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .7rem 1.1rem;" style-hover="border-color: var(--ink); text-decoration: none;">See the whole path</a>
+        <a href="Movemental Reality Map.dc.html" style="font-size: .97rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .7rem 1.1rem;" style-hover="border-color: var(--ink); text-decoration: none;">Map where we stand</a>
+      </div>
+    </section>
+
+    <sc-if value="{{ showRefusals }}" hint-placeholder-val="{{ true }}">
+      <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">What we refuse</x-import>
+        <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: 0 0 1.2rem; max-width: 58ch;">These are not preferences. They are the line. Breaking one would cost the exact trust we exist to protect.</p>
+        <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));">
+          <sc-for list="{{ commitments }}" as="c" hint-placeholder-count="5">
+            <li style="border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-card); padding: .95rem 1.05rem; font-size: .96rem; line-height: 1.56; color: var(--text-body);"><strong style="color: var(--text-strong);">{{ c.lead }}</strong> {{ c.rest }}</li>
+          </sc-for>
+        </ul>
+        <p style="margin: 1.2rem 0 0;"><a href="Movemental How We Use AI.dc.html">How we use AI, in full →</a></p>
+      </section>
+    </sc-if>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem); display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: space-between; align-items: center;">
+      <div>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ inkProps }}" hint-size="100%,2rem">No form. Just Josh.</x-import>
+      </div>
+      <a href="mailto:josh@movemental.ai" style="font-size: .97rem; font-weight: 500; color: var(--bg); background: var(--ink); border: 1px solid var(--ink); border-radius: var(--radius-md); padding: .72rem 1.15rem;" style-hover="background: var(--ink-blue); border-color: var(--ink-blue); text-decoration: none;">Email josh@movemental.ai</a>
+    </section>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showRefusals&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;founderLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;stacked-editorial&quot;,&quot;row&quot;],&quot;default&quot;:&quot;stacked-editorial&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+/**
+ * `/about` — the three founders.
+ *
+ * Correction to build prompt 07: it assumed bios came from
+ * `public.movement_leaders` and that Josh Shepherd's bio was null. Not so. The
+ * real route redirects to `/agent/about`, and `/about/[slug]` reads a proper
+ * SSOT — `src/lib/founders/content.ts` — which carries `oneLine`, `shortBio`,
+ * `mediumBio`, `fullBio`, `arc`, and `selectedWork` for all three founders,
+ * INCLUDING Josh. There is no missing-bio gap on this page.
+ *
+ * `FOUNDING_STORY` and `FOUNDERS_AND_ROLES` are lifted verbatim and are the
+ * page's spine. Job titles come from the same file — Josh is "Founder & CTO",
+ * which confirms the title used in earlier project files. Card order is
+ * `ABOUT_FOUNDER_SLUGS`: Alan, Brad, Josh.
+ *
+ * Portraits: the repo points at `/agent-room/leaders/{0,1,8}.jpg`, which is not
+ * in this project. The public `media-library` bucket paths are used instead,
+ * matching the home page's founder row.
+ */
+const MEDIA = "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/";
+
+const FOUNDING = [
+  "For two years, Josh kept circling the same worry with Alan and Brad. AI was arriving in churches, nonprofits, and seminaries faster than anyone was deciding how to meet it. The people most exposed were the ones whose entire work rests on trust, and they had the least time to think it through.",
+  "Josh did not want to add to the noise. He wanted to build the thing he wished existed: a way for a mission-driven organization to meet this moment in order, without faking its way through, and without losing the human core of the work. Alan and Brad joined, opened the authorship question together, and the conversation became a partnership. In 2026, it became Movemental.",
+];
+
+const ROLES = [
+  "Alan Hirsch is the movement thinker. Brad Brisco is the missional leader and CEO. Josh Shepherd is the technical founder who builds the platform, the agents, and the system underneath.",
+  "Brad holds the CEO seat on purpose. Trust is the product, and he already carries that trust in the field. The org chart says the thesis: the person who builds hands the trust seat to the person who already holds it.",
+];
+
+const FOUNDERS = [
+  {
+    slug: "alan-hirsch",
+    name: "Alan Hirsch",
+    jobTitle: "Co-Founder & Chief Movement Officer",
+    shortBio: "One of the most influential voices on missional church and movements. His frameworks have shaped a generation of leaders. His own platform is the reference for everything we build for a Voice.",
+    img: MEDIA + "alan-hirsch/headshots/alan-hirsch.webp",
+  },
+  {
+    slug: "brad-brisco",
+    name: "Brad Brisco",
+    jobTitle: "Co-Founder & CEO",
+    shortBio: "A missional church leader and author focused on how ordinary churches and people live sent into their places. He keeps the work tethered to the ground it is meant to serve.",
+    img: MEDIA + "brad-brisco/headshots/brad-brisco.webp",
+  },
+  {
+    slug: "josh-shepherd",
+    name: "Josh Shepherd",
+    jobTitle: "Founder & CTO",
+    shortBio: "Josh Shepherd is a founder of Movemental, where he builds the platform, the agents, and the system underneath. He works at the seam between the technical world and the missional one. His conviction is simple: meet AI without losing the trust the work depends on.",
+    img: MEDIA + "josh-shepherd/headshots/josh-shepherd.webp",
+  },
+];
+
+const COMMITMENTS = [
+  { lead: "No manufactured urgency or scarcity.", rest: "We will never manufacture a deadline or a fear of missing out to move you." },
+  { lead: "No faked authorship.", rest: "We help your people tell their own story. We never write under a human's name as if it were them." },
+  { lead: "AI gathers and drafts. Humans discern, care, and speak.", rest: "AI does the gathering and the drafting. It never does the discernment, the shepherding, the relationships, or the care." },
+  { lead: "We claim only what is earned.", rest: "We do not promise outcomes the work has not produced yet. If a number appears on this site, it has a footnote." },
+  { lead: "Extra care wherever vulnerable people are involved.", rest: "When you serve minors or families, we are more cautious, not less." },
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const layout = this.props.founderLayout ?? "stacked-editorial";
+    const stacked = layout === "stacked-editorial";
+    return {
+      goHome: () => { window.location.href = "Movemental Home v4.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      inkProps: { style: { whiteSpace: "normal" } },
+      founding: FOUNDING,
+      roles: ROLES,
+      commitments: COMMITMENTS,
+      showRefusals: this.props.showRefusals ?? true,
+      portraitSize: stacked ? 140 : 120,
+      gridStyle: stacked
+        ? { display: "grid", gap: "clamp(.9rem,2vw,1.25rem)" }
+        : { display: "grid", gap: "clamp(.9rem,2vw,1.25rem)", gridTemplateColumns: "repeat(auto-fit, minmax(17rem, 1fr))" },
+      founders: FOUNDERS.map((f) => ({
+        ...f,
+        href: "Movemental Founder Profile.dc.html#" + f.slug,
+        cardStyle: {
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "flex-start",
+          gap: "clamp(1rem,3vw,1.75rem)",
+          flexDirection: stacked ? "row" : "column",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-lg)",
+          background: "var(--surface-card)",
+          padding: "clamp(1.1rem,2.6vw,1.6rem)",
+          color: "inherit",
+        },
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

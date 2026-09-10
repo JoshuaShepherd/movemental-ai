@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .55s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 3% entry 30%; }
+    .mvm-vcard { transition: border-color var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast); }
+    .mvm-vcard:hover { border-color: var(--ink); transform: translateY(-1px); box-shadow: var(--shadow-lift); text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goAbout }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ About</x-import>
+  </header>
+
+  <div style="border-bottom: 1px solid var(--border); background: var(--surface);">
+    <div style="max-width: 1080px; margin: 0 auto; padding: .55rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;">
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-body); margin-right: .35rem;">Founder</span>
+      <sc-for list="{{ picker }}" as="p" hint-placeholder-count="3">
+        <button type="button" onClick="{{ p.select }}" style="{{ p.style }}">{{ p.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <article style="max-width: 1080px; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,3rem) 0;">
+
+    <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+      <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Founder</x-import>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,5vw,3.4rem); line-height: 1.04; letter-spacing: -.024em; margin: .7rem 0 0;">{{ f.name }}</h1>
+      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body); margin: .7rem 0 0; line-height: 1.6;">{{ f.jobTitle }}</p>
+    </section>
+
+    <section style="display: flex; flex-wrap: wrap; gap: clamp(1.25rem,3.5vw,2.5rem); align-items: flex-start; margin-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.LeaderFace" src="{{ f.img }}" name="{{ f.name }}" size="{{ portraitSize }}" caption="{{ false }}" hint-size="180px,180px"></x-import>
+      <div style="flex: 1 1 22rem; min-width: 0;">
+        <p style="font-family: var(--font-display), Georgia, serif; font-size: clamp(1.15rem,2.4vw,1.5rem); line-height: 1.34; letter-spacing: -.012em; margin: 0; max-width: 42ch; text-wrap: pretty;">{{ f.oneLine }}</p>
+        <sc-if value="{{ f.hasLinks }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem;">
+            <sc-for list="{{ f.sameAs }}" as="l" hint-placeholder-count="2">
+              <a href="{{ l.href }}" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; border: 1px solid var(--border); border-radius: 999px; padding: .55rem .95rem; background: var(--surface-card); color: var(--text-body);" style-hover="color: var(--ink-blue); border-color: var(--ink); text-decoration: none;">{{ l.label }} ↗</a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.25rem,5vw,3rem); position: relative; padding-left: clamp(1rem,2.5vw,1.6rem); max-width: 66ch;">
+      <span style="position: absolute; left: .2rem; top: .4rem; bottom: .4rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <sc-for list="{{ f.fullBio }}" as="para" hint-placeholder-count="4">
+        <p style="font-size: 1.06rem; line-height: 1.7; color: var(--text-strong); margin: 0 0 1.15rem;">{{ para }}</p>
+      </sc-for>
+    </section>
+
+    <sc-if value="{{ f.hasTrustLine }}" hint-placeholder-val="{{ false }}">
+      <section class="mvm-reveal" style="margin-top: clamp(1.5rem,3vw,2rem); border: 1px solid var(--ink); border-radius: var(--radius-lg); background: var(--surface-card); padding: clamp(1.1rem,3vw,1.5rem); max-width: 62ch;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" style="{{ zeroMargin }}" hint-size="auto,1rem">The trust seat</x-import>
+        <p style="font-family: var(--font-display), Georgia, serif; font-size: clamp(1.1rem,2.3vw,1.35rem); line-height: 1.42; letter-spacing: -.012em; margin: .7rem 0 0;">{{ f.trustLine }}</p>
+      </section>
+    </sc-if>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">The arc</x-import>
+      <div style="display: grid; gap: .8rem;">
+        <sc-for list="{{ f.arc }}" as="a" hint-placeholder-count="5">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.PathLayer" n="{{ a.period }}" term="{{ a.detail }}" hint-size="100%,1.5rem"></x-import>
+        </sc-for>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem); display: grid; gap: clamp(1.5rem,4vw,3rem); grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));">
+      <div>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Selected work</x-import>
+        <div style="display: grid; gap: .6rem;">
+          <sc-for list="{{ f.selectedWork }}" as="w" hint-placeholder-count="4">
+            <div style="border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-card); padding: .9rem 1rem;">
+              <h4 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: 1.05rem; line-height: 1.2; margin: 0;">{{ w.title }}</h4>
+              <p style="font-size: .93rem; line-height: 1.55; color: var(--text-body); margin: .4rem 0 0;">{{ w.detail }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">What they carry</x-import>
+        <ul style="margin: 0 0 1.6rem; padding: 0; list-style: none; display: grid; gap: .5rem;">
+          <sc-for list="{{ f.skills }}" as="s" hint-placeholder-count="4">
+            <li style="font-size: .97rem; line-height: 1.5; color: var(--text-body); border-left: 1px solid var(--border); padding-left: .85rem;">{{ s }}</li>
+          </sc-for>
+        </ul>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Knows about</x-import>
+        <div style="display: flex; flex-wrap: wrap; gap: .4rem;">
+          <sc-for list="{{ f.knowsAbout }}" as="k" hint-placeholder-count="4">
+            <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-body); border: 1px solid var(--border); border-radius: 999px; padding: .32rem .65rem;">{{ k }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">The other two</x-import>
+      <div style="display: grid; gap: clamp(.75rem,2vw,1rem); grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));">
+        <sc-for list="{{ others }}" as="o" hint-placeholder-count="2">
+          <button type="button" class="mvm-vcard" onClick="{{ o.select }}" style="{{ otherStyle }}">
+            <span style="display: block; font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: 1.1rem; line-height: 1.2;">{{ o.name }}</span>
+            <span style="display: block; font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-body); margin-top: .4rem; line-height: 1.5;">{{ o.jobTitle }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <p style="margin: 1.5rem 0 0;"><a href="Movemental About Founders.dc.html">← Back to about</a></p>
+    </section>
+
+  </article>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;slug&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;alan-hirsch&quot;,&quot;brad-brisco&quot;,&quot;josh-shepherd&quot;],&quot;default&quot;:&quot;alan-hirsch&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Profile&quot;}}">
+/**
+ * `/about/[slug]` — one founder in depth.
+ *
+ * All content is verbatim from `src/lib/founders/content.ts` (FOUNDER_PROFILES),
+ * which is the repo's stated SSOT for founder bios and the source
+ * `/about/[slug]` actually renders through `FounderProfilePage`.
+ *
+ * Correction to build prompt 08: it warned that Josh Shepherd has no bio and
+ * told the designer to build a minimal name-role-portrait state. That is stale.
+ * Josh has the LONGEST `fullBio` of the three (five paragraphs) plus a
+ * `trustLine` the other two do not have. No gap remains, and nothing here is
+ * inferred — the arc entries, selected work, skills and knowsAbout lists are all
+ * fields on the record.
+ *
+ * The prompt also suggested querying `books` / `book_endorsements` for Alan. Not
+ * needed: `selectedWork` already carries his titles, and adding a books table
+ * would mean claiming rows this page has not read.
+ *
+ * Portraits use the public `media-library` bucket; the record's
+ * `/agent-room/leaders/N.jpg` paths are not in this project.
+ */
+const MEDIA = "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/";
+
+const FOUNDERS = [
+  {
+    slug: "alan-hirsch",
+    name: "Alan Hirsch",
+    jobTitle: "Co-Founder & Chief Movement Officer",
+    oneLine: "Alan Hirsch is the missiologist behind The Forgotten Ways and the movement thinker who coined the term movemental.",
+    img: MEDIA + "alan-hirsch/headshots/alan-hirsch.webp",
+    fullBio: [
+      "Alan Hirsch is the missiologist who coined the term movemental, the namesake of this platform, and built the intellectual architecture much of the contemporary missional church now runs on. Born in Johannesburg in 1959, raised in apartheid-era South Africa, he emigrated to Australia in 1983 and pastored the South Melbourne Restoration Community for fifteen years among addicts, sex workers, and the chronically housed before turning that ministry's lessons into theory.",
+      "His magnum opus, The Forgotten Ways (Brazos, 2006), introduced the mDNA framework and the concept of Apostolic Genius; 5Q (2017) and The Permanent Revolution (Jossey-Bass, 2012, with Tim Catchim) have made APEST one of the most widely adopted readings of Ephesians 4 in the Western church, with more than 150,000 assessments taken through his platforms. Across twenty books published with seven publishers, including The Shaping of Things to Come with Michael Frost, ReJesus, Untamed with Debra Hirsch, and Metanoia with Rob Kelly, he has built a coherent line from Christology through missiology to ecclesiology.",
+      "He founded 100Movements, co-founded the Forge Mission Training Network and 5Q Collective, and co-founded the M.A. in Missional Church Movements at Wheaton College. He teaches as adjunct faculty at Fuller, George Fox, and Asbury, and works as embedded consultant for Redeemer City to City and movement mentor for NewThing International.",
+    ],
+    arc: [
+      { period: "1983–1998", detail: "Pastored South Melbourne Restoration Community — fifteen years among addicts, sex workers, and the chronically housed." },
+      { period: "2006", detail: "Published The Forgotten Ways — mDNA and Apostolic Genius enter the missional conversation." },
+      { period: "2010s–2020s", detail: "Built 100Movements, Forge, 5Q Collective, and the Wheaton M.A. in Missional Church Movements." },
+      { period: "2024–2026", detail: "The Alan Hirsch platform becomes Movemental's reference implementation for a Voice." },
+      { period: "2026", detail: "Co-founded Movemental alongside Brad Brisco and Josh Shepherd." },
+    ],
+    selectedWork: [
+      { title: "The Forgotten Ways", detail: "mDNA framework and Apostolic Genius — the intellectual spine of the movemental conversation." },
+      { title: "5Q & The Permanent Revolution", detail: "APEST as widely adopted Ephesians 4 reading, with Tim Catchim." },
+      { title: "100Movements & Forge", detail: "Training networks that shaped a generation of missional practitioners." },
+      { title: "Alan Hirsch platform", detail: "Movemental's reference implementation — the first Voice platform built to this standard." },
+    ],
+    skills: ["Missiology & movement theory", "APEST / 5Q frameworks", "Movement training & publishing", "Embedded consulting (City to City, NewThing)"],
+    knowsAbout: ["Missional church", "APEST", "Movement theory", "Ecclesiology"],
+    sameAs: [
+      { label: "alanhirsch.org", href: "https://www.alanhirsch.org" },
+      { label: "Wikipedia", href: "https://en.wikipedia.org/wiki/Alan_Hirsch" },
+    ],
+  },
+  {
+    slug: "brad-brisco",
+    name: "Brad Brisco",
+    jobTitle: "Co-Founder & CEO",
+    oneLine: "Brad Brisco leads Movemental as CEO and translates missional theology into the planting language denominations actually use.",
+    img: MEDIA + "brad-brisco/headshots/brad-brisco.webp",
+    fullBio: [
+      "Brad Brisco works the seam most missional writers avoid: the seam between post-Christendom theology and a Southern Baptist denominational system. As Director of Multiplication Strategies for Send Network at the North American Mission Board, he translates Newbigin, Bosch, Frost, and Hirsch into the planting language of a tradition that has not always reached for them. He earned a D.Min. in Missional Ecclesiology with a dissertation on helping existing congregations transition toward mission, and he has carried that question into eighteen-plus years of college teaching across History of Christianity, Theology of Place, and Launching Apostolic Movements.",
+      "His written corpus moves in stages alongside Lance Ford, from the small-group curriculum Missional Essentials, through The Missional Quest (InterVarsity Press) and Next Door As It Is In Heaven (NavPress, 2016), to ReThink and his solo synthesis Covocational Church Planting (Missional Press, 2021), released as a free bilingual ebook in English and Spanish. He co-founded Forge Kansas City and the Sentralized Conference, sits on the Forge America national leadership team, and writes regularly across New Churches, ChurchLeaders.com, and his own missionalchurchnetwork.com.",
+      "At Movemental, Brad holds the CEO seat. Trust is the product, and he already carries that trust in the field — decades of denominational and network-level missional work, teaching, and writing alongside Alan Hirsch.",
+    ],
+    arc: [
+      { period: "2000s–2010s", detail: "College teaching and Forge Kansas City — missional ecclesiology in the classroom and the neighborhood." },
+      { period: "2016–2021", detail: "Next Door As It Is In Heaven and Covocational Church Planting — sentness and bivocational ministry in print." },
+      { period: "NAMB / Send Network", detail: "Director of Multiplication Strategies — translating missional theology for denominational planting." },
+      { period: "2024–2026", detail: "Two-year conversation with Alan and Josh about AI, trust, and mission-driven organizations." },
+      { period: "2026", detail: "Co-founded Movemental as CEO." },
+    ],
+    selectedWork: [
+      { title: "Covocational Church Planting", detail: "Solo synthesis on bivocational ministry — free bilingual ebook (Missional Press, 2021)." },
+      { title: "Next Door As It Is In Heaven", detail: "With Lance Ford (NavPress, 2016) — neighborhood sentness in ordinary churches." },
+      { title: "Send Network / NAMB", detail: "Multiplication strategies at denominational scale." },
+      { title: "Forge Kansas City & Sentralized", detail: "Grassroots and institutional circles held together in one footprint." },
+    ],
+    skills: ["Missional ecclesiology", "Covocational & bivocational planting", "Denominational strategy (NAMB / Send Network)", "Teaching & network leadership (Forge America)"],
+    knowsAbout: ["Missional church planting", "Covocational ministry", "Denominational strategy", "Missional ecclesiology"],
+    sameAs: [{ label: "missionalchurchnetwork.com", href: "https://www.missionalchurchnetwork.com" }],
+  },
+  {
+    slug: "josh-shepherd",
+    name: "Josh Shepherd",
+    jobTitle: "Founder & CTO",
+    oneLine: "Josh Shepherd builds Movemental's platform, agents, and system underneath, at the seam between software and mission-driven organizations.",
+    img: MEDIA + "josh-shepherd/headshots/josh-shepherd.webp",
+    trustLine: "Josh is Founder and CTO and architect of the platform. He handed the CEO seat to Brad on purpose: trust is the product, and Brad already carries that trust in the field.",
+    fullBio: [
+      "Josh Shepherd is a founder of Movemental, LLC (movemental.ai), alongside Alan Hirsch and Brad Brisco. Movemental was founded in 2026, out of a two-year conversation among the three of them about what AI was doing to the institutions, and the trust, they care about.",
+      "Within that trio, Josh is the technical founder. Alan is the movement thinker. Brad is the missional leader. Josh is the one who builds. He designs and writes the platform, the agents, and the system underneath, so the ideas become something an organization can actually use. He is based in Kansas City.",
+      "Josh came to this work from inside it: years as a Methodist pastor, then founding a neomonastic, communal nonprofit where he and his wife lived alongside young adults in extended residency. From direct service through neighborhood ministry and into product work, he has built AI tools for real organizations serving real families — including bilingual youth work where the stakes are children and trust, not theory.",
+      "Movemental helps churches, nonprofits, seminaries, institutions, and individual movement leaders meet AI without losing the trust their work depends on. Josh holds the whole vision, not just the engineering. The company is agent-first: the homepage is an agent, not a brochure. The path goes in order — Safety, Sandbox, Training, Tech — because building tools for people who have not decided their boundaries just automates the mess faster.",
+      "He writes plainly, refuses hype, and is unusually scrupulous about claiming only what is true. He would rather show you a thing than describe it, and he would rather be early and honest than finished and false.",
+    ],
+    arc: [
+      { period: "Pastoral roots", detail: "Methodist pastor — years in direct service before building for the field." },
+      { period: "Communal nonprofit", detail: "Founded a neomonastic residence — lived alongside young adults in extended community." },
+      { period: "Neighborhood ministry", detail: "Built AI tools and systems for Youthfront's work in the Argentine neighborhood of Kansas City, Kansas." },
+      { period: "Product & platform", detail: "Full-stack builds for mission-driven organizations — from SpecChem's digital presence to the Alan Hirsch reference platform." },
+      { period: "2024–2026", detail: "The conversation with Alan and Brad — AI, trust, and what mission-driven organizations need." },
+      { period: "2026", detail: "Movemental — founder and CTO, architect of the platform." },
+    ],
+    selectedWork: [
+      { title: "Alan Hirsch platform", detail: "Movemental's reference implementation — the first Voice platform built to this standard." },
+      { title: "Movemental architecture", detail: "Multi-tenant platform, agents, corpus pipeline, and the four-stage path in working software." },
+      { title: "Youthfront", detail: "First organization partner — AI tools for real neighborhood ministry with vulnerable families." },
+      { title: "SpecChem build", detail: "Full digital platform for a specialty chemicals company — product system, SEO, and organic discoverability." },
+    ],
+    skills: ["Full-stack engineering (Next.js, React, Drizzle, Supabase)", "AI application engineering & agents", "SEO & GEO", "Bilingual product work", "Kansas Leadership Center formation"],
+    knowsAbout: ["AI application engineering", "RAG & agent systems", "SEO and GEO", "Missional leadership platforms", "Multi-tenant SaaS architecture"],
+    sameAs: [{ label: "GitHub", href: "https://github.com/joshshepherd" }],
+  },
+];
+
+class Component extends DCLogic {
+  state = { slug: null };
+
+  componentDidMount() {
+    const hash = (window.location.hash || "").replace("#", "");
+    if (FOUNDERS.some((f) => f.slug === hash)) this.setState({ slug: hash });
+  }
+
+  pick = (slug) => {
+    this.setState({ slug });
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", "#" + slug);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  renderVals() {
+    const slug = this.state.slug || this.props.slug || FOUNDERS[0].slug;
+    const found = FOUNDERS.find((x) => x.slug === slug) || FOUNDERS[0];
+    const chip = (active) => ({
+      font: "inherit",
+      fontFamily: "var(--font-mono), ui-monospace, monospace",
+      fontSize: ".6rem",
+      letterSpacing: ".11em",
+      textTransform: "uppercase",
+      border: active ? "1px solid var(--ink)" : "1px solid var(--border)",
+      background: active ? "var(--surface-card)" : "transparent",
+      color: active ? "var(--text-strong)" : "var(--text-body)",
+      borderRadius: "999px",
+      padding: ".34rem .7rem",
+      cursor: "pointer",
+    });
+    return {
+      goAbout: () => { window.location.href = "Movemental About Founders.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      zeroMargin: { margin: 0 },
+      portraitSize: 176,
+      f: {
+        ...found,
+        hasLinks: found.sameAs.length > 0,
+        hasTrustLine: !!found.trustLine,
+        trustLine: found.trustLine || "",
+      },
+      picker: FOUNDERS.map((x) => ({
+        label: x.name,
+        style: chip(x.slug === found.slug),
+        select: () => this.pick(x.slug),
+      })),
+      others: FOUNDERS.filter((x) => x.slug !== found.slug).map((x) => ({
+        name: x.name,
+        jobTitle: x.jobTitle,
+        select: () => this.pick(x.slug),
+      })),
+      otherStyle: {
+        font: "inherit",
+        textAlign: "left",
+        border: "1px solid var(--border)",
+        borderRadius: "var(--radius-lg)",
+        background: "var(--surface-card)",
+        padding: "1rem 1.1rem",
+        cursor: "pointer",
+        color: "var(--text-strong)",
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

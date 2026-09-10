@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { HowWeUseAiExperience } from "@/components/agent-room/how-we-use-ai/how-we-use-ai-experience";
+import { HowWeUseAiView } from "@/v2/components/how-we-use-ai/how-we-use-ai-view";
 
 export const metadata: Metadata = {
   title: "How We Use AI | Movemental",
@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   },
 };
 
-/** `/agent/how-we-use-ai` — transparency on AI use, refusals, and product ethics. */
-export default function HowWeUseAiPage() {
-  return <HowWeUseAiExperience />;
+export default function V2HowWeUseAiPage() {
+  return <HowWeUseAiView />;
 }

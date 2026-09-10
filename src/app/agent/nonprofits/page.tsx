@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-
-import { AudienceEditionExperience } from "@/components/agent-room/audience/audience-edition/audience-edition-experience";
-import { NONPROFITS_EDITION_CONFIG } from "@/components/agent-room/audience/audience-edition/nonprofits-edition-config";
+import { AudienceEditionView } from "@/v2/components/audience/audience-edition-view";
 
 export const metadata: Metadata = {
-  title: "Nonprofits | Movemental",
-  description:
-    "AI is already inside your organization. Six truths already happening, the ordered path from Safety to Tech, and why formation comes before the tools.",
+  title: "AI Safety for Non-Profits | Movemental",
+  description: "Protect donor trust and mission focus while navigating organizational AI adoption.",
   alternates: {
     canonical: "/agent/nonprofits",
   },
 };
 
-export default function NonprofitsPage() {
-  return <AudienceEditionExperience config={NONPROFITS_EDITION_CONFIG} />;
+export default function V2NonprofitsPage() {
+  return <AudienceEditionView audience="nonprofits" />;
 }

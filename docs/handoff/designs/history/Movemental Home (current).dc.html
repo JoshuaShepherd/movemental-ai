@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: #FBFAF6; color: #1A1A1A; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #22409B; text-decoration: none; }
+    a:hover { color: #1A3079; text-decoration: underline; text-underline-offset: 3px; }
+    .mvm-track { scrollbar-width: none; }
+    .mvm-track::-webkit-scrollbar { display: none; }
+    @keyframes mvmSettle { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+    @keyframes mvmFaceIn { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+  </style>
+</helmet>
+
+<div style="height: 100dvh; display: flex; flex-direction: column; overflow: hidden; position: relative; background: #FBFAF6;">
+
+  <header style="flex: 0 0 auto; display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; column-gap: 0.75rem; padding: 0.15rem clamp(1rem,4vw,2.5rem) 0.25rem; border-bottom: 1px solid #E5DFD2; min-height: 3.25rem; position: relative; z-index: 30;">
+    <div style="justify-self: start; display: flex; align-items: center; gap: 0.65rem;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: clamp(3.5rem,9.5vw,4.85rem); margin-top: -0.2rem; margin-bottom: -0.9rem;">
+    </div>
+    <nav style="justify-self: center; display: flex; align-items: center; gap: 0.35rem; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: clamp(0.58rem,1.8vw,0.68rem); letter-spacing: 0.16em; text-transform: uppercase; color: #5C5651; white-space: nowrap;">
+      <a href="#" style="color: #22409B;">Non-profits</a>
+      <span style="opacity: 0.55;">·</span>
+      <a href="#" style="color: #22409B;">Churches</a>
+      <span style="opacity: 0.55;">·</span>
+      <a href="#" style="color: #22409B;">Institutions</a>
+    </nav>
+    <div style="justify-self: end; display: flex; align-items: center; justify-content: flex-end;">
+      <a href="#" aria-label="Sign in" style="display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border: 1px solid transparent; border-radius: 999px; color: #5C5651;">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+          <polyline points="10 17 15 12 10 7"></polyline>
+          <line x1="15" y1="12" x2="3" y2="12"></line>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <section style="flex: 1 1 auto; min-height: 0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: clamp(0.55rem,1.6vh,1.35rem) clamp(1.5rem,6vw,5rem) clamp(10rem, calc(14vh + 8rem), 14.5rem); background: radial-gradient(120% 80% at 50% 0%, #FFFDF7 0%, #FBFAF6 70%);">
+    <div style="width: 100%; max-width: 71rem; margin: 0 auto; padding-inline: clamp(0.5rem,2vw,1.25rem); text-align: center; animation: mvmSettle 0.42s cubic-bezier(0.2,0.7,0.2,1) both;">
+      <div style="display: flex; flex-direction: column; justify-content: center;">
+        <h1 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(1.85rem,4.3vw,2.85rem); line-height: 1.08; letter-spacing: -0.022em; margin: 0 auto; max-width: 22em; color: #1A1A1A;">Navigate AI without eroding the trust you spent decades building.</h1>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: #5C5651; margin: 1.2rem auto 0; max-width: 68ch;">We help mission-driven organizations respond to AI without losing <span style="white-space: nowrap;"><b style="color: #1A1A1A; font-weight: 500;">the trust their work depends on</b></span>, through one simple path: use AI safely, experiment to find valuable, ethical use cases, train your people in AI leadership and maturity, and then build custom technological solutions tailor-made for your organization.</p>
+
+        <div style="margin-top: 2.1rem; text-align: left;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.85rem;">
+            <div>
+              <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase; color: #5C5651; margin: 0 0 0.35rem;">Trusted voices</p>
+              <p style="font-size: 0.82rem; line-height: 1.45; color: #5C5651; max-width: 28rem; margin: 0;">Movement leaders who shape how organizations steward AI.</p>
+            </div>
+          </div>
+
+          <div class="mvm-track" style="display: flex; gap: 0.9rem; overflow-x: auto; overflow-y: hidden; padding: 4px 2px 10px; margin: -4px -2px 0;">
+            <sc-for list="{{ leaders }}" as="leader" hint-placeholder-count="8">
+              <button type="button" style="flex: 0 0 auto; width: 100px; display: flex; flex-direction: column; align-items: center; gap: 0.45rem; text-align: center; cursor: pointer; background: none; border: 0; padding: 0; font: inherit; animation: mvmFaceIn 0.5s cubic-bezier(0.2,0.7,0.2,1) both;">
+                <span style="width: 76px; height: 76px; border-radius: 50%; overflow: hidden; border: 1px solid #E5DFD2; background: #F6F3EC; display: flex; align-items: center; justify-content: center;">
+                  <img src="{{ leader.img }}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) sepia(.32) brightness(1.03) contrast(1.04);">
+                </span>
+                <span>
+                  <span style="display: block; font-size: 0.62rem; font-weight: 600; line-height: 1.15; color: #1A1A1A;">{{ leader.name }}</span>
+                  <span style="display: block; font-size: 0.55rem; line-height: 1.15; color: #5C5651; margin-top: 1px;">{{ leader.cred }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+
+          <div style="margin-top: 0.65rem; display: flex; flex-direction: column; align-items: center; gap: 0.45rem;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 0.55rem;">
+              <button type="button" style="width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid #E5DFD2; background: #FFFDF7; color: #1A1A1A; font-size: 1.05rem; line-height: 1; cursor: default; opacity: 0.32;">‹</button>
+              <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.08em; color: #5C5651; min-width: 3.5rem; text-align: center;">1 / 17</span>
+              <button type="button" style="width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid #E5DFD2; background: #FFFDF7; color: #1A1A1A; font-size: 1.05rem; line-height: 1; cursor: pointer;">›</button>
+            </div>
+            <div style="width: min(8rem, 60%); height: 4px; border-radius: 999px; background: color-mix(in srgb, #E5DFD2 55%, transparent); overflow: hidden;">
+              <span style="display: block; height: 100%; width: 8%; border-radius: inherit; background: #1A1A1A;"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="position: fixed; inset: auto 0 0 0; z-index: 35; display: flex; flex-direction: column;">
+    <div style="position: relative; width: 100%; background: #FFFDF7; border-top: 1px solid #E5DFD2; box-shadow: 0 -10px 36px -14px rgba(26,26,26,0.10);">
+      <div style="padding: 0.55rem clamp(1.25rem,4vw,2.5rem) 0.35rem; min-height: 3.2rem;">
+        <div style="max-width: 56rem; margin: 0 auto;">
+          <span style="font-family: 'Caveat', cursive; font-size: clamp(1.25rem,4.8vw,1.65rem); line-height: 1.2; color: #22409B; white-space: nowrap;">Tell me about your organization, or ask me anything.</span>
+        </div>
+      </div>
+
+      <div style="position: relative; width: 100%; max-width: 42rem; margin: 0 auto; padding: 0 clamp(0.75rem,3vw,1.25rem) 0.3rem;">
+        <div class="mvm-track" style="display: flex; align-items: center; gap: 0.45rem; justify-content: center; flex-wrap: nowrap; margin-bottom: 0.4rem; padding: 0.15rem 0.65rem 0.1rem; overflow-x: auto;">
+          <button type="button" style="position: relative; isolation: isolate; flex: 0 0 auto; white-space: nowrap; border: 1px solid transparent; border-radius: 999px; background: transparent; color: #1A1A1A; font: inherit; font-size: 0.875rem; font-weight: 600; padding: 0.46rem 1rem; cursor: pointer;">
+            <span style="position: absolute; inset: -2px -8px; z-index: -1; background: #EAFF3A; mix-blend-mode: multiply; border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px; transform: rotate(-1.2deg);"></span>
+            Get a clear next AI step
+          </button>
+          <button type="button" style="flex: 0 0 auto; white-space: nowrap; border: 1px solid #E5DFD2; border-radius: 999px; background: #FFFDF7; color: #5C5651; font: inherit; font-size: 0.875rem; padding: 0.46rem 1rem; cursor: pointer;">About Movemental</button>
+          <button type="button" style="flex: 0 0 auto; white-space: nowrap; border: 1px solid #E5DFD2; border-radius: 999px; background: #FFFDF7; color: #5C5651; font: inherit; font-size: 0.875rem; padding: 0.46rem 1rem; cursor: pointer;">What does it cost?</button>
+          <button type="button" style="flex: 0 0 auto; white-space: nowrap; border: 1px solid #E5DFD2; border-radius: 999px; background: #FFFDF7; color: #5C5651; font: inherit; font-size: 0.875rem; padding: 0.46rem 1rem; cursor: pointer;">Get in touch</button>
+        </div>
+
+        <div style="border: 1px solid #E5DFD2; border-radius: 1.35rem; background: #FFFDF7; box-shadow: 0 1px 2px rgba(26,26,26,0.04), 0 12px 40px -16px rgba(26,26,26,0.22); padding: 0.75rem 0.85rem; margin-bottom: 0.6rem;">
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <label style="flex: 1 1 auto; display: flex; align-items: center; border: 1px solid #E5DFD2; border-radius: 999px; background: #FFFDF7; padding: 0.5rem 0.5rem 0.5rem 1.15rem;">
+              <input type="text" placeholder="Search or ask…" aria-label="Talk to Movemental" style="flex: 1 1 auto; border: 0; background: none; font: inherit; font-size: 1rem; color: #1A1A1A; padding: 0.35rem 0; outline: none;">
+            </label>
+            <button type="button" aria-label="Send" style="flex: 0 0 auto; width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 0; background: #1A1A1A; color: #FBFAF6; font-size: 1.05rem; cursor: pointer;">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const L = [
+      ["Alan Hirsch", "Missiologist · The Forgotten Ways", "alan-hirsch"],
+      ["Brad Brisco", "Send Network strategies director · Covocational ministry", "brad-brisco"],
+      ["JR Woodward", "V3 national director · Theology of the Powers", "jr-woodward"],
+      ["Neil Cole", "Organic Church author · CMA founder", "neil-cole"],
+      ["Rowland Smith", "Forge America director · Red Skies curator", "rowland-smith"],
+      ["Rob Wegner", "KC Underground founder · Starfish and the Spirit", "rob-wegner"],
+      ["Liz Rios", "Passion2Plant founder · Púlpito Fellows director", "liz-rios"],
+      ["Lucas Pulley", "Movements Director, Underground Network", "lucas-pulley"],
+      ["Josh Shepherd", "Founder & CTO · Movemental", "josh-shepherd"],
+      ["Jeremy & Monica Chambers", "Movement planters · Missional Spirituality", "jeremy-monica-chambers"],
+      ["Dave Ferguson", "Exponential CEO · Hero Maker author", "dave-ferguson"],
+      ["Dhati Lewis", "Blueprint pastor · Among Wolves author", "dhati-lewis"],
+      ["Hugh Halter", "Missio director · Tangible Kingdom", "hugh-halter"],
+      ["Michael Cooper", "Ephesiology author · East West missiologist", "michael-cooper"],
+      ["Roy Moran", "DMM practitioner · Hybrid Church author", "roy-moran"],
+      ["Peyton Jones", "NewBreed CEO · Church Plantology author", "peyton-jones"],
+      ["Meghan Good", "Preacher-theologian · Divine Gravity author", "meghan-good"],
+    ];
+    return {
+      leaders: L.map(([name, cred, slug]) => ({ name, cred, img: `assets/leaders/${slug}.jpg` })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

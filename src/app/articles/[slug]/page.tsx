@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { ArticleDetail } from "@/components/articles/article-detail";
+import { ArticleReaderView } from "@/v2/components/articles/article-reader-view";
 import { getArticle, listArticleSlugs } from "@/lib/articles";
 import {
   buildArticleJsonLd,
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Params) {
   return buildArticleMetadata(slug);
 }
 
-export default async function ArticleSlugPage({ params }: Params) {
+export default async function V2ArticleSlugPage({ params }: Params) {
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) notFound();
@@ -37,7 +37,7 @@ export default async function ArticleSlugPage({ params }: Params) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       ) : null}
-      <ArticleDetail article={article} relatedSlugs={related} />
+      <ArticleReaderView article={article} relatedSlugs={related} />
     </>
   );
 }

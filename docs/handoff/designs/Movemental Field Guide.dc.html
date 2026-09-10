@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .6s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 4% entry 34%; }
+    .mvm-field:focus { border-color: var(--ink) !important; outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+    .mvm-lift:hover { border-color: var(--ink) !important; transform: translateY(-1px); box-shadow: var(--shadow-lift); }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; } }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg);">
+
+  <header style="position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; box-sizing: border-box; height: 3.6rem; padding: .15rem clamp(1rem,4vw,2.5rem) .25rem; border-bottom: var(--border-hairline); background: rgba(251,250,246,0.94); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="flex: 0 0 auto; display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: clamp(2.6rem,6vw,3.6rem); margin-top: -.2rem; margin-bottom: -.7rem;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goSafety }}" dc-props="{{ crumbProps }}" hint-size="8rem,1.2rem">&#8593; Safety</x-import>
+  </header>
+
+  <section style="max-width: 1080px; margin: 0 auto; box-sizing: border-box; padding: clamp(2rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem) 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: clamp(1.5rem,4vw,3rem); align-items: start;">
+      <div style="position: relative; padding-left: var(--margin-inset, 1.4rem);">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">{{ guide.eyebrow }}</x-import>
+
+        <h1 style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: clamp(2rem,5vw,3.4rem); line-height: var(--leading-tight); letter-spacing: var(--tracking-display); margin: 1rem 0 0; max-width: 20ch; text-wrap: pretty;">{{ guide.title }}</h1>
+
+        <p style="font-family: var(--font-display); font-style: italic; font-size: var(--display-sm); color: var(--text-body); margin: .5rem 0 0;">{{ guide.volumeTitle }}</p>
+
+        <p style="font-size: var(--body-lg); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1.2rem 0 0; max-width: 54ch;">{{ guide.lede }}</p>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; margin: 1.5rem 0 0; padding: .9rem 0; border-top: var(--border-hairline); border-bottom: var(--border-hairline); font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">
+          <sc-for list="{{ guide.meta }}" as="m" hint-placeholder-count="4">
+            <span style="display: flex; align-items: center; gap: .6rem;">
+              <sc-if value="{{ m.sep }}">
+                <span aria-hidden="true" style="opacity: .4;">&middot;</span>
+              </sc-if>
+              <span>{{ m.label }}</span>
+            </span>
+          </sc-for>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ voiceWrapProps }}" hint-size="100%,2rem">{{ guide.voice }}</x-import>
+        </div>
+      </div>
+
+      <div style="max-width: 17.5rem; margin: 0 auto; width: 100%;">
+        <img src="public/images/ai-safety-handbook-cover.webp" alt="AI Safety Handbook, first response documentation for nonprofits, churches, and institutions" style="display: block; width: 100%; height: auto; aspect-ratio: 765 / 1024; object-fit: cover; border: var(--border-hairline); border-radius: var(--radius-lg); box-shadow: var(--shadow-lift);">
+        <p style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-subtle); margin: .7rem 0 0; text-align: center;">{{ guide.coverCaption }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,3.5rem) clamp(1.25rem,5vw,3rem) 0;">
+    <h2 class="mvm-reveal" style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.5rem,3.2vw,2.2rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: 0; max-width: 36ch; text-wrap: pretty;">{{ guide.insideHeading }}</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: clamp(.7rem,1.8vw,1rem); margin-top: clamp(1.5rem,3.5vw,2.25rem);">
+      <sc-for list="{{ guide.inside }}" as="item" hint-placeholder-count="6">
+        <div class="mvm-reveal" style="display: flex; flex-direction: column; gap: .35rem; border: var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card); padding: 1rem 1.15rem;">
+          <span style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">{{ item.label }}</span>
+          <span style="font-size: var(--body-md); font-weight: var(--weight-medium); color: var(--text-strong);">{{ item.title }}</span>
+          <span style="font-size: var(--body-xs); line-height: var(--leading-normal); color: var(--text-body);">{{ item.body }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="download" style="max-width: 1080px; margin: clamp(2.25rem,5.5vw,3.5rem) auto 0; box-sizing: border-box; padding: clamp(1.75rem,4vw,2.75rem) clamp(1.25rem,5vw,3rem); border-top: var(--border-hairline); border-bottom: var(--border-hairline); background: var(--surface);">
+    <sc-if value="{{ isSent }}">
+      <div style="max-width: 44rem; border-left: 2px solid var(--ink-blue); background: var(--surface-card); padding: 1.1rem 1.35rem;">
+        <p style="font-size: var(--body-lg); line-height: var(--leading-relaxed); color: var(--text-strong); margin: 0;">{{ guide.success }}</p>
+        <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-body); margin: .6rem 0 0;">Then open the first document tonight, with one other person, and see how it goes.</p>
+        <button type="button" onClick="{{ reset }}" style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body); background: transparent; border: 0; padding: 0; margin-top: .9rem; cursor: pointer;">&#8635; Send it somewhere else</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+      <div style="max-width: 30rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="100%,1rem">Where should we send it?</x-import>
+
+        <label style="display: block; margin-top: 1.1rem;">
+          <span style="display: block; font-family: var(--font-mono); font-size: var(--label-md); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body); margin-bottom: .4rem;">Email</span>
+          <input class="mvm-field" type="email" autocomplete="email" inputmode="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="you@yourorg.org" style="box-sizing: border-box; width: 100%; font-family: var(--font-body); font-size: var(--body-md); color: var(--text-strong); background: var(--bg); border: var(--border-hairline); border-radius: var(--radius-md); padding: .7rem .85rem; transition: border-color var(--dur-fast);">
+        </label>
+
+        <label style="display: block; margin-top: .9rem;">
+          <span style="display: block; font-family: var(--font-mono); font-size: var(--label-md); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body); margin-bottom: .4rem;">Organization <span style="text-transform: none; letter-spacing: normal; color: var(--text-subtle);">(optional)</span></span>
+          <input class="mvm-field" type="text" autocomplete="organization" value="{{ org }}" onChange="{{ onOrg }}" style="box-sizing: border-box; width: 100%; font-family: var(--font-body); font-size: var(--body-md); color: var(--text-strong); background: var(--bg); border: var(--border-hairline); border-radius: var(--radius-md); padding: .7rem .85rem; transition: border-color var(--dur-fast);">
+        </label>
+
+        <sc-if value="{{ hasError }}">
+          <p style="font-size: var(--body-sm); color: var(--margin-red); margin: .7rem 0 0;">{{ error }}</p>
+        </sc-if>
+
+        <div style="margin-top: 1.1rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Button" onClick="{{ submit }}" hint-size="12rem,2.7rem">{{ guide.submitLabel }}</x-import>
+        </div>
+
+        <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-body); margin: 1rem 0 0;">We send the PDF immediately and one follow-up email a week later. Unsubscribe anytime.</p>
+        <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-body); margin: .4rem 0 0;">No drip campaign, no sales sequence.</p>
+      </div>
+    </sc-if>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; box-sizing: border-box; padding: clamp(1.75rem,4vw,2.5rem) clamp(1.25rem,5vw,3rem) clamp(3rem,7vw,4.5rem);">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+      <p style="font-size: var(--body-sm); color: var(--text-body); margin: 0;">Also available: <button type="button" onClick="{{ switchVolume }}" style="font-family: inherit; font-size: inherit; color: var(--link); background: transparent; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 4px;">{{ guide.otherLabel }}</button></p>
+    </div>
+
+    <nav aria-label="Field guide help" style="display: flex; flex-wrap: wrap; align-items: center; gap: .3rem 1.25rem; margin-top: clamp(2rem,4vw,3rem); padding-top: 1.5rem; border-top: var(--border-hairline); font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">
+      <a href="Movemental Home (current).dc.html">Back to the agent room</a>
+      <span aria-hidden="true" style="opacity: .4;">&middot;</span>
+      <a href="/enroll">Set up your dashboard</a>
+      <span aria-hidden="true" style="opacity: .4;">&middot;</span>
+      <a href="mailto:josh@movemental.ai">Questions?</a>
+    </nav>
+  </section>
+
+  <footer style="border-top: var(--border-hairline); background: var(--bg);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 1.5rem clamp(1.25rem,5vw,3rem) 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">
+      <span>Movemental &copy; 2026</span>
+      <span>The knowledge was never the expensive part.</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;volume&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;safety&quot;,&quot;sandbox&quot;],&quot;default&quot;:&quot;safety&quot;,&quot;tsType&quot;:&quot;\&quot;safety\&quot; | \&quot;sandbox\&quot;&quot;,&quot;section&quot;:&quot;Field guide&quot;}}">
+/**
+ * /field-guide — the free field guides, both volumes.
+ *
+ * Copy verbatim from src/lib/field-guide-page.ts (FIELD_GUIDE_PAGE_COPY) and
+ * src/lib/safety-field-guide.ts; form behaviour and fine print from
+ * src/components/field-guide/field-guide-page-content.tsx. Cover art is the
+ * repo's own public/images/ai-safety-handbook-cover.webp.
+ *
+ * Per the brief the Handbook is email-gated: the repo's "Download the PDF"
+ * escape hatch is deliberately omitted here.
+ */
+const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+const GUIDES = {
+  safety: {
+    eyebrow: "Field guide · Volume One",
+    title: "AI Safety Handbook",
+    volumeTitle: "It Starts With Safety",
+    lede: "The practical first-stage field guide for leaders who need to move on AI without eroding the trust they spent decades earning.",
+    meta: ["33 pages", "Free", "Self-assessment included", "No drip campaign"],
+    insideHeading: "Five layers. Seven deliverables. One ratifiable framework.",
+    inside: [
+      { label: "Layer 01", title: "Statement", body: "The values and stance your board can ratify in public, what you believe about AI in your mission." },
+      { label: "Layer 02", title: "Policy", body: "Operational guidance staff actually read: sanctioned tools, welcomed tasks, constraints, and refusals." },
+      { label: "Layer 03", title: "Context", body: "Where you name the relational and pastoral situations AI cannot enter, specific to your ministry." },
+      { label: "Layer 04", title: "Rules", body: "Day-to-day standards for data handling and how AI involvement is disclosed to constituents." },
+      { label: "Layer 05", title: "Response Plans", body: "Pre-written playbooks for when something goes wrong, calm, fast, and consistent, not improvised." },
+      { label: "Plus", title: "Self-assessment", body: "A 30-minute diagnostic your leadership team takes together to see which layers are weak." },
+    ],
+    success: "Check your inbox, your AI Safety Handbook is on its way.",
+    submitLabel: "Send me the Handbook",
+    coverCaption: "Volume One · 33 pages",
+    voice: "The knowledge was never the expensive part.",
+    otherLabel: "Volume Two: It Continues With Exploration",
+  },
+  sandbox: {
+    eyebrow: "Field guide · Volume Two",
+    title: "It Continues With Exploration",
+    volumeTitle: "The Sandbox field guide",
+    lede: "The second-stage field guide: how to run real experiments with AI once your guardrails are in place.",
+    meta: ["Volume Two", "Free", "Sandbox stage", "No drip campaign"],
+    insideHeading: "What disciplined experimentation looks like after Safety.",
+    inside: [
+      { label: "Setting up", title: "Constitute a sandbox", body: "A bounded test space with named owners, clear exit criteria, and a regular record of what you learned." },
+      { label: "Evaluating", title: "Read vendor claims aggressively", body: "Ask for the system prompt, eval suite, data residency, and tenant boundaries before any pilot." },
+      { label: "Portfolio", title: "Assemble proof a board will accept", body: "Document what worked, what failed, and what Training will need: the proof that earns Stage Three." },
+    ],
+    success: "Check your inbox: It Continues With Exploration is on its way.",
+    submitLabel: "Send me the field guide",
+    coverCaption: "Volume Two",
+    voice: "Safety first. Then you get to experiment.",
+    otherLabel: "Volume One: It Starts With Safety",
+  },
+};
+
+class Component extends DCLogic {
+  state = { volume: null, email: "", org: "", status: "idle", error: "" };
+
+  submit = () => {
+    if (!EMAIL_RE.test(this.state.email.trim())) {
+      this.setState({ status: "error", error: "Enter a valid email address." });
+      return;
+    }
+    this.setState({ status: "sent", error: "" });
+  };
+
+  renderVals() {
+    const key = this.state.volume ?? this.props.volume ?? "safety";
+    const g = GUIDES[key] ?? GUIDES.safety;
+    const other = key === "safety" ? "sandbox" : "safety";
+
+    return {
+      crumbProps: { style: { marginBottom: 0 } },
+      voiceWrapProps: { style: { whiteSpace: "normal", maxWidth: "30rem", lineHeight: 1.2 } },
+      goSafety: () => { window.location.href = "Movemental Safety Stage.dc.html"; },
+
+      guide: {
+        eyebrow: g.eyebrow,
+        title: g.title,
+        volumeTitle: g.volumeTitle,
+        lede: g.lede,
+        meta: g.meta.map((label, i) => ({ label, sep: i > 0 })),
+        insideHeading: g.insideHeading,
+        inside: g.inside,
+        success: g.success,
+        submitLabel: g.submitLabel,
+        coverCaption: g.coverCaption,
+        voice: g.voice,
+        otherLabel: g.otherLabel,
+      },
+
+      switchVolume: () => this.setState({ volume: other, status: "idle", error: "" }),
+
+      isForm: this.state.status !== "sent",
+      isSent: this.state.status === "sent",
+      hasError: this.state.status === "error" && this.state.error !== "",
+      error: this.state.error,
+      email: this.state.email,
+      org: this.state.org,
+      onEmail: (e) => this.setState({ email: e.target.value, status: this.state.status === "error" ? "idle" : this.state.status }),
+      onOrg: (e) => this.setState({ org: e.target.value }),
+      submit: this.submit,
+      reset: () => this.setState({ status: "idle", email: "", org: "", error: "" }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    .mvm-toclink { transition: color var(--dur-fast), border-color var(--dur-fast); }
+    .mvm-toclink:hover { color: var(--ink-blue); text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goLibrary }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Research</x-import>
+  </header>
+
+  <div style="border-bottom: 1px solid var(--border); background: var(--surface);">
+    <div style="max-width: 78rem; margin: 0 auto; padding: .55rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; align-items: center; gap: .45rem;">
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-body); margin-right: .3rem;">Paper</span>
+      <sc-for list="{{ picker }}" as="p" hint-placeholder-count="6">
+        <button type="button" onClick="{{ p.select }}" style="{{ p.style }}">{{ p.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width: 78rem; margin: 0 auto; padding: clamp(1.75rem,4vw,3rem) clamp(1.25rem,5vw,3rem) 0; display: grid; gap: clamp(1.5rem,4vw,3rem); grid-template-columns: {{ gridCols }};">
+
+    <aside style="{{ tocAsideStyle }}">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Contents</x-import>
+      <sc-if value="{{ hasToc }}" hint-placeholder-val="{{ true }}">
+        <nav style="display: grid; gap: .3rem; max-height: 60vh; overflow-y: auto;">
+          <sc-for list="{{ toc }}" as="t" hint-placeholder-count="8">
+            <a class="mvm-toclink" href="{{ t.href }}" style="{{ t.style }}">{{ t.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <sc-if value="{{ noToc }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size: .88rem; color: var(--text-subtle); margin: 0;">No section list on this piece.</p>
+      </sc-if>
+    </aside>
+
+    <article style="{{ articleStyle }}">
+      <header style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+        <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">{{ item.kindLabel }}</x-import>
+        <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.9rem,4.4vw,3rem); line-height: 1.05; letter-spacing: -.024em; margin: .7rem 0 0; text-wrap: pretty;">{{ item.title }}</h1>
+        <sc-if value="{{ item.hasSubtitle }}" hint-placeholder-val="{{ true }}">
+          <p style="font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(1.05rem,2.2vw,1.3rem); line-height: 1.4; color: var(--text-body); margin: .8rem 0 0; max-width: 52ch;">{{ item.subtitle }}</p>
+        </sc-if>
+      </header>
+
+      <div style="display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; margin: 1.4rem 0 0; padding: .7rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">
+        <span style="color: var(--text-strong);">By Movemental</span>
+        <span>{{ item.sourceLine }}</span>
+        <span>{{ item.readLine }}</span>
+      </div>
+
+      <sc-if value="{{ inlineToc }}" hint-placeholder-val="{{ false }}">
+        <details style="margin-top: 1.1rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); padding: .7rem .9rem;">
+          <summary style="cursor: pointer; font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body);">Contents · {{ tocCount }}</summary>
+          <nav style="display: grid; gap: .35rem; margin-top: .8rem;">
+            <sc-for list="{{ toc }}" as="t" hint-placeholder-count="8">
+              <a class="mvm-toclink" href="{{ t.href }}" style="{{ t.style }}">{{ t.label }}</a>
+            </sc-for>
+          </nav>
+        </details>
+      </sc-if>
+
+      <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size: 1rem; color: var(--text-body); margin: 1.6rem 0 0;">Loading the full text…</p>
+      </sc-if>
+
+      <sc-if value="{{ hasBody }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top: 1.6rem; position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .8rem; bottom: .8rem; width: 1.5px; background: var(--margin-red); opacity: .22;"></span>
+          {{ bodyEl }}
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isStub }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 1.6rem; position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .5rem; bottom: .5rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <p style="font-size: 1.15rem; line-height: 1.62; color: var(--text-strong); margin: 0 0 1.1rem; max-width: 62ch;">{{ item.plainAbstract }}</p>
+          <p style="font-size: 1.02rem; line-height: 1.66; color: var(--text-body); margin: 0 0 1.1rem; max-width: 62ch;">This piece is part of the Movemental research library. The full text is being prepared; in the meantime you can review the sources behind it or ask the agent about its argument.</p>
+          <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: 0;">Full read not wired into this prototype</p>
+        </div>
+      </sc-if>
+
+    </article>
+
+    <aside style="{{ sourcesAsideStyle }}">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Sources</x-import>
+      <sc-if value="{{ hasSources }}" hint-placeholder-val="{{ true }}">
+        <ul style="margin: 0 0 1rem; padding: 0; list-style: none; display: grid; gap: .7rem;">
+          <sc-for list="{{ sources }}" as="s" hint-placeholder-count="3">
+            <li style="{{ s.liStyle }}">
+              <span style="{{ s.indexStyle }}">[{{ s.index }}]</span>
+              <span style="display: block; font-size: .85rem; line-height: 1.45; margin-top: .2rem;">{{ s.title }}</span>
+              <span style="display: block; font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-subtle); margin-top: .25rem;">{{ s.meta }}</span>
+              <sc-if value="{{ s.hasUrl }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: .3rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: .55rem; letter-spacing: .11em; text-transform: uppercase;">Open ↗</a>
+              </sc-if>
+            </li>
+          </sc-for>
+        </ul>
+      </sc-if>
+      <sc-if value="{{ noSources }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size: .85rem; color: var(--text-subtle); margin: 0 0 1rem;">The full source list for this piece is being compiled.</p>
+      </sc-if>
+      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .11em; text-transform: uppercase; color: var(--text-subtle); margin: 0 0 .5rem;">{{ railNote }}</p>
+      <a href="Movemental Research Indexes.dc.html#sources" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .58rem; letter-spacing: .12em; text-transform: uppercase;">View all sources →</a>
+    </aside>
+
+    <section style="{{ ctaStyle }}">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Where the numbers are checked</x-import>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: 0 0 1rem; max-width: 60ch;">Every measured claim Movemental publishes is registered with its source, date and sample size in the footnotes register.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: .6rem;">
+        <a href="Movemental Footnotes.dc.html" style="font-size: .95rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--ink); border-radius: var(--radius-md); padding: .68rem 1.05rem;" style-hover="color: var(--ink-blue); border-color: var(--ink-blue); text-decoration: none;">Claims, sources, and notes</a>
+        <a href="Movemental Research Indexes.dc.html" style="font-size: .95rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .68rem 1.05rem;" style-hover="border-color: var(--ink); text-decoration: none;">Findings &amp; master sources</a>
+        <a href="Movemental Research.dc.html" style="font-size: .95rem; font-weight: 500; color: var(--text-strong); background: transparent; border: 1px solid var(--border); border-radius: var(--radius-md); padding: .68rem 1.05rem;" style-hover="border-color: var(--ink); text-decoration: none;">← All research</a>
+      </div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;slug&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ai-credibility-crisis&quot;,&quot;finding-ai-guidance-worth-trusting&quot;,&quot;credibility-thesis&quot;,&quot;the-cost-of-fragmentation&quot;,&quot;sandbox-discovery&quot;,&quot;the-skill-of-ai&quot;],&quot;default&quot;:&quot;ai-credibility-crisis&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Paper&quot;},&quot;showCitations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Paper&quot;}}">
+/**
+ * `/research/[slug]` — the paper reader.
+ *
+ * Layout matches the repo's `ResearchArticle`: contents rail · body · sources
+ * rail, with the byline strip ("By Movemental · N sources · N min read") between
+ * hairlines. Metadata (kind, year, title, subtitle, sections, sources, readMin,
+ * sourceCount) is verbatim from `src/lib/research/data.ts`.
+ *
+ * BODIES. The repo keeps 13 full reads as JSX in
+ * `src/components/research/bodies/*.tsx` (13–32KB each). Those are React
+ * components, not data, and cannot be loaded here. Rather than show a stub for
+ * every paper — which would misrepresent a library that is actually written —
+ * the authored markdown behind several of them was copied into this project
+ * under `docs/articles/` and is rendered verbatim through `md.js`. No sentence
+ * is rewritten, shortened, or generated.
+ *
+ * Papers with no copied source fall back to the repo's OWN fallback text from
+ * `article-bodies.tsx`, labelled as not wired. That is the honest state, and it
+ * is the state the prompt asks for.
+ *
+ * The contents rail prefers the real heading structure of the rendered markdown
+ * (so anchors actually resolve); where there is no body it falls back to the
+ * `sections` list the data carries.
+ */
+const MEDIA_NONE = null;
+
+/** slug → copied markdown file. Only papers whose authored source is present. */
+const BODY_FILES = {
+  "ai-credibility-crisis": "docs/articles/01-ai-credibility-crisis.md",
+  "the-cost-of-fragmentation": "docs/articles/the-cost-of-fragmentation.md",
+  "sandbox-discovery": "docs/articles/sandbox-discovery.md",
+  "the-skill-of-ai": "docs/articles/the-skill-of-ai.md",
+  "finding-ai-guidance-worth-trusting": "docs/articles/finding-ai-guidance-worth-trusting.md",
+};
+
+const ITEMS = [
+  {
+    slug: "ai-credibility-crisis", kind: "Analysis", year: 2026, title: "The AI Credibility Crisis",
+    subtitle: "A cool-headed stress test of headline statistics and narrative claims — scoped, sourced, and honest about limits.",
+    abstract: "What the evidence actually supports about AI-generated fluency, broken statistics, and the self-efficacy gap ordinary readers face.",
+    readMin: 9, sourceCount: 12,
+    sections: ["Executive summary", "The \u201c68%\u201d statistic", "AI content prevalence", "Can people detect AI?", "Credibility collapse", "What the evidence supports", "Counterarguments", "Verification systems", "Constructive thesis", "Closing note"],
+    sources: [
+      { index: 10, title: "Pew Research Center — Artificial Intelligence", meta: "Pew · 2025 · n=5,023", url: "https://www.pewresearch.org/topic/science/science-issues/artificial-intelligence/" },
+      { index: 18, title: "Edelman Trust Barometer 2025 — AI flash poll", meta: "Edelman · 2025", url: "https://www.edelman.com/trust/2025/trust-barometer/flash-poll-trust-artifical-intelligence" },
+      { index: 8, title: "Stanford HAI — AI Index 2026", meta: "Stanford HAI · 2026", url: "https://hai.stanford.edu/ai-index/2026-ai-index-report/", dim: true },
+    ],
+  },
+  {
+    slug: "finding-ai-guidance-worth-trusting", kind: "Paper", year: 2026, title: "Finding AI Guidance Worth Trusting",
+    subtitle: "A discernment guide for mission-driven organizations choosing help in a moment no one has mastered yet.",
+    abstract: "A discernment guide for mission-driven leaders — expert vs guide, the network test, and whose judgment will shape your staff's judgment.",
+    readMin: 14, sourceCount: 4,
+    sections: ["Executive summary", "The real question", "We are early", "Consulting logic", "Expert vs guide", "What to look for", "Network test", "The hard test", "Discernment layer", "Counterarguments", "Recommendations", "Where Movemental fits", "Closing", "In this sequence"],
+    sources: [
+      { index: 31, title: "OpenAI — Introducing ChatGPT", meta: "OpenAI · Nov 2022", url: "https://openai.com/index/chatgpt/" },
+      { index: 32, title: "BCG — Generative AI and knowledge workers (Sept 2024)", meta: "BCG · 2024", url: "https://www.bcg.com/press/5september2024-generative-ai-knowledge-workers-consultants" },
+      { index: 9, title: "Dell'Anna et al. — Navigating the Jagged Technological Frontier", meta: "HBS / MIT / BCG · 2023", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321", dim: true },
+    ],
+  },
+  {
+    slug: "credibility-thesis", kind: "Thesis", year: 2026, title: "The Credibility Thesis",
+    subtitle: "What credibility means in the AI era and why scenius is the solution.",
+    abstract: "What credibility means in the AI era — measurable but not reducible — and why scenius is the sustainable response.",
+    readMin: 22, sourceCount: 2,
+    sections: ["What is credibility?", "How it used to work", "The AI crisis", "Credibility vs influence", "The scenius solution", "Measurable, not reducible", "New framework", "A new way online", "Beyond strategy", "The choice"],
+    sources: [
+      { index: 10, title: "Pew Research Center — Artificial Intelligence", meta: "Pew · Sep 2025 · n=5,023", url: "https://www.pewresearch.org/topic/science/science-issues/artificial-intelligence/" },
+      { index: 24, title: "Reuters Institute — Digital News Report 2025", meta: "Reuters · 2025", url: "https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2025", dim: true },
+    ],
+  },
+  {
+    slug: "the-cost-of-fragmentation", kind: "Paper", year: 2026, title: "The Cost of Fragmentation",
+    subtitle: "What fragmentation charges movement leaders, churches, institutions, and nonprofits — a human cost map, not a dollar figure.",
+    abstract: "Eight shared cost vectors — memory, continuity, compounding, credibility, and more — levied differently on leaders, churches, institutions, and nonprofits.",
+    readMin: 18, sourceCount: 1,
+    sections: ["Executive summary", "Universal tax", "Eight currencies", "Movement leaders", "Churches", "Institutions", "Nonprofits", "Common thread", "What changes", "Counterarguments", "Recommendations", "The choice"],
+    sources: [
+      { index: 18, title: "Edelman Trust Barometer 2025 — AI flash poll", meta: "Edelman · 2025", url: "https://www.edelman.com/trust/2025/trust-barometer/flash-poll-trust-artifical-intelligence" },
+    ],
+  },
+  {
+    slug: "sandbox-discovery", kind: "Paper", year: 2026, title: "Sandbox Discovery: Where Learning Actually Happens",
+    subtitle: "Structured discovery after Safety — not permissionless play, not shadow IT with better branding.",
+    abstract: "Stage 2 of the AI Stewardship Sequence — bounded experimentation after Safety, with four outputs and a graduation gate before Training or Tech.",
+    readMin: 10, sourceCount: 3,
+    sections: ["Executive summary", "From Discovery Lab", "What a sandbox is", "Fragmented state", "Four outputs", "Graduation gate", "Formation finish", "Why this sequence", "Counterarguments", "Recommendations", "Closing", "In this sequence"],
+    sources: [
+      { index: 32, title: "BCG — Generative AI and knowledge workers (Sept 2024)", meta: "BCG · 2024", url: "https://www.bcg.com/press/5september2024-generative-ai-knowledge-workers-consultants" },
+      { index: 9, title: "Dell'Anna et al. — Navigating the Jagged Technological Frontier", meta: "HBS / MIT / BCG · 2023", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321", dim: true },
+    ],
+  },
+  {
+    slug: "the-skill-of-ai", kind: "Paper", year: 2026, title: "The Skill of AI: Why \u201cReskilling\u201d Is the Wrong Frame",
+    subtitle: "Why reskilling misnames the work — and what formation actually requires after Sandbox.",
+    abstract: "Stage 3 of the AI Stewardship Sequence — judgment, taste, verification, and collaborative posture, not feature tours or certification.",
+    readMin: 12, sourceCount: 3,
+    sections: ["Executive summary", "The problem with the frame", "What Training is not", "What the skill actually is", "Reskilling, redefined", "Can it be learned?", "Maturity model", "The pedagogy", "Nonprofit employees", "What Training produces", "Counterarguments", "Recommendations", "Threshold test", "Closing", "In this sequence"],
+    sources: [
+      { index: 32, title: "BCG — Generative AI and knowledge workers (Sept 2024)", meta: "BCG · 2024", url: "https://www.bcg.com/press/5september2024-generative-ai-knowledge-workers-consultants" },
+      { index: 9, title: "Dell'Anna et al. — Navigating the Jagged Technological Frontier", meta: "HBS / MIT / BCG · 2023", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321", dim: true },
+      { index: 33, title: "Fernandes et al. — AI-assisted reasoning and calibration", meta: "Computers in Human Behavior · 2026", url: "https://doi.org/10.1016/j.chb.2025.108779", dim: true },
+    ],
+  },
+];
+
+class Component extends DCLogic {
+  state = { slug: null, md: null, loadingFor: null, failed: false, w: typeof window !== "undefined" ? window.innerWidth : 1200 };
+
+  onResize = () => this.setState({ w: window.innerWidth });
+
+  componentWillUnmount() { window.removeEventListener("resize", this.onResize); }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.onResize);
+    const hash = (window.location.hash || "").replace("#", "");
+    const slug = ITEMS.some((i) => i.slug === hash) ? hash : this.currentSlug();
+    if (slug !== this.state.slug) this.setState({ slug });
+    this.load(slug);
+  }
+
+  componentDidUpdate() { this.load(this.currentSlug()); }
+
+  currentSlug() {
+    return this.state.slug || this.props.slug || ITEMS[0].slug;
+  }
+
+  async load(slug) {
+    const file = BODY_FILES[slug];
+    if (!file) { if (this.state.md || this.state.loadingFor) this.setState({ md: null, loadingFor: null, failed: false }); return; }
+    if (this.state.loadingFor === slug || (this.state.md && this.state.md.slug === slug)) return;
+    this.setState({ loadingFor: slug, failed: false });
+    try {
+      const mod = await import("./md.js");
+      const res = await fetch(file);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const parsed = mod.parseArticle(await res.text());
+      this.setState({ md: { slug, ...parsed }, loadingFor: null });
+    } catch (e) {
+      this.setState({ md: null, loadingFor: null, failed: true });
+    }
+  }
+
+  pick = (slug) => {
+    this.setState({ slug, md: null, loadingFor: null, failed: false });
+    if (window.history && window.history.replaceState) window.history.replaceState(null, "", "#" + slug);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  renderVals() {
+    const slug = this.currentSlug();
+    const item = ITEMS.find((i) => i.slug === slug) || ITEMS[0];
+    const md = this.state.md && this.state.md.slug === slug ? this.state.md : null;
+    const loading = this.state.loadingFor === slug;
+    const showSources = this.props.showCitations ?? true;
+
+    const chip = (active) => ({
+      font: "inherit", fontFamily: "var(--font-mono), ui-monospace, monospace", fontSize: ".58rem",
+      letterSpacing: ".11em", textTransform: "uppercase",
+      border: active ? "1px solid var(--ink)" : "1px solid var(--border)",
+      background: active ? "var(--surface-card)" : "transparent",
+      color: active ? "var(--text-strong)" : "var(--text-body)",
+      borderRadius: "999px", padding: ".32rem .68rem", cursor: "pointer",
+    });
+
+    const toc = md
+      ? md.toc.map((t) => ({
+          label: t.text,
+          href: "#" + t.id,
+          style: {
+            fontSize: t.depth === 3 ? ".78rem" : ".82rem",
+            lineHeight: 1.4,
+            color: "var(--text-body)",
+            paddingLeft: t.depth === 3 ? ".8rem" : 0,
+            borderLeft: t.depth === 3 ? "1px solid var(--border)" : "0",
+          },
+        }))
+      : item.sections.map((s) => ({
+          label: s,
+          href: "#",
+          style: { fontSize: ".82rem", lineHeight: 1.4, color: "var(--text-subtle)" },
+        }));
+
+    const sources = showSources ? item.sources : [];
+    const wide3 = this.state.w >= 1240;
+    const wide2 = !wide3 && this.state.w >= 1040;
+    const railed = wide3 || wide2;
+
+    return {
+      goLibrary: () => { window.location.href = "Movemental Research.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      // Live viewport values — a media query is not available (inline styles
+      // only), so the three-column reader's collapse is driven from here.
+      // Below 1040px the rails stop being rails: the contents list becomes a
+      // collapsed disclosure under the byline (so the title is never pushed off
+      // the first screen), and the sources rail falls between the article and
+      // the closing CTA rather than after it.
+      gridCols: wide3 ? "13rem minmax(0,1fr) 14rem" : wide2 ? "12rem minmax(0,1fr)" : "minmax(0,1fr)",
+      tocAsideStyle: railed
+        ? { alignSelf: "start", position: "sticky", top: "5.4rem", order: 1, minWidth: 0 }
+        : { display: "none" },
+      articleStyle: { minWidth: 0, order: 2 },
+      sourcesAsideStyle: wide3
+        ? { alignSelf: "start", position: "sticky", top: "5.4rem", order: 3, minWidth: 0 }
+        : {
+            order: 3,
+            minWidth: 0,
+            marginTop: "clamp(2rem,5vw,2.75rem)",
+            borderTop: "1px solid var(--border)",
+            paddingTop: "clamp(1.25rem,3vw,1.75rem)",
+          },
+      ctaStyle: {
+        order: 4,
+        gridColumn: railed ? "1 / -1" : "auto",
+        marginTop: "clamp(2.25rem,5vw,3rem)",
+        borderTop: "1px solid var(--border)",
+        paddingTop: "clamp(1.5rem,3.5vw,2rem)",
+      },
+      inlineToc: !railed && toc.length > 0,
+      tocCount: toc.length + (toc.length === 1 ? " section" : " sections"),
+      picker: ITEMS.map((i) => ({
+        label: i.title.length > 34 ? i.title.slice(0, 32) + "…" : i.title,
+        style: chip(i.slug === slug),
+        select: () => this.pick(i.slug),
+      })),
+      item: {
+        title: item.title,
+        subtitle: item.subtitle,
+        hasSubtitle: !!item.subtitle,
+        kindLabel: item.year ? item.kind + " · " + item.year : item.kind,
+        sourceLine: item.sourceCount + (item.sourceCount === 1 ? " source" : " sources"),
+        readLine: (md ? md.readTime : item.readMin + " min read"),
+        plainAbstract: item.abstract,
+      },
+      toc,
+      hasToc: toc.length > 0,
+      noToc: toc.length === 0,
+      isLoading: loading,
+      hasBody: !!md,
+      isStub: !md && !loading,
+      bodyEl: md ? React.createElement("div", { dangerouslySetInnerHTML: { __html: md.html } }) : MEDIA_NONE,
+      hasSources: sources.length > 0,
+      noSources: showSources && sources.length === 0,
+      sources: sources.map((s) => ({
+        index: s.index,
+        title: s.title,
+        meta: s.meta,
+        url: s.url || "",
+        hasUrl: !!s.url,
+        liStyle: { opacity: s.dim ? 0.6 : 1, borderLeft: "1px solid var(--border)", paddingLeft: ".7rem" },
+        indexStyle: {
+          fontFamily: "var(--font-mono), ui-monospace, monospace",
+          fontSize: ".58rem",
+          letterSpacing: ".1em",
+          color: s.dim ? "var(--text-subtle)" : "var(--ink-blue)",
+        },
+      })),
+      railNote: "Indices are stable across every paper.",
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    .mvm-layer { transition: border-color var(--dur-fast), background var(--dur-fast); }
+    .mvm-layer:hover { border-color: var(--ink); }
+    .mvm-ta { width: 100%; box-sizing: border-box; font: inherit; font-size: 1.02rem; line-height: 1.7; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem 1.1rem; outline: none; resize: vertical; }
+    .mvm-ta:focus { border-color: var(--ink); outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+    .mvm-nav { transition: color var(--dur-fast); }
+    .mvm-nav:hover { color: var(--ink-blue); text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 5rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">{{ orgName }}</span>
+      <button type="button" style="{{ signOutStyle }}">Sign out</button>
+    </div>
+  </header>
+
+  <nav style="position: sticky; top: 3.6rem; z-index: 35; border-bottom: 1px solid var(--border); background: var(--surface);">
+    <div style="max-width: 62rem; margin: 0 auto; padding: .5rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; gap: .35rem; align-items: center;">
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-body); margin-right: .35rem;">Screen</span>
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="8">
+        <button type="button" onClick="{{ t.select }}" style="{{ t.style }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+  </nav>
+
+  <main style="max-width: 62rem; margin: 0 auto; padding: clamp(2rem,5vw,3rem) clamp(1.25rem,5vw,3rem) 0;">
+
+    <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Your workspace</x-import>
+          <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.9rem,4.4vw,2.9rem); line-height: 1.06; letter-spacing: -.024em; margin: .7rem 0 0;">{{ orgName }}</h1>
+          <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body); margin: .6rem 0 0;">{{ statusLabel }}</p>
+        </section>
+
+        <section style="margin-top: clamp(2rem,5vw,2.75rem); display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));">
+          <sc-for list="{{ destinations }}" as="d" hint-placeholder-count="2">
+            <button type="button" class="mvm-layer" onClick="{{ d.select }}" style="{{ d.style }}">
+              <span style="display: block; font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body);">{{ d.eyebrow }}</span>
+              <span style="display: block; font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: 1.3rem; line-height: 1.18; letter-spacing: -.018em; margin-top: .5rem;">{{ d.title }}</span>
+              <span style="display: block; font-size: .95rem; line-height: 1.55; color: var(--text-body); margin-top: .5rem;">{{ d.note }}</span>
+            </button>
+          </sc-for>
+        </section>
+
+        <section style="margin-top: clamp(2rem,5vw,2.75rem); position: relative; padding-left: clamp(1rem,2.5vw,1.6rem); max-width: 58ch;">
+          <span style="position: absolute; left: .2rem; top: .35rem; bottom: .35rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <p style="font-family: var(--font-display), Georgia, serif; font-size: clamp(1.1rem,2.4vw,1.4rem); line-height: 1.42; letter-spacing: -.012em; margin: 0;">In two weeks: a complete, board-ready Safety charter. Five documents, drafted in your organization's own context, ready to ratify.</p>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isCharter }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Safety · Charter</x-import>
+          <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.9rem,4.4vw,2.9rem); line-height: 1.06; letter-spacing: -.024em; margin: .7rem 0 0;">Your AI Charter, five layers.</h1>
+          <div style="display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; margin-top: .8rem;">
+            <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-strong);">{{ statusLabel }}</span>
+            <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">{{ publishedLine }}</span>
+            <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">{{ revisedLine }}</span>
+          </div>
+          <p style="font-size: 1.02rem; line-height: 1.64; color: var(--text-body); margin: 1rem 0 0; max-width: 58ch;">{{ nextAction }}</p>
+        </section>
+
+        <section style="margin-top: clamp(1.75rem,4vw,2.5rem); display: grid; gap: .7rem;">
+          <sc-for list="{{ layers }}" as="l" hint-placeholder-count="5">
+            <div class="mvm-layer" style="{{ l.cardStyle }}">
+              <button type="button" onClick="{{ l.open }}" style="{{ l.headStyle }}">
+                <span style="{{ l.ghostStyle }}">{{ l.n }}</span>
+                <span style="flex: 1 1 14rem; min-width: 0; text-align: left;">
+                  <span style="display: block; font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.15rem,2.4vw,1.4rem); line-height: 1.18; letter-spacing: -.018em;">{{ l.title }}</span>
+                  <span style="display: block; font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body); margin-top: .35rem;">{{ l.sub }}</span>
+                </span>
+                <span style="{{ l.stateStyle }}">{{ l.stateLabel }}</span>
+              </button>
+              <sc-if value="{{ l.unrevised }}" hint-placeholder-val="{{ false }}">
+                <p style="{{ l.noteStyle }}">Drafted for you. Nobody here has read it yet.</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </section>
+
+        <section style="margin-top: clamp(2rem,5vw,2.75rem); border-top: 1px solid var(--border); padding-top: clamp(1.5rem,3.5vw,2rem);">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Written is not approved</x-import>
+          <p style="font-size: 1rem; line-height: 1.64; color: var(--text-body); margin: 0; max-width: 62ch;">All five documents arrive written, because we draft them for you. That is the starting position, not progress. A layer counts as yours once someone here has revised it, and it counts as your board's once it is published against a specific version.</p>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDocument }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <p style="margin: 0 0 1.5rem;"><button type="button" onClick="{{ backToCharter }}" style="{{ backStyle }}">↑ Charter</button></p>
+
+        <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">{{ doc.eyebrow }}</x-import>
+          <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.8rem,4.2vw,2.7rem); line-height: 1.06; letter-spacing: -.024em; margin: .7rem 0 0;">{{ doc.sub }}</h1>
+          <div style="display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; margin: .9rem 0 0; padding: .65rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">
+            <span style="color: var(--text-strong);">{{ doc.stateLabel }}</span>
+            <span>Version {{ doc.currentVersion }} · current</span>
+            <span>{{ doc.publishedVersionLine }}</span>
+          </div>
+        </section>
+
+        <sc-if value="{{ doc.stale }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 1.1rem 0 0; border-left: 2px solid var(--margin-red); background: var(--surface-card); padding: .9rem 1.1rem; font-size: .99rem; line-height: 1.6; max-width: 62ch;">{{ doc.staleLine }}</p>
+        </sc-if>
+
+        <section style="margin-top: clamp(1.5rem,3.5vw,2rem);">
+          <div style="display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;">
+            <sc-for list="{{ modeTabs }}" as="m" hint-placeholder-count="2">
+              <button type="button" onClick="{{ m.select }}" style="{{ m.style }}">{{ m.label }}</button>
+            </sc-for>
+            <sc-if value="{{ dirty }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-blue);">Unsaved changes</span>
+            </sc-if>
+          </div>
+
+          <sc-if value="{{ isReading }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top: 1.5rem; position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+              <span style="position: absolute; left: .2rem; top: .6rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .22;"></span>
+              <sc-for list="{{ doc.paragraphs }}" as="p" hint-placeholder-count="2">
+                <p style="font-size: 1.05rem; line-height: 1.72; color: var(--text-strong); margin: 0 0 1.15rem; max-width: 66ch;">{{ p }}</p>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isEditing }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 1.5rem;">
+              <textarea class="mvm-ta" rows="16" value="{{ draftText }}" onChange="{{ setDraft }}"></textarea>
+              <p style="font-size: .95rem; line-height: 1.6; color: var(--text-body); margin: .9rem 0 0; max-width: 60ch;">{{ saveConsequence }}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem;">
+                <x-import component-from-global-scope="MovementalDesignSystem_07416b.Button" onClick="{{ saveDraft }}" hint-size="auto,2.6rem">Save as version {{ doc.nextVersion }}</x-import>
+                <button type="button" onClick="{{ cancelEdit }}" style="{{ ghostBtnStyle }}">Discard changes</button>
+              </div>
+            </div>
+          </sc-if>
+        </section>
+
+        <section style="margin-top: clamp(2rem,5vw,2.75rem); border-top: 1px solid var(--border); padding-top: clamp(1.5rem,3.5vw,2rem); display: grid; gap: clamp(1.5rem,4vw,2.5rem); grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));">
+          <div>
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Without this document</x-import>
+            <p style="font-size: 1rem; line-height: 1.62; color: var(--text-body); margin: 0; max-width: 46ch;">{{ doc.threat }}</p>
+          </div>
+          <div>
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">{{ doc.affTitle }}</x-import>
+            <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem;">
+              <sc-for list="{{ doc.aff }}" as="a" hint-placeholder-count="4">
+                <li style="font-size: .97rem; line-height: 1.55; color: var(--text-body); border-left: 1px solid var(--border); padding-left: .85rem;">{{ a }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </section>
+
+        <section style="margin-top: clamp(2rem,5vw,2.75rem); border-top: 1px solid var(--border); padding-top: clamp(1.5rem,3.5vw,2rem);">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Version history</x-import>
+          <div style="display: grid; gap: .5rem;">
+            <sc-for list="{{ doc.versions }}" as="v" hint-placeholder-count="2">
+              <div style="{{ v.style }}">
+                <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-body); flex: 0 0 6rem;">Version {{ v.n }}</span>
+                <span style="flex: 1 1 12rem; min-width: 0; font-size: .95rem; color: var(--text-body);">{{ v.note }}</span>
+                <span style="{{ v.tagStyle }}">{{ v.tag }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body); margin: .9rem 0 0;">Every save is a new version. Nothing is overwritten.</p>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isPublish }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Publish the charter</x-import>
+          <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.9rem,4.4vw,2.9rem); line-height: 1.06; letter-spacing: -.024em; margin: .7rem 0 0; max-width: 22ch;">Publishing binds a version, not a document.</h1>
+          <p style="font-size: 1.04rem; line-height: 1.66; color: var(--text-body); margin: 1rem 0 0; max-width: 60ch;">Each layer you publish records the exact version that was approved. A year from now, "what did we actually sign?" has a precise answer.</p>
+        </section>
+
+        <section style="margin-top: clamp(1.75rem,4vw,2.5rem); display: grid; gap: .6rem;">
+          <sc-for list="{{ publishRows }}" as="r" hint-placeholder-count="5">
+            <div style="{{ r.rowStyle }}">
+              <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .12em; color: var(--text-body); flex: 0 0 2rem;">{{ r.n }}</span>
+              <span style="flex: 1 1 14rem; min-width: 0;">
+                <span style="display: block; font-size: 1.02rem; font-weight: 500; color: var(--text-strong);">{{ r.title }}</span>
+                <span style="display: block; font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .11em; text-transform: uppercase; color: var(--text-body); margin-top: .3rem;">{{ r.versionLine }}</span>
+              </span>
+              <span style="{{ r.tagStyle }}">{{ r.tag }}</span>
+            </div>
+          </sc-for>
+        </section>
+
+        <section style="margin-top: clamp(1.75rem,4vw,2.25rem); border: 1px solid var(--ink); border-radius: var(--radius-lg); background: var(--surface-card); padding: clamp(1.1rem,3vw,1.5rem);">
+          <p style="font-size: 1.02rem; line-height: 1.64; color: var(--text-strong); margin: 0; max-width: 56ch;">{{ publishSummary }}</p>
+          <div style="margin-top: 1.2rem;">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.Button" hint-size="auto,2.6rem">{{ publishCta }}</x-import>
+          </div>
+          <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body); margin: .9rem 0 0;">No backend in this prototype — nothing publishes.</p>
+        </section>
+
+        <section style="margin-top: clamp(2rem,5vw,2.75rem); border-top: 1px solid var(--border); padding-top: clamp(1.5rem,3.5vw,2rem);">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">One open question</x-import>
+          <p style="font-size: 1rem; line-height: 1.64; color: var(--text-body); margin: 0; max-width: 62ch;">The shipped publish path writes a publication row and marks the layer published. It does not touch <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .88em;">safety_guidebook_ratifications</span> or <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .88em;">safety_guidebook_signatures</span>, which exist but are unused. Board signing is not designed here, because the code does not yet say what signing means.</p>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isOnboarding }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 40rem;">
+        <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">{{ onboarding.eyebrow }}</x-import>
+          <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.8rem,4.2vw,2.6rem); line-height: 1.08; letter-spacing: -.024em; margin: .7rem 0 0;">This step is coming soon</h1>
+          <p style="font-size: 1.05rem; line-height: 1.66; color: var(--text-body); margin: 1.1rem 0 0; max-width: 54ch;">{{ onboarding.body }}</p>
+        </section>
+        <div style="display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem;">
+          <sc-for list="{{ onboarding.links }}" as="l" hint-placeholder-count="3">
+            <a href="{{ l.href }}" style="{{ l.style }}">{{ l.label }}</a>
+          </sc-for>
+        </div>
+        <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body); margin: 2rem 0 0;">Both onboarding routes are holding pages in the repo. No step flow exists to design.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 40rem;">
+        <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">{{ empty.eyebrow }}</x-import>
+          <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.8rem,4.2vw,2.6rem); line-height: 1.08; letter-spacing: -.024em; margin: .7rem 0 0;">{{ empty.title }}</h1>
+          <p style="font-size: 1.05rem; line-height: 1.66; color: var(--text-body); margin: 1.1rem 0 0; max-width: 54ch;">{{ empty.body }}</p>
+        </section>
+        <sc-if value="{{ empty.hasLinks }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem;">
+            <sc-for list="{{ empty.links }}" as="l" hint-placeholder-count="2">
+              <a href="{{ l.href }}" style="{{ l.style }}">{{ l.label }}</a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <nav aria-label="Page help" style="margin-top: 4rem; display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; border-top: 1px solid var(--border); padding-top: 2rem; font-size: .95rem; color: var(--text-body);">
+      <a class="mvm-nav" href="Movemental Home v4.dc.html" style="color: inherit;">Back to the agent room</a>
+      <span aria-hidden="true" style="color: var(--text-subtle);">·</span>
+      <a class="mvm-nav" href="Movemental Field Guide.dc.html" style="color: inherit;">Field guide</a>
+      <span aria-hidden="true" style="color: var(--text-subtle);">·</span>
+      <a class="mvm-nav" href="mailto:josh@movemental.ai" style="color: inherit;">Questions?</a>
+    </nav>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;overview&quot;,&quot;charter&quot;,&quot;document&quot;,&quot;publish&quot;,&quot;onboarding&quot;,&quot;onboarding-leader&quot;,&quot;reality-empty&quot;,&quot;not-configured&quot;,&quot;load-failed&quot;],&quot;default&quot;:&quot;overview&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Screen&quot;},&quot;progressState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;fresh&quot;,&quot;partway&quot;,&quot;stale&quot;,&quot;published&quot;],&quot;default&quot;:&quot;partway&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Charter state&quot;}}">
+/**
+ * The Movemental dashboard — D1 through D5 in one file.
+ *
+ * Built against the real code, and it corrected the prompt set twice:
+ *
+ * 1. PUBLISHING IS NOT RATIFICATION. `publishArtifact()` inserts into
+ *    `safety_artifact_publications` (artifact_id, version_id, public_slug,
+ *    is_active, published_by_user_id) and sets the artifact to `published`. It
+ *    never touches `safety_guidebook_ratifications` or
+ *    `safety_guidebook_signatures`. Those two tables exist and are unused by
+ *    this flow. So D4's "signatures vs ratifications" question does not block
+ *    this screen — the shipped act is *publish a version*, and that is what is
+ *    designed. Board signing is named as undesigned rather than invented.
+ *
+ * 2. ONBOARDING HAS NO STEP FLOW. Both `/dashboard/onboarding/[step]` and
+ *    `/dashboard/onboarding/leader/[step]` are holding pages: "This step is
+ *    coming soon", with the step slug echoed back and three links out. D5
+ *    assumed `onboarding_tasks` drove a question flow; nothing reads it. The
+ *    honest design is the holding page the repo ships, verbatim.
+ *
+ * The state model, exactly as `charter-dashboard.ts` computes it:
+ * - artifact.status is "draft" | "published" — there is no in-review state.
+ * - layersComplete = layers whose latest version has non-empty body_md. That
+ *   means WRITTEN, not approved, and it is 5 of 5 on day one because
+ *   `provision-safety-org.ts` inserts version 1 for every layer at signup.
+ * - overallStatus = "published" only when every artifact is published.
+ * - layerCount = Math.max(5, artifacts.length).
+ * - Saving inserts version_number = latest + 1 and sets status back to "draft".
+ *
+ * So this design shows three separate figures where the current shell shows one:
+ * written, revised by a human, and published. Collapsing them would overstate
+ * day-one progress, which is the single most misleading thing this screen could
+ * do.
+ *
+ * Layer copy (title, sub, threat, affTitle, aff, body paragraphs) is verbatim
+ * from `src/lib/agent-room/data/safety-charter.ts`, so the product and the
+ * public Safety page say the same words.
+ *
+ * No backend. Editing is local state; nothing saves or publishes.
+ */
+const ORG = "Example Ministry Network";
+
+const LAYERS = [
+  {
+    slug: "statement", n: "01", title: "Statement", sub: "AI Use Statement",
+    threat: "No agreed position. Every hard call becomes an argument with nothing to settle it.",
+    affTitle: "What we affirm",
+    aff: [
+      "Human authorship and review for all donor-facing and public communications.",
+      "Transparency when AI materially assisted a published work.",
+      "Protection of sensitive data, donor records, and case notes as non-negotiable.",
+      "Board-level ownership of our AI stance, reviewed annually.",
+    ],
+    body: [
+      "We believe artificial intelligence is a tool that can extend our mission when it is governed by human judgment, integrity, and the trust people place in our organization. AI does not replace care, formation, or the human presence our work requires.",
+      "We adopt AI to steward time for deeper human work, not to make more content for its own sake. Every external-facing use of AI must preserve authenticity. Our voice remains ours, our accountability stays visible, and our people remain able to trust what they receive from us.",
+    ],
+  },
+  {
+    slug: "policy", n: "02", title: "Policy", sub: "Acceptable Use Policy",
+    threat: "No policy, chaos where people improvise, paralysis where teams won't move. Nobody knows what's in bounds.",
+    affTitle: "What it sets",
+    aff: [
+      "An approved-tools list everyone can see.",
+      "A clear owner for AI decisions.",
+      "A simple request path for new tools, so people don't improvise.",
+    ],
+    body: [
+      "This policy names which uses of AI are permitted, which are prohibited, and who decides. It applies to every staff member, volunteer, and contractor acting for the organization.",
+      "Permitted uses assist human work without replacing human judgment: drafting, summarizing, research, and admin support, always reviewed by a person before it leaves the organization. Prohibited uses put trust or data at risk: entering sensitive records into unapproved tools, publishing AI-generated work without review or disclosure, or letting AI make decisions about people.",
+    ],
+  },
+  {
+    slug: "context", n: "03", title: "Context", sub: "Organizational Context",
+    threat: "You can't name every AI tool your staff already use, or what data each one touches. You're exposed and can't see where.",
+    affTitle: "What it captures",
+    aff: [
+      "An inventory of the AI tools already in use.",
+      "The data each one touches.",
+      "The specific risks our mission and the people we serve create.",
+    ],
+    body: [
+      "This document records what makes our situation specific: the data we hold, the people we serve, the laws and grants we are bound by, and the trust we cannot afford to lose. A generic policy ignores this. Ours cannot.",
+      "We name the sensitive data in our care, the populations we are responsible for, and the obligations our funders and regulators place on us. Then we inventory the AI tools already in use across the organization, and the data each one touches.",
+    ],
+  },
+  {
+    slug: "rules", n: "04", title: "Rules", sub: "Operating Rules",
+    threat: "Staff guess. Donor, pastoral, and member data goes into tools no one vetted.",
+    affTitle: "What it provides",
+    aff: [
+      "A short, memorable do-and-don't list.",
+      "A clear escalation path.",
+      "Examples drawn from our actual work.",
+    ],
+    body: [
+      "These are the concrete, usable rules staff follow day to day. Plain enough to hand a new hire on their first day.",
+      "Never put donor, beneficiary, member, or case data into a tool that is not on the approved list. Disclose AI assistance on published work where it materially shaped the result. Always have a person review AI output before it reaches someone we serve or someone who funds us. When unsure, ask the owner named in the Policy.",
+    ],
+  },
+  {
+    slug: "responsePlans", n: "05", title: "Response Plans", sub: "Incident Response",
+    threat: "Something goes wrong and there's no plan. The scramble is public, and trust pays for it.",
+    affTitle: "What it includes",
+    aff: [
+      "A named responsible person.",
+      "A simple reporting path.",
+      "A communication plan for the people affected.",
+      "A short review after, so it doesn't happen twice.",
+    ],
+    body: [
+      "This is the plan for the day something goes wrong, written before we need it. A small problem caught early stays small. A problem met by improvising becomes a public scramble, and trust pays for it.",
+      "We name how a problem is reported, who is told, how we respond, and how we make it right. We define what counts as an incident, exposed data, a harmful or false AI output, a misused tool, and the first steps for each.",
+    ],
+  },
+];
+
+/**
+ * Three progress states, all real:
+ * - fresh: day one. Everything written by us, nothing revised, nothing published.
+ * - partway: two revised, one of those published.
+ * - published: every layer published against its current version.
+ */
+const PROGRESS = {
+  fresh: LAYERS.map(() => ({ version: 1, revised: false, publishedVersion: null })),
+  partway: [
+    { version: 3, revised: true, publishedVersion: 3 },
+    { version: 2, revised: true, publishedVersion: null },
+    { version: 1, revised: false, publishedVersion: null },
+    { version: 1, revised: false, publishedVersion: null },
+    { version: 1, revised: false, publishedVersion: null },
+  ],
+  published: LAYERS.map(() => ({ version: 2, revised: true, publishedVersion: 2 })),
+  stale: [
+    { version: 4, revised: true, publishedVersion: 3 },
+    { version: 2, revised: true, publishedVersion: 2 },
+    { version: 1, revised: false, publishedVersion: null },
+    { version: 1, revised: false, publishedVersion: null },
+    { version: 1, revised: false, publishedVersion: null },
+  ],
+};
+
+const TABS = [
+  ["overview", "Overview"],
+  ["charter", "Charter"],
+  ["document", "Document"],
+  ["publish", "Publish"],
+  ["onboarding", "Onboarding"],
+  ["onboarding-leader", "Leader onboarding"],
+  ["reality-empty", "No results"],
+  ["not-configured", "Not configured"],
+  ["load-failed", "Load failed"],
+];
+
+class Component extends DCLogic {
+  state = { screen: null, layerIndex: 0, mode: "read", draft: null, progress: null };
+
+  go = (screen) => { this.setState({ screen, mode: "read", draft: null }); window.scrollTo({ top: 0 }); };
+
+  openLayer = (i) => { this.setState({ screen: "document", layerIndex: i, mode: "read", draft: null }); window.scrollTo({ top: 0 }); };
+
+  renderVals() {
+    const screen = this.state.screen || this.props.screen || "overview";
+    const progressKey = this.state.progress || this.props.progressState || "partway";
+    const prog = PROGRESS[progressKey] || PROGRESS.partway;
+
+    const layerCount = Math.max(5, LAYERS.length);
+    const layersComplete = prog.filter((p) => p.version >= 1).length;
+    const revisedCount = prog.filter((p) => p.revised).length;
+    const publishedCount = prog.filter((p) => p.publishedVersion !== null).length;
+    const allPublished = prog.every((p) => p.publishedVersion !== null);
+    const statusLabel = allPublished ? "Published" : "Draft, " + layersComplete + " of " + layerCount + " layers complete";
+
+    const chip = (active) => ({
+      font: "inherit", fontFamily: "var(--font-mono), ui-monospace, monospace", fontSize: ".57rem",
+      letterSpacing: ".11em", textTransform: "uppercase",
+      border: active ? "1px solid var(--ink)" : "1px solid var(--border)",
+      background: active ? "var(--surface-card)" : "transparent",
+      color: active ? "var(--text-strong)" : "var(--text-body)",
+      borderRadius: "999px", padding: ".3rem .62rem", cursor: "pointer",
+    });
+    const linkBtn = (primary) => ({
+      fontSize: ".95rem", fontWeight: 500,
+      color: primary ? "var(--bg)" : "var(--text-strong)",
+      background: primary ? "var(--ink)" : "var(--surface-card)",
+      border: "1px solid " + (primary ? "var(--ink)" : "var(--border)"),
+      borderRadius: "var(--radius-md)", padding: ".68rem 1.05rem",
+    });
+
+    const i = this.state.layerIndex;
+    const layer = LAYERS[i];
+    const lp = prog[i];
+    const stale = lp.publishedVersion !== null && lp.publishedVersion !== lp.version;
+    const draftText = this.state.draft !== null ? this.state.draft : layer.body.join("\n\n");
+    const dirty = this.state.draft !== null && this.state.draft !== layer.body.join("\n\n");
+
+    const versions = [];
+    for (let v = lp.version; v >= 1; v--) {
+      const isPub = lp.publishedVersion === v;
+      versions.push({
+        n: v,
+        note: v === 1 ? "Drafted for your organization at signup." : "Revised by your team.",
+        tag: isPub ? "Published" : v === lp.version ? "Current" : "Superseded",
+        style: {
+          display: "flex", flexWrap: "wrap", gap: ".5rem 1rem", alignItems: "baseline",
+          border: "1px solid " + (isPub ? "var(--ink)" : "var(--border)"),
+          borderRadius: "var(--radius-md)", background: "var(--surface-card)",
+          padding: ".8rem 1rem",
+        },
+        tagStyle: {
+          fontFamily: "var(--font-mono), ui-monospace, monospace", fontSize: ".7rem",
+          letterSpacing: ".12em", textTransform: "uppercase",
+          color: isPub ? "var(--text-strong)" : "var(--text-body)",
+          flex: "0 0 auto",
+        },
+      });
+    }
+
+    const nextAction = allPublished
+      ? "Every layer is published against its current version. The charter is board-ready."
+      : revisedCount === 0
+        ? "Nothing here has been read yet. Start with Layer 01 and read what we drafted for you."
+        : "Keep going: " + (layerCount - revisedCount) + " of " + layerCount + " layers are still exactly as we drafted them.";
+
+    return {
+      orgName: ORG,
+      statusLabel,
+      publishedLine: publishedCount + " of " + layerCount + " published",
+      revisedLine: revisedCount + " of " + layerCount + " revised by you",
+      nextAction,
+      signOutStyle: {
+        font: "inherit", fontFamily: "var(--font-mono), ui-monospace, monospace",
+        fontSize: ".6rem", letterSpacing: ".12em", textTransform: "uppercase",
+        background: "transparent", border: 0, padding: 0, cursor: "pointer", color: "var(--link)",
+      },
+      tabs: TABS.map(([k, label]) => ({ label, style: chip(k === screen), select: () => this.go(k) })),
+
+      isOverview: screen === "overview",
+      isCharter: screen === "charter",
+      isDocument: screen === "document",
+      isPublish: screen === "publish",
+      isOnboarding: screen === "onboarding" || screen === "onboarding-leader",
+      isEmpty: screen === "reality-empty" || screen === "not-configured" || screen === "load-failed",
+
+      destinations: [
+        {
+          eyebrow: "Assessment", title: "AI Reality Dashboard",
+          note: "Where your leadership team says you stand, aggregated across everyone who answered.",
+          select: () => { window.location.href = "Movemental Shared Reality.dc.html"; },
+          style: { font: "inherit", textAlign: "left", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", background: "var(--surface-card)", padding: "1.2rem 1.3rem", cursor: "pointer", color: "var(--text-strong)" },
+        },
+        {
+          eyebrow: "Safety · Stage 01", title: "Your AI Charter",
+          note: statusLabel + ". Five documents, drafted in your context, yours to revise and publish.",
+          select: () => this.go("charter"),
+          style: { font: "inherit", textAlign: "left", border: "1px solid var(--ink)", borderRadius: "var(--radius-lg)", background: "var(--surface-card)", padding: "1.2rem 1.3rem", cursor: "pointer", color: "var(--text-strong)" },
+        },
+      ],
+
+      layers: LAYERS.map((l, idx) => {
+        const p = prog[idx];
+        const published = p.publishedVersion !== null;
+        const isStale = published && p.publishedVersion !== p.version;
+        return {
+          n: l.n, title: l.title, sub: l.sub,
+          open: () => this.openLayer(idx),
+          unrevised: !p.revised,
+          cardStyle: {
+            border: "1px solid " + (published ? "var(--ink)" : "var(--border)"),
+            borderRadius: "var(--radius-lg)",
+            background: "var(--surface-card)",
+            overflow: "hidden",
+          },
+          headStyle: {
+            font: "inherit", width: "100%", display: "flex", flexWrap: "wrap",
+            alignItems: "center", gap: ".85rem", background: "transparent", border: 0,
+            cursor: "pointer", padding: "clamp(1rem,2.4vw,1.25rem) clamp(1rem,2.6vw,1.4rem)",
+            color: "var(--text-strong)", textAlign: "left",
+          },
+          ghostStyle: {
+            flex: "0 0 auto", fontFamily: "var(--font-mono), ui-monospace, monospace",
+            fontWeight: 600, fontSize: "1.75rem", lineHeight: 1, letterSpacing: "-.03em",
+            color: "var(--ink-blue)", opacity: published ? 0.28 : 0.12, userSelect: "none",
+          },
+          stateLabel: isStale ? "Published v" + p.publishedVersion + " · edited since" : published ? "Published" : p.revised ? "Draft · revised" : "Draft · as written",
+          stateStyle: {
+            flex: "0 0 auto", fontFamily: "var(--font-mono), ui-monospace, monospace",
+            fontSize: ".7rem", letterSpacing: ".12em", textTransform: "uppercase",
+            // --margin-red is the notebook rule, never small text. The changed
+            // state is the most important label here, so it gets ink-blue.
+            color: isStale ? "var(--ink-blue)" : published ? "var(--text-strong)" : "var(--text-body)",
+            textAlign: "right",
+          },
+          noteStyle: {
+            margin: 0, padding: "0 clamp(1rem,2.6vw,1.4rem) 1rem",
+            fontFamily: "var(--font-hand), cursive", fontSize: "1.1rem",
+            color: "var(--ink-blue)", lineHeight: 1.4,
+          },
+        };
+      }),
+
+      doc: {
+        eyebrow: "Layer " + layer.n + " · " + layer.title,
+        sub: layer.sub,
+        threat: layer.threat,
+        affTitle: layer.affTitle,
+        aff: layer.aff,
+        paragraphs: layer.body,
+        currentVersion: lp.version,
+        nextVersion: lp.version + 1,
+        stateLabel: lp.publishedVersion !== null ? "Published" : "Draft",
+        publishedVersionLine: lp.publishedVersion !== null ? "Published: version " + lp.publishedVersion : "Never published",
+        stale,
+        staleLine: "Your board published version " + lp.publishedVersion + ". The current text is version " + lp.version + ", which nobody has published. What is public and what is here are not the same document.",
+        versions,
+      },
+      backToCharter: () => this.go("charter"),
+      backStyle: {
+        font: "inherit", fontFamily: "var(--font-mono), ui-monospace, monospace",
+        fontSize: ".62rem", letterSpacing: ".13em", textTransform: "uppercase",
+        background: "transparent", border: 0, padding: 0, cursor: "pointer", color: "var(--link)",
+      },
+      modeTabs: [
+        { id: "read", label: "Read" },
+        { id: "edit", label: "Edit" },
+      ].map((m) => ({
+        label: m.label,
+        style: chip(m.id === this.state.mode),
+        select: () => this.setState({ mode: m.id }),
+      })),
+      isReading: this.state.mode === "read",
+      isEditing: this.state.mode === "edit",
+      draftText,
+      dirty,
+      setDraft: (e) => this.setState({ draft: e.target.value }),
+      saveDraft: () => this.setState({ mode: "read", draft: null }),
+      cancelEdit: () => this.setState({ mode: "read", draft: null }),
+      saveConsequence:
+        lp.publishedVersion !== null
+          ? "Saving creates version " + (lp.version + 1) + " and returns this layer to draft. Version " + lp.publishedVersion + " stays published until someone publishes the new text, so the public document and this one will differ."
+          : "Saving creates version " + (lp.version + 1) + ". Version " + lp.version + " is kept, not overwritten.",
+      ghostBtnStyle: {
+        font: "inherit", fontSize: ".95rem", background: "transparent",
+        border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
+        padding: ".68rem 1.05rem", cursor: "pointer", color: "var(--text-body)",
+      },
+
+      publishRows: LAYERS.map((l, idx) => {
+        const p = prog[idx];
+        const published = p.publishedVersion !== null;
+        const isStale = published && p.publishedVersion !== p.version;
+        return {
+          n: l.n,
+          title: l.sub,
+          versionLine: published
+            ? (isStale ? "Would publish version " + p.version + ", replacing version " + p.publishedVersion : "Version " + p.version + " already published")
+            : "Would publish version " + p.version,
+          tag: isStale ? "Changed" : published ? "Published" : "Not published",
+          rowStyle: {
+            display: "flex", flexWrap: "wrap", gap: ".6rem 1rem", alignItems: "center",
+            border: "1px solid " + (published && !isStale ? "var(--ink)" : "var(--border)"),
+            borderRadius: "var(--radius-md)", background: "var(--surface-card)",
+            padding: ".9rem 1.1rem",
+          },
+          tagStyle: {
+            flex: "0 0 auto", fontFamily: "var(--font-mono), ui-monospace, monospace",
+            fontSize: ".7rem", letterSpacing: ".12em", textTransform: "uppercase",
+            color: isStale ? "var(--ink-blue)" : published ? "var(--text-strong)" : "var(--text-body)",
+          },
+        };
+      }),
+      publishSummary: allPublished
+        ? "Every layer is published against its current version. Nothing is outstanding."
+        : "Publishing records the exact version shown above for each layer, and marks it published. Layers you have not revised will be published as we drafted them.",
+      publishCta: allPublished ? "Nothing to publish" : "Publish " + (layerCount - publishedCount) + " layers",
+
+      onboarding: screen === "onboarding-leader"
+        ? {
+            eyebrow: "Leader onboarding · profile",
+            body: "Leader onboarding for profile will return on a future release. Continue from your welcome checklist or the agent room.",
+            links: [
+              { label: "Welcome checklist", href: "Movemental Utility Shell.dc.html#welcome", style: linkBtn(true) },
+              { label: "Talk to Movemental", href: "Movemental Home v4.dc.html", style: linkBtn(false) },
+            ],
+          }
+        : {
+            eyebrow: "Onboarding · payment",
+            body: "The full onboarding checklist for payment is not on this surface yet. Your account is active, use the links below to keep moving.",
+            links: [
+              { label: "Back to welcome checklist", href: "Movemental Utility Shell.dc.html#welcome", style: linkBtn(true) },
+              { label: "Safety enrollment", href: "Movemental Enroll.dc.html", style: linkBtn(false) },
+              { label: "Talk to Movemental", href: "Movemental Home v4.dc.html", style: linkBtn(false) },
+            ],
+          },
+
+      empty:
+        screen === "not-configured"
+          ? {
+              eyebrow: "Operator", title: "Dashboard not configured",
+              body: "Set TENANT_ORG_ID to enable the AI Reality Dashboard.",
+              hasLinks: false, links: [],
+            }
+          : screen === "load-failed"
+            ? {
+                eyebrow: "Safety · Charter", title: "Could not load charter data.",
+                body: "Try again or contact support.",
+                hasLinks: true,
+                links: [{ label: "Questions?", href: "mailto:josh@movemental.ai", style: linkBtn(false) }],
+              }
+            : {
+                eyebrow: "AI Reality Dashboard", title: "No results yet.",
+                body: "Take the assessment, then invite your team, your dashboard builds itself as responses arrive.",
+                hasLinks: true,
+                links: [
+                  { label: "Take the assessment", href: "Movemental Reality Map.dc.html", style: linkBtn(true) },
+                  { label: "Invite your team", href: "Movemental Utility Shell.dc.html#agent-invite", style: linkBtn(false) },
+                ],
+              },
+    };
+  }
+}
+</script>
+</body>
+</html>

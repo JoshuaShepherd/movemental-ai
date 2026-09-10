@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    @keyframes mvmDraw { from { stroke-dashoffset: 340; } to { stroke-dashoffset: 0; } }
+    .mvm-reveal { animation: mvmRise .6s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 4% entry 34%; }
+    .mvm-lift:hover { border-color: var(--ink) !important; transform: translateY(-1px); box-shadow: var(--shadow-lift); }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; } }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg);">
+
+  <header style="position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; box-sizing: border-box; height: 3.6rem; padding: .15rem clamp(1rem,4vw,2.5rem) .25rem; border-bottom: var(--border-hairline); background: rgba(251,250,246,0.94); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="flex: 0 0 auto; display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: clamp(2.6rem,6vw,3.6rem); margin-top: -.2rem; margin-bottom: -.7rem;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" dc-props="{{ crumbProps }}" hint-size="6rem,1.2rem">&#8593; Home</x-import>
+  </header>
+
+  <section style="border-bottom: var(--border-hairline); background: radial-gradient(120% 70% at 50% 0%, var(--paper-sheet) 0%, var(--paper-bg) 70%);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem) clamp(2rem,5vw,3.5rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: clamp(1.5rem,4vw,3rem); align-items: start;">
+      <div style="position: relative; padding-left: var(--margin-inset, 1.4rem);">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">Stage 01 &middot; Safety</x-import>
+
+        <h1 style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: clamp(2.1rem,5.4vw,3.9rem); line-height: var(--leading-tight); letter-spacing: var(--tracking-display); margin: 1rem 0 0; max-width: 22ch; text-wrap: pretty;">AI Safety is about <span style="position: relative; white-space: nowrap;">human trust<svg viewBox="0 0 240 12" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: -.1rem; width: 100%; height: 10px; overflow: visible;"><path d="M2 7 C 48 2, 96 10, 144 5 S 216 3, 238 7" fill="none" stroke="var(--ink-blue)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="340" style="animation: mvmDraw .9s .7s cubic-bezier(.4,.05,.25,1) both;"></path></svg></span>.</h1>
+
+        <p style="font-size: var(--body-lg); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1.3rem 0 0; max-width: 58ch;">The threats to organizational credibility exist whether you adopt AI or not. They grow if you do nothing. The first move is to name reality and write a grounded response.</p>
+
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 58ch;">AI is already inside most organizations. The only choice left is to respond wisely and clearly. The free handbook covers every layer. Or we can sprint together with you.</p>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1.75rem;">
+          <span style="position: relative; isolation: isolate; z-index: 0; display: inline-flex;">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SuggestionChip" label="See both ways to do it" lead="{{ true }}" onClick="{{ goHandbook }}" hint-size="12rem,2.2rem"></x-import>
+          </span>
+          <a href="Movemental Field Guide.dc.html" style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase;">Get the free Handbook</a>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ voiceWrapProps }}" hint-size="100%,2rem">It starts with Safety. The rest comes after.</x-import>
+        </div>
+      </div>
+
+      <div style="border: var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card); padding: 1.25rem 1.35rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="100%,1rem">The path</x-import>
+        <div style="display: flex; flex-direction: column; gap: .8rem; margin-top: .9rem;">
+          <sc-for list="{{ pathStages }}" as="stage" hint-placeholder-count="4">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.PathLayer" n="{{ stage.n }}" term="{{ stage.title }}" gloss="{{ stage.gloss }}" here="{{ stage.here }}" dim="{{ stage.dim }}" hint-size="100%,1.6rem"></x-import>
+          </sc-for>
+        </div>
+        <p style="font-size: var(--body-xs); line-height: var(--leading-normal); color: var(--text-body); margin: 1rem 0 0; padding-top: .9rem; border-top: var(--border-hairline);">Each step earns the next. Skip one and the ones after it have nothing to stand on.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="charter" style="border-bottom: var(--border-hairline);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="max-width: 46rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">Your next step &middot; Safety</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.7rem,3.6vw,2.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">Write and ratify your AI Safety Charter.</h2>
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">Five plain documents that decide what your organization will and won&rsquo;t do with AI. Here they are, and here is what&rsquo;s missing until you write them.</p>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .75rem; margin-top: clamp(1.5rem,3.5vw,2.25rem);">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="16rem,1rem">Your AI Charter, five layers</x-import>
+        <p style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-subtle); margin: 0;">{{ ratifiedLine }}</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: clamp(.8rem,2vw,1.15rem); margin-top: 1rem;">
+        <sc-for list="{{ documents }}" as="doc" hint-placeholder-count="5">
+          <div class="mvm-reveal" style="display: flex; flex-direction: column; gap: .6rem; border: 1px solid var(--border); border-color: {{ doc.border }}; border-radius: var(--radius-lg); background: var(--surface-card); padding: 1.15rem 1.25rem 1.1rem;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: .75rem;">
+              <span style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); color: var(--text-body);">Layer {{ doc.layer }}</span>
+              <span style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: {{ doc.stateColor }};">{{ doc.state }}</span>
+            </div>
+
+            <p style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: var(--display-md); line-height: 1.2; letter-spacing: var(--tracking-tight); margin: 0;">{{ doc.title }}</p>
+            <p style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body); margin: -.3rem 0 0;">{{ doc.sub }}</p>
+
+            <p style="font-size: var(--body-xs); line-height: var(--leading-normal); color: var(--text-body); margin: .2rem 0 0;">{{ doc.lead }}</p>
+
+            <sc-if value="{{ doc.showThreat }}">
+              <p style="font-family: var(--font-hand); font-size: 1.25rem; line-height: 1.2; color: var(--ink-blue); background: var(--marker); mix-blend-mode: multiply; align-self: flex-start; margin: .3rem 0 0; padding: .35rem .6rem; transform: rotate({{ doc.rot }}); border-radius: 3px 6px 4px 5px / 6px 3px 5px 4px;">{{ doc.threat }}</p>
+            </sc-if>
+
+            <div style="margin-top: auto; padding-top: .5rem;">
+              <x-import component-from-global-scope="MovementalDesignSystem_07416b.FaqItem" q="{{ doc.affTitle }}" hint-size="100%,3rem">
+                <sc-for list="{{ doc.body }}" as="para" hint-placeholder-count="2">
+                  <span style="display: block; margin-bottom: .5rem;">{{ para.text }}</span>
+                </sc-for>
+                <sc-for list="{{ doc.aff }}" as="item" hint-placeholder-count="4">
+                  <span style="display: flex; gap: .5rem; margin-top: .3rem;"><span aria-hidden="true" style="color: var(--text-subtle);">&middot;</span><span>{{ item.text }}</span></span>
+                </sc-for>
+              </x-import>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <p class="mvm-reveal" style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-body); margin: 1.25rem 0 0; max-width: 62ch;">The sticky notes name what&rsquo;s missing today. Open any layer to read what the document affirms.</p>
+    </div>
+  </section>
+
+  <section style="border-bottom: var(--border-hairline); background: var(--surface);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="position: relative; padding-left: var(--margin-inset, 1.4rem); max-width: 46rem;">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">Where you stand</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.7rem,3.6vw,2.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">Safety isn&rsquo;t done until it&rsquo;s ratified.</h2>
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">A draft in a folder doesn&rsquo;t protect anyone. A signed charter does. If you have a draft your board hasn&rsquo;t ratified, you&rsquo;re still on Safety &mdash; you&rsquo;re just close, and the last stretch is exactly what we can help you finish.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="two-ways" style="border-bottom: var(--border-hairline);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="max-width: 46rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">Two ways to do it</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.7rem,3.6vw,2.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">Do it yourself, or build your dashboard.</h2>
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">Both get you to a ratified charter. The honest question is which one you&rsquo;ll actually finish.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: clamp(.8rem,2vw,1.15rem); margin-top: clamp(1.5rem,3.5vw,2.25rem);">
+        <sc-for list="{{ doors }}" as="door" hint-placeholder-count="2">
+          <div class="mvm-reveal mvm-lift" style="display: flex; flex-direction: column; gap: .55rem; border: 1px solid var(--border); border-color: {{ door.border }}; border-radius: var(--radius-lg); background: var(--surface-card); padding: 1.35rem 1.45rem; transition: border-color var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast);">
+            <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem;">
+              <span style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">{{ door.tag }}</span>
+              <sc-if value="{{ door.recommended }}">
+                <span style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--ink-blue);">Recommended</span>
+              </sc-if>
+            </div>
+            <p style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: clamp(1.3rem,2.4vw,1.6rem); letter-spacing: var(--tracking-tight); margin: 0;">{{ door.title }}</p>
+            <p style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body); margin: 0;">{{ door.price }}</p>
+            <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-body); margin: .35rem 0 0;">{{ door.body }}</p>
+            <p style="font-size: var(--body-xs); line-height: var(--leading-normal); color: var(--text-strong); margin: .35rem 0 0;"><span style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-subtle);">Best when </span>{{ door.bestWhen }}</p>
+            <div style="margin-top: auto; padding-top: 1rem;">
+              <a href="{{ door.href }}" style="font-family: var(--font-body); font-weight: var(--weight-medium); font-size: var(--body-md); background: {{ door.ctaBg }}; color: {{ door.ctaColor }}; border: 1px solid var(--ink); border-color: {{ door.ctaBorder }}; border-radius: var(--radius-md); padding: .68rem 1.1rem; display: inline-block;">{{ door.cta }}</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <p class="mvm-reveal" style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-strong); margin: clamp(1.5rem,3.5vw,2.25rem) 0 0; max-width: 56ch; border-left: 2px solid var(--ink-blue); padding-left: 1.1rem;">The hard part was never knowing what to do. It&rsquo;s finishing on a Tuesday, when a parent calls and the deadline hits and the blank page wins. The dashboard exists so the page is never blank.</p>
+    </div>
+  </section>
+
+  <section style="border-bottom: var(--border-hairline); background: var(--surface);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="max-width: 46rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">If you&rsquo;d rather we did it with you</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.6rem,3.2vw,2.2rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">The price is flat, and it&rsquo;s public.</h2>
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">The same for a 500-person church and a 50,000-member denomination. We don&rsquo;t negotiate the price, and we don&rsquo;t use urgency to move you.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: clamp(.8rem,2vw,1.15rem); margin-top: clamp(1.5rem,3.5vw,2rem); max-width: 48rem;">
+        <div class="mvm-reveal">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.WayCard" title="Free, and we guide you." price="Free &middot; about 1 to 2 months, self-paced" hint-size="100%,10rem">The handbook, It Starts With Safety. Your team drafts all five layers, and we guide you when you need it.</x-import>
+        </div>
+        <div class="mvm-reveal">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.WayCard" title="We do it with you." price="$1,000 &middot; two weeks, start to finish" paid="{{ true }}" hint-size="100%,10rem">We draft all five layers customized to your organization. Your team reviews and ratifies in the dashboard. The full step takes two weeks from kickoff to board-ready charter.</x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="start">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem) clamp(3rem,7vw,5rem);">
+      <div class="mvm-reveal" style="max-width: 44rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">Start</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: clamp(1.9rem,4vw,2.8rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">Not sure this is your first step?</h2>
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">Six honest questions, and we&rsquo;ll mirror your organization back to itself across all four stages. It almost always concludes here &mdash; but you should see why for yourself.</p>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1.6rem;">
+          <a href="Movemental Reality Map.dc.html" style="font-family: var(--font-body); font-weight: var(--weight-medium); font-size: var(--body-md); background: var(--ink); color: var(--bg); border: 1px solid var(--ink); border-radius: var(--radius-md); padding: .72rem 1.15rem;">Map where we stand</a>
+          <a class="mvm-lift" href="mailto:hello@movemental.ai?subject=Safety%20%E2%80%94%20first%20conversation" style="font-family: var(--font-body); font-weight: var(--weight-medium); font-size: var(--body-md); background: var(--surface-card); color: var(--text-strong); border: var(--border-hairline); border-radius: var(--radius-md); padding: .72rem 1.15rem; transition: border-color var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast);">Talk to us</a>
+        </div>
+        <div style="margin-top: 1.3rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ voiceWrapProps }}" hint-size="100%,2rem">No form. Just Josh.</x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: var(--border-hairline); background: var(--bg);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 1.5rem clamp(1.25rem,5vw,3rem) 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">
+      <span>Movemental &copy; 2026</span>
+      <span>No urgency. No scarcity. No spots filling fast.</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ratifiedLayers&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Charter state&quot;},&quot;recommendDashboard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Charter state&quot;}}">
+/**
+ * Stage 01 · Safety — the page every CTA on the home, editions, and read-back
+ * screens points at (`/agent/path/safety`, which does not yet exist in the repo).
+ *
+ * Copy verbatim from:
+ *   data/safety-charter.ts   — hero, the five charter layers, threats, affirmations
+ *   data/safety-flow.ts      — "two ways to do it", the fork cards, the Tuesday line,
+ *                              and "Safety isn't done until it's ratified"
+ *   data/pricing.ts          — PRICING_SAFETY_FREE / PRICING_SAFETY_PAID
+ *   naming.ts                — stage labels, Charter/Handbook naming
+ *
+ * Note: the repo's Safety fork is the free Handbook vs. the Safety Dashboard
+ * (free to start, no call, no checkout). The $1,000 · two weeks figure is the
+ * separate "we do it with you" pricing tier, shown further down as its own row.
+ */
+const PATH_STAGES = [
+  { n: "01", title: "Safety", gloss: "decide in writing what you will and won't do with AI." },
+  { n: "02", title: "Sandbox", gloss: "test it against real work, inside your charter." },
+  { n: "03", title: "Training", gloss: "form the people who will steward it." },
+  { n: "04", title: "Tech", gloss: "build the tools, last, on what you ratified." },
+];
+
+const DOCUMENTS = [
+  {
+    layer: "01",
+    title: "Statement",
+    sub: "AI Use Statement",
+    rot: "-5deg",
+    threat: "No agreed position. Every hard call becomes an argument with nothing to settle it.",
+    lead: "What you believe about AI in the life of your organization, written down so it can be agreed on, not assumed.",
+    body: [
+      "We believe artificial intelligence is a tool that can extend our mission when it is governed by human judgment, integrity, and the trust people place in our organization. AI does not replace care, formation, or the human presence our work requires.",
+      "We adopt AI to steward time for deeper human work, not to make more content for its own sake. Every external-facing use of AI must preserve authenticity. Our voice remains ours, our accountability stays visible, and our people remain able to trust what they receive from us.",
+    ],
+    affTitle: "What we affirm",
+    aff: [
+      "Human authorship and review for all donor-facing and public communications.",
+      "Transparency when AI materially assisted a published work.",
+      "Protection of sensitive data, donor records, and case notes as non-negotiable.",
+      "Board-level ownership of our AI stance, reviewed annually.",
+    ],
+  },
+  {
+    layer: "02",
+    title: "Policy",
+    sub: "Acceptable Use Policy",
+    rot: "-2deg",
+    threat: "No policy, chaos where people improvise, paralysis where teams won't move. Nobody knows what's in bounds.",
+    lead: "Which uses of AI are permitted, which are prohibited, and who decides.",
+    body: [
+      "This policy names which uses of AI are permitted, which are prohibited, and who decides. It applies to every staff member, volunteer, and contractor acting for the organization.",
+      "Permitted uses assist human work without replacing human judgment: drafting, summarizing, research, and admin support, always reviewed by a person before it leaves the organization. Prohibited uses put trust or data at risk: entering sensitive records into unapproved tools, publishing AI-generated work without review or disclosure, or letting AI make decisions about people.",
+    ],
+    affTitle: "What it sets",
+    aff: [
+      "An approved-tools list everyone can see.",
+      "A clear owner for AI decisions.",
+      "A simple request path for new tools, so people don't improvise.",
+    ],
+  },
+  {
+    layer: "03",
+    title: "Context",
+    sub: "Organizational Context",
+    rot: "1deg",
+    threat: "You can't name every AI tool your staff already use, or what data each one touches. You're exposed and can't see where.",
+    lead: "What makes your situation specific: the data you hold, the people you serve, the obligations you carry.",
+    body: [
+      "This document records what makes our situation specific: the data we hold, the people we serve, the laws and grants we are bound by, and the trust we cannot afford to lose. A generic policy ignores this. Ours cannot.",
+      "We name the sensitive data in our care, the populations we are responsible for, and the obligations our funders and regulators place on us. Then we inventory the AI tools already in use across the organization, and the data each one touches.",
+    ],
+    affTitle: "What it captures",
+    aff: [
+      "An inventory of the AI tools already in use.",
+      "The data each one touches.",
+      "The specific risks our mission and the people we serve create.",
+    ],
+  },
+  {
+    layer: "04",
+    title: "Rules",
+    sub: "Operating Rules",
+    rot: "4deg",
+    threat: "Staff guess. Donor, pastoral, and member data goes into tools no one vetted.",
+    lead: "The concrete rules staff follow day to day — plain enough to hand a new hire on their first day.",
+    body: [
+      "These are the concrete, usable rules staff follow day to day. Plain enough to hand a new hire on their first day.",
+      "Never put donor, beneficiary, member, or case data into a tool that is not on the approved list. Disclose AI assistance on published work where it materially shaped the result. Always have a person review AI output before it reaches someone we serve or someone who funds us. When unsure, ask the owner named in the Policy.",
+    ],
+    affTitle: "What it provides",
+    aff: [
+      "A short, memorable do-and-don't list.",
+      "A clear escalation path.",
+      "Examples drawn from our actual work.",
+    ],
+  },
+  {
+    layer: "05",
+    title: "Response Plans",
+    sub: "Incident Response",
+    rot: "7deg",
+    threat: "Something goes wrong and there's no plan. The scramble is public, and trust pays for it.",
+    lead: "The plan for the day something goes wrong, written before you need it.",
+    body: [
+      "This is the plan for the day something goes wrong, written before we need it. A small problem caught early stays small. A problem met by improvising becomes a public scramble, and trust pays for it.",
+      "We name how a problem is reported, who is told, how we respond, and how we make it right. We define what counts as an incident, exposed data, a harmful or false AI output, a misused tool, and the first steps for each.",
+    ],
+    affTitle: "What it includes",
+    aff: [
+      "A named responsible person.",
+      "A simple reporting path.",
+      "A communication plan for the people affected.",
+      "A short review after, so it doesn't happen twice.",
+    ],
+  },
+];
+
+const DOORS = [
+  {
+    id: "diy",
+    tag: "Do it yourself",
+    title: "The free Handbook",
+    price: "Free. A guide and five templates.",
+    body: "The complete guide, yours to keep. You start from a blank page and write all five documents at your own pace. The knowledge was never the expensive part, so we don't charge for it.",
+    bestWhen: "your team has the time and the will to finish, and to get it ratified.",
+    cta: "Get the free Handbook",
+    href: "Movemental Field Guide.dc.html",
+  },
+  {
+    id: "dashboard",
+    tag: "Build your dashboard",
+    title: "The Safety Dashboard",
+    price: "Free to start. No call, no checkout.",
+    body: "Sign up and we draft all five documents to your organization before you read a word. You edit instead of authoring, track every layer, and ratify them in your own dashboard. Help is one click away if you want it.",
+    bestWhen: "your team is stretched, or you serve vulnerable people and can't leave this open.",
+    cta: "Build your dashboard →",
+    href: "/enroll",
+  },
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const ratified = Math.max(0, Math.min(5, this.props.ratifiedLayers ?? 0));
+    const recommend = this.props.recommendDashboard ?? true;
+
+    return {
+      crumbProps: { style: { marginBottom: 0 } },
+      voiceWrapProps: { style: { whiteSpace: "normal", maxWidth: "34rem", lineHeight: 1.2 } },
+      goHome: () => { window.location.href = "Movemental Home v4.dc.html"; },
+      goHandbook: () => {
+        const el = document.getElementById("two-ways");
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 60, behavior: "smooth" });
+      },
+
+      pathStages: PATH_STAGES.map((s, i) => ({
+        n: s.n,
+        title: s.title,
+        gloss: s.gloss,
+        here: i === 0,
+        dim: i > 0,
+      })),
+
+      ratifiedLine: ratified === 0
+        ? "None ratified yet"
+        : ratified === 5
+          ? "All five ratified"
+          : ratified + " of 5 ratified",
+
+      documents: DOCUMENTS.map((d, i) => {
+        const isRatified = i < ratified;
+        return {
+          layer: d.layer,
+          title: d.title,
+          sub: d.sub,
+          lead: d.lead,
+          rot: d.rot,
+          threat: d.threat,
+          showThreat: !isRatified,
+          state: isRatified ? "Ratified" : "Not yet written",
+          stateColor: isRatified ? "var(--ink-blue)" : "var(--text-subtle)",
+          border: isRatified ? "var(--ink)" : "var(--border)",
+          affTitle: d.affTitle,
+          body: d.body.map((text) => ({ text })),
+          aff: d.aff.map((text) => ({ text })),
+        };
+      }),
+
+      doors: DOORS.map((d) => {
+        const isRec = recommend ? d.id === "dashboard" : d.id === "diy";
+        return {
+          tag: d.tag,
+          title: d.title,
+          price: d.price,
+          body: d.body,
+          bestWhen: d.bestWhen,
+          cta: d.cta,
+          href: d.href,
+          recommended: isRec,
+          border: isRec ? "var(--ink)" : "var(--border)",
+          ctaBg: isRec ? "var(--ink)" : "var(--surface-card)",
+          ctaColor: isRec ? "var(--bg)" : "var(--text-strong)",
+          ctaBorder: isRec ? "var(--ink)" : "var(--border)",
+        };
+      }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    .mvm-in { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .68rem .8rem; outline: none; transition: border-color var(--dur-fast); }
+    .mvm-in:focus { border-color: var(--ink); outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+    .mvm-in::placeholder { color: var(--text-subtle); }
+    .mvm-navlink { transition: color var(--dur-fast); }
+    .mvm-navlink:hover { color: var(--ink-blue); text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 5rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Home</x-import>
+  </header>
+
+  <nav style="position: sticky; top: 3.6rem; z-index: 35; border-bottom: 1px solid var(--border); background: var(--surface);">
+    <div style="max-width: 62rem; margin: 0 auto; padding: .5rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; gap: .35rem; align-items: center;">
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-body); margin-right: .35rem;">Screen</span>
+      <sc-for list="{{ screenTabs }}" as="t" hint-placeholder-count="14">
+        <button type="button" onClick="{{ t.select }}" style="{{ t.style }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+  </nav>
+
+  <main style="{{ mainStyle }}">
+
+    <nav aria-label="Breadcrumb" style="margin-bottom: 2rem;">
+      <ol style="display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .5rem; margin: 0; padding: 0; list-style: none; font-family: var(--font-mono), ui-monospace, monospace; font-size: .63rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-body);">
+        <li><a class="mvm-navlink" href="Movemental Home v4.dc.html" style="color: inherit;">← Agent room</a></li>
+        <li aria-hidden="true" style="color: var(--text-subtle);">·</li>
+        <li aria-current="page" style="color: var(--text-strong);">{{ screen.crumb }}</li>
+      </ol>
+    </nav>
+
+    <div style="position: relative; padding-left: 1.5rem;">
+      <span style="{{ spineStyle }}"></span>
+      <sc-if value="{{ screen.hasStep }}" hint-placeholder-val="{{ false }}">
+        <span style="display: block; user-select: none; font-family: var(--font-mono), ui-monospace, monospace; font-weight: 600; line-height: 1; font-size: clamp(2.5rem,8vw,3.5rem); letter-spacing: -.03em; color: var(--ink-blue); opacity: .12;">{{ screen.step }}</span>
+      </sc-if>
+      <p style="margin: .25rem 0 0; font-family: var(--font-mono), ui-monospace, monospace; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-body);">{{ screen.label }}</p>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.9rem,4.4vw,3rem); line-height: 1.08; letter-spacing: -.024em; margin: .55rem 0 0; text-wrap: pretty;">{{ screen.title }}</h1>
+    </div>
+
+    <sc-if value="{{ screen.hasLede }}" hint-placeholder-val="{{ true }}">
+      <p style="font-size: 1.12rem; line-height: 1.66; color: var(--text-strong); margin: 2rem 0 0; max-width: 58ch;">{{ screen.lede }}</p>
+    </sc-if>
+
+    <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 2.5rem 0 0; border-left: 2px solid var(--ink-blue); background: var(--surface-card); padding: 1rem 1.25rem; font-size: 1rem; line-height: 1.62;">{{ successLine }}</p>
+        </sc-if>
+
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="margin-top: 2.5rem; display: grid; gap: 1.25rem;">
+            <sc-for list="{{ fields }}" as="f" hint-placeholder-count="1">
+              <label style="display: block;">
+                <span style="display: block; margin-bottom: .4rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">{{ f.label }}</span>
+                <input class="mvm-in" type="{{ f.type }}" autoComplete="{{ f.autoComplete }}" value="{{ f.value }}" onChange="{{ f.onChange }}">
+              </label>
+            </sc-for>
+
+            <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size: .95rem; color: var(--margin-red); margin: 0;">{{ errorMsg }}</p>
+            </sc-if>
+
+            <div>
+              <x-import component-from-global-scope="MovementalDesignSystem_07416b.Button" type="submit" hint-size="auto,2.6rem">{{ screen.cta }}</x-import>
+            </div>
+            <p style="font-size: .95rem; line-height: 1.62; color: var(--text-body); margin: 0; max-width: 54ch;">{{ screen.fine }}</p>
+          </form>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMessage }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top: 2.25rem;">
+        <sc-if value="{{ screen.hasBody }}" hint-placeholder-val="{{ true }}">
+          <p style="font-size: 1.05rem; line-height: 1.66; color: var(--text-body); margin: 0 0 1.1rem; max-width: 58ch;">{{ screen.body }}</p>
+        </sc-if>
+        <sc-if value="{{ hasStates }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top: 1.75rem; border-top: 1px solid var(--border); padding-top: 1.25rem;">
+            <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-subtle); margin: 0 0 .8rem;">Other states this route renders</p>
+            <div style="display: grid; gap: .55rem;">
+              <sc-for list="{{ screen.states }}" as="st" hint-placeholder-count="3">
+                <div style="border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); padding: .85rem 1rem;">
+                  <p style="font-size: .97rem; font-weight: 500; color: var(--text-strong); margin: 0;">{{ st.title }}</p>
+                  <p style="font-size: .93rem; line-height: 1.55; color: var(--text-body); margin: .35rem 0 0; max-width: 56ch;">{{ st.body }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isLegal }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top: 2.25rem;">
+        <nav style="margin-bottom: 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: .8rem 0;">
+          <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-subtle); margin: 0 0 .6rem;">Contents</p>
+          <div style="display: grid; gap: .3rem;">
+            <sc-for list="{{ screen.sections }}" as="s" hint-placeholder-count="6">
+              <a class="mvm-navlink" href="{{ s.href }}" style="font-size: .92rem; color: var(--text-body);">{{ s.title }}</a>
+            </sc-for>
+          </div>
+        </nav>
+        <div style="position: relative; padding-left: 1.5rem;">
+          <span style="position: absolute; left: .2rem; top: .4rem; bottom: .4rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <sc-for list="{{ screen.sections }}" as="s" hint-placeholder-count="6">
+            <section id="{{ s.id }}" style="margin-bottom: 2rem; scroll-margin-top: 7rem;">
+              <h2 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.25rem,2.6vw,1.6rem); line-height: 1.2; letter-spacing: -.018em; margin: 0 0 .7rem;">{{ s.title }}</h2>
+              <sc-for list="{{ s.paragraphs }}" as="p" hint-placeholder-count="2">
+                <p style="font-size: 1.02rem; line-height: 1.7; color: var(--text-body); margin: 0 0 .9rem; max-width: 66ch;">{{ p }}</p>
+              </sc-for>
+            </section>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+          <sc-for list="{{ screen.footerLinks }}" as="l" hint-placeholder-count="2">
+            <button type="button" onClick="{{ l.select }}" style="{{ legalLinkStyle }}">{{ l.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <nav aria-label="Page help" style="margin-top: 4rem; display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; border-top: 1px solid var(--border); padding-top: 2rem; font-size: .95rem; color: var(--text-body);">
+      <a class="mvm-navlink" href="Movemental Home v4.dc.html" style="color: inherit;">Back to the agent room</a>
+      <span aria-hidden="true" style="color: var(--text-subtle);">·</span>
+      <a class="mvm-navlink" href="Movemental Field Guide.dc.html" style="color: inherit;">Field guide</a>
+      <span aria-hidden="true" style="color: var(--text-subtle);">·</span>
+      <a class="mvm-navlink" href="mailto:josh@movemental.ai" style="color: inherit;">Questions?</a>
+    </nav>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;assess&quot;,&quot;login&quot;,&quot;signup&quot;,&quot;forgot-password&quot;,&quot;update-password&quot;,&quot;welcome&quot;,&quot;team-invite&quot;,&quot;agent-invite&quot;,&quot;newsletter-confirmed&quot;,&quot;newsletter-unsubscribed&quot;,&quot;privacy&quot;,&quot;cookies&quot;,&quot;terms&quot;],&quot;default&quot;:&quot;assess&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Screen&quot;}}">
+/**
+ * The utility shell — one file, every auth / newsletter / legal / entry route.
+ *
+ * Recreates the repo's own abstraction rather than inventing one:
+ * `InkBandUtilityShell` (centred column on the ink-band surface),
+ * `UtilityPageCrumb` (← Agent room · Current), `StepSpine` (ink-blue rule, ghost
+ * numeral, mono label, Playfair title) and `UtilityPageFooter` (agent room ·
+ * field guide · questions?). Those four are identical on every screen here.
+ *
+ * NO BACKEND. The repo's `/assess` calls `supabase.auth.signInWithOtp`; nothing
+ * sends from this prototype. Every form validates for real and then shows the
+ * repo's own success copy as a STATE — no screen claims an email was sent that
+ * was not.
+ *
+ * Copy provenance:
+ * - `/assess` — label, title, lede, button, fine print and the sent-state
+ *   sentence are verbatim from `src/app/assess/page.tsx`.
+ * - `/newsletter/confirmed` and `/newsletter/unsubscribed` — every title and
+ *   body, including the error and "already" branches, is verbatim from those
+ *   two route files' `resolve()` functions. They are listed as the other states
+ *   the route renders rather than hidden behind query params that do not exist
+ *   here.
+ * - `/privacy` and `/cookies` — the eyebrow, title, lede and every section
+ *   paragraph are verbatim from `LegalPageContent` props in the route files.
+ *   Nothing is paraphrased, shortened or "clarified".
+ * - `/terms` — NOT included. Its content was not read, and inventing terms of
+ *   service would be the single worst thing on this page. It is listed as a gap.
+ * - Auth screens (`/login`, `/signup`, `/forgot-password`,
+ *   `/auth/update-password`, `/welcome`, `/team-invite/[token]`,
+ *   `/agent/invite`) — those route files were not read. Rather than invent
+ *   Movemental's auth copy, each renders the shell with a labelled note saying
+ *   the copy has not been lifted yet. The shell is the deliverable; the copy is
+ *   a fill-in.
+ */
+const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+const PRIVACY_SECTIONS = [
+  { id: "collect", title: "Data we collect", paragraphs: [
+    "When you submit a form (contact, field guide download, agent-room capture, newsletter signup, or enrollment inquiry), we collect the fields you provide: typically name, email, organization, and message content.",
+    "We use analytics tools to understand how visitors use the site (page views, referrers, device type). We do not sell personal data.",
+  ] },
+  { id: "use", title: "How we use data", paragraphs: [
+    "We use submissions to respond to you, deliver requested resources, notify our team of high-intent inquiries, and improve the product. Newsletter subscribers receive occasional updates; you may unsubscribe at any time.",
+    "Assessment and agent-room session data may be stored to personalize your experience and to improve our methodology. Tenant-scoped data is isolated by organization.",
+  ] },
+  { id: "cookies", title: "Cookies and similar technologies", paragraphs: [
+    "We use essential cookies for authentication and session management. Analytics cookies help us understand usage patterns. See the Cookie notice for details.",
+  ] },
+  { id: "retention", title: "Retention and security", paragraphs: [
+    "We retain form submissions and account data as long as needed to serve you and meet legal obligations. Data is stored in encrypted Postgres (Supabase) with row-level security where applicable.",
+  ] },
+  { id: "rights", title: "Your choices", paragraphs: [
+    "You may request access, correction, or deletion of your data by emailing josh@movemental.ai. We will respond within a reasonable timeframe.",
+  ] },
+  { id: "contact", title: "Contact", paragraphs: [
+    "Questions about this policy: josh@movemental.ai.",
+  ] },
+];
+
+const COOKIE_SECTIONS = [
+  { id: "essential", title: "Essential cookies", paragraphs: [
+    "Authentication and session cookies keep you signed in and maintain agent-room state. These are required for dashboard and assessment flows.",
+  ] },
+  { id: "analytics", title: "Analytics", paragraphs: [
+    "We may use privacy-conscious analytics to measure page views and feature usage. These help us improve the preview without identifying you across unrelated sites.",
+  ] },
+  { id: "choices", title: "Your choices", paragraphs: [
+    "Most browsers let you block or delete cookies. Blocking essential cookies may prevent sign-in or form submissions from working correctly.",
+    "For full detail on data collection, see the Privacy Policy.",
+  ] },
+];
+
+/** Auth routes whose copy has not been lifted from the repo. */
+const AUTH_GAP = "The copy for this route was not read from the repo, so none is shown. The shell, crumb, step spine, field styling and footer are the real pattern; the label, title, lede, button and fine print are for Movemental to supply.";
+
+const SCREENS = {
+  assess: {
+    kind: "form", crumb: "Assess", route: "/assess",
+    label: "Free · Map your AI reality",
+    title: "Find out the truth about AI in your organization.",
+    lede: "A short, honest reality check, no sales pitch. Enter your email and we\u2019ll send a one-tap link into the room where you\u2019ll map where your organization actually stands.",
+    cta: "Email me the link",
+    fine: "No password. The link signs you in and drops you straight into the room.",
+    fields: [{ key: "email", label: "Email", type: "email", autoComplete: "email" }],
+    success: (v) => "Check your inbox, tap the link we just sent to " + v + " to begin.",
+  },
+  login: { kind: "form", crumb: "Log in", route: "/login", label: "Account", title: "Log in.", lede: AUTH_GAP, cta: "Continue", fine: "Copy to be supplied.", fields: [{ key: "email", label: "Email", type: "email", autoComplete: "email" }], gap: true, success: () => "Validated. Nothing is sent \u2014 this prototype has no backend." },
+  signup: { kind: "form", crumb: "Sign up", route: "/signup", label: "Account", title: "Create your account.", lede: AUTH_GAP, cta: "Continue", fine: "Copy to be supplied.", fields: [{ key: "email", label: "Email", type: "email", autoComplete: "email" }], gap: true, success: () => "Validated. Nothing is sent \u2014 this prototype has no backend." },
+  "forgot-password": { kind: "form", crumb: "Forgot password", route: "/forgot-password", label: "Account", title: "Reset your password.", lede: AUTH_GAP, cta: "Continue", fine: "Copy to be supplied.", fields: [{ key: "email", label: "Email", type: "email", autoComplete: "email" }], gap: true, success: () => "Validated. Nothing is sent \u2014 this prototype has no backend." },
+  "update-password": { kind: "form", crumb: "Update password", route: "/auth/update-password", label: "Account", title: "Set a new password.", lede: AUTH_GAP, cta: "Continue", fine: "Copy to be supplied.", fields: [{ key: "email", label: "Email", type: "email", autoComplete: "email" }], gap: true, success: () => "Validated. Nothing is sent \u2014 this prototype has no backend." },
+  welcome: { kind: "message", crumb: "Welcome", route: "/welcome", label: "Account", title: "Welcome.", body: AUTH_GAP, gap: true },
+  "team-invite": { kind: "message", crumb: "Team invite", route: "/team-invite/[token]", label: "Invitation", title: "You've been invited.", body: AUTH_GAP, gap: true },
+  "agent-invite": { kind: "message", crumb: "Agent invite", route: "/agent/invite", label: "Invitation", title: "Join the room.", body: AUTH_GAP, gap: true },
+  "newsletter-confirmed": {
+    kind: "message", crumb: "Newsletter", route: "/newsletter/confirmed",
+    label: "Newsletter", title: "You\u2019re confirmed.",
+    body: "Thanks for confirming, you\u2019ll hear from us occasionally, never noisily.",
+    states: [
+      { title: "You\u2019re already confirmed.", body: "Your subscription is active, nothing more to do." },
+      { title: "That link didn\u2019t work.", body: "The confirmation link is missing or has expired. Sign up again and we\u2019ll send a fresh one." },
+      { title: "Something went wrong.", body: "We couldn\u2019t confirm your subscription just now. Please try the link again in a moment." },
+    ],
+  },
+  "newsletter-unsubscribed": {
+    kind: "message", crumb: "Newsletter", route: "/newsletter/unsubscribed",
+    label: "Newsletter", title: "You\u2019re unsubscribed.",
+    body: "Done, you won\u2019t hear from us again. No hard feelings.",
+    states: [
+      { title: "You\u2019re already unsubscribed.", body: "You won\u2019t receive further emails from us." },
+      { title: "One moment.", body: "Too many attempts just now, wait a minute and try the link again." },
+      { title: "That link didn\u2019t work.", body: "The unsubscribe link is missing or invalid. Email josh@movemental.ai and we\u2019ll take you off the list directly." },
+      { title: "Something went wrong.", body: "We couldn\u2019t process that just now. Please try the link again, or email josh@movemental.ai." },
+    ],
+  },
+  privacy: {
+    kind: "legal", crumb: "Privacy", route: "/privacy",
+    label: "Legal", title: "Privacy Policy",
+    lede: "This policy describes what we collect when you use movemental.ai, why we collect it, and how to reach us. Counsel review is pending before public launch.",
+    sections: PRIVACY_SECTIONS,
+    footerLinks: [{ key: "terms", label: "Terms of Service" }, { key: "cookies", label: "Cookie notice" }],
+  },
+  cookies: {
+    kind: "legal", crumb: "Cookies", route: "/cookies",
+    label: "Legal", title: "Cookie Notice",
+    lede: "We use a small set of cookies to keep the site working and to understand usage. You can control non-essential cookies through your browser settings.",
+    sections: COOKIE_SECTIONS,
+    footerLinks: [{ key: "privacy", label: "Privacy Policy" }, { key: "terms", label: "Terms of Service" }],
+  },
+  terms: {
+    kind: "message", crumb: "Terms", route: "/terms",
+    label: "Legal", title: "Terms of Service",
+    body: "The terms text was not read from the repo, so none is shown here. Legal language is never paraphrased or invented \u2014 this section stays empty until the real text is lifted verbatim from src/app/terms/page.tsx.",
+    gap: true,
+  },
+};
+
+const ORDER = [
+  ["assess", "Assess"],
+  ["login", "Log in"],
+  ["signup", "Sign up"],
+  ["forgot-password", "Forgot"],
+  ["update-password", "New password"],
+  ["welcome", "Welcome"],
+  ["team-invite", "Team invite"],
+  ["agent-invite", "Agent invite"],
+  ["newsletter-confirmed", "Confirmed"],
+  ["newsletter-unsubscribed", "Unsubscribed"],
+  ["privacy", "Privacy"],
+  ["cookies", "Cookies"],
+  ["terms", "Terms"],
+];
+
+class Component extends DCLogic {
+  state = { screen: null, values: {}, status: "idle", errorMsg: null, sentValue: "" };
+
+  select = (key) => this.setState({ screen: key, status: "idle", errorMsg: null, values: {} });
+
+  submit = (e) => {
+    e.preventDefault();
+    const s = SCREENS[this.state.screen || this.props.screen || "assess"];
+    const v = (this.state.values.email || "").trim();
+    if (!EMAIL_RE.test(v)) {
+      this.setState({ status: "error", errorMsg: "Enter a valid email address." });
+      return;
+    }
+    this.setState({ status: "sent", errorMsg: null, sentValue: v });
+  };
+
+  renderVals() {
+    const key = this.state.screen || this.props.screen || "assess";
+    const screen = SCREENS[key] || SCREENS.assess;
+    const sent = this.state.status === "sent";
+
+    const chip = (active, gap) => ({
+      font: "inherit", fontFamily: "var(--font-mono), ui-monospace, monospace", fontSize: ".57rem",
+      letterSpacing: ".11em", textTransform: "uppercase",
+      border: active ? "1px solid var(--ink)" : "1px solid var(--border)",
+      background: active ? "var(--surface-card)" : "transparent",
+      color: active ? "var(--text-strong)" : gap ? "var(--text-subtle)" : "var(--text-body)",
+      borderRadius: "999px", padding: ".3rem .62rem", cursor: "pointer",
+    });
+
+    return {
+      goHome: () => { window.location.href = "Movemental Home v4.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      mainStyle: {
+        maxWidth: screen.kind === "legal" ? "48rem" : "36rem",
+        margin: "0 auto",
+        padding: "clamp(3rem,7vw,5rem) clamp(1.25rem,5vw,2rem) 0",
+      },
+      spineStyle: {
+        position: "absolute", left: 0, top: ".25rem", bottom: ".25rem", width: "2px",
+        borderRadius: "999px", background: "var(--ink-blue)",
+      },
+      screenTabs: ORDER.map(([k, label]) => ({
+        label,
+        style: chip(k === key, !!SCREENS[k].gap),
+        select: () => this.select(k),
+      })),
+      screen: {
+        crumb: screen.crumb,
+        label: screen.label + " · " + screen.route,
+        title: screen.title,
+        hasStep: false,
+        step: "",
+        hasLede: !!screen.lede,
+        lede: screen.lede || "",
+        cta: screen.cta || "",
+        fine: screen.fine || "",
+        hasBody: !!screen.body,
+        body: screen.body || "",
+        states: screen.states || [],
+        sections: (screen.sections || []).map((s) => ({ ...s, href: "#" + s.id })),
+        footerLinks: (screen.footerLinks || []).map((l) => ({
+          label: l.label,
+          select: () => this.select(l.key),
+        })),
+      },
+      isForm: screen.kind === "form",
+      isMessage: screen.kind === "message",
+      isLegal: screen.kind === "legal",
+      hasStates: (screen.states || []).length > 0,
+      fields: (screen.fields || []).map((f) => ({
+        label: f.label,
+        type: f.type,
+        autoComplete: f.autoComplete,
+        value: this.state.values[f.key] || "",
+        onChange: (e) => {
+          const val = e.target.value;
+          this.setState((st) => ({
+            values: { ...st.values, [f.key]: val },
+            status: st.status === "error" ? "idle" : st.status,
+          }));
+        },
+      })),
+      sent,
+      notSent: !sent,
+      successLine: sent && screen.success ? screen.success(this.state.sentValue) : "",
+      hasError: this.state.status === "error" && !!this.state.errorMsg,
+      errorMsg: this.state.errorMsg || "",
+      submit: this.submit,
+      legalLinkStyle: {
+        font: "inherit", fontFamily: "var(--font-mono), ui-monospace, monospace",
+        fontSize: ".62rem", letterSpacing: ".12em", textTransform: "uppercase",
+        background: "transparent", border: 0, padding: 0, cursor: "pointer",
+        color: "var(--link)",
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

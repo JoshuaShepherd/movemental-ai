@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ResearchArticle } from "@/components/research/research-article";
+import { ResearchPaperView } from "@/v2/components/research/research-paper-view";
 import { allResearchSlugs, getResearchItem } from "@/lib/research/data";
 import { buildResearchArticleJsonLd } from "@/lib/research/article-schema";
 import { canonicalPageUrl } from "@/lib/site-url";
@@ -17,19 +17,19 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const item = getResearchItem(slug);
   if (!item) return {};
   return {
-    title: item.title,
+    title: `${item.title} | Movemental Research`,
     description: item.subtitle ?? item.abstract.replace(/\{\/?hl\}/g, ""),
     alternates: { canonical: canonicalPageUrl(`/research/${slug}`) },
     openGraph: {
       title: item.title,
       description: item.subtitle ?? item.abstract.replace(/\{\/?hl\}/g, ""),
       type: "article",
-      url: canonicalPageUrl(`/research/${slug}`),
+      url: canonicalPageUrl(`/research/${slug}`) ?? undefined,
     },
   };
 }
 
-export default async function ResearchArticlePage({ params }: Params) {
+export default async function V2ResearchArticlePage({ params }: Params) {
   const { slug } = await params;
   const item = getResearchItem(slug);
   if (!item) notFound();
@@ -40,7 +40,7 @@ export default async function ResearchArticlePage({ params }: Params) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ResearchArticle item={item} />
+      <ResearchPaperView item={item} />
     </>
   );
 }

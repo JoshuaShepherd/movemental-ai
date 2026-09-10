@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { UtilityShellView } from "@/v2/components/utility/utility-shell-view";
 
 type SearchParams = Promise<{ state?: string; error?: string }>;
 
@@ -21,22 +21,9 @@ function resolve(state?: string, error?: string): { title: string; body: string 
   return { title: "You’re confirmed.", body: "Thanks for confirming, you’ll hear from us occasionally, never noisily." };
 }
 
-export default async function NewsletterConfirmedPage({ searchParams }: { searchParams: SearchParams }) {
+export default async function V2NewsletterConfirmedPage({ searchParams }: { searchParams: SearchParams }) {
   const { state, error } = await searchParams;
   const { title, body } = resolve(state, error);
 
-  return (
-    <div className="mx-auto w-full max-w-xl px-4 py-20 md:py-28">
-      <p className="mb-6 font-mono text-[0.75rem] uppercase tracking-[0.14em] text-muted-foreground">
-        Newsletter
-      </p>
-      <h1 className="text-4xl leading-tight md:text-5xl">{title}</h1>
-      <p className="mt-8 text-lg leading-relaxed text-foreground">{body}</p>
-      <p className="mt-10">
-        <Link href="/agent" className="text-[var(--color-ink-band-blue)] underline underline-offset-4">
-          Back to the room →
-        </Link>
-      </p>
-    </div>
-  );
+  return <UtilityShellView title={title} body={body} actionHref="/" actionLabel="Return to home →" />;
 }

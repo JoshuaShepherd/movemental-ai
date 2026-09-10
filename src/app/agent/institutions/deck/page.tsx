@@ -1,21 +1,12 @@
 import type { Metadata } from "next";
-
-import { StandaloneDeck } from "@/components/agent-room/deck/standalone-deck";
 import { institutionDeck } from "@/components/agent-room/deck/institution-deck";
+import { DeckPresentationView } from "@/v2/components/deck/deck-presentation-view";
 
 export const metadata: Metadata = {
-  title: "Movemental, or a website builder? | Movemental",
-  description:
-    "For an institution this isn't a website line-item — it's credibility and governance infrastructure. The category reframe for seminaries, denominations, and universities.",
-  alternates: {
-    canonical: "/agent/institutions/deck",
-  },
+  title: "Why a Platform for Institutions | Movemental",
+  description: "Executive presentation deck for seminary and institutional leaders.",
 };
 
-/**
- * Standalone full-viewport deck — same `institutionDeck` data as the section
- * embedded in /agent/institutions, so the two surfaces never drift.
- */
 export default function InstitutionsDeckPage() {
-  return <StandaloneDeck data={institutionDeck} foot="Movemental · For institutions" />;
+  return <DeckPresentationView deck={institutionDeck} backHref="/agent/institutions" />;
 }

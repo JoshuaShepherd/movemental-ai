@@ -6,38 +6,72 @@ import { Button } from "@/components/ui/button";
 import { getOptionalAuthUser } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
-  title: "Onboarding",
+  title: "Onboarding | Movemental",
   robots: { index: false, follow: false },
 };
 
 type Props = { params: Promise<{ step: string }> };
 
-/**
- * Friendly `/onboarding/:step` rewrite target — keeps email deep links alive until
- * the full checklist ships from archive.
- */
-export default async function OnboardingStepPage({ params }: Props) {
+export default async function V2OnboardingStepPage({ params }: Props) {
   const { step } = await params;
   const { user } = await getOptionalAuthUser();
   if (!user) {
-    redirect(`/login?next=${encodeURIComponent(`/onboarding/${step}`)}`);
+    redirect(`/login?next=${encodeURIComponent(`/dashboard/onboarding/${step}`)}`);
   }
 
   const paymentStep = step === "payment" || step === "agreement";
 
   return (
-    <main className="mx-auto w-full max-w-2xl px-4 py-12 md:py-16">
-      <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-muted-foreground">
+    <main
+      style={{
+        maxWidth: "42rem",
+        margin: "0 auto",
+        padding: "3rem 1.5rem 4rem",
+      }}
+    >
+      <p
+        style={{
+          fontFamily: "monospace",
+          fontSize: "0.75rem",
+          textTransform: "uppercase",
+          letterSpacing: "0.14em",
+          color: "var(--color-ink-band-ink-muted)",
+        }}
+      >
         Onboarding · {step.replace(/-/g, " ")}
       </p>
-      <h1 className="mt-3 text-3xl leading-tight">This step is coming soon</h1>
-      <p className="mt-4 text-base text-muted-foreground">
+      <h1
+        style={{
+          marginTop: "0.75rem",
+          fontSize: "1.875rem",
+          lineHeight: 1.2,
+          fontFamily: "var(--font-display), Georgia, serif",
+          color: "var(--color-ink-band-ink)",
+        }}
+      >
+        This step is coming soon
+      </h1>
+      <p
+        style={{
+          marginTop: "1rem",
+          fontSize: "1rem",
+          lineHeight: 1.6,
+          color: "var(--color-ink-band-ink-muted)",
+        }}
+      >
         The full onboarding checklist for <strong>{step}</strong> is not on this surface yet.
         Your account is active, use the links below to keep moving.
       </p>
-      <div className="mt-10 flex flex-wrap gap-3">
+      <div
+        style={{
+          marginTop: "2.5rem",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "0.75rem",
+        }}
+      >
         <Button asChild>
-          <Link href="/welcome">Back to welcome checklist</Link>
+          <Link href="/dashboard/safety">Open Safety Dashboard</Link>
         </Button>
         {paymentStep ? (
           <Button asChild variant="outline">
@@ -45,7 +79,7 @@ export default async function OnboardingStepPage({ params }: Props) {
           </Button>
         ) : (
           <Button asChild variant="outline">
-            <Link href="/dashboard">Open dashboard</Link>
+            <Link href="/">Back to home</Link>
           </Button>
         )}
         <Button asChild variant="ghost">

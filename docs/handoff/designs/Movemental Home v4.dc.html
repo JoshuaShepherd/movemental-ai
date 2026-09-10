@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: #FBFAF6; color: #1A1A1A; font-family: 'Inter', system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: #22409B; text-decoration: none; }
+    a:hover { color: #1A3079; text-decoration: underline; text-underline-offset: 3px; }
+    .mvm-x { scrollbar-width: none; }
+    .mvm-x::-webkit-scrollbar { display: none; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    @keyframes mvmDraw { from { stroke-dashoffset: 340; } to { stroke-dashoffset: 0; } }
+    @keyframes mvmInk { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+    .mvm-reveal { animation: mvmRise .6s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 4% entry 34%; }
+    .mvm-face { position: relative; }
+    .mvm-face:hover { z-index: 3; }
+    .mvm-face img, .mvm-face [data-photo] { filter: grayscale(1) sepia(.32) brightness(1.03) contrast(1.04); transition: filter .35s; }
+    .mvm-face:hover img, .mvm-face:hover [data-photo] { filter: none; }
+    .mvm-face:hover span[data-ring] { border-color: #1A1A1A; box-shadow: 0 8px 18px -12px rgba(26,26,26,.45); transform: translateY(-2px); }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] summary [data-plus] { transform: rotate(45deg); }
+    details[open] summary { color: #1A1A1A; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: #FBFAF6; padding-bottom: 5rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; column-gap: clamp(0.75rem,2vw,1.5rem); padding: 0.15rem clamp(1rem,4vw,2.5rem) 0.25rem; border-bottom: 1px solid #E5DFD2; min-height: 3.25rem; background: rgba(251,250,246,0.92); backdrop-filter: blur(8px);">
+    <a href="#top" style="justify-self: start; flex: 0 0 auto; display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: clamp(3rem,7.5vw,4.1rem); margin-top: -0.2rem; margin-bottom: -0.75rem;">
+    </a>
+    <nav style="justify-self: center; min-width: 0; max-width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; row-gap: 0.1rem; column-gap: clamp(0.7rem,2vw,1.35rem); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: clamp(0.56rem,1.6vw,0.68rem); letter-spacing: 0.15em; text-transform: uppercase; color: #5C5651;">
+      <span style="display: flex; align-items: center; column-gap: 0.35rem; white-space: nowrap;">
+        <a href="#doors">Non-profits</a>
+        <span style="opacity: .55;">·</span>
+        <a href="#doors">Churches</a>
+        <span style="opacity: .55;">·</span>
+        <a href="#doors">Institutions</a>
+      </span>
+      <span style="display: flex; align-items: center; column-gap: 0.35rem; white-space: nowrap;">
+        <a href="#path">The path</a>
+        <span style="opacity: .55;">·</span>
+        <a href="#pricing">Pricing</a>
+        <span style="opacity: .55;">·</span>
+        <a href="#voices">Voices</a>
+      </span>
+    </nav>
+    <div style="justify-self: end; display: flex; align-items: center; gap: .5rem;">
+      <a href="#map" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; border: 1px solid #E5DFD2; border-radius: 999px; padding: .5rem .85rem; background: #FFFDF7; color: #1A1A1A;" style-hover="border-color: #1A1A1A; text-decoration: none;">Map where we stand</a>
+      <a href="Movemental Utility Shell.dc.html#login" aria-label="Log in" style="display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 999px; color: #5C5651;" style-hover="color: #1A1A1A;">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+          <polyline points="10 17 15 12 10 7"></polyline>
+          <line x1="15" y1="12" x2="3" y2="12"></line>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <section id="top" style="position: relative; background: radial-gradient(120% 80% at 18% 0%, #FFFDF7 0%, #FBFAF6 74%); border-bottom: 1px solid #E5DFD2;">
+    <div style="max-width: 1180px; margin: 0 auto; box-sizing: border-box; padding: clamp(1.75rem,4vw,3.25rem) clamp(1.25rem,5vw,3rem) clamp(1.75rem,3.5vw,2.75rem);">
+      <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: #5C5651; margin: 0 0 .85rem; animation: mvmRise .5s cubic-bezier(.2,.7,.2,1) both;">Non-profit &middot; Church &middot; Institution</p>
+
+      <h1 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: clamp(2.2rem,5.4vw,4rem); line-height: 1.0; letter-spacing: -.028em; margin: 0; max-width: 24ch; color: #1A1A1A; text-wrap: pretty; animation: mvmRise .55s .06s cubic-bezier(.2,.7,.2,1) both;">Navigate AI without eroding the trust you spent decades building.</h1>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); column-gap: clamp(2rem,5vw,4rem); row-gap: 1.25rem; align-items: end; margin-top: clamp(1.1rem,2.4vw,1.6rem);">
+        <p style="font-size: 1.06rem; line-height: 1.58; color: #5C5651; margin: 0; max-width: 54ch; animation: mvmRise .55s .14s cubic-bezier(.2,.7,.2,1) both;">Your people are already using it &mdash; on emails, donor letters, grant applications, sermons &mdash; usually with no policy and no one deciding what&rsquo;s wise. The thing most at risk isn&rsquo;t the technology. It&rsquo;s <span style="position: relative; white-space: nowrap; color: #1A1A1A; font-weight: 500;">the trust your work depends on<svg viewBox="0 0 340 12" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: -.32rem; width: 100%; height: 10px; overflow: visible;"><path d="M2 7 C 60 2, 120 10, 180 5 S 300 3, 338 7" fill="none" stroke="#22409B" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="340" style="animation: mvmDraw .8s .9s cubic-bezier(.4,.05,.25,1) both;"></path></svg></span>.</p>
+
+        <div style="animation: mvmRise .55s .22s cubic-bezier(.2,.7,.2,1) both;">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .85rem;">
+            <button type="button" onClick="{{ openDock }}" style="position: relative; isolation: isolate; border: 0; background: transparent; font-family: 'Playfair Display', Georgia, serif; font-size: 1.18rem; font-weight: 600; letter-spacing: -.01em; color: #1A1A1A; padding: .8rem 1.1rem; cursor: pointer;">
+              <span style="position: absolute; inset: 2px 0; z-index: -1; background: #EAFF3A; mix-blend-mode: multiply; border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px; transform: rotate(-1deg);"></span>
+              Map where we actually stand
+            </button>
+            <a href="#path" style="font-size: .95rem; font-weight: 500; color: #1A1A1A; border: 1px solid #E5DFD2; border-radius: 999px; padding: .72rem 1.15rem; background: #FFFDF7;" style-hover="border-color: #1A1A1A; text-decoration: none;">See the whole path</a>
+          </div>
+          <p style="font-family: 'Caveat', cursive; font-size: 1.6rem; line-height: 1.15; color: #22409B; margin: .75rem 0 0; animation: mvmInk 1.1s 1.1s cubic-bezier(.4,.05,.25,1) both;">Six honest questions. No wrong answers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="builtwith" style="border-top: 1px solid #E5DFD2; background: #F6F3EC; animation: mvmRise .6s .32s cubic-bezier(.2,.7,.2,1) both;">
+      <div style="box-sizing: border-box; padding: clamp(1.35rem,2.6vw,1.9rem) clamp(1.1rem,2.5vw,1.75rem) clamp(1.5rem,3vw,2.25rem);">
+        <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1.5rem;">
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: #5C5651; margin: 0;">Built with twenty-five trusted church, non-profit, and institutional leaders</p>
+          <a href="#voices" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;">See who &rarr;</a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(25, minmax(0, 1fr)); align-items: center; gap: clamp(.2rem,.5vw,.45rem); margin-top: clamp(.9rem,2vw,1.35rem);">
+          <sc-for list="{{ leaders }}" as="leader" hint-placeholder-count="25">
+            <a class="mvm-face" href="#voices" title="{{ leader.name }}" style="min-width: 0; display: grid; line-height: 0; text-decoration: none;">
+              <span data-ring="" style="box-sizing: border-box; display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 1px solid #E5DFD2; background: #FFFDF7; transition: border-color .25s, box-shadow .25s, transform .25s;">
+                <span data-photo="" role="img" aria-label="{{ leader.name }}" style="display: block; width: 100%; height: 100%; background-image: {{ leader.bg }}; background-size: cover; background-position: center top;"></span>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #0A0E1A; color: #E8ECF5;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(2.75rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem);">
+      <h2 class="mvm-reveal" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(1.75rem,3.6vw,2.6rem); line-height: 1.1; letter-spacing: -.022em; margin: 0; max-width: 24ch; color: #FFFFFF;">AI is already inside your organization. The work now is to get it right.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: clamp(1.25rem,3vw,2.5rem); margin-top: clamp(1.75rem,4vw,2.75rem);">
+        <div class="mvm-reveal">
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #EAFF3A; margin: 0 0 .6rem;">It is already in use</p>
+          <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #E8ECF5;">Across your staff — on donor records, member information, and the pastoral and personal things people trusted you with.</p>
+        </div>
+        <div class="mvm-reveal">
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #EAFF3A; margin: 0 0 .6rem;">No one has decided</p>
+          <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #E8ECF5;">Not on paper. The day that surfaces — in a board meeting, a news story, or a quiet complaint — the trust you spent decades earning is what pays for it.</p>
+        </div>
+        <div class="mvm-reveal">
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #EAFF3A; margin: 0 0 .6rem;">It is one decision</p>
+          <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #E8ECF5;">Not a tooling problem, and not solved by being careful. Experimenting, training your people, building anything — all of it waits on this.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="doors" style="border-bottom: 1px solid #E5DFD2;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(2.75rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem;">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(1.6rem,3.2vw,2.3rem); line-height: 1.1; letter-spacing: -.022em; margin: 0;">Where would you like to start?</h2>
+        <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #5C5651; margin: 0;">Three doors · one path</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: clamp(1rem,2.5vw,1.5rem); margin-top: clamp(1.5rem,3.5vw,2.25rem);">
+        <sc-for list="{{ doors }}" as="door" hint-placeholder-count="3">
+          <article class="mvm-reveal" style="display: flex; flex-direction: column; gap: .8rem; border: 1px solid #E5DFD2; border-radius: 14px; background: #FFFDF7; padding: clamp(1.15rem,2.5vw,1.6rem);">
+            <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #5C5651; margin: 0;">{{ door.label }}</p>
+            <p style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 400; line-height: 1.22; letter-spacing: -.01em; margin: 0; color: #1A1A1A;">&ldquo;{{ door.quote }}&rdquo;</p>
+            <p style="font-size: .95rem; line-height: 1.55; color: #5C5651; margin: 0;">{{ door.note }}</p>
+            <button type="button" onClick="{{ door.onAsk }}" style="align-self: flex-start; margin-top: auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; border: 1px solid #E5DFD2; border-radius: 999px; background: #FBFAF6; color: #22409B; padding: .55rem .9rem; cursor: pointer;" style-hover="border-color: #22409B;">Start here &rarr;</button>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="path" style="background: #F6F3EC; border-bottom: 1px solid #E5DFD2;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(2.75rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: clamp(1rem,3vw,3rem); align-items: end;">
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: #5C5651; margin: 0 0 .9rem;">The path</p>
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(1.75rem,3.6vw,2.6rem); line-height: 1.08; letter-spacing: -.022em; margin: 0;">One ordered path. It starts with Safety.</h2>
+        </div>
+        <p style="font-size: 1.02rem; line-height: 1.6; color: #5C5651; margin: 0; max-width: 52ch;">The order is not arbitrary. Safety first, because AI is already in the room. Sandbox before Training before Tech. Handing powerful tools to people who cannot yet steward them is replacement, not progress.</p>
+      </div>
+
+      <div style="margin-top: clamp(1.75rem,4vw,2.75rem); border-top: 1px solid #E5DFD2;">
+        <sc-for list="{{ stages }}" as="stage" hint-placeholder-count="4">
+          <details style="border-bottom: 1px solid #E5DFD2;">
+            <summary style="display: grid; grid-template-columns: 3.5rem minmax(0,1fr) auto; gap: clamp(.75rem,2vw,1.75rem); align-items: baseline; padding: clamp(1.1rem,2.4vw,1.6rem) 0; cursor: pointer; list-style: none;">
+              <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; font-weight: 400; color: #C08A7E;">{{ stage.num }}</span>
+              <span style="display: block;">
+                <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.35rem,2.6vw,1.85rem); font-weight: 500; letter-spacing: -.02em; color: #1A1A1A;">{{ stage.title }}</span>
+                <span style="display: block; font-size: 1rem; line-height: 1.55; color: #5C5651; margin-top: .35rem; max-width: 60ch;">{{ stage.lead }}</span>
+              </span>
+              <span style="display: flex; align-items: center; gap: .9rem; white-space: nowrap;">
+                <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: #5C5651;">{{ stage.price }}</span>
+                <span data-plus="" style="display: inline-block; width: 1.6rem; height: 1.6rem; line-height: 1.5rem; text-align: center; border: 1px solid #E5DFD2; border-radius: 999px; color: #1A1A1A; font-size: 1rem; background: #FFFDF7; transition: transform .25s;">+</span>
+              </span>
+            </summary>
+            <div style="display: grid; grid-template-columns: 3.5rem minmax(0,1fr); gap: clamp(.75rem,2vw,1.75rem); padding: 0 0 clamp(1.2rem,2.6vw,1.8rem);">
+              <span></span>
+              <div style="border-left: 1.5px solid #C08A7E; padding-left: 1.1rem; max-width: 62ch;">
+                <p style="margin: 0; font-size: 1rem; line-height: 1.62; color: #1A1A1A;">{{ stage.detail }}</p>
+                <p style="margin: .7rem 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: #5C5651;">Deliverable · {{ stage.deliverable }}</p>
+              </div>
+            </div>
+          </details>
+        </sc-for>
+      </div>
+
+      <p style="font-size: .95rem; line-height: 1.5; color: #5C5651; margin: 1.1rem 0 0; font-style: italic;">Each step earns the next. Skip one and the ones after it have nothing to stand on.</p>
+    </div>
+  </section>
+
+  <section id="map" style="border-bottom: 1px solid #E5DFD2;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(2.75rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: clamp(1.5rem,4vw,3.5rem); align-items: start;">
+      <div class="mvm-reveal">
+        <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: #5C5651; margin: 0 0 .9rem;">Organizational Reality Map</p>
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(1.75rem,3.6vw,2.6rem); line-height: 1.08; letter-spacing: -.022em; margin: 0; max-width: 22ch;">Six honest questions, then we mirror you back.</h2>
+        <p style="font-size: 1.05rem; line-height: 1.62; color: #5C5651; margin: 1.1rem 0 0; max-width: 48ch;">No score, no lead form, no grade. You answer six questions about what is actually true in your organization; the concierge names your sharpest gaps across the four stages and where to start.</p>
+        <button type="button" onClick="{{ openDock }}" style="position: relative; isolation: isolate; border: 0; background: transparent; font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #1A1A1A; padding: .8rem 1rem; margin-top: 1.5rem; cursor: pointer;">
+          <span style="position: absolute; inset: 2px 0; z-index: -1; background: #EAFF3A; mix-blend-mode: multiply; border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px; transform: rotate(-1deg);"></span>
+          Start the map
+        </button>
+        <p style="font-family: 'Caveat', cursive; font-size: 1.45rem; color: #22409B; margin: .9rem 0 0;">It takes about four minutes.</p>
+      </div>
+
+      <ol class="mvm-reveal" style="list-style: none; margin: 0; padding: clamp(1.15rem,2.5vw,1.75rem); border: 1px solid #E5DFD2; border-radius: 16px; background: #FFFDF7; display: flex; flex-direction: column; gap: 1rem;">
+        <sc-for list="{{ beats }}" as="beat" hint-placeholder-count="6">
+          <li style="display: grid; grid-template-columns: 4.5rem minmax(0,1fr); gap: 1rem; align-items: baseline; padding-bottom: 1rem; border-bottom: 1px solid #E5DFD2;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: #C08A7E;">{{ beat.tag }}</span>
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 400; line-height: 1.35; color: #1A1A1A;">{{ beat.q }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section id="voices" style="background: #F6F3EC; border-bottom: 1px solid #E5DFD2;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(2.75rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem;">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(1.75rem,3.6vw,2.6rem); line-height: 1.08; letter-spacing: -.022em; margin: 0;">Trusted voices</h2>
+        <p style="font-size: .95rem; color: #5C5651; margin: 0; max-width: 40ch;">Movement leaders who shape how organizations steward AI.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr)); gap: clamp(.9rem,2vw,1.5rem); margin-top: clamp(1.5rem,3.5vw,2.25rem);">
+        <sc-for list="{{ leaders }}" as="leader" hint-placeholder-count="25">
+          <a class="mvm-face" href="#voices" style="display: flex; flex-direction: column; align-items: center; gap: .5rem; text-align: center; text-decoration: none;">
+            <span data-ring="" style="box-sizing: border-box; display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 1px solid #E5DFD2; background: #FFFDF7; transition: border-color .25s, box-shadow .25s, transform .25s;">
+              <span data-photo="" style="display: block; width: 100%; height: 100%; background-image: {{ leader.bg }}; background-size: cover; background-position: center top;"></span>
+            </span>
+            <span style="display: block; font-size: .78rem; font-weight: 600; line-height: 1.25; color: #1A1A1A;">{{ leader.name }}</span>
+          </a>
+        </sc-for>
+      </div>
+
+      <div class="mvm-reveal" style="margin-top: clamp(2rem,4.5vw,3rem); padding-top: clamp(1.5rem,3vw,2rem); border-top: 1px solid #E5DFD2;">
+        <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #5C5651; margin: 0 0 1.1rem;">Who&rsquo;s behind Movemental</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: clamp(1rem,2.5vw,2rem);">
+          <sc-for list="{{ founders }}" as="founder" hint-placeholder-count="3">
+            <div class="mvm-face" style="display: flex; align-items: center; gap: .9rem;">
+              <span data-ring="" style="box-sizing: border-box; flex: 0 0 auto; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; border: 1px solid #E5DFD2; background: #FFFDF7; transition: border-color .25s, box-shadow .25s, transform .25s;">
+                <span data-photo="" role="img" aria-label="{{ founder.name }}" style="display: block; width: 100%; height: 100%; background-image: {{ founder.bg }}; background-size: cover; background-position: center top;"></span>
+              </span>
+              <span>
+                <span style="display: block; font-size: 1rem; font-weight: 600; color: #1A1A1A;">{{ founder.name }}</span>
+                <span style="display: block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .63rem; letter-spacing: .1em; text-transform: uppercase; color: #5C5651; margin-top: .2rem;">{{ founder.cred }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size: .95rem; line-height: 1.55; color: #5C5651; margin: 1.1rem 0 0; font-style: italic;">Movemental took shape in 2026, out of a two-year conversation among Alan, Brad, and Josh.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" style="border-bottom: 1px solid #E5DFD2;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(2.75rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: clamp(1rem,3vw,3rem); align-items: end;">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(1.75rem,3.6vw,2.6rem); line-height: 1.08; letter-spacing: -.022em; margin: 0;">Every stage has a free route.</h2>
+        <p style="font-size: 1.02rem; line-height: 1.6; color: #5C5651; margin: 0; max-width: 52ch;">You can do all of this yourself with the field guides, and we&rsquo;ll guide you when you need it. Or we do it with you. Both routes produce the same ratified artifact.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: clamp(1rem,2.5vw,1.5rem); margin-top: clamp(1.75rem,4vw,2.5rem);">
+        <sc-for list="{{ prices }}" as="p" hint-placeholder-count="4">
+          <div class="mvm-reveal" style="border: 1px solid #E5DFD2; border-radius: 14px; background: #FFFDF7; padding: clamp(1.1rem,2.4vw,1.5rem); display: flex; flex-direction: column; gap: .5rem;">
+            <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .63rem; letter-spacing: .13em; text-transform: uppercase; color: #C08A7E; margin: 0;">Stage {{ p.step }}</p>
+            <p style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 500; margin: 0; color: #1A1A1A;">{{ p.title }}</p>
+            <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: #1A1A1A; margin: .2rem 0 0;">{{ p.priceLine }}</p>
+            <p style="font-size: .92rem; line-height: 1.5; color: #5C5651; margin: 0;">{{ p.descriptor }}</p>
+          </div>
+        </sc-for>
+      </div>
+
+      <div class="mvm-reveal" style="margin-top: clamp(1.75rem,4vw,2.5rem); border: 1px solid #1A1A1A; border-radius: 16px; padding: clamp(1.25rem,3vw,2rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: clamp(1rem,2.5vw,2rem);">
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #5C5651; margin: 0 0 .55rem;">What we refuse to do</p>
+          <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #1A1A1A;">We don&rsquo;t use urgency. No limited-time discounts, no &ldquo;spots filling fast.&rdquo;</p>
+        </div>
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #5C5651; margin: 0 0 .55rem;">Prices are public</p>
+          <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #1A1A1A;">Flat and the same for a 500-person church and a 50,000-member denomination. We don&rsquo;t negotiate the price.</p>
+        </div>
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: #5C5651; margin: 0 0 .55rem;">The concierge says no</p>
+          <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #1A1A1A;">If a question is outside where your organization stands with AI, it says so and hands you to a person.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #FFFDF7;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(2.75rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: clamp(1.5rem,4vw,3rem); align-items: center;">
+      <div class="mvm-reveal">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(1.75rem,3.6vw,2.6rem); line-height: 1.08; letter-spacing: -.022em; margin: 0; max-width: 20ch;">No form. Just Josh.</h2>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: #5C5651; margin: 1rem 0 0; max-width: 44ch;">Get in touch — we answer every message personally. Or start the map and bring the readback to your board.</p>
+      </div>
+      <div class="mvm-reveal" style="display: flex; flex-wrap: wrap; gap: .85rem; justify-content: flex-start;">
+        <button type="button" onClick="{{ openDock }}" style="border: 0; border-radius: 999px; background: #1A1A1A; color: #FBFAF6; font: inherit; font-weight: 600; font-size: 1rem; padding: .85rem 1.5rem; cursor: pointer;" style-hover="background: #22409B;">Talk to the concierge</button>
+        <a href="Movemental Field Guide.dc.html" style="border: 1px solid #E5DFD2; border-radius: 999px; background: #FBFAF6; color: #1A1A1A; font-weight: 500; font-size: 1rem; padding: .85rem 1.5rem;" style-hover="border-color: #1A1A1A; text-decoration: none;">Get the free Handbook</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid #E5DFD2; background: #FBFAF6;">
+    <div class="mvm-x" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2rem,4vw,3rem) clamp(1.25rem,5vw,3rem) 1.75rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: clamp(1.5rem,3vw,2.5rem);">
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: #8A837B; margin: 0 0 .7rem;">The path</p>
+          <div style="display: flex; flex-direction: column; gap: .45rem; font-size: .9rem;">
+            <a href="Movemental Safety Stage.dc.html" style="color: #1A1A1A;">Safety</a>
+            <a href="Movemental Reality Map.dc.html" style="color: #1A1A1A;">Map your reality</a>
+            <a href="Movemental Program.dc.html" style="color: #1A1A1A;">Program and pricing</a>
+            <a href="Movemental Enroll.dc.html" style="color: #1A1A1A;">Enroll</a>
+            <a href="Movemental Dashboard.dc.html" style="color: #1A1A1A;">Dashboard</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: #8A837B; margin: 0 0 .7rem;">Read</p>
+          <div style="display: flex; flex-direction: column; gap: .45rem; font-size: .9rem;">
+            <a href="Movemental Field Guide.dc.html" style="color: #1A1A1A;">Field guide</a>
+            <a href="Movemental Articles.dc.html" style="color: #1A1A1A;">Articles</a>
+            <a href="Movemental Research.dc.html" style="color: #1A1A1A;">Research</a>
+            <a href="Movemental Research Indexes.dc.html" style="color: #1A1A1A;">Findings and sources</a>
+            <a href="Movemental Footnotes.dc.html" style="color: #1A1A1A;">Footnotes</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: #8A837B; margin: 0 0 .7rem;">For you</p>
+          <div style="display: flex; flex-direction: column; gap: .45rem; font-size: .9rem;">
+            <a href="Movemental Audience Editions.dc.html" style="color: #1A1A1A;">Churches</a>
+            <a href="Movemental Audience Editions.dc.html" style="color: #1A1A1A;">Non-profits</a>
+            <a href="Movemental Audience Editions.dc.html" style="color: #1A1A1A;">Institutions</a>
+            <a href="Movemental Decks.dc.html" style="color: #1A1A1A;">Decks</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: #8A837B; margin: 0 0 .7rem;">Movemental</p>
+          <div style="display: flex; flex-direction: column; gap: .45rem; font-size: .9rem;">
+            <a href="Movemental About Founders.dc.html" style="color: #1A1A1A;">Founders</a>
+            <a href="Movemental Voices.dc.html" style="color: #1A1A1A;">Voices</a>
+            <a href="Movemental How We Use AI.dc.html" style="color: #1A1A1A;">How we use AI</a>
+            <a href="Movemental Utility Shell.dc.html#login" style="color: #1A1A1A;">Log in</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: #8A837B; margin: 0 0 .7rem;">Legal</p>
+          <div style="display: flex; flex-direction: column; gap: .45rem; font-size: .9rem;">
+            <a href="Movemental Utility Shell.dc.html#privacy" style="color: #1A1A1A;">Privacy</a>
+            <a href="Movemental Utility Shell.dc.html#cookies" style="color: #1A1A1A;">Cookies</a>
+            <a href="Movemental Utility Shell.dc.html#terms" style="color: #1A1A1A;">Terms</a>
+            <a href="Movemental Utility Shell.dc.html#newsletter-confirmed" style="color: #1A1A1A;">Newsletter</a>
+          </div>
+        </div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(1.25rem,5vw,3rem) 2rem;">
+      <div style="border-top: 1px solid #E5DFD2; padding-top: 1.1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .63rem; letter-spacing: .13em; text-transform: uppercase; color: #5C5651;">
+        <span>Movemental &copy; 2026</span>
+        <a href="mailto:josh@movemental.ai">josh@movemental.ai</a>
+      </div>
+    </div>
+  </footer>
+
+  <div style="position: fixed; inset: auto 0 0 0; z-index: 50; display: flex; flex-direction: column; align-items: flex-end; pointer-events: none;">
+    <sc-if value="{{ dockOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="pointer-events: auto; width: 100%; max-width: 44rem; margin: 0 auto; border: 1px solid #E5DFD2; border-top-left-radius: 1.35rem; border-top-right-radius: 1.35rem; background: #FFFDF7; box-shadow: 0 -12px 46px -16px rgba(26,26,26,.28); padding: 1.1rem clamp(1rem,3vw,1.5rem) 1.25rem; animation: mvmRise .34s cubic-bezier(.22,1,.36,1) both;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+          <p style="font-family: 'Caveat', cursive; font-size: 1.55rem; line-height: 1.15; color: #22409B; margin: 0; max-width: 34ch;">{{ dockLine }}</p>
+          <button type="button" onClick="{{ closeDock }}" aria-label="Close" style="flex: 0 0 auto; width: 2.15rem; height: 2.15rem; border: 1px solid #E5DFD2; border-radius: .65rem; background: #FBFAF6; color: #5C5651; font-size: 1rem; cursor: pointer;">✕</button>
+        </div>
+
+        <div class="mvm-x" style="display: flex; gap: .35rem; margin-top: .9rem; overflow-x: auto;">
+          <sc-for list="{{ segments }}" as="seg" hint-placeholder-count="4">
+            <button type="button" onClick="{{ seg.onPick }}" style="flex: 0 0 auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; padding: .42rem .7rem; border: 1px solid {{ seg.borderColor }}; border-radius: 999px; background: {{ seg.background }}; color: {{ seg.color }}; cursor: pointer; white-space: nowrap;">{{ seg.label }}</button>
+          </sc-for>
+        </div>
+
+        <button type="button" onClick="{{ startMap }}" style="position: relative; isolation: isolate; display: block; width: 100%; margin: .9rem 0 0; padding: .85rem 1rem; border: 0; background: transparent; font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 600; line-height: 1.3; color: #1A1A1A; cursor: pointer;">
+          <span style="position: absolute; inset: 2px 4px; z-index: -1; background: #EAFF3A; mix-blend-mode: multiply; border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px; transform: rotate(-1deg);"></span>
+          Map where we actually stand
+        </button>
+
+        <ul style="list-style: none; margin: .8rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .55rem;">
+          <sc-for list="{{ dockDoors }}" as="d" hint-placeholder-count="4">
+            <li>
+              <button type="button" onClick="{{ d.onSelect }}" style="display: block; width: 100%; text-align: left; padding: .85rem 1rem; border: 1px solid #E5DFD2; border-radius: .75rem; background: #FBFAF6; font: inherit; font-size: .9rem; line-height: 1.4; color: #1A1A1A; cursor: pointer;" style-hover="border-color: #1A1A1A;">{{ d.text }}</button>
+            </li>
+          </sc-for>
+        </ul>
+
+        <div style="display: flex; gap: .5rem; align-items: center; margin-top: .9rem;">
+          <label style="flex: 1 1 auto; display: flex; align-items: center; border: 1px solid #E5DFD2; border-radius: 999px; background: #FFFDF7; padding: .5rem .5rem .5rem 1.15rem;">
+            <input type="text" placeholder="Type to the concierge, or tap a door…" aria-label="Talk to Movemental" style="flex: 1 1 auto; border: 0; background: none; font: inherit; font-size: 1rem; color: #1A1A1A; padding: .35rem 0; outline: none;">
+          </label>
+          <button type="button" aria-label="Send" style="flex: 0 0 auto; width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 0; background: #1A1A1A; color: #FBFAF6; font-size: 1.05rem; cursor: pointer;" style-hover="background: #22409B;">→</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ dockPeek }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ openDock }}" style="pointer-events: auto; margin: 0 clamp(1rem,3vw,2rem) 1.15rem; display: flex; align-items: center; gap: .6rem; border: 1px solid #E5DFD2; border-radius: 999px; background: #FFFDF7; box-shadow: 0 10px 30px -16px rgba(26,26,26,.35); padding: .55rem 1rem .55rem .8rem; cursor: pointer; animation: mvmRise .35s cubic-bezier(.2,.7,.2,1) both;" style-hover="border-color: #1A1A1A;">
+        <span style="width: .5rem; height: .5rem; border-radius: 50%; background: #22409B; display: inline-block;"></span>
+        <span style="font-family: 'Caveat', cursive; font-size: 1.25rem; line-height: 1; color: #22409B; white-space: nowrap;">Where do we stand?</span>
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: #5C5651;">Ask</span>
+      </button>
+    </sc-if>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+// Canonical roster + headshots: public.movement_leaders joined to the
+// public `media-library` storage bucket. Names are the DB's full_name.
+// No roles or bios are shown for the roster: primary_role is empty in the
+// table for everyone but Brian Sanders, so any descriptor here would be
+// unverified. Names and headshots only. Founder roles stay — those come from
+// src/lib/founders/content.ts, the rights-cleared SSOT.
+const MEDIA = "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/";
+const LEADERS = [
+  ["Alan Hirsch", "alan-hirsch/headshots/alan-hirsch.webp"],
+  ["Andrew Jones", "andrew-jones/headshots/andrew-jones.webp"],
+  ["Brad Brisco", "brad-brisco/headshots/brad-brisco.webp"],
+  ["Bree Mills", "bree-mills/headshots/bree-mills.webp"],
+  ["Brian Sanders", "brian-sanders/headshots/brian-sanders.webp"],
+  ["Daniel Bravo", "daniel-bravo/headshots/daniel-bravo.webp"],
+  ["Danielle Strickland", "danielle-strickland/headshots/danielle-strickland.webp"],
+  ["Dave Ferguson", "dave-ferguson/headshots/dave-ferguson.webp"],
+  ["David Docusen", "david-docusen/david-docusen-portrait.webp"],
+  ["Debra Hirsch", "deb-hirsch/headshots/deb-hirsch.webp"],
+  ["Dhati Lewis", "dhati-lewis/headshots/dhati-lewis.webp"],
+  ["Hugh Halter", "hugh-halter/headshots/hugh-halter.webp"],
+  ["Jeremy & Monica Chambers", "jeremy-chambers/headshots/jeremy-chambers.webp"],
+  ["JR Woodward", "jr-woodward/headshots/jr-woodward.webp"],
+  ["Kate Coleman & Cham Kaur-Mann", "kate-coleman/headshots/kate-coleman.webp"],
+  ["Liz Rios", "movemental/voices/liz-rios.webp"],
+  ["Lucas Pulley", "lucas-pulley/headshots/lucas-pulley.webp"],
+  ["Meghan Larissa Good", "meghan-good/headshots/meghan-good.webp"],
+  ["Michael Cooper", "michael-cooper/headshots/michael-cooper.jpg"],
+  ["Neil Cole", "neil-cole/headshots/neil-cole.webp"],
+  ["Peyton Jones", "peyton-jones/headshots/peyton-jones.webp"],
+  ["Rob Wegner", "rob-wegner/headshots/rob-wegner.webp"],
+  ["Rowland Smith", "rowland-smith/headshots/rowland-smith.webp"],
+  ["Roy Moran", "roy-moran/headshots/roy-moran.jpg"],
+  ["Tiffany Smith", "tiffany-smith/headshots/tiffany-smith.webp"],
+];
+
+const DOORS = {
+  nonprofits: [
+    "We're already using AI and honestly it's a mess.",
+    "What do we actually have to decide before we let staff use this?",
+    "How do we protect donor and client data with AI in the mix?",
+    "We can't afford a consultant. Where do we even start?",
+  ],
+  churches: [
+    "Our board is nervous about AI and I need to bring them something.",
+    "Is it okay for staff to use AI for sermon prep or counseling notes?",
+    "We haven't decided anything about AI yet. Help us start.",
+    "How do we use this without losing trust with our congregation?",
+  ],
+  institutions: [
+    "AI is showing up across our departments with no policy.",
+    "We need a governance position our board can actually ratify.",
+    "What are the real risks we're exposed to right now?",
+    "How do we move from ad-hoc AI use to something coherent?",
+  ],
+  exploring: [
+    "What is Movemental, and what do you actually do?",
+    "Show me the whole path.",
+    "Who's behind this?",
+    "What does it cost?",
+  ],
+};
+
+const SEGMENTS = [
+  ["nonprofits", "Non-profits"],
+  ["churches", "Churches"],
+  ["institutions", "Institutions"],
+  ["exploring", "Just exploring"],
+];
+
+class Component extends DCLogic {
+  state = { pastHero: false, dockOpen: false, segment: "exploring", line: "Where would you like to start?" };
+
+  componentDidMount() {
+    // The peek pill may only appear once the "Built with" band has scrolled
+    // out of view, so it can never land on the portraits.
+    // Measured fresh on every event — never latched from a mount-time layout.
+    this.check = () => {
+      const band = document.getElementById("builtwith");
+      if (!band) return;
+      const past = band.getBoundingClientRect().bottom <= 0;
+      if (past !== this.state.pastHero) this.setState({ pastHero: past });
+    };
+    window.addEventListener("scroll", this.check, { passive: true });
+    window.addEventListener("resize", this.check);
+    window.addEventListener("load", this.check);
+    requestAnimationFrame(this.check);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.check);
+    window.removeEventListener("resize", this.check);
+    window.removeEventListener("load", this.check);
+  }
+
+  open = (segment) => {
+    this.setState({
+      dockOpen: true,
+      segment: segment || this.state.segment,
+      line: "Where would you like to start?",
+    });
+  };
+
+  renderVals() {
+    const seg = this.state.segment;
+    return {
+      dockOpen: this.state.dockOpen,
+      dockClosed: !this.state.dockOpen,
+      dockPeek: !this.state.dockOpen && this.state.pastHero,
+      dockLine: this.state.line,
+      openDock: () => this.open(),
+      closeDock: () => this.setState({ dockOpen: false }),
+      startMap: () =>
+        this.setState({
+          dockOpen: true,
+          line: "Six honest questions. First — what kind of organization are you?",
+        }),
+
+      heroFaces: [0, 2, 7, 19, 6, 10].map((i) => ({
+        name: LEADERS[i][0],
+        img: MEDIA + LEADERS[i][1],
+      })),
+      leaders: LEADERS.map(([name, path]) => ({
+        name,
+        bg: 'url("' + MEDIA + path + '")',
+        img: MEDIA + path,
+      })),
+      founders: [
+        ["Alan Hirsch", "Co-founder · Missiologist", "alan-hirsch/headshots/alan-hirsch.webp"],
+        ["Brad Brisco", "Co-founder · Send Network", "brad-brisco/headshots/brad-brisco.webp"],
+        ["Josh Shepherd", "Founder & CTO", "josh-shepherd/headshots/josh-shepherd.webp"],
+      ].map(([name, cred, path]) => ({
+        name,
+        cred,
+        img: MEDIA + path,
+        bg: 'url("' + MEDIA + path + '")',
+      })),
+
+      doors: [
+        {
+          label: "Non-profits",
+          quote: DOORS.nonprofits[0],
+          note: "Donor and client data, staff already improvising, no policy yet.",
+          onAsk: () => this.open("nonprofits"),
+        },
+        {
+          label: "Churches",
+          quote: DOORS.churches[0],
+          note: "Something your board can read, discuss, and actually ratify.",
+          onAsk: () => this.open("churches"),
+        },
+        {
+          label: "Institutions",
+          quote: DOORS.institutions[0],
+          note: "Departments moving at different speeds, no coherent position.",
+          onAsk: () => this.open("institutions"),
+        },
+      ],
+
+      stages: [
+        {
+          num: "01",
+          title: "Safety",
+          price: "Free · $1,000",
+          deliverable: "AI Charter, board-ratified",
+          lead: "Name what AI may and may not do in your mission — your AI Charter, ratified by your board, before anything else.",
+          detail: "Acceptable use, data boundaries, and theological red lines, written down and adopted before anyone builds on sand.",
+        },
+        {
+          num: "02",
+          title: "Sandbox",
+          price: "Free · $5,000",
+          deliverable: "Future Plan · green, yellow, red use cases",
+          lead: "Try AI against real work, in a bounded place. Sort what helps from what doesn't.",
+          detail: "Your team runs trials inside the charter you ratified. Each use case goes green, yellow, or red. You leave with a Future Plan leadership can sign.",
+        },
+        {
+          num: "03",
+          title: "Training",
+          price: "$2,000 per person",
+          deliverable: "Eight-week cohort",
+          lead: "Form the people who will carry it. Judgment, not a one-off workshop.",
+          detail: "An eight-week cohort building discernment, authorship, and stewardship in the leaders who will steward AI inside your organization.",
+        },
+        {
+          num: "04",
+          title: "Tech",
+          price: "Foundation built in",
+          deliverable: "Scoped modular build",
+          lead: "Build what your work actually needs, on what you already decided and tested.",
+          detail: "Scoped deployment, from improving tools you already use to network-scale work. Only after clear rules, real trials, and formed people.",
+        },
+      ],
+
+      beats: [
+        { tag: "Start", q: "First — what kind of organization are you?" },
+        { tag: "Sandbox", q: "Is AI already being used in your actual work — emails, donor letters, lesson plans, sermons, grants?" },
+        { tag: "Safety", q: "Could your senior leadership, right now, name every AI tool your staff uses — and what goes into each one?" },
+        { tag: "Safety", q: "Has someone with the authority to decide actually decided what's okay — in writing, where staff can find it before they guess?" },
+        { tag: "Training", q: "If a donor, parishioner, or board member learned tomorrow exactly how AI is used in your work — would it strengthen their trust, or shake it?" },
+        { tag: "Last", q: "Last one — what are you most worried about getting wrong?" },
+      ],
+
+      prices: [
+        { step: "01", title: "Safety", priceLine: "Free · $1,000", descriptor: "Ratify your AI Charter before anything else." },
+        { step: "02", title: "Sandbox", priceLine: "Free · $5,000", descriptor: "Try AI against real work inside your charter." },
+        { step: "03", title: "Training", priceLine: "$2,000 per person · 8 weeks", descriptor: "Form the people who will steward AI inside your org." },
+        { step: "04", title: "Technology", priceLine: "$30,000 modules · Foundation built in", descriptor: "Build only what your ratified foundation supports." },
+      ],
+
+      segments: SEGMENTS.map(([id, label]) => ({
+        label,
+        onPick: () => this.setState({ segment: id }),
+        color: seg === id ? "#1A1A1A" : "#5C5651",
+        borderColor: seg === id ? "#22409B" : "#E5DFD2",
+        background: seg === id ? "#F2F4FB" : "#FBFAF6",
+      })),
+
+      dockDoors: DOORS[seg].map((text) => ({
+        text,
+        onSelect: () => this.setState({ line: "Good — that's a real place to start." }),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

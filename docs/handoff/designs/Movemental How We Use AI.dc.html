@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .55s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 3% entry 30%; }
+    .mvm-navlink { transition: color var(--dur-fast), border-color var(--dur-fast); }
+    .mvm-navlink:hover { color: var(--ink-blue); text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Home</x-import>
+  </header>
+
+  <nav style="position: sticky; top: 3.6rem; z-index: 35; border-bottom: 1px solid var(--border); background: var(--surface);">
+    <div style="max-width: 1080px; margin: 0 auto; padding: .5rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; gap: .35rem 1.1rem;">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a class="mvm-navlink" href="{{ n.href }}" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body);">{{ n.label }}</a>
+      </sc-for>
+    </div>
+  </nav>
+
+  <main style="max-width: 62rem; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,3rem) 0;">
+
+    <section id="hero" style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem); scroll-margin-top: 6rem;">
+      <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">How we use AI</x-import>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,4.8vw,3.3rem); line-height: 1.04; letter-spacing: -.024em; margin: .7rem 0 0; max-width: 20ch; text-wrap: pretty;">We use the tools we sell. On ourselves, first.</h1>
+      <p style="font-size: 1.06rem; line-height: 1.68; color: var(--text-strong); margin: 1.1rem 0 0; max-width: 62ch;">We do not ask organizations to do anything we have not done. Every guardrail we ask a leader or a board to ratify, we have built into our own work first. This page is where we name what we refuse, how we sort use cases, and what we will not build, so anyone reading the site knows where we stand.</p>
+      <p style="font-size: 1.06rem; line-height: 1.68; color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">Most public AI discourse splits into &ldquo;AI is a savior&rdquo; or &ldquo;AI is a threat.&rdquo; We reject both. AI surfaces and amplifies what humans have already produced, and how a person reacts to it often reveals their underlying view of human nature. Our work starts from a simpler operational rule: if AI mirrors the humans it is around, govern the humans, the corpus, and the relationships first.</p>
+      <div style="margin-top: 1.2rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ inkProps }}" hint-size="100%,2rem">We use the tools we sell. On ourselves, first.</x-import>
+      </div>
+    </section>
+
+    <section id="our-commitments" class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); scroll-margin-top: 6rem;">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Our commitments</x-import>
+      <h2 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.5rem,3.2vw,2.1rem); line-height: 1.1; letter-spacing: -.02em; margin: 0;">What we will not do, ever.</h2>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: .8rem 0 1.4rem; max-width: 56ch;">These are not preferences. They are the line. Breaking one would cost the exact trust we exist to protect.</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: .7rem;">
+        <sc-for list="{{ commitments }}" as="c" hint-placeholder-count="5">
+          <li style="border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-card); padding: 1rem 1.1rem; font-size: 1rem; line-height: 1.6; color: var(--text-body);"><strong style="color: var(--text-strong);">{{ c.lead }}</strong> {{ c.rest }}</li>
+        </sc-for>
+      </ul>
+    </section>
+
+    <section id="what-we-refuse" class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); scroll-margin-top: 6rem;">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">What we refuse</x-import>
+      <h2 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.5rem,3.2vw,2.1rem); line-height: 1.1; letter-spacing: -.02em; margin: 0;">Three lines we do not cross.</h2>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: .8rem 0 1.4rem; max-width: 60ch;">These refusals are essential, not ethics bolted onto a product after the fact. They shape every line of code we ship and every document we help produce.</p>
+      <div style="display: grid; gap: 1.1rem;">
+        <sc-for list="{{ refusals }}" as="r" hint-placeholder-count="3">
+          <article style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+            <span style="position: absolute; left: .2rem; top: .4rem; bottom: .3rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+            <h3 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.15rem,2.4vw,1.4rem); line-height: 1.2; letter-spacing: -.016em; margin: 0;">{{ r.term }}</h3>
+            <p style="font-size: 1rem; line-height: 1.62; color: var(--text-body); margin: .5rem 0 0; max-width: 62ch;">{{ r.body }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="traffic-lights" class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); scroll-margin-top: 6rem;">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Green / yellow / red</x-import>
+      <h2 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.5rem,3.2vw,2.1rem); line-height: 1.1; letter-spacing: -.02em; margin: 0;">How we sort use cases.</h2>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: .8rem 0 1.4rem; max-width: 58ch;">Not all AI use is equivalent. This is the same framework we use in Safety and Sandbox engagements, and how we evaluate our own use internally.</p>
+      <div style="display: grid; gap: .8rem;">
+        <sc-for list="{{ lights }}" as="l" hint-placeholder-count="3">
+          <article style="border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface-card); padding: clamp(1.1rem,2.6vw,1.5rem); display: flex; flex-wrap: wrap; gap: clamp(.9rem,2.5vw,1.75rem);">
+            <p style="flex: 0 0 8.5rem; display: flex; align-items: center; gap: .5rem; margin: 0; font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body);">
+              <span style="{{ l.dotStyle }}"></span>{{ l.label }}
+            </p>
+            <div style="flex: 1 1 20rem; min-width: 0;">
+              <h3 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.1rem,2.2vw,1.3rem); line-height: 1.24; letter-spacing: -.014em; margin: 0;">{{ l.heading }}</h3>
+              <p style="font-size: .99rem; line-height: 1.6; color: var(--text-body); margin: .55rem 0 0; max-width: 60ch;">{{ l.body }}</p>
+              <ul style="margin: .85rem 0 0; padding: 0; list-style: none; display: grid; gap: .35rem;">
+                <sc-for list="{{ l.examples }}" as="ex" hint-placeholder-count="3">
+                  <li style="font-size: .92rem; line-height: 1.5; color: var(--text-body); border-left: 1px solid var(--border); padding-left: .8rem;">{{ ex }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="you-are-the-node" class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); scroll-margin-top: 6rem;">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">You stay in charge</x-import>
+      <h2 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.5rem,3.2vw,2.1rem); line-height: 1.1; letter-spacing: -.02em; margin: 0; max-width: 24ch;">AI supports your credibility, it does not replace you.</h2>
+      <div style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem); margin-top: 1.1rem;">
+        <span style="position: absolute; left: .2rem; top: .4rem; bottom: .4rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+        <p style="font-size: 1.03rem; line-height: 1.68; color: var(--text-body); margin: 0 0 1rem; max-width: 62ch;">The sustainable pattern: you handle creation and authority, what you teach, what you write, what you put your name on. AI handles discoverability and circulation: structure, metadata, translation, formatting, linking. Your work becomes easier to find and connect without the machine becoming you.</p>
+        <p style="font-size: 1.03rem; line-height: 1.68; color: var(--text-body); margin: 0 0 1rem; max-width: 62ch;">AI is trained on the broad output of human writing, speech, and behavior. When you interact with it, it mirrors and amplifies what it has been trained on, and it mirrors and amplifies you specifically. That is why the most important operational decision is not which model you pick. It is who you deliberately gather around the work: the humans whose corpus, judgment, and vouching the system will reflect back.</p>
+        <p style="font-size: 1.03rem; line-height: 1.68; color: var(--text-body); margin: 0; max-width: 62ch;">AI can help your work be legible and connected. It never becomes you. Only people can vouch for you. Only you can mean what you say before God and stand answerable for it as true.</p>
+      </div>
+      <div style="margin-top: 1.2rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ inkProps }}" hint-size="100%,2rem">You out front. AI in the background.</x-import>
+      </div>
+    </section>
+
+    <section id="scenius-refusals" class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); scroll-margin-top: 6rem;">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">The scenius refusals</x-import>
+      <h2 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.5rem,3.2vw,2.1rem); line-height: 1.1; letter-spacing: -.02em; margin: 0;">What we will not build into the network.</h2>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: .8rem 0 1.3rem; max-width: 58ch;">The extractive version of this business is obvious, and we are building against it. That includes product choices, not only policy statements.</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));">
+        <sc-for list="{{ scenius }}" as="s" hint-placeholder-count="4">
+          <li style="border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); padding: .8rem 1rem; font-size: .97rem; color: var(--text-strong);">{{ s }}</li>
+        </sc-for>
+      </ul>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: 1.15rem 0 0;">If a feature would feel extractive to us as members, we don&apos;t ship it.</p>
+    </section>
+
+    <sc-if value="{{ showGaps }}" hint-placeholder-val="{{ true }}">
+      <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Not yet written</x-import>
+        <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: 0 0 1.2rem; max-width: 60ch;">Movemental asks every client to answer five layers. Two of those answers do not exist yet for Movemental itself. They are named here rather than filled in, because a page about honesty cannot be the place we start guessing.</p>
+        <div style="display: grid; gap: .7rem;">
+          <sc-for list="{{ gaps }}" as="g" hint-placeholder-count="2">
+            <div style="border: 1px dashed var(--border); border-radius: var(--radius-md); background: transparent; padding: 1rem 1.1rem;">
+              <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-subtle); margin: 0;">{{ g.label }}</p>
+              <p style="font-size: .99rem; line-height: 1.6; color: var(--text-body); margin: .45rem 0 0; max-width: 60ch;">{{ g.note }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem); display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;">
+      <p style="margin: 0; font-family: var(--font-display), Georgia, serif; font-size: clamp(1.2rem,2.6vw,1.5rem); letter-spacing: -.014em; max-width: 30ch;">If a number appears on this site, it has a footnote.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: .6rem;">
+        <a href="Movemental Footnotes.dc.html" style="font-size: .97rem; font-weight: 500; color: var(--bg); background: var(--ink); border: 1px solid var(--ink); border-radius: var(--radius-md); padding: .72rem 1.15rem;" style-hover="background: var(--ink-blue); border-color: var(--ink-blue); text-decoration: none;">Read the footnotes</a>
+        <a href="mailto:josh@movemental.ai" style="font-size: .97rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .72rem 1.15rem;" style-hover="border-color: var(--ink); text-decoration: none;">Tell us we got it wrong</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showGaps&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Disclosure&quot;}}">
+/**
+ * `/how-we-use-ai` — the disclosure page.
+ *
+ * IMPORTANT correction to build prompt 06. The prompt assumed this page had no
+ * repo content and instructed the designer to build a five-layer skeleton with
+ * every section marked as a gap. That is now wrong: `/how-we-use-ai` permanently
+ * redirects to `/agent/how-we-use-ai`, which is fully written. Its copy lives in
+ * `src/components/agent-room/how-we-use-ai/how-we-use-ai-data.ts` and the
+ * section prose in `how-we-use-ai-experience.tsx`.
+ *
+ * So every word on this page is Movemental's own, lifted verbatim — commitments,
+ * the three named refusals, the green/yellow/red framework, the node posture,
+ * and the scenius product refusals — in the repo's own six-section order and
+ * with its own sub-nav. Nothing here is invented policy.
+ *
+ * The two genuine gaps (Layer 03 context inventory, and a per-surface
+ * AI-assistance disclosure) are rendered as labelled gaps behind `showGaps`.
+ */
+const COMMITMENTS = [
+  { lead: "No manufactured urgency or scarcity.", rest: "We will never manufacture a deadline or a fear of missing out to move you." },
+  { lead: "No faked authorship.", rest: "We help your people tell their own story. We never write under a human's name as if it were them." },
+  { lead: "AI gathers and drafts. Humans discern, care, and speak.", rest: "AI does the gathering and the drafting. It never does the discernment, the shepherding, the relationships, or the care." },
+  { lead: "We claim only what is earned.", rest: "We do not promise outcomes the work has not produced yet. If a number appears on this site, it has a footnote." },
+  { lead: "Extra care wherever vulnerable people are involved.", rest: "When you serve minors or families, we are more cautious, not less." },
+];
+
+const REFUSALS = [
+  { term: "Replacement of relationship", body: "We do not use AI to simulate pastoral presence, mentoring, or care. Formation happens in relationship. AI can support the work around that relationship; it cannot be the relationship." },
+  { term: "Formation without presence", body: "We do not hand over the work that forms us. Preaching, teaching, and writing that carries our convictions go to the machine only with our full engagement. If it goes out under our name and is meant to form people, we have read it, weighed it, and owned it." },
+  { term: "Amplification without credibility", body: "We do not use AI to look bigger than the work and network actually warrant. Not more output, more polish, or more reach when we have not done the work or do not have the people to back it up. Looking more credible than you are fails when it outruns the credibility you actually have." },
+];
+
+const LIGHTS = [
+  {
+    signal: "green",
+    label: "Green light",
+    heading: "Clear human benefit, no meaningful negative consequence.",
+    body: "Structure, findability, admin, and translation. These are tasks that do not require your voice or your judgment. First drafts you will edit and own before anything goes out under your name. AI handles the supporting work; you stay in the loop where the output represents you.",
+    examples: ["Making existing work searchable", "Metadata, headings, internal linking", "Translating work you have already written", "Formatting and administrative repetition"],
+  },
+  {
+    signal: "yellow",
+    label: "Yellow light",
+    heading: "Real benefit, but only with guardrails.",
+    body: "Context-dependent. A quick internal summary is not the same as a public-facing piece. A first draft you will heavily edit is not the same as a post you publish with light changes. When in doubt, slow down. When the output will form people or represent you publicly, the human in the loop is you, reading, weighing, owning.",
+    examples: ["Drafts you review before sending", "Research where citation and verification are required", "Facilitated conversations where AI never substitutes for participants"],
+  },
+  {
+    signal: "red",
+    label: "Red light",
+    heading: "Harm, regardless of how carefully it is deployed.",
+    body: "The lines we do not cross, and the lines we help organizations name in Safety. AI used to author content under a human's name without disclosure. AI impersonating humans in pastoral or counseling contexts. AI making eligibility decisions that affect people's access to services. We do not deploy these. We help the organizations we work with publicly commit to refusing them as well.",
+    examples: ["Undisclosed authorship under a human name", "Pastoral or counseling impersonation", "Decisions about access to care or services"],
+  },
+];
+
+const SCENIUS = [
+  "No ranked leaderboards",
+  "No vanity metrics",
+  "No engagement-optimized feeds",
+  "No parasocial substitutes where reading replaces relationship",
+];
+
+const NAV = [
+  { id: "hero", label: "How we use AI" },
+  { id: "our-commitments", label: "Our commitments" },
+  { id: "what-we-refuse", label: "What we refuse" },
+  { id: "traffic-lights", label: "Green / yellow / red" },
+  { id: "you-are-the-node", label: "You stay in charge" },
+  { id: "scenius-refusals", label: "Scenius refusals" },
+];
+
+/**
+ * The two sections the repo genuinely does not answer for Movemental itself.
+ * Do not fill these in design — they are commitments the company must make.
+ */
+const GAPS = [
+  {
+    label: "Layer 03 · Context — Movemental to supply",
+    note: "Movemental asks every client to inventory the data they hold and the AI tools already touching it. Our own inventory is not published. The database carries agent transcripts, reality-map results, and contact submissions; what we retain, for how long, and who can read it has not been written down here.",
+  },
+  {
+    label: "Per-surface AI disclosure — Movemental to supply",
+    note: "Which parts of this site are AI-assisted, stated surface by surface. The reality-map read-back is generated; the leader profiles are human-verified and rights-cleared. The rest of the site has no published disclosure, and a page about disclosure should carry one.",
+  },
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const dot = (bg) => ({
+      display: "inline-block",
+      width: ".55rem",
+      height: ".55rem",
+      borderRadius: "999px",
+      background: bg,
+      flex: "0 0 auto",
+    });
+    return {
+      goHome: () => { window.location.href = "Movemental Home v4.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      inkProps: { style: { whiteSpace: "normal" } },
+      nav: NAV.map((n) => ({ label: n.label, href: "#" + n.id })),
+      commitments: COMMITMENTS,
+      refusals: REFUSALS,
+      scenius: SCENIUS,
+      showGaps: this.props.showGaps ?? true,
+      gaps: GAPS,
+      lights: LIGHTS.map((l) => ({
+        ...l,
+        dotStyle: dot(
+          l.signal === "green" ? "#4E7A52" : l.signal === "yellow" ? "var(--marker, #EAFF3A)" : "var(--margin-red)",
+        ),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    .mvm-srow { transition: background var(--dur-fast); }
+    .mvm-srow:hover { background: var(--surface); }
+    .mvm-navlink { transition: color var(--dur-fast); }
+    .mvm-navlink:hover { color: var(--ink-blue); text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goLibrary }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Research</x-import>
+  </header>
+
+  <nav style="position: sticky; top: 3.6rem; z-index: 35; border-bottom: 1px solid var(--border); background: var(--surface);">
+    <div style="max-width: 62rem; margin: 0 auto; padding: .5rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; gap: .4rem .9rem; align-items: center;">
+      <a class="mvm-navlink" href="Movemental Research.dc.html" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body);">Library</a>
+      <sc-for list="{{ viewTabs }}" as="v" hint-placeholder-count="2">
+        <button type="button" onClick="{{ v.select }}" style="{{ v.style }}">{{ v.label }}</button>
+      </sc-for>
+      <a class="mvm-navlink" href="Movemental Footnotes.dc.html" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body);">Footnotes</a>
+    </div>
+  </nav>
+
+  <main style="max-width: 62rem; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,3rem) 0;">
+
+    <sc-if value="{{ isFindings }}" hint-placeholder-val="{{ true }}">
+      <div id="findings">
+        <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">The data</x-import>
+          <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,4.6vw,3.1rem); line-height: 1.05; letter-spacing: -.024em; margin: .7rem 0 0;">What the research shows.</h1>
+          <p style="font-size: 1.06rem; line-height: 1.64; color: var(--text-body); margin: 1rem 0 0; max-width: 58ch;">
+            <sc-for list="{{ ledeParts }}" as="p" hint-placeholder-count="3">
+              <span style="{{ p.style }}">{{ p.text }}</span>
+            </sc-for>
+          </p>
+          <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: .9rem 0 0;">A consistent trend across all sectors surveyed.</p>
+        </section>
+
+        <section style="margin-top: clamp(2rem,5vw,3rem);">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Adoption vs capability</x-import>
+          <div style="border-top: 1px solid var(--border);">
+            <sc-for list="{{ panels }}" as="p" hint-placeholder-count="4">
+              <article class="mvm-srow" style="border-bottom: 1px solid var(--border); padding: clamp(1.1rem,2.6vw,1.5rem) .35rem; display: flex; flex-wrap: wrap; gap: clamp(1rem,3vw,2rem); align-items: baseline;">
+                <div style="flex: 0 0 10rem; display: flex; align-items: baseline; gap: .5rem;">
+                  <span style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.8rem,4vw,2.6rem); line-height: 1; letter-spacing: -.03em;">{{ p.primary }}</span>
+                  <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle);">vs</span>
+                  <span style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.2rem,2.6vw,1.7rem); line-height: 1; letter-spacing: -.02em; color: var(--text-body);">{{ p.secondary }}</span>
+                </div>
+                <div style="flex: 1 1 20rem; min-width: 0;">
+                  <p style="font-size: 1rem; line-height: 1.55; color: var(--text-strong); margin: 0; max-width: 54ch;">{{ p.copy }}</p>
+                  <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .58rem; letter-spacing: .11em; text-transform: uppercase; color: var(--text-subtle); margin: .5rem 0 0;">{{ p.source }}</p>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="margin-top: clamp(2.25rem,5vw,3rem);">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">The trust deficit</x-import>
+          <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: 0 0 1.4rem; max-width: 60ch;">While adoption accelerates quietly, constituents remain skeptical. Transparency is emerging as the primary differentiator for institutions.</p>
+          <div style="display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));">
+            <sc-for list="{{ charts }}" as="c" hint-placeholder-count="2">
+              <div>
+                <div style="display: flex; align-items: baseline; justify-content: space-between; gap: .75rem;">
+                  <p style="font-size: .96rem; line-height: 1.5; color: var(--text-strong); margin: 0; max-width: 34ch;">{{ c.label }}</p>
+                  <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .82rem; letter-spacing: .06em; color: var(--text-body);">{{ c.pct }}</span>
+                </div>
+                <div style="margin-top: .6rem; height: .5rem; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--surface);">
+                  <div style="{{ c.fillStyle }}"></div>
+                </div>
+                <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .58rem; letter-spacing: .11em; text-transform: uppercase; color: var(--text-subtle); margin: .5rem 0 0;">{{ c.source }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <p style="margin: clamp(2rem,4vw,2.5rem) 0 0;"><a href="Movemental Research Paper.dc.html#ai-credibility-crisis" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .13em; text-transform: uppercase;">Read the full paper →</a></p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSources }}" hint-placeholder-val="{{ false }}">
+      <div id="sources">
+        <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Verifiable</x-import>
+          <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,4.6vw,3.1rem); line-height: 1.05; letter-spacing: -.024em; margin: .7rem 0 0;">Every claim, sourced.</h1>
+          <p style="font-size: 1.06rem; line-height: 1.64; color: var(--text-body); margin: 1rem 0 0; max-width: 52ch;">We&rsquo;re the company that argues for verifiability. So here&rsquo;s ours.</p>
+          <p style="font-size: .95rem; line-height: 1.62; color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">Three layers, kept separate: <strong>empirical</strong> claims (prevalence, adoption, survey shares) carry source, date, and sample size; <strong>ethical</strong> and pastoral conclusions draw on separate reasoning; <strong>advocacy</strong> framing (Movemental&rsquo;s thesis, formation-before-deployment) is labeled as argument, not as survey fact. Percentages from different studies are not interchangeable — see the findings page for paired comparisons only.</p>
+        </section>
+
+        <section style="margin-top: clamp(1.75rem,4vw,2.5rem); display: flex; flex-wrap: wrap; align-items: center; gap: .45rem;">
+          <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body); margin-right: .3rem;">Group by</span>
+          <sc-for list="{{ groupChips }}" as="g" hint-placeholder-count="3">
+            <button type="button" onClick="{{ g.select }}" style="{{ g.style }}">{{ g.label }}</button>
+          </sc-for>
+          <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-subtle); margin-left: .3rem;">{{ sourceCount }}</span>
+        </section>
+
+        <section style="margin-top: clamp(1.25rem,3vw,1.75rem);">
+          <sc-for list="{{ sourceGroups }}" as="grp" hint-placeholder-count="1">
+            <div style="margin-bottom: clamp(1.5rem,3.5vw,2rem);">
+              <sc-if value="{{ grp.labelled }}" hint-placeholder-val="{{ false }}">
+                <div style="position: sticky; top: 6rem; z-index: 20; background: var(--bg); padding: .45rem 0; border-bottom: 1px solid var(--border); font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-strong);">{{ grp.label }}</div>
+              </sc-if>
+              <div style="border-top: 1px solid var(--border);">
+                <sc-for list="{{ grp.rows }}" as="s" hint-placeholder-count="10">
+                  <article class="mvm-srow" style="{{ s.rowStyle }}">
+                    <span style="{{ s.indexStyle }}">[{{ s.index }}]</span>
+                    <div style="flex: 1 1 22rem; min-width: 0;">
+                      <p style="font-size: 1rem; line-height: 1.5; color: var(--text-strong); margin: 0; max-width: 56ch;">{{ s.title }}</p>
+                      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .58rem; letter-spacing: .11em; text-transform: uppercase; color: var(--text-subtle); margin: .35rem 0 0;">{{ s.meta }}</p>
+                      <sc-if value="{{ s.hasCallout }}" hint-placeholder-val="{{ true }}">
+                        <p style="font-size: .93rem; line-height: 1.58; color: var(--text-body); margin: .5rem 0 0; max-width: 60ch; padding-left: .8rem; border-left: 1px solid var(--border);">{{ s.callout }}</p>
+                      </sc-if>
+                      <sc-if value="{{ s.noCallout }}" hint-placeholder-val="{{ false }}">
+                        <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: .5rem 0 0;">No pull-quote recorded on this source.</p>
+                      </sc-if>
+                      <div style="display: flex; flex-wrap: wrap; gap: .5rem .9rem; margin-top: .6rem;">
+                        <sc-if value="{{ s.hasUrl }}" hint-placeholder-val="{{ true }}">
+                          <a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase;">Open publication ↗</a>
+                        </sc-if>
+                        <sc-if value="{{ s.noUrl }}" hint-placeholder-val="{{ false }}">
+                          <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle);">No URL on this entry</span>
+                        </sc-if>
+                        <sc-if value="{{ s.hasCiters }}" hint-placeholder-val="{{ true }}">
+                          <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">Cited by: {{ s.citers }}</span>
+                        </sc-if>
+                        <sc-if value="{{ s.noCiters }}" hint-placeholder-val="{{ false }}">
+                          <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle);">Not cited by any paper's rail</span>
+                        </sc-if>
+                      </div>
+                    </div>
+                  </article>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </section>
+
+        <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: 1.5rem 0 0;">Sources current as of mid-2026. Verify against each provider before relying on them.</p>
+      </div>
+    </sc-if>
+
+    <section style="margin-top: clamp(2.5rem,6vw,3.5rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Measured, or structural</x-import>
+      <p style="font-size: 1rem; line-height: 1.62; color: var(--text-body); margin: 0; max-width: 62ch;">A measured claim carries a publisher, a date, and a sample size. A structural pattern does not, and is labelled as a pattern rather than dressed up as a survey number. The register at <a href="Movemental Footnotes.dc.html">Claims, sources, and notes</a> types every public claim on that basis.</p>
+    </section>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;view&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;findings&quot;,&quot;sources&quot;],&quot;default&quot;:&quot;findings&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;View&quot;},&quot;groupBy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;none&quot;,&quot;publisher&quot;,&quot;date&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Sources&quot;}}">
+/**
+ * `/research/findings` + `/research/sources` — two indexes, one file.
+ *
+ * Findings is `FINDINGS_HERO`, `FINDINGS_STAT_PANELS`, and
+ * `FINDINGS_TRUST_CHARTS`; sources is `MASTER_SOURCES` — all verbatim from
+ * `src/lib/research/data.ts`. The trust-deficit lede and the three-layer
+ * empirical/ethical/advocacy note are lifted from the repo's own
+ * `research-findings.tsx` and `research-sources.tsx`.
+ *
+ * On the prompt's reciprocity requirement: the repo has no findings→sources
+ * join table. What it does carry is each paper's `sources` rail, so "Cited by"
+ * is computed from the real rails in RESEARCH_ITEMS + RESEARCH_ARCHIVE — a
+ * relationship the data actually states. Sources no rail cites are flagged as
+ * such rather than hidden; that is the unsourced state the prompt asks to
+ * surface, and 19 of the 35 master sources are in it.
+ *
+ * No evidence grades are shown. The data carries `dim` (not load-bearing for a
+ * given paper) but no confidence grade, and assigning one would be a research
+ * judgment, not a design decision.
+ */
+const FINDINGS_LEDE = "Six independent studies converge on the same pattern: adoption is broad, {hl}capability is rare{/hl}, governance is mostly absent.";
+
+const PANELS = [
+  { primary: "92%", secondary: "7%", copy: "92% of nonprofits use AI in some form vs 7% report major capability gains", source: "Nonprofits · Virtuous · 2026 · n=346" },
+  { primary: "60%", secondary: "5%", copy: "60% of church leaders use AI monthly vs 5% of churches have an established AI policy", source: "Churches · Barna/Pushpay · 2026 · n=1,306" },
+  { primary: "88%", secondary: "6%", copy: "88% of organizations use AI in at least one function vs 6% qualify as high performers", source: "Enterprise · McKinsey · 2025 · n=1,993" },
+  { primary: "60%", secondary: "5%", copy: "60% of firms generate no material AI value vs 5% qualify as future-built", source: "Enterprise · BCG · 2025 · n=1,250" },
+];
+
+const CHARTS = [
+  { label: "43% of churchgoers disagree with their pastor using AI for sermon prep", value: 43, tone: "blue", source: "Lifeway · 2026 · n=1,200 churchgoers" },
+  { label: "62% of pastors are concerned about non-disclosure of AI involvement", value: 62, tone: "ink", source: "Lifeway · 2026 · n=1,003 pastors" },
+];
+
+const MASTER_SOURCES = [
+  { index: 1, title: "Virtuous & Fundraising.AI — The 2026 Nonprofit AI Adoption Report", meta: "Virtuous · 2026 · n=346", url: "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/", callout: "92% use AI in some form; only 7% report major organizational capability improvements; 47% have no governance policy." },
+  { index: 2, title: "Barna & Pushpay — State of Church Tech 2026", meta: "Barna / Pushpay · 2026 · n=1,306", url: "https://www.barna.com/research/church-leaders-ai-usage-concerns", callout: "60% of church leaders use AI monthly; only 5% of churches have an established AI policy." },
+  { index: 3, title: "McKinsey — The State of AI in 2025", meta: "McKinsey · 2025 · n=1,993", url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai", callout: "88% use AI in at least one function; 6% qualify as high performers; 55% of high performers redesigned workflows." },
+  { index: 4, title: "BCG — The Widening AI Value Gap (Build for the Future 2025)", meta: "BCG · 2025 · n=1,250", url: "https://www.bcg.com/publications/2025/widening-ai-value-gap-build-for-future-2025", callout: "60% generate no material value from AI; 5% qualify as future-built with AI-first operating models." },
+  { index: 5, title: "MIT NANDA — The GenAI Divide: State of AI in Business 2025", meta: "MIT NANDA · 2025", url: "https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf", callout: "Roughly 95% of corporate gen-AI pilots fail meaningful financial returns — integration and governance, not model quality, drive outcomes." },
+  { index: 6, title: "Lifeway Research — Pastors' Views on Artificial Intelligence", meta: "Lifeway · 2025 field / 2026 release · n=1,003 pastors", url: "https://research.lifeway.com/2026/04/21/pastors-churchgoers-see-ai-as-concerning-and-confusing/", callout: "42% of pastors use AI for ministry; 62% concerned about non-disclosure of AI involvement." },
+  { index: 7, title: "Lifeway Research — Churchgoers and AI in Sermon Preparation", meta: "Lifeway · 2026 · n=1,200 churchgoers", url: "https://research.lifeway.com/2026/04/21/pastors-churchgoers-see-ai-as-concerning-and-confusing/", callout: "43% disagree with their pastor using AI for sermon preparation (24% strongly)." },
+  { index: 8, title: "Stanford HAI — AI Index 2026", meta: "Stanford HAI · 2026", url: "https://hai.stanford.edu/ai-index/2026-ai-index-report/", callout: "Documents broad organizational uptake with uneven depth — transformation lags adoption." },
+  { index: 9, title: "Dell'Anna et al. — Navigating the Jagged Technological Frontier", meta: "HBS / MIT / BCG · 2023", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321", callout: "Large gains inside the frontier (+12% tasks, 25% faster); 19 points less accurate on one outside-frontier task." },
+  { index: 10, title: "Pew Research Center — Artificial Intelligence", meta: "Pew · ongoing", url: "https://www.pewresearch.org/topic/science/science-issues/artificial-intelligence/", callout: "Gold-standard US public opinion; use for disclosure reactions and trust trends, not vendor ROI." },
+  { index: 11, title: "NIST — AI Risk Management Framework", meta: "NIST · 2023+", url: "https://www.nist.gov/itl/ai-risk-management-framework", callout: "Voluntary US baseline for AI risk management; widely referenced by boards and CIOs." },
+  { index: 12, title: "Forvis Mazars — AI Governance for Nonprofit Boards", meta: "Forvis Mazars · 2026", url: "https://forvismazars.us/forsights/2026/02/ai-governance-for-nonprofit-boards", callout: "AI governance as a fiduciary issue — Care, Loyalty, and Obedience extend to technological oversight." },
+  { index: 13, title: "TechSoup & Tapp Network — State of AI in Nonprofits 2025", meta: "TechSoup · 2025 · n=1,321", url: "https://page.techsoup.org/ai-benchmark-report-2025", callout: "85.6% exploring AI; 24% with formal strategy; larger orgs adopt at roughly twice the rate of smaller ones." },
+  { index: 14, title: "FBI IC3 — Internet Crime Complaint Center (AI-enabled fraud)", meta: "FBI · 2025", url: "https://www.ic3.gov/", callout: "$893M in AI-attributed losses in 2025; voice-cloning fraud up sharply — sector underestimates exposure.", dim: true },
+  { index: 15, title: "NPR — Clergy grapple with the ethics of using AI to write sermons", meta: "NPR / Barna · 2025", url: "https://www.npr.org/2025/07/17/nx-s1-5468637/clergy-grapple-with-the-ethics-of-using-ai-to-write-sermons", callout: "12% comfortable with AI-written sermons; 43% see merit for preparation and research." },
+  { index: 16, title: "NTEN — 2025 Data Empowerment Report", meta: "NTEN · 2025 · n=220+", url: "https://word.nten.org/wp-content/uploads/2025/07/2025-Data-Empowerment-Report.pdf", callout: "AI data policies among the least implemented governance items as tool adoption rises.", dim: true },
+  { index: 17, title: "Barna & Gloo — State of the Church 2026 (AI & spiritual authority)", meta: "Barna / Gloo · 2026 · n=1,514", url: "https://www.barna.com/research/", callout: "Public attitudes on AI and spiritual authority — pair with Lifeway pastor data for leader/congregation gap.", dim: true },
+  { index: 18, title: "Edelman Trust Barometer 2025 — AI flash poll", meta: "Edelman · 2025", url: "https://www.edelman.com/trust/2025/trust-barometer/flash-poll-trust-artifical-intelligence", callout: "Uneven comfort with corporate AI use; geographic divergence in AI trust.", dim: true },
+  { index: 19, title: "Authors Guild — 2023 Author Income Survey", meta: "Authors Guild · 2023 · n=5,699 · income year 2022", url: "https://authorsguild.org/news/key-takeaways-from-2023-author-income-survey", callout: "Median book income $10,000 for full-time authors; $2,000 for whole sample including part-time; half of full-time authors below minimum wage on all writing work." },
+  { index: 20, title: "Substack — How much does Substack cost?", meta: "Substack Support · fee documentation", url: "https://support.substack.com/hc/en-us/articles/360037607131-How-much-does-Substack-cost", callout: "10% platform fee on paid subscriptions plus Stripe processing (2.9% + $0.30) and 0.7% recurring billing on renewals as of July 2024." },
+  { index: 21, title: "Pew — U.S. streaming and subscription habits", meta: "Pew · 2025", url: "https://www.pewresearch.org/short-reads/2025/07/01/83-of-us-adults-use-streaming-services-far-fewer-subscribe-to-cable-or-satellite-tv/", callout: "83% of U.S. adults use streaming services — reminder that attention and wallet share are contested even when creator tools are cheap.", dim: true },
+  { index: 22, title: "Google — Search Quality Rater Guidelines", meta: "Google · EEAT reference · updated periodically", url: "https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf", callout: "Primary reference for Experience, Expertise, Authoritativeness, and Trustworthiness — raters align systems, not hand-rank pages." },
+  { index: 23, title: "Aggarwal et al. — GEO: Generative Engine Optimization", meta: "Princeton / arXiv · 2023 · KDD 2024", url: "https://arxiv.org/abs/2311.09735", callout: "Introduces GEO framing and benchmark; reports material but bounded improvements with domain dependence — not a settled spec from Google or OpenAI." },
+  { index: 24, title: "Reuters Institute — Digital News Report 2025", meta: "Reuters · 2025 · global sample", url: "https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2025", callout: "40% overall trust in news (stable three years); 58% globally worry about true vs false online (73% U.S.); AI expected to make news cheaper but less trustworthy." },
+  { index: 25, title: "Stanford HAI — Labeling AI-Generated Content May Not Change Its Persuasiveness", meta: "Stanford HAI · policy brief", url: "https://hai.stanford.edu/policy/labeling-ai-generated-content-may-not-change-its-persuasiveness", callout: "Labels can shift attribution without reliably reducing persuasion for some message types — disclosure alone is insufficient for credibility protection.", dim: true },
+  { index: 26, title: "Pew — Reactions to learning AI was involved in content", meta: "Pew · Sep 2025 · n=5,023 · field Jun 9–15", url: "https://www.pewresearch.org/short-reads/2025/09/17/from-political-speeches-to-songs-how-would-americans-react-if-they-found-out-ai-was-involved/", callout: "71% would view a political candidate less favorably if AI helped write a speech they liked; 56% negative for a news article — post-hoc disclosure matters." },
+  { index: 27, title: "Hu et al. — Parameter-efficient fine-tuning of large language models", meta: "Nature Machine Intelligence · 2023", url: "https://doi.org/10.1038/s42256-023-00626-4", callout: "Survey of PEFT methods (LoRA, adapters); tenant-specific adaptation is feasible but entangled with base-model updates and data rights." },
+  { index: 28, title: "Ippolito et al. — Automatic detection of generated text", meta: "ACL · 2020", url: "https://doi.org/10.18653/v1/2020.acl-main.164", callout: "Human-likeness and machine detectability are not aligned — optimizing for plausibility can diverge from statistical consistency." },
+  { index: 29, title: "COPE — Authorship and AI tools", meta: "COPE · position statement", url: "https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools", callout: "AI cannot be an author; disclosure required; humans accountable for every line." },
+  { index: 30, title: "Dwivedi et al. — So what if ChatGPT wrote it?", meta: "International Journal of Information Management · 2023", url: "https://doi.org/10.1016/j.ijinfomgt.2023.102642", callout: "ChatGPT-era authorship stock-take — governance, accountability, and epistemic risk remain open; voice preservation not solved.", dim: true },
+  { index: 31, title: "OpenAI — Introducing ChatGPT", meta: "OpenAI · Nov 2022", url: "https://openai.com/index/chatgpt/", callout: "Public launch 30 November 2022 — fair marker for how recent lived generative-AI practice is at scale." },
+  { index: 32, title: "BCG — Generative AI and knowledge workers (Sept 2024)", meta: "BCG · 2024", url: "https://www.bcg.com/press/5september2024-generative-ai-knowledge-workers-consultants", callout: "Follow-on experiments with consultants — gains on some tasks, failure modes when junior staff use AI without senior verification." },
+  { index: 33, title: "Fernandes et al. — AI-assisted reasoning and calibration", meta: "Computers in Human Behavior · 2026", url: "https://doi.org/10.1016/j.chb.2025.108779", callout: "AI-assisted work can improve performance while worsening calibration — overconfidence sometimes higher among users with greater AI literacy.", dim: true },
+  { index: 34, title: "Ahrefs — What percentage of new content is AI-generated?", meta: "Ahrefs · Apr 2025 · 900k pages", url: "https://ahrefs.com/blog/what-percentage-of-new-content-is-ai-generated", callout: "74.2% of newly detected English pages contained some AI-flagged content; 2.5% pure AI, 25.8% pure human — detector-dependent, not peer-reviewed." },
+  { index: 35, title: "Cooke et al. — As Good As A Coin Toss", meta: "CACM · 2025 · ~1,300 participants", url: "https://doi.org/10.1145/3729417", callout: "Realistic multimodal synthetic stimuli — mean human discrimination accuracy near chance (~50%); do not rely on unaided perception alone." },
+];
+
+/** Real per-paper source rails from RESEARCH_ITEMS + RESEARCH_ARCHIVE. */
+const PAPER_RAILS = {
+  "The AI Credibility Crisis": [10, 18, 8],
+  "Finding AI Guidance Worth Trusting": [31, 32, 9],
+  "The Credibility Thesis": [10, 24],
+  "The Cost of Fragmentation": [18],
+  "Sandbox Discovery": [32, 9],
+  "The Skill of AI": [32, 9, 33],
+  "Scenius as Credibility Mechanism": [1, 2, 3],
+  "Trust, Verification, and Digital Identity": [24, 10, 18],
+  "Can AI Actually Sound Like You?": [26, 15, 29],
+  "Expert Discoverability in the Age of AI Search": [22, 23],
+  "Convergence on Trial": [19, 20, 10],
+  "Publishing Economics and the 90/10 Question": [19, 20, 21],
+  "The Credibility Crisis": [10, 34, 35, 24],
+};
+
+function splitHl(text) {
+  const out = [];
+  let rest = text;
+  for (;;) {
+    const open = rest.indexOf("{hl}");
+    if (open === -1) { if (rest) out.push({ text: rest, hl: false }); break; }
+    if (open > 0) out.push({ text: rest.slice(0, open), hl: false });
+    const after = rest.slice(open + 4);
+    const close = after.indexOf("{/hl}");
+    if (close === -1) { out.push({ text: after, hl: false }); break; }
+    out.push({ text: after.slice(0, close), hl: true });
+    rest = after.slice(close + 5);
+  }
+  return out;
+}
+
+const CITERS = (() => {
+  const map = new Map();
+  Object.keys(PAPER_RAILS).forEach((paper) => {
+    PAPER_RAILS[paper].forEach((idx) => {
+      if (!map.has(idx)) map.set(idx, []);
+      map.get(idx).push(paper);
+    });
+  });
+  return map;
+})();
+
+class Component extends DCLogic {
+  state = { view: null, groupBy: null };
+
+  componentDidMount() {
+    const hash = (window.location.hash || "").replace("#", "");
+    if (hash === "sources" || hash === "findings") this.setState({ view: hash });
+  }
+
+  setView = (view) => {
+    this.setState({ view });
+    if (window.history && window.history.replaceState) window.history.replaceState(null, "", "#" + view);
+  };
+
+  renderVals() {
+    const view = this.state.view || this.props.view || "findings";
+    const groupBy = this.state.groupBy || this.props.groupBy || "none";
+
+    const chip = (active) => ({
+      font: "inherit", fontFamily: "var(--font-mono), ui-monospace, monospace", fontSize: ".6rem",
+      letterSpacing: ".12em", textTransform: "uppercase",
+      border: active ? "1px solid var(--ink)" : "1px solid var(--border)",
+      background: active ? "var(--surface-card)" : "transparent",
+      color: active ? "var(--text-strong)" : "var(--text-body)",
+      borderRadius: "999px", padding: ".3rem .68rem", cursor: "pointer",
+    });
+
+    const rows = MASTER_SOURCES.map((s) => {
+      const citers = CITERS.get(s.index) || [];
+      return {
+        index: s.index,
+        title: s.title,
+        meta: s.meta,
+        url: s.url || "",
+        hasUrl: !!s.url,
+        noUrl: !s.url,
+        callout: s.callout || "",
+        hasCallout: !!s.callout,
+        noCallout: !s.callout,
+        citers: citers.join(" · "),
+        hasCiters: citers.length > 0,
+        noCiters: citers.length === 0,
+        publisher: s.meta.split("·")[0].trim(),
+        year: (s.meta.match(/\b(19|20)\d{2}\b/) || ["Undated"])[0],
+        rowStyle: {
+          display: "flex", flexWrap: "wrap", gap: ".75rem 1rem", alignItems: "flex-start",
+          borderBottom: "1px solid var(--border)",
+          padding: "clamp(1rem,2.4vw,1.3rem) .35rem",
+          opacity: s.dim ? 0.72 : 1,
+        },
+        indexStyle: {
+          flex: "0 0 2.5rem",
+          fontFamily: "var(--font-mono), ui-monospace, monospace",
+          fontSize: ".62rem", letterSpacing: ".1em",
+          color: s.dim ? "var(--text-subtle)" : "var(--ink-blue)",
+        },
+      };
+    });
+
+    let sourceGroups;
+    if (groupBy === "none") {
+      sourceGroups = [{ label: "", labelled: false, rows }];
+    } else {
+      const order = [];
+      const buckets = new Map();
+      rows.forEach((r) => {
+        const k = groupBy === "publisher" ? r.publisher : r.year;
+        if (!buckets.has(k)) { buckets.set(k, []); order.push(k); }
+        buckets.get(k).push(r);
+      });
+      sourceGroups = order.map((k) => ({ label: k, labelled: true, rows: buckets.get(k) }));
+    }
+
+    const unsourced = rows.filter((r) => r.noCiters).length;
+
+    return {
+      goLibrary: () => { window.location.href = "Movemental Research.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      isFindings: view === "findings",
+      isSources: view === "sources",
+      viewTabs: [
+        { id: "findings", label: "Findings" },
+        { id: "sources", label: "Sources" },
+      ].map((v) => ({ label: v.label, style: chip(v.id === view), select: () => this.setView(v.id) })),
+      groupChips: [
+        { id: "none", label: "None" },
+        { id: "publisher", label: "Publisher" },
+        { id: "date", label: "Date" },
+      ].map((g) => ({ label: g.label, style: chip(g.id === groupBy), select: () => this.setState({ groupBy: g.id }) })),
+      ledeParts: splitHl(FINDINGS_LEDE).map((p) => ({
+        text: p.text,
+        style: p.hl
+          ? { background: "var(--marker, #EAFF3A)", mixBlendMode: "multiply", padding: "0 .12em", boxDecorationBreak: "clone", WebkitBoxDecorationBreak: "clone" }
+          : {},
+      })),
+      panels: PANELS,
+      charts: CHARTS.map((c) => ({
+        label: c.label,
+        pct: c.value + "%",
+        source: c.source,
+        fillStyle: {
+          width: c.value + "%",
+          height: "100%",
+          background: c.tone === "blue" ? "var(--ink-blue)" : "var(--ink)",
+        },
+      })),
+      sourceGroups,
+      sourceCount: rows.length + " sources · " + unsourced + " not cited by any paper rail",
+    };
+  }
+}
+</script>
+</body>
+</html>

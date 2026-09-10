@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 
-import { FounderProfilePage } from "@/components/founders/founder-profile-page";
+import { FounderDetailView } from "@/v2/components/founders/founder-detail-view";
 import {
   FOUNDER_SLUGS,
   FOUNDER_SLUG_ALIASES,
@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonical = canonicalPageUrl(`/about/${profile.slug}`);
 
   return {
-    title: `${profile.name} — ${profile.jobTitle}`,
+    title: `${profile.name} — ${profile.jobTitle} | Movemental`,
     description: profile.oneLine,
-    alternates: { canonical },
+    alternates: { canonical: canonical ?? undefined },
     openGraph: {
-      url: canonical,
+      url: canonical ?? undefined,
       title: profile.name,
       description: profile.oneLine,
       type: "profile",
@@ -40,8 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-/** `/about/[slug]` — Person-schema founder profile (true home of the full bio). */
-export default async function FounderSlugPage({ params }: PageProps) {
+export default async function V2FounderSlugPage({ params }: PageProps) {
   const { slug } = await params;
   const resolved = resolveFounderSlug(slug);
   const profile = getFounderBySlug(slug);
@@ -62,7 +61,7 @@ export default async function FounderSlugPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <FounderProfilePage profile={profile} />
+      <FounderDetailView profile={profile} />
     </>
   );
 }

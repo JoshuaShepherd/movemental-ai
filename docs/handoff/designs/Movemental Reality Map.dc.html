@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    @keyframes mvmDraw { from { stroke-dashoffset: 340; } to { stroke-dashoffset: 0; } }
+    .mvm-fork:hover { border-color: var(--ink); transform: translateY(-1px); }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; } }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg);">
+
+  <header style="position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .15rem clamp(1rem,4vw,2.5rem) .25rem; border-bottom: var(--border-hairline); min-height: 3.25rem; background: rgba(251,250,246,0.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="flex: 0 0 auto; display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: clamp(2.6rem,6vw,3.6rem); margin-top: -.2rem; margin-bottom: -.7rem;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" dc-props="{{ crumbProps }}" hint-size="6rem,1.2rem">&#8593; Home</x-import>
+  </header>
+
+  <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width: 1080px; margin: 0 auto; box-sizing: border-box; padding: clamp(2rem,6vw,5rem) clamp(1.25rem,5vw,3rem) clamp(3rem,7vw,5rem);">
+      <div style="position: relative; padding-left: var(--margin-inset, 1.4rem); max-width: 44rem;">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+
+        <div style="animation: mvmRise .5s cubic-bezier(.2,.7,.2,1) both;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">Free &middot; Organizational Reality Map</x-import>
+        </div>
+
+        <h1 style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: clamp(2.1rem,5vw,3.6rem); line-height: var(--leading-tight); letter-spacing: var(--tracking-display); margin: 1rem 0 0; max-width: 24ch; text-wrap: pretty; animation: mvmRise .55s .06s cubic-bezier(.2,.7,.2,1) both;">Find out where your organization actually stands.</h1>
+
+        <p style="font-size: var(--body-lg); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1.1rem 0 0; max-width: 58ch; animation: mvmRise .55s .14s cubic-bezier(.2,.7,.2,1) both;">Six questions. Then we mirror your organization back to itself across the four stages of the path, and name the sharpest gaps. No score, no grade, and <span style="position: relative; white-space: nowrap; color: var(--text-strong); font-weight: var(--weight-medium);">no sales pitch<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: -.3rem; width: 100%; height: 10px; overflow: visible;"><path d="M2 7 C 40 2, 80 10, 120 5 S 180 3, 198 7" fill="none" stroke="var(--ink-blue)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="340" style="animation: mvmDraw .8s .8s cubic-bezier(.4,.05,.25,1) both;"></path></svg></span>.</p>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1.9rem; animation: mvmRise .55s .22s cubic-bezier(.2,.7,.2,1) both;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Button" onClick="{{ start }}" hint-size="13rem,2.7rem">Start the six questions</x-import>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Button" variant="secondary" onClick="{{ showExample }}" hint-size="14rem,2.7rem">See an example read-back</x-import>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ voiceWrapProps }}" hint-size="100%,2rem">Six honest questions. No wrong answers.</x-import>
+        </div>
+      </div>
+
+      <div style="margin-top: clamp(2.5rem,6vw,4rem); border-top: var(--border-hairline); padding-top: clamp(1.25rem,3vw,2rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: clamp(1rem,2.5vw,2rem); max-width: 60rem;">
+        <div>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="100%,1rem">What you get</x-import>
+          <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-strong); margin: .5rem 0 0;">A read-back naming where you stand on Safety, Sandbox, Training, and Tech &mdash; and which gap is sharpest.</p>
+        </div>
+        <div>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="100%,1rem">What it costs</x-import>
+          <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-strong); margin: .5rem 0 0;">Nothing. No email required to see your read-back.</p>
+        </div>
+        <div>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="100%,1rem">How long</x-import>
+          <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-strong); margin: .5rem 0 0;">About two minutes. One question at a time.</p>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isBeat }}">
+    <section style="max-width: 1080px; margin: 0 auto; box-sizing: border-box; padding: clamp(1.5rem,4vw,3rem) clamp(1.25rem,5vw,3rem) clamp(3rem,7vw,5rem);">
+
+      <div style="display: flex; align-items: center; gap: .9rem; flex-wrap: wrap;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="9rem,1rem">Question {{ step }} of 06</x-import>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.BeatDots" count="{{ total }}" current="{{ qi }}" hint-size="5rem,7px"></x-import>
+      </div>
+
+      <div style="position: relative; margin-top: clamp(1.5rem,4vw,2.5rem); padding-left: var(--margin-inset, 1.4rem); max-width: 44rem;">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+
+        <sc-if value="{{ showGhost }}" hint-placeholder-val="{{ true }}">
+          <span aria-hidden="true" style="display: block; font-family: var(--font-mono); font-size: clamp(3.5rem,9vw,6rem); line-height: .85; color: var(--ink); opacity: .07; letter-spacing: -.02em; margin-bottom: -.2rem;">{{ ghost }}</span>
+        </sc-if>
+
+        <div style="margin: .6rem 0 .9rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="8rem,1rem">{{ tag }}</x-import>
+        </div>
+
+        <p style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: var(--display-question); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: 0; text-wrap: pretty;">{{ question }}</p>
+
+        <div style="display: flex; flex-direction: column; gap: .6rem; margin-top: clamp(1.5rem,3.5vw,2.25rem); max-width: 34rem;">
+          <sc-for list="{{ options }}" as="opt" hint-placeholder-count="3">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.OptionButton" chosen="{{ opt.chosen }}" locked="{{ opt.locked }}" onClick="{{ opt.onPick }}" hint-size="100%,3rem">{{ opt.label }}</x-import>
+          </sc-for>
+        </div>
+
+        <div style="margin-top: 1.2rem; min-height: 2.6rem;">
+          <sc-if value="{{ hasVoice }}">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ voiceWrapProps }}" hint-size="100%,2rem">{{ voice }}</x-import>
+          </sc-if>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1.25rem; margin-top: 1.25rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ back }}" dc-props="{{ crumbProps }}" hint-size="5rem,1.2rem">&#8593; Back</x-import>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ restart }}" dc-props="{{ crumbProps }}" hint-size="7rem,1.2rem">&#8635; Start over</x-import>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isReadback }}">
+    <section style="max-width: 1080px; margin: 0 auto; box-sizing: border-box; padding: clamp(1.5rem,4vw,3rem) clamp(1.25rem,5vw,3rem) clamp(3rem,7vw,5rem);">
+
+      <sc-if value="{{ isExample }}">
+        <p style="display: inline-block; font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-strong); border: 1px solid var(--ink); border-radius: var(--radius-pill); padding: .4rem .8rem; margin: 0 0 1.25rem;">Example &middot; not your result</p>
+      </sc-if>
+
+      <div style="position: relative; padding-left: var(--margin-inset, 1.4rem);">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="10rem,1rem">Your read-back</x-import>
+        <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-body); margin: .5rem 0 clamp(1.5rem,3.5vw,2.25rem);">{{ orgLine }}</p>
+
+        <div style="display: flex; flex-direction: column; gap: .9rem; border-top: var(--border-hairline); padding-top: clamp(1.25rem,3vw,1.75rem); max-width: 46rem;">
+          <sc-for list="{{ stages }}" as="stage" hint-placeholder-count="4">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.PathLayer" n="{{ stage.n }}" term="{{ stage.name }}" gloss="{{ stage.line }}" here="{{ stage.here }}" dim="{{ stage.dim }}" hint-size="100%,1.6rem"></x-import>
+          </sc-for>
+        </div>
+
+        <p style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.4rem,3.2vw,2rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: clamp(1.75rem,4vw,2.75rem) 0 0; max-width: 40ch; text-wrap: pretty;">{{ rbLead }}</p>
+
+        <div style="max-width: 58ch; margin-top: 1.1rem; display: flex; flex-direction: column; gap: .9rem;">
+          <sc-for list="{{ rbBody }}" as="para" hint-placeholder-count="2">
+            <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 0;">{{ para.text }}</p>
+          </sc-for>
+        </div>
+
+        <div style="margin-top: 1.4rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ voiceWrapProps }}" hint-size="100%,2rem">{{ rbHandoff }}</x-import>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: .75rem; margin-top: clamp(1.75rem,4vw,2.5rem); max-width: 44rem;">
+          <a class="mvm-fork" href="Movemental Safety Stage.dc.html" style="display: flex; flex-direction: column; gap: .3rem; border: var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card); padding: 1.1rem 1.25rem; transition: border-color var(--dur-fast), transform var(--dur-fast);">
+            <span style="font-family: var(--font-display); font-size: var(--display-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-tight); color: var(--text-strong);">The free Handbook</span>
+            <span style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">Free &middot; a guide and five templates</span>
+            <span style="font-size: var(--body-xs); line-height: var(--leading-normal); color: var(--text-body);">The complete guide, yours to keep. You write all five documents at your own pace.</span>
+          </a>
+          <a class="mvm-fork" href="Movemental Safety Stage.dc.html" style="display: flex; flex-direction: column; gap: .3rem; border: 1px solid var(--ink); border-radius: var(--radius-lg); background: var(--surface-card); padding: 1.1rem 1.25rem; transition: border-color var(--dur-fast), transform var(--dur-fast);">
+            <span style="font-family: var(--font-display); font-size: var(--display-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-tight); color: var(--text-strong);">The Safety Dashboard</span>
+            <span style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">Free to start &middot; no call, no checkout</span>
+            <span style="font-size: var(--body-xs); line-height: var(--leading-normal); color: var(--text-body);">We draft all five documents to your organization. You edit, track, and ratify them.</span>
+          </a>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1.25rem; margin-top: 1.75rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ restart }}" dc-props="{{ crumbProps }}" hint-size="8rem,1.2rem">&#8635; Map it again</x-import>
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" dc-props="{{ crumbProps }}" hint-size="6rem,1.2rem">&#8593; Home</x-import>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <footer style="border-top: var(--border-hairline); background: var(--bg);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 1.5rem clamp(1.25rem,5vw,3rem) 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">
+      <span>Movemental &copy; 2026</span>
+      <span>We don&rsquo;t use urgency. No limited-time discounts.</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showGhostNumbers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Reality Map&quot;},&quot;exampleOrgName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Northgate Community Church&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Reality Map&quot;}}">
+/**
+ * Organizational Reality Map, web-first.
+ * Beats, options, agent replies and gap signals are lifted verbatim from
+ * src/lib/agent-room/data/beat-catalog.ts; stage labels from naming.ts.
+ * UI is composed from the Movemental design-system bundle (Eyebrow,
+ * SectionLabel, Crumb, Button, BeatDots, OptionButton, InkVoice, PathLayer).
+ * Deviation from the repo: a failed Safety gate does NOT terminate here — all
+ * six beats run, and the gate failure becomes the read-back's lead instead.
+ */
+const STAGE_RAIL = [
+  ["01", "Safety", "safety"],
+  ["02", "Sandbox", "sandbox"],
+  ["03", "Training", "training"],
+  ["04", "Tech", "tech"],
+];
+
+const STAGE_CLEAR = {
+  safety: "your Safety footing is real",
+  sandbox: "you have room to experiment",
+  training: "your people are ready",
+  tech: "your systems can carry tools",
+};
+
+const GATE_PASS = "Yes — written and ratified";
+const GATE_GAP_LINE = "leadership hasn't ratified Safety in writing yet";
+
+const THREAT = [
+  "Then here's what's true right now, whether or not anyone's named it:",
+  "AI is already in use across your staff, on donor records, member information, the pastoral and personal things people trusted you with, and no one has decided, on paper, what's allowed. The day that surfaces, in a board meeting, a news story, or a quiet complaint, the trust you spent decades earning is what pays for it.",
+  "That's not a tooling problem, and it's not solved by being careful. It's one decision your leadership hasn't made yet. It's the first move, and everything else — experimenting, training your people, building anything — waits on it.",
+];
+
+const BEATS = {
+  org_kind: {
+    tag: "Start",
+    q: "First — what kind of organization are you?",
+    opts: [
+      { t: "Church", say: "Got it — a church." },
+      { t: "Nonprofit", say: "Got it — a nonprofit." },
+      { t: "Seminary or institution", say: "Got it — a seminary or institution." },
+      { t: "Something else", say: "Got it — something else." },
+    ],
+  },
+  reality: {
+    tag: "Sandbox",
+    q: "Is AI already being used in your actual work — emails, donor letters, lesson plans, sermons, grants?",
+    opts: [
+      { t: "Yes, definitely", say: "AI is already in the actual work." },
+      { t: "Probably, but I'm not sure", say: "AI is probably in the work, but you're not certain.", read: { stage: "sandbox", line: "AI use is informal and unrecorded", sev: 1 } },
+      { t: "No, not yet", say: "AI isn't in the work yet.", read: { stage: "sandbox", line: "no bounded place to try AI against real work", sev: 2 } },
+    ],
+  },
+  visibility: {
+    tag: "Safety",
+    q: "Could your senior leadership, right now, name every AI tool your staff uses — and what goes into each one?",
+    opts: [
+      { t: "Yes, all of it", say: "Leadership can name every tool in use — rare, and good." },
+      { t: "Some of it", say: "Some of it but not all — the common middle.", read: { stage: "safety", line: "leadership cannot fully name tools in use", sev: 2 } },
+      { t: "Honestly, no", say: "That's the common answer, not the embarrassing one.", read: { stage: "safety", line: "no inventory of AI tools and data touched", sev: 3 } },
+    ],
+  },
+  decision: {
+    tag: "Safety",
+    q: "Has someone with the authority to decide actually decided what's okay — in writing, where staff can find it before they guess?",
+    opts: [
+      { t: GATE_PASS, say: "Someone with authority has decided, in writing.", gatePass: true },
+      { t: "We've talked about it", say: "Talked about, but not decided in writing.", gateFail: true },
+      { t: "No", say: "No one with the authority has decided yet.", gateFail: true },
+    ],
+  },
+  trust: {
+    tag: "Training",
+    q: "If a donor, parishioner, or board member learned tomorrow exactly how AI is used in your work — would it strengthen their trust, or shake it?",
+    opts: [
+      { t: "Strengthen it", say: "You think disclosure would strengthen trust." },
+      { t: "Not sure", say: "You're not sure whether disclosure would help.", read: { stage: "training", line: "readiness is uneven across the team", sev: 1 } },
+      { t: "Shake it", say: "You think disclosure today would shake trust.", read: { stage: "training", line: "the team is unformed for AI", sev: 2 } },
+    ],
+  },
+  refusals: {
+    tag: "Safety",
+    q: "Does it name specific things you refuse to do with AI — or is it general guidance?",
+    opts: [
+      { t: "Names specific refusals", say: "Named refusals — that's the bar for past Safety." },
+      { t: "It's more general", say: "General guidance, not named refusals.", read: { stage: "safety", line: "the charter names no specific refusals", sev: 2 } },
+    ],
+  },
+  worry: {
+    tag: "Last",
+    q: "Last one — what are you most worried about getting wrong?",
+    opts: [
+      { t: "Trust with the people we serve", say: "Trust with the people you serve is the worry." },
+      { t: "A data or privacy breach", say: "A data or privacy breach is the worry." },
+      { t: "Staff using it badly", say: "Staff using it badly is the worry." },
+      { t: "Falling behind", say: "Falling behind is the worry." },
+      { t: "Not sure yet", say: "You're not sure yet what worries you most." },
+    ],
+  },
+};
+
+const CORE = ["org_kind", "reality", "visibility", "decision", "trust"];
+const DECISION_INDEX = CORE.indexOf("decision");
+const TOTAL = 6;
+
+// Invented, clearly-labelled example org for the sample read-back.
+const EXAMPLE_ANSWERS = [
+  BEATS.org_kind.opts[0],
+  BEATS.reality.opts[1],
+  BEATS.visibility.opts[2],
+  BEATS.decision.opts[1],
+  BEATS.trust.opts[2],
+  BEATS.worry.opts[0],
+];
+
+const pad2 = (n) => (n < 10 ? "0" + n : String(n));
+
+function beatIdAt(qi, answers) {
+  if (qi < CORE.length) return CORE[qi];
+  if (qi === CORE.length) return answers[DECISION_INDEX] && answers[DECISION_INDEX].gatePass ? "refusals" : "worry";
+  return null;
+}
+
+function computeRead(answers) {
+  const stages = { safety: null, sandbox: null, training: null, tech: null };
+  const decision = answers[DECISION_INDEX];
+  const clearedSafety = !!(decision && decision.gatePass);
+  if (!clearedSafety && decision && decision.gateFail) {
+    stages.safety = { line: GATE_GAP_LINE, sev: 3 };
+  }
+  answers.forEach((opt) => {
+    const r = opt && opt.read;
+    if (!r) return;
+    const cur = stages[r.stage];
+    if (!cur || r.sev > cur.sev) stages[r.stage] = { line: r.line, sev: r.sev };
+  });
+  const gaps = ["safety", "sandbox", "training", "tech"]
+    .filter((k) => stages[k])
+    .map((k) => ({ stage: k, line: stages[k].line, sev: stages[k].sev }))
+    .sort((a, b) => b.sev - a.sev);
+  return { stages, gaps, clearedSafety };
+}
+
+class Component extends DCLogic {
+  state = { screen: "intro", qi: 0, answers: [], chosen: null, voice: "", example: false };
+
+  componentWillUnmount() {
+    if (this.timer) clearTimeout(this.timer);
+  }
+
+  pick = (oi) => {
+    if (this.state.chosen !== null) return;
+    const id = beatIdAt(this.state.qi, this.state.answers);
+    const opt = BEATS[id].opts[oi];
+    this.setState({ chosen: oi, voice: opt.say });
+    this.timer = setTimeout(() => {
+      const answers = this.state.answers.slice();
+      answers[this.state.qi] = opt;
+      const next = this.state.qi + 1;
+      if (next >= TOTAL) {
+        this.setState({ answers, screen: "readback", chosen: null, voice: "", example: false });
+      } else {
+        this.setState({ answers, qi: next, chosen: null, voice: "" });
+      }
+    }, 1400);
+  };
+
+  back = () => {
+    if (this.timer) clearTimeout(this.timer);
+    if (this.state.qi === 0) {
+      this.setState({ screen: "intro", chosen: null, voice: "" });
+      return;
+    }
+    this.setState({ qi: this.state.qi - 1, chosen: null, voice: "" });
+  };
+
+  restart = () => {
+    if (this.timer) clearTimeout(this.timer);
+    this.setState({ screen: "intro", qi: 0, answers: [], chosen: null, voice: "", example: false });
+  };
+
+  renderVals() {
+    const { screen, qi, chosen, example } = this.state;
+    const answers = example ? EXAMPLE_ANSWERS : this.state.answers;
+    const id = beatIdAt(qi, answers) || "worry";
+    const beat = BEATS[id];
+    const read = computeRead(answers);
+
+    // Where the org is on the path: the first stage with an unresolved gap.
+    const hereKey = read.stages.safety
+      ? "safety"
+      : read.stages.sandbox
+        ? "sandbox"
+        : read.stages.training
+          ? "training"
+          : "tech";
+    const hereIndex = STAGE_RAIL.findIndex(([, , k]) => k === hereKey);
+
+    let rbLead;
+    let rbBody;
+    let rbHandoff;
+    if (read.clearedSafety) {
+      rbLead = "Someone with authority has decided, in writing. That puts you past the first gate — which most organizations aren't.";
+      rbBody = [
+        read.gaps.length
+          ? "What's left is narrower, and further along the path: " + read.gaps.map((g) => g.line).join("; ") + "."
+          : "Nothing sharp surfaced in these six answers. That's unusual, and worth keeping.",
+        "Safety earned the next step. Sandbox is where you find out what actually helps — against real work, in a bounded place, with the charter you already ratified holding the edges.",
+      ];
+      rbHandoff = "You're past the first gate. Most aren't.";
+    } else {
+      rbLead = THREAT[0];
+      rbBody = [THREAT[1], THREAT[2]];
+      rbHandoff = "It starts with Safety. The rest comes after.";
+    }
+
+    return {
+      isIntro: screen === "intro",
+      isBeat: screen === "beat",
+      isReadback: screen === "readback",
+      isExample: example,
+      showGhost: this.props.showGhostNumbers ?? true,
+
+      // Design-system component prop spreads.
+      crumbProps: { style: { marginBottom: 0 } },
+      voiceWrapProps: { style: { whiteSpace: "normal", maxWidth: "34rem", lineHeight: 1.2 } },
+
+      start: () => this.setState({ screen: "beat", qi: 0, answers: [], chosen: null, voice: "", example: false }),
+      showExample: () => this.setState({ screen: "readback", example: true }),
+      back: this.back,
+      restart: this.restart,
+      goHome: () => { window.location.href = "Movemental Home v4.dc.html"; },
+
+      total: TOTAL,
+      qi,
+      step: pad2(qi + 1),
+      ghost: pad2(qi + 1),
+      tag: beat.tag,
+      question: beat.q,
+      voice: this.state.voice,
+      hasVoice: this.state.voice !== "",
+      options: beat.opts.map((o, oi) => ({
+        label: o.t,
+        chosen: chosen === oi,
+        locked: chosen !== null && chosen !== oi,
+        onPick: () => this.pick(oi),
+      })),
+
+      orgLine: example
+        ? (this.props.exampleOrgName ?? "Northgate Community Church") + " — 480 members, 11 staff. An invented organization, shown so you can see the shape of a read-back."
+        : "Across the four stages of the path, from your six answers.",
+      stages: STAGE_RAIL.map(([n, name, key], i) => {
+        const gap = read.stages[key];
+        return {
+          n,
+          name,
+          here: key === hereKey,
+          dim: i > hereIndex,
+          line: gap ? gap.line : STAGE_CLEAR[key],
+        };
+      }),
+      rbLead,
+      rbBody: rbBody.map((text) => ({ text })),
+      rbHandoff,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .6s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 4% entry 34%; }
+    .mvm-lift:hover { border-color: var(--ink) !important; transform: translateY(-1px); box-shadow: var(--shadow-lift); }
+    .mvm-navlink[data-on] { color: var(--ink) !important; }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; } }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg);">
+
+  <header style="position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 1rem; box-sizing: border-box; min-height: 3.6rem; height: 3.6rem; padding: .15rem clamp(1rem,4vw,2.5rem) .25rem; border-bottom: var(--border-hairline); background: rgba(251,250,246,0.94); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="flex: 0 0 auto; display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: clamp(2.6rem,6vw,3.6rem); margin-top: -.2rem; margin-bottom: -.7rem;">
+    </a>
+  </header>
+
+  <nav style="position: sticky; top: 3.6rem; z-index: 30; border-bottom: var(--border-hairline); background: rgba(246,243,236,0.94); backdrop-filter: blur(8px);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: .5rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem;">
+      <div style="flex: 0 0 auto; display: flex; align-items: center; gap: .35rem; border: var(--border-hairline); border-radius: var(--radius-pill); padding: .2rem; background: var(--surface-card);">
+        <sc-for list="{{ audiences }}" as="aud" hint-placeholder-count="3">
+          <button type="button" onClick="{{ aud.onPick }}" style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; border: 1px solid transparent; border-color: {{ aud.border }}; background: {{ aud.bg }}; color: {{ aud.color }}; border-radius: var(--radius-pill); padding: .4rem .7rem; cursor: pointer; transition: border-color var(--dur-fast), color var(--dur-fast);">{{ aud.label }}</button>
+        </sc-for>
+      </div>
+      <div style="flex: 1 1 14rem; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .3rem 1rem; font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">
+        <span style="color: var(--text-subtle);">{{ mastVolume }}</span>
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="7">
+          <a class="mvm-navlink" href="{{ item.href }}" style="color: var(--text-body);">{{ item.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero" style="border-bottom: var(--border-hairline); background: radial-gradient(120% 70% at 50% 0%, var(--paper-sheet) 0%, var(--paper-bg) 70%);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem) clamp(2rem,5vw,3.5rem);">
+      <div style="position: relative; padding-left: var(--margin-inset, 1.4rem); max-width: 46rem;">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">{{ hero.eyebrow }}</x-import>
+
+        <h1 style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: clamp(2.1rem,5.2vw,3.8rem); line-height: var(--leading-tight); letter-spacing: var(--tracking-display); margin: 1rem 0 0; max-width: 26ch; text-wrap: pretty;">{{ hero.leadClaim }}</h1>
+
+        <p style="font-size: var(--body-lg); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1.2rem 0 0; max-width: 62ch;">{{ hero.intro }}</p>
+
+        <sc-if value="{{ hero.hasClaim }}">
+          <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-strong); margin: 1.1rem 0 0; max-width: 62ch; border-left: 2px solid var(--ink-blue); padding-left: 1rem;">{{ hero.claim }}</p>
+        </sc-if>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1.75rem;">
+          <span style="position: relative; isolation: isolate; z-index: 0; display: inline-flex;">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SuggestionChip" label="{{ dock.chipLabel }}" lead="{{ true }}" onClick="{{ goMap }}" hint-size="12rem,2.2rem"></x-import>
+          </span>
+          <a href="Movemental Safety Stage.dc.html" style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase;">Start with Safety</a>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ voiceWrapProps }}" hint-size="100%,2rem">{{ dock.voiceLine }}</x-import>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: clamp(.75rem,2vw,1.1rem); margin-top: clamp(2rem,5vw,3rem);">
+        <sc-for list="{{ cards }}" as="card" hint-placeholder-count="6">
+          <div class="mvm-reveal" style="position: relative; border: var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card); padding: 1.15rem 1.25rem 1rem; display: flex; flex-direction: column; gap: .55rem;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: .75rem;">
+              <span style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">{{ card.where }}</span>
+              <span aria-hidden="true" style="font-family: var(--font-mono); font-size: 1.5rem; line-height: 1; color: var(--ink); opacity: .12;">{{ card.num }}</span>
+            </div>
+            <span style="display: block; width: 26px; height: 2px; background: {{ card.accent }};"></span>
+            <p style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: var(--display-sm); line-height: 1.25; letter-spacing: var(--tracking-tight); color: var(--text-strong); margin: 0;">{{ card.title }}</p>
+            <p style="font-size: var(--body-xs); line-height: var(--leading-normal); color: var(--text-body); margin: 0;">{{ card.body }}</p>
+
+            <sc-if value="{{ card.hasEvidence }}">
+              <div style="margin-top: auto; padding-top: .4rem;">
+                <x-import component-from-global-scope="MovementalDesignSystem_07416b.FaqItem" q="{{ card.evidenceLabel }}" open="{{ evidenceOpen }}" hint-size="100%,3rem">
+                  <span style="display: block; font-weight: var(--weight-semibold); color: var(--text-strong);">{{ card.evidenceBold }}</span>
+                  <span style="display: block; margin-top: .3rem;">{{ card.evidenceDetail }}</span>
+                  <span style="display: block; margin-top: .45rem; font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-subtle);">{{ card.evidenceSource }}</span>
+                </x-import>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ card.hasPatternTag }}">
+              <p style="margin: auto 0 0; padding-top: .5rem; font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-subtle);">{{ card.patternTag }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <p class="mvm-reveal" style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-body); margin: 1.25rem 0 0; max-width: 62ch; padding-left: var(--margin-inset, 1.4rem);">{{ cardsNote }}</p>
+    </div>
+  </section>
+
+  <section id="the-path" style="border-bottom: var(--border-hairline);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="max-width: 46rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">{{ path.eyebrow }}</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.7rem,3.6vw,2.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">{{ path.title }}</h2>
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">{{ path.intro }}</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: clamp(.75rem,2vw,1.1rem); margin-top: clamp(1.5rem,3.5vw,2.25rem);">
+        <sc-for list="{{ path.stages }}" as="stage" hint-placeholder-count="4">
+          <div class="mvm-reveal">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.WayCard" title="{{ stage.title }}" price="{{ stage.n }}" paid="{{ stage.isFirst }}" hint-size="100%,12rem">{{ stage.body }}</x-import>
+          </div>
+        </sc-for>
+      </div>
+
+      <p class="mvm-reveal" style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body); margin: 1.25rem 0 0;">{{ path.note }}</p>
+    </div>
+  </section>
+
+  <section id="stage-one" style="border-bottom: var(--border-hairline); background: var(--surface);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="position: relative; padding-left: var(--margin-inset, 1.4rem); max-width: 46rem;">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">{{ safety.eyebrow }}</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.7rem,3.6vw,2.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">{{ safety.title }}</h2>
+        <div style="display: flex; flex-direction: column; gap: .9rem; margin-top: 1rem;">
+          <sc-for list="{{ safety.paragraphs }}" as="para" hint-placeholder-count="2">
+            <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 0; max-width: 62ch;">{{ para.text }}</p>
+          </sc-for>
+        </div>
+        <sc-if value="{{ safety.hasMarginalia }}">
+          <p style="font-family: var(--font-hand); font-size: var(--hand-voice-old); color: var(--ink-blue); margin: .8rem 0 0;">{{ safety.marginalia }}</p>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ safety.hasCharterParts }}">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: .6rem; margin-top: clamp(1.5rem,3.5vw,2.25rem);">
+          <sc-for list="{{ safety.charterParts }}" as="part" hint-placeholder-count="5">
+            <div class="mvm-reveal">
+              <x-import component-from-global-scope="MovementalDesignSystem_07416b.FaqItem" q="{{ part.q }}" hint-size="100%,3rem">{{ part.body }}</x-import>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ safety.hasLetter }}">
+        <div class="mvm-reveal" style="margin-top: clamp(1.5rem,3.5vw,2.25rem); max-width: 44rem; border: var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card); padding: 1.25rem 1.4rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="100%,1rem">{{ safety.letterEyebrow }}</x-import>
+          <p style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: var(--display-md); letter-spacing: var(--tracking-tight); margin: .5rem 0 0;">{{ safety.letterTitle }}</p>
+          <p style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-body); margin: .5rem 0 0;">{{ safety.letterIntro }}</p>
+          <p style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-subtle); margin: .8rem 0 0;">The letter itself lives in the repo &mdash; not reproduced here</p>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="stage-four" style="border-bottom: var(--border-hairline);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="max-width: 46rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">{{ build.eyebrow }}</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.7rem,3.6vw,2.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">{{ build.title }}</h2>
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">{{ build.intro }}</p>
+      </div>
+
+      <sc-if value="{{ build.hasLayers }}">
+        <div style="display: flex; flex-direction: column; gap: .6rem; margin-top: clamp(1.5rem,3.5vw,2.25rem);">
+          <sc-for list="{{ build.layers }}" as="layer" hint-placeholder-count="4">
+            <div class="mvm-reveal" style="border: var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card); padding: 1rem 1.15rem;">
+              <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem;">
+                <span style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: var(--display-sm); letter-spacing: var(--tracking-tight);">{{ layer.title }}</span>
+                <span style="font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">{{ layer.tag }}</span>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem;">
+                <sc-for list="{{ layer.items }}" as="item" hint-placeholder-count="4">
+                  <span style="font-size: var(--body-xs); color: var(--text-body); border: var(--border-hairline); border-radius: var(--radius-pill); padding: .3rem .7rem; background: var(--bg);">{{ item.text }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+
+          <div class="mvm-reveal" style="border: 1px solid var(--ink); border-radius: var(--radius-lg); background: var(--surface-card); padding: 1.1rem 1.25rem;">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="100%,1rem">{{ build.charterMini.rn }}</x-import>
+            <p style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: var(--display-sm); letter-spacing: var(--tracking-tight); margin: .45rem 0 0;">{{ build.charterMini.title }}</p>
+            <p style="font-size: var(--body-xs); line-height: var(--leading-normal); color: var(--text-body); margin: .45rem 0 0; max-width: 60ch;">{{ build.charterMini.body }}</p>
+            <p style="font-family: var(--font-hand); font-size: var(--hand-voice-old); color: var(--ink-blue); margin: .6rem 0 0;">{{ build.charterMini.pin }}</p>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ build.hasFixRows }}">
+        <div style="display: flex; flex-direction: column; gap: .5rem; margin-top: clamp(1.5rem,3.5vw,2.25rem); max-width: 52rem;">
+          <sc-for list="{{ build.fixRows }}" as="row" hint-placeholder-count="4">
+            <div class="mvm-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: .35rem 1.25rem; border: var(--border-hairline); border-radius: var(--radius-md); background: var(--surface-card); padding: .85rem 1.1rem;">
+              <span style="font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-subtle); text-decoration: line-through;">{{ row.pain }}</span>
+              <span style="font-size: var(--body-sm); line-height: var(--leading-normal); color: var(--text-strong);">{{ row.gain }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="why-a-platform" style="background: var(--surface-inverse); color: var(--text-on-dark);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.5rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="max-width: 46rem;">
+        <p style="font-family: var(--font-mono); font-size: var(--label-md); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--marker); margin: 0;">{{ platform.eyebrow }}</p>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.7rem,3.6vw,2.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0; color: #FFFFFF;">{{ platform.title }}</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: clamp(1rem,2.5vw,2rem); margin-top: clamp(1.75rem,4vw,2.75rem);">
+        <sc-for list="{{ platform.slides }}" as="slide" hint-placeholder-count="4">
+          <div class="mvm-reveal">
+            <sc-if value="{{ slide.isQuote }}">
+              <p style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: var(--display-md); line-height: 1.3; letter-spacing: var(--tracking-tight); color: #FFFFFF; margin: 0;">{{ slide.quote }}</p>
+            </sc-if>
+            <sc-if value="{{ slide.hasBold }}">
+              <p style="font-size: var(--body-md); font-weight: var(--weight-semibold); color: #FFFFFF; margin: 0;">{{ slide.bold }}</p>
+            </sc-if>
+            <sc-if value="{{ slide.hasBody }}">
+              <p style="font-size: var(--body-sm); line-height: var(--leading-relaxed); color: var(--text-on-dark); margin: .5rem 0 0;">{{ slide.body }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="the-limit" style="border-bottom: var(--border-hairline); background: var(--surface);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem);">
+      <div class="mvm-reveal" style="position: relative; padding-left: var(--margin-inset, 1.4rem); max-width: 46rem;">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .5rem; width: 1.5px; background: var(--rule-accent); opacity: .32;"></span>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">{{ limit.eyebrow }}</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-medium); font-size: clamp(1.7rem,3.6vw,2.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">{{ limit.title }}</h2>
+        <div style="display: flex; flex-direction: column; gap: .9rem; margin-top: 1rem;">
+          <sc-for list="{{ limit.paragraphs }}" as="para" hint-placeholder-count="2">
+            <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 0; max-width: 62ch;">{{ para.text }}</p>
+          </sc-for>
+        </div>
+        <div style="margin-top: 1rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ voiceWrapProps }}" hint-size="100%,2rem">{{ limit.marginalia }}</x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="start">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(2.25rem,5.5vw,4rem) clamp(1.25rem,5vw,3rem) clamp(3rem,7vw,5rem);">
+      <div class="mvm-reveal" style="max-width: 44rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="100%,1rem">{{ start.eyebrow }}</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: clamp(1.9rem,4vw,2.8rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-display); margin: .7rem 0 0;">{{ start.title }}</h2>
+        <p style="font-size: var(--body-md); line-height: var(--leading-relaxed); color: var(--text-body); margin: 1rem 0 0; max-width: 62ch;">{{ start.body }}</p>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1.6rem;">
+          <a href="{{ start.mailto }}" style="font-family: var(--font-body); font-weight: var(--weight-medium); font-size: var(--body-md); background: var(--ink); color: var(--bg); border: 1px solid var(--ink); border-radius: var(--radius-md); padding: .72rem 1.15rem;">Talk to us</a>
+          <a class="mvm-lift" href="Movemental Reality Map.dc.html" style="font-family: var(--font-body); font-weight: var(--weight-medium); font-size: var(--body-md); background: var(--surface-card); color: var(--text-strong); border: var(--border-hairline); border-radius: var(--radius-md); padding: .72rem 1.15rem; transition: border-color var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast);">Map where we stand</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: var(--border-hairline); background: var(--bg);">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 1.5rem clamp(1.25rem,5vw,3rem) 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: var(--label-xs); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-body);">
+      <span>Movemental &copy; 2026</span>
+      <span>We don&rsquo;t use urgency. No limited-time discounts.</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;audience&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;churches&quot;,&quot;nonprofits&quot;,&quot;institutions&quot;],&quot;default&quot;:&quot;churches&quot;,&quot;tsType&quot;:&quot;\&quot;churches\&quot; | \&quot;nonprofits\&quot; | \&quot;institutions\&quot;&quot;,&quot;section&quot;:&quot;Edition&quot;},&quot;evidenceOpenByDefault&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Edition&quot;}}">
+/**
+ * The three audience editions — churches, nonprofits, institutions — as one
+ * switchable document.
+ *
+ * Copy is verbatim from the repo:
+ *   churches   → audience/audience-edition/churches-edition-config.ts
+ *   nonprofits → audience/audience-edition/nonprofits-edition-config.ts
+ *   institutions → audience/institutions-config.ts (a different experience in
+ *     the repo: sticky sidebar + a board letter read from disk). Its section
+ *     spine is mapped onto the shared one; the letter itself is not reproduced.
+ * Stage labels from lib/agent-room/naming.ts.
+ */
+const STAGES = [
+  { n: "Stage 01", title: "Safety", isFirst: true, body: "Decide in writing first. A ratified five-part AI Charter: what you believe, what is true today, what you will and will not do, and what happens when something breaks. Everything else builds on it." },
+  { n: "Stage 02", title: "Sandbox", body: "Then test it against real work. A Charter with nothing tested against it is theater. Your team tries AI on real tasks and marks each use green, yellow, or red." },
+  { n: "Stage 03", title: "Training", body: "Then form the people who carry it. Findings with no one to steward them go nowhere. An eight-week cohort builds discernment, authorship, and stewardship." },
+  { n: "Stage 04", title: "Tech", body: "Then build the tools, last. AI in the hands of people who cannot steward it is the 95% that fails. Built last, by formed people, on the working Charter, it is the part that holds." },
+];
+
+const charterParts = (rulesBody) => [
+  { n: "01", title: "Vision", body: "What you believe about AI in the life of your organization, written down so it can be agreed on, not assumed." },
+  { n: "02", title: "Plans", body: "What you intend to do with AI, and what you intend to refuse, before the first edge case arrives." },
+  { n: "03", title: "Reality", body: "What is actually true in your context: who is already using what, where the real exposure sits." },
+  { n: "04", title: "Rules", body: rulesBody },
+  { n: "05", title: "Response", body: "What you do when something goes wrong, named owners and clear steps, decided before you need them." },
+];
+
+const SAFETY_SHARED = {
+  eyebrow: "Stage one · Safety",
+  title: "The Charter is where you start",
+  marginalia: "this is the part you don't delegate",
+};
+
+const LIMIT_SHARED = {
+  eyebrow: "The limit",
+  title: "But tools alone aren't the answer",
+  marginalia: "formation before deployment",
+};
+
+const CONFIGS = {
+  churches: {
+    label: "Churches",
+    mastVolume: "For Churches · Vol. 01",
+    nav: [
+      ["#hero", "What's already true"], ["#the-path", "The path"], ["#stage-one", "Safety"],
+      ["#stage-four", "The build"], ["#why-a-platform", "A fair question"], ["#the-limit", "The limit"], ["#start", "Start"],
+    ],
+    hero: {
+      eyebrow: "What's already true",
+      leadClaim: "AI is already inside your church",
+      intro: "None of this is hypothetical. It is happening in churches like yours, right now. Six things are already true, and not one of them was chosen on purpose. Tap the evidence under any card to see the source.",
+    },
+    cardsNote: "Not one of these was decided on purpose. That is the actual problem, and it has one answer.",
+    cards: [
+      { where: "In the study", num: "01", accent: "blue", title: "AI is in the study, with no rule about the pulpit.", body: "Your staff are already using it to research, draft, and edit. Almost no church has written down where the line is.", evidence: { bold: "87% of US pastors now use AI in ministry; only 13% do not.", detail: "Nearly a quarter use it to write or edit sermons, up from 12% in 2024.", source: "Barna, State of the Church, Dec 2025 (n=442 pastors)" } },
+      { where: "Pastoral care", num: "02", accent: "margin", title: "Care is quietly being handed to a tool that cannot carry it.", body: "The line between using AI to prepare and letting it stand in for presence is real, and almost nowhere is it defended on purpose.", evidence: { bold: "Counseling-prep and message use is rising fast, while only ~13% of pastors abstain.", detail: "The line between preparation and substitution is moving, and most churches have not decided where it sits.", source: "Barna, State of the Church, Dec 2025" } },
+      { where: "In the pew", num: "03", accent: "ink", title: "Your people are already asking the machine about you.", body: "\u201cLook them up\u201d now means \u201cask an AI.\u201d Many in your pews are uneasy about all of it, and divided on what is even acceptable.", evidence: { bold: "61% of churchgoers say they are concerned about AI's influence on Christianity.", detail: "They split almost evenly, 44% to 43%, on whether using AI in sermon prep is even right.", source: "Lifeway Research / Christianity Today, 2026" } },
+      { where: "The record", num: "04", accent: "blue", title: "What the machine says about you may be invented.", body: "If your church is not legible to AI, the AI fills the gap on its own. The answer a stranger receives can be confidently wrong.", evidence: { bold: "Misinformation is pastors' single biggest concern about AI, named by 41%.", detail: "An AI describing your church can fabricate beliefs, history, and facts that were never yours.", source: "2025 State of AI in the Church (n=594)" } },
+      { where: "The conviction", num: "05", accent: "margin", title: "It will not represent what your church actually believes.", body: "Without a record it can read, the model guesses your positions. Your hardest-won convictions get flattened into an average.", evidence: { bold: "For the churches we serve, credibility is not an advantage. It is the product.", detail: "When the public front door to your church is an AI summary, an inaccurate one is not a marketing problem. It is a credibility one.", source: "Movemental, The Four-Stage Path" } },
+      { where: "The voice", num: "06", accent: "ink", title: "Your voice can be cloned, and it already is.", body: "A few seconds of sermon audio is enough. Scammers are using cloned pastors to ask congregations for donations and crypto.", evidence: { bold: "Scammers are cloning pastors' voices and accounts to solicit money from their own congregations.", detail: "Three seconds of public audio is enough to build a convincing copy.", source: "WIRED / FOX13 Memphis, 2026" } },
+    ],
+    path: {
+      eyebrow: "The path",
+      title: "The answer is not a tool. It is an order",
+      intro: "Four stages, and the order is not arbitrary. Skip one and the cost compounds in the single currency your church cannot afford to lose: its credibility.",
+      note: "Each stage answers the failure of the one before it. That is why we start with Safety.",
+    },
+    safety: {
+      ...SAFETY_SHARED,
+      paragraphs: [
+        "A written and ratified five-part AI Safety Charter is the first step, and nothing else on the path works without it. Without it, what chance do you have to align, get clear, decide, or act? And AI does not go away if you decline to say, plainly, what is true and real for your church today.",
+        "This is urgent because the risk is already here, carried in by AI that is already in the building. We show you how to write it yourself in the guidebook, or we walk through it with you in the dashboard.",
+      ],
+      charterParts: charterParts("The plain rules that govern AI use in specific areas, from sermon prep to pastoral care to donor data."),
+    },
+    build: {
+      eyebrow: "Stage four · Tech",
+      title: "Then we build the tools on top of it",
+      intro: "The working platform sits on the desk and in your pocket. It is built on the Charter, so what it publishes and what it says about you stays inside what your church has already decided.",
+      layers: [
+        { title: "Foundation", tag: "built on your Charter", items: ["Your website", "Accounts & dashboard", "AI assistant", "Library", "Visibility & trust", "Governance"] },
+        { title: "Publishing", tag: "your teaching, shared well", items: ["Sermons", "Pathways", "Devotionals", "Communications"] },
+        { title: "Formation", tag: "people, not just content", items: ["Cohorts", "Discipleship", "Small groups"] },
+        { title: "Relationships", tag: "a community that knows you're here", items: ["Care", "Connection", "Local presence"] },
+      ],
+      charterMini: { rn: "The foundation", title: "Your AI Safety Charter", body: "Everything above answers to the five documents below it. The platform cannot publish, represent, or speak outside what your board has ratified.", pin: "nothing the tools do is off-charter" },
+    },
+    platform: {
+      eyebrow: "A fair question",
+      title: "Isn't this just an expensive church website?",
+      slides: [
+        { kind: "quote", quote: "A real question. And the real answer isn't the one you'd expect." },
+        { kind: "content", bold: "A website builder gives you the surface.", body: "Pages, hosting, a give button. Then it leaves the part that matters to you: sharing your teaching, reaching your community, and being represented honestly by the systems that now answer for you." },
+        { kind: "content", bold: "A platform gives you the system underneath.", body: "Your teaching found and shared well. Tools built to your church. A presence an AI can represent faithfully because it can finally read who you are." },
+        { kind: "quote", quote: "You are not overpaying for a website.", body: "You are finally able to steward the ministry the way it deserves. The platform your church always needed, now that the cost of building it has come down." },
+      ],
+    },
+    limit: {
+      ...LIMIT_SHARED,
+      paragraphs: [
+        "Tools without discipleship is just a faster way to do the wrong thing well. A church can buy powerful technology and use it to quietly hollow out the very work it was meant to serve.",
+        "So the platform is never handed over on its own. It comes inside a path that forms people first. Discernment, authorship, and stewardship, in your people, before the tools are put in their hands.",
+      ],
+    },
+    start: {
+      eyebrow: "Start",
+      title: "Start with a conversation",
+      body: "Churches don't start this with a checkout button. They start with a talk. Tell us where you are, and we'll show you the first step honestly.",
+      mailto: "mailto:hello@movemental.ai?subject=Our%20church%20%E2%80%94%20first%20conversation",
+    },
+    dock: { voiceLine: "Curious where your church really stands with AI? I can map it with you.", chipLabel: "Map where we stand" },
+  },
+
+  nonprofits: {
+    label: "Non-profits",
+    mastVolume: "For Nonprofits · Vol. 01",
+    nav: [
+      ["#hero", "What's already true"], ["#the-path", "The path"], ["#stage-one", "Safety"],
+      ["#stage-four", "The build"], ["#why-a-platform", "A fair question"], ["#the-limit", "The limit"], ["#start", "Start"],
+    ],
+    hero: {
+      eyebrow: "What's already true",
+      leadClaim: "AI is already inside your organization",
+      intro: "None of this is hypothetical. It is happening in organizations like yours, right now. Six things are already true, and not one of them was chosen on purpose. Tap the evidence under any card to see the source.",
+    },
+    cardsNote: "Not one of these was decided on purpose. That is the actual problem, and it has one answer.",
+    cards: [
+      { where: "On staff desks", num: "01", accent: "blue", title: "AI is already inside your organization.", body: "Your staff are not waiting for a policy. Most use is one person, one personal account, one task at a time. The tools arrived before the decision did.", evidence: { bold: "92% of nonprofits already use AI in some form.", detail: "81% of that use runs through individual accounts, ad hoc, with no shared place to do it safely.", source: "Virtuous AI Readiness Report, 2026" } },
+      { where: "Donor records", num: "02", accent: "margin", title: "Donor records are sitting in tools you do not control.", body: "Someone pastes donor and beneficiary details into a personal AI account to clean up a list or draft an appeal. There is no contract, no retention rule, and no one ever decided this was allowed.", evidence: { bold: "81% of nonprofit AI use runs through individual accounts with no shared governance.", detail: "It is not negligence. It is what happens when the work has nowhere safe to go.", source: "Virtuous AI Readiness Report, 2026" } },
+      { where: "The board", num: "03", accent: "ink", title: "Your board has not met its duty yet.", body: "Nearly half of nonprofits have no AI governance policy at all. The board's job to oversee how the organization handles risk now includes this, whether or not anything has gone wrong so far.", evidence: { bold: "47% of nonprofits have no AI governance policy; 76% have no formal strategy.", detail: "The duty applies before the harm, not after it.", source: "Virtuous 2026; TechSoup 2025; Forvis Mazars 2026" } },
+      { where: "The gain", num: "04", accent: "blue", title: "The time you are saving is not adding up.", body: "Most teams report small gains from AI and little that compounds. Individual use never adds up to organizational strength on its own.", evidence: { bold: "Only about 5–7% of organizations see real capability improvement from AI.", detail: "Almost all of them redesigned how the work flows instead of bolting AI onto the old steps.", source: "Virtuous 2026; McKinsey State of AI, 2025" } },
+      { where: "The voice", num: "05", accent: "margin", title: "Your mission voice is drifting, quietly.", body: "Appeals start to sound generic. Reports round off the inconvenient detail. The specific, particular voice that made donors trust you gets sanded down a draft at a time.", evidence: { bold: "The loud risk is a data breach. The quiet one is worse, because no one notices it for a year.", detail: "When every staff member drafts with the same tool and no shared standard, your organization starts to read like every other organization.", source: "Movemental, pattern across nonprofit leaders" } },
+      { where: "The memory", num: "06", accent: "ink", title: "Every staff departure takes memory with it.", body: "A mid-tier donor who gave steadily for seven years drifts away, because the only person who knew them left, and the relationship lived in that person's head and inbox, not in anything the organization kept.", evidence: { bold: "It is one donor, then another. A slow leak no dashboard catches.", detail: "This is not a generosity problem. It is a memory problem.", source: "Movemental, pattern across nonprofit leaders" } },
+    ],
+    path: {
+      eyebrow: "The path",
+      title: "The answer is not a tool. It is an order",
+      intro: "Four stages, and the order is not arbitrary. Skip one and the cost compounds in the single currency your organization cannot afford to lose: its credibility.",
+      note: "Each stage answers the failure of the one before it. That is why we start with Safety.",
+    },
+    safety: {
+      ...SAFETY_SHARED,
+      paragraphs: [
+        "A written and ratified five-part AI Safety Charter is the first step, and nothing else on the path works without it. Without it, what chance do you have to align, get clear, decide, or act? And AI does not go away if you decline to say, plainly, what is true and real for your organization today.",
+        "This is urgent because the risk is already here, carried in by AI that is already in the building. We show you how to write it yourself in the guidebook, or we walk through it with you in the dashboard.",
+      ],
+      charterParts: charterParts("The plain rules that govern AI use in specific areas, from grant reports to donor data to beneficiary records."),
+    },
+    build: {
+      eyebrow: "Stage four · Tech",
+      title: "Then we build the tools on top of it",
+      intro: "The working platform sits on the desk and in your pocket. It is built on the Charter, so what it publishes and what it says about you stays inside what your board has already decided.",
+      layers: [
+        { title: "Foundation", tag: "built on your Charter", items: ["Your website", "Accounts & dashboard", "AI assistant", "Library", "Visibility & trust", "Governance"] },
+        { title: "Publishing", tag: "your impact, shared well", items: ["Stories", "Articles", "Programs", "Newsletter & media"] },
+        { title: "Formation", tag: "people, not just content", items: ["Pathways & courses", "Cohorts & community", "Certificates"] },
+        { title: "Relationships", tag: "donors who know you're here", items: ["Donor CRM", "Stewardship pipelines", "Grants & campaigns"] },
+      ],
+      charterMini: { rn: "The foundation", title: "Your AI Safety Charter", body: "Everything above answers to the five documents below it. The platform cannot publish, represent, or speak outside what your board has ratified.", pin: "nothing the tools do is off-charter" },
+    },
+    platform: {
+      eyebrow: "A fair question",
+      title: "Isn't this just an expensive nonprofit website?",
+      slides: [
+        { kind: "quote", quote: "A real question. And the real answer isn't the one you'd expect." },
+        { kind: "content", bold: "A website builder gives you the surface.", body: "Pages, hosting, a give button. Then it leaves the part that matters to you: sharing your impact, reaching your donors, and being represented honestly by the systems that now answer for you." },
+        { kind: "content", bold: "A platform gives you the system underneath.", body: "Your work found and shared well. Tools built for how your organization actually operates. A presence an AI can represent faithfully because it can finally read who you are." },
+        { kind: "quote", quote: "You are not overpaying for a website.", body: "You are finally able to steward the mission the way it deserves. The platform your organization always needed, now that the cost of building it has come down." },
+      ],
+    },
+    limit: {
+      ...LIMIT_SHARED,
+      paragraphs: [
+        "Tools without formation is just a faster way to do the wrong thing well. A board can buy powerful technology and use it to quietly hollow out the very work it was meant to serve.",
+        "So the platform is never handed over on its own. It comes inside a path that forms people first. Discernment, authorship, and stewardship, in your people, before the tools are put in their hands.",
+      ],
+    },
+    start: {
+      eyebrow: "Start",
+      title: "Start with a conversation",
+      body: "Nonprofits don't start this with a checkout button. They start with a talk. Tell us where your organization is, and we'll show you the first step honestly.",
+      mailto: "mailto:hello@movemental.ai?subject=Our%20nonprofit%20%E2%80%94%20first%20conversation",
+    },
+    dock: { voiceLine: "I can already see where your nonprofit stands. Want me to walk you through it?", chipLabel: "Map where we stand" },
+  },
+
+  institutions: {
+    label: "Institutions",
+    mastVolume: "For Seminaries & Institutions · Vol. 01",
+    nav: [
+      ["#hero", "Where you stand"], ["#the-path", "The path"], ["#stage-one", "The deeper problem"],
+      ["#stage-four", "The foundation"], ["#why-a-platform", "The case"], ["#the-limit", "Formation"], ["#start", "Start"],
+    ],
+    hero: {
+      eyebrow: "A note to seminary & institution leaders",
+      leadClaim: "Are you called to lead in response to AI?",
+      intro: "We're about to make a bold claim. It deserves your scrutiny. And if you find that you agree with it, it asks for urgent action. So we'll be exact about what that action is.",
+      claim: "AI is already inside your seminary. That single reality asks for one immediate move. Write and ratify your AI Safety Charter: five plain documents that set out your vision, your plans, your reality, your rules, and your response to AI. Nothing more complicated than that. Nothing less urgent.",
+    },
+    cardsNote: "Three of the six points above are not statistics. They are structural patterns we see across institutions, written as scenes, never dressed up as survey numbers. Only measured claims carry a source.",
+    cards: [
+      { where: "Your students", num: "01", accent: "blue", title: "Your students are already using it. Almost no one is teaching them how.", body: "Around four in five students now use generative AI in their coursework. They draft, they do exegesis, they write with it. Most get no real guidance on how to think about it, and the graduates you send out will lead churches in an AI world they were never taught to navigate.", evidence: { bold: "~80% of university students use generative AI in their coursework.", detail: "", source: "Stanford HAI, 2026" } },
+      { where: "The faculty", num: "02", accent: "margin", title: "Every professor has a different rule, and the student just guesses.", body: "One faculty member welcomes AI. The next calls it cheating. Your institution has no shared account of what AI use means for formation, so the student improvises, and the credential quietly comes to mean different things depending on whose class they took.", pattern: "A pattern leaders recognize" },
+      { where: "The credential", num: "03", accent: "ink", title: "Your degree does not mean one thing anymore.", body: "What the degree stood for in 2011, in 2014, and in 2023 drifted, a little at a time, and no faculty body ever reconciled the three. A credential is a promise that the institution behind it is coherent. When formation is scattered, that promise erodes slowly, and then all at once when an accreditor, an employer, or a peer institution notices.", pattern: "A pattern leaders recognize" },
+      { where: "The board", num: "04", accent: "blue", title: "The duty to govern this now sits with your board.", body: "A board's basic duties of care, loyalty, and obedience now include how the institution governs AI. This is not optional and not only a technology matter. It means naming who is accountable, requiring that vendors be accountable too, and folding AI risk into how the institution manages every other risk.", evidence: { bold: "AI governance now expands the board's fiduciary duties of care, loyalty, and obedience.", detail: "", source: "Forvis Mazars, 2026" } },
+      { where: "The archive", num: "05", accent: "margin", title: "Your own archive is lost to you.", body: "The dissertations, the curricula, the journals, the decades of scholarship are all saved somewhere, and almost none of it is findable. Doctoral students reach conclusions your faculty reached thirty years ago. The institution built to hold knowledge across generations cannot, in practice, learn from itself.", pattern: "A pattern leaders recognize" },
+      { where: "Your name", num: "06", accent: "ink", title: "Your name can be faked, and the model speaks for you by default.", body: "A professor's writing or voice can be copied in minutes, and your name no longer proves a thing is really yours. Worse, when someone asks a general model about your institution's position, it answers with confidence, and it is often wrong, because your actual position was never gathered into one place a model could find. You are being represented, at scale, by a tool you never authorized.", evidence: { bold: "Voice-cloning fraud rose 400%+ year over year; $893M in AI-related scam losses in 2025.", detail: "", source: "FBI IC3, 2025" } },
+    ],
+    path: {
+      eyebrow: "The path",
+      title: "There's an order, and it doesn't start with the tech",
+      intro: "We don't do this all at once, and we don't start with the tech. There's an order. Safety first, decide in writing what you will and won't do with AI. Then Sandbox, test it against real work. Then Training, form your people. Then Tech, build the tools. Each step earns the next. Your first move is Safety.",
+      note: "Each step earns the next. Your first move is Safety.",
+    },
+    safety: {
+      eyebrow: "The deeper problem",
+      title: "These aren't six problems. They're one.",
+      paragraphs: [
+        "Underneath all of it is one thing: your seminary is scattered. Your faculty, your scholarship, and your record sit in pieces that don't connect. Syllabi in one place. Scholarship in another. Formation pathways nowhere visible as a whole.",
+        "AI built on top of that doesn't fix the mess. It makes more of it, faster.",
+        "For a seminary, the thing most at risk is the thing you can't replace. A business that makes an AI mistake loses a client. You'd lose trust in the credential itself. That trust is the whole product.",
+        "You also carry a weight other places don't. Whatever you decide about AI becomes the example every church your graduates lead will follow. Doing nothing is still a choice. It teaches them that no one needs to think about this carefully.",
+      ],
+      letter: {
+        eyebrow: "The case",
+        title: "The full case, in one letter.",
+        intro: "Here's the whole argument in plain words, written for your president and board. Read it here, or download it to send.",
+      },
+    },
+    build: {
+      eyebrow: "The foundation",
+      title: "We gather what's scattered into one place.",
+      intro: "Movemental takes your faculty, your scholarship, and your record and gathers them into one connected foundation, one place your seminary owns. Visible to your board. Verifiable for accreditation and governance. Built from what's actually yours.",
+      fixRows: [
+        { pain: "Your archive was lost", gain: "now it's in one place you can search and build on." },
+        { pain: "Your name could be faked", gain: "now there's a verified record of what's really yours." },
+        { pain: "Your credential drifted", gain: "now there's one clear account of what the degree means." },
+        { pain: "Your chatbot sounded generic", gain: "now it can answer real questions about you, because it's grounded in your own material." },
+      ],
+    },
+    platform: {
+      eyebrow: "A fair question",
+      title: "Movemental, or a website builder?",
+      slides: [
+        { kind: "quote", quote: "Which is usually where a board member frames it as a choice: Movemental, or a website builder?" },
+        { kind: "content", bold: "For an institution, the obvious way to settle that turns out to be the wrong one.", body: "A builder gives you the surface. What a seminary needs is the system underneath: the archive made findable, the record made verifiable, the position made legible to the models that now answer for you." },
+        { kind: "quote", quote: "The working platform sits on the desk and in your pocket.", body: "Built last, on a Charter your board has ratified, by faculty formed to steward it." },
+      ],
+    },
+    limit: {
+      eyebrow: "Formation",
+      title: "But tools alone aren't the answer.",
+      paragraphs: [
+        "Here's the part most people skip. Tech without formed people isn't progress. It's replacement. It's also how most AI projects fail.",
+        "A foundation only holds if your faculty can steward it. The tools come with formation. Discernment stays with your leaders. Authorship keeps a real human behind the words. Stewardship cares for what's been entrusted to you.",
+        "For a seminary, this isn't an add-on. Forming people is what you already do. It's the part you, of all places, should lead with. The technology and the training are linked on purpose. One without the other doesn't work.",
+      ],
+      marginalia: "Formation isn't extra. It's the point.",
+    },
+    start: {
+      eyebrow: "Start",
+      title: "Start with a conversation.",
+      body: "Institutions don't start this with a checkout button. They start with a talk. Tell us where your seminary is, and we'll show you the first step. The letter above is yours to share with your board while you decide.",
+      mailto: "mailto:hello@movemental.ai?subject=Our%20seminary%20%E2%80%94%20first%20conversation",
+    },
+    dock: { voiceLine: "Want to see where your institution actually stands with AI? Let's map it together.", chipLabel: "Map where we stand" },
+  },
+};
+
+const ACCENTS = { blue: "var(--ink-blue)", margin: "var(--margin-red)", ink: "var(--ink)" };
+const ORDER = ["churches", "nonprofits", "institutions"];
+
+class Component extends DCLogic {
+  state = { audience: null };
+
+  renderVals() {
+    const key = this.state.audience ?? this.props.audience ?? "churches";
+    const c = CONFIGS[key] ?? CONFIGS.churches;
+
+    return {
+      audiences: ORDER.map((k) => ({
+        label: CONFIGS[k].label,
+        border: k === key ? "var(--ink)" : "transparent",
+        bg: k === key ? "var(--bg)" : "transparent",
+        color: k === key ? "var(--text-strong)" : "var(--text-body)",
+        onPick: () => this.setState({ audience: k }),
+      })),
+      mastVolume: c.mastVolume,
+      nav: c.nav.map(([href, label]) => ({ href, label })),
+
+      voiceWrapProps: { style: { whiteSpace: "normal", maxWidth: "36rem", lineHeight: 1.2 } },
+      goMap: () => { window.location.href = "Movemental Reality Map.dc.html"; },
+      goSafety: () => { window.location.href = "Movemental Safety Stage.dc.html"; },
+      evidenceOpen: this.props.evidenceOpenByDefault ?? false,
+
+      hero: {
+        eyebrow: c.hero.eyebrow,
+        leadClaim: c.hero.leadClaim,
+        intro: c.hero.intro,
+        hasClaim: !!c.hero.claim,
+        claim: c.hero.claim ?? "",
+      },
+      dock: c.dock,
+      cards: c.cards.map((card) => ({
+        where: card.where,
+        num: card.num,
+        accent: ACCENTS[card.accent] ?? ACCENTS.ink,
+        title: card.title,
+        body: card.body,
+        hasEvidence: !!card.evidence,
+        evidenceLabel: "The evidence",
+        evidenceBold: card.evidence ? card.evidence.bold : "",
+        evidenceDetail: card.evidence ? card.evidence.detail : "",
+        evidenceSource: card.evidence ? card.evidence.source : "",
+        hasPatternTag: !!card.pattern,
+        patternTag: card.pattern ?? "",
+      })),
+      cardsNote: c.cardsNote,
+
+      path: {
+        eyebrow: c.path.eyebrow,
+        title: c.path.title,
+        intro: c.path.intro,
+        note: c.path.note,
+        stages: STAGES.map((s) => ({ n: s.n, title: s.title, body: s.body, isFirst: !!s.isFirst })),
+      },
+
+      safety: {
+        eyebrow: c.safety.eyebrow,
+        title: c.safety.title,
+        paragraphs: c.safety.paragraphs.map((text) => ({ text })),
+        hasMarginalia: !!c.safety.marginalia,
+        marginalia: c.safety.marginalia ?? "",
+        hasCharterParts: !!c.safety.charterParts,
+        charterParts: (c.safety.charterParts ?? []).map((p) => ({ q: p.n + " · " + p.title, body: p.body })),
+        hasLetter: !!c.safety.letter,
+        letterEyebrow: c.safety.letter ? c.safety.letter.eyebrow : "",
+        letterTitle: c.safety.letter ? c.safety.letter.title : "",
+        letterIntro: c.safety.letter ? c.safety.letter.intro : "",
+      },
+
+      build: {
+        eyebrow: c.build.eyebrow,
+        title: c.build.title,
+        intro: c.build.intro,
+        hasLayers: !!c.build.layers,
+        layers: (c.build.layers ?? []).map((l) => ({
+          title: l.title,
+          tag: l.tag,
+          items: l.items.map((text) => ({ text })),
+        })),
+        charterMini: c.build.charterMini ?? { rn: "", title: "", body: "", pin: "" },
+        hasFixRows: !!c.build.fixRows,
+        fixRows: c.build.fixRows ?? [],
+      },
+
+      platform: {
+        eyebrow: c.platform.eyebrow,
+        title: c.platform.title,
+        slides: c.platform.slides.map((s) => ({
+          isQuote: s.kind === "quote",
+          quote: s.quote ?? "",
+          hasBold: !!s.bold,
+          bold: s.bold ?? "",
+          hasBody: !!s.body,
+          body: s.body ?? "",
+        })),
+      },
+
+      limit: {
+        eyebrow: c.limit.eyebrow,
+        title: c.limit.title,
+        paragraphs: c.limit.paragraphs.map((text) => ({ text })),
+        marginalia: c.limit.marginalia,
+      },
+
+      start: c.start,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

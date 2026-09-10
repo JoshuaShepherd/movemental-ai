@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .55s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 3% entry 30%; }
+    .mvm-stage { transition: border-color var(--dur-fast), background var(--dur-fast); }
+    .mvm-stage:hover { border-color: var(--ink); }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Home</x-import>
+  </header>
+
+  <main style="max-width: 1080px; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,3rem) 0;">
+
+    <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+      <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">The path</x-import>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,4.8vw,3.4rem); line-height: 1.04; letter-spacing: -.024em; margin: .7rem 0 0; max-width: 22ch; text-wrap: pretty;">Four stages, in order. Every price public.</h1>
+      <p style="font-size: 1.06rem; line-height: 1.6; color: var(--text-body); margin: 1rem 0 0; max-width: 58ch;">The same figure for a 500-person church and a 50,000-member denomination. Nothing here is negotiated, and nothing here is quoted after a call.</p>
+      <div style="margin-top: 1.1rem;">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ inkProps }}" hint-size="100%,2rem">Each step earns the next.</x-import>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem); border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); padding: clamp(1.25rem,3vw,1.9rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">The order is the product</x-import>
+      <div style="display: grid; gap: .85rem;">
+        <sc-for list="{{ stageRail }}" as="s" hint-placeholder-count="4">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.PathLayer" n="{{ s.step }}" term="{{ s.title }}" gloss="{{ s.descriptor }}" hint-size="100%,1.5rem"></x-import>
+        </sc-for>
+      </div>
+      <p style="font-size: .95rem; line-height: 1.55; color: var(--text-body); margin: 1.2rem 0 0; max-width: 60ch;">Attempting tech before safety opens you to data breaches. Changing the order collapses the required human formation.</p>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Every route, every figure</x-import>
+      <div style="display: grid; gap: .75rem;">
+        <sc-for list="{{ stages }}" as="st" hint-placeholder-count="4">
+          <div id="{{ st.id }}" class="mvm-stage" style="{{ st.shellStyle }}">
+            <button type="button" onClick="{{ st.toggle }}" style="{{ st.headStyle }}">
+              <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .68rem; letter-spacing: .14em; color: var(--text-body); flex: 0 0 auto;">{{ st.step }}</span>
+              <span style="flex: 1 1 12rem; min-width: 0; text-align: left;">
+                <span style="display: block; font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.25rem,2.6vw,1.6rem); line-height: 1.15; letter-spacing: -.018em;">{{ st.title }}</span>
+                <span style="display: block; font-size: .93rem; color: var(--text-body); margin-top: .2rem;">{{ st.descriptor }}</span>
+              </span>
+              <span style="flex: 0 0 auto; font-family: var(--font-mono), ui-monospace, monospace; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-body); text-align: right;">{{ st.priceLine }}</span>
+            </button>
+            <sc-if value="{{ st.open }}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 0 clamp(1rem,2.6vw,1.5rem) clamp(1.1rem,2.6vw,1.5rem); display: grid; gap: .85rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));">
+                <sc-for list="{{ st.ways }}" as="w" hint-placeholder-count="2">
+                  <div style="display: flex; flex-direction: column;">
+                    <x-import component-from-global-scope="MovementalDesignSystem_07416b.WayCard" title="{{ w.title }}" price="{{ w.price }}" paid="{{ w.paid }}" style="{{ w.cardStyle }}" hint-size="100%,9rem">{{ w.description }}</x-import>
+                    <sc-if value="{{ w.hasCta }}" hint-placeholder-val="{{ false }}">
+                      <a href="{{ w.ctaHref }}" style="{{ w.ctaStyle }}">{{ w.ctaLabel }}</a>
+                    </sc-if>
+                    <sc-if value="{{ w.placeholder }}" hint-placeholder-val="{{ false }}">
+                      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: .7rem 0 0;">No link yet — the guide is not written.</p>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">What this pricing refuses</x-import>
+      <div style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem); max-width: 62ch;">
+        <span style="position: absolute; left: .2rem; top: .35rem; bottom: .35rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+        <p style="font-family: var(--font-display), Georgia, serif; font-size: clamp(1.2rem,2.6vw,1.6rem); line-height: 1.34; letter-spacing: -.014em; margin: 0;">No urgency. No scarcity. No spots filling fast. If any of that ever shows up in how we treat you, you should trust us less.</p>
+      </div>
+      <div style="display: grid; gap: .7rem; margin-top: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));">
+        <sc-for list="{{ refusals }}" as="r" hint-placeholder-count="5">
+          <div style="border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-card); padding: 1rem 1.05rem;">
+            <p style="font-size: .95rem; font-weight: 500; margin: 0; color: var(--text-strong);">{{ r.q }}</p>
+            <p style="font-size: .92rem; line-height: 1.55; color: var(--text-body); margin: .45rem 0 0;">{{ r.a }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <sc-if value="{{ showFaq }}" hint-placeholder-val="{{ true }}">
+      <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem);">
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Cost, time, and the boring questions</x-import>
+        <div style="display: grid; gap: .55rem; max-width: 62rem;">
+          <sc-for list="{{ faq }}" as="f" hint-placeholder-count="8">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.FaqItem" q="{{ f.q }}" hint-size="100%,3rem">{{ f.a }}</x-import>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <section class="mvm-reveal" style="margin-top: clamp(3rem,7vw,4.5rem); border-top: 1px solid var(--border); padding-top: clamp(2rem,4vw,2.75rem);">
+      <h2 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.5rem,3.2vw,2.1rem); line-height: 1.1; letter-spacing: -.02em; margin: 0;">Start where you actually are.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem;">
+        <a href="Movemental Reality Map.dc.html" style="font-size: .97rem; font-weight: 500; color: var(--bg); background: var(--ink); border: 1px solid var(--ink); border-radius: var(--radius-md); padding: .72rem 1.15rem;" style-hover="background: var(--ink-blue); border-color: var(--ink-blue); text-decoration: none;">Map where we stand</a>
+        <a href="Movemental Safety Stage.dc.html" style="font-size: .97rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .72rem 1.15rem;" style-hover="border-color: var(--ink); text-decoration: none;">Read Stage 01 · Safety</a>
+        <a href="mailto:josh@movemental.ai" style="font-size: .97rem; font-weight: 500; color: var(--text-strong); background: transparent; border: 1px solid var(--border); border-radius: var(--radius-md); padding: .72rem 1.15rem;" style-hover="border-color: var(--ink); text-decoration: none;">Talk to us</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;openStage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;safety&quot;,&quot;sandbox&quot;,&quot;training&quot;,&quot;tech&quot;],&quot;default&quot;:&quot;safety&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Stages&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+/**
+ * `/program` — the four stages and all public pricing.
+ *
+ * Every figure, title, price line and CTA label is lifted character for
+ * character from `src/lib/agent-room/data/pricing.ts`. Stage labels come from
+ * `naming.ts` (Safety · Sandbox · Training · Tech); the accordion headers use
+ * `PRICING_STAGE_HEADERS`, with the same derivation the repo applies.
+ *
+ * Training's and Tech's free field guides are `placeholder: true` with empty
+ * ctaLabel/ctaHref — they render with no link, as the data says.
+ *
+ * The repo's own `/program` route is an authenticated stub that redirects to
+ * /login; this is the public pricing surface that route's copy points at.
+ *
+ * Refusals and FAQ are verbatim entries from `data/faq.ts`; the no-urgency
+ * line is `SAFETY_FLOW_SIGNUP_COPY.noUrgency`.
+ */
+const SAFETY_FREE = {
+  title: "Free, and we guide you.",
+  price: "Free · about 1 to 2 months, self-paced",
+  description: "The handbook, It Starts With Safety. Your team drafts all five layers, and we guide you when you need it.",
+  ctaLabel: "Start free, we'll guide you",
+  ctaHref: "Movemental Field Guide.dc.html",
+};
+const SAFETY_PAID = {
+  title: "We do it with you.",
+  price: "$1,000 · two weeks, start to finish",
+  description: "We draft all five layers customized to your organization. Your team reviews and ratifies in the dashboard. The full step takes two weeks from kickoff to board-ready charter.",
+  ctaLabel: "Have us do it · $1,000",
+  ctaHref: "Movemental Enroll.dc.html",
+  paid: true,
+};
+const SANDBOX_FREE = {
+  title: "Free, and we guide you.",
+  price: "Free · self-paced",
+  description: "The field guide, It Continues With Exploration. Your team runs the eight phases, and we guide you when you need it.",
+  ctaLabel: "Start free, we'll guide you",
+  ctaHref: "Movemental Field Guide.dc.html",
+};
+const SANDBOX_DIGITAL = {
+  title: "Digital license.",
+  price: "$5,000 · one-time · lifetime access",
+  description: "The full Sandbox toolkit in your dashboard: eight phases, results, and ongoing management. One payment, lifetime access to your organization's record.",
+  ctaLabel: "Get the digital license · $5,000",
+  ctaHref: "Movemental Enroll.dc.html",
+  paid: true,
+};
+const SANDBOX_IN_PERSON = {
+  title: "Hands-on, in person.",
+  price: "~$15,000 · facilitated",
+  description: "About ten hours of in-person teaching across eight phases, learning access, a custom AI recipe library, and dashboard integration. Produces a Future Plan with green, yellow, and red use cases.",
+  ctaLabel: "Have us facilitate · ~$15,000",
+  ctaHref: "Movemental Enroll.dc.html",
+  paid: true,
+};
+const TRAINING_FREE = {
+  title: "Free, and we guide you.",
+  price: "Field guide · coming soon",
+  description: "Every stage has a free field guide. Training's guide is in progress. Until it ships, the paid cohort runs through Movemental's LMS.",
+  placeholder: true,
+};
+const TRAINING_PAID = {
+  title: "Eight-week cohort.",
+  price: "$2,000 per person · 8 weeks · online",
+  description: "A transformative eight-week course through Movemental's LMS, building discernment, authorship, and stewardship in the people who will steward AI inside your organization.",
+  ctaLabel: "Talk to us about Training",
+  ctaHref: "Movemental Enroll.dc.html",
+  paid: true,
+};
+const TECH_FREE = {
+  title: "Free, and we guide you.",
+  price: "Field guide · coming soon",
+  description: "Every stage has a free field guide. Tech's guide is in progress. Until it ships, start with the modular builds below.",
+  placeholder: true,
+};
+const TECH_MODULES = [
+  { title: "Foundation", price: "Built in", description: "The spine of every platform: website, accounts, library, governance, and AI assistant. Included in every Tech engagement." },
+  { title: "Publishing", price: "$30,000", description: "Your public face and the tools to run it, with full agentic implementation custom to your organization.", paid: true },
+  { title: "Formation", price: "$30,000", description: "Courses, cohorts, and learning paths — how you form and teach people inside your platform.", paid: true },
+  { title: "Relationships", price: "$30,000", description: "People, giving, and operations in one place — donor stewardship, member care, and staff workflows.", paid: true },
+];
+
+const STAGES = [
+  { id: "safety", step: "01", title: "Safety", priceLine: "Free · $1,000", descriptor: "Ratify your AI Charter before anything else.", ways: [SAFETY_FREE, SAFETY_PAID] },
+  { id: "sandbox", step: "02", title: "Sandbox", priceLine: "Free · $5,000", descriptor: "Try AI against real work inside your charter.", ways: [SANDBOX_FREE, SANDBOX_DIGITAL, SANDBOX_IN_PERSON] },
+  { id: "training", step: "03", title: "Training", priceLine: "Field guide · coming soon · $2,000 per person", descriptor: "Form the people who will steward AI inside your org.", ways: [TRAINING_FREE, TRAINING_PAID] },
+  { id: "tech", step: "04", title: "Technology", priceLine: "$30,000 modules · Foundation built in", descriptor: "Build only what your ratified foundation supports.", ways: [TECH_FREE].concat(TECH_MODULES) },
+];
+
+/** Verbatim from FAQ_SECTIONS "what-we-will-not-do". */
+const REFUSALS = [
+  { q: "Do you start with software?", a: "No. Safety comes first, governance and policy before deployment. We do not sell tools or begin with a build." },
+  { q: "Do you replace human judgment with AI?", a: "No. AI assists; humans decide. Formation and oversight protocols are built before any custom assistant ships." },
+  { q: "Do you treat efficiency as the highest goal?", a: "No. Wisdom is slower than recklessness. Clarity and alignment create long-term acceleration; shortcuts fracture culture." },
+  { q: "Do you take referral fees, sponsorships, or affiliate revenue from AI vendors?", a: "No. You pay vendors directly. We remain vendor-agnostic with no hidden incentives." },
+  { q: "Will you walk away from an engagement that is not a fit?", a: "Yes. If we are not the right partner, we will say so plainly rather than take work we cannot stand behind." },
+];
+
+/** Verbatim from FAQ_SECTIONS — cost/time, plus the order questions. */
+const FAQ = [
+  { q: "How long does an engagement take?", a: "A paid Safety step takes two weeks start to finish with us, or about one to two months self-paced on your own. Training runs eight weeks online. Sandbox and Tech are scoped to your organization." },
+  { q: "How quickly can we start?", a: "Often within two weeks of our initial conversation." },
+  { q: "Why this order? Why not all four in parallel?", a: "Attempting tech before safety opens you to data breaches. Changing the order collapses the required human formation." },
+  { q: "Can we skip stages if we have already done some of this?", a: "We will audit any work you’ve done. If it holds up, we move forward. Most organizations discover gaps in their safety foundation." },
+  { q: "Do the stages overlap?", a: "Yes, in time. But you cannot start the next stage until the one before it is actually done." },
+  { q: "Can we pause or step out mid-engagement?", a: "Yes. The sequence is modular. You can stop after safety is attained and wait until you are ready for step two." },
+  { q: "Do you offer reduced rates for smaller organizations?", a: "Yes. We reserve capacity for sliding-scale interventions for high-impact, low-resource nonprofits." },
+  { q: "Who pays for tools and vendors?", a: "We do not resell. You pay software vendors directly, guaranteeing we have no perverse incentives." },
+  { q: "What time commitment do our leaders need?", a: "Four to six hours of focused synchronous time over the first month." },
+];
+
+class Component extends DCLogic {
+  state = { open: null };
+
+  renderVals() {
+    const open = this.state.open || this.props.openStage || "safety";
+    return {
+      goHome: () => { window.location.href = "Movemental Home v4.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      inkProps: { style: { whiteSpace: "normal" } },
+      showFaq: this.props.showFaq ?? true,
+      refusals: REFUSALS,
+      faq: FAQ,
+      stageRail: STAGES.map((s) => ({ step: s.step, title: s.title, descriptor: s.descriptor })),
+      stages: STAGES.map((s) => {
+        const isOpen = s.id === open;
+        return {
+          id: s.id,
+          step: s.step,
+          title: s.title,
+          descriptor: s.descriptor,
+          priceLine: s.priceLine,
+          open: isOpen,
+          toggle: () => this.setState({ open: isOpen ? null : s.id }),
+          shellStyle: {
+            border: isOpen ? "1px solid var(--ink)" : "1px solid var(--border)",
+            borderRadius: "var(--radius-lg)",
+            background: isOpen ? "var(--surface-card)" : "var(--bg)",
+            overflow: "hidden",
+          },
+          headStyle: {
+            font: "inherit",
+            width: "100%",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "baseline",
+            gap: ".85rem",
+            background: "transparent",
+            border: 0,
+            cursor: "pointer",
+            padding: "clamp(1rem,2.4vw,1.35rem) clamp(1rem,2.6vw,1.5rem)",
+            color: "var(--text-strong)",
+            textAlign: "left",
+          },
+          ways: s.ways.map((w) => ({
+            title: w.title,
+            price: w.price,
+            description: w.description,
+            paid: !!w.paid,
+            placeholder: !!w.placeholder,
+            hasCta: !!w.ctaHref,
+            ctaHref: w.ctaHref || "",
+            ctaLabel: w.ctaLabel || "",
+            cardStyle: { opacity: w.placeholder ? 0.72 : 1, height: "100%", boxSizing: "border-box" },
+            ctaStyle: {
+              display: "inline-block",
+              marginTop: ".7rem",
+              fontFamily: "var(--font-mono), ui-monospace, monospace",
+              fontSize: ".64rem",
+              letterSpacing: ".12em",
+              textTransform: "uppercase",
+              border: w.paid ? "1px solid var(--ink)" : "1px solid var(--border)",
+              borderRadius: "999px",
+              padding: ".55rem .95rem",
+              background: "var(--surface-card)",
+              color: "var(--text-strong)",
+              alignSelf: "flex-start",
+            },
+          })),
+        };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

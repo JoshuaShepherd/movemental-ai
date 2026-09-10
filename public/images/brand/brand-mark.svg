@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Movemental Mark - Converging movement around a living center -->
+  <!-- Swirling black ink ring with open center -->
+  
+  <!-- Outer ring - dynamic movement -->
+  <ellipse cx="100" cy="100" rx="85" ry="75" fill="none" stroke="#000" stroke-width="8" opacity="0.9" transform="rotate(-15 100 100)"/>
+  <ellipse cx="100" cy="100" rx="75" ry="85" fill="none" stroke="#000" stroke-width="6" opacity="0.8" transform="rotate(15 100 100)"/>
+  <ellipse cx="100" cy="100" rx="80" ry="70" fill="none" stroke="#000" stroke-width="5" opacity="0.7" transform="rotate(45 100 100)"/>
+  
+  <!-- Middle ring - converging movement -->
+  <ellipse cx="100" cy="100" rx="60" ry="50" fill="none" stroke="#000" stroke-width="6" opacity="0.85" transform="rotate(-30 100 100)"/>
+  <ellipse cx="100" cy="100" rx="50" ry="60" fill="none" stroke="#000" stroke-width="5" opacity="0.75" transform="rotate(30 100 100)"/>
+  
+  <!-- Inner ring - subtle presence -->
+  <ellipse cx="100" cy="100" rx="35" ry="30" fill="none" stroke="#000" stroke-width="4" opacity="0.6" transform="rotate(-20 100 100)"/>
+  <ellipse cx="100" cy="100" rx="30" ry="35" fill="none" stroke="#000" stroke-width="3" opacity="0.5" transform="rotate(20 100 100)"/>
+  
+  <!-- Central empty space - the living center -->
+  <circle cx="100" cy="100" r="15" fill="#fff"/>
+  
+  <!-- Scattered dots for texture -->
+  <circle cx="40" cy="60" r="2" fill="#000" opacity="0.6"/>
+  <circle cx="160" cy="140" r="2" fill="#000" opacity="0.6"/>
+  <circle cx="60" cy="160" r="1.5" fill="#000" opacity="0.5"/>
+  <circle cx="140" cy="40" r="1.5" fill="#000" opacity="0.5"/>
+  <circle cx="30" cy="100" r="1.5" fill="#000" opacity="0.4"/>
+  <circle cx="170" cy="100" r="1.5" fill="#000" opacity="0.4"/>
+  <circle cx="100" cy="30" r="1.5" fill="#000" opacity="0.4"/>
+  <circle cx="100" cy="170" r="1.5" fill="#000" opacity="0.4"/>
+</svg>
+
+

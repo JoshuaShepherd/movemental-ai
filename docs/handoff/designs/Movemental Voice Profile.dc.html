@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .55s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 3% entry 30%; }
+    .mvm-vcard { transition: border-color var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast); }
+    .mvm-vcard:hover { border-color: var(--ink); transform: translateY(-1px); box-shadow: var(--shadow-lift); text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHub }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ All voices</x-import>
+  </header>
+
+  <div style="border-bottom: 1px solid var(--border); background: var(--surface);">
+    <div style="max-width: 1080px; margin: 0 auto; padding: .55rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;">
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-body); margin-right: .35rem;">Profile</span>
+      <sc-for list="{{ picker }}" as="p" hint-placeholder-count="3">
+        <button type="button" onClick="{{ p.select }}" style="{{ p.style }}">{{ p.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <article style="max-width: 1080px; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,3rem) 0;">
+
+    <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+      <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Trusted voice</x-import>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,5vw,3.4rem); line-height: 1.04; letter-spacing: -.024em; margin: .7rem 0 0; text-wrap: pretty;">{{ voice.displayName }}</h1>
+      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body); margin: .7rem 0 0; line-height: 1.6;">{{ voice.role }}</p>
+      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: .3rem 0 0;">{{ voice.locationLine }}</p>
+    </section>
+
+    <section style="display: flex; flex-wrap: wrap; gap: clamp(1.25rem,3.5vw,2.5rem); align-items: flex-start; margin-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.LeaderFace" src="{{ voice.img }}" name="{{ voice.displayName }}" size="{{ portraitSize }}" caption="{{ false }}" hint-size="180px,180px"></x-import>
+      <div style="flex: 1 1 22rem; min-width: 0;">
+        <p style="font-family: var(--font-display), Georgia, serif; font-size: clamp(1.15rem,2.4vw,1.5rem); line-height: 1.34; letter-spacing: -.012em; margin: 0; max-width: 40ch; text-wrap: pretty;">{{ voice.shortTagline }}</p>
+        <div style="display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem;">
+          <a href="{{ voice.primaryUrl }}" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; border: 1px solid var(--ink); border-radius: 999px; padding: .58rem 1rem; background: var(--surface-card); color: var(--text-strong);" style-hover="color: var(--ink-blue); border-color: var(--ink-blue); text-decoration: none;">Leader’s primary site ↗</a>
+          <sc-for list="{{ voice.secondaryLinks }}" as="l" hint-placeholder-count="2">
+            <a href="{{ l.href }}" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; border: 1px solid var(--border); border-radius: 999px; padding: .58rem 1rem; background: var(--surface-card); color: var(--text-body);" style-hover="color: var(--ink-blue); border-color: var(--ink); text-decoration: none;">{{ l.label }} ↗</a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem); position: relative; padding-left: clamp(1rem,2.5vw,1.6rem); max-width: 66ch;">
+      <span style="position: absolute; left: .2rem; top: .4rem; bottom: .4rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <sc-for list="{{ voice.editorialBio }}" as="para" hint-placeholder-count="3">
+        <p style="font-size: 1.06rem; line-height: 1.68; color: var(--text-strong); margin: 0 0 1.1rem;">{{ para }}</p>
+      </sc-for>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.5rem,5vw,3.25rem); display: grid; gap: clamp(1.5rem,4vw,3rem); grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));">
+      <div>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Credentials</x-import>
+        <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: .55rem;">
+          <sc-for list="{{ voice.credentials }}" as="c" hint-placeholder-count="4">
+            <li style="font-size: .97rem; line-height: 1.5; color: var(--text-body); border-left: 1px solid var(--border); padding-left: .85rem;">{{ c }}</li>
+          </sc-for>
+        </ul>
+      </div>
+      <div>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Featured work</x-import>
+        <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: .55rem;">
+          <sc-for list="{{ voice.featuredWorks }}" as="w" hint-placeholder-count="3">
+            <li style="font-size: .97rem; line-height: 1.5; color: var(--text-body); border-left: 1px solid var(--border); padding-left: .85rem;">{{ w }}</li>
+          </sc-for>
+        </ul>
+        <p style="font-size: .8rem; color: var(--text-subtle); margin: .9rem 0 0;">Titles only. No links until rights are cleared.</p>
+      </div>
+      <div>
+        <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Themes</x-import>
+        <div style="display: flex; flex-wrap: wrap; gap: .4rem;">
+          <sc-for list="{{ voice.themes }}" as="t" hint-placeholder-count="3">
+            <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-body); border: 1px solid var(--border); border-radius: 999px; padding: .32rem .65rem;">{{ t }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Coming work</x-import>
+      <div style="display: grid; gap: clamp(.75rem,2vw,1rem); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));">
+        <sc-for list="{{ voice.comingWork }}" as="s" hint-placeholder-count="3">
+          <div style="border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); padding: 1rem 1.05rem;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: .75rem;">
+              <h4 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: 1.05rem; margin: 0;">{{ s.heading }}</h4>
+              <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); white-space: nowrap;">{{ s.label }}</span>
+            </div>
+            <p style="font-size: .92rem; line-height: 1.5; color: var(--text-body); margin: .5rem 0 0;">{{ s.preview }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size: .82rem; color: var(--text-subtle); margin: 1rem 0 0;">Nothing here has a ship date, because none has been set.</p>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Other trusted voices</x-import>
+      <div style="display: grid; gap: clamp(.75rem,2vw,1rem); grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));">
+        <sc-for list="{{ others }}" as="o" hint-placeholder-count="2">
+          <button type="button" class="mvm-vcard" onClick="{{ o.select }}" style="{{ otherStyle }}">
+            <span style="display: block; font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: 1.1rem; line-height: 1.2;">{{ o.displayName }}</span>
+            <span style="display: block; font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-body); margin-top: .4rem; line-height: 1.5;">{{ o.role }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <p style="margin: 1.5rem 0 0;"><a href="Movemental Voices.dc.html">← Back to all trusted voices</a></p>
+    </section>
+
+  </article>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;slug&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;liz-rios&quot;,&quot;jr-woodward&quot;,&quot;rowland-smith&quot;],&quot;default&quot;:&quot;liz-rios&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Profile&quot;}}">
+/**
+ * `/voices/[slug]` — one committed voice, at depth.
+ *
+ * Every sentence is lifted verbatim from `src/lib/committed-voices.ts`. The
+ * repo publishes exactly three rights-cleared profiles; there is no stub state
+ * to design, because unpublished leaders have no route. (Prompt 02 assumed the
+ * 25-row `public.movement_leaders` table — the real /voices route reads
+ * committed-voices.ts instead. See the hub file for the same note.)
+ *
+ * Portraits come from the public `media-library` bucket; the repo's canonical
+ * `/images/voices/<slug>.webp` exports are not in this project.
+ *
+ * One file serves all three: the mast picker and the URL hash both select.
+ */
+const MEDIA = "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/";
+
+const COMING_WORK = [
+  { heading: "Courses", label: "In development", preview: "Cohort and self-paced offerings will appear here once shaped together." },
+  { heading: "Articles", label: "In development", preview: "Curated essays and field notes drawn from public work." },
+  { heading: "Conversation agents", label: "Exploring", preview: "Voice-faithful access to frameworks, only when consent and corpus are ready." },
+];
+
+const VOICES = [
+  {
+    slug: "liz-rios",
+    displayName: "Rev. Dr. Liz Rios",
+    role: "Founder, Passion2Plant · Director, Púlpito Fellows",
+    locationLine: "Central Florida & Puerto Rico",
+    shortTagline: "Afro-Boricua theologian and church-planter building the only national BIPOC-woman-led planting network in the U.S.",
+    themes: ["Church planting", "Bilingual formation", "Mujerista theology"],
+    credentials: [
+      "Founder, Passion2Plant, national BIPOC-woman-led church planting network",
+      "Director, Púlpito Fellows: Lilly Endowment-funded preaching fellowship",
+      "Adjunct, Fuller Theological Seminary",
+      "Board, Sojourners · Senior Consultant, Freedom Road",
+    ],
+    editorialBio: [
+      "Liz Rios has carried thirty-five years of ministry across pastoring, planting, teaching, and consulting, and into infrastructure. She founded Passion2Plant, the only national BIPOC-woman-led church planting network in the United States, and directs Púlpito Fellows, a three-year, bilingual preaching fellowship funded by the Lilly Endowment.",
+      "Her work runs simultaneously across denominational, academic, and movement spaces: ordained Disciples of Christ; adjunct faculty at Fuller; board member at Sojourners; senior consultant with Freedom Road; consulting editor at Outreach Magazine. She holds a BA, MA, EdD, DMin, and a 2025 MA in Social Justice from Union.",
+      "She writes from a mujerista frame, distinct in tone and theological voice from anyone else inside Movemental's circle, and brings a live cohort operator's discipline to what a leader's platform actually has to carry.",
+    ],
+    featuredWorks: [
+      "Don't Buy The Lie (sole author, 2012)",
+      "Need to Know, contributor (100 Movements Publishing)",
+      "Mujerista in Motion: Substack",
+    ],
+    primaryUrl: "https://www.passion2plant.org",
+    secondaryLinks: [
+      { label: "Púlpito Fellows", href: "https://www.pulpitofellows.org" },
+      { label: "The Passion Center", href: "https://www.thepassioncenter.org" },
+    ],
+    img: MEDIA + "movemental/voices/liz-rios.webp",
+    comingWork: COMING_WORK,
+  },
+  {
+    slug: "jr-woodward",
+    displayName: "JR Woodward",
+    role: "National Director, V3 Church Planting Movement",
+    locationLine: "United States",
+    shortTagline: "Three decades of church planting, three published books, and a Manchester Ph.D. on the powers of leadership.",
+    themes: ["Church planting", "Published author", "Missional formation"],
+    credentials: [
+      "National Director, V3 Church Planting Movement",
+      "Co-founder, Missio Alliance and Praxis Gathering",
+      "Adjunct, Fuller · Central · Missio Seminary",
+      "Ph.D., University of Manchester · M.A. Global Leadership, Fuller",
+    ],
+    editorialBio: [
+      "JR Woodward has spent three decades planting churches that hold tight community, life-forming discipleship, locally rooted presence, and boundary-crossing mission together. He leads the V3 Church Planting Movement nationally and trains church planters across North America.",
+      "His written corpus runs from Creating a Missional Culture (IVP, 2012) through The Church as Movement (IVP, 2016, with Dan White Jr.) to The Scandal of Leadership (100 Movements Publishing, 2023), the trade book based on his Manchester Ph.D. on the powers of domination in the church.",
+      "He co-founded Missio Alliance and the Praxis Gathering, teaches as adjunct faculty at Fuller, Central, and Missio Seminary, and serves on the boards of Reliant Mission, Movement Leaders Collective, and the Fuller Global Mission Advisory Council.",
+    ],
+    featuredWorks: [
+      "Creating a Missional Culture (IVP, 2012)",
+      "The Church as Movement (IVP, 2016, with Dan White Jr.)",
+      "The Scandal of Leadership (100 Movements Publishing, 2023)",
+    ],
+    primaryUrl: "https://www.jrwoodward.com",
+    secondaryLinks: [
+      { label: "V3 Church Planting Movement", href: "https://thev3movement.org" },
+      { label: "Missio Alliance", href: "https://www.missioalliance.org" },
+    ],
+    img: MEDIA + "jr-woodward/headshots/jr-woodward.webp",
+    comingWork: COMING_WORK,
+  },
+  {
+    slug: "rowland-smith",
+    displayName: "L. Rowland Smith",
+    role: "National Director, Forge America · Founder, The Pando Collective",
+    locationLine: "Colorado Springs, Colorado",
+    shortTagline: "National Forge leader, micro-church network founder, pastor, and curator of the Red Skies conversation.",
+    themes: ["Mission training", "Micro-church networks", "Editorial curation"],
+    credentials: [
+      "National Director, Forge America Mission Training Network",
+      "Founder/Director, The Pando Collective: Front-Range micro-church network",
+      "Pastor of Missional Culture, The Church at Pulpit Rock",
+      "Adjunct, Fuller · Denver Seminary · Grand Canyon University",
+    ],
+    editorialBio: [
+      "Rowland Smith carries the National Director role at Forge America while founding and directing The Pando Collective, a Front-Range micro-church network, and pastoring missional culture at The Church at Pulpit Rock in Colorado Springs.",
+      "He has authored Life Out Loud: Joining Jesus Outside the Walls of the Church (100 Movements Publishing, 2019) and curated and edited Red Skies: 10 Essential Conversations Exploring Our Future as the Church (100 Movements Publishing, 2022), a multi-author conversation with Alan Hirsch, Michael Frost, Debra Hirsch, Brian Sanders, Mark DeYmaz, Rich Robinson, and others.",
+      "He teaches as adjunct faculty at Fuller, Denver Seminary, and Grand Canyon University, holding an MA in Global Leadership and a DMiss from Fuller. His doctoral dissertation, Missional Emergence, has its own published authority record.",
+    ],
+    featuredWorks: [
+      "Life Out Loud (100 Movements Publishing, 2019)",
+      "Red Skies, curator and editor (100 Movements Publishing, 2022)",
+      "Missional Emergence, doctoral dissertation (Fuller)",
+    ],
+    primaryUrl: "https://www.rowlandsmith.net",
+    secondaryLinks: [
+      { label: "Forge America", href: "https://www.forgeamerica.com" },
+      { label: "The Pando Collective", href: "https://thepandocollective.com" },
+    ],
+    img: MEDIA + "rowland-smith/headshots/rowland-smith.webp",
+    comingWork: COMING_WORK,
+  },
+];
+
+class Component extends DCLogic {
+  state = { slug: null };
+
+  componentDidMount() {
+    const hash = (window.location.hash || "").replace("#", "");
+    if (VOICES.some((v) => v.slug === hash)) this.setState({ slug: hash });
+  }
+
+  pick = (slug) => {
+    this.setState({ slug });
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", "#" + slug);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  renderVals() {
+    const slug = this.state.slug || this.props.slug || VOICES[0].slug;
+    const voice = VOICES.find((v) => v.slug === slug) || VOICES[0];
+    const chip = (active) => ({
+      font: "inherit",
+      fontFamily: "var(--font-mono), ui-monospace, monospace",
+      fontSize: ".6rem",
+      letterSpacing: ".11em",
+      textTransform: "uppercase",
+      border: active ? "1px solid var(--ink)" : "1px solid var(--border)",
+      background: active ? "var(--surface-card)" : "transparent",
+      color: active ? "var(--text-strong)" : "var(--text-body)",
+      borderRadius: "999px",
+      padding: ".34rem .7rem",
+      cursor: "pointer",
+    });
+    return {
+      goHub: () => { window.location.href = "Movemental Voices.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      portraitSize: 176,
+      voice,
+      picker: VOICES.map((v) => ({
+        label: v.displayName,
+        style: chip(v.slug === voice.slug),
+        select: () => this.pick(v.slug),
+      })),
+      others: VOICES.filter((v) => v.slug !== voice.slug).map((v) => ({
+        displayName: v.displayName,
+        role: v.role,
+        select: () => this.pick(v.slug),
+      })),
+      otherStyle: {
+        font: "inherit",
+        textAlign: "left",
+        border: "1px solid var(--border)",
+        borderRadius: "var(--radius-lg)",
+        background: "var(--surface-card)",
+        padding: "1rem 1.1rem",
+        cursor: "pointer",
+        color: "var(--text-strong)",
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    .mvm-in { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .68rem .8rem; outline: none; transition: border-color var(--dur-fast); }
+    .mvm-in:focus { border-color: var(--ink); outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+    .mvm-in::placeholder { color: var(--text-subtle); }
+    .mvm-lbl { display: block; margin-bottom: .4rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body); }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .55s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 3% entry 30%; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goSafety }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Safety</x-import>
+  </header>
+
+  <main style="max-width: 44rem; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,2.5rem) 0;">
+
+    <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+      <span style="position: absolute; left: .2rem; top: .3rem; bottom: .5rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Step 01 · Safety · With us</x-import>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.9rem,4.4vw,3rem); line-height: 1.05; letter-spacing: -.024em; margin: .7rem 0 0; text-wrap: pretty;">{{ title }}</h1>
+    </section>
+
+    <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+      <section style="margin-top: clamp(1.75rem,4vw,2.5rem);">
+        <p style="font-size: 1.12rem; line-height: 1.65; color: var(--text-strong); margin: 0;">Your enrollment is in. We provision within 24 hours, when the email arrives, use the link to <strong>create your account</strong> and open your private Safety dashboard. A real person will also be in touch to complete payment if needed.</p>
+        <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: 1rem 0 0;">Dashboard access is not immediate on submit, you&rsquo;ll get a magic-link signup after provisioning.</p>
+        <p style="margin: 2rem 0 0;"><a href="Movemental Safety Stage.dc.html">← Back to Safety</a></p>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <p style="font-size: 1.1rem; line-height: 1.65; color: var(--text-strong); margin: clamp(1.5rem,3.5vw,2rem) 0 0;">Name, your details, your organization, then payment. We provision your private dashboard within 24 hours of enrollment.</p>
+
+        <section class="mvm-reveal" style="margin-top: clamp(1.75rem,4vw,2.5rem); border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); padding: clamp(1.1rem,3vw,1.6rem);">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">What the two weeks contain</x-import>
+          <div style="display: grid; gap: .8rem;">
+            <sc-for list="{{ weeks }}" as="w" hint-placeholder-count="4">
+              <x-import component-from-global-scope="MovementalDesignSystem_07416b.PathLayer" n="{{ w.n }}" term="{{ w.term }}" gloss="{{ w.gloss }}" hint-size="100%,1.5rem"></x-import>
+            </sc-for>
+          </div>
+        </section>
+
+        <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="margin-top: clamp(2rem,4.5vw,2.75rem); display: grid; gap: clamp(1.75rem,4vw,2.5rem);">
+
+          <section style="display: grid; gap: 1rem;">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" style="{{ zeroMargin }}" hint-size="auto,1rem">Name</x-import>
+            <label style="display: block;">
+              <span class="mvm-lbl">Your full name</span>
+              <input class="mvm-in" type="text" autoComplete="name" value="{{ form.contact_name }}" onChange="{{ setContactName }}">
+            </label>
+          </section>
+
+          <section style="display: grid; gap: 1rem;">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" style="{{ zeroMargin }}" hint-size="auto,1rem">Individual information</x-import>
+            <label style="display: block;">
+              <span class="mvm-lbl">Email</span>
+              <input class="mvm-in" type="email" autoComplete="email" inputMode="email" value="{{ form.email }}" onChange="{{ setEmail }}">
+            </label>
+            <label style="display: block;">
+              <span class="mvm-lbl">When do you want to start?</span>
+              <select class="mvm-in" value="{{ form.timeline }}" onChange="{{ setTimeline }}">
+                <sc-for list="{{ timelines }}" as="t" hint-placeholder-count="4">
+                  <option value="{{ t }}">{{ t }}</option>
+                </sc-for>
+              </select>
+            </label>
+          </section>
+
+          <section style="display: grid; gap: 1rem;">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" style="{{ zeroMargin }}" hint-size="auto,1rem">Organizational information</x-import>
+            <label style="display: block;">
+              <span class="mvm-lbl">Organization</span>
+              <input class="mvm-in" type="text" autoComplete="organization" value="{{ form.org_name }}" onChange="{{ setOrgName }}">
+            </label>
+            <div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));">
+              <label style="display: block;">
+                <span class="mvm-lbl">Organization type</span>
+                <select class="mvm-in" value="{{ form.org_type }}" onChange="{{ setOrgType }}">
+                  <sc-for list="{{ orgTypes }}" as="t" hint-placeholder-count="5">
+                    <option value="{{ t }}">{{ t }}</option>
+                  </sc-for>
+                </select>
+              </label>
+              <label style="display: block;">
+                <span class="mvm-lbl">Team size</span>
+                <select class="mvm-in" value="{{ form.team_size }}" onChange="{{ setTeamSize }}">
+                  <sc-for list="{{ teamSizes }}" as="t" hint-placeholder-count="5">
+                    <option value="{{ t }}">{{ t }}</option>
+                  </sc-for>
+                </select>
+              </label>
+            </div>
+            <label style="display: block;">
+              <span class="mvm-lbl">Budget range <em style="text-transform: none; letter-spacing: 0;">(optional)</em></span>
+              <input class="mvm-in" type="text" placeholder="Optional" value="{{ form.budget_range }}" onChange="{{ setBudget }}">
+            </label>
+            <label style="display: block;">
+              <span class="mvm-lbl">Where your organization stands with AI</span>
+              <textarea class="mvm-in" rows="4" placeholder="A sentence or two is plenty." value="{{ form.message }}" onChange="{{ setMessage }}"></textarea>
+            </label>
+          </section>
+
+          <section style="border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface-card); padding: clamp(1.1rem,3vw,1.4rem); display: grid; gap: .8rem;">
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" style="{{ zeroMargin }}" hint-size="auto,1rem">Stripe payment</x-import>
+            <p style="font-size: 1.02rem; line-height: 1.6; margin: 0;"><span style="font-weight: 600;">$1,000</span><span style="color: var(--text-body);"> · two weeks, start to finish · managed Safety sprint</span></p>
+            <sc-if value="{{ stripeCopyVisible }}" hint-placeholder-val="{{ true }}">
+              <p style="font-size: .92rem; line-height: 1.6; color: var(--text-body); margin: 0;">Secure payment is collected via Stripe. Submit your details below, our team confirms enrollment and sends a Stripe payment link to complete checkout.</p>
+            </sc-if>
+          </section>
+
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size: .95rem; color: var(--margin-red); margin: 0;">{{ errorMsg }}</p>
+          </sc-if>
+
+          <div>
+            <x-import component-from-global-scope="MovementalDesignSystem_07416b.Button" type="submit" disabled="{{ isLoading }}" hint-size="auto,2.6rem">{{ submitLabel }}</x-import>
+            <p style="font-size: .92rem; line-height: 1.6; color: var(--text-body); margin: .9rem 0 0;">No autoresponder runaround, a person on our team picks this up.</p>
+          </div>
+        </form>
+
+        <section class="mvm-reveal" style="margin-top: clamp(2.5rem,6vw,3.5rem); position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+          <span style="position: absolute; left: .2rem; top: .35rem; bottom: .35rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+          <p style="font-family: var(--font-display), Georgia, serif; font-size: clamp(1.15rem,2.6vw,1.5rem); line-height: 1.36; letter-spacing: -.014em; margin: 0; max-width: 40ch;">No urgency. No scarcity. No spots filling fast. If any of that ever shows up in how we treat you, you should trust us less.</p>
+        </section>
+
+        <section class="mvm-reveal" style="margin-top: clamp(2rem,5vw,3rem); border-top: 1px solid var(--border); padding-top: clamp(1.5rem,3.5vw,2rem); display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; justify-content: space-between;">
+          <p style="margin: 0; font-family: var(--font-display), Georgia, serif; font-size: 1.25rem; letter-spacing: -.012em;">Prefer to talk first?</p>
+          <a href="mailto:josh@movemental.ai" style="font-size: .97rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--ink); border-radius: var(--radius-md); padding: .72rem 1.15rem;" style-hover="color: var(--ink-blue); border-color: var(--ink-blue); text-decoration: none;">Email josh@movemental.ai</a>
+        </section>
+
+        <div style="margin-top: 1.5rem;">
+          <x-import component-from-global-scope="MovementalDesignSystem_07416b.InkVoice" dc-props="{{ inkProps }}" hint-size="100%,2rem">No form. Just Josh.</x-import>
+        </div>
+      </div>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showSuccessState&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;stripeCopyVisible&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preview&quot;}}">
+/**
+ * `/enroll` — the managed Safety sprint signup.
+ *
+ * Field list, option sets, validation message, submit label, fine print and
+ * success copy are recreated from `src/app/enroll/page.tsx` verbatim. The price
+ * panel is `PRICING_SAFETY_PAID`; the no-urgency line is
+ * `SAFETY_FLOW_SIGNUP_COPY.noUrgency`.
+ *
+ * NO BACKEND. The repo POSTs to /api/agent-room/enroll; this prototype has no
+ * server, so submit validates and shows the repo's own success state without
+ * sending anything. Nothing on the page claims an email was sent beyond the
+ * repo's own provisioning copy.
+ *
+ * The two-week contents come from the Safety stage's four steps as already
+ * typeset in `Movemental Safety Stage.dc.html`.
+ */
+const ORG_TYPES = ["Church", "Nonprofit", "Institution", "Network / denomination", "Other"];
+const TEAM_SIZES = ["1–5", "6–20", "21–50", "51–200", "200+"];
+const TIMELINES = ["Now", "This quarter", "This year", "Just exploring"];
+const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+const WEEKS = [
+  { n: "01", term: "We research your organization", gloss: "— your context, your people, the work you actually do." },
+  { n: "02", term: "We draft all five documents", gloss: "— written to your organization, not a template." },
+  { n: "03", term: "You review and adjust", gloss: "— you edit instead of authoring from a blank page." },
+  { n: "04", term: "You end with a ratified charter", gloss: "— board-ready, in two weeks from kickoff." },
+];
+
+class Component extends DCLogic {
+  state = {
+    status: "idle",
+    errorMsg: null,
+    form: {
+      org_name: "",
+      contact_name: "",
+      email: "",
+      org_type: ORG_TYPES[0],
+      team_size: TEAM_SIZES[0],
+      timeline: TIMELINES[0],
+      budget_range: "",
+      message: "",
+    },
+  };
+
+  set = (k) => (e) => {
+    const v = e.target.value;
+    this.setState((s) => ({ form: { ...s.form, [k]: v } }));
+  };
+
+  submit = (e) => {
+    e.preventDefault();
+    const f = this.state.form;
+    if (!f.org_name.trim() || !f.contact_name.trim() || !EMAIL_RE.test(f.email.trim()) || !f.message.trim()) {
+      this.setState({
+        status: "error",
+        errorMsg: "Fill in your name, email, organization, and a sentence of context.",
+      });
+      return;
+    }
+    // No backend in this prototype — the repo POSTs to /api/agent-room/enroll.
+    this.setState({ status: "done", errorMsg: null });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  renderVals() {
+    const done = this.state.status === "done" || (this.props.showSuccessState ?? false);
+    const first = (this.state.form.contact_name.trim().split(/\s+/)[0]) || "there";
+    return {
+      goSafety: () => { window.location.href = "Movemental Safety Stage.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      zeroMargin: { margin: 0 },
+      inkProps: { style: { whiteSpace: "normal" } },
+      isDone: done,
+      isForm: !done,
+      title: done ? "Got it, " + first + "." : "Get started with the dashboard.",
+      weeks: WEEKS,
+      orgTypes: ORG_TYPES,
+      teamSizes: TEAM_SIZES,
+      timelines: TIMELINES,
+      form: this.state.form,
+      setContactName: this.set("contact_name"),
+      setEmail: this.set("email"),
+      setTimeline: this.set("timeline"),
+      setOrgName: this.set("org_name"),
+      setOrgType: this.set("org_type"),
+      setTeamSize: this.set("team_size"),
+      setBudget: this.set("budget_range"),
+      setMessage: this.set("message"),
+      submit: this.submit,
+      hasError: this.state.status === "error" && !!this.state.errorMsg,
+      errorMsg: this.state.errorMsg || "",
+      isLoading: this.state.status === "loading",
+      submitLabel: "Get started with the dashboard · $1,000",
+      stripeCopyVisible: this.props.stripeCopyVisible ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

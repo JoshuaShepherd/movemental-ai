@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    .mvm-in { width: 100%; box-sizing: border-box; font: inherit; font-size: .98rem; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .6rem .75rem; outline: none; transition: border-color var(--dur-fast); }
+    .mvm-in:focus { border-color: var(--ink); outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+    .mvm-in::placeholder { color: var(--text-subtle); }
+    .mvm-row { transition: background var(--dur-fast); }
+    .mvm-row:target { background: var(--surface); }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Home</x-import>
+  </header>
+
+  <main style="max-width: 56rem; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,2.5rem) 0;">
+
+    <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+      <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Evidence and editorial notes</x-import>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,4.6vw,3.1rem); line-height: 1.05; letter-spacing: -.024em; margin: .7rem 0 0;">Claims, sources, and notes</h1>
+      <p style="font-size: 1.06rem; line-height: 1.66; color: var(--text-body); margin: 1rem 0 0; max-width: 58ch;">The claim is what we assert on the site. The source reads like a bibliography entry. The note explains what the evidence shows and how it connects.</p>
+      <p style="font-size: 1rem; line-height: 1.62; color: var(--text-body); margin: .9rem 0 0; max-width: 58ch;">Every row is typed. A purported fact carries a measured source. An opinion, a doctrine, or a positioning statement is labelled as such and does not pretend to be a survey number.</p>
+    </section>
+
+    <section style="margin-top: clamp(1.75rem,4vw,2.25rem); display: grid; gap: 1rem;">
+      <label style="display: block; max-width: 28rem;">
+        <span style="display: block; margin-bottom: .4rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body);">Search</span>
+        <input class="mvm-in" type="search" placeholder="Filter by page, claim, or source" autoComplete="off" value="{{ query }}" onChange="{{ setQuery }}">
+      </label>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .45rem;">
+        <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body); margin-right: .3rem;">Group by</span>
+        <sc-for list="{{ groupChips }}" as="g" hint-placeholder-count="3">
+          <button type="button" onClick="{{ g.select }}" style="{{ g.style }}">{{ g.label }}</button>
+        </sc-for>
+      </div>
+      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-subtle); margin: 0;">{{ countLine }}</p>
+    </section>
+
+    <sc-if value="{{ hasGroups }}" hint-placeholder-val="{{ true }}">
+      <section style="margin-top: clamp(1.5rem,3.5vw,2rem);">
+        <sc-for list="{{ groups }}" as="grp" hint-placeholder-count="4">
+          <div style="margin-bottom: clamp(1.75rem,4vw,2.5rem);">
+            <div style="position: sticky; top: 3.6rem; z-index: 20; background: var(--bg); padding: .5rem 0; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .6rem;">
+              <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-strong);">{{ grp.label }}</span>
+              <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-subtle);">{{ grp.count }}</span>
+            </div>
+            <sc-for list="{{ grp.rows }}" as="r" hint-placeholder-count="4">
+              <article class="mvm-row" id="{{ r.id }}" style="border-bottom: 1px solid var(--border); padding: clamp(1.1rem,2.6vw,1.4rem) 0; scroll-margin-top: 6rem;">
+                <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem .9rem;">
+                  <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle);">{{ r.num }}</span>
+                  <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">{{ r.page }}</span>
+                  <span style="{{ r.typeStyle }}">{{ r.claimType }}</span>
+                </div>
+                <p style="font-size: 1.04rem; line-height: 1.6; font-weight: 500; color: var(--text-strong); margin: .55rem 0 0; max-width: 62ch;">{{ r.claim }}</p>
+
+                <sc-if value="{{ r.hasCite }}" hint-placeholder-val="{{ true }}">
+                  <div style="margin: .85rem 0 0; padding-left: .9rem; border-left: 1.5px solid var(--margin-red);">
+                    <p style="font-size: .98rem; line-height: 1.5; margin: 0; color: var(--text-strong);"><strong>{{ r.author }}</strong></p>
+                    <p style="font-size: .98rem; line-height: 1.5; margin: .15rem 0 0; color: var(--text-body); font-style: italic;">{{ r.title }}</p>
+                    <sc-if value="{{ r.hasMeta }}" hint-placeholder-val="{{ true }}">
+                      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-subtle); margin: .35rem 0 0;">{{ r.meta }}</p>
+                    </sc-if>
+                    <sc-if value="{{ r.hasUrl }}" hint-placeholder-val="{{ true }}">
+                      <a href="{{ r.url }}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: .5rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;">View original publication ↗</a>
+                    </sc-if>
+                    <sc-if value="{{ r.noUrl }}" hint-placeholder-val="{{ false }}">
+                      <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: .5rem 0 0;">No public URL on this entry — internal or documentary source.</p>
+                    </sc-if>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{ r.noCite }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size: .96rem; line-height: 1.55; font-style: italic; color: var(--text-body); margin: .85rem 0 0; padding-left: .9rem; border-left: 1.5px dashed var(--border);">No single external publication stands alone as the source. See the note beside the claim on this row.</p>
+                </sc-if>
+
+                <sc-if value="{{ showMethodology }}" hint-placeholder-val="{{ true }}">
+                  <p style="font-size: .96rem; line-height: 1.62; color: var(--text-body); margin: .85rem 0 0; max-width: 64ch;">{{ r.footnote }}</p>
+                </sc-if>
+              </article>
+            </sc-for>
+          </div>
+        </sc-for>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <p style="font-size: 1rem; color: var(--text-body); margin: 2rem 0 0;">{{ emptyMessage }}</p>
+    </sc-if>
+
+    <section style="margin-top: clamp(2.5rem,6vw,3.5rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Same argument, different grain</x-import>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: 0 0 1.1rem; max-width: 58ch;">This register lists the claims. The research library holds the papers those claims are drawn from, and the master source list behind them.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: .6rem;">
+        <a href="Movemental Research.dc.html" style="font-size: .97rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--ink); border-radius: var(--radius-md); padding: .7rem 1.1rem;" style-hover="color: var(--ink-blue); border-color: var(--ink-blue); text-decoration: none;">The research library</a>
+        <a href="Movemental How We Use AI.dc.html" style="font-size: .97rem; font-weight: 500; color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .7rem 1.1rem;" style-hover="border-color: var(--ink); text-decoration: none;">How we use AI</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;groupBy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;page&quot;,&quot;publisher&quot;,&quot;date&quot;],&quot;default&quot;:&quot;page&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Register&quot;},&quot;showMethodology&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Register&quot;}}">
+/**
+ * `/footnotes` — the citation register.
+ *
+ * Correction to build prompt 09: it told the designer to hunt for a source
+ * registry keyed by ids like `stanford-hai-2026`. The real route
+ * (`src/app/footnotes/page.tsx`) renders `EEAT_REGISTRY` from
+ * `src/lib/citations/eeat-registry.ts`, which is the 38 rows of
+ * `eeat-site-claims.json` plus two editorial supplement rows declared inline in
+ * the registry module. 40 rows total. (The registry's own comment calls the
+ * public table "35-row"; the JSON has since grown to 38 — the count on this
+ * page is read from the data, not from that comment.) The JSON is copied here at
+ * `src/lib/citations/eeat-site-claims.json` and fetched at runtime, so the page
+ * cannot drift from the repo's data.
+ *
+ * The two supplement rows are transcribed from eeat-registry.ts because they
+ * live in TypeScript, not the JSON.
+ *
+ * Honesty handling, per the prompt:
+ * - Five rows have a null/empty cite. They render the repo's own line ("No
+ *   single external publication stands alone as the source…") rather than being
+ *   dropped or given an invented citation.
+ * - Four rows have a cite with no https URL. They are labelled as having no
+ *   public URL rather than linked to a guess.
+ * - `claimType` is shown on every row, so a "Purported fact" and an "Opinion"
+ *   are never read as the same kind of assertion. This is the measured-claim /
+ *   structural-pattern distinction the prompt asks to keep visible.
+ * - Nothing is renumbered by importance; `num` is a display index only.
+ */
+
+/** Verbatim from eeat-registry.ts — not present in the JSON bundle. */
+const SUPPLEMENT_ROWS = [
+  {
+    id: "toolkit-barna-gloo-spiritual-trust",
+    rank: 3,
+    page: "/field-guide",
+    claimType: "Purported fact",
+    claim: "Public openness to AI-shaped spiritual guidance runs ahead of pastoral comfort; large majorities of pastors treat AI as a concerning tool, not a substitute for human ministry.",
+    cite: {
+      author: "Barna Group & Gloo",
+      title: "State of the Church 2026: AI Series",
+      date: "November 2025 onward",
+      detail: "n = 1,514 U.S. adults · online",
+      url: "https://www.barna.com/research/state-of-the-church-2026-trends/",
+    },
+    footnote: "The AI-focused waves find a sharp split between general-public openness to AI-influenced spiritual guidance and pastoral caution, useful context when arguing that churches cannot treat AI-shaped communication as morally neutral infrastructure.",
+  },
+  {
+    id: "toolkit-antiqua-et-nova-complement",
+    rank: 3,
+    page: "/field-guide",
+    claimType: "Opinion",
+    claim: "Sandbox, Training, Tech: staged maturity; magisterial frame for complementing rather than replacing human judgment.",
+    cite: {
+      author: "Vatican (Dicastery for the Doctrine of the Faith and Dicastery for Culture and Education)",
+      title: "Antiqua et Nova: Note on the Relationship Between AI and Human Intelligence",
+      date: "January 28, 2025",
+      detail: "",
+      url: "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_en.html",
+    },
+    footnote: "The note insists that artificial intelligence should complement human intelligence rather than replace its moral and relational depth, and warns against deskilling and surrendering judgment to machines. That ethical stance aligns with treating experimentation and formation as stages before wholesale automation, without claiming any one vendor methodology.",
+  },
+];
+
+const GROUP_OPTIONS = [
+  { id: "page", label: "Page" },
+  { id: "publisher", label: "Publisher" },
+  { id: "date", label: "Date" },
+];
+
+class Component extends DCLogic {
+  state = { rows: null, error: null, query: "", groupBy: null };
+
+  componentDidMount() {
+    fetch("src/lib/citations/eeat-site-claims.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then((json) => {
+        this.setState({ rows: json.concat(SUPPLEMENT_ROWS) });
+      })
+      .catch((err) => {
+        this.setState({ error: String(err && err.message ? err.message : err) });
+      });
+  }
+
+  groupKey(row, mode) {
+    if (mode === "publisher") {
+      return row.cite && row.cite.author ? row.cite.author : "No single publication";
+    }
+    if (mode === "date") {
+      return row.cite && row.cite.date ? row.cite.date : "Undated";
+    }
+    return row.page;
+  }
+
+  renderVals() {
+    const groupBy = this.state.groupBy || this.props.groupBy || "page";
+    const showMethodology = this.props.showMethodology ?? true;
+    const rows = this.state.rows;
+    const q = this.state.query.trim().toLowerCase();
+
+    const chipStyle = (active) => ({
+      font: "inherit",
+      fontFamily: "var(--font-mono), ui-monospace, monospace",
+      fontSize: ".6rem",
+      letterSpacing: ".11em",
+      textTransform: "uppercase",
+      border: active ? "1px solid var(--ink)" : "1px solid var(--border)",
+      background: active ? "var(--surface-card)" : "transparent",
+      color: active ? "var(--text-strong)" : "var(--text-body)",
+      borderRadius: "999px",
+      padding: ".34rem .7rem",
+      cursor: "pointer",
+    });
+
+    const base = {
+      goHome: () => { window.location.href = "Movemental Home v4.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      query: this.state.query,
+      setQuery: (e) => this.setState({ query: e.target.value }),
+      showMethodology,
+      groupChips: GROUP_OPTIONS.map((g) => ({
+        label: g.label,
+        style: chipStyle(g.id === groupBy),
+        select: () => this.setState({ groupBy: g.id }),
+      })),
+    };
+
+    if (this.state.error) {
+      return {
+        ...base,
+        hasGroups: false,
+        groups: [],
+        isEmpty: true,
+        countLine: "Registry unavailable",
+        emptyMessage:
+          "The claims registry could not be loaded (" + this.state.error + "). It lives at src/lib/citations/eeat-site-claims.json — no entries are shown rather than showing invented ones.",
+      };
+    }
+    if (!rows) {
+      return { ...base, hasGroups: false, groups: [], isEmpty: true, countLine: "Loading registry…", emptyMessage: "Loading the claims registry…" };
+    }
+
+    const filtered = q
+      ? rows.filter((r) => JSON.stringify(r).toLowerCase().includes(q))
+      : rows;
+
+    const order = [];
+    const buckets = new Map();
+    filtered.forEach((r) => {
+      const k = this.groupKey(r, groupBy);
+      if (!buckets.has(k)) { buckets.set(k, []); order.push(k); }
+      buckets.get(k).push(r);
+    });
+
+    let n = 0;
+    const groups = order.map((k) => {
+      const list = buckets.get(k);
+      return {
+        label: k,
+        count: list.length + (list.length === 1 ? " entry" : " entries"),
+        rows: list.map((r) => {
+          n += 1;
+          const cite = r.cite;
+          const hasCite = !!(cite && (cite.author || cite.title));
+          const meta = hasCite ? [cite.date, cite.detail].filter(Boolean).join(" · ") : "";
+          const url = hasCite && typeof cite.url === "string" ? cite.url : "";
+          const hasUrl = url.indexOf("https://") === 0;
+          return {
+            id: r.id,
+            num: String(n).padStart(2, "0"),
+            page: r.page,
+            claimType: r.claimType,
+            claim: r.claim,
+            footnote: r.footnote,
+            hasCite,
+            noCite: !hasCite,
+            author: hasCite ? cite.author : "",
+            title: hasCite ? cite.title : "",
+            meta,
+            hasMeta: !!meta,
+            url,
+            hasUrl,
+            noUrl: hasCite && !hasUrl,
+            typeStyle: {
+              fontFamily: "var(--font-mono), ui-monospace, monospace",
+              fontSize: ".56rem",
+              letterSpacing: ".12em",
+              textTransform: "uppercase",
+              color: "var(--text-subtle)",
+              border: "1px solid var(--border)",
+              borderRadius: "999px",
+              padding: ".22rem .55rem",
+            },
+          };
+        }),
+      };
+    });
+
+    return {
+      ...base,
+      groups,
+      hasGroups: groups.length > 0,
+      isEmpty: groups.length === 0,
+      emptyMessage: "No entry matches that search.",
+      countLine:
+        filtered.length + (filtered.length === 1 ? " entry" : " entries") +
+        (q ? " of " + rows.length : "") + " · grouped by " + groupBy,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { VoiceDetailPage } from "@/components/voices/voice-detail-page";
+import { VoiceProfileView } from "@/v2/components/voices/voice-profile-view";
 import {
   getCommittedVoice,
   listCommittedVoiceSlugs,
@@ -24,11 +24,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const canonical = canonicalPageUrl(voicePath(voice.slug));
 
   return {
-    title: `${voice.displayName} — Trusted voice`,
+    title: `${voice.displayName} — Trusted Voice | Movemental`,
     description: voice.shortTagline,
-    alternates: { canonical },
+    alternates: { canonical: canonical ?? undefined },
     openGraph: {
-      url: canonical,
+      url: canonical ?? undefined,
       title: voice.displayName,
       description: voice.shortTagline,
       type: "profile",
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function VoiceSlugPage({ params }: Params) {
+export default async function V2VoiceSlugPage({ params }: Params) {
   const { slug } = await params;
   const voice = getCommittedVoice(slug);
   if (!voice) notFound();
@@ -49,7 +49,7 @@ export default async function VoiceSlugPage({ params }: Params) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <VoiceDetailPage voice={voice} />
+      <VoiceProfileView voice={voice} />
     </>
   );
 }

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/styles.css">
+  <script src="_ds/movemental-design-system-07416b17-5fe0-4d95-8869-3ddc9e650bc9/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg); color: var(--text-strong); font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent-press); text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes mvmRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .mvm-reveal { animation: mvmRise .55s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 3% entry 30%; }
+    .mvm-rrow { transition: background var(--dur-fast); }
+    .mvm-rrow:hover { background: var(--surface); }
+    .mvm-rrow:hover h3 { color: var(--ink-blue); }
+    .mvm-navlink { transition: color var(--dur-fast); }
+    .mvm-navlink:hover { color: var(--ink-blue); text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="min-height: 100dvh; background: var(--bg); padding-bottom: 6rem;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 3.6rem; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(1rem,4vw,2.5rem); border-bottom: 1px solid var(--border); background: rgba(251,250,246,.92); backdrop-filter: blur(8px);">
+    <a href="Movemental Home v4.dc.html" style="display: flex; align-items: center; line-height: 0;">
+      <img src="public/images/brand/movemental-logo-light.webp" alt="Movemental" style="display: block; width: auto; height: 3.4rem; margin: -.35rem 0;">
+    </a>
+    <x-import component-from-global-scope="MovementalDesignSystem_07416b.Crumb" onClick="{{ goHome }}" style="{{ crumbStyle }}" hint-size="auto,1rem">↑ Home</x-import>
+  </header>
+
+  <nav style="position: sticky; top: 3.6rem; z-index: 35; border-bottom: 1px solid var(--border); background: var(--surface);">
+    <div style="max-width: 62rem; margin: 0 auto; padding: .5rem clamp(1.25rem,5vw,3rem); display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; align-items: center;">
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-strong); border-bottom: 1.5px solid var(--ink); padding-bottom: .12rem;">Library</span>
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-subtle);">Findings · not yet designed</span>
+      <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-subtle);">Sources · not yet designed</span>
+      <a class="mvm-navlink" href="Movemental Footnotes.dc.html" style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-body);">Footnotes</a>
+    </div>
+  </nav>
+
+  <main style="max-width: 62rem; margin: 0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.25rem,5vw,3rem) 0;">
+
+    <section style="position: relative; padding-left: clamp(1rem,2.5vw,1.6rem);">
+      <span style="position: absolute; left: .2rem; top: .3rem; bottom: .6rem; width: 1.5px; background: var(--margin-red); opacity: .32;"></span>
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.Eyebrow" hint-size="auto,1rem">Field notes · Research</x-import>
+      <h1 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(2rem,4.8vw,3.3rem); line-height: 1.04; letter-spacing: -.024em; margin: .7rem 0 0;">The research behind the work.</h1>
+      <p style="font-size: 1.06rem; line-height: 1.66; color: var(--text-body); margin: 1rem 0 0; max-width: 60ch;">Original papers on AI, trust, and the organizations whose credibility is on the line. Read here and cite freely. Printable from any paper; PDF bundles ship later.</p>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.25rem,5vw,3rem);">
+      <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .75rem; border-bottom: 1px solid var(--border); padding-bottom: .5rem;">
+        <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-body);">Title &amp; abstract</span>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: .45rem;">
+          <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin-right: .2rem;">Sort</span>
+          <sc-for list="{{ sortChips }}" as="s" hint-placeholder-count="2">
+            <button type="button" onClick="{{ s.select }}" style="{{ s.style }}">{{ s.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div>
+        <sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
+          <article class="mvm-rrow" style="{{ it.rowStyle }}">
+            <div style="flex: 0 0 7rem; display: flex; flex-direction: column; gap: .3rem;">
+              <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body);">{{ it.kind }}</span>
+              <sc-if value="{{ it.isFlagship }}" hint-placeholder-val="{{ false }}">
+                <span style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .55rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-blue);">Flagship</span>
+              </sc-if>
+            </div>
+
+            <div style="flex: 1 1 24rem; min-width: 0;">
+              <h3 style="font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.2rem,2.5vw,1.5rem); line-height: 1.16; letter-spacing: -.018em; margin: 0; transition: color var(--dur-fast);">{{ it.title }}</h3>
+              <sc-if value="{{ showAbstracts }}" hint-placeholder-val="{{ true }}">
+                <p style="font-size: .99rem; line-height: 1.6; color: var(--text-body); margin: .5rem 0 0; max-width: 62ch;">
+                  <sc-for list="{{ it.abstractParts }}" as="p" hint-placeholder-count="3">
+                    <span style="{{ p.style }}">{{ p.text }}</span>
+                  </sc-for>
+                </p>
+              </sc-if>
+              <sc-if value="{{ it.hasNote }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: .88rem; font-style: italic; color: var(--text-subtle); margin: .5rem 0 0;">{{ it.thesisNote }}</p>
+              </sc-if>
+              <sc-if value="{{ it.noBody }}" hint-placeholder-val="{{ false }}">
+                <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: .6rem 0 0;">Reference index only — no reader body</p>
+              </sc-if>
+            </div>
+
+            <div style="flex: 0 0 9rem; display: flex; flex-direction: column; gap: .25rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-subtle);">
+              <span>{{ it.year }}</span>
+              <span>{{ it.readLine }}</span>
+              <span>{{ it.sourceLine }}</span>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ archiveHidden }}" hint-placeholder-val="{{ true }}">
+        <button type="button" onClick="{{ loadArchive }}" style="{{ loadStyle }}">Load archive · {{ archiveCount }} more</button>
+      </sc-if>
+    </section>
+
+    <section class="mvm-reveal" style="margin-top: clamp(2.75rem,6vw,4rem); border-top: 1px solid var(--border); padding-top: clamp(1.75rem,4vw,2.5rem);">
+      <x-import component-from-global-scope="MovementalDesignSystem_07416b.SectionLabel" hint-size="auto,1rem">Three routes, one evidence base</x-import>
+      <div style="display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));">
+        <sc-for list="{{ routes }}" as="r" hint-placeholder-count="3">
+          <div style="border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-card); padding: 1rem 1.05rem;">
+            <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-body); margin: 0;">{{ r.route }}</p>
+            <p style="font-size: .96rem; line-height: 1.55; color: var(--text-body); margin: .5rem 0 0;">{{ r.what }}</p>
+            <p style="font-family: var(--font-mono), ui-monospace, monospace; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin: .7rem 0 0;">{{ r.status }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--text-body); margin: 1.3rem 0 0; max-width: 62ch;">The library holds the papers. Findings holds what the numbers show across them. Sources holds the master citation list every paper indexes into. The footnotes register maps each public claim on the site back to one of those sources.</p>
+      <p style="margin: 1.1rem 0 0;"><a href="Movemental Footnotes.dc.html">Claims, sources, and notes →</a></p>
+    </section>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sortOrder&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;newest&quot;,&quot;alphabetical&quot;],&quot;default&quot;:&quot;newest&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Index&quot;},&quot;showAbstracts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Index&quot;}}">
+/**
+ * `/research` — the research library index.
+ *
+ * Titles, kinds, years, abstracts, read times, source counts, thesis notes and
+ * the flagship/featured flags are verbatim from `src/lib/research/data.ts`
+ * (RESEARCH_ITEMS + RESEARCH_ARCHIVE). The hero copy is the repo's own, from
+ * `research-library.tsx`. `{hl}…{/hl}` in an abstract is the highlighter swipe
+ * and is rendered as one, exactly as the data intends.
+ *
+ * "Load archive" mirrors the repo's own `LoadArchive` control — the eight
+ * archive rows are real, not filler.
+ *
+ * Two honest omissions, per the prompt's constraints:
+ * - No "which audiences cite this" column. `RelatedResearchLinks` receives its
+ *   slugs as props from the audience configs; the mapping is not in the research
+ *   data, and asserting one here would be inventing a relationship.
+ * - No links out to `/research/[slug]`, `/research/findings`, or
+ *   `/research/sources` — those are prompts 11 and 12 and do not exist as files
+ *   yet. The sub-nav labels them "not yet designed" rather than shipping a dead
+ *   link, and rows are not anchors for the same reason.
+ *
+ * `movemental-research-corpus-v1` carries `hasFullBody: false` and is labelled
+ * as a reference index with no reader body.
+ */
+const ITEMS = [
+  { slug: "ai-credibility-crisis", kind: "Analysis", year: 2026, flagship: true, title: "The AI Credibility Crisis", abstract: "What the evidence actually supports about AI-generated fluency, broken statistics, and the {hl}self-efficacy gap{/hl} ordinary readers face.", readMin: 9, sourceCount: 12 },
+  { slug: "finding-ai-guidance-worth-trusting", kind: "Paper", year: 2026, title: "Finding AI Guidance Worth Trusting", abstract: "A discernment guide for mission-driven leaders — expert vs guide, the network test, and whose judgment will {hl}shape your staff's judgment{/hl}.", readMin: 14, sourceCount: 4 },
+  { slug: "credibility-thesis", kind: "Thesis", year: 2026, thesisNote: "*Core curriculum material.*", title: "The Credibility Thesis", abstract: "What credibility means in the AI era — measurable but not reducible — and why {hl}scenius{/hl} is the sustainable response.", readMin: 22, sourceCount: 2 },
+  { slug: "the-cost-of-fragmentation", kind: "Paper", year: 2026, title: "The Cost of Fragmentation", abstract: "Eight shared cost vectors — memory, continuity, compounding, credibility, and more — levied differently on {hl}leaders, churches, institutions, and nonprofits{/hl}.", readMin: 18, sourceCount: 1 },
+  { slug: "sandbox-discovery", kind: "Paper", year: 2026, title: "Sandbox Discovery: Where Learning Actually Happens", abstract: "Stage 2 of the AI Stewardship Sequence — bounded experimentation after Safety, with four outputs and a {hl}graduation gate{/hl} before Training or Tech.", readMin: 10, sourceCount: 3 },
+  { slug: "the-skill-of-ai", kind: "Paper", year: 2026, title: "The Skill of AI: Why \u201cReskilling\u201d Is the Wrong Frame", abstract: "Stage 3 of the AI Stewardship Sequence — judgment, taste, verification, and {hl}collaborative posture{/hl}, not feature tours or certification.", readMin: 12, sourceCount: 3 },
+];
+
+const ARCHIVE = [
+  { slug: "scenius-network-credibility", kind: "Thesis", year: 2026, thesisNote: "*Network verification, not growth hacking.*", title: "Scenius as Credibility Mechanism", abstract: "From Brian Eno to network verification — what scenius actually means, what scholarship supports, and {hl}honest limits{/hl} Movemental should not dodge.", readMin: 8, sourceCount: 6 },
+  { slug: "trust-verification", kind: "Paper", year: 2026, title: "Trust, Verification, and Digital Identity", abstract: "What survey evidence and trust theory support about relationship-visible verification — and where {hl}network graphs can be gamed{/hl} as easily as polished solo text.", readMin: 12, sourceCount: 6 },
+  { slug: "voice-preservation", kind: "Paper", year: 2026, title: "Can AI Actually Sound Like You?", abstract: "What NLP can and cannot preserve — voice-aligned assistance and corpus-grounded generation, not {hl}identity substitution{/hl}.", readMin: 11, sourceCount: 8 },
+  { slug: "seo-geo-discoverability", kind: "Analysis", year: 2026, title: "Expert Discoverability in the Age of AI Search", abstract: "SEO, GEO, and the gap between intellectual paternity and SERP primacy — why {hl}discoverability is infrastructural{/hl}, not a moral reward for being first.", readMin: 11, sourceCount: 3 },
+  { slug: "convergence-thesis", kind: "Thesis", year: 2026, thesisNote: "*Convergence on trial — design coupling, not macro-law.*", title: "Convergence on Trial", abstract: "Four forces, one story — and how honest Movemental can be when {hl}convergence{/hl} is a kairos reading backed by separable evidence, not a physics of history.", readMin: 12, sourceCount: 5 },
+  { slug: "publishing-economics", kind: "Analysis", year: 2026, title: "Publishing Economics and the 90/10 Question", abstract: "Traditional publishing, platform fees, and Movemental's revenue share — separating {hl}cash economics{/hl} from power economics so the argument holds up under scrutiny.", readMin: 10, sourceCount: 4 },
+  { slug: "the-credibility-crisis", kind: "Paper", year: 2026, title: "The Credibility Crisis", abstract: "A narrative diagnosis — when fluent text {hl}performs expertise{/hl}, cheap signals decay, and formation still matters.", readMin: 6, sourceCount: 4 },
+  { slug: "movemental-research-corpus-v1", kind: "Analysis", year: 2026, title: "Movemental Research Corpus v1", abstract: "Citation-quality reference for adoption, governance, and formation stats across faith and nonprofit sectors — {hl}80+ primary sources{/hl} with confidence tags.", readMin: 45, sourceCount: 80, noBody: true },
+];
+
+const ROUTES = [
+  { route: "/research", what: "The library — every original paper, analysis, and thesis, with its abstract and source count.", status: "This page" },
+  { route: "/research/findings", what: "What the numbers show across the corpus: adoption is broad, capability is rare, governance is mostly absent.", status: "Prompt 12 · not yet designed" },
+  { route: "/research/sources", what: "The master citation registry — stable indices every paper's footnotes point into.", status: "Prompt 12 · not yet designed" },
+];
+
+/** Split `{hl}…{/hl}` into plain and highlighted runs. */
+function splitHl(text) {
+  const out = [];
+  let rest = text;
+  while (true) {
+    const open = rest.indexOf("{hl}");
+    if (open === -1) { if (rest) out.push({ text: rest, hl: false }); break; }
+    if (open > 0) out.push({ text: rest.slice(0, open), hl: false });
+    const after = rest.slice(open + 4);
+    const close = after.indexOf("{/hl}");
+    if (close === -1) { out.push({ text: after, hl: false }); break; }
+    out.push({ text: after.slice(0, close), hl: true });
+    rest = after.slice(close + 5);
+  }
+  return out;
+}
+
+class Component extends DCLogic {
+  state = { archiveOpen: false, sort: null };
+
+  renderVals() {
+    const sort = this.state.sort || this.props.sortOrder || "newest";
+    const showAbstracts = this.props.showAbstracts ?? true;
+    const list = this.state.archiveOpen ? ITEMS.concat(ARCHIVE) : ITEMS.slice();
+
+    if (sort === "alphabetical") {
+      list.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    const chipStyle = (active) => ({
+      font: "inherit",
+      fontFamily: "var(--font-mono), ui-monospace, monospace",
+      fontSize: ".58rem",
+      letterSpacing: ".11em",
+      textTransform: "uppercase",
+      border: active ? "1px solid var(--ink)" : "1px solid var(--border)",
+      background: active ? "var(--surface-card)" : "transparent",
+      color: active ? "var(--text-strong)" : "var(--text-body)",
+      borderRadius: "999px",
+      padding: ".3rem .65rem",
+      cursor: "pointer",
+    });
+
+    return {
+      goHome: () => { window.location.href = "Movemental Home v4.dc.html"; },
+      crumbStyle: { marginBottom: 0 },
+      showAbstracts,
+      routes: ROUTES,
+      archiveHidden: !this.state.archiveOpen,
+      archiveCount: ARCHIVE.length,
+      loadArchive: () => this.setState({ archiveOpen: true }),
+      loadStyle: {
+        font: "inherit",
+        marginTop: "1.5rem",
+        fontFamily: "var(--font-mono), ui-monospace, monospace",
+        fontSize: ".62rem",
+        letterSpacing: ".13em",
+        textTransform: "uppercase",
+        border: "1px solid var(--border)",
+        borderRadius: "999px",
+        padding: ".65rem 1.1rem",
+        background: "var(--surface-card)",
+        color: "var(--text-strong)",
+        cursor: "pointer",
+      },
+      sortChips: [
+        { id: "newest", label: "Newest" },
+        { id: "alphabetical", label: "A–Z" },
+      ].map((s) => ({
+        label: s.label,
+        style: chipStyle(s.id === sort),
+        select: () => this.setState({ sort: s.id }),
+      })),
+      items: list.map((it) => ({
+        kind: it.kind,
+        title: it.title,
+        year: String(it.year),
+        readLine: it.readMin + " min read",
+        sourceLine: it.sourceCount + (it.sourceCount === 1 ? " source" : " sources"),
+        isFlagship: !!it.flagship,
+        hasNote: !!it.thesisNote,
+        thesisNote: it.thesisNote || "",
+        noBody: !!it.noBody,
+        abstractParts: splitHl(it.abstract).map((p) => ({
+          text: p.text,
+          style: p.hl
+            ? { background: "var(--marker, #EAFF3A)", mixBlendMode: "multiply", padding: "0 .12em", boxDecorationBreak: "clone", WebkitBoxDecorationBreak: "clone" }
+            : {},
+        })),
+        rowStyle: {
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "clamp(.75rem,2.5vw,1.5rem)",
+          alignItems: "flex-start",
+          padding: "clamp(1.1rem,2.6vw,1.4rem) .35rem",
+          borderBottom: "1px solid var(--border)",
+          borderLeft: it.flagship ? "2px solid var(--ink-blue)" : "2px solid transparent",
+          paddingLeft: "clamp(.6rem,1.6vw,1rem)",
+        },
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

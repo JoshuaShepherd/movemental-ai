@@ -129,7 +129,7 @@ export async function provisionSafetyOrganization(
     }
   }
 
-  let inquiryId = input.inquiryId;
+  const inquiryId = input.inquiryId;
 
   if (input.source === "enroll") {
     if (!inquiryId) {
