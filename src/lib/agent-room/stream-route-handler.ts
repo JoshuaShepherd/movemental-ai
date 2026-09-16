@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { createHmac, randomUUID } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 
 import { env } from "@/lib/env";
@@ -48,6 +48,9 @@ export async function handleAgentRoomStreamPost(request: NextRequest) {
     roomContext: parsed.data.roomContext,
   };
 
+  const ts = Math.floor(Date.now() / 1000);
+  const signature = `${ts}:${createHmac("sha256", secret).update(`${tenantOrgId}:${ts}`).digest("hex")}`;
+
   let upstream: Response;
   try {
     upstream = await fetch(`${base}/api/agents/stream`, {
@@ -56,6 +59,7 @@ export async function handleAgentRoomStreamPost(request: NextRequest) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${secret}`,
         "X-Tenant-Org-Id": tenantOrgId,
+        "X-Tenant-Signature": signature,
       },
       body: JSON.stringify(upstreamBody),
       signal: request.signal,
