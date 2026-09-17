@@ -6,4 +6,4 @@ venv*
 node_modules
 .next
 .git
-docs
+docs/build/agent-orchestration
