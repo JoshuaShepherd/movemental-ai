@@ -1,0 +1,9 @@
+.claude
+.cursor
+.venv*
+venv*
+.venv-pdf
+node_modules
+.next
+.git
+docs
