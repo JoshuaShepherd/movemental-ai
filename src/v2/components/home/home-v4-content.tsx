@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MovementalLogo } from "@/components/brand/movemental-logo";
 import { LeaderBandV4 } from "./leader-band-v4";
 import { LEADERS_V4 } from "@/v2/lib/leaders-v4";
+import { FOUNDER_PROFILES } from "@/lib/founders/content";
 
 const DOORS = [
   {
@@ -105,19 +106,19 @@ const FOUNDERS = [
   {
     name: "Alan Hirsch",
     cred: "Co-Founder & Chief Movement Officer",
-    portrait: "/agent-room/leaders/0.jpg",
+    portrait: FOUNDER_PROFILES["alan-hirsch"].portrait,
     slug: "/about/alan-hirsch",
   },
   {
     name: "Brad Brisco",
     cred: "Co-Founder & CEO",
-    portrait: "/agent-room/leaders/1.jpg",
+    portrait: FOUNDER_PROFILES["brad-brisco"].portrait,
     slug: "/about/brad-brisco",
   },
   {
     name: "Josh Shepherd",
     cred: "Founder & Architect",
-    portrait: "/agent-room/leaders/2.jpg",
+    portrait: FOUNDER_PROFILES["josh-shepherd"].portrait,
     slug: "/about/josh-shepherd",
   },
 ];
