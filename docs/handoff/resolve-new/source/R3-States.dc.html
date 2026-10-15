@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Return and edge states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.rz{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--accent-tint:#E8EBFA;color:var(--ink);background:var(--ground)}
+.rz a{color:var(--ink);text-underline-offset:4px}
+.rz button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.rz button:focus-visible,.rz a:focus-visible,.rz input:focus-visible,.rz textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rz input,.rz textarea{font-family:'Geist','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.5;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:6px;padding:12px 14px;box-sizing:border-box;width:100%}
+.row{transition:background-color .2s ease}
+.row:hover{background:var(--sheet)}
+.settle{animation:settle .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes settle{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.ruleflash{animation:flash 1.6s ease forwards}
+@keyframes flash{0%{box-shadow:inset 3px 0 0 var(--accent)}70%{box-shadow:inset 3px 0 0 var(--accent)}100%{box-shadow:inset 3px 0 0 var(--ink)}}
+@media (prefers-reduced-motion:reduce){.settle,.ruleflash{animation:none}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:72px;align-items:start}
+@media (max-width:1100px){.two{grid-template-columns:minmax(0,1fr);gap:40px}}
+@media (max-width:640px){.pad{padding-left:20px !important;padding-right:20px !important}.h1{font-size:40px !important}.q{font-size:36px !important}}
+@media print{.noprint{display:none !important}}
+</style>
+</helmet>
+<div class="rz" style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; min-height: 100%; box-sizing: border-box">
+<helmet><style>.shim{animation:sh 1.4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:.6}50%{opacity:1}}@media (prefers-reduced-motion:reduce){.shim{animation:none}}</style></helmet><header class="pad noprint" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 56px; border-bottom: 1px solid var(--rule)">
+<a href="#" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 22px; width: auto; display: block"></a>
+
+</header><main class="pad" style="max-width: 900px; margin: 0 auto; padding: 56px 56px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0 0 18px; font-size: 15px; color: var(--graphite)">Return and edge states for the Resolution, each as the person would meet it.</p>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 28px 0 32px; border-top: 1px solid var(--rule)"><h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1; font-weight: 400">Welcome back.</h2><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34363F; max-width: 640px">You were on theme 6, Time. Your five lines are saved.</p><a href="#" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; font-size: 15px; font-weight: 500; color: #fff; background: var(--ink); border-radius: 999px; text-decoration: none">Pick up where you left off</a></section>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 28px 0 32px; border-top: 1px solid var(--rule)"><h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1; font-weight: 400">Your Resolution for Riverbend</h2><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34363F; max-width: 640px">Written October 6, 2026. You can revise it at any time; earlier versions are kept.</p><div style="display: flex; flex-direction: column; gap: 4px; font-size: 14.5px; color: var(--graphite)"><span>Version 2, October 6, 2026</span><span>Version 1, September 30, 2026</span></div><a href="#" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; font-size: 15px; font-weight: 500; color: #fff; background: var(--ink); border-radius: 999px; text-decoration: none">Revise</a></section>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 28px 0 32px; border-top: 1px solid var(--rule)"><h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1; font-weight: 400">You didn’t choose a line in any theme.</h2><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34363F; max-width: 640px">That can be an honest answer. Want to look again at one?</p><a href="#" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; font-size: 15px; font-weight: 500; color: #fff; background: var(--ink); border-radius: 999px; text-decoration: none">Look again</a></section>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 28px 0 32px; border-top: 1px solid var(--rule)"><h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1; font-weight: 400">Results appear when a third person resolves.</h2><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34363F; max-width: 640px">Two people have written Resolutions for Riverbend. Counts appear once there are three, so no one’s choices can be guessed.</p></section>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 28px 0 32px; border-top: 1px solid var(--rule)"><h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1; font-weight: 400">This didn’t load.</h2><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34363F; max-width: 640px">Your choices are saved. Try again in a moment.</p><a href="#" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; font-size: 15px; font-weight: 500; color: #fff; background: var(--ink); border-radius: 999px; text-decoration: none">Try again</a></section>
+<section role="status" aria-label="Loading" style="display: flex; flex-direction: column; gap: 12px; padding: 28px 0 32px; border-top: 1px solid var(--rule)"><span class="shim" style="display: block; height: 30px; width: 55%; background: var(--sheet); border-radius: 4px"></span><span class="shim" style="display: block; height: 14px; width: 90%; background: var(--sheet); border-radius: 4px"></span><span class="shim" style="display: block; height: 14px; width: 70%; background: var(--sheet); border-radius: 4px"></span></section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1440, "height": 1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

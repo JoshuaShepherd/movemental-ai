@@ -11,6 +11,14 @@ export async function updateSession(
   request: NextRequest,
   injectHeaders?: Record<string, string>,
 ) {
+  return (await updateSessionWithUser(request, injectHeaders)).response;
+}
+
+/** Same as `updateSession`, and also returns the signed-in user's id (or null). */
+export async function updateSessionWithUser(
+  request: NextRequest,
+  injectHeaders?: Record<string, string>,
+): Promise<{ response: NextResponse; userId: string | null }> {
   const requestHeaders = new Headers(request.headers);
   if (injectHeaders) {
     for (const [key, value] of Object.entries(injectHeaders)) {
@@ -53,6 +61,7 @@ export async function updateSession(
   // A simple mistake could make it very hard to debug issues with users being
   // randomly logged out.
   const {
+    data: { user },
     error: authError,
   } = await supabase.auth.getUser();
 
@@ -64,7 +73,8 @@ export async function updateSession(
     )
   ) {
     await supabase.auth.signOut();
+    return { response: supabaseResponse, userId: null };
   }
 
-  return supabaseResponse;
+  return { response: supabaseResponse, userId: user?.id ?? null };
 }
