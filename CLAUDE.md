@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with the **movemental** organizational site repo.
 
+## Read first: the `-new` migration (October 2026)
+
+The public site is being rebuilt around Resolve and Respond, page by page, as parallel `-new` routes in `src/app/(new)/` (first: `/home-page-new`). For anything in that route group:
+
+- **Design system:** Paper — [docs/design/MV_DESIGN_CHARTER.md](docs/design/MV_DESIGN_CHARTER.md). It supersedes the Ink Band and Stitch guidance below for `(new)` pages only.
+- **Governing prompt:** [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts/canvas-to-react-new.md). The source of truth for each page is its Claude Design board, committed under `docs/handoff/<page>-new/source/`.
+- **State:** [MIGRATION-NEW-STATE.md](MIGRATION-NEW-STATE.md).
+- Do not edit, redirect or delete existing routes until the cutover slice.
+
+Everything below still governs the rest of the repo.
+
 ## What this repo is
 
 Movemental is the organizational site for Movemental — a fresh build from scratch. It runs **two design systems, by surface**, both documented as a charter + layer-by-layer chain (tokens → primitives → components → built layers → pages):
