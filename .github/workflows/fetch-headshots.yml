@@ -1,0 +1,44 @@
+name: fetch-headshots
+on:
+  push:
+    branches: [tools/fetch-headshots]
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download leader headshots from Supabase storage
+        env:
+          B: https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library
+        run: |
+          mkdir -p out
+          curl -sfL -o out/daniel-bravo.webp "$B/daniel-bravo/headshots/daniel-bravo.webp" && echo "ok daniel-bravo" || echo "MISSING daniel-bravo"
+          curl -sfL -o out/brad-brisco.webp "$B/brad-brisco/headshots/brad-brisco-primary-3x4.webp" && echo "ok brad-brisco" || echo "MISSING brad-brisco"
+          curl -sfL -o out/jeremy-chambers.webp "$B/jeremy-chambers/headshots/jeremy-chambers.webp" && echo "ok jeremy-chambers" || echo "MISSING jeremy-chambers"
+          curl -sfL -o out/neil-cole.webp "$B/neil-cole/headshots/neil-cole.webp" && echo "ok neil-cole" || echo "MISSING neil-cole"
+          curl -sfL -o out/kate-coleman.webp "$B/kate-coleman/headshots/kate-coleman-2026-10-1x1.webp" && echo "ok kate-coleman" || echo "MISSING kate-coleman"
+          curl -sfL -o out/michael-cooper.webp "$B/michael-cooper/headshots/michael-cooper-primary.webp" && echo "ok michael-cooper" || echo "MISSING michael-cooper"
+          curl -sfL -o out/david-docusen.webp "$B/david-docusen/headshots/david-docusen-primary.webp" && echo "ok david-docusen" || echo "MISSING david-docusen"
+          curl -sfL -o out/dave-ferguson.webp "$B/dave-ferguson/headshots/dave-ferguson.webp" && echo "ok dave-ferguson" || echo "MISSING dave-ferguson"
+          curl -sfL -o out/meghan-good.webp "$B/meghan-good/headshots/meghan-good.webp" && echo "ok meghan-good" || echo "MISSING meghan-good"
+          curl -sfL -o out/hugh-halter.webp "$B/hugh-halter/headshots/hugh-halter.webp" && echo "ok hugh-halter" || echo "MISSING hugh-halter"
+          curl -sfL -o out/alan-hirsch.webp "$B/alan-hirsch/headshots/alan-hero-4x5.webp" && echo "ok alan-hirsch" || echo "MISSING alan-hirsch"
+          curl -sfL -o out/deb-hirsch.webp "$B/deb-hirsch/headshots/deb-hirsch.webp" && echo "ok deb-hirsch" || echo "MISSING deb-hirsch"
+          curl -sfL -o out/andrew-jones.webp "$B/andrew-jones/headshots/andrew-jones.webp" && echo "ok andrew-jones" || echo "MISSING andrew-jones"
+          curl -sfL -o out/peyton-jones.webp "$B/peyton-jones/headshots/peyton-jones.webp" && echo "ok peyton-jones" || echo "MISSING peyton-jones"
+          curl -sfL -o out/dhati-lewis.webp "$B/dhati-lewis/headshots/dhati-lewis.webp" && echo "ok dhati-lewis" || echo "MISSING dhati-lewis"
+          curl -sfL -o out/bree-mills.webp "$B/bree-mills/headshots/bree-mills.webp" && echo "ok bree-mills" || echo "MISSING bree-mills"
+          curl -sfL -o out/roy-moran.webp "$B/roy-moran/headshots/roy-moran-primary.webp" && echo "ok roy-moran" || echo "MISSING roy-moran"
+          curl -sfL -o out/lucas-pulley.webp "$B/lucas-pulley/headshots/lucas-pulley.webp" && echo "ok lucas-pulley" || echo "MISSING lucas-pulley"
+          curl -sfL -o out/liz-rios.webp "$B/liz-rios/headshots/liz-rios-primary.webp" && echo "ok liz-rios" || echo "MISSING liz-rios"
+          curl -sfL -o out/brian-sanders.webp "$B/brian-sanders/headshots/brian-sanders.webp" && echo "ok brian-sanders" || echo "MISSING brian-sanders"
+          curl -sfL -o out/josh-shepherd.webp "$B/josh-shepherd/headshots/josh-shepherd.webp" && echo "ok josh-shepherd" || echo "MISSING josh-shepherd"
+          curl -sfL -o out/rowland-smith.webp "$B/rowland-smith/headshots/rowland-smith.webp" && echo "ok rowland-smith" || echo "MISSING rowland-smith"
+          curl -sfL -o out/tiffany-smith.webp "$B/tiffany-smith/headshots/tiffany-smith.webp" && echo "ok tiffany-smith" || echo "MISSING tiffany-smith"
+          curl -sfL -o out/danielle-strickland.webp "$B/danielle-strickland/headshots/danielle-strickland.webp" && echo "ok danielle-strickland" || echo "MISSING danielle-strickland"
+          curl -sfL -o out/rob-wegner.webp "$B/rob-wegner/headshots/rob-wegner.webp" && echo "ok rob-wegner" || echo "MISSING rob-wegner"
+          curl -sfL -o out/jr-woodward.webp "$B/jr-woodward/headshots/jr-woodward.webp" && echo "ok jr-woodward" || echo "MISSING jr-woodward"
+          ls -la out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: headshots
+          path: out/
