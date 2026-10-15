@@ -2,7 +2,7 @@
 
 System interface for missional movement. Fresh build of the Movemental organizational site.
 
-The canonical design spec is [docs/design/DESIGN.md](docs/design/DESIGN.md). The repo conventions, architecture, and Claude guidance live in [CLAUDE.md](CLAUDE.md).
+The design specs directory is [docs/design/README.md](docs/design/README.md) (legacy specs archived in [_archive/design-v1/](_archive/design-v1/MANIFEST.md); awaiting incoming platform design specifications). The repo conventions, architecture, and Claude guidance live in [CLAUDE.md](CLAUDE.md).
 
 ## Stack
 
@@ -60,7 +60,7 @@ src/
     env.ts               # Zod-validated environment
     supabase/            # Supabase clients (browser / server / middleware)
     db/                  # Drizzle client + schema
-docs/design/DESIGN.md    # Canonical design spec
+docs/design/README.md   # Design specifications (legacy archived to _archive/design-v1/)
 .claude/skills/          # 228 Claude skills (symlinked from alan-hirsch + my-skills)
 ```
 

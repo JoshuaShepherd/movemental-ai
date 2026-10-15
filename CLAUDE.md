@@ -4,12 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 ## What this repo is
 
-Movemental is the organizational site for Movemental — a fresh build from scratch. It runs **two design systems, by surface**, both documented as a charter + layer-by-layer chain (tokens → primitives → components → built layers → pages):
+Movemental is the organizational site for Movemental — a fresh build from scratch. 
 
-- **Concept Modern** — [docs/design/DESIGN.md](docs/design/DESIGN.md) — the **marketing site** (warm cream paper, near-black ink, Inter + Newsreader italic emphasis, ink-pill CTAs, Midnight bands).
-- **Ink Band** — [docs/design/INK_BAND_DESIGN_CHAIN.md](docs/design/INK_BAND_DESIGN_CHAIN.md) — the **agent room** (`/agent`, `.oat-surface`): warm paper sheet, Playfair + Caveat + IBM Plex Mono, ink-blue pen accent. Transcribed from the `movemental-agentic-front-end` prototype.
-
-Index: [docs/design/README.md](docs/design/README.md). Keep the two separated — Ink Band tokens must not leak onto marketing pages. The data-side companion is [docs/architecture/TYPE_SAFETY_CHAIN.md](docs/architecture/TYPE_SAFETY_CHAIN.md).
+> **Design System Status:** Legacy design system specifications (Concept Modern and Ink Band) have been archived to [`_archive/design-v1/`](_archive/design-v1/MANIFEST.md). The `docs/design/` directory is currently cleared and prepared for the incoming platform version with its own design specs. The data-side companion is [docs/architecture/TYPE_SAFETY_CHAIN.md](docs/architecture/TYPE_SAFETY_CHAIN.md).
 
 ### Current state: marketing migration in flight
 
@@ -98,9 +95,7 @@ docs/
   architecture/
     TYPE_SAFETY_CHAIN.md       # Six-layer data chain (Drizzle→Zod→services→routes→hooks→UI)
   design/
-    DESIGN.md                  # Concept Modern — marketing design charter + chain
-    INK_BAND_DESIGN_CHAIN.md   # Ink Band — agent-room design charter + chain
-    README.md                  # Index of the two design systems
+    README.md                  # Design specifications (legacy archived to _archive/design-v1/)
   build/
     stitch-project.md          # Pins Stitch project 2208910962065880866
     prompts/
