@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import { MovementalLogo } from "@/components/brand/movemental-logo";
-
+import { MvSignet } from "./brand/mark";
 import { MV_ROUTES } from "./routes";
 
 /**
@@ -11,8 +10,8 @@ import { MV_ROUTES } from "./routes";
 export function MvTaskHeader({ children }: { children?: React.ReactNode }) {
   return (
     <header className="mv-task-header mv-no-print">
-      <Link href={MV_ROUTES.home} aria-label="Movemental home" style={{ display: "flex" }}>
-        <MovementalLogo className="h-6" />
+      <Link href={MV_ROUTES.home} aria-label="Movemental home" className="mv-nb-brand">
+        <MvSignet size={24} />
       </Link>
       {children ? <nav aria-label="Your account">{children}</nav> : null}
     </header>
