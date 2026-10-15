@@ -2,10 +2,13 @@ name: fetch-headshots
 on:
   push:
     branches: [tools/fetch-headshots]
+permissions:
+  contents: write
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Download leader headshots from Supabase storage
         env:
           B: https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library
@@ -38,7 +41,9 @@ jobs:
           curl -sfL -o out/rob-wegner.webp "$B/rob-wegner/headshots/rob-wegner.webp" && echo "ok rob-wegner" || echo "MISSING rob-wegner"
           curl -sfL -o out/jr-woodward.webp "$B/jr-woodward/headshots/jr-woodward.webp" && echo "ok jr-woodward" || echo "MISSING jr-woodward"
           ls -la out
-      - uses: actions/upload-artifact@v4
-        with:
-          name: headshots
-          path: out/
+      - name: Commit them to this branch
+        run: |
+          mkdir -p tools/headshots && mv out/* tools/headshots/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/headshots && git commit -m "tools: fetched leader headshots" && git push
