@@ -14,7 +14,8 @@ import {
   WorkWithMovemental,
 } from "@/components/mv/home/sections";
 import { MvFooter } from "@/components/mv/mv-footer";
-import { MvHeader } from "@/components/mv/mv-header";
+import { MovementalLeaders } from "@/components/mv/home/movemental-leaders";
+import { MvHomeHeader } from "@/components/mv/mv-home-header";
 
 export const metadata: Metadata = {
   title: { absolute: "Movemental | Lead the response to AI" },
@@ -23,12 +24,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-/** The new home page, migrated from the Claude Design board Home v3 (Oct 15, 2026). */
+/** The home page: board Home v3, with the first screen and network from Home-Headline-C (Oct 15, 2026). */
 export default function HomePageNew() {
   return (
     <>
-      <MvHeader />
+      <MvHomeHeader />
       <HomeHero />
+      <MovementalLeaders />
       <AlreadyResponding />
       <HumanQuestions />
       <ResolveSection />

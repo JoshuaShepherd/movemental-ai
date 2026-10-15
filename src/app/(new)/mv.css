@@ -2943,3 +2943,383 @@ a:focus-visible .mv-signet-turn {
   .mv-flow3 { grid-template-columns: minmax(0, 1fr); }
   .mv-flow3 > [aria-hidden="true"] { transform: rotate(90deg); }
 }
+
+/* Home (board Home-Headline-C): the two-call header, the two-line headline, Movemental Leaders */
+.mv-hh-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 88px;
+}
+
+.mv-hh-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mv-surface a.mv-hh-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 52px;
+  min-width: 212px;
+  padding: 0 26px;
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--mv-ink);
+  border-radius: var(--mv-radius-pill);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.mv-surface a.mv-hh-cta--fill {
+  color: var(--mv-ground);
+  background: var(--mv-ink);
+}
+
+.mv-surface a.mv-hh-cta--fill:hover {
+  color: var(--mv-ground);
+  background: var(--mv-accent);
+  border-color: var(--mv-accent);
+}
+
+.mv-surface a.mv-hh-cta--line {
+  color: var(--mv-ink);
+  background: transparent;
+}
+
+.mv-surface a.mv-hh-cta--line:hover {
+  color: var(--mv-ground);
+  background: var(--mv-ink);
+}
+
+.mv-surface :is(a.mv-hh-cta, a.mv-hl-go, a.mv-ml-name):focus-visible {
+  outline: 2px solid var(--mv-accent);
+  outline-offset: 3px;
+}
+
+.mv-hh-roll {
+  display: grid;
+  height: 1.3em;
+  line-height: 1.3em;
+  overflow: hidden;
+}
+
+.mv-hh-roll > span {
+  grid-area: 1 / 1;
+  text-align: center;
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.45s ease;
+}
+
+.mv-hh-roll > span + span {
+  transform: translateY(110%);
+  opacity: 0;
+}
+
+.mv-hh-cta:is(:hover, :focus-visible) .mv-hh-roll > span:first-child {
+  transform: translateY(-110%);
+  opacity: 0;
+}
+
+.mv-hh-cta:is(:hover, :focus-visible) .mv-hh-roll > span + span {
+  transform: none;
+  opacity: 1;
+}
+
+/* The first screen: the network's top edge shows at the fold. */
+.mv-hl-stage {
+  box-sizing: border-box;
+  min-height: max(500px, calc(100svh - 88px - 140px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0 48px;
+}
+
+/* Sized from the band's width so each line always fits on one line. The longer line is 16.64em in
+   Instrument Serif at -0.018em tracking; 5.85cqi leaves a 2.5% margin. */
+.mv-hl-band {
+  container-type: inline-size;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--mv-gutter);
+}
+
+.mv-surface.mv-surface .mv-hl {
+  margin: 0;
+  text-align: center;
+  font-family: var(--mv-font-display);
+  font-weight: 400;
+  font-size: min(5.85cqi, 118px);
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  text-wrap: nowrap;
+}
+
+.mv-hl > span {
+  display: block;
+  white-space: nowrap;
+}
+
+.mv-surface .mv-hl-sub {
+  margin-top: 40px;
+  padding: 0 20px;
+  text-align: center;
+  text-wrap: balance;
+  font-family: var(--mv-font-reading);
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--mv-body-muted);
+}
+
+.mv-surface a.mv-hl-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  min-height: 68px;
+  padding: 0 44px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--mv-ground);
+  background: var(--mv-ink);
+  border-radius: var(--mv-radius-pill);
+  transition: background-color 0.25s ease;
+}
+
+.mv-surface a.mv-hl-go:hover {
+  color: var(--mv-ground);
+  background: var(--mv-accent);
+}
+
+.mv-hl-go svg {
+  transition: transform 0.3s ease;
+}
+
+.mv-hl-go:hover svg {
+  transform: translateX(4px);
+}
+
+.mv-surface .mv-hl-note {
+  margin-top: 18px;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--mv-graphite);
+}
+
+/* Movemental Leaders: a full-width dark band; the network keeps its own proportions. */
+.mv-ml {
+  position: relative;
+  aspect-ratio: 12 / 5;
+  overflow: hidden;
+  background: var(--mv-field);
+}
+
+.mv-ml-head {
+  position: absolute;
+  z-index: 4;
+  top: 36px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.mv-ml-mark {
+  color: var(--mv-field-line);
+}
+
+.mv-surface.mv-surface .mv-ml-title {
+  font-family: var(--mv-font-display);
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--mv-ground);
+}
+
+.mv-ml-field {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  height: 100%;
+  max-width: 100%;
+  aspect-ratio: 760 / 500;
+}
+
+.mv-ml-field svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mv-ml-node {
+  width: 6.4%;
+}
+
+.mv-ml-node[data-state="focus"] {
+  width: 7.8%;
+}
+
+.mv-surface .mv-ml-quote {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  margin: 0 auto;
+  max-width: 620px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.mv-ml-quote blockquote {
+  margin: 0;
+}
+
+.mv-ml-quote blockquote p {
+  font-family: var(--mv-font-display);
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1.16;
+  text-wrap: balance;
+  color: var(--mv-ground);
+}
+
+.mv-ml-quote figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+
+.mv-surface a.mv-ml-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--mv-ground);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 210, 255, 0.5);
+  padding-bottom: 1px;
+}
+
+.mv-surface a.mv-ml-name:hover {
+  color: var(--mv-field-line);
+  border-bottom-color: var(--mv-field-line);
+}
+
+.mv-ml-name::before {
+  content: "— ";
+  color: var(--mv-field-line);
+}
+
+.mv-ml-cred {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+@media (max-width: 700px), (hover: none) {
+  .mv-hh-roll > span + span {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .mv-hh-in {
+    height: 68px;
+    gap: 8px;
+    padding-left: 16px;
+    padding-right: 12px;
+  }
+  .mv-hh-ctas {
+    gap: 6px;
+  }
+  .mv-surface a.mv-hh-cta {
+    height: 42px;
+    min-width: 0;
+    padding: 0 13px;
+    font-size: 12px;
+    letter-spacing: 0.07em;
+  }
+  .mv-hh-signet .mv-signet-word {
+    font-size: 21px !important;
+  }
+  .mv-hl-stage {
+    min-height: max(440px, calc(100svh - 68px - 160px));
+  }
+  .mv-hl-band {
+    padding: 0 20px;
+  }
+  .mv-surface .mv-hl-sub {
+    margin-top: 28px;
+    font-size: 17px;
+  }
+  .mv-surface a.mv-hl-go {
+    margin-top: 28px;
+    min-height: 60px;
+    padding: 0 36px;
+    font-size: 16px;
+  }
+  .mv-ml {
+    aspect-ratio: 760 / 900;
+  }
+  .mv-ml-head {
+    top: 22px;
+    gap: 10px;
+  }
+  .mv-surface.mv-surface .mv-ml-title {
+    font-size: 28px;
+  }
+  .mv-ml-field {
+    bottom: auto;
+    height: auto;
+    width: calc(100% - 40px);
+    margin: 72px auto 0;
+  }
+  .mv-ml-node {
+    width: 8.3%;
+  }
+  .mv-ml-node[data-state="focus"] {
+    width: 10%;
+  }
+  .mv-surface .mv-ml-quote {
+    bottom: 22px;
+    padding: 0 20px;
+  }
+  .mv-ml-quote blockquote p {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mv-hh-signet .mv-signet-word {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-hh-roll > span,
+  .mv-hl-go svg,
+  .mv-surface a.mv-hh-cta {
+    transition: none;
+  }
+}

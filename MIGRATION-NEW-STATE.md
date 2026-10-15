@@ -21,6 +21,7 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | S11 | Launch: merge to main, gate `/api/simplified/*` | PR #14 | Done (October 15, 2026) | Production `dpl_JEJuqxVx1Too2hKPnHYPQ7Z7iP7N` READY on movemental.ai; 18 pages 200, `/agent` → `/`, `/voices` → `/leaders`, bad share token 404, anonymous `/api/simplified/*` → 401. Rollback: `dpl_5qWyM54yWr7Q44urgVw6cCBcknQb`. Indexing flag not yet set (connector has no env access). |
 | S12 | Titles: drop the doubled "\| Movemental" | — | Done (October 15, 2026) | typecheck |
 | S13 | Brand: the signet navbar, phone menu, flourish footer, favicon | Brand-Logo, Brand-Navbar, Brand-Navbar-Phone(-Open) | Done (October 15, 2026) | typecheck, lint, link:check; 23 pages 200; navbar states at 1440, menu and focus at 390. Receipt: `docs/handoff/brand-nav/README.md` |
+| S14 | Home: two-line headline, Resolve/Respond header, Movemental Leaders (26) | Home-Headline-C, -Phone | Done (October 15, 2026) | typecheck, lint, link:check; headline 2 lines with the real font at 320–1920; no horizontal scroll at 390 and 1440. Receipt: `docs/handoff/home-headline/README.md` |
 
 ## Check-and-branch outcomes (S01)
 

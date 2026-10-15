@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { MV_PROOF_SITES, MV_ROUTES } from "../routes";
-import { LeaderNetwork } from "./leader-network";
 import { ResolvePreview } from "./resolve-preview";
 
 /*
@@ -10,44 +9,31 @@ import { ResolvePreview } from "./resolve-preview";
  * and layout. Do not paraphrase; record questions in docs/handoff/home-page-new/README.md.
  */
 
+/**
+ * The first screen (board Home-Headline-C): the headline centered on two lines, broken after "AI,",
+ * sized from the page width so each line always fits; one call; the network peeking at the fold.
+ */
 export function HomeHero() {
   return (
-    <section id="top" style={{ padding: "48px 0 112px" }}>
-      <div className="mv-wrap mv-hero">
-        <div className="mv-stack" style={{ gap: 32 }}>
-          <h1 className="mv-h1">
-            Movemental helps churches, nonprofits and institutions lead the response to AI.
-          </h1>
-          <div className="mv-stack" style={{ gap: 14, maxWidth: 540 }}>
-            <p className="mv-lead">
-              We help organizations decide what AI should and should not do, prepare the knowledge
-              and people it depends on, and build the tools that put those decisions into practice.
-            </p>
-            <p className="mv-lead mv-muted">
-              We’re doing this work in our own churches, nonprofits and networks first.
-            </p>
-          </div>
-          <div className="mv-stack" style={{ gap: 10, alignItems: "flex-start", paddingTop: 4 }}>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "14px 28px" }}>
-              <Link className="mv-pill" href="#resolve">
-                Write your Resolution
-              </Link>
-              <Link className="mv-more" href="#work">
-                Explore how we work with organizations →
-              </Link>
-            </div>
-            <p className="mv-caption mv-muted">Four minutes. No account required.</p>
-            <p
-              className="mv-small mv-muted"
-              style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid var(--mv-rule)" }}
-            >
-              Already leading your organization’s AI response?{" "}
-              <Link href={MV_ROUTES.assessment}>Take the Reality Assessment →</Link>
-            </p>
-          </div>
-        </div>
-        <LeaderNetwork />
+    <section id="top" className="mv-hl-stage">
+      <div className="mv-hl-band">
+        <h1
+          className="mv-hl"
+          aria-label="Movemental is an organizational response to AI, shaped by nonprofit, church, and seminary leaders."
+        >
+          <span aria-hidden="true">Movemental is an organizational response to AI,</span>
+          <span aria-hidden="true">shaped by nonprofit, church, and seminary leaders.</span>
+        </h1>
       </div>
+      <p className="mv-hl-sub">Say what you believe about AI in your organization.</p>
+      <Link className="mv-hl-go" href={MV_ROUTES.resolve}>
+        Start with Resolve
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M5 12h14" />
+          <path d="m13 6 6 6-6 6" />
+        </svg>
+      </Link>
+      <p className="mv-hl-note">4 minutes. 9 statements. Optionally share with your organization.</p>
     </section>
   );
 }
