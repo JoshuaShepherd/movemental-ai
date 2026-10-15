@@ -6,7 +6,7 @@ import { ResolveFlow } from "@/components/mv/resolve/resolve-flow";
 import { MV_ROUTES } from "@/components/mv/routes";
 
 export const metadata: Metadata = {
-  title: "Write your Resolution | Movemental",
+  title: "Write your Resolution",
   description: "Say what you believe your organization should do about AI. Nine themes, about four minutes, no account.",
   alternates: { canonical: "/resolve" },
 };

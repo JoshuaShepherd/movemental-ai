@@ -6,7 +6,7 @@ import { YourPeople } from "@/components/mv/resolve/your-people";
 import { MV_ROUTES } from "@/components/mv/routes";
 
 export const metadata: Metadata = {
-  title: "Your people | Movemental",
+  title: "Your people",
   alternates: { canonical: "/me/people" },
 };
 

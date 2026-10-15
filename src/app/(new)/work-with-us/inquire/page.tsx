@@ -6,7 +6,7 @@ import { MV_ROUTES } from "@/components/mv/routes";
 import { InquiryForm } from "@/components/mv/work/inquiry-form";
 
 export const metadata: Metadata = {
-  title: "Discuss your organization’s response | Movemental",
+  title: "Discuss your organization’s response",
   alternates: { canonical: "/work-with-us/inquire" },
 };
 

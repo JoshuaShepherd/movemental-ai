@@ -15,7 +15,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const l = leaderBySlug((await params).slug);
   return l
-    ? { title: `${l.name} | Movement leaders | Movemental`, alternates: { canonical: `/leaders/${l.slug}` } }
+    ? { title: `${l.name} | Movement leaders`, alternates: { canonical: `/leaders/${l.slug}` } }
     : {};
 }
 

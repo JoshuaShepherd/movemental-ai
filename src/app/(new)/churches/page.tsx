@@ -6,7 +6,7 @@ import { MvFooter } from "@/components/mv/mv-footer";
 import { MvHeader } from "@/components/mv/mv-header";
 
 export const metadata: Metadata = {
-  title: "For churches and ministries | Movemental",
+  title: "For churches and ministries",
   description: AUDIENCES.churches.intro[0],
   alternates: { canonical: "/churches" },
 };

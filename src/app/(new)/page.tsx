@@ -17,7 +17,7 @@ import { MvFooter } from "@/components/mv/mv-footer";
 import { MvHeader } from "@/components/mv/mv-header";
 
 export const metadata: Metadata = {
-  title: "Movemental | Lead the response to AI",
+  title: { absolute: "Movemental | Lead the response to AI" },
   description:
     "Movemental helps churches, nonprofits and institutions lead the response to AI: deciding what AI should and should not do, preparing the knowledge and people it depends on, and building the tools that put those decisions into practice.",
   alternates: { canonical: "/" },

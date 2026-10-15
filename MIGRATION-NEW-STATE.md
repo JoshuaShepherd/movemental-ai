@@ -18,6 +18,8 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | S08 | `/churches-new`, `/nonprofits-new`, `/institutions-new` | Audience-Institutions, -Churches, -Nonprofits (Oct 15) | Done | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
 | S09 | `/about-new`, `/story-new` | LongForm (+ existing approved About copy) | Done | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
 | S10 | Cutover: final URLs, redirects, indexing | — | Done (October 15, 2026) | typecheck, lint, link:check; every page 200 and every redirect checked under `next dev`; Resolve and Assessment walkthroughs at the new URLs. Receipt: `docs/handoff/cutover/README.md` |
+| S11 | Launch: merge to main, gate `/api/simplified/*` | PR #14 | Done (October 15, 2026) | Production `dpl_JEJuqxVx1Too2hKPnHYPQ7Z7iP7N` READY on movemental.ai; 18 pages 200, `/agent` → `/`, `/voices` → `/leaders`, bad share token 404, anonymous `/api/simplified/*` → 401. Rollback: `dpl_5qWyM54yWr7Q44urgVw6cCBcknQb`. Indexing flag not yet set (connector has no env access). |
+| S12 | Titles: drop the doubled "\| Movemental" | — | Done (October 15, 2026) | typecheck |
 
 ## Check-and-branch outcomes (S01)
 

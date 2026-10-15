@@ -20,7 +20,7 @@ export async function generateMetadata({
   const stage = stageBySlug((await params).stage);
   return stage
     ? {
-        title: `${stage.name} | The Map | Movemental`,
+        title: `${stage.name} | The Map`,
         description: stage.lead,
         alternates: { canonical: `/map/${stage.slug}` },
       }

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { ResolutionDocument } from "@/components/mv/resolve/resolution-document";
 
 export const metadata: Metadata = {
-  title: "My Resolution | Movemental",
+  title: "My Resolution",
   alternates: { canonical: "/resolve/document" },
 };
 
