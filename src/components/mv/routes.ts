@@ -32,7 +32,11 @@ export const MV_ROUTES = {
   assessmentResults: "/assessment-new/results",
   guidebook: "/guidebook-new",
   leaders: "/leaders-new",
-  about: "/home-page-new#about",
+  about: "/about-new",
+  /** Our story, the long-form page. Cutover: /story. */
+  story: "/story-new",
+  /** Kept as is until it is restyled after launch. */
+  howWeUseAi: "/how-we-use-ai",
   discuss: "/work-with-us-new/inquire",
   work: "/work-with-us-new",
   proof: "/home-page-new#proof",

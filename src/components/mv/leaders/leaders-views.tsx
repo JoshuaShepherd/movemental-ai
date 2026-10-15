@@ -70,8 +70,7 @@ export function LeadersIndex() {
               ))}
             </ul>
             <p className="mv-caption mv-muted">Leaders nominate. Objections are written. Admission is by consent.</p>
-            {/* TODO(S09-about-new): link to /story-new once it exists. */}
-            <Link className="mv-link-target" href={MV_ROUTES.about}>
+            <Link className="mv-link-target" href={MV_ROUTES.story}>
               How Movemental began with these leaders’ work
             </Link>
           </div>

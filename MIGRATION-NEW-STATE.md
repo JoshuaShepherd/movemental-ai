@@ -14,7 +14,8 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | S06 | `/work-with-us-new`, `/work-with-us-new/inquire` | Work, Work-Inquire | Done (form live via `/api/contact`) | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390, mocked form submission |
 | S07 | `/assessment-new` (+ `/predict`, `/answer`, `/results`) | Assessment | Done (front end only) | typecheck, lint, link:check, no color literals, walkthrough at 1440 and 390 |
 | S08 | `/churches-new`, `/nonprofits-new`, `/institutions-new` | Audience-Institutions, -Churches, -Nonprofits (Oct 15) | Done | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
-| S09 | `/about-new` | LongForm | Not started | |
+| S09 | `/about-new`, `/story-new` | LongForm (+ existing approved About copy) | Done | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
+| Cutover | rename, redirects, indexing | — | Not started | See `docs/build/ROUTE-INVENTORY.md` sections 3 and 4 |
 
 ## Check-and-branch outcomes (S01)
 
