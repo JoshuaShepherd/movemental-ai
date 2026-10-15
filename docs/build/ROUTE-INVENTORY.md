@@ -1,5 +1,7 @@
 # movemental.ai route inventory and disposition
 
+> **Status, October 15, 2026:** the cutover (S10) is done. Sections 3 and 4 are applied: the Paper pages hold their final URLs, the colliding redirects are removed or repointed, `/agent`, `/agent/about`, the old audience pages, `/agent/assessment`, `/agent/invite`, `/agent/path/safety` and `/voices` redirect to the new pages. Still open: section 0 (the API), and the deferred items in the cutover receipt.
+
 *From the repository, October 15, 2026 (branch `slice/S07-assessment-new`). Every `page.tsx`, every API group and every redirect in `next.config.ts`. Reconciled with the external audit of the live site.*
 
 **Rules this follows.** Preserve content, not positioning. Keep durable URLs (articles, research, profiles). Archive means out of navigation and noindex, code kept, never deleted in the same step. Anything holding customer records, tokens already sent by email, or payments is **Protected**: no redesign or redirect until its data and users are checked. One methodology is authoritative: Resolve and Respond, the five-stage Map.

@@ -2,14 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with the **movemental** organizational site repo.
 
-## Read first: the `-new` migration (October 2026)
+## Read first: the public site is the Paper site (October 2026)
 
-The public site is being rebuilt around Resolve and Respond, page by page, as parallel `-new` routes in `src/app/(new)/` (first: `/home-page-new`). For anything in that route group:
+The public site was rebuilt around Resolve and Respond in `src/app/(new)/` and cut over on October 15, 2026: `/`, `/resolve`, `/map`, `/guidebook`, `/leaders`, `/work-with-us`, `/assessment`, `/churches`, `/nonprofits`, `/institutions`, `/about`, `/story`, `/me/people`, `/r/[token]`. For anything in that route group:
 
 - **Design system:** Paper — [docs/design/MV_DESIGN_CHARTER.md](docs/design/MV_DESIGN_CHARTER.md). It supersedes the Ink Band and Stitch guidance below for `(new)` pages only.
-- **Governing prompt:** [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts/canvas-to-react-new.md). The source of truth for each page is its Claude Design board, committed under `docs/handoff/<page>-new/source/`.
-- **State:** [MIGRATION-NEW-STATE.md](MIGRATION-NEW-STATE.md).
-- Do not edit, redirect or delete existing routes until the cutover slice.
+- **Building a page:** [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts/canvas-to-react-new.md). The source of truth for each page is its Claude Design board, committed under `docs/handoff/<page>-new/source/`.
+- **Links:** only through `src/components/mv/routes.ts` (`MV_ROUTES`).
+- **What happened to every old route, and what is protected:** [docs/build/ROUTE-INVENTORY.md](docs/build/ROUTE-INVENTORY.md) and [MIGRATION-NEW-STATE.md](MIGRATION-NEW-STATE.md).
+- **Indexing** follows `NEXT_PUBLIC_SITE_LAUNCH_READY`, like every other surface.
 
 Everything below still governs the rest of the repo.
 

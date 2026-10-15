@@ -1,5 +1,5 @@
 /**
- * Leader network for the new home page (/home-page-new).
+ * Leader network for the home page (/).
  * Geometry is ported unchanged from the Claude Design board "Home v3"
  * (docs/handoff/home-page-new/source/Home-v3.dc.html). Names and headshot paths come from
  * the movement_leaders table (Supabase vhaiiiykcukrlyvwlgip, photo_storage_path), Oct 2026.

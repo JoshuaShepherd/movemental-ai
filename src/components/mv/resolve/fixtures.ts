@@ -4,7 +4,7 @@
  * Riverbend, Priya, James and everyone else here are fictional.
  */
 
-/** The board's sample invitation, used only with `?invited=sample` on /resolve-new. */
+/** The board's sample invitation, used only with `?invited=sample` on /resolve. */
 export const SAMPLE_INVITATION = { from: "Priya", pronoun: "she", org: "Riverbend Youth & Family" } as const;
 
 /** R3-Shared: the one shared Resolution that exists, at the board's sample link. */

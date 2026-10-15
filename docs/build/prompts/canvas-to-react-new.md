@@ -1,5 +1,7 @@
 # Canvas to React: the `-new` migration
 
+> **Cut over October 15, 2026 (slice S10).** Every Release 1 page now lives at its final URL in `src/app/(new)/` (no `-new` suffix). New Paper pages go straight to their final route in `(new)`, still from a committed board, still linked only through `MV_ROUTES`. Before adding any route, grep `next.config.ts` for its path. The rest of this prompt stands.
+
 The governing prompt for migrating each page of the new movemental.ai site from the Claude Design canvas into this repo. Run it once per page. For pages in the `(new)` route group it supersedes `stitch-to-react-migration.md` and the Stitch pin; those still govern nothing else.
 
 Design rules live in [`docs/design/MV_DESIGN_CHARTER.md`](../../design/MV_DESIGN_CHARTER.md). The product flow lives in the project's flow document (`movemental-site-and-flow.md`, version three). Read both before starting.

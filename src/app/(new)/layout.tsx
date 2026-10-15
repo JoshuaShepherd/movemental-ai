@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Instrument_Serif, Source_Serif_4 } from "next/font/google";
 
+import { previewRobotsMetadata } from "@/lib/site-launch";
+
 import "./mv.css";
 
 /**
@@ -33,8 +35,8 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  // Parallel `-new` routes stay out of search until cutover.
-  robots: { index: false, follow: false },
+  // Indexing follows the site-wide launch flag (NEXT_PUBLIC_SITE_LAUNCH_READY), like every other surface.
+  robots: previewRobotsMetadata(),
 };
 
 export default function NewSurfaceLayout({ children }: { children: React.ReactNode }) {

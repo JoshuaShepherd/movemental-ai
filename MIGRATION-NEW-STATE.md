@@ -1,5 +1,7 @@
 # `-new` migration state
 
+**Cut over October 15, 2026.** The `-new` routes now live at their final URLs; the old `-new` paths redirect. Route names in the table below are the pre-cutover names.
+
 Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts/canvas-to-react-new.md). Design charter: [docs/design/MV_DESIGN_CHARTER.md](docs/design/MV_DESIGN_CHARTER.md).
 
 ## Pages
@@ -15,7 +17,7 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | S07 | `/assessment-new` (+ `/predict`, `/answer`, `/results`) | Assessment | Done (front end only) | typecheck, lint, link:check, no color literals, walkthrough at 1440 and 390 |
 | S08 | `/churches-new`, `/nonprofits-new`, `/institutions-new` | Audience-Institutions, -Churches, -Nonprofits (Oct 15) | Done | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
 | S09 | `/about-new`, `/story-new` | LongForm (+ existing approved About copy) | Done | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
-| Cutover | rename, redirects, indexing | — | Not started | See `docs/build/ROUTE-INVENTORY.md` sections 3 and 4 |
+| S10 | Cutover: final URLs, redirects, indexing | — | Done (October 15, 2026) | typecheck, lint, link:check; every page 200 and every redirect checked under `next dev`; Resolve and Assessment walkthroughs at the new URLs. Receipt: `docs/handoff/cutover/README.md` |
 
 ## Check-and-branch outcomes (S01)
 
