@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with the **movemental** organizational site repo.
 
+## Read first: the public site is the Paper site (October 2026)
+
+The public site was rebuilt around Resolve and Respond in `src/app/(new)/` and cut over on October 15, 2026: `/`, `/resolve`, `/map`, `/guidebook`, `/leaders`, `/work-with-us`, `/assessment`, `/churches`, `/nonprofits`, `/institutions`, `/about`, `/story`, `/me/people`, `/r/[token]`. For anything in that route group:
+
+- **Design system:** Paper — [docs/design/MV_DESIGN_CHARTER.md](docs/design/MV_DESIGN_CHARTER.md). It supersedes the Ink Band and Stitch guidance below for `(new)` pages only.
+- **Building a page:** [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts/canvas-to-react-new.md). The source of truth for each page is its Claude Design board, committed under `docs/handoff/<page>-new/source/`.
+- **Links:** only through `src/components/mv/routes.ts` (`MV_ROUTES`).
+- **What happened to every old route, and what is protected:** [docs/build/ROUTE-INVENTORY.md](docs/build/ROUTE-INVENTORY.md) and [MIGRATION-NEW-STATE.md](MIGRATION-NEW-STATE.md).
+- **Indexing** follows `NEXT_PUBLIC_SITE_LAUNCH_READY`, like every other surface.
+
+Everything below still governs the rest of the repo.
+
 ## What this repo is
 
 Movemental is the organizational site for Movemental — a fresh build from scratch. 
@@ -83,7 +95,7 @@ pnpm dev
 ### Directory layout
 
 ```text
-proxy.ts                       # Next 16 request middleware (renamed from middleware.ts)
+src/proxy.ts                   # Next 16 request proxy; must live in src/ (src/app layout). Gates /api/simplified/* to staff
 drizzle.config.ts
 scripts/
   check-env.ts                 # Validates required env vars
@@ -169,7 +181,7 @@ Quick rules:
 - **`"use client"` boundaries.** Never add to root layout. Push as deep as possible (leaf components). Keep layouts as Server Components.
 - **Params in Server Components.** Receive `params` / `searchParams` as props. Only use `useParams()` / `useSearchParams()` in client components that need interactivity.
 - **Supabase Auth (SSR).** Use only `getAll` / `setAll` for cookies (never `get` / `set` / `remove`). Import from `@supabase/ssr`, never `auth-helpers-nextjs`.
-- **Next 16 middleware is `proxy.ts`.** Not `middleware.ts`. Keep logic focused on interception, auth gates, rewrites, and redirects.
+- **Next 16 middleware is `src/proxy.ts`.** Not `middleware.ts`, and not the repo root (with `src/app`, Next only loads `src/proxy.ts`). It currently matches only `/api/simplified/*` (staff gate, fail closed).
 - **Turbopack is default.** No special config needed for dev or build.
 
 ## Environment variables

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Discuss your organization’s response</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.rz{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--accent-tint:#E8EBFA;color:var(--ink);background:var(--ground)}
+.rz a{color:var(--ink);text-underline-offset:4px}
+.rz button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.rz button:focus-visible,.rz a:focus-visible,.rz input:focus-visible,.rz textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rz input,.rz textarea{font-family:'Geist','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.5;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:6px;padding:12px 14px;box-sizing:border-box;width:100%}
+.settle{animation:settle .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes settle{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.settle{animation:none}}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:80px;align-items:start}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:1100px){.grid{grid-template-columns:minmax(0,1fr);gap:48px}}
+@media (max-width:700px){.pad{padding-left:20px !important;padding-right:20px !important}.h1{font-size:44px !important}.pair{grid-template-columns:minmax(0,1fr)}}
+</style>
+</helmet>
+<div class="rz" style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; min-height: 100%; box-sizing: border-box">
+<header class="pad" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 56px; border-bottom: 1px solid var(--rule)">
+<a href="Home-v3.dc.html" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 22px; width: auto; display: block"></a>
+<a href="Work.dc.html" style="font-size: 14.5px; color: var(--graphite)">Work with Movemental</a>
+</header>
+
+<sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}"><main class="pad grid" style="max-width: 1240px; margin: 0 auto; padding: 72px 56px 104px; box-sizing: border-box">
+<form onSubmit="{{ submit }}" style="display: flex; flex-direction: column; gap: 30px; min-width: 0">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 64px; line-height: 1; font-weight: 400">Discuss your organization’s response</h1>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.5; color: #34363F">Tell us a little about your organization and what is in front of you. It takes about two minutes, and a person reads every one.</p>
+</div>
+
+<fieldset style="margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0 0 4px; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; font-weight: 400">Your organization</h2>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="org" style="font-size: 15px; font-weight: 500">Name</label><input id="org" type="text" autocomplete="organization"></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><p id="kind" style="margin: 0; font-size: 15px; font-weight: 500">What kind of organization?</p>
+<div role="radiogroup" aria-labelledby="kind" class="chips"><sc-for list="{{ types }}" as="t" hint-placeholder-count="5"><button type="button" role="radio" aria-checked="{{ t.on }}" onClick="{{ t.pick }}" style="min-height: 44px; padding: 0 16px; font-size: 15px; border-radius: 999px; cursor: pointer; {{ t.css }}">{{ t.label }}</button></sc-for></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="web" style="font-size: 15px; font-weight: 500">Website <span style="font-weight: 400; color: var(--graphite)">Optional</span></label><input id="web" type="url" placeholder="https://"></div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 26px 0 0; border: none; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0 0 4px; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; font-weight: 400">You</h2>
+<div class="pair"><div style="display: flex; flex-direction: column; gap: 8px"><label for="nm" style="font-size: 15px; font-weight: 500">Your name</label><input id="nm" type="text" autocomplete="name"></div><div style="display: flex; flex-direction: column; gap: 8px"><label for="rl" style="font-size: 15px; font-weight: 500">Your role</label><input id="rl" type="text" autocomplete="organization-title" placeholder="Executive director, pastor, dean…"></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="em" style="font-size: 15px; font-weight: 500">Email</label><input id="em" type="email" autocomplete="email"></div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 26px 0 0; border: none; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0 0 4px; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; font-weight: 400">What you’re looking for</h2>
+<div style="display: flex; flex-direction: column; gap: 10px"><p id="area" style="margin: 0; font-size: 15px; font-weight: 500">Where could we help? <span style="font-weight: 400; color: var(--graphite)">Choose any</span></p>
+<div role="group" aria-labelledby="area" class="chips"><sc-for list="{{ areas }}" as="a" hint-placeholder-count="5"><button type="button" aria-pressed="{{ a.on }}" onClick="{{ a.toggle }}" style="min-height: 44px; padding: 0 16px; font-size: 15px; border-radius: 999px; cursor: pointer; {{ a.css }}">{{ a.label }}</button></sc-for></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="need" style="font-size: 15px; font-weight: 500">In a sentence or two, what’s in front of you?</label><textarea id="need" rows="4" placeholder="Our staff are using AI without any shared guidance, and our board has started asking questions."></textarea></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><p id="next" style="margin: 0; font-size: 15px; font-weight: 500">What would be most useful next?</p>
+<div role="radiogroup" aria-labelledby="next" style="display: flex; flex-direction: column; gap: 6px"><sc-for list="{{ nexts }}" as="n" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{ n.on }}" onClick="{{ n.pick }}" style="display: flex; gap: 12px; align-items: center; min-height: 52px; padding: 10px 14px; text-align: left; font-size: 15.5px; color: var(--ink); border: 1px solid; border-radius: 8px; cursor: pointer; {{ n.css }}"><span aria-hidden="true" style="flex: 0 0 auto; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--ink); box-sizing: border-box; display: flex; align-items: center; justify-content: center"><span style="width: 8px; height: 8px; border-radius: 50%; {{ n.dot }}"></span></span><span>{{ n.label }}</span></button></sc-for></div></div>
+</fieldset>
+
+<div style="display: flex; flex-direction: column; gap: 18px; padding-top: 22px; border-top: 1px solid var(--rule)">
+<button type="button" role="checkbox" aria-checked="{{ consent }}" onClick="{{ toggleConsent }}" style="display: flex; align-items: flex-start; gap: 12px; min-height: 44px; padding: 0; font-size: 15px; line-height: 1.5; color: var(--ink); background: none; border: none; cursor: pointer; text-align: left"><span aria-hidden="true" style="flex: 0 0 auto; width: 22px; height: 22px; border: 1.5px solid var(--ink); border-radius: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; {{ consentBox }}">✓</span><span>You may contact me about this inquiry. Nothing else: no newsletter, and it isn’t shared with anyone.</span></button>
+<sc-if value="{{ needConsent }}" hint-placeholder-val="{{ false }}"><p class="settle" role="alert" style="margin: 0; padding: 12px 14px; background: var(--sheet); border-left: 3px solid var(--ink); font-size: 14.5px">We need your yes to reply.</p></sc-if>
+<div><button type="submit" onClick="{{ submit }}" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer">Send</button></div>
+</div>
+</form>
+
+<aside style="display: flex; flex-direction: column; gap: 28px; position: sticky; top: 32px">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 26px 26px 22px; background: var(--sheet); border-radius: 4px">
+<h2 style="margin: 0 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1.1; font-weight: 400">What happens next</h2>
+<div style="display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1">1</span><span style="font-size: 15px; line-height: 1.55">A person reads what you wrote. No automated sequence.</span></div>
+<div style="display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1">2</span><span style="font-size: 15px; line-height: 1.55">We reply by email [within one business day, to confirm], with a time to talk or what you asked to read.</span></div>
+<div style="display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1">3</span><span style="font-size: 15px; line-height: 1.55">If it makes sense to keep going, we write a proposal for your organization alone.</span></div>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">You don’t need us to begin. The Map, the guidebook and the Reality Assessment are free.</p>
+<div style="display: flex; flex-direction: column"><a href="Map.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">See the Map</a><a href="Assessment.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Take the Reality Assessment</a></div>
+</aside>
+</main></sc-if>
+
+<sc-if value="{{ isSent }}" hint-placeholder-val="{{ false }}"><main class="pad settle" style="max-width: 820px; margin: 0 auto; padding: 96px 56px 120px; box-sizing: border-box; display: flex; flex-direction: column; gap: 26px">
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 72px; line-height: 1; font-weight: 400">Thank you. We have it.</h1>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.55; color: #34363F">A person will read what you wrote and reply to you by email [within one business day, to confirm]. You asked for {{ nextText }}.</p>
+<div style="display: flex; flex-direction: column; padding: 4px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule)">
+<p style="margin: 0; padding: 16px 0 6px; font-size: 15px; font-weight: 500">While you wait</p>
+<a href="R3-Flow.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--rule); text-decoration: none"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">Write your own Resolution</span><span style="font-size: 14px; color: var(--graphite)">About four minutes</span></a>
+<a href="Assessment.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--rule); text-decoration: none"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">Start the Reality Assessment</span><span style="font-size: 14px; color: var(--graphite)">See what is actually happening</span></a>
+<a href="Guidebook.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--rule); text-decoration: none"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">Read the guidebook</span><span style="font-size: 14px; color: var(--graphite)">The whole method, free</span></a>
+</div>
+<button type="button" onClick="{{ again }}" style="align-self: flex-start; min-height: 44px; padding: 0; font-size: 15px; color: var(--graphite); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">Back to the form</button>
+</main></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"state": {"editor": "enum", "options": ["Form", "Sent"], "default": "Form"}, "$preview": {"width": 1440, "height": 1700}}'>
+class Component extends DCLogic {
+  componentDidUpdate(prev) {
+    if (prev.state !== this.props.state) this.setState({ sent: null });
+  }
+  renderVals() {
+    const s = this.state || {};
+    const set = (o) => this.setState(Object.assign({}, s, o));
+    const sent = s.sent === null || s.sent === undefined ? (this.props.state ?? 'Form') === 'Sent' : s.sent;
+    const T = ['Church', 'Nonprofit', 'Seminary or college', 'Denomination or network', 'Other'];
+    const type = s.type ?? null;
+    const pill = (on) => on ? 'color: #fff; background: var(--ink); border: 1px solid var(--ink);' : 'color: var(--ink); background: #fff; border: 1px solid var(--rule);';
+    const types = T.map((t) => ({ label: t, on: type === t ? 'true' : 'false', css: pill(type === t), pick: () => set({ type: t }) }));
+    const A = ['Organizational guidance', 'Context reconstruction', 'Custom platforms and agents', 'Ongoing stewardship', 'Not sure yet'];
+    const picked = s.areas || {};
+    const areas = A.map((a, i) => ({ label: a, on: picked[i] ? 'true' : 'false', css: pill(!!picked[i]), toggle: () => { const n = Object.assign({}, picked); if (n[i]) delete n[i]; else n[i] = true; set({ areas: n }); } }));
+    const N = [['talk', 'A conversation', 'a conversation'], ['read', 'Something to read first', 'something to read first'], ['network', 'A conversation about our whole network', 'a conversation about your network']];
+    const next = s.next || 'talk';
+    const nexts = N.map((n) => ({ label: n[1], on: next === n[0] ? 'true' : 'false',
+      css: next === n[0] ? 'border-color: var(--accent); background: var(--accent-tint);' : 'border-color: var(--rule); background: #fff;',
+      dot: next === n[0] ? 'background: var(--ink);' : 'background: transparent;', pick: () => set({ next: n[0] }) }));
+    const consent = !!s.consent;
+    return {
+      isForm: !sent, isSent: sent, types, areas, nexts,
+      consent: consent ? 'true' : 'false', consentBox: consent ? 'background: var(--ink); color: #fff;' : 'background: #fff; color: transparent;',
+      toggleConsent: () => set({ consent: !consent, needConsent: false }), needConsent: !!s.needConsent,
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); if (!consent) set({ needConsent: true }); else set({ sent: true }); },
+      again: () => set({ sent: false }),
+      nextText: (N.find((n) => n[0] === next) || N[0])[2]
+    };
+  }
+}
+</script>
+</body>
+</html>

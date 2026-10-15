@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Map · a stage</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.rz{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--accent-tint:#E8EBFA;color:var(--ink);background:var(--ground)}
+.rz a{color:var(--ink);text-underline-offset:4px}
+.rz button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.rz button:focus-visible,.rz a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.settle{animation:settle .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes settle{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.settle{animation:none}}
+.body2{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:72px;align-items:start}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.rev{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:24px;align-items:start}
+.part{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:baseline}
+@media (max-width:1100px){.body2{grid-template-columns:minmax(0,1fr);gap:48px}.rev{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.pad{padding-left:20px !important;padding-right:20px !important}.h1{font-size:48px !important}.cols3{grid-template-columns:minmax(0,1fr)}.part{grid-template-columns:minmax(0,1fr);gap:4px}.docpad{padding:28px 20px !important}.navlinks{display:none !important}}
+</style>
+</helmet>
+<div class="rz" style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; min-height: 100%; box-sizing: border-box">
+<header class="pad" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 56px; border-bottom: 1px solid var(--rule)">
+<a href="Home-Final.dc.html" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 22px; width: auto; display: block"></a>
+<nav aria-label="Main" class="navlinks" style="display: flex; gap: 28px; align-items: center; font-size: 15px"><a href="R3-Flow.dc.html" style="text-decoration: none">Resolve</a><a href="Map.dc.html" style="text-decoration: underline">The Map</a><a href="#" style="text-decoration: none">Guidebook</a><a href="#" style="text-decoration: none">Leaders</a><a href="#" style="text-decoration: none">About</a><a href="#" style="text-decoration: none; color: var(--graphite)">Sign in</a></nav>
+</header>
+
+<nav aria-label="The five stages" class="pad" style="padding: 0 56px; border-bottom: 1px solid var(--rule); overflow-x: auto">
+<div style="max-width: 1300px; margin: 0 auto; display: flex; gap: 4px; align-items: stretch; min-width: 980px">
+<a href="Map.dc.html" style="display: flex; align-items: center; min-height: 56px; padding-right: 20px; margin-right: 8px; font-size: 14.5px; color: var(--graphite); border-right: 1px solid var(--rule)">The Map</a>
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5"><button type="button" onClick="{{ t.pick }}" aria-current="{{ t.current }}" style="flex: 1 1 0; min-height: 56px; padding: 0 12px; display: flex; align-items: center; gap: 10px; font-size: 14.5px; text-align: left; background: none; border: none; cursor: pointer; color: var(--ink); {{ t.css }}"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1">{{ t.n }}</span><span>{{ t.short }}</span></button></sc-for>
+</div>
+</nav>
+
+<main>
+<section class="pad" style="max-width: 1300px; margin: 0 auto; padding: 72px 56px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-size: 15px; color: var(--graphite)">Stage {{ n }} of 5 · Produces {{ produces }}</p>
+<h1 class="h1" style="margin: 0; max-width: 1000px; font-family: 'Instrument Serif', Georgia, serif; font-size: 80px; line-height: .98; font-weight: 400">{{ name }}</h1>
+<p style="margin: 0; max-width: 720px; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; line-height: 1.55; color: #34363F">{{ lead }}</p>
+<div style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap; padding-top: 6px"><a href="R3-Respond.dc.html" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border-radius: 999px; text-decoration: none">Begin your organization’s response</a><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Read this stage in the guidebook</a></div>
+</section>
+
+<section class="pad" style="background: var(--sheet); padding: 64px 56px 72px; box-sizing: border-box">
+<div style="max-width: 1300px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap"><h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 40px; line-height: 1.08; font-weight: 400">What you’ll have</h2><p style="margin: 0; font-size: 14px; color: var(--graphite)">Riverbend Youth &amp; Family · sample</p></div>
+
+<sc-if value="{{ isCharter }}" hint-placeholder-val="{{ true }}"><article class="docpad settle" style="background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 56px 64px 48px; display: flex; flex-direction: column; gap: 0">
+<p style="margin: 0 0 6px; font-size: 13px; color: var(--graphite)">Riverbend Youth &amp; Family</p>
+<h3 style="margin: 0 0 28px; font-family: 'Instrument Serif', Georgia, serif; font-size: 46px; line-height: 1.04; font-weight: 400">Our charter for AI</h3>
+<sc-for list="{{ parts }}" as="p" hint-placeholder-count="5"><div class="part" style="padding: 18px 0; border-top: 1px solid var(--rule)"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 500">{{ p.part }}</span><span style="font-size: 13px; color: var(--graphite)">{{ p.what }}</span></span><span style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18.5px; line-height: 1.5">{{ p.clause }}</span><span style="font-size: 12.5px; color: var(--graphite)">{{ p.origin }}</span></span></div></sc-for>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; padding-top: 36px; border-top: 1px solid var(--rule); max-width: 680px">
+<div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 36px; border-bottom: 1px solid var(--ink)"></div><span style="font-size: 14px; color: #34363F">James Okafor, Executive director</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 36px; border-bottom: 1px solid var(--ink)"></div><span style="font-size: 14px; color: #34363F">Board chair</span></div>
+</div>
+<p style="margin: 18px 0 0; font-size: 13.5px; color: var(--graphite)">Ratified by the board, November 12, 2026 · Next review March 2027</p>
+</article></sc-if>
+
+<sc-if value="{{ isContext }}" hint-placeholder-val="{{ false }}"><div class="cols3 settle">
+<sc-for list="{{ areas }}" as="a" hint-placeholder-count="3"><div style="background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 22px 24px; display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.1">{{ a.title }}</p><p style="margin: 0 0 8px; font-size: 13.5px; color: var(--graphite)">{{ a.sub }}</p><sc-for list="{{ a.items }}" as="i" hint-placeholder-count="4"><div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-top: 1px solid var(--rule)"><span style="font-size: 15px; {{ i.css }}">{{ i.t }}</span><span style="font-size: 12.5px; {{ i.scss }}">{{ i.s }}</span></div></sc-for></div></sc-for>
+</div></sc-if>
+
+<sc-if value="{{ isFormation }}" hint-placeholder-val="{{ false }}"><div class="cols3 settle" style="align-items: start">
+<div style="grid-column: span 2; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 26px 28px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 13px; color: var(--graphite)">AI for Nonprofit Teams · Riverbend’s cohort</p>
+<div aria-label="Week 3 of 8" role="img" style="display: flex; gap: 6px"><sc-for list="{{ weeks }}" as="w" hint-placeholder-count="8"><span style="flex: 1 1 0; height: 8px; border-radius: 2px; box-sizing: border-box; {{ w.css }}"></span></sc-for></div>
+<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1.1">Week 3: draft one grant narrative with AI, then mark every sentence you would not sign.</p>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: #34363F">30 to 40 minutes alone, then 90 minutes together on Thursday. Led by Dana Reyes, Riverbend’s ambassador.</p>
+<div style="padding-top: 12px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 8px"><p style="margin: 0; font-size: 14px; font-weight: 500">What formation has found so far</p>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; padding: 8px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16.5px; line-height: 1.5">Volunteers draft parent emails in personal chatbots.</span><span style="font-size: 13px; color: var(--ink)">Sent to the charter’s next review</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; padding: 8px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16.5px; line-height: 1.5">The intake form asks for the same details three times.</span><span style="font-size: 13px; color: var(--ink)">Sent to stage four as a possible use</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; padding: 8px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16.5px; line-height: 1.5">No one is sure who may approve a new tool.</span><span style="font-size: 13px; color: var(--ink)">Unresolved question</span></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 22px 24px; display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 13px; color: var(--graphite)">Team courses · eight weeks</p><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.2">AI for Church Teams</p><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.2">AI for Nonprofit Teams</p><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.2">AI for Institutional Teams</p></div>
+<div style="background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 22px 24px; display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 13px; color: var(--graphite)">For your ambassador · twelve weeks and a practicum</p><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.2">AI for Organizational Leadership</p><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #34363F">Context engineering, adaptive leadership and dissemination, in a cohort across organizations. It ends in a credential earned by leading the team course at home.</p></div>
+</div>
+</div></sc-if>
+
+<sc-if value="{{ isTech }}" hint-placeholder-val="{{ false }}"><div class="settle" style="background: #fff; border: 1px solid var(--rule); border-radius: 4px; overflow-x: auto">
+<table style="width: 100%; min-width: 1080px; border-collapse: collapse; font-size: 14px; line-height: 1.45">
+<caption style="text-align: left; padding: 20px 24px 6px; font-size: 13px; color: var(--graphite)">Every possible use, weighed and decided</caption>
+<thead><tr style="text-align: left; vertical-align: bottom"><th scope="col" style="padding: 12px 16px 12px 24px; font-weight: 500; border-bottom: 1px solid var(--ink); width: 18%">Possible use</th><th scope="col" style="padding: 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">Mission value</th><th scope="col" style="padding: 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">Human and trust cost</th><th scope="col" style="padding: 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">Charter fit</th><th scope="col" style="padding: 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">Ready?</th><th scope="col" style="padding: 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">What it requires</th><th scope="col" style="padding: 12px 24px 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">Decision</th></tr></thead>
+<tbody><sc-for list="{{ decisions }}" as="d" hint-placeholder-count="4"><tr style="vertical-align: top"><th scope="row" style="padding: 16px 16px 16px 24px; text-align: left; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-weight: 400; border-bottom: 1px solid var(--rule)">{{ d.use }}</th><td style="padding: 16px; border-bottom: 1px solid var(--rule)">{{ d.value }}</td><td style="padding: 16px; border-bottom: 1px solid var(--rule)">{{ d.cost }}</td><td style="padding: 16px; border-bottom: 1px solid var(--rule)">{{ d.fit }}</td><td style="padding: 16px; border-bottom: 1px solid var(--rule)">{{ d.ready }}</td><td style="padding: 16px; border-bottom: 1px solid var(--rule)">{{ d.req }}</td><td style="padding: 16px 24px 16px 16px; border-bottom: 1px solid var(--rule)"><span style="display: block; font-weight: 500">{{ d.decision }}</span><span style="display: block; color: var(--graphite); font-size: 13px">{{ d.why }}</span></td></tr></sc-for></tbody>
+</table>
+</div>
+<div style="background: #fff; border: 1px solid var(--rule); border-radius: 4px; overflow-x: auto; margin-top: 20px">
+<table style="width: 100%; min-width: 960px; border-collapse: collapse; font-size: 14px; line-height: 1.45">
+<caption style="text-align: left; padding: 20px 24px 6px; font-size: 13px; color: var(--graphite)">What was built: the application directory</caption>
+<thead><tr style="text-align: left; vertical-align: bottom"><th scope="col" style="padding: 12px 16px 12px 24px; font-weight: 500; border-bottom: 1px solid var(--ink); width: 22%">Tool</th><th scope="col" style="padding: 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">Draws on</th><th scope="col" style="padding: 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">May do</th><th scope="col" style="padding: 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">Answers for it</th><th scope="col" style="padding: 12px 24px 12px 16px; font-weight: 500; border-bottom: 1px solid var(--ink)">Review</th></tr></thead>
+<tbody><sc-for list="{{ tools }}" as="t" hint-placeholder-count="2"><tr><th scope="row" style="padding: 14px 16px 14px 24px; text-align: left; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-weight: 400; border-bottom: 1px solid var(--rule); vertical-align: top">{{ t.name }}</th><td style="padding: 14px 16px; border-bottom: 1px solid var(--rule); vertical-align: top">{{ t.src }}</td><td style="padding: 14px 16px; border-bottom: 1px solid var(--rule); vertical-align: top">{{ t.scope }}</td><td style="padding: 14px 16px; border-bottom: 1px solid var(--rule); vertical-align: top">{{ t.owner }}</td><td style="padding: 14px 24px 14px 16px; border-bottom: 1px solid var(--rule); vertical-align: top">{{ t.review }}</td></tr></sc-for></tbody>
+</table>
+</div>
+<p style="margin: 12px 0 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">Only what was decided gets built. Each tool shows what it draws on, what it may do and who answers for it.</p></sc-if>
+<sc-if value="{{ isReview }}" hint-placeholder-val="{{ false }}"><div class="rev settle">
+<article class="docpad" style="background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 44px 48px 40px; display: flex; flex-direction: column">
+<p style="margin: 0 0 6px; font-size: 13px; color: var(--graphite)">Riverbend Youth &amp; Family · review record</p>
+<h3 style="margin: 0 0 24px; font-family: 'Instrument Serif', Georgia, serif; font-size: 40px; line-height: 1.05; font-weight: 400">Winter review, 2027</h3>
+<sc-for list="{{ record }}" as="r" hint-placeholder-count="8"><div class="part" style="padding: 14px 0; border-top: 1px solid var(--rule)"><span style="font-size: 14px; color: var(--graphite)">{{ r.k }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.5">{{ r.v }}</span></div></sc-for>
+</article>
+<div style="background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 28px 28px 20px; display: flex; flex-direction: column">
+<p style="margin: 0 0 12px; font-size: 15px; font-weight: 500">What comes up for review</p>
+<sc-for list="{{ due }}" as="d" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--rule)"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12.5px; color: var(--graphite)">{{ d.kind }}</span><span style="font-size: 15px; line-height: 1.4">{{ d.what }}</span></span><span style="font-size: 13.5px; color: var(--graphite); white-space: nowrap">{{ d.when }}</span></div></sc-for>
+<p style="margin: 8px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--graphite)">Everything in the Map has a review date. Nothing is shown as a percentage.</p>
+</div>
+</div></sc-if>
+</div>
+</section>
+
+<section class="pad" style="max-width: 1300px; margin: 0 auto; padding: 80px 56px; box-sizing: border-box">
+<div class="body2">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 40px; line-height: 1.08; font-weight: 400">How it goes</h2>
+<ol style="margin: 0; padding: 0; list-style: none; counter-reset: s">
+<sc-for list="{{ how }}" as="h" hint-placeholder-count="5"><li style="display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; padding: 18px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1">{{ h.n }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.55">{{ h.t }}</span></li></sc-for>
+</ol>
+</div>
+<aside style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 1px solid var(--ink)"><h2 style="margin: 0; font-size: 15px; font-weight: 500">Who is involved</h2><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.55">{{ who }}</p></div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 1px solid var(--ink)"><h2 style="margin: 0; font-size: 15px; font-weight: 500">What feeds it, and what it feeds</h2><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.55">From: {{ inFrom }}</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.55">Into: {{ outTo }}</p></div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; background: var(--sheet); border-radius: 4px"><h2 style="margin: 0; font-size: 15px; font-weight: 500">If you want help</h2><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #34363F">{{ help }}</p><p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">Everything on this page can be done without us, from the guidebook and the Map.</p><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Work with Movemental</a></div>
+</aside>
+</div>
+</section>
+
+<nav aria-label="Previous and next stage" class="pad" style="border-top: 1px solid var(--rule); padding: 0 56px; box-sizing: border-box">
+<div style="max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div><sc-if value="{{ hasPrev }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ goPrev }}" style="width: 100%; min-height: 96px; padding: 20px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left; background: none; border: none; cursor: pointer; color: var(--ink)"><span style="font-size: 13.5px; color: var(--graphite)">Previous · stage {{ prevN }}</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.15">{{ prevName }}</span></button></sc-if><sc-if value="{{ noPrev }}" hint-placeholder-val="{{ true }}"><a href="R3-Team.dc.html" style="width: 100%; min-height: 96px; padding: 20px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-decoration: none; box-sizing: border-box"><span style="font-size: 13.5px; color: var(--graphite)">Before this · the trailhead</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.15">What your people are saying</span></a></sc-if></div>
+<div style="text-align: right"><sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ goNext }}" style="width: 100%; min-height: 96px; padding: 20px 0; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: right; background: none; border: none; cursor: pointer; color: var(--ink)"><span style="font-size: 13.5px; color: var(--graphite)">Next · stage {{ nextN }}</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.15">{{ nextName }}</span></button></sc-if><sc-if value="{{ noNext }}" hint-placeholder-val="{{ false }}"><div style="min-height: 96px; padding: 20px 0; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; box-sizing: border-box"><span style="font-size: 13.5px; color: var(--graphite)">Then</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.15">Back to the charter, with what you learned</span></div></sc-if></div>
+</div>
+</nav>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"step": {"editor": "enum", "options": ["1 · Decide", "2 · Gather", "3 · Practice", "4 · Build", "5 · Review"], "default": "1 · Decide"}, "$preview": {"width": 1440, "height": 3000}}'>
+class Component extends DCLogic {
+  componentDidUpdate(prev) {
+    if (prev.step !== this.props.step) this.setState({ i: null });
+  }
+  renderVals() {
+    const s = this.state || {};
+    const opts = ['1 · Decide', '2 · Gather', '3 · Practice', '4 · Build', '5 · Review'];
+    const fromProp = Math.max(0, opts.indexOf(this.props.step ?? '1 · Decide'));
+    const i = (s.i === null || s.i === undefined) ? fromProp : s.i;
+    const S = [
+      { short: 'Decide what you will stand for', name: 'Decide what you will stand for', produces: 'the charter',
+        lead: 'A charter tells everyone what your organization believes about AI, what people may and may not do, and what happens when something goes wrong. Your people’s Resolutions are its first draft.',
+        how: ['Start from what your people resolved. Strong agreement gives the working group language worth considering. Real differences become its agenda.', 'Draft the five parts with the agent. Every line it drafts shows where it came from, and anything that needs a person is left open.', 'Settle what the working group can, and bring the rest to the people who decide.', 'Adopt and ratify. Leaders with authority sign it, and the board or equivalent body ratifies it where that is how you decide things.', 'Set a review date. Formation, what you build and each review will bring things back to it.'],
+        who: 'The working group drafts. Your leaders sign. Your board ratifies where that is how you decide things.',
+        inFrom: 'your people’s Resolutions and the Reality Assessment.', outTo: 'the limits on what you gather in stage two, and the test every later decision must pass.',
+        help: 'Facilitation of the charter, from first draft to ratification.' },
+      { short: 'Gather what should ground the work', name: 'Gather what should ground the work', produces: 'the organization’s context',
+        lead: 'AI is only as useful as what it knows about you. This stage gathers what your organization knows, how its work actually happens and who it depends on, within the limits your charter sets.',
+        how: ['Gather what you know: documents, archives, policies, curriculum and source material.', 'Map how the work actually happens, mostly through interviews with the people who do it.', 'Map who the work depends on: the relationships and networks around it.', 'Keep out what the charter keeps out. The Map shows every exclusion and the charter decision behind it.', 'Keep it current. The context is reviewed as your work changes.'],
+        who: 'The working group leads. The people who do the work are interviewed. Anyone in the Map can see what was kept out and why.',
+        inFrom: 'the charter’s limits.', outTo: 'what your people practice on in stage three, and everything any tool may know about you.',
+        help: 'Interviews, agent-led gathering, and gathering and repairing scattered material at scale.' },
+      { short: 'Practice the judgment your people will need', name: 'Practice the judgment your people will need', produces: 'formed people',
+        lead: 'Your people practice the judgment AI asks of them, on your real work, together. Someone inside your organization is formed to lead it and keep it going.',
+        how: ['Name an ambassador: the person inside your organization formed to carry this work.', 'Your ambassador takes AI for Organizational Leadership, twelve weeks in a cohort across organizations, then a practicum leading the team course at home.', 'Your team takes the course for your kind of organization: eight weeks, 30 to 40 minutes alone and a 90-minute session together each week.', 'Each week produces something from your real work, and the questions it raises are kept.', 'What formation finds goes back into the charter, the context and the possible uses in stage four.'],
+        who: 'Your ambassador leads. Your whole team practices. Your leaders sponsor it and take part.',
+        inFrom: 'the charter and the context, so practice happens on real work within real limits.', outTo: 'findings for the charter’s next review, and people able to supervise what you build.',
+        help: 'A seat for your ambassador in the leadership cohort, the team course for your kind of organization, or a team course led by Movemental.' },
+      { short: 'Build only what belongs', name: 'Build only what belongs', produces: 'decisions, and the tools that follow',
+        lead: 'For each possible use of AI, you weigh the good it does, what it might cost in trust, whether the charter allows it and whether you are ready. Then you decide, and build only what you decided.',
+        how: ['List the possible uses, from your people, your context and what formation surfaced.', 'Weigh each one for mission value, human and trust cost, charter fit, context readiness and capability readiness.', 'Name what it requires, from a feature you already have to a custom application.', 'Decide: pursue, pursue carefully, solve simply, defer or refuse. Refusals are written into the charter.', 'Build what you decided to pursue, with its sources, its limits and the person who answers for it written down before it runs.'],
+        who: 'The working group weighs each use. The people who decide decide. Whoever builds works from that decision.',
+        inFrom: 'all three stages before it.', outTo: 'the charter’s refusals, the tools your people use, and the next review.',
+        help: 'Implementation, custom platforms and agents grounded in your own material, and ongoing stewardship, only when a decision you made calls for them.' },
+      { short: 'Review what changes', name: 'Review what changes', produces: 'a review record',
+        lead: 'The technology changes, and so does your organization. Every part of the Map has a review date, and each review records what you looked at, what changed and what you decided, so you can see why your decisions held or changed.',
+        how: ['Gather the evidence: how each tool has been used, what formation found, and a fresh Reality Assessment when one is due.', 'Bring the working group and the people who decide together, and note who was there.', 'Name what changed: in the technology, in your circumstances, and anything that went wrong.', 'Affirm or revise each decision, and record why.', 'Assign what follows and set the next review date.'],
+        who: 'The working group prepares it. The people who decide affirm or revise. Your people see what changed.',
+        inFrom: 'everything the Map holds: the charter, the context, formation and every tool.', outTo: 'the next version of the charter, and back around to stage one.',
+        help: 'Facilitated reviews, and stewardship of anything we built with you.' }
+    ];
+    const st = S[i];
+    const go = (k) => () => this.setState({ i: k });
+    const tabs = S.map((x, k) => ({ n: k + 1, short: x.short, current: k === i ? 'step' : 'false', pick: go(k),
+      css: k === i ? 'box-shadow: inset 0 -2px 0 var(--ink); font-weight: 500;' : 'color: var(--graphite);' }));
+    const parts = [
+      ['Statement', 'What we believe', 'We believe the families we serve deserve to know when a person is attending to them, and we will keep the moments of care human.', 'From our people’s Resolutions · 7 of 9'],
+      ['Policy', 'What people may and may not do', '4. No one may enter a young person’s case notes, health information or anything told in confidence into any AI tool.', 'Decided by the working group, October 30'],
+      ['Context', 'What is true here now', 'Staff use four AI tools at work today. Two are approved. Two are personal accounts, and this charter gives them until January to move or stop.', 'Sourced fact · Reality Assessment, October'],
+      ['Rules', 'How systems, information and people work together', 'Every approved tool has one person who answers for it, named in the appendix.', 'Guidebook recommendation · Charter, section 3'],
+      ['Response plans', 'What happens when something goes wrong', 'If confidential information reaches an AI tool, tell the program director the same day. The family is told within three days.', 'Decided by the leadership team, November 4']
+    ].map((p) => ({ part: p[0], what: p[1], clause: p[2], origin: p[3] }));
+    const ok = 'color: var(--graphite);', out = 'color: var(--ink); font-weight: 500;';
+    const mk = (t, s2, kept) => ({ t, s: s2, css: kept ? 'color: var(--graphite); text-decoration: line-through;' : '', scss: kept ? out : ok });
+    const areas = [
+      { title: 'What we know', sub: 'Documents, archives, policies, curriculum', items: [mk('Program curriculum, 2019 to now', 'Gathered · 214 documents'), mk('Staff handbook and policies', 'Gathered'), mk('Annual reports, 2015 to now', 'Gathered'), mk('Young people’s case notes', 'Kept out by charter clause 4', true)] },
+      { title: 'How the work happens', sub: 'Workflow and wisdom maps, from interviews', items: [mk('Grant reporting', 'Mapped from 3 interviews'), mk('Family intake', 'Mapped from 2 interviews'), mk('Mentor matching', 'Interviews scheduled'), mk('Crisis response', 'Kept out until the charter covers it', true)] },
+      { title: 'Who the work depends on', sub: 'Relationships and networks', items: [mk('Partner schools and counselors', 'Mapped'), mk('Funders and their reporting needs', 'Mapped'), mk('Volunteers and mentors', 'In progress'), mk('Donor giving history', 'Kept out until the charter covers donor data', true)] }
+    ];
+    const weeks = [0, 1, 2, 3, 4, 5, 6, 7].map((k) => ({ css: k < 2 ? 'background: var(--ink);' : (k === 2 ? 'background: var(--accent);' : 'border: 1.5px solid var(--rule);') }));
+    const decisions = [
+      ['Draft grant report narratives', 'High: frees program staff for families', 'Low if a person signs every report', 'Allowed, with review', 'Context ready · staff in week 3', 'A workflow and an agent', 'Pursue carefully', 'A named person signs each report'],
+      ['Summarize program survey responses', 'Medium', 'Low', 'Allowed', 'Ready', 'A feature we already have', 'Solve simply', 'No new tool needed'],
+      ['Draft donor thank-you notes', 'Medium', 'Donors may feel less known', 'Not yet covered', 'Donor data kept out', 'A configuration', 'Defer', 'Until the charter covers donor data'],
+      ['Answer parent questions automatically after hours', 'Some: faster answers', 'High: families may believe a person answered', 'Conflicts with our Statement', 'Not assessed', 'An agent', 'Refuse', 'Written into the charter as a refusal']
+    ].map((d) => ({ use: d[0], value: d[1], cost: d[2], fit: d[3], ready: d[4], req: d[5], decision: d[6], why: d[7] }));
+    const tools = [
+      ['Grant report drafting assistant', 'Program curriculum, the grant reporting map, past reports', 'Draft narratives for a person to edit and sign. Never sends.', 'Program director', 'First review March 2027'],
+      ['Survey summaries', 'The survey tool you already use', 'Summarize responses for internal use', 'Evaluation lead', 'With each survey']
+    ].map((t) => ({ name: t[0], src: t[1], scope: t[2], owner: t[3], review: t[4] }));
+    const record = [
+      ['Period', 'November 2026 to February 2027'],
+      ['Who was there', 'James Okafor, Dana Reyes, the working group and two volunteer mentors'],
+      ['Evidence', 'Two reporting cycles of drafted grant narratives, a staff check-in, and what the team course found'],
+      ['What changed', 'Our grant system added its own AI drafting feature in January.'],
+      ['What went wrong', 'One draft carried a young person’s first name. It was caught before signing.'],
+      ['Affirmed', 'Grant narratives: pursue carefully. Answering parents automatically after hours: still refused.'],
+      ['Revised', 'Policy 4 now names the grant system’s drafting feature.'],
+      ['What follows', 'The program director walks the team through the change by March 15. Next review in June.']
+    ].map((r) => ({ k: r[0], v: r[1] }));
+    const due = [
+      ['Charter', 'The whole charter', 'March 2027'],
+      ['Context', 'Family intake map', 'April 2027'],
+      ['Formation', 'Team course findings', 'After each cohort'],
+      ['Tool', 'Grant report drafting assistant', 'March 2027'],
+      ['Refusal', 'Answering parents automatically after hours', 'November 2027']
+    ].map((d) => ({ kind: d[0], what: d[1], when: d[2] }));
+    return {
+      tabs, n: i + 1, name: st.name, produces: st.produces, lead: st.lead,
+      how: st.how.map((t, k) => ({ n: k + 1, t })), who: st.who, inFrom: st.inFrom, outTo: st.outTo, help: st.help,
+      isCharter: i === 0, isContext: i === 1, isFormation: i === 2, isTech: i === 3, isReview: i === 4, tools, record, due,
+      parts, areas, weeks, decisions,
+      hasPrev: i > 0, noPrev: i === 0, prevN: i, prevName: i > 0 ? S[i - 1].name : '', goPrev: go(Math.max(0, i - 1)),
+      hasNext: i < 4, noNext: i === 4, nextN: i + 2, nextName: i < 4 ? S[i + 1].name : '', goNext: go(Math.min(4, i + 1))
+    };
+  }
+}
+</script>
+</body>
+</html>

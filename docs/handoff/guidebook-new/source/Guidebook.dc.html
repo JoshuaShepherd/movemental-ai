@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The guidebook</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.rz{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--accent-tint:#E8EBFA;color:var(--ink);background:var(--ground)}
+.rz a{color:var(--ink);text-underline-offset:4px}
+.rz button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.rz a:focus-visible,.rz button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
+.reader{display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start}
+.toc{flex:0 1 260px;min-width:0}
+.prose{flex:999 1 560px;min-width:0;max-width:700px}
+.prose p{margin:0 0 20px;font-family:'Source Serif 4',Georgia,serif;font-size:20px;line-height:1.65}
+.prose h2{margin:40px 0 14px;font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1.1;font-weight:400}
+@media (max-width:900px){.parts{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.pad{padding-left:20px !important;padding-right:20px !important}.h1{font-size:52px !important}.prose p{font-size:18px}.navlinks{display:none !important}}
+</style>
+</helmet>
+<div class="rz" style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; min-height: 100%; box-sizing: border-box">
+<header class="pad" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 56px; border-bottom: 1px solid var(--rule)">
+<a href="Home-Final.dc.html" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 22px; width: auto; display: block"></a>
+<nav aria-label="Main" class="navlinks" style="display: flex; gap: 28px; align-items: center; font-size: 15px"><a href="R3-Flow.dc.html" style="text-decoration: none">Resolve</a><a href="Respond.dc.html" style="text-decoration: none">The Map</a><a href="Guidebook.dc.html" aria-current="page" style="text-decoration: underline">Guidebook</a><a href="Leaders.dc.html" style="text-decoration: none">Leaders</a><a href="#" style="text-decoration: none">About</a><a href="#" style="text-decoration: none; color: var(--graphite)">Sign in</a></nav>
+</header>
+
+<div class="pad" style="border-bottom: 1px solid var(--rule); padding: 0 56px">
+<div role="group" aria-label="Edition" style="max-width: 1300px; margin: 0 auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; min-height: 64px; padding: 10px 0; box-sizing: border-box">
+<span style="font-size: 14px; color: var(--graphite); margin-right: 6px">Edition</span>
+<sc-for list="{{ eds }}" as="e" hint-placeholder-count="4"><button type="button" aria-pressed="{{ e.on }}" onClick="{{ e.pick }}" style="min-height: 44px; padding: 0 16px; font-size: 14.5px; border-radius: 999px; cursor: pointer; {{ e.css }}">{{ e.label }}</button></sc-for>
+</div>
+</div>
+
+<sc-if value="{{ isIndex }}" hint-placeholder-val="{{ true }}"><main>
+<section class="pad" style="max-width: 1300px; margin: 0 auto; padding: 80px 56px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 15px; color: var(--graphite)">The guidebook · {{ edName }} edition</p>
+<h1 class="h1" style="margin: 0; max-width: 1000px; font-family: 'Instrument Serif', Georgia, serif; font-size: 80px; line-height: .98; font-weight: 400">The whole method, in the open</h1>
+<p style="margin: 0; max-width: 700px; font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.55; color: #34363F">Everything a capable team needs to resolve and respond on its own. No account, no form, nothing held back. Inside the Map, the same chapters sit beside the work they describe.</p>
+<div style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap; padding-top: 6px"><button type="button" onClick="{{ openFirst }}" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer">Start reading</button><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Download the {{ edLower }} edition as a PDF</a></div>
+</section>
+<section class="pad" style="max-width: 1300px; margin: 0 auto; padding: 0 56px 96px; box-sizing: border-box">
+<div class="parts">
+<sc-for list="{{ parts }}" as="p" hint-placeholder-count="7"><div style="padding: 26px 0 30px; border-top: 1px solid var(--ink); display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 13.5px; color: var(--graphite)">{{ p.label }}</p>
+<h2 style="margin: 0 0 8px; font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1; font-weight: 400">{{ p.title }}</h2>
+<ol style="margin: 0; padding: 0; list-style: none">
+<sc-for list="{{ p.chapters }}" as="c" hint-placeholder-count="3"><li style="border-top: 1px solid var(--rule)"><button type="button" onClick="{{ c.open }}" style="width: 100%; min-height: 48px; padding: 10px 0; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 10px; align-items: baseline; text-align: left; background: none; border: none; cursor: pointer; color: var(--ink)"><span style="font-size: 14px; color: var(--graphite); font-variant-numeric: tabular-nums">{{ c.n }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.4">{{ c.t }}</span></button></li></sc-for>
+</ol>
+</div></sc-for>
+</div>
+</section>
+</main></sc-if>
+
+<sc-if value="{{ isChapter }}" hint-placeholder-val="{{ false }}"><main class="pad" style="max-width: 1300px; margin: 0 auto; padding: 48px 56px 96px; box-sizing: border-box">
+<div class="reader">
+<nav aria-label="Chapters in this part" class="toc" style="display: flex; flex-direction: column; gap: 6px; padding-top: 6px">
+<button type="button" onClick="{{ toIndex }}" style="align-self: flex-start; min-height: 44px; padding: 0; font-size: 14.5px; color: var(--graphite); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">All chapters</button>
+<p style="margin: 8px 0 4px; font-size: 13.5px; color: var(--graphite)">Part two · The charter</p>
+<a href="#" style="display: flex; align-items: center; min-height: 40px; font-size: 15px; text-decoration: none; border-top: 1px solid var(--rule)">5 · Statement</a>
+<a href="#" aria-current="page" style="display: flex; align-items: center; min-height: 40px; font-size: 15px; font-weight: 500; text-decoration: none; border-top: 1px solid var(--rule); box-shadow: inset 2px 0 0 var(--ink); padding-left: 10px">6 · Policy</a>
+<a href="#" style="display: flex; align-items: center; min-height: 40px; font-size: 15px; text-decoration: none; border-top: 1px solid var(--rule)">7 · Context</a>
+<a href="#" style="display: flex; align-items: center; min-height: 40px; font-size: 15px; text-decoration: none; border-top: 1px solid var(--rule)">8 · Rules</a>
+<a href="#" style="display: flex; align-items: center; min-height: 40px; font-size: 15px; text-decoration: none; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule)">9 · Response plans</a>
+</nav>
+<article class="prose">
+<p style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 14.5px; color: var(--graphite); margin-bottom: 10px">Chapter 6 · {{ edName }} edition</p>
+<h1 class="h1" style="margin: 0 0 28px; font-family: 'Instrument Serif', Georgia, serif; font-size: 64px; line-height: 1; font-weight: 400">Policy: what people may and may not do</h1>
+<p>A policy is the part of the charter people will actually consult. It answers a practical question for someone at a desk on an ordinary Tuesday: may I do this with AI, here, with this information?</p>
+<p>Write it from what your people resolved and what the Reality Assessment found. A policy that ignores how people already work will be ignored in return.</p>
+<p>Most good policies do three things. They name what is allowed, so people stop guessing. They name what is never allowed, with the reason, so the line holds under pressure. And they say who to ask when something falls in between.</p>
+<h2>Start with what is never allowed</h2>
+<p>Begin with the refusals, because they are the hardest to agree on and the easiest to lose. A refusal is a commitment, and you will cite it when a vendor or a deadline argues for an exception.</p>
+<figure style="margin: 4px 0 28px; padding: 22px 24px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; display: flex; flex-direction: column; gap: 8px">
+<figcaption style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; color: var(--graphite)">An example from a {{ edLower }} charter</figcaption>
+<p style="margin: 0; font-size: 18.5px; line-height: 1.5">{{ example }}</p>
+</figure>
+<h2>Then say what is allowed</h2>
+<p>Name the tools people may use and the kinds of work they may help with. Be specific enough that someone new could follow it on their first day.</p>
+<h2>Say who decides the rest</h2>
+<p>Something will always fall between the lines. Name the person or small group who answers those questions, and how quickly they will answer. Their decisions go into the Rules at the next review.</p>
+<aside style="margin: 36px 0 0; padding: 26px 28px; border: 1.5px solid var(--ink); border-radius: 4px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 500">Do this now</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">Open Policy in your Map. The agent drafts from your people’s Resolutions and marks every line by where it came from. Settle the refusals first, then the rest.</p>
+<a href="Respond-Step.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px">Open the Map</a>
+</aside>
+<nav aria-label="Previous and next chapter" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif">
+<a href="#" style="display: flex; flex-direction: column; gap: 4px; min-height: 64px; text-decoration: none"><span style="font-size: 13.5px; color: var(--graphite)">Previous</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 24px">5 · Statement</span></a>
+<a href="#" style="display: flex; flex-direction: column; gap: 4px; min-height: 64px; text-decoration: none; text-align: right; align-items: flex-end"><span style="font-size: 13.5px; color: var(--graphite)">Next</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 24px">7 · Context</span></a>
+</nav>
+</article>
+</div>
+</main></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view": {"editor": "enum", "options": ["Index", "Chapter"], "default": "Index"}, "edition": {"editor": "enum", "options": ["Nonprofit", "Church", "School and seminary", "Network and denomination"], "default": "Nonprofit"}, "$preview": {"width": 1440, "height": 2400}}'>
+class Component extends DCLogic {
+  componentDidUpdate(prev) {
+    if (prev.view !== this.props.view || prev.edition !== this.props.edition) this.setState({ view: null, ed: null });
+  }
+  renderVals() {
+    const s = this.state || {};
+    const set = (o) => this.setState(o);
+    const view = s.view || (this.props.view ?? 'Index');
+    const ed = s.ed || (this.props.edition ?? 'Nonprofit');
+    const E = ['Nonprofit', 'Church', 'School and seminary', 'Network and denomination'];
+    const eds = E.map((e) => ({ label: e, on: e === ed, pick: () => set({ ed: e }),
+      css: e === ed ? 'color: #fff; background: var(--ink); border: 1px solid var(--ink);' : 'color: var(--ink); background: #fff; border: 1px solid var(--rule);' }));
+    const X = {
+      'Nonprofit': 'No one may enter a young person’s case notes, health information or anything told in confidence into any AI tool.',
+      'Church': 'No one may put a prayer request, a pastoral conversation or anything shared in confidence into any AI tool.',
+      'School and seminary': 'Students may use AI in coursework only as each syllabus allows, and every syllabus says plainly what it allows.',
+      'Network and denomination': 'Member organizations keep their own charters. This policy covers only what the network itself does with member information.'
+    };
+    const open = () => set({ view: 'Chapter' });
+    let n = 0;
+    const P = [
+      ['Opening', 'Resolve and respond', ['Why begin with what you believe', 'Writing a Resolution']],
+      ['Part one', 'The trailhead', ['Who carries this, and who decides', 'The Reality Assessment']],
+      ['Part two', 'The charter', ['Statement', 'Policy', 'Context', 'Rules', 'Response plans']],
+      ['Part three', 'The organization’s context', ['What you know', 'How the work actually happens', 'Who the work depends on']],
+      ['Part four', 'Formation', ['The team course', 'Your ambassador']],
+      ['Part five', 'Decisions about technology', ['Weighing a possible use', 'Refusal as a decision']],
+      ['Closing', 'Keeping it alive', ['Review, learn, revise, continue']]
+    ];
+    const parts = P.map((p) => ({ label: p[0], title: p[1], chapters: p[2].map((t) => { n += 1; return { n, t, open }; }) }));
+    return { eds, edName: ed, edLower: ed.toLowerCase(), example: X[ed], parts,
+      isIndex: view === 'Index', isChapter: view === 'Chapter', openFirst: open, toIndex: () => set({ view: 'Index' }) };
+  }
+}
+</script>
+</body>
+</html>

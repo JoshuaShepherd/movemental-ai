@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your people</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.rz{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--accent-tint:#E8EBFA;color:var(--ink);background:var(--ground)}
+.rz a{color:var(--ink);text-underline-offset:4px}
+.rz button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.rz button:focus-visible,.rz a:focus-visible,.rz input:focus-visible,.rz textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rz input,.rz textarea{font-family:'Geist','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.5;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:6px;padding:12px 14px;box-sizing:border-box;width:100%}
+.settle{animation:settle .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes settle{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.settle{animation:none}}
+.roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.prow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+@media (max-width:700px){.pad{padding-left:20px !important;padding-right:20px !important}.h1{font-size:40px !important}.roles{grid-template-columns:minmax(0,1fr)}.prow{grid-template-columns:minmax(0,1fr);gap:6px}}
+</style>
+</helmet>
+<div class="rz" style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; min-height: 100%; box-sizing: border-box">
+<header class="pad" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 56px; border-bottom: 1px solid var(--rule)">
+<a href="#" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 22px; width: auto; display: block"></a>
+<nav aria-label="Your account" style="display: flex; gap: 24px; align-items: center"><a href="R4-Result.dc.html" style="font-size: 14.5px">My Resolution</a><a href="#" style="font-size: 14.5px; color: var(--graphite)">Sign out</a></nav>
+</header>
+<main class="pad" style="max-width: 1000px; margin: 0 auto; padding: 56px 56px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 52px">
+
+<div style="display: flex; flex-direction: column; gap: 14px; order: 0">
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 64px; line-height: 1; font-weight: 400">Your people</h1>
+<p style="margin: 0; max-width: 640px; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.5; color: #34363F">The people you’ve brought into this, and people elsewhere walking the same road. No one here can see what you chose unless you shared it with them.</p>
+<div style="padding-top: 6px"><button type="button" onClick="{{ openBlank }}" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer">Invite someone to write theirs</button></div>
+</div>
+
+<section aria-labelledby="agree" style="display: flex; flex-direction: column; gap: 16px; order: 1">
+<h2 id="agree" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; line-height: 1.1; font-weight: 400">Where your people from Riverbend agree</h2>
+<sc-if value="{{ below }}" hint-placeholder-val="{{ true }}"><div style="padding: 22px 24px; background: var(--sheet); border-radius: 4px; display: flex; flex-direction: column; gap: 12px">
+<div aria-hidden="true" style="display: flex; gap: 6px"><sc-for list="{{ marks }}" as="m" hint-placeholder-count="5"><span style="width: 14px; height: 14px; border-radius: 2px; box-sizing: border-box; {{ m.css }}"></span></sc-for></div>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5">3 people from Riverbend you invited have written theirs. You’ll see where you agree once five have.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">Five keeps anyone’s choices from being guessed. Until then, nothing here shows what anyone chose.</p>
+</div></sc-if>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}"><div class="settle" style="display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 15px; color: var(--graphite)">5 people from Riverbend you invited have written theirs, and you. Counts only.</p>
+<div style="border-bottom: 1px solid var(--rule)">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 70px; gap: 20px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.45">We should name the work that is made of presence, and keep it human.</span><span style="font-size: 14.5px; text-align: right; font-variant-numeric: tabular-nums">6 of 6</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 70px; gap: 20px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.45">We should say plainly how AI is used here, including by our leaders.</span><span style="font-size: 14.5px; text-align: right; font-variant-numeric: tabular-nums">5 of 6</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 70px; gap: 20px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule)"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.45">You divide 3 to 3 on what should happen to the time AI saves.</span><span style="font-size: 14.5px; text-align: right; font-variant-numeric: tabular-nums">3 · 3</span></div>
+</div>
+<a href="R3-Team.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">See everything you agree and differ on</a>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">The six of you see this same view. It isn’t Riverbend’s official view, and it gives no one authority. When someone begins Riverbend’s response, each of you is asked whether to bring your Resolution into it.</p>
+</div></sc-if>
+</section>
+
+<section aria-labelledby="inv" style="display: flex; flex-direction: column; gap: 12px; order: {{ oInvited }}">
+<h2 id="inv" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; line-height: 1.1; font-weight: 400">Who you invited</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--graphite)">You see whether each person has written theirs, if they agree to let you know. You never see what they chose.</p>
+<ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--rule)">
+<sc-for list="{{ invitees }}" as="p" hint-placeholder-count="6"><li class="prow" style="padding: 14px 0; border-top: 1px solid var(--rule)"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; font-weight: 500">{{ p.name }}</span><span style="font-size: 14px; color: var(--graphite)">{{ p.sub }}</span></span><span style="display: flex; gap: 18px; align-items: center; justify-content: flex-end; flex-wrap: wrap"><span style="font-size: 14.5px; {{ p.statusCss }}">{{ p.status }}</span><sc-if value="{{ p.canNudge }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ p.nudge }}" style="min-height: 44px; padding: 0; font-size: 14.5px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">{{ p.nudgeLabel }}</button></sc-if></span></li></sc-for>
+</ul>
+</section>
+
+<section aria-labelledby="ask" style="display: flex; flex-direction: column; gap: 14px; order: {{ oAsk }}">
+<h2 id="ask" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; line-height: 1.1; font-weight: 400">People you might ask</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--graphite)">A Resolution travels best when it reaches a few different kinds of people. You know who they are; we don’t look through your contacts.</p>
+<div class="roles">
+<sc-for list="{{ roles }}" as="r" hint-placeholder-count="4"><div style="padding: 20px 22px; border: 1px solid var(--rule); border-radius: 6px; display: flex; flex-direction: column; gap: 8px"><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 23px; line-height: 1.15">{{ r.title }}</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: #34363F">{{ r.why }}</p><button type="button" onClick="{{ r.open }}" style="align-self: flex-start; min-height: 44px; padding: 0; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">Write an invitation</button></div></sc-for>
+</div>
+</section>
+
+<section aria-labelledby="road" style="display: flex; flex-direction: column; gap: 14px; order: {{ oRoad }}">
+<h2 id="road" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; line-height: 1.1; font-weight: 400">People walking the same road</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--graphite)">Only people who made their Resolution public appear here. Connecting takes a yes from both of you, and no one sees how many connections anyone has.</p>
+<sc-if value="{{ privateMe }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 14px 16px; background: var(--sheet); border-radius: 6px; font-size: 15px; line-height: 1.5">Your Resolution is private, so you can see people here but they can’t find you. <a href="R4-Result.dc.html">Change who can see it</a></p></sc-if>
+<div role="tablist" aria-label="Show people who" style="display: flex; gap: 8px; flex-wrap: wrap">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{ t.on }}" onClick="{{ t.pick }}" style="min-height: 44px; padding: 0 18px; font-size: 14.5px; border-radius: 999px; cursor: pointer; {{ t.css }}">{{ t.label }}</button></sc-for>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--rule)">
+<sc-for list="{{ matches }}" as="m" hint-placeholder-count="3"><li class="prow" style="padding: 16px 0; border-top: 1px solid var(--rule)"><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; font-weight: 500">{{ m.name }} <span style="font-weight: 400; color: var(--graphite)">· {{ m.org }}</span></span><span style="font-size: 13px; color: var(--graphite)">{{ m.why }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.45">{{ m.line }}</span></span><span style="display: flex; gap: 18px; align-items: center; justify-content: flex-end; flex-wrap: wrap"><a href="R3-Shared.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 14.5px">Read theirs</a><button type="button" onClick="{{ m.connect }}" aria-pressed="{{ m.asked }}" style="min-height: 44px; padding: 0 18px; font-size: 14.5px; font-weight: 500; border-radius: 999px; cursor: pointer; {{ m.css }}">{{ m.label }}</button></span></li></sc-for>
+</ul>
+<sc-if value="{{ nearbyOff }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--graphite)">Nearby shows only people who chose to show their city. You haven’t shown yours, and you don’t have to.</p></sc-if>
+</section>
+
+<sc-if value="{{ leaders }}" hint-placeholder-val="{{ true }}"><section aria-labelledby="ldr" style="display: flex; flex-direction: column; gap: 14px; order: {{ oLeaders }}">
+<h2 id="ldr" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; line-height: 1.1; font-weight: 400">Movement leaders who resolved what you did</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--graphite)">Leaders in the network who have published their Resolution and starred a line you starred.</p>
+<ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--rule)">
+<sc-for list="{{ leaderRows }}" as="l" hint-placeholder-count="2"><li class="prow" style="padding: 16px 0; border-top: 1px solid var(--rule)"><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; font-weight: 500">{{ l.name }} <span style="font-weight: 400; color: var(--graphite)">· {{ l.org }}</span></span><span style="font-size: 13px; color: var(--graphite)">{{ l.theme }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.45">{{ l.line }}</span></span><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 14.5px; justify-self: end">Read their Resolution</a></li></sc-for>
+</ul>
+</section></sc-if>
+</main>
+
+<sc-if value="{{ dialog }}" hint-placeholder-val="{{ false }}">
+<div style="position: fixed; inset: 0; z-index: 10; background: rgba(28,29,36,.38); display: flex; align-items: flex-start; justify-content: center; padding: 64px 20px; box-sizing: border-box; overflow: auto">
+<div role="dialog" aria-modal="true" aria-labelledby="invt" class="settle" style="width: 100%; max-width: 640px; background: #fff; border-radius: 10px; padding: 28px 32px 30px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px"><h2 id="invt" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1.08; font-weight: 400">{{ dlgTitle }}</h2><button type="button" onClick="{{ close }}" style="min-height: 44px; padding: 0; font-size: 14.5px; color: var(--graphite); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">Close</button></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="ie" style="font-size: 15px; font-weight: 500">Email addresses</label><input id="ie" type="text" placeholder="Separate with commas"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="io" style="font-size: 15px; font-weight: 500">For</label><input id="io" type="text" value="Riverbend Youth &amp; Family"><span style="font-size: 14px; color: var(--graphite)">Their Resolution counts with yours for Riverbend only if they say yes.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="in" style="font-size: 15px; font-weight: 500">Note</label><textarea id="in" rows="4">{{ dlgNote }}</textarea></div>
+<div style="padding: 16px 18px; background: var(--sheet); border-radius: 6px"><p style="margin: 0 0 4px; font-size: 13px; color: var(--graphite)">What they will see</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5">Your note, your name, and a link to write their own. None of your choices, and none of anyone else’s until they finish theirs.</p></div>
+<div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap"><button type="button" onClick="{{ close }}" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer">Send invitations</button><button type="button" onClick="{{ close }}" style="min-height: 44px; padding: 0; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">Copy an invitation link instead</button></div>
+</div></div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"agreement": {"editor": "enum", "options": ["3 of 5 written", "5 written"], "default": "3 of 5 written"}, "starredBeyondWalls": {"editor": "boolean", "default": false}, "leadersPublished": {"editor": "boolean", "default": true}, "myResolutionPublic": {"editor": "boolean", "default": true}, "$preview": {"width": 1440, "height": 2900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const set = (o) => this.setState(o);
+    const ready = (this.props.agreement ?? '3 of 5 written') === '5 written';
+    const far = !!this.props.starredBeyondWalls;
+    const marks = [0, 1, 2, 3, 4].map((i) => ({ css: i < 3 ? 'background: var(--ink);' : 'border: 1.5px solid var(--graphite);' }));
+    const nudged = s.nudged || {};
+    const P = ready
+      ? [['James Okafor', 'Executive director · invited October 6', 'Written theirs'], ['Dana Reyes', 'Program staff · invited October 6', 'Written theirs'], ['Tom Whitlock', 'Board · invited October 8', 'Written theirs'], ['Ana Lima', 'Volunteer · invited October 8', 'Written theirs'], ['Sam Ortiz', 'Program staff · invited October 9', 'Written theirs'], ['dmorgan@riverbendyf.org', 'Invited October 12', 'Not yet']]
+      : [['James Okafor', 'Executive director · invited October 6', 'Written theirs'], ['Dana Reyes', 'Program staff · invited October 6', 'Written theirs'], ['Tom Whitlock', 'Board · invited October 8', 'Written theirs'], ['Ana Lima', 'Volunteer · invited October 8', 'Not yet'], ['Sam Ortiz', 'Program staff · invited October 9', 'Prefers not to say'], ['dmorgan@riverbendyf.org', 'Invited October 12', 'Not yet']];
+    const invitees = P.map((p, i) => ({ name: p[0], sub: p[1], status: p[2],
+      statusCss: p[2] === 'Written theirs' ? 'color: var(--ink);' : 'color: var(--graphite);',
+      canNudge: p[2] === 'Not yet', nudgeLabel: nudged[i] ? 'Reminder sent' : 'Send a reminder',
+      nudge: () => { const n = Object.assign({}, nudged); n[i] = true; set({ nudged: n }); } }));
+    const R = [
+      ['Someone who decides', 'The person or people who would have to say yes. Your Resolution is most useful in front of them.', 'James, I’ve written down what I believe Riverbend should do about AI, and I’d value yours too. It takes about four minutes.'],
+      ['Someone who knows how the work actually moves', 'The person who knows where the real workflows run, and where AI is already in them.', 'You know how our work actually gets done better than anyone. I’d like to know what you think Riverbend should do about AI.'],
+      ['Someone close to the people you serve', 'Someone who would notice first if care started to feel automated.', 'You’re closest to the families we serve. Would you say what you think Riverbend should do about AI? About four minutes.'],
+      ['Someone outside your walls walking the same road', 'A peer at another organization working through the same questions.', 'I wrote a Resolution about what my organization should do with AI. I’d love to see what you’d write for yours.']
+    ];
+    const roles = R.map((r) => ({ title: r[0], why: r[1], open: () => set({ dialog: true, dlgTitle: 'Invite ' + r[0].charAt(0).toLowerCase() + r[0].slice(1), dlgNote: r[2] }) }));
+    const tab = s.tab || 'line';
+    const T = [['line', 'Starred the same line'], ['kind', 'Same kind of organization'], ['near', 'Nearby']];
+    const tabs = T.map((t) => ({ label: t[1], on: tab === t[0], pick: () => set({ tab: t[0] }),
+      css: tab === t[0] ? 'color: #fff; background: var(--ink); border: 1px solid var(--ink);' : 'color: var(--ink); background: #fff; border: 1px solid var(--rule);' }));
+    const M = {
+      line: [['Marcus Bell', 'Grace Street Church', 'Also starred, in Time', 'We should give the time AI saves back to people, to creation and to play.'], ['Helen Park', 'Northside Food Partners', 'Also starred, in Truth', 'We should say plainly how AI is used here, including by our leaders.'], ['Rev. Luis Mendoza', 'Iglesia La Roca', 'Also starred, in People', 'We should find others beyond our walls who are walking it too.']],
+      kind: [['Helen Park', 'Northside Food Partners · nonprofit', 'Also a youth and family nonprofit', 'We should keep the moments of care human.'], ['Ruth Adeyemi', 'Open Door Mentoring · nonprofit', 'Also a youth and family nonprofit', 'We should make time for everyone here to try new things with AI.']],
+      near: [['Marcus Bell', 'Grace Street Church · Lawrence', 'Showed their city', 'We should give the time AI saves back to people, to creation and to play.']]
+    };
+    const asked = s.asked || {};
+    const matches = M[tab].map((m) => { const k = tab + m[0]; const on = !!asked[k]; return { name: m[0], org: m[1], why: m[2], line: m[3], asked: on,
+      label: on ? 'Asked. Waiting for their yes' : 'Ask to connect',
+      css: on ? 'color: var(--ink); background: var(--accent-tint); border: 1px solid var(--accent-tint);' : 'color: var(--ink); background: #fff; border: 1px solid var(--ink);',
+      connect: () => { const a = Object.assign({}, asked); a[k] = !on; set({ asked: a }); } }; });
+    const leaderRows = [['[Movement leader]', '[Their organization]', 'Also starred, in People', 'We should find others beyond our walls who are walking it too.'], ['[Movement leader]', '[Their organization]', 'Also starred, in Leading', 'Leading through AI should be something we practice, not only a policy we write.']].map((l) => ({ name: l[0], org: l[1], theme: l[2], line: l[3] }));
+    return {
+      below: !ready, ready, marks, invitees, roles, tabs, matches, leaderRows,
+      leaders: this.props.leadersPublished ?? true,
+      privateMe: !(this.props.myResolutionPublic ?? true),
+      nearbyOff: tab === 'near',
+      oInvited: far ? 4 : 2, oAsk: far ? 5 : 3, oRoad: far ? 2 : 4, oLeaders: far ? 3 : 5,
+      dialog: !!s.dialog, dlgTitle: s.dlgTitle || 'Invite someone to write theirs', dlgNote: s.dlgNote || 'I’ve written down what I believe Riverbend should do about AI. I’d value knowing what you think. It takes about four minutes.',
+      openBlank: () => set({ dialog: true, dlgTitle: 'Invite someone to write theirs', dlgNote: '' }),
+      close: () => set({ dialog: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

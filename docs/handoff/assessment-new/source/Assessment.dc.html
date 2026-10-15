@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Reality Assessment</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.rz{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--accent-tint:#E8EBFA;color:var(--ink);background:var(--ground)}
+.rz a{color:var(--ink);text-underline-offset:4px}
+.rz button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.rz button:focus-visible,.rz a:focus-visible,.rz input:focus-visible,.rz select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rz input,.rz select{font-family:'Geist','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.5;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:6px;padding:12px 14px;box-sizing:border-box;width:100%}
+.settle{animation:settle .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes settle{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.settle{animation:none}}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:72px;align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gaprow{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:1100px){.hero{grid-template-columns:minmax(0,1fr);gap:40px}}
+@media (max-width:700px){.pad{padding-left:20px !important;padding-right:20px !important}.h1{font-size:48px !important}.three,.opts{grid-template-columns:minmax(0,1fr)}.gaprow{grid-template-columns:minmax(0,1fr);gap:10px}.navlinks{display:none !important}}
+</style>
+</helmet>
+<div class="rz" style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; min-height: 100%; box-sizing: border-box">
+<header class="pad" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 56px; border-bottom: 1px solid var(--rule)">
+<a href="Home-Final.dc.html" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 22px; width: auto; display: block"></a>
+<sc-if value="{{ siteNav }}" hint-placeholder-val="{{ true }}"><nav aria-label="Main" class="navlinks" style="display: flex; gap: 28px; align-items: center; font-size: 15px"><a href="R3-Flow.dc.html" style="text-decoration: none">Resolve</a><a href="Respond.dc.html" style="text-decoration: none">The Map</a><a href="#" style="text-decoration: none">Guidebook</a><a href="#" style="text-decoration: none">Leaders</a><a href="#" style="text-decoration: none">About</a><a href="#" style="text-decoration: none; color: var(--graphite)">Sign in</a></nav></sc-if>
+<sc-if value="{{ inFlow }}" hint-placeholder-val="{{ false }}"><span style="font-size: 14.5px; color: var(--graphite)">{{ flowLabel }}</span></sc-if>
+</header>
+
+<sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}"><main>
+<section class="pad" style="max-width: 1300px; margin: 0 auto; padding: 88px 56px 72px; box-sizing: border-box">
+<div class="hero">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-size: 15px; color: var(--graphite)">The Reality Assessment</p>
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 80px; line-height: .98; font-weight: 400">Find out what is actually happening, before you decide what should.</h1>
+<p style="margin: 0; max-width: 640px; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; line-height: 1.55; color: #34363F">Your leaders predict how AI is being used across your organization. Your people answer the same questions anonymously. You see the two side by side. There is no score and no grade, only the gap.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 15.5px; line-height: 1.5">
+<li>Free, and you can run it again whenever you like.</li>
+<li>No one’s individual answers are ever shown, to anyone.</li>
+<li>Results appear only once at least five people have answered.</li>
+</ul>
+</div>
+<form onSubmit="{{ startLeader }}" style="padding: 30px 32px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1.08; font-weight: 400">Start the Reality Assessment</h2>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="on" style="font-size: 15px; font-weight: 500">Your organization</label><input id="on" type="text" value="Riverbend Youth &amp; Family"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="ok" style="font-size: 15px; font-weight: 500">Kind of organization</label><select id="ok"><option>Nonprofit</option><option>Church</option><option>School or seminary</option><option>Network or denomination</option><option>Other institution</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="oe" style="font-size: 15px; font-weight: 500">Your email</label><input id="oe" type="email" placeholder="you@riverbendyf.org"><span style="font-size: 14px; color: var(--graphite)">So you can come back to the results. We’ll send a sign-in link.</span></div>
+<button type="submit" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer">Start the Reality Assessment</button>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--graphite)">You’ll make your predictions first. Then you invite your people.</p>
+</form>
+</div>
+</section>
+<section class="pad" style="background: var(--sheet); padding: 72px 56px; box-sizing: border-box">
+<div class="three" style="max-width: 1300px; margin: 0 auto">
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--ink)"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 44px; line-height: 1">1</span><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1.1">Leaders predict</p><p style="margin: 0; font-size: 15.5px; line-height: 1.55; color: #34363F">How much your people use AI and for what, which personal tools are in play, whether sensitive information goes into them, how confident people feel, what gets disclosed, what rules exist, and how you use AI yourselves.</p></div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--ink)"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 44px; line-height: 1">2</span><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1.1">Your people answer</p><p style="margin: 0; font-size: 15.5px; line-height: 1.55; color: #34363F">Staff, and volunteers or board where it fits, answer the same questions about themselves. Anonymously, and without seeing what leaders predicted.</p></div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--ink)"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 44px; line-height: 1">3</span><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1.1">You see the gap</p><p style="margin: 0; font-size: 15.5px; line-height: 1.55; color: #34363F">What you thought, beside what your people reported. The results become part of your organization’s context in the Map, as a starting point for the charter.</p></div>
+</div>
+</section>
+</main></sc-if>
+
+<sc-if value="{{ isQuestions }}" hint-placeholder-val="{{ false }}"><main class="pad" style="max-width: 860px; margin: 0 auto; padding: 56px 56px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 14.5px; color: var(--graphite)">{{ qKicker }}</p>
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 56px; line-height: 1.02; font-weight: 400">{{ qTitle }}</h1>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.55; color: #34363F">{{ qLead }}</p>
+</div>
+<div aria-hidden="true" style="display: flex; gap: 6px"><sc-for list="{{ qmarks }}" as="m" hint-placeholder-count="8"><span style="flex: 1 1 0; height: 6px; border-radius: 2px; box-sizing: border-box; {{ m.css }}"></span></sc-for></div>
+<fieldset class="settle" style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px">
+<legend style="padding: 0; margin-bottom: 4px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13.5px; color: var(--graphite)">{{ qArea }} · {{ qPos }}</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.15">{{ qText }}</span></legend>
+<div class="opts" role="radiogroup" aria-label="{{ qText }}">
+<sc-for list="{{ qOpts }}" as="o" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{ o.on }}" onClick="{{ o.pick }}" style="min-height: 56px; padding: 12px 18px; font-size: 16px; text-align: left; border-radius: 6px; cursor: pointer; {{ o.css }}">{{ o.t }}</button></sc-for>
+</div>
+</fieldset>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 12px; border-top: 1px solid var(--rule)">
+<button type="button" onClick="{{ qBack }}" style="min-height: 44px; padding: 0; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">Back</button>
+<button type="button" onClick="{{ qNext }}" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer">{{ qNextLabel }}</button>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">{{ qAssure }}</p>
+</main></sc-if>
+
+<sc-if value="{{ isWaiting }}" hint-placeholder-val="{{ false }}"><main class="pad" style="max-width: 860px; margin: 0 auto; padding: 72px 56px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<p style="margin: 0; font-size: 14.5px; color: var(--graphite)">Riverbend Youth &amp; Family · Reality Assessment, October</p>
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 56px; line-height: 1.02; font-weight: 400">Your predictions are in. Now your people answer.</h1>
+<div style="padding: 24px 26px; background: var(--sheet); border-radius: 4px; display: flex; flex-direction: column; gap: 12px">
+<div aria-hidden="true" style="display: flex; gap: 6px"><span style="width: 14px; height: 14px; border-radius: 2px; background: var(--ink)"></span><span style="width: 14px; height: 14px; border-radius: 2px; background: var(--ink)"></span><span style="width: 14px; height: 14px; border-radius: 2px; background: var(--ink)"></span><span style="width: 14px; height: 14px; border-radius: 2px; border: 1.5px solid var(--graphite); box-sizing: border-box"></span><span style="width: 14px; height: 14px; border-radius: 2px; border: 1.5px solid var(--graphite); box-sizing: border-box"></span></div>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.5">3 of the 19 people you invited have answered. You’ll see the gap once five have.</p>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--graphite)">Five keeps anyone’s answers from being guessed. The more people answer, the truer the picture. You’ll get one email when results are ready, and none before.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="lk" style="font-size: 15px; font-weight: 500">Link for your people</label><div style="display: flex; gap: 8px"><input id="lk" type="text" readonly value="movemental.ai/a/riverbend-oct"><button type="button" onClick="{{ copy }}" style="flex: 0 0 auto; min-height: 48px; padding: 0 18px; font-size: 14.5px; font-weight: 500; color: var(--ink); background: #fff; border: 1px solid var(--ink); border-radius: 999px; cursor: pointer">{{ copyLabel }}</button></div><span style="font-size: 14px; color: var(--graphite)">Anyone with this link can answer once for Riverbend. You can switch it off.</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Invite more people by email</a><button type="button" onClick="{{ showStaff }}" style="align-self: flex-start; min-height: 44px; padding: 0; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">See what your people will see</button></div>
+</main></sc-if>
+
+<sc-if value="{{ isGap }}" hint-placeholder-val="{{ false }}"><main>
+<section class="pad" style="max-width: 1200px; margin: 0 auto; padding: 64px 56px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 14.5px; color: var(--graphite)">Riverbend Youth &amp; Family · Reality Assessment, October 2026 · sample</p>
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 72px; line-height: 1; font-weight: 400">What you thought, and what your people reported</h1>
+<p style="margin: 0; max-width: 760px; font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.55; color: #34363F">3 leaders predicted. 12 of 19 people answered anonymously. The widest gaps are first. None of this is a grade. It is where your organization actually is.</p>
+</section>
+<section class="pad" style="max-width: 1200px; margin: 0 auto; padding: 0 56px 56px; box-sizing: border-box">
+<div class="gaprow" style="padding: 0 0 10px; font-size: 13.5px; color: var(--graphite)"><span></span><span>What you thought</span><span>What your people reported</span></div>
+<sc-for list="{{ gaps }}" as="g" hint-placeholder-count="8"><div class="gaprow" style="padding: 22px 0; border-top: 1px solid var(--rule)">
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: var(--graphite)">{{ g.area }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">{{ g.q }}</span><span style="font-size: 13.5px; font-weight: 500; {{ g.tagCss }}">{{ g.tag }}</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 16px; line-height: 1.45">{{ g.thought }}</span><div aria-hidden="true" style="height: 8px; background: var(--rule); border-radius: 2px"><div style="height: 8px; border-radius: 2px; background: var(--graphite); {{ g.tW }}"></div></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 16px; line-height: 1.45; font-weight: 500">{{ g.reported }}</span><div aria-hidden="true" style="height: 8px; background: var(--rule); border-radius: 2px"><div style="height: 8px; border-radius: 2px; background: var(--ink); {{ g.rW }}"></div></div></div>
+</div></sc-for>
+<p style="margin: 0; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 14px; line-height: 1.55; color: var(--graphite)">Answers by role appear only where at least five people share a role. Here: staff (8). Board and volunteers are counted in the totals only.</p>
+</section>
+<section class="pad" style="background: var(--sheet); padding: 64px 56px 88px; box-sizing: border-box">
+<div class="hero" style="max-width: 1200px; margin: 0 auto">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 44px; line-height: 1.05; font-weight: 400">Where this goes next</h2>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.55; color: #34363F">These results are now part of Riverbend’s context in the Map. When your working group drafts the charter, the Context section starts from what your people reported here, marked as a sourced fact.</p>
+<div style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap; padding-top: 6px"><a href="R3-Team.dc.html" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border-radius: 999px; text-decoration: none">Bring this to your working group</a><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Download the results</a></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 6px">
+<p style="margin: 0; font-size: 15px; font-weight: 500">Run it again</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #34363F">Run it again after the charter is adopted, and again after formation, to see whether the gap is closing.</p>
+<button type="button" style="align-self: flex-start; min-height: 44px; padding: 0; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">Set a date to run it again</button>
+<p style="margin: 8px 0 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">With your permission, these totals join anonymous research across organizations. Nothing published can identify Riverbend or anyone in it. <a href="#">Choose</a></p>
+</div>
+</div>
+</section>
+</main></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"stage": {"editor": "enum", "options": ["Explainer and start", "Leader predicts", "What your people see", "Waiting for five", "The gap"], "default": "Explainer and start"}, "$preview": {"width": 1440, "height": 2200}}'>
+class Component extends DCLogic {
+  componentDidUpdate(prev) {
+    if (prev.stage !== this.props.stage) this.setState({ stage: null, qi: 0, ans: {}, copied: false });
+  }
+  renderVals() {
+    const s = this.state || {};
+    const set = (o) => this.setState(o);
+    const map = { 'Explainer and start': 'intro', 'Leader predicts': 'leader', 'What your people see': 'staff', 'Waiting for five': 'waiting', 'The gap': 'gap' };
+    const stage = s.stage || map[this.props.stage ?? 'Explainer and start'] || 'intro';
+    const leader = stage === 'leader';
+    const Q = [
+      ['Use', 'Of your people, how many use AI for their work at least weekly?', 'How often do you use AI for your work?', ['Few, under a quarter', 'Some, up to half', 'Most, up to three quarters', 'Nearly everyone'], ['Never', 'A few times', 'Weekly', 'Daily or almost daily']],
+      ['What for', 'What do you think they use it for most?', 'What do you use it for most?', ['Writing and editing', 'Research and summaries', 'Planning and ideas', 'Work with people we serve'], ['Writing and editing', 'Research and summaries', 'Planning and ideas', 'Work with people we serve']],
+      ['Personal tools', 'How many use AI through personal accounts rather than tools Riverbend provides?', 'Do you use AI for work through a personal account?', ['Few', 'Some', 'Most', 'Nearly everyone'], ['No', 'Sometimes', 'Usually', 'It’s the only way I use it']],
+      ['Sensitive information', 'How many have put information about someone you serve into an AI tool?', 'Have you ever put information about someone Riverbend serves into an AI tool?', ['No one', 'A few', 'Some', 'Many'], ['No', 'Once or twice', 'Yes, more than that', 'I’m not sure']],
+      ['Confidence', 'How confident do you think they feel using AI well?', 'How confident do you feel using AI well in your work?', ['Not at all', 'A little', 'Fairly', 'Very'], ['Not at all', 'A little', 'Fairly', 'Very']],
+      ['Disclosure', 'When AI substantially shapes their work, how often do they say so?', 'When AI substantially shapes something you share, how often do you say so?', ['Rarely', 'Sometimes', 'Usually', 'Always'], ['Rarely', 'Sometimes', 'Usually', 'Always']],
+      ['Rules', 'Does Riverbend have rules about AI use today?', 'Does Riverbend have rules about AI use?', ['No', 'Spoken guidance only', 'Written guidance', 'A written policy'], ['No', 'Yes, but I don’t know them', 'Yes, and I know them', 'I’m not sure']],
+      ['Leaders’ own use', 'How often do you, as leaders, use AI in your own work?', 'Do you think Riverbend’s leaders use AI in their own work?', ['Never', 'Sometimes', 'Weekly', 'Daily'], ['No', 'Probably not', 'Probably', 'Yes, and they’ve said so']]
+    ];
+    const qi = Math.min(s.qi || 0, Q.length - 1);
+    const q = Q[qi];
+    const ans = s.ans || {};
+    const opts = (leader ? q[3] : q[4]).map((t, k) => ({ t, on: ans[qi] === k,
+      css: ans[qi] === k ? 'color: var(--ink); background: var(--accent-tint); border: 1.5px solid var(--ink);' : 'color: var(--ink); background: #fff; border: 1px solid var(--rule);',
+      pick: () => { const a = Object.assign({}, ans); a[qi] = k; set({ ans: a }); } }));
+    const qmarks = Q.map((x, k) => ({ css: k < qi ? 'background: var(--ink);' : (k === qi ? 'background: var(--accent);' : 'border: 1.5px solid var(--rule);') }));
+    const qNext = () => { if (qi < Q.length - 1) set({ qi: qi + 1 }); else set({ stage: leader ? 'waiting' : 'gap', qi: 0 }); };
+    const qBack = () => { if (qi > 0) set({ qi: qi - 1 }); else set({ stage: leader ? 'intro' : 'waiting' }); };
+    const G = [
+      ['Sensitive information', 'Information about people we serve, put into AI tools', 'No one', '4 of 12 have, and 2 aren’t sure', 'Widest gap', 30, 50],
+      ['Rules', 'Whether Riverbend has rules about AI', 'Spoken guidance exists', '5 of 12 say there are none; 4 aren’t sure', 'Wide gap', 50, 75],
+      ['Personal tools', 'Using AI through personal accounts', 'Some', '9 of 12, usually or only', 'Wide gap', 40, 75],
+      ['Leaders’ own use', 'Leaders using AI in their own work', 'Leaders use it weekly', '3 of 12 think leaders use it', 'Wide gap', 75, 25],
+      ['Use', 'Using AI for work at least weekly', 'Some, up to half', '7 of 12, weekly or daily', 'Some gap', 40, 58],
+      ['Disclosure', 'Saying so when AI shaped the work', 'Usually', '8 of 12 say rarely or sometimes', 'Some gap', 70, 33],
+      ['Confidence', 'Feeling confident using AI well', 'Fairly confident', '7 of 12 feel a little or not at all', 'Some gap', 65, 42],
+      ['What for', 'What it is used for most', 'Writing and editing', 'Writing and editing, 8 of 12', 'Close', 65, 67]
+    ];
+    const gaps = G.map((g) => ({ area: g[0], q: g[1], thought: g[2], reported: g[3], tag: g[4],
+      tagCss: g[4] === 'Close' ? 'color: var(--graphite);' : 'color: var(--ink);',
+      tW: 'width: ' + g[5] + '%;', rW: 'width: ' + g[6] + '%;' }));
+    return {
+      isIntro: stage === 'intro', isQuestions: leader || stage === 'staff', isWaiting: stage === 'waiting', isGap: stage === 'gap',
+      siteNav: stage === 'intro' || stage === 'gap', inFlow: leader || stage === 'staff' || stage === 'waiting',
+      flowLabel: stage === 'staff' ? 'Anonymous · Riverbend Youth & Family' : 'Riverbend Youth & Family · Reality Assessment',
+      startLeader: (e) => { if (e && e.preventDefault) e.preventDefault(); set({ stage: 'leader', qi: 0, ans: {} }); },
+      qKicker: leader ? 'Your predictions · leaders only' : 'Riverbend asked everyone to answer',
+      qTitle: leader ? 'What do you think is happening?' : 'How do you actually use AI at work?',
+      qLead: leader ? 'Answer for your people as a whole. Your predictions are kept sealed until your people’s answers are in, and they never see them.' : 'Your answers are anonymous. Riverbend’s leaders see totals only, once at least five people have answered. No one at Riverbend will ever see your individual answers.',
+      qArea: q[0], qPos: (qi + 1) + ' of ' + Q.length, qText: leader ? q[1] : q[2], qOpts: opts, qmarks, qNext, qBack,
+      qNextLabel: qi < Q.length - 1 ? 'Next' : (leader ? 'Seal my predictions' : 'Send my answers'),
+      qAssure: leader ? 'Each leader predicts separately. You’ll see where your own predictions differ from each other, too.' : 'There are no right answers. Honest ones help Riverbend decide well.',
+      copyLabel: s.copied ? 'Copied' : 'Copy', copy: () => set({ copied: true }),
+      showStaff: () => set({ stage: 'staff', qi: 0, ans: {} }),
+      gaps
+    };
+  }
+}
+</script>
+</body>
+</html>

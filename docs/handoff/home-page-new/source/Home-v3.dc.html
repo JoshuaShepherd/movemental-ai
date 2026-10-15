@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Movemental, home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.hf{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--tint:#E8EBFA;--field:#0f0f12;color:var(--ink);background:var(--ground);font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.hf a{color:var(--ink);text-underline-offset:4px;text-decoration-thickness:1px}
+.hf a:hover{color:var(--accent)}
+.hf a:focus-visible,.hf button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.hf button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.wrap{max-width:1296px;margin:0 auto;padding-left:72px;padding-right:72px;box-sizing:border-box}
+h1,h2,h3{text-wrap:balance}.close{text-wrap:pretty}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;background:var(--ink);color:#FFFFFF !important;text-decoration:none;font-size:16px;font-weight:500;transition:background-color .2s ease}
+.pill:hover{background:var(--accent)}
+.more{display:inline-flex;align-items:center;min-height:44px;font-size:16px}
+.nav a{text-decoration:none;color:var(--graphite)}
+.nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,52fr) minmax(0,48fr);gap:64px;align-items:center}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
+.desk{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:start}
+.step{display:grid;grid-template-columns:96px minmax(0,5fr) minmax(0,6fr);gap:40px;align-items:start;padding:44px 0;border-top:1px solid var(--rule)}
+.caps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
+.proof{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:start}
+.stmt{transition:background-color .2s ease,border-color .2s ease}
+.stmt:hover{border-color:var(--ink) !important}
+.node{transition:width 1s ease,box-shadow 1s ease}
+.node:focus-visible{outline:2px solid #c9d2ff;outline-offset:3px}
+.pulse-line{stroke-dasharray:2 600;animation-name:flow;animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes flow{from{stroke-dashoffset:602}to{stroke-dashoffset:0}}
+.settle{animation:settle .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes settle{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pulse-line,.settle{animation:none}.node{transition:none}}
+@media (max-width:1100px){.hero,.split,.desk,.proof{grid-template-columns:minmax(0,1fr);gap:48px}.step{grid-template-columns:72px minmax(0,1fr)}.step .plate{grid-column:2}}
+@media (max-width:700px){
+.wrap{padding-left:20px;padding-right:20px}
+.nav{display:none !important}
+.h1{font-size:46px !important}
+.h2{font-size:38px !important}
+.big{font-size:72px !important}
+.litany{font-size:28px !important}
+.sec{padding-top:80px !important;padding-bottom:80px !important}
+.step{grid-template-columns:minmax(0,1fr);gap:16px}.step .plate{grid-column:auto}
+.caps{grid-template-columns:minmax(0,1fr)}
+.close{font-size:44px !important}
+.names{font-size:26px !important}
+.fname{font-size:22px !important}
+.stat{grid-template-columns:72px minmax(0,1fr) !important;gap:16px !important}
+.stat .n{font-size:40px !important}
+.ws{grid-template-columns:minmax(0,1fr) !important}.ws .rail{display:none !important}
+}
+</style>
+</helmet>
+<div class="hf" style="box-sizing: border-box">
+<header class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 24px; padding-bottom: 24px">
+<a href="#top" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 24px; width: auto; display: block"></a>
+<nav class="nav" aria-label="Main" style="display: flex; align-items: center; gap: 32px; font-size: 15px">
+<a href="#resolve">Resolve</a>
+<a href="#respond">The Map</a>
+<a href="Guidebook.dc.html">Guidebook</a>
+<a href="Leaders.dc.html">Leaders</a>
+<a href="#about">About</a>
+<a href="#">Sign in</a>
+</nav>
+</header>
+
+<section id="top" style="padding: 48px 0 112px">
+<div class="wrap hero">
+<div style="display: flex; flex-direction: column; gap: 32px">
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 78px; line-height: 0.98; letter-spacing: -0.018em">Movemental helps churches, nonprofits and institutions lead the response to AI.</h1>
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 540px">
+<p style="margin: 0; font-size: 19px; line-height: 1.55; color: var(--ink)">We help organizations decide what AI should and should not do, prepare the knowledge and people it depends on, and build the tools that put those decisions into practice.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.55; color: var(--graphite)">We’re doing this work in our own churches, nonprofits and networks first.</p>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding-top: 4px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px">
+<a class="pill" href="#resolve">Write your Resolution</a>
+<a class="more" href="#work">Explore how we work with organizations →</a>
+</div>
+<p style="margin: 0; font-size: 14px; color: var(--graphite)">Four minutes. No account required.</p>
+<p style="margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.5; color: var(--graphite)">Already leading your organization’s AI response? <a href="Assessment.dc.html">Take the Reality Assessment →</a></p>
+</div>
+</div>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="position: relative; width: 100%; aspect-ratio: 1 / 1; background: var(--field); overflow: hidden">
+<svg viewBox="0 0 600 600" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"><circle cx="341.0" cy="347.9" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="554.4" cy="411.3" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="93.7" cy="240.6" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="532.5" cy="97.6" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="298.8" cy="290.1" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="419.2" cy="570.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="351.9" cy="514.9" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="81.8" cy="451.2" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="87.9" cy="309.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="560.9" cy="510.9" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="322.8" cy="467.7" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="402.8" cy="513.2" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="357.1" cy="350.7" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="590.3" cy="533.6" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="184.3" cy="160.9" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="482.5" cy="120.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="341.9" cy="143.3" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="289.6" cy="518.3" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="251.1" cy="418.5" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="420.9" cy="123.5" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="348.3" cy="541.1" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="391.4" cy="16.7" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="595.7" cy="43.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="568.5" cy="469.9" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="529.1" cy="27.5" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="546.5" cy="534.6" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="388.9" cy="466.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="41.6" cy="130.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="152.5" cy="534.1" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="465.5" cy="82.5" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="373.1" cy="405.1" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="22.1" cy="560.3" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="101.8" cy="27.0" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="110.0" cy="54.6" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="479.3" cy="70.8" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="158.5" cy="548.3" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="21.7" cy="271.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="440.5" cy="202.0" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="17.6" cy="198.9" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="227.8" cy="46.8" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="386.6" cy="445.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="294.0" cy="75.3" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="191.3" cy="530.0" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="45.7" cy="259.5" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="263.1" cy="316.5" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="150.6" cy="316.6" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="420.4" cy="407.1" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="221.1" cy="270.2" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="397.7" cy="402.0" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="566.5" cy="490.4" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="64.3" cy="566.7" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="203.1" cy="339.6" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="315.4" cy="400.1" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="305.2" cy="35.7" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="176.7" cy="436.7" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="445.4" cy="387.5" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="438.1" cy="89.7" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="222.5" cy="552.0" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="272.5" cy="64.9" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><circle cx="335.9" cy="552.5" r="0.7" style="fill: rgba(255,255,255,.18)"></circle><g><path d="M 211.2 452.0 Q 245.4 304.7 320.5 173.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e0 }}"></path><path d="M 211.2 452.0 Q 215.8 403.1 214.6 354.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e1 }}"></path><path d="M 211.2 452.0 Q 308.5 419.0 409.1 439.9" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e2 }}"></path><path d="M 211.2 452.0 Q 261.0 444.6 310.9 452.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e3 }}"></path><path d="M 180.7 282.4 Q 214.4 250.6 257.7 233.8" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e4 }}"></path><path d="M 180.7 282.4 Q 197.2 318.4 214.6 354.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e5 }}"></path><path d="M 180.7 282.4 Q 128.4 241.2 101.0 180.5" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e6 }}"></path><path d="M 180.7 282.4 Q 132.9 294.1 83.6 295.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e7 }}"></path><path d="M 257.7 233.8 Q 288.6 203.1 320.5 173.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e8 }}"></path><path d="M 257.7 233.8 Q 229.8 199.3 194.6 172.3" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e9 }}"></path><path d="M 257.7 233.8 Q 280.9 265.1 313.0 287.1" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e10 }}"></path><path d="M 257.7 233.8 Q 363.9 326.2 498.4 367.6" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e11 }}"></path><path d="M 453.8 140.6 Q 429.7 188.5 392.0 226.6" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e12 }}"></path><path d="M 453.8 140.6 Q 405.8 112.8 354.3 92.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e13 }}"></path><path d="M 392.0 226.6 Q 354.5 202.3 320.5 173.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e14 }}"></path><path d="M 392.0 226.6 Q 395.5 333.6 409.1 439.9" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e15 }}"></path><path d="M 392.0 226.6 Q 345.2 247.3 313.0 287.1" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e16 }}"></path><path d="M 392.0 226.6 Q 392.9 277.0 403.3 326.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e17 }}"></path><path d="M 392.0 226.6 Q 442.5 252.4 499.2 250.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e18 }}"></path><path d="M 320.5 173.4 Q 256.8 257.3 214.6 354.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e19 }}"></path><path d="M 320.5 173.4 Q 339.1 133.4 354.3 92.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e20 }}"></path><path d="M 320.5 173.4 Q 305.5 229.5 313.0 287.1" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e21 }}"></path><path d="M 320.5 173.4 Q 285.3 125.6 236.4 92.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e22 }}"></path><path d="M 214.6 354.0 Q 260.7 352.6 305.8 361.8" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e23 }}"></path><path d="M 214.6 354.0 Q 358.3 324.6 498.4 367.6" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e24 }}"></path><path d="M 194.6 172.3 Q 147.3 170.7 101.0 180.5" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e25 }}"></path><path d="M 194.6 172.3 Q 285.2 153.6 354.3 92.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e26 }}"></path><path d="M 194.6 172.3 Q 267.6 306.0 310.9 452.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e27 }}"></path><path d="M 194.6 172.3 Q 205.0 126.7 236.4 92.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e28 }}"></path><path d="M 101.0 180.5 Q 88.8 237.3 83.6 295.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e29 }}"></path><path d="M 101.0 180.5 Q 196.1 255.6 313.0 287.1" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e30 }}"></path><path d="M 409.1 439.9 Q 358.6 435.1 310.9 452.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e31 }}"></path><path d="M 409.1 439.9 Q 406.8 383.1 403.3 326.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e32 }}"></path><path d="M 409.1 439.9 Q 455.0 405.2 498.4 367.6" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e33 }}"></path><path d="M 354.3 92.0 Q 295.3 91.8 236.4 92.0" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e34 }}"></path><path d="M 310.9 452.0 Q 299.8 369.4 313.0 287.1" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e35 }}"></path><path d="M 310.9 452.0 Q 308.8 406.9 305.8 361.8" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e36 }}"></path><path d="M 310.9 452.0 Q 354.1 387.0 403.3 326.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e37 }}"></path><path d="M 310.9 452.0 Q 407.4 415.9 498.4 367.6" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e38 }}"></path><path d="M 313.0 287.1 Q 312.5 324.8 305.8 361.8" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e39 }}"></path><path d="M 313.0 287.1 Q 363.5 294.6 403.3 326.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e40 }}"></path><path d="M 305.8 361.8 Q 416.9 331.2 499.2 250.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e41 }}"></path><path d="M 403.3 326.4 Q 449.8 349.4 498.4 367.6" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e42 }}"></path><path d="M 498.4 367.6 Q 492.7 308.9 499.2 250.4" style="fill: none; stroke: #ffffff; stroke-width: 0.7; transition: opacity 1.2s ease, stroke 1.2s ease; {{ ev.e43 }}"></path></g><g><path d="M 211.2 452.0 Q 245.4 304.7 320.5 173.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.9s; animation-delay: -1.4s; transition: opacity 1.2s ease; {{ pv.e0 }}"></path><path d="M 211.2 452.0 Q 215.8 403.1 214.6 354.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.0s; animation-delay: -0.2s; transition: opacity 1.2s ease; {{ pv.e1 }}"></path><path d="M 211.2 452.0 Q 308.5 419.0 409.1 439.9" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.3s; animation-delay: -1.0s; transition: opacity 1.2s ease; {{ pv.e2 }}"></path><path d="M 211.2 452.0 Q 261.0 444.6 310.9 452.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.6s; animation-delay: -1.8s; transition: opacity 1.2s ease; {{ pv.e3 }}"></path><path d="M 180.7 282.4 Q 214.4 250.6 257.7 233.8" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.0s; animation-delay: -3.3s; transition: opacity 1.2s ease; {{ pv.e4 }}"></path><path d="M 180.7 282.4 Q 197.2 318.4 214.6 354.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.2s; animation-delay: -2.5s; transition: opacity 1.2s ease; {{ pv.e5 }}"></path><path d="M 180.7 282.4 Q 128.4 241.2 101.0 180.5" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.2s; animation-delay: -2.2s; transition: opacity 1.2s ease; {{ pv.e6 }}"></path><path d="M 180.7 282.4 Q 132.9 294.1 83.6 295.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.0s; animation-delay: -3.3s; transition: opacity 1.2s ease; {{ pv.e7 }}"></path><path d="M 257.7 233.8 Q 288.6 203.1 320.5 173.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.1s; animation-delay: -3.3s; transition: opacity 1.2s ease; {{ pv.e8 }}"></path><path d="M 257.7 233.8 Q 229.8 199.3 194.6 172.3" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.5s; animation-delay: -1.5s; transition: opacity 1.2s ease; {{ pv.e9 }}"></path><path d="M 257.7 233.8 Q 280.9 265.1 313.0 287.1" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.7s; animation-delay: -3.5s; transition: opacity 1.2s ease; {{ pv.e10 }}"></path><path d="M 257.7 233.8 Q 363.9 326.2 498.4 367.6" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.1s; animation-delay: -0.5s; transition: opacity 1.2s ease; {{ pv.e11 }}"></path><path d="M 453.8 140.6 Q 429.7 188.5 392.0 226.6" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.6s; animation-delay: -1.6s; transition: opacity 1.2s ease; {{ pv.e12 }}"></path><path d="M 453.8 140.6 Q 405.8 112.8 354.3 92.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.4s; animation-delay: -1.9s; transition: opacity 1.2s ease; {{ pv.e13 }}"></path><path d="M 392.0 226.6 Q 354.5 202.3 320.5 173.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.5s; animation-delay: -2.2s; transition: opacity 1.2s ease; {{ pv.e14 }}"></path><path d="M 392.0 226.6 Q 395.5 333.6 409.1 439.9" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.5s; animation-delay: -2.6s; transition: opacity 1.2s ease; {{ pv.e15 }}"></path><path d="M 392.0 226.6 Q 345.2 247.3 313.0 287.1" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.4s; animation-delay: -3.7s; transition: opacity 1.2s ease; {{ pv.e16 }}"></path><path d="M 392.0 226.6 Q 392.9 277.0 403.3 326.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.2s; animation-delay: -3.3s; transition: opacity 1.2s ease; {{ pv.e17 }}"></path><path d="M 392.0 226.6 Q 442.5 252.4 499.2 250.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.5s; animation-delay: -2.2s; transition: opacity 1.2s ease; {{ pv.e18 }}"></path><path d="M 320.5 173.4 Q 256.8 257.3 214.6 354.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.3s; animation-delay: -3.1s; transition: opacity 1.2s ease; {{ pv.e19 }}"></path><path d="M 320.5 173.4 Q 339.1 133.4 354.3 92.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.4s; animation-delay: -0.2s; transition: opacity 1.2s ease; {{ pv.e20 }}"></path><path d="M 320.5 173.4 Q 305.5 229.5 313.0 287.1" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.6s; animation-delay: -0.3s; transition: opacity 1.2s ease; {{ pv.e21 }}"></path><path d="M 320.5 173.4 Q 285.3 125.6 236.4 92.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.6s; animation-delay: -0.6s; transition: opacity 1.2s ease; {{ pv.e22 }}"></path><path d="M 214.6 354.0 Q 260.7 352.6 305.8 361.8" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.2s; animation-delay: -3.3s; transition: opacity 1.2s ease; {{ pv.e23 }}"></path><path d="M 214.6 354.0 Q 358.3 324.6 498.4 367.6" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.0s; animation-delay: -0.2s; transition: opacity 1.2s ease; {{ pv.e24 }}"></path><path d="M 194.6 172.3 Q 147.3 170.7 101.0 180.5" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.5s; animation-delay: -3.3s; transition: opacity 1.2s ease; {{ pv.e25 }}"></path><path d="M 194.6 172.3 Q 285.2 153.6 354.3 92.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.8s; animation-delay: -3.8s; transition: opacity 1.2s ease; {{ pv.e26 }}"></path><path d="M 194.6 172.3 Q 267.6 306.0 310.9 452.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.1s; animation-delay: -2.3s; transition: opacity 1.2s ease; {{ pv.e27 }}"></path><path d="M 194.6 172.3 Q 205.0 126.7 236.4 92.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.3s; animation-delay: -1.5s; transition: opacity 1.2s ease; {{ pv.e28 }}"></path><path d="M 101.0 180.5 Q 88.8 237.3 83.6 295.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.2s; animation-delay: -0.2s; transition: opacity 1.2s ease; {{ pv.e29 }}"></path><path d="M 101.0 180.5 Q 196.1 255.6 313.0 287.1" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.5s; animation-delay: -3.6s; transition: opacity 1.2s ease; {{ pv.e30 }}"></path><path d="M 409.1 439.9 Q 358.6 435.1 310.9 452.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.6s; animation-delay: -1.7s; transition: opacity 1.2s ease; {{ pv.e31 }}"></path><path d="M 409.1 439.9 Q 406.8 383.1 403.3 326.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.0s; animation-delay: -2.3s; transition: opacity 1.2s ease; {{ pv.e32 }}"></path><path d="M 409.1 439.9 Q 455.0 405.2 498.4 367.6" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.0s; animation-delay: -3.6s; transition: opacity 1.2s ease; {{ pv.e33 }}"></path><path d="M 354.3 92.0 Q 295.3 91.8 236.4 92.0" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.7s; animation-delay: -2.7s; transition: opacity 1.2s ease; {{ pv.e34 }}"></path><path d="M 310.9 452.0 Q 299.8 369.4 313.0 287.1" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.4s; animation-delay: -3.7s; transition: opacity 1.2s ease; {{ pv.e35 }}"></path><path d="M 310.9 452.0 Q 308.8 406.9 305.8 361.8" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.9s; animation-delay: -0.0s; transition: opacity 1.2s ease; {{ pv.e36 }}"></path><path d="M 310.9 452.0 Q 354.1 387.0 403.3 326.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.9s; animation-delay: -0.1s; transition: opacity 1.2s ease; {{ pv.e37 }}"></path><path d="M 310.9 452.0 Q 407.4 415.9 498.4 367.6" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.0s; animation-delay: -0.2s; transition: opacity 1.2s ease; {{ pv.e38 }}"></path><path d="M 313.0 287.1 Q 312.5 324.8 305.8 361.8" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 4.1s; animation-delay: -2.8s; transition: opacity 1.2s ease; {{ pv.e39 }}"></path><path d="M 313.0 287.1 Q 363.5 294.6 403.3 326.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.0s; animation-delay: -2.6s; transition: opacity 1.2s ease; {{ pv.e40 }}"></path><path d="M 305.8 361.8 Q 416.9 331.2 499.2 250.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.4s; animation-delay: -1.7s; transition: opacity 1.2s ease; {{ pv.e41 }}"></path><path d="M 403.3 326.4 Q 449.8 349.4 498.4 367.6" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.5s; animation-delay: -1.4s; transition: opacity 1.2s ease; {{ pv.e42 }}"></path><path d="M 498.4 367.6 Q 492.7 308.9 499.2 250.4" class="pulse-line" style="fill: none; stroke: #c9d2ff; stroke-width: 1.4; stroke-linecap: round; animation-duration: 3.6s; animation-delay: -2.3s; transition: opacity 1.2s ease; {{ pv.e43 }}"></path></g></svg>
+<sc-for list="{{ leaders }}" as="f" hint-placeholder-count="19">
+<button type="button" class="node" onClick="{{ f.pick }}" aria-label="{{ f.label }}" aria-pressed="{{ f.pressed }}" title="{{ f.name }}" style="position: absolute; transform: translate(-50%, -50%); padding: 0; border: none; border-radius: 50%; overflow: hidden; cursor: pointer; background: #1d2033; {{ f.pos }} {{ f.ring }}">
+<img src="{{ f.src }}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover; transition: filter 1.2s ease; {{ f.imgCss }}">
+</button>
+</sc-for>
+<div aria-live="polite" style="position: absolute; left: 24px; bottom: 20px; display: flex; flex-direction: column; gap: 4px; padding: 14px 18px 4px 0">
+<p class="fname" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.05; color: #FFFFFF">{{ focus.name }}</p>
+<p style="margin: 0; font-size: 14px; color: rgba(255,255,255,.75)">{{ focus.cred }}</p>
+<a href="{{ focus.href }}" style="display: inline-flex; align-items: center; min-height: 40px; font-size: 14px; color: #c9d2ff">View profile →</a>
+</div>
+</div>
+<figcaption style="font-size: 14.5px; line-height: 1.55; color: var(--graphite); max-width: 540px">Movement leaders working through these questions in their own organizations. <a href="Leaders.dc.html" style="color: var(--graphite)">Explore the people and practices behind Movemental.</a></figcaption>
+</figure>
+</div>
+</section>
+
+<section class="sec" style="padding: 128px 0"><div class="wrap"><div class="split">
+<h2 class="h2" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.02; letter-spacing: -0.01em">Your organization is already responding to AI.</h2>
+<div style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 640px; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; line-height: 1.55">
+<p style="margin: 0">On a Tuesday night, a development officer pastes this year’s appeal into a chatbot and asks it to sound warmer. Across town, an executive pastor learns that the sermon he praised was partly drafted by a model. At a seminary, two professors teach under opposite rules, and their students have noticed.</p>
+<p style="margin: 0">Added together, those decisions are already a response.</p>
+<p style="margin: 0">No one chose it.</p>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--rule)"><li class="stat" style="display: grid; grid-template-columns: 132px minmax(0,1fr); gap: 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--rule)">
+<span class="n" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 60px; line-height: 1">81%</span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 17px; line-height: 1.5">of nonprofits using AI use it individually, outside any shared workflow. Only 7% report major gains.</span><a href="https://www.nonprofitpro.com/article/nonprofit-ai-adoption-hits-92-but-only-7-see-major-impact/" style="font-size: 14px; color: var(--graphite)">Virtuous and Fundraising.AI, 2026, 346 nonprofits</a></span>
+</li><li class="stat" style="display: grid; grid-template-columns: 132px minmax(0,1fr); gap: 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--rule)">
+<span class="n" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 60px; line-height: 1">5%</span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 17px; line-height: 1.5">of church leaders have an AI policy. 64% say one is important.</span><a href="https://www.barna.com/research/church-leaders-ai-usage-concerns/" style="font-size: 14px; color: var(--graphite)">Barna and Pushpay, 2026, 1,306 church leaders</a></span>
+</li><li class="stat" style="display: grid; grid-template-columns: 132px minmax(0,1fr); gap: 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--rule)">
+<span class="n" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 60px; line-height: 1">78%</span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 17px; line-height: 1.5">of people using AI at work bring their own tools.</span><a href="https://news.microsoft.com/2024/05/08/microsoft-and-linkedin-release-the-2024-work-trend-index-on-the-state-of-ai-at-work/" style="font-size: 14px; color: var(--graphite)">Microsoft and LinkedIn, 2024 Work Trend Index</a></span>
+</li></ul>
+<p style="margin: 0; font-size: 14px; color: var(--graphite)">Every figure on this site links to its source. <a href="#" style="color: var(--graphite)">See all sources</a></p>
+</div>
+</div></div></section>
+
+<section class="sec" style="padding: 128px 0; background: var(--sheet)"><div class="wrap"><div style="display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 20px; max-width: 760px">
+<h2 class="h2" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.02; letter-spacing: -0.01em">Someone has to ask the human questions.</h2>
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 580px; font-size: 17px; line-height: 1.6; color: var(--graphite)"><p style="margin: 0">Technology companies, businesses and governments are each answering part of the question of how we live with AI. They should.</p><p style="margin: 0">These questions belong to the rest of us, too.</p></div>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--rule)"><sc-for list="{{ questions }}" as="q" hint-placeholder-count="6"><li class="litany" style="padding: 22px 0; border-top: 1px solid var(--rule); font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 56px; line-height: 1.06; letter-spacing: -0.01em">{{ q.t }}</li></sc-for></ul>
+</div></div></section>
+
+<section id="resolve" class="sec" style="padding: 128px 0"><div class="wrap"><div style="display: flex; flex-direction: column; gap: 56px">
+<div class="split" style="align-items: end">
+<h2 class="big" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 128px; line-height: 0.9; letter-spacing: -0.02em">Resolve</h2>
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 600px; font-size: 18px; line-height: 1.6">
+<p style="margin: 0">Say, in writing, what you believe your organization should do as AI changes its work.</p>
+<p style="margin: 0">Across nine themes, mark the statements you agree with and identify the ones that matter most to you.</p>
+<p style="margin: 0">Your Resolution belongs to you. It stays private unless you choose to share it.</p>
+<p style="margin: 0; font-size: 14px; color: var(--graphite)">About four minutes. No account. It isn’t a policy, a score or a vote. It is what you believe.</p>
+</div>
+</div>
+<div class="desk">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-size: 15px; color: var(--graphite)">Presence, the first of nine themes</p>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.08">Where must a person always be present in our work?</h3>
+<div role="group" aria-label="Statements about presence" style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ stmts }}" as="t" hint-placeholder-count="5">
+<button type="button" class="stmt" aria-pressed="{{ t.pressed }}" onClick="{{ t.mark }}" style="display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 16px; align-items: start; min-height: 60px; padding: 17px 20px; text-align: left; border: 1px solid var(--rule); border-radius: 8px; cursor: pointer; color: var(--ink); {{ t.css }}">
+<span aria-hidden="true" style="width: 20px; height: 20px; margin-top: 2px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; line-height: 1; color: #FFFFFF; {{ t.box }}">{{ t.tick }}</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">{{ t.text }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 24px; position: sticky; top: 40px">
+<div style="background: var(--sheet); padding: 40px 40px 36px; display: flex; flex-direction: column; gap: 18px; min-height: 340px; box-sizing: border-box">
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; line-height: 1.4; font-style: italic">Resolved, that our organization should…</p>
+<sc-if value="{{ noSheet }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--graphite)">Mark a statement and it is written here.</p></sc-if>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0">
+<sc-for list="{{ sheet }}" as="l" hint-placeholder-count="2"><li class="settle" style="padding: 14px 0; border-top: 1px solid var(--rule); font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">{{ l.text }}</li></sc-for>
+</ol>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px">
+<a class="pill" href="R3-Flow.dc.html">{{ cta }}</a>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">Eight more themes follow: voice, truth, thinking, learning, time, risk, people and leading.</p>
+</div>
+</div>
+</div>
+</div></div></section>
+
+<section class="sec" style="padding: 128px 0; border-top: 1px solid var(--rule)"><div class="wrap"><div class="desk">
+<div style="display: flex; flex-direction: column; gap: 20px; order: 2">
+<h2 class="h2" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.02; letter-spacing: -0.01em">When several people resolve, you can see where you agree.</h2>
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 440px; font-size: 17px; line-height: 1.6; color: var(--graphite)">
+<p style="margin: 0">Agreement becomes a starting point. Difference becomes an agenda.</p>
+<p style="margin: 0">Neither becomes policy until the people responsible for deciding have decided.</p>
+<p style="margin: 0; font-size: 15px">Each Resolution stays private unless its author shares it. An organization sees only counts, drawn from what participants have chosen to contribute.</p>
+</div>
+</div>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 28px">
+<div>
+<p style="margin: 0 0 6px; font-size: 15px; color: var(--graphite)">Most of the team resolved that we should</p>
+<ul style="margin: 0; padding: 0; list-style: none"><li style="display: grid; grid-template-columns: minmax(0,1fr) 72px; gap: 8px 24px; padding: 18px 0; border-top: 1px solid var(--rule)">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">say plainly how AI is used here, including by our leaders.</span>
+<span style="font-size: 15px; text-align: right; font-variant-numeric: tabular-nums">8 of 9</span>
+<span style="grid-column: 1 / -1"><span aria-hidden="true" style="display: block; height: 6px; background: var(--rule)"><span style="display: block; height: 6px; width: 89%; background: var(--ink)"></span></span></span>
+</li><li style="display: grid; grid-template-columns: minmax(0,1fr) 72px; gap: 8px 24px; padding: 18px 0; border-top: 1px solid var(--rule)">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">keep the moments of care human.</span>
+<span style="font-size: 15px; text-align: right; font-variant-numeric: tabular-nums">7 of 9</span>
+<span style="grid-column: 1 / -1"><span aria-hidden="true" style="display: block; height: 6px; background: var(--rule)"><span style="display: block; height: 6px; width: 78%; background: var(--ink)"></span></span></span>
+</li><li style="display: grid; grid-template-columns: minmax(0,1fr) 72px; gap: 8px 24px; padding: 18px 0; border-top: 1px solid var(--rule)">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">form our own views before we ask AI for one.</span>
+<span style="font-size: 15px; text-align: right; font-variant-numeric: tabular-nums">6 of 9</span>
+<span style="grid-column: 1 / -1"><span aria-hidden="true" style="display: block; height: 6px; background: var(--rule)"><span style="display: block; height: 6px; width: 67%; background: var(--ink)"></span></span></span>
+</li></ul>
+</div>
+<div>
+<p style="margin: 0 0 6px; font-size: 15px; color: var(--graphite)">The team is divided on whether we should</p>
+<ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--rule)"><li style="display: flex; flex-direction: column; gap: 14px; padding: 18px 0; border-top: 1px solid var(--rule)">
+<div style="display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">give the time AI saves back to people, to creation and to play.</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45; text-align: right">lower our costs first, so more reaches the mission.</span>
+</div>
+<span aria-hidden="true" style="display: flex; height: 6px; gap: 3px"><span style="width: 44%; background: var(--ink)"></span><span style="width: 56%; background: var(--graphite); opacity: .55"></span></span>
+<div style="display: flex; justify-content: space-between; font-size: 15px; font-variant-numeric: tabular-nums"><span>4 of 9</span><span>5 of 9</span></div>
+</li></ul>
+</div>
+<figcaption style="font-size: 14px; color: var(--graphite)">An illustrative team of nine.</figcaption>
+</figure>
+</div></div></section>
+
+<section id="respond" class="sec" style="padding: 128px 0; background: var(--sheet)"><div class="wrap"><!-- slop-ok: dense-section. Five Map stages, each shown as the artifact it produces. -->
+<div style="display: flex; flex-direction: column; gap: 64px">
+<div class="split" style="align-items: end">
+<h2 class="big" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 128px; line-height: 0.9; letter-spacing: -0.02em">Respond</h2>
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 600px; font-size: 18px; line-height: 1.6">
+<p style="margin: 0">Resolving takes minutes and belongs to each person. Responding takes months and belongs to the organization.</p>
+<p style="margin: 0">The Map helps leaders turn convictions into legitimate decisions, prepare their institutional knowledge, form their people, and build the systems that actually belong.</p>
+<p style="margin: 0; color: var(--graphite)">Each stage leaves the organization with something it can keep.</p>
+</div>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--rule)">
+
+<li class="step">
+<span aria-hidden="true" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 80px; line-height: .8">01</span>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.08"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Stage 1. </span>Decide what you will stand for</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--graphite); max-width: 460px">Establish the convictions, responsibilities and boundaries that will guide your organization’s use of AI.</p>
+</div>
+<div class="plate" style="background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px; padding: 26px 28px; display: flex; flex-direction: column; gap: 12px"><p style="margin: 0; font-size: 14px; color: var(--graphite)">From a church’s AI Charter</p>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5">AI may carry the administrative weight of ministry. It may not stand in for a person where presence is the point.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 14px">
+<span style="border-top: 1px solid var(--ink); padding-top: 8px; font-size: 14px; color: var(--graphite)">Signed by the lead pastor</span>
+<span style="border-top: 1px solid var(--ink); padding-top: 8px; font-size: 14px; color: var(--graphite)">Ratified by the board</span>
+</div></div>
+</li>
+
+<li class="step">
+<span aria-hidden="true" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 80px; line-height: .8">02</span>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.08"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Stage 2. </span>Gather what should ground the work</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--graphite); max-width: 460px">Bring together the documents, knowledge, workflows and relationships that AI may responsibly work from, within the boundaries your organization has established.</p>
+</div>
+<div class="plate" style="background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px; padding: 26px 28px; display: flex; flex-direction: column; gap: 12px"><p style="margin: 0; font-size: 14px; color: var(--graphite)">What an AI system may know</p><ul style="margin: 0; padding: 0; list-style: none"><li style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid var(--rule); font-size: 15px"><span>Sermon and teaching archive</span><span style="color: var(--graphite); text-align: right">Gathered</span></li><li style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid var(--rule); font-size: 15px"><span>Membership pathway</span><span style="color: var(--graphite); text-align: right">Mapped</span></li><li style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid var(--rule); font-size: 15px"><span style="color: var(--graphite); text-decoration: line-through">Pastoral care and prayer requests</span><span style="text-align: right; font-weight: 500">Excluded by the Charter</span></li></ul></div>
+</li>
+
+<li class="step">
+<span aria-hidden="true" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 80px; line-height: .8">03</span>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.08"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Stage 3. </span>Practice the judgment your people will need</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--graphite); max-width: 460px">Help staff and leaders develop the habits, shared understanding and practical discernment required to use AI well.</p>
+</div>
+<div class="plate" style="background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px; padding: 26px 28px; display: flex; flex-direction: column; gap: 12px"><p style="margin: 0; font-size: 14px; color: var(--graphite)">AI for Church Teams · week 3 of 8</p><ul style="margin: 0; padding: 0; list-style: none">
+<li style="display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 16px; padding: 11px 0; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.45"><span style="color: var(--graphite)">Guided learning</span><span>A short lesson on drafting with AI, 30 minutes on your own</span></li>
+<li style="display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 16px; padding: 11px 0; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.45"><span style="color: var(--graphite)">Practice</span><span>Draft next Sunday’s announcements with the church’s assistant</span></li>
+<li style="display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 16px; padding: 11px 0; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.45"><span style="color: var(--graphite)">Discussion</span><span>Ninety minutes together: what felt like ours, and what didn’t</span></li>
+<li style="display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 16px; padding: 11px 0; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.45"><span style="color: var(--graphite)">Human review</span><span>A staff member signs off before anything is sent</span></li>
+</ul></div>
+</li>
+
+<li class="step">
+<span aria-hidden="true" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 80px; line-height: .8">04</span>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.08"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Stage 4. </span>Build only what belongs</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--graphite); max-width: 460px">Develop AI-enabled tools, interfaces and workflows where they serve a legitimate need and fit your organization’s commitments.</p>
+</div>
+<div class="plate" style="background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden" aria-label="A conceptual organizational workspace">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--rule); font-size: 13px; color: var(--graphite)"><span>Grace Street Church · workspace</span><span>Concept</span></div>
+<div class="ws" style="display: grid; grid-template-columns: 140px minmax(0,1fr)">
+<ul class="rail" style="margin: 0; padding: 12px 0; list-style: none; border-right: 1px solid var(--rule); font-size: 14px"><li style="padding: 8px 16px; font-weight: 500; box-shadow: inset 2px 0 0 var(--ink)">Assistant</li><li style="padding: 8px 16px; color: var(--graphite)">Research</li><li style="padding: 8px 16px; color: var(--graphite)">Library</li><li style="padding: 8px 16px; color: var(--graphite)">Workflows</li></ul>
+<div style="padding: 16px 18px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 14px; color: var(--graphite)">What have we taught about Sabbath in the last five years?</p>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 15.5px; line-height: 1.5">Three sermon series and one Lent guide return to Sabbath as resistance to hurry, most fully in the 2023 series on rest.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 12.5px"><span style="padding: 3px 8px; border: 1px solid var(--rule); border-radius: 4px">Sermon, March 2023</span><span style="padding: 3px 8px; border: 1px solid var(--rule); border-radius: 4px">Lent guide, 2024</span><span style="padding: 3px 8px; border: 1px solid var(--rule); border-radius: 4px">+2 sources</span></div>
+<p style="margin: 0; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--graphite)">For: teaching team · Draws only on what the Charter allows</p>
+</div>
+</div>
+</div>
+</li>
+
+<li class="step">
+<span aria-hidden="true" style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 80px; line-height: .8">05</span>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.08"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Stage 5. </span>Review what changes</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--graphite); max-width: 460px">Evaluate whether your tools, practices and decisions remain appropriate as your organization and the technology evolve.</p>
+</div>
+<div class="plate" style="background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px; padding: 26px 28px; display: flex; flex-direction: column; gap: 12px"><p style="margin: 0; font-size: 14px; color: var(--graphite)">Review ledger</p>
+<dl style="margin: 0; display: grid; grid-template-columns: 132px minmax(0,1fr); font-size: 15px; line-height: 1.45">
+<dt style="padding: 11px 0; border-top: 1px solid var(--rule); color: var(--graphite)">Decision</dt><dd style="margin: 0; padding: 11px 0; border-top: 1px solid var(--rule)">Use the assistant to research sermon archives</dd>
+<dt style="padding: 11px 0; border-top: 1px solid var(--rule); color: var(--graphite)">Owner</dt><dd style="margin: 0; padding: 11px 0; border-top: 1px solid var(--rule)">Executive pastor</dd>
+<dt style="padding: 11px 0; border-top: 1px solid var(--rule); color: var(--graphite)">Evidence reviewed</dt><dd style="margin: 0; padding: 11px 0; border-top: 1px solid var(--rule)">Six months of use, a staff check-in, two drafts flagged and corrected</dd>
+<dt style="padding: 11px 0; border-top: 1px solid var(--rule); color: var(--graphite)">Next review</dt><dd style="margin: 0; padding: 11px 0; border-top: 1px solid var(--rule)">March 2027</dd>
+</dl></div>
+</li>
+</ol>
+<a class="more" href="Respond.dc.html" style="align-self: flex-start">Explore the complete Map →</a>
+</div></div></section>
+
+<section id="work" class="sec" style="padding: 136px 0"><div class="wrap"><div style="display: flex; flex-direction: column; gap: 64px">
+<div class="split">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--graphite)">WORK WITH MOVEMENTAL</p>
+<h2 class="h2" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 64px; line-height: 1; letter-spacing: -0.012em">From conviction to working systems.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px; font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.55">
+<p style="margin: 0">An organization can decide what it believes about AI and still struggle to put those convictions into practice.</p>
+<p style="margin: 0">Movemental helps bridge that distance.</p>
+<p style="margin: 0">We work alongside your leaders to establish a responsible approach, prepare the knowledge your organization depends on, form your people, and build the tools that serve your mission.</p>
+<p style="margin: 0">Where ongoing technology is needed, we develop and steward your organization’s own AI-enabled environment.</p>
+</div>
+</div>
+<div class="caps">
+<div style="display: grid; grid-template-columns: 40px minmax(0,1fr); gap: 16px; padding: 28px 0 32px; border-top: 1px solid var(--ink)"><span style="font-size: 14px; color: var(--graphite); font-variant-numeric: tabular-nums">01</span><div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1">Organizational guidance</h3><p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--graphite)">Institutional AI strategy, governance, leadership facilitation and implementation planning.</p></div></div>
+<div style="display: grid; grid-template-columns: 40px minmax(0,1fr); gap: 16px; padding: 28px 0 32px; border-top: 1px solid var(--ink)"><span style="font-size: 14px; color: var(--graphite); font-variant-numeric: tabular-nums">02</span><div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1">Context reconstruction</h3><p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--graphite)">The structured gathering and organizing of fragmented documents, archives, institutional knowledge, policies and workflows.</p></div></div>
+<div style="display: grid; grid-template-columns: 40px minmax(0,1fr); gap: 16px; padding: 28px 0 32px; border-top: 1px solid var(--rule)"><span style="font-size: 14px; color: var(--graphite); font-variant-numeric: tabular-nums">03</span><div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1">Custom platforms and agents</h3><p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--graphite)">Purpose-built applications and AI-enabled interfaces grounded in your organization’s sources, permissions and actual work.</p></div></div>
+<div style="display: grid; grid-template-columns: 40px minmax(0,1fr); gap: 16px; padding: 28px 0 32px; border-top: 1px solid var(--rule)"><span style="font-size: 14px; color: var(--graphite); font-variant-numeric: tabular-nums">04</span><div style="display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1">Ongoing stewardship</h3><p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--graphite)">Continued management, evaluation, improvement and adaptation as technology and organizational needs change.</p></div></div>
+</div>
+<div class="split" style="padding: 40px 0 0; border-top: 1px solid var(--rule)">
+<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; line-height: 1.12">Shared infrastructure. Your organization’s context, commitments and decisions.</p>
+<div style="display: flex; flex-direction: column; gap: 28px">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--graphite); max-width: 560px">Movemental builds on a common technical foundation, but an institution’s knowledge, responsibilities and ways of working are never interchangeable.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px"><a class="pill" href="#">Discuss your organization’s response</a><a class="more" href="#proof">See the platform in practice →</a></div>
+</div>
+</div>
+</div></div></section>
+
+<section id="proof" class="sec" style="padding: 128px 0; background: var(--sheet)"><div class="wrap"><div style="display: flex; flex-direction: column; gap: 56px">
+<div class="split">
+<h2 class="h2" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.02; letter-spacing: -0.01em">Built with people already doing the work.</h2>
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 620px; font-size: 17px; line-height: 1.65; color: #34363F">
+<p style="margin: 0">Movemental began alongside authors and movement leaders whose ideas have shaped churches, organizations and communities for decades.</p>
+<p style="margin: 0">Their platforms are places to gather a life’s work, publish, learn, and develop practical tools grounded in that work.</p>
+<p style="margin: 0">That same architecture informs what we build with institutions.</p>
+</div>
+</div>
+<div class="proof">
+<a href="#" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none">
+<div style="background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--rule); font-size: 12.5px; color: var(--graphite)"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--rule)"></span><span>alanhirsch.com</span></div>
+<div style="aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(135deg, #F6F7F9 0 12px, #EFF0F3 12px 13px); color: var(--graphite); font-size: 14px">Representative preview · screenshot to come</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1">Alan Hirsch</span><span style="font-size: 14px; color: var(--graphite)">alanhirsch.com</span><span style="font-size: 16px; line-height: 1.55; color: #34363F; max-width: 560px">A scholarly publishing and research environment exploring decades of writing and work on movements, discipleship and organizational formation.</span></div>
+</a>
+<div style="display: flex; flex-direction: column; gap: 40px; padding-top: 64px">
+<a href="#" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
+<div style="background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden"><div style="display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-bottom: 1px solid var(--rule); font-size: 12.5px; color: var(--graphite)"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--rule)"></span><span>bradbrisco.org</span></div><div style="aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(135deg, #F6F7F9 0 12px, #EFF0F3 12px 13px); color: var(--graphite); font-size: 13.5px">Representative preview</div></div>
+<div style="display: flex; flex-direction: column; gap: 5px"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.1">Brad Brisco</span><span style="font-size: 14px; color: var(--graphite)">bradbrisco.org</span><span style="font-size: 15.5px; line-height: 1.55; color: #34363F">A practical leadership environment bringing together writing, training, consulting and neighborhood-focused tools.</span></div>
+</a>
+<a href="#" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
+<div style="background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden"><div style="display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-bottom: 1px solid var(--rule); font-size: 12.5px; color: var(--graphite)"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--rule)"></span><span>drmichaelcooper.com</span></div><div style="aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(135deg, #F6F7F9 0 12px, #EFF0F3 12px 13px); color: var(--graphite); font-size: 13.5px">Representative preview</div></div>
+<div style="display: flex; flex-direction: column; gap: 5px"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.1">Michael Cooper</span><span style="font-size: 14px; color: var(--graphite)">drmichaelcooper.com</span><span style="font-size: 15.5px; line-height: 1.55; color: #34363F">A research and leadership environment connecting scholarship with assessments and applied strategic tools.</span></div>
+</a>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 28px; border-top: 1px solid var(--rule)"><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.15">One shared architecture. Distinct people, organizations and purposes.</p><a class="more" href="Leaders.dc.html">Explore the movement leaders →</a></div>
+</div></div></section>
+
+<section id="network" class="sec" style="padding: 128px 0"><div class="wrap"><div style="display: flex; flex-direction: column; gap: 40px">
+<h2 class="h2" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.02; letter-spacing: -0.01em">No one has to work this out alone.</h2>
+<p class="names" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.2; color: var(--graphite); border-top: 1px solid var(--ink); padding-top: 28px">Alan Hirsch, Debra Hirsch, Brad Brisco, Danielle Strickland, Dhati Lewis, JR Woodward, Liz Rios, Neil Cole, Brian Sanders, Meghan Larissa Good, Hugh Halter, Dave Ferguson, Rob Wegner, Rowland Smith, Roy Moran, Peyton Jones, Michael Cooper, Lucas Pulley, and Jeremy and Monica Chambers.</p>
+<div class="split">
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--graphite)">A growing community of people whose work is connected to Movemental.</p>
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 640px">
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 24px; line-height: 1.45">The most useful thing another organization can offer is its practice.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #34363F">As people and organizations begin making their decisions and experience visible, others can learn what they resolved, what they tried, what worked, and what they refused to automate.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #34363F">The goal isn’t a ranking of organizations or a marketplace of personalities. It’s a growing body of practical knowledge grounded in real communities.</p>
+<a class="more" href="Leaders.dc.html">Meet the leaders →</a>
+</div>
+</div>
+</div></div></section>
+
+<section id="about" class="sec" style="padding: 128px 0; border-top: 1px solid var(--rule)"><div class="wrap"><div class="split">
+<h2 class="h2" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.02; letter-spacing: -0.01em">Movemental is a company.</h2>
+<div style="display: flex; flex-direction: column; gap: 20px; max-width: 640px">
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; line-height: 1.55">We say so plainly because the people we serve deserve to know what we are.</p>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; line-height: 1.55">We hold one line: the call to resolve and respond should be worth making even if no one ever pays us.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #34363F">The Resolution, Reality Assessment, Map and public Guidebook are free. Organizations can use the method independently.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #34363F">What organizations hire Movemental to provide is the capacity to carry that method into practice: guided implementation, formation, institutional context reconstruction, purpose-built technology and continuing stewardship.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #34363F">Our work grows alongside movement leaders whose knowledge and practice helped make it possible.</p>
+<a class="more" href="Guidebook.dc.html">Read the Guidebook →</a>
+</div>
+</div></div></section>
+
+<section class="sec" style="padding: 144px 0 128px; background: var(--sheet)"><div class="wrap" style="display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p class="close" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 88px; line-height: 1; letter-spacing: -0.015em">Resolve. Say what you believe.</p>
+<p class="close" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 88px; line-height: 1; letter-spacing: -0.015em">Respond. Help your organization live it.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px">
+<a class="pill" href="#resolve">Write your Resolution</a>
+<a class="more" href="#work">Explore how we work with organizations →</a>
+</div>
+</div></section>
+
+<footer class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-top: 40px; padding-bottom: 48px; font-size: 14px; color: var(--graphite)">
+<img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 20px; width: auto; display: block">
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="#resolve" style="color: var(--graphite)">Resolve</a>
+<a href="#respond" style="color: var(--graphite)">The Map</a>
+<a href="#work" style="color: var(--graphite)">Work with us</a>
+<a href="Guidebook.dc.html" style="color: var(--graphite)">Guidebook</a>
+<a href="Leaders.dc.html" style="color: var(--graphite)">Leaders</a>
+<a href="#about" style="color: var(--graphite)">About</a>
+<a href="#" style="color: var(--graphite)">Sources</a>
+</nav>
+<span>Movemental, LLC</span>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1440, "height": 11800}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      const st = this.state || {};
+      if (!st.pinned) this.setState({ focus: ((st.focus === undefined ? 2 : st.focus) + 1) % (this._n || 19) });
+    }, 3800);
+  }
+  componentWillUnmount() { if (this.timer) clearInterval(this.timer); }
+  renderVals() {
+    const LEAD = [{"name": "Alan Hirsch", "cred": "Missional theologian", "src": "/_blob/74bb1dcedc703c54866d3c9767d3eb31", "ini": "AH", "x": 211.17955686173292, "y": 452, "deg": 5}, {"name": "Brad Brisco", "cred": "Missional strategist", "src": "/_blob/9db82ba7d70e53eb6648e0211d1bb27f", "ini": "BB", "x": 180.72037258633975, "y": 282.41320480701785, "deg": 4}, {"name": "JR Woodward", "cred": "Author, movement leader", "src": "/_blob/837de7e1b58ff318faec3060b3d1be9a", "ini": "JW", "x": 257.6870775468945, "y": 233.7978002687545, "deg": 5}, {"name": "Neil Cole", "cred": "Church-multiplication author", "src": "/_blob/eae0a7fee56b192c611000e02857d032", "ini": "NC", "x": 453.83248866355154, "y": 140.5706294256247, "deg": 2}, {"name": "Rowland Smith", "cred": "Forge America, author", "src": "/_blob/e40f66c4a1abf6839e217be2b9ced044", "ini": "RS", "x": 391.96379076750645, "y": 226.5562782199989, "deg": 6}, {"name": "Rob Wegner", "cred": "Network co-founder", "src": "/_blob/d2db5fbecbb747fec0754aaf870c7f7d", "ini": "RW", "x": 320.5318746375175, "y": 173.38686191902102, "deg": 7}, {"name": "Liz Rios", "cred": "Leader, author", "src": "/_blob/969100b27c1e6f1bfaaaa83cdf993674", "ini": "LR", "x": 214.6435787380764, "y": 353.9685090159302, "deg": 5}, {"name": "Lucas Pulley", "cred": "Network leader", "src": "/_blob/ca46736b1f7e6b0e6e16e1ad495a77ab", "ini": "LP", "x": 194.59616993636197, "y": 172.3119343729786, "deg": 5}, {"name": "Jeremy and Monica Chambers", "cred": "Movement leaders", "src": "/_blob/8f4d84d1a8a976062fb263163411725d", "ini": "JM", "x": 101.04442701616158, "y": 180.5449705574352, "deg": 4}, {"name": "Dave Ferguson", "cred": "Movement leader", "src": "/_blob/3ecfe68a6ad0ee34b3cbce9564d4ad0a", "ini": "DF", "x": 409.0740504501362, "y": 439.92444570174723, "deg": 5}, {"name": "Dhati Lewis", "cred": "Movement leader", "src": "/_blob/6fa354914c67c15cf5fe99c7afa185d6", "ini": "DL", "x": 354.27679501180717, "y": 92, "deg": 4}, {"name": "Hugh Halter", "cred": "Movement leader", "src": "/_blob/32f15d8d43bb19baea0400ed1e76a5eb", "ini": "HH", "x": 310.85993469647497, "y": 452, "deg": 7}, {"name": "Michael Cooper", "cred": "Movement leader", "src": "/_blob/160bb28302271525b8caf27ce6150df4", "ini": "MC", "x": 83.62443170127021, "y": 295.0358979981989, "deg": 3}, {"name": "Roy Moran", "cred": "Movement leader", "src": "/_blob/eba9afbfd2fb1e60aa680f413c9d00d5", "ini": "RM", "x": 313.04639945007864, "y": 287.06883151282193, "deg": 7}, {"name": "Peyton Jones", "cred": "Movement leader", "src": "/_blob/78e53887c10a36a719a7e075bc7d9c1d", "ini": "PJ", "x": 305.7628563206886, "y": 361.8350285495491, "deg": 4}, {"name": "Meghan Good", "cred": "Movement leader", "src": "/_blob/a1809f9d9c17830a9f15c20e2d288097", "ini": "MG", "x": 403.3410188548021, "y": 326.36282010228126, "deg": 5}, {"name": "Brian Sanders", "cred": "Tampa Underground founder", "src": "/_blob/7d505844a52dee1ce403ac266c31e239", "ini": "BS", "x": 498.4427321429656, "y": 367.5790410131501, "deg": 6}, {"name": "Danielle Strickland", "cred": "Movement leader", "src": "/_blob/63588b18fed0793a3592f1477492130e", "ini": "DS", "x": 236.41763017582488, "y": 92, "deg": 3}, {"name": "Deb Hirsch", "cred": "Movement leader", "src": "/_blob/867710e84d3d0a1ac35a8014b8ce5dd5", "ini": "DH", "x": 499.1804657316358, "y": 250.39709080543435, "deg": 3}];
+    const EDGES = [[0, 5], [0, 6], [0, 9], [0, 11], [1, 2], [1, 6], [1, 8], [1, 12], [2, 5], [2, 7], [2, 13], [2, 16], [3, 4], [3, 10], [4, 5], [4, 9], [4, 13], [4, 15], [4, 18], [5, 6], [5, 10], [5, 13], [5, 17], [6, 14], [6, 16], [7, 8], [7, 10], [7, 11], [7, 17], [8, 12], [8, 13], [9, 11], [9, 15], [9, 16], [10, 17], [11, 13], [11, 14], [11, 15], [11, 16], [13, 14], [13, 15], [14, 18], [15, 16], [16, 18]];
+    const s = this.state || {};
+    this._n = LEAD.length;
+    const f0 = s.focus === undefined ? 2 : s.focus;
+    const fi = (f0 % LEAD.length + LEAD.length) % LEAD.length;
+    const nbr = {}; EDGES.forEach((e) => { if (e[0] === fi) nbr[e[1]] = 1; if (e[1] === fi) nbr[e[0]] = 1; });
+    const ev = {}; const pv = {};
+    EDGES.forEach((e, k) => { const hit = e[0] === fi || e[1] === fi; ev['e' + k] = hit ? 'opacity: .7; stroke: #c9d2ff;' : 'opacity: .16;'; pv['e' + k] = hit ? 'opacity: 1;' : 'opacity: 0;'; });
+    const leaders = LEAD.map((p, i) => {
+      const on = i === fi, near = !!nbr[i];
+      const w = on ? 8 : 6.6;
+      return { name: p.name, label: p.name + ', ' + p.cred, src: p.src, pressed: on ? 'true' : 'false',
+        pos: 'left: ' + (p.x / 6).toFixed(2) + '%; top: ' + (p.y / 6).toFixed(2) + '%; width: ' + w + '%; aspect-ratio: 1 / 1; z-index: ' + (on ? 3 : 1) + ';',
+        ring: on ? 'box-shadow: 0 0 0 2px #0f0f12, 0 0 0 3px #c9d2ff;' : (near ? 'box-shadow: 0 0 0 2px #0f0f12, 0 0 0 3px rgba(201,210,255,.6);' : 'box-shadow: 0 0 0 2px #0f0f12, 0 0 0 3px rgba(255,255,255,.35);'),
+        imgCss: on || near ? 'filter: grayscale(0%);' : 'filter: grayscale(100%) brightness(.7);',
+        pick: () => this.setState({ focus: i, pinned: true }) };
+    });
+    const focus = { name: LEAD[fi].name, cred: LEAD[fi].cred, href: LEAD[fi].name === 'Brian Sanders' ? 'Leader-Profile.dc.html' : 'Leaders.dc.html' };
+    const questions = ['What happens to presence?', 'What does responsible care look like when machines can imitate attention?', 'What happens to vocation?', 'Which work should stay a person’s, even when a machine is faster?', 'What becomes of the people with the least power?', 'Who receives the time that AI gives back?'].map((t) => ({ t }));
+    const P = [
+      ['We should name the work that is made of presence, and keep it human.', 'name the work that is made of presence, and keep it human.'],
+      ['We should never put what someone told us in confidence into an AI tool.', 'never put what someone told us in confidence into an AI tool.'],
+      ['We should keep the moments of care human.', 'keep the moments of care human.'],
+      ['No one we serve should believe a person attended to them when none did.', 'make sure no one we serve believes a person attended to them when none did.'],
+      ['If AI helps more people get a timely answer, that is care too.', 'count a timely answer from AI as care, when it reaches people who would otherwise wait.']
+    ];
+    const marked = s.marked || [];
+    const stmts = P.map((t, i) => {
+      const on = !!marked[i];
+      return { text: t[0], pressed: on ? 'true' : 'false', tick: on ? '✓' : '',
+        css: on ? 'background: var(--tint); border-color: var(--accent);' : 'background: #FFFFFF;',
+        box: on ? 'background: var(--accent); border: 1.5px solid var(--accent);' : 'background: #FFFFFF; border: 1.5px solid var(--graphite);',
+        mark: () => { const m = (this.state && this.state.marked ? this.state.marked : []).slice(); m[i] = !m[i]; this.setState({ marked: m }); } };
+    });
+    const sheet = P.map((t, i) => ({ text: t[1], on: !!marked[i] })).filter((x) => x.on);
+    return { leaders, focus, ev, pv, questions, stmts, sheet, noSheet: sheet.length === 0, cta: sheet.length ? 'Continue your Resolution' : 'Write your Resolution' };
+  }
+}
+</script>
+</body>
+</html>
