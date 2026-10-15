@@ -55,6 +55,7 @@ const EXCLUDED_SLUGS = new Set([
   "nonprofit-fundraising-build",
   "nonprofit-governance-ethics-build",
   "credibility-how-it-works-video",
+  "chunk",
 ]);
 
 export type TocEntry = {
@@ -433,11 +434,11 @@ function loadAll(): Article[] {
   return out;
 }
 
-/** Full articles (body + TOC). By default only returns published articles. */
+/** Full articles (body + TOC). By default returns published and eeat-candidate articles. */
 export function listArticlesFull(options?: { includeDrafts?: boolean }): Article[] {
   const all = loadAll();
   if (options?.includeDrafts) return all;
-  return all.filter((a) => a.status === "published");
+  return all.filter((a) => a.status === "published" || a.status === "eeat-candidate");
 }
 
 /** All published article slugs, discovered from the filesystem and filtered by published status. */
@@ -462,7 +463,7 @@ export function listArticlesForArchive(options?: { includeDrafts?: boolean }): A
   });
 }
 
-/** Full article (body + TOC). Returns null when the slug is excluded, missing, or not published (unless includeDrafts is true). */
+/** Full article (body + TOC). Returns null when the slug is excluded, missing, or draft (unless includeDrafts is true). */
 export function getArticle(
   slug: string,
   options?: { includeDrafts?: boolean },
@@ -470,7 +471,7 @@ export function getArticle(
   if (EXCLUDED_SLUGS.has(slug)) return null;
   try {
     const article = parseArticle(slug, readArticleFile(slug));
-    if (article.status !== "published" && !options?.includeDrafts) {
+    if (article.status !== "published" && article.status !== "eeat-candidate" && !options?.includeDrafts) {
       return null;
     }
     return article;

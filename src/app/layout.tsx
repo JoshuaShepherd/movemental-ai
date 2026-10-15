@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     template: "%s | Movemental",
   },
   description:
-    "Movemental helps church and nonprofit leaders complete the Movemental Path: Safety, Sandbox, Training, Tech, in order, so the mission stays recognizable on the other side.",
+    "Movemental helps churches, nonprofits, and institutions lead their response to AI. Resolve personally. Respond organizationally.",
   metadataBase: new URL(canonicalSiteOrigin()),
   openGraph: {
     type: "website",

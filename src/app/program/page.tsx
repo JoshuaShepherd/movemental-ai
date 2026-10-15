@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/program",
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function V2ProgramPage() {

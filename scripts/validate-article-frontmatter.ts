@@ -45,6 +45,7 @@ const EXCLUDED_SLUGS = new Set([
   "nonprofit-fundraising-build",
   "nonprofit-governance-ethics-build",
   "credibility-how-it-works-video",
+  "chunk",
 ]);
 
 function listSlugFiles(): Array<{ slug: string; file: string }> {

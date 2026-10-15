@@ -56,7 +56,20 @@ export const LEADERS: readonly Leader[] = [
   L("bree-mills", "Bree Mills", null, "bree-mills/headshots/bree-mills.webp", "bree-mills.movemental.ai"),
   L("roy-moran", "Roy Moran", "Disciple-making movement practitioner", "roy-moran/headshots/roy-moran-primary.webp", "roy-moran.movemental.ai"),
   L("lucas-pulley", "Lucas Pulley", "Microchurch network leader", "lucas-pulley/headshots/lucas-pulley.webp", "lucas-pulley.movemental.ai"),
-  L("liz-rios", "Liz Rios", "Theologian, leader and author", "liz-rios/headshots/liz-rios-primary.webp", "liz-rios.movemental.ai"),
+  L("liz-rios", "Liz Rios", "Theologian, leader and author", "liz-rios/headshots/liz-rios-primary.webp", "liz-rios.movemental.ai", {
+    place: "Central Florida & Puerto Rico",
+    bio: [
+      "Liz Rios has carried thirty-five years of ministry across pastoring, planting, teaching, and consulting, and into infrastructure. She founded Passion2Plant, the only national BIPOC-woman-led church planting network in the United States, and directs Púlpito Fellows, a three-year, bilingual preaching fellowship funded by the Lilly Endowment.",
+      "Her work runs simultaneously across denominational, academic, and movement spaces: ordained Disciples of Christ; adjunct faculty at Fuller; board member at Sojourners; senior consultant with Freedom Road; consulting editor at Outreach Magazine.",
+      "She writes from a mujerista frame, distinct in tone and theological voice, and brings a live cohort operator’s discipline to what a leader’s platform actually has to carry.",
+    ],
+    works: [
+      ["Don’t Buy The Lie", "Book", true],
+      ["Passion2Plant", "National BIPOC-woman-led planting network", false],
+      ["Púlpito Fellows", "Bilingual preaching fellowship", false],
+      ["Mujerista in Motion", "Substack", true],
+    ],
+  }),
   L("brian-sanders", "Brian Sanders", "Founder, Underground Network", "brian-sanders/headshots/brian-sanders.webp", "brian-sanders.movemental.ai", {
     place: "Tampa",
     bio: [
@@ -73,11 +86,37 @@ export const LEADERS: readonly Leader[] = [
     ],
   }),
   L("josh-shepherd", "Josh Shepherd", "Founder, Movemental", "josh-shepherd/headshots/josh-shepherd.webp", "josh-shepherd.movemental.ai"),
-  L("rowland-smith", "Rowland Smith", "Pastor, missional practitioner and author", "rowland-smith/headshots/rowland-smith.webp", "rowland-smith.movemental.ai"),
+  L("rowland-smith", "Rowland Smith", "Pastor, missional practitioner and author", "rowland-smith/headshots/rowland-smith.webp", "rowland-smith.movemental.ai", {
+    place: "Colorado Springs, Colorado",
+    bio: [
+      "Rowland Smith carries the National Director role at Forge America while founding and directing The Pando Collective, a Front-Range micro-church network, and pastoring missional culture at The Church at Pulpit Rock in Colorado Springs.",
+      "He authored Life Out Loud: Joining Jesus Outside the Walls of the Church and curated and edited Red Skies: 10 Essential Conversations Exploring Our Future as the Church, a multi-author conversation exploring missional leadership.",
+      "He teaches as adjunct faculty at Fuller, Denver Seminary, and Grand Canyon University, holding an MA in Global Leadership and a DMiss from Fuller.",
+    ],
+    works: [
+      ["Life Out Loud", "Book", true],
+      ["Red Skies", "Edited volume", true],
+      ["Forge America", "Mission training network", false],
+      ["The Pando Collective", "Front-Range micro-church network", false],
+    ],
+  }),
   L("tiffany-smith", "Tiffany Smith", "Missiologist and strategist", "tiffany-smith/headshots/tiffany-smith.webp", "tiffany-smith.movemental.ai"),
   L("danielle-strickland", "Danielle Strickland", "Communicator, author and justice advocate", "danielle-strickland/headshots/danielle-strickland.webp", "danielle-strickland.movemental.ai"),
   L("rob-wegner", "Rob Wegner", "Network co-founder", "rob-wegner/headshots/rob-wegner.webp", "rob-wegner.movemental.ai"),
-  L("jr-woodward", "JR Woodward", "Church planter and missiologist", "jr-woodward/headshots/jr-woodward.webp", "jr-woodward.movemental.ai"),
+  L("jr-woodward", "JR Woodward", "Church planter and missiologist", "jr-woodward/headshots/jr-woodward.webp", "jr-woodward.movemental.ai", {
+    place: "United States",
+    bio: [
+      "JR Woodward has spent three decades planting churches that hold tight community, life-forming discipleship, locally rooted presence, and boundary-crossing mission together. He leads the V3 Church Planting Movement nationally and trains church planters across North America.",
+      "His written corpus runs from Creating a Missional Culture through The Church as Movement (with Dan White Jr.) to The Scandal of Leadership, the trade book based on his Manchester Ph.D. on the powers of domination in the church.",
+      "He co-founded Missio Alliance and the Praxis Gathering, teaches as adjunct faculty at Fuller, Central, and Missio Seminary, and serves on the boards of Reliant Mission and Movement Leaders Collective.",
+    ],
+    works: [
+      ["Creating a Missional Culture", "Book", true],
+      ["The Church as Movement", "Book", true],
+      ["The Scandal of Leadership", "Book", true],
+      ["V3 Church Planting Movement", "National church planting movement", false],
+    ],
+  }),
 ];
 
 export function leaderBySlug(slug: string) {

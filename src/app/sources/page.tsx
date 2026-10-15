@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Sources & Citations | Movemental Research",
   description:
     "Every claim, sourced. The master citation registry behind the Movemental research library.",
+  alternates: {
+    canonical: "/sources",
+  },
 };
 
 export default function V2SourcesPage() {

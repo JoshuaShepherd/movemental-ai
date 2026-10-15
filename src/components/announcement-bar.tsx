@@ -51,16 +51,14 @@ export function AnnouncementBar() {
       <div className={styles.bar}>
         <span className={styles.label}>
           <span className={styles.tick} aria-hidden />
-          Build in progress
+          Release candidate
         </span>
 
         <p className={styles.short}>
-            <span className={styles.shortStrong}>
-              This site is still in active development — an early-stage mock-up of movemental.ai&rsquo;s
-              new agentic approach to websites.
-            </span>{" "}
-          Movement-leader content is under revision, is not final, and movemental.ai is not yet
-          being distributed or shared publicly.
+          <span className={styles.shortStrong}>
+            Movemental is in public release candidate status.
+          </span>{" "}
+          The Resolve exercise, organizational Map, Guidebook, and editorial library are live.
         </p>
 
         <button
@@ -86,19 +84,17 @@ export function AnnouncementBar() {
       {open ? (
         <div className={styles.panel} id={panelId} role="region" aria-label="About this preview">
           <div className={styles.panelInner}>
-            <p className={styles.panelHeading}>Build in progress</p>
+            <p className={styles.panelHeading}>Movemental Public Preview</p>
             <p className={styles.panelText}>
-              This site is still in active development — an early-stage mock-up of movemental.ai&rsquo;s
-              new agentic approach to websites. Content related to movement leaders is under revision
-              and is not final, and movemental.ai is not currently being distributed or shared publicly.
+              Movemental helps churches, nonprofits, and institutions lead their response to AI.
+              The personal Resolution tool, organizational Map, and research canon are open for use.
             </p>
             <p className={styles.panelText}>
-              For questions about the process, contact{" "}
+              For inquiries or partnerships, contact{" "}
               <a className={styles.mail} href="mailto:josh@movemental.ai">
                 josh@movemental.ai
               </a>
-              . We are in the final stages of development, and all movement-leader content will be
-              reviewed and vetted by the movement leaders themselves before publication.
+              .
             </p>
           </div>
         </div>

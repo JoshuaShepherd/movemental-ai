@@ -52,7 +52,8 @@ function routePatternToRegex(route: string): RegExp {
 }
 
 function normalizePath(path: string): string {
-  const withoutQuery = path.split("?")[0] ?? path;
+  const withoutHash = path.split("#")[0] ?? path;
+  const withoutQuery = withoutHash.split("?")[0] ?? withoutHash;
   if (withoutQuery === "/") return "/";
   return withoutQuery.replace(/\/+$/, "") || "/";
 }

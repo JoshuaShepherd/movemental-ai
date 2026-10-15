@@ -282,6 +282,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/research/sources",
+        destination: "/sources",
+        permanent: true,
+      },
+      {
         source: "/manifesto",
         destination: "/",
         permanent: true,

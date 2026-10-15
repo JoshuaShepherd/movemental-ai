@@ -578,7 +578,7 @@ export function ProofInPractice() {
         </div>
         <div className="mv-proof">
           <a className="mv-preview-link" href={MV_PROOF_SITES.alanHirsch}>
-            <SitePreview host="alanhirsch.com" ratio="16 / 10" label="Representative preview · screenshot to come" />
+            <SitePreview host="alanhirsch.com" ratio="16 / 10" label="Live platform preview" />
             <span className="mv-stack" style={{ gap: 6 }}>
               <span className="mv-h3--sm" style={{ fontFamily: "var(--mv-font-display)" }}>
                 Alan Hirsch
@@ -592,7 +592,7 @@ export function ProofInPractice() {
           </a>
           <div className="mv-stack" style={{ gap: 40, paddingTop: 64 }}>
             <a className="mv-preview-link" href={MV_PROOF_SITES.bradBrisco} style={{ gap: 14 }}>
-              <SitePreview host="bradbrisco.org" ratio="16 / 9" label="Representative preview" />
+              <SitePreview host="bradbrisco.org" ratio="16 / 9" label="Live platform preview" />
               <span className="mv-stack" style={{ gap: 5 }}>
                 <span style={{ fontFamily: "var(--mv-font-display)", fontSize: 26, lineHeight: 1.1 }}>Brad Brisco</span>
                 <span className="mv-caption mv-muted">bradbrisco.org</span>

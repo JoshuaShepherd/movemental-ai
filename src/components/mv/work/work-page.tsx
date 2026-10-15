@@ -217,8 +217,6 @@ export function WorkPage() {
           <div className="mv-three" style={{ gap: 20 }}>
             {SITES.map(([href, host, note]) => (
               <a key={host} className="mv-preview-link" href={href} rel="noopener noreferrer" target="_blank">
-                {/* TODO(S06-work-with-us-new): approved screenshots replace this placeholder. */}
-                <div className="mv-placeholder">Screenshot to come</div>
                 <span style={{ fontFamily: "var(--mv-font-display)", fontSize: 24 }}>{host}</span>
                 <span className="mv-caption mv-muted">{note}</span>
               </a>
