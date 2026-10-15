@@ -20,8 +20,9 @@ export const MV_ROUTES = {
    */
   respondBegin: "/resolve-new/people",
   map: "/map-new",
-  /** TODO(S08-audience-new): repoint to /churches-new, /nonprofits-new, /institutions-new. */
-  editions: "/field-guide",
+  churches: "/churches-new",
+  nonprofits: "/nonprofits-new",
+  institutions: "/institutions-new",
   assessment: "/assessment-new",
   /** Leaders predict. Cutover: /assessment/predict. */
   assessmentPredict: "/assessment-new/predict",

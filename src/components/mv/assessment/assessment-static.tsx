@@ -117,7 +117,7 @@ export function AssessmentResults() {
               </Link>
             </div>
           </div>
-          <div className="mv-stack" style={{ gap: 10, padding: "24px 26px", background: "#ffffff", border: "1px solid var(--mv-rule)", borderRadius: 4 }}>
+          <div className="mv-artifact mv-stack" style={{ gap: 10, padding: "24px 26px" }}>
             <p style={{ fontSize: 15, fontWeight: 500 }}>Run it again</p>
             <p className="mv-small mv-soft">
               Run it again after the charter is adopted, and again after formation, to see whether the

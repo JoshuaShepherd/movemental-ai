@@ -366,10 +366,16 @@ function FreeAndPaid() {
           <p className="mv-muted" style={{ fontSize: 14.5, marginBottom: 6 }}>
             The same method, in your language
           </p>
-          {["For churches", "For nonprofits", "For institutions"].map((t, i) => (
+          {(
+            [
+              ["For churches", MV_ROUTES.churches],
+              ["For nonprofits", MV_ROUTES.nonprofits],
+              ["For institutions", MV_ROUTES.institutions],
+            ] as const
+          ).map(([t, href], i) => (
             <Link
               key={t}
-              href={MV_ROUTES.editions}
+              href={href}
               style={{
                 display: "flex",
                 alignItems: "center",

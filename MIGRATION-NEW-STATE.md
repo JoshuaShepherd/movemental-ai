@@ -13,7 +13,7 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | S05 | `/leaders-new`, `/leaders-new/[slug]` | Leaders, Leader-Profile | Done (26 profiles; 1 curated) | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
 | S06 | `/work-with-us-new`, `/work-with-us-new/inquire` | Work, Work-Inquire | Done (form live via `/api/contact`) | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390, mocked form submission |
 | S07 | `/assessment-new` (+ `/predict`, `/answer`, `/results`) | Assessment | Done (front end only) | typecheck, lint, link:check, no color literals, walkthrough at 1440 and 390 |
-| S08 | `/churches-new`, `/nonprofits-new`, `/institutions-new` | Audience | Not started | |
+| S08 | `/churches-new`, `/nonprofits-new`, `/institutions-new` | Audience-Institutions, -Churches, -Nonprofits (Oct 15) | Done | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
 | S09 | `/about-new` | LongForm | Not started | |
 
 ## Check-and-branch outcomes (S01)
