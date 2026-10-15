@@ -98,7 +98,7 @@ pnpm dev
 ### Directory layout
 
 ```text
-proxy.ts                       # Next 16 request middleware (renamed from middleware.ts)
+src/proxy.ts                   # Next 16 request proxy; must live in src/ (src/app layout). Gates /api/simplified/* to staff
 drizzle.config.ts
 scripts/
   check-env.ts                 # Validates required env vars
@@ -186,7 +186,7 @@ Quick rules:
 - **`"use client"` boundaries.** Never add to root layout. Push as deep as possible (leaf components). Keep layouts as Server Components.
 - **Params in Server Components.** Receive `params` / `searchParams` as props. Only use `useParams()` / `useSearchParams()` in client components that need interactivity.
 - **Supabase Auth (SSR).** Use only `getAll` / `setAll` for cookies (never `get` / `set` / `remove`). Import from `@supabase/ssr`, never `auth-helpers-nextjs`.
-- **Next 16 middleware is `proxy.ts`.** Not `middleware.ts`. Keep logic focused on interception, auth gates, rewrites, and redirects.
+- **Next 16 middleware is `src/proxy.ts`.** Not `middleware.ts`, and not the repo root (with `src/app`, Next only loads `src/proxy.ts`). It currently matches only `/api/simplified/*` (staff gate, fail closed).
 - **Turbopack is default.** No special config needed for dev or build.
 
 ## Environment variables

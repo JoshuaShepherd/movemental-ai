@@ -1,6 +1,6 @@
 # movemental.ai route inventory and disposition
 
-> **Status, October 15, 2026:** the cutover (S10) is done. Sections 3 and 4 are applied: the Paper pages hold their final URLs, the colliding redirects are removed or repointed, `/agent`, `/agent/about`, the old audience pages, `/agent/assessment`, `/agent/invite`, `/agent/path/safety` and `/voices` redirect to the new pages. Still open: section 0 (the API), and the deferred items in the cutover receipt.
+> **Status, October 15, 2026:** the cutover (S10) is done. Sections 3 and 4 are applied: the Paper pages hold their final URLs, the colliding redirects are removed or repointed, `/agent`, `/agent/about`, the old audience pages, `/agent/assessment`, `/agent/invite`, `/agent/path/safety` and `/voices` redirect to the new pages. Section 0 is fixed in S11: `src/proxy.ts` gates `/api/simplified/*` to active staff (fail closed). Still open: the deferred items in the cutover receipt.
 
 *From the repository, October 15, 2026 (branch `slice/S07-assessment-new`). Every `page.tsx`, every API group and every redirect in `next.config.ts`. Reconciled with the external audit of the live site.*
 
@@ -11,6 +11,8 @@
 ## 0. Fix before anything else
 
 **Security: `/api/simplified/*` (228 route files) has no authentication.** None of the 228 route handlers checks a session, `proxy.ts` refreshes cookies but blocks nothing, and the services use Drizzle over `DATABASE_URL`, which bypasses Row Level Security. If these routes are deployed, anyone who knows a path can list, create and update rows (for example `GET /api/simplified/organization-inquiries` returns every inquiry). Lock them behind an admin session or a server-only key, or delete the ones nothing calls. This was not probed against production.
+
+**Fixed in S11.** The root `proxy.ts` never ran (with `src/app`, Next loads only `src/proxy.ts`), so no session refresh or gate was ever active. `src/proxy.ts` now matches only `/api/simplified/*` and allows active `staff_users`; no config, no session, or a failed lookup is refused (503/401/403). Widening the proxy to pages (session refresh) is a separate decision: TODO(S12-auth).
 
 ## 1. Public pages
 
