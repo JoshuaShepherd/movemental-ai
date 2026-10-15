@@ -2065,3 +2065,141 @@
   .mv-five { grid-template-columns: minmax(0, 1fr); }
   .mv-faq summary { font-size: 21px; }
 }
+
+/* ------------------------------------------------------------------ */
+/* Guidebook (S04) — board: docs/handoff/guidebook-new/source/         */
+/* ------------------------------------------------------------------ */
+
+.mv-edbar {
+  border-bottom: 1px solid var(--mv-rule);
+}
+
+.mv-edbar-inner {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 64px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.mv-surface a.mv-pick {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.mv-surface a.mv-pick[aria-current="page"] {
+  color: #ffffff;
+  background: var(--mv-ink);
+  border-color: var(--mv-ink);
+}
+
+.mv-parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 56px;
+}
+
+.mv-chapter-row {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  min-height: 48px;
+  padding: 10px 0;
+  border-top: 1px solid var(--mv-rule);
+  box-sizing: border-box;
+  text-decoration: none;
+  color: var(--mv-ink);
+}
+
+.mv-chapter-row > :first-child {
+  font-size: 14px;
+  color: var(--mv-graphite);
+  font-variant-numeric: tabular-nums;
+}
+
+.mv-chapter-row > :last-child {
+  font-family: var(--mv-font-reading);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.mv-chapter-row[data-written="false"] > :last-child { color: var(--mv-graphite); }
+
+.mv-reader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px;
+  align-items: flex-start;
+  padding-top: 48px;
+  padding-bottom: 96px;
+}
+
+.mv-toc {
+  flex: 0 1 260px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 6px;
+}
+
+.mv-toc-item {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  font-size: 15px;
+  text-decoration: none;
+  border-top: 1px solid var(--mv-rule);
+  color: var(--mv-graphite);
+}
+
+.mv-surface a.mv-toc-item { color: var(--mv-ink); }
+
+.mv-toc-item[aria-current="page"] {
+  font-weight: 500;
+  color: var(--mv-ink);
+  box-shadow: inset 2px 0 0 var(--mv-ink);
+  padding-left: 10px;
+}
+
+.mv-prose {
+  flex: 999 1 560px;
+  min-width: 0;
+  max-width: 700px;
+}
+
+.mv-surface .mv-prose > p {
+  margin: 0 0 20px;
+  font-family: var(--mv-font-reading);
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+.mv-surface.mv-surface .mv-prose > h2 {
+  margin: 40px 0 14px;
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.mv-donow {
+  margin: 36px 0 0;
+  padding: 26px 28px;
+  border: 1.5px solid var(--mv-ink);
+  border-radius: var(--mv-radius-sheet);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .mv-parts { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .mv-surface .mv-prose > p { font-size: 18px; }
+}

@@ -9,7 +9,7 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | S01 | `/home-page-new` | `docs/handoff/home-page-new/source/Home-v3.dc.html` | Done | typecheck, lint, link:check, no color literals, 200 at 1440 and 390 |
 | S02 | `/resolve-new`, `/document`, `/people`, `/others`, `/r/[token]` | R3-Flow, R4-Result, R4-People, R3-Others, R3-Shared, R3-States | Done (front end only) | typecheck, lint, link:check, no color literals, walkthrough at 1440 and 390 with no horizontal scroll |
 | S03 | `/map-new`, `/map-new/[stage]` | Map, Map-Stage (five stages, Oct 15) | Done | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 on all six routes |
-| S04 | `/guidebook-new` | Guidebook | Not started | |
+| S04 | `/guidebook-new`, `/guidebook-new/[chapter]` | Guidebook | Done (1 of 17 chapters written) | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
 | S05 | `/leaders-new`, `/leaders-new/[slug]` | Leaders, Leader-Profile | Not started | |
 | S06 | `/work-with-us-new`, `/work-with-us-new/inquire` | Work, Work-Inquire | Done (form live via `/api/contact`) | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390, mocked form submission |
 | S07 | `/assessment-new` | Assessment | Not started | |
@@ -24,7 +24,7 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | `/map-new` | Yes (S03) | `MV_ROUTES.map` repointed; `respondBegin` goes to Your people until the back end (`TODO(back-end merge)`) |
 | Leader profile route | No | `/voices`; `TODO(S05)` |
 | Inquiry form | Yes (S06) | `MV_ROUTES.discuss` → `/work-with-us-new/inquire` |
-| Guidebook route | `/field-guide` | Linked; `TODO(S04)` |
+| Guidebook route | Yes (S04) | `MV_ROUTES.guidebook` → `/guidebook-new` |
 | Assessment route | `/assess` | Linked |
 | Proof screenshots | No | Labeled placeholders |
 
