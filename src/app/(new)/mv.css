@@ -1290,6 +1290,71 @@ a:focus-visible .mv-signet-turn {
   background: repeating-linear-gradient(135deg, var(--mv-sheet) 0 12px, #eff0f3 12px 13px);
 }
 
+/* Home "In practice" (S17): real screens with an inset, board Home-v4 */
+.mv-built-feat {
+  display: grid;
+  grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.mv-built-offset {
+  padding-top: 96px;
+}
+
+.mv-built-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px;
+  align-items: start;
+  padding-top: 48px;
+  border-top: 1px solid var(--mv-rule);
+}
+
+.mv-shot {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mv-shot-stage {
+  position: relative;
+  padding-bottom: 15%;
+}
+
+.mv-shot-main {
+  width: 88%;
+  box-shadow: 0 18px 40px -30px var(--mv-scrim);
+}
+
+.mv-shot-inset {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 46%;
+  box-shadow: 0 20px 44px -22px var(--mv-scrim);
+}
+
+.mv-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+}
+
+@media (max-width: 1100px) {
+  .mv-built-feat,
+  .mv-built-pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+  .mv-built-offset {
+    padding-top: 0;
+  }
+}
+
 .mv-surface a.mv-preview-link {
   display: flex;
   flex-direction: column;

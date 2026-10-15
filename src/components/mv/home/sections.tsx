@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { MV_PROOF_SITES, MV_ROUTES } from "../routes";
@@ -529,96 +530,190 @@ export function WorkWithMovemental() {
   );
 }
 
-function SitePreview({ host, ratio, label }: { host: string; ratio: string; label: string }) {
+/** One platform shown as a real screen, with its home page inset (board Home-v4, "In practice"). */
+type ProofShot = {
+  host: string;
+  main: { src: string; alt: string };
+  inset: { src: string; alt: string };
+  caption: string;
+};
+
+function ProofScreens({ host, main, inset, caption }: ProofShot) {
   return (
-    <div className="mv-preview">
-      <div className="mv-preview-bar">
-        <span aria-hidden="true" className="mv-preview-dot" />
-        <span>{host}</span>
+    <figure className="mv-shot">
+      <div className="mv-shot-stage">
+        <div className="mv-preview mv-shot-main">
+          <div className="mv-preview-bar">
+            <span aria-hidden="true" className="mv-preview-dot" />
+            <span>{host}</span>
+          </div>
+          <Image src={main.src} alt={main.alt} width={1600} height={1000} sizes="(max-width: 1100px) 88vw, 560px" />
+        </div>
+        <div className="mv-preview mv-shot-inset">
+          <Image src={inset.src} alt={inset.alt} width={1440} height={900} sizes="(max-width: 1100px) 46vw, 300px" />
+        </div>
       </div>
-      {/* TODO(S01-home-page-new): replace with an approved screenshot of the live site. */}
-      <div className="mv-preview-body" style={{ aspectRatio: ratio }}>
-        {label}
+      <figcaption className="mv-muted" style={{ fontSize: 13 }}>
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
+function ProofFeature({
+  name,
+  title,
+  lines,
+  cta,
+  href,
+}: {
+  name: string;
+  title: string;
+  lines: readonly string[];
+  cta: string;
+  href: string;
+}) {
+  return (
+    <div className="mv-stack" style={{ gap: 10 }}>
+      <p className="mv-muted" style={{ fontSize: 15 }}>
+        {name}
+      </p>
+      <h3 style={{ fontSize: 36, lineHeight: 1.08 }}>{title}</h3>
+      <div className="mv-stack mv-soft" style={{ gap: 8, fontSize: 17, lineHeight: 1.6, maxWidth: 560 }}>
+        {lines.map((line) => (
+          <p key={line}>{line}</p>
+        ))}
       </div>
+      <a className="mv-more" href={href}>
+        {cta} →
+      </a>
     </div>
   );
 }
 
+const PROOF_IMG = "/images/site/proof";
+
+/**
+ * "In practice" (board Home-v4, Oct 15, 2026; slice S17). Screenshots supplied and approved by Josh,
+ * October 15, 2026, saved in public/images/site/proof. Keeps id="proof": #work and MV_ROUTES.proof link here.
+ */
 export function ProofInPractice() {
   return (
     <section id="proof" className="mv-section mv-section--sheet">
-      <div className="mv-wrap mv-stack" style={{ gap: 56 }}>
+      <div className="mv-wrap mv-stack" style={{ gap: 64 }}>
         <div className="mv-split">
-          <h2 className="mv-h2">Built with people already doing the work.</h2>
-          <div className="mv-stack mv-body mv-soft" style={{ gap: 14, maxWidth: 620, lineHeight: 1.65 }}>
-            <p>
-              Movemental began alongside authors and movement leaders whose ideas have shaped
-              churches, organizations and communities for decades.
+          <div className="mv-stack" style={{ gap: 16 }}>
+            <p className="mv-muted" style={{ fontSize: 15 }}>
+              In practice
             </p>
+            <h2 className="mv-h2">Another way is already being built.</h2>
+          </div>
+          <div className="mv-stack mv-soft" style={{ gap: 8, maxWidth: 640, fontFamily: "var(--mv-font-reading)", fontSize: 20, lineHeight: 1.6 }}>
+            <p>Movemental works with people whose ideas and experience have shaped communities for years.</p>
             <p>
-              Their platforms are places to gather a life’s work, publish, learn, and develop
-              practical tools grounded in that work.
+              Together, we’re creating new ways to publish their work, develop useful tools, and bring what they
+              know into the places that need it.
             </p>
-            <p>That same architecture informs what we build with institutions.</p>
           </div>
         </div>
-        <div className="mv-proof">
-          <a className="mv-preview-link" href={MV_PROOF_SITES.alanHirsch}>
-            <SitePreview host="alanhirsch.com" ratio="16 / 10" label="Live platform preview" />
-            <span className="mv-stack" style={{ gap: 6 }}>
-              <span className="mv-h3--sm" style={{ fontFamily: "var(--mv-font-display)" }}>
-                Alan Hirsch
-              </span>
-              <span className="mv-caption mv-muted">alanhirsch.com</span>
-              <span className="mv-soft" style={{ fontSize: 16, lineHeight: 1.55, maxWidth: 560 }}>
-                A scholarly publishing and research environment exploring decades of writing and work
-                on movements, discipleship and organizational formation.
-              </span>
-            </span>
-          </a>
-          <div className="mv-stack" style={{ gap: 40, paddingTop: 64 }}>
-            <a className="mv-preview-link" href={MV_PROOF_SITES.bradBrisco} style={{ gap: 14 }}>
-              <SitePreview host="bradbrisco.org" ratio="16 / 9" label="Live platform preview" />
-              <span className="mv-stack" style={{ gap: 5 }}>
-                <span style={{ fontFamily: "var(--mv-font-display)", fontSize: 26, lineHeight: 1.1 }}>Brad Brisco</span>
-                <span className="mv-caption mv-muted">bradbrisco.org</span>
-                <span className="mv-soft" style={{ fontSize: 15.5, lineHeight: 1.55 }}>
-                  A practical leadership environment bringing together writing, training, consulting
-                  and neighborhood-focused tools.
-                </span>
-              </span>
-            </a>
-            <a className="mv-preview-link" href={MV_PROOF_SITES.michaelCooper} style={{ gap: 14 }}>
-              <SitePreview host="drmichaelcooper.com" ratio="16 / 9" label="Representative preview" />
-              <span className="mv-stack" style={{ gap: 5 }}>
-                <span style={{ fontFamily: "var(--mv-font-display)", fontSize: 26, lineHeight: 1.1 }}>Michael Cooper</span>
-                <span className="mv-caption mv-muted">drmichaelcooper.com</span>
-                <span className="mv-soft" style={{ fontSize: 15.5, lineHeight: 1.55 }}>
-                  A research and leadership environment connecting scholarship with assessments and
-                  applied strategic tools.
-                </span>
-              </span>
-            </a>
+        <div className="mv-built-feat">
+          <div className="mv-stack" style={{ gap: 28 }}>
+            <ProofScreens
+              host="alanhirsch.com"
+              main={{
+                src: `${PROOF_IMG}/alan-ai-lab.webp`,
+                alt: "The AI Lab on alanhirsch.com answering a research question with three cited sources from Alan Hirsch’s books",
+              }}
+              inset={{ src: `${PROOF_IMG}/alan-home.webp`, alt: "The alanhirsch.com home page: The church was made for movement" }}
+              caption="The AI Lab workbench and the home page, October 2026."
+            />
+            <ProofFeature
+              name="Alan Hirsch"
+              title="A life’s work, still unfolding."
+              lines={[
+                "Books, research, teaching, courses, and developing ideas brought into one connected environment.",
+                "An author remains the author. Technology helps people engage the work without pretending to be its source.",
+              ]}
+              cta="Explore Alan’s platform"
+              href={MV_PROOF_SITES.alanHirsch}
+            />
+          </div>
+          <div className="mv-stack mv-built-offset" style={{ gap: 28 }}>
+            <ProofScreens
+              host="bradbrisco.org"
+              main={{
+                src: `${PROOF_IMG}/brad-report.webp`,
+                alt: "A sample Neighborhood Intelligence Report for Riverview in Kansas City, Kansas, with a map of nearby congregations, parks, schools, groceries and businesses",
+              }}
+              inset={{
+                src: `${PROOF_IMG}/brad-landing.webp`,
+                alt: "The Neighborhood Intelligence Report page: Your address is your assignment",
+              }}
+              caption="A sample report and the report’s front page, October 2026."
+            />
+            <ProofFeature
+              name="Brad Brisco"
+              title="Understanding the place you’re called to serve."
+              lines={[
+                "Brad’s Neighborhood Intelligence experience brings research, local context, and congregational reflection together around a real place.",
+                "It helps churches ask better questions about the relationship between their congregation and their neighborhood.",
+              ]}
+              cta="Explore Neighborhood Intelligence"
+              href={MV_PROOF_SITES.bradBriscoNeighborhood}
+            />
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            gap: 16,
-            paddingTop: 28,
-            borderTop: "1px solid var(--mv-rule)",
-          }}
-        >
-          <p style={{ fontFamily: "var(--mv-font-display)", fontSize: 32, lineHeight: 1.15 }}>
-            One shared architecture. Distinct people, organizations and purposes.
-          </p>
-          <Link className="mv-more" href={MV_ROUTES.leaders}>
-            Explore the movement leaders →
-          </Link>
+        <div className="mv-built-pair">
+          <div className="mv-stack" style={{ gap: 28 }}>
+            <ProofScreens
+              host="drmichaelcooper.com"
+              main={{
+                src: `${PROOF_IMG}/michael-theology.webp`,
+                alt: "Michael Cooper’s four-volume Missiological Theology, listed by volume",
+              }}
+              inset={{
+                src: `${PROOF_IMG}/michael-home.webp`,
+                alt: "The drmichaelcooper.com home page: How a first-century city became a movement",
+              }}
+              caption="The four-volume work and the home page, October 2026."
+            />
+            <ProofFeature
+              name="Michael Cooper"
+              title="Scholarship that remains useful."
+              lines={[
+                "Research, writing, and leadership resources organized into a coherent environment for exploration and application.",
+              ]}
+              cta="Explore Michael’s platform"
+              href={MV_PROOF_SITES.michaelCooper}
+            />
+          </div>
+          <div className="mv-stack" style={{ gap: 28 }}>
+            <ProofScreens
+              host="kate-coleman.movemental.ai"
+              main={{
+                src: `${PROOF_IMG}/kate-home.webp`,
+                alt: "Kate Coleman and Cham Kaur-Mann’s home page: Formation takes the time it takes",
+              }}
+              inset={{
+                src: `${PROOF_IMG}/kate-pathways.webp`,
+                alt: "Four pathways on Kate and Cham’s site, from women in leadership to working with them",
+              }}
+              caption="The home page and its four pathways, October 2026. Preview site."
+            />
+            <ProofFeature
+              name="Kate Coleman and Cham Kaur-Mann"
+              title="Formation that takes the time it takes."
+              lines={[
+                "Five themes, programmes and cohorts, and a library for reflection, arranged around where a leader is beginning.",
+              ]}
+              cta="Explore Kate and Cham’s platform"
+              href={MV_PROOF_SITES.kateColeman}
+            />
+          </div>
         </div>
+        <p style={{ paddingTop: 28, borderTop: "1px solid var(--mv-rule)", fontFamily: "var(--mv-font-display)", fontSize: 34, lineHeight: 1.15 }}>
+          Distinct people. Distinct purposes. Shared foundations that keep getting more capable.
+        </p>
       </div>
     </section>
   );

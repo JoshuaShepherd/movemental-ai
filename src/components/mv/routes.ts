@@ -82,4 +82,8 @@ export const MV_PROOF_SITES = {
   alanHirsch: "https://alanhirsch.com",
   bradBrisco: "https://bradbrisco.org",
   michaelCooper: "https://drmichaelcooper.com",
+  /** Brad's Neighborhood Intelligence Report, featured on the home page (S17). */
+  bradBriscoNeighborhood: "https://bradbrisco.org/neighborhood-intelligence-report",
+  /** Kate Coleman and Cham Kaur-Mann; their movemental.ai host in v_tenant_hosts (see leaders.ts). */
+  kateColeman: "https://kate-coleman.movemental.ai",
 } as const;
