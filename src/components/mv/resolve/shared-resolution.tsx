@@ -1,20 +1,25 @@
 import Link from "next/link";
-
 import { MV_ROUTES } from "../routes";
-import { SAMPLE_SHARED as S } from "./fixtures";
+import { SAMPLE_SHARED as DEFAULT_SAMPLE } from "./fixtures";
+import type { SharedResolutionData } from "@/lib/services/resolutions/resolution.service";
 
 /**
  * A shared Resolution, as the person it was shared with sees it. Board: R3-Shared.
- * Fixture seam: only the board's sample token exists until shared links are stored.
+ * Renders live database record when data is passed, or the canonical sample data.
  */
-export function SharedResolution() {
+export function SharedResolution({ data }: { data?: SharedResolutionData }) {
+  const isSample = !data;
+  const S = data ?? DEFAULT_SAMPLE;
+
   return (
     <div className="mv-rz mv-rz--text" style={{ gap: 22 }}>
       <p className="mv-soft" style={{ fontSize: 16 }}>
         {S.author} wrote a Resolution for {S.org} on {S.date}.{" "}
-        <span className="mv-muted" style={{ fontSize: 14 }}>
-          Sample data.
-        </span>
+        {isSample ? (
+          <span className="mv-muted" style={{ fontSize: 14 }}>
+            Sample data.
+          </span>
+        ) : null}
       </p>
       <article className="mv-doc">
         <h1 className="mv-doc-title">Resolved, that {S.org} should…</h1>

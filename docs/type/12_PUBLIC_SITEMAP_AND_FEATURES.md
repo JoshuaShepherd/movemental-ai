@@ -2,8 +2,8 @@
 
 > **Shared bones** - Public pages and UX elements that exist across all tenant sites
 
-**Version**: 1.1.0  
-**Last Updated**: January 2026
+**Version**: 2.0.0  
+**Last Updated**: October 15, 2026
 
 ---
 
@@ -622,7 +622,34 @@ All pages and components follow the six-layer type safety chain:
 
 ## Summary
 
-### Core Public Pages
+### Movemental AI Platform Cutover Routes (October 15, 2026)
+These routes operate at their final canonical URLs on movemental.ai:
+
+1. **Homepage** (`/`) — Primary gateway, signet navbar, hero and dynamic sections
+2. **The Resolution** (`/resolve`)
+   - `/resolve` — Flow explainer & step-by-step resolution builder
+   - `/resolve/document` — Personal resolution document view
+   - `/resolve/people` — Contributor counts and aggregated space
+   - `/resolve/others` — Community resolutions and network discovery
+   - `/r/[token]` — Unlisted / public token-shared resolution
+3. **The Reality Assessment** (`/assessment`)
+   - `/assessment` — Explainer and organization start
+   - `/assessment/predict` — Leader prediction flow
+   - `/assessment/answer` — Contributor question flow
+   - `/assessment/results` — Gap analysis comparing predictions vs consensus
+4. **The Movement Map** (`/map`, `/map/[stage]`) — Five-stage movement framework
+5. **The Field Guidebook** (`/guidebook`, `/guidebook/[chapter]`) — 17-chapter field guide
+6. **Movement Leaders** (`/leaders`, `/leaders/[slug]`) — Curated profiles from research library
+7. **Work With Us** (`/work-with-us`, `/work-with-us/inquire`) — Partnership & inquiry form (wired to `/api/contact`)
+8. **Audience Portals**:
+   - `/churches` — Dedicated church audience portal
+   - `/nonprofits` — Dedicated nonprofit audience portal
+   - `/institutions` — Dedicated seminary/institution audience portal
+9. **Narrative & About**:
+   - `/about` — Platform philosophy and leadership
+   - `/story` — Full scenius narrative
+
+### Core Public Pages (Multi-Tenant Standard)
 
 1. **Homepage** (`/`)
 2. **Books** (`/books`, `/books/[slug]`)

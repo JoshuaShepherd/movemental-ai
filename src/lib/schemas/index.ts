@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-06-18T13:40:10.547Z
+// Generated at: 2026-10-15T11:20:57.787Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -233,6 +233,14 @@ import {
   aiRealityResults,
   aiRealityOrgResults,
   aiRealityShareTokens,
+  resolutionStatements,
+  resolutions,
+  resolutionVersions,
+  resolutionInvitations,
+  realityAssessmentSessions,
+  realityAssessmentPredictions,
+  realityAssessmentResponses,
+  realityAssessmentInvites,
 } from "@/lib/db/schema";
 
 // ---- Base Filters ----
@@ -3356,3 +3364,109 @@ export type AiRealityShareTokens = z.infer<typeof AiRealityShareTokensSelectSche
 export type AiRealityShareTokensCreate = z.infer<typeof AiRealityShareTokensInsertSchema>;
 export type AiRealityShareTokensUpdate = z.infer<typeof AiRealityShareTokensUpdateSchema>;
 export type AiRealityShareTokensFilters = z.infer<typeof AiRealityShareTokensFiltersSchema>;
+
+// ResolutionStatements
+export const ResolutionStatementsSelectSchema = createSelectSchema(resolutionStatements);
+export const ResolutionStatementsInsertSchema = createInsertSchema(resolutionStatements);
+export const ResolutionStatementsUpdateSchema = createUpdateSchema(resolutionStatements);
+export const ResolutionStatementsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type ResolutionStatements = z.infer<typeof ResolutionStatementsSelectSchema>;
+export type ResolutionStatementsCreate = z.infer<typeof ResolutionStatementsInsertSchema>;
+export type ResolutionStatementsUpdate = z.infer<typeof ResolutionStatementsUpdateSchema>;
+export type ResolutionStatementsFilters = z.infer<typeof ResolutionStatementsFiltersSchema>;
+
+// Resolutions
+export const ResolutionsSelectSchema = createSelectSchema(resolutions);
+export const ResolutionsInsertSchema = createInsertSchema(resolutions);
+export const ResolutionsUpdateSchema = createUpdateSchema(resolutions);
+export const ResolutionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type Resolutions = z.infer<typeof ResolutionsSelectSchema>;
+export type ResolutionsCreate = z.infer<typeof ResolutionsInsertSchema>;
+export type ResolutionsUpdate = z.infer<typeof ResolutionsUpdateSchema>;
+export type ResolutionsFilters = z.infer<typeof ResolutionsFiltersSchema>;
+
+// ResolutionVersions
+export const ResolutionVersionsSelectSchema = createSelectSchema(resolutionVersions);
+export const ResolutionVersionsInsertSchema = createInsertSchema(resolutionVersions);
+export const ResolutionVersionsUpdateSchema = createUpdateSchema(resolutionVersions);
+export const ResolutionVersionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type ResolutionVersions = z.infer<typeof ResolutionVersionsSelectSchema>;
+export type ResolutionVersionsCreate = z.infer<typeof ResolutionVersionsInsertSchema>;
+export type ResolutionVersionsUpdate = z.infer<typeof ResolutionVersionsUpdateSchema>;
+export type ResolutionVersionsFilters = z.infer<typeof ResolutionVersionsFiltersSchema>;
+
+// ResolutionInvitations
+export const ResolutionInvitationsSelectSchema = createSelectSchema(resolutionInvitations);
+export const ResolutionInvitationsInsertSchema = createInsertSchema(resolutionInvitations);
+export const ResolutionInvitationsUpdateSchema = createUpdateSchema(resolutionInvitations);
+export const ResolutionInvitationsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type ResolutionInvitations = z.infer<typeof ResolutionInvitationsSelectSchema>;
+export type ResolutionInvitationsCreate = z.infer<typeof ResolutionInvitationsInsertSchema>;
+export type ResolutionInvitationsUpdate = z.infer<typeof ResolutionInvitationsUpdateSchema>;
+export type ResolutionInvitationsFilters = z.infer<typeof ResolutionInvitationsFiltersSchema>;
+
+// RealityAssessmentSessions
+export const RealityAssessmentSessionsSelectSchema = createSelectSchema(realityAssessmentSessions);
+export const RealityAssessmentSessionsInsertSchema = createInsertSchema(realityAssessmentSessions);
+export const RealityAssessmentSessionsUpdateSchema = createUpdateSchema(realityAssessmentSessions);
+export const RealityAssessmentSessionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type RealityAssessmentSessions = z.infer<typeof RealityAssessmentSessionsSelectSchema>;
+export type RealityAssessmentSessionsCreate = z.infer<typeof RealityAssessmentSessionsInsertSchema>;
+export type RealityAssessmentSessionsUpdate = z.infer<typeof RealityAssessmentSessionsUpdateSchema>;
+export type RealityAssessmentSessionsFilters = z.infer<typeof RealityAssessmentSessionsFiltersSchema>;
+
+// RealityAssessmentPredictions
+export const RealityAssessmentPredictionsSelectSchema = createSelectSchema(realityAssessmentPredictions);
+export const RealityAssessmentPredictionsInsertSchema = createInsertSchema(realityAssessmentPredictions);
+export const RealityAssessmentPredictionsUpdateSchema = createUpdateSchema(realityAssessmentPredictions);
+export const RealityAssessmentPredictionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type RealityAssessmentPredictions = z.infer<typeof RealityAssessmentPredictionsSelectSchema>;
+export type RealityAssessmentPredictionsCreate = z.infer<typeof RealityAssessmentPredictionsInsertSchema>;
+export type RealityAssessmentPredictionsUpdate = z.infer<typeof RealityAssessmentPredictionsUpdateSchema>;
+export type RealityAssessmentPredictionsFilters = z.infer<typeof RealityAssessmentPredictionsFiltersSchema>;
+
+// RealityAssessmentResponses
+export const RealityAssessmentResponsesSelectSchema = createSelectSchema(realityAssessmentResponses);
+export const RealityAssessmentResponsesInsertSchema = createInsertSchema(realityAssessmentResponses);
+export const RealityAssessmentResponsesUpdateSchema = createUpdateSchema(realityAssessmentResponses);
+export const RealityAssessmentResponsesFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type RealityAssessmentResponses = z.infer<typeof RealityAssessmentResponsesSelectSchema>;
+export type RealityAssessmentResponsesCreate = z.infer<typeof RealityAssessmentResponsesInsertSchema>;
+export type RealityAssessmentResponsesUpdate = z.infer<typeof RealityAssessmentResponsesUpdateSchema>;
+export type RealityAssessmentResponsesFilters = z.infer<typeof RealityAssessmentResponsesFiltersSchema>;
+
+// RealityAssessmentInvites
+export const RealityAssessmentInvitesSelectSchema = createSelectSchema(realityAssessmentInvites);
+export const RealityAssessmentInvitesInsertSchema = createInsertSchema(realityAssessmentInvites);
+export const RealityAssessmentInvitesUpdateSchema = createUpdateSchema(realityAssessmentInvites);
+export const RealityAssessmentInvitesFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type RealityAssessmentInvites = z.infer<typeof RealityAssessmentInvitesSelectSchema>;
+export type RealityAssessmentInvitesCreate = z.infer<typeof RealityAssessmentInvitesInsertSchema>;
+export type RealityAssessmentInvitesUpdate = z.infer<typeof RealityAssessmentInvitesUpdateSchema>;
+export type RealityAssessmentInvitesFilters = z.infer<typeof RealityAssessmentInvitesFiltersSchema>;

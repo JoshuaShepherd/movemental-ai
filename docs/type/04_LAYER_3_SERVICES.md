@@ -5,7 +5,7 @@
 **Layer**: 3 of 6  
 **Directory**: `src/lib/services/simplified/`  
 **Validation**: `pnpm services:check` → required `{"status":"LOCKED"}`  
-**Status**: ✅ **LOCKED** — 215 services + `base.service.ts` (verified 2026-06-13)  
+**Status**: ✅ **LOCKED** — 228 services + `base.service.ts` (verified 2026-10-15)  
 **Generate**: `pnpm generate:services` (`scripts/generate-services.ts`)
 
 ---

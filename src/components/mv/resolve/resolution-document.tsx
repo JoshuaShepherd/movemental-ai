@@ -17,6 +17,7 @@ import {
   orgName,
   otherMarkedLines,
   starredLines,
+  syncResolutionToBackend,
   updateDraft,
   useDraft,
 } from "./draft";
@@ -42,7 +43,6 @@ const VIS_WORD: Record<Visibility, string> = {
 
 /**
  * My Resolution (flow document 5.2). Board: R4-Result, which supersedes R3-Flow screen 5.
- * Fixture seam: saving, sending and the share link are front-end only (see draft.ts).
  */
 export function ResolutionDocument() {
   const d = useDraft();
@@ -52,6 +52,12 @@ export function ResolutionDocument() {
   const [email, setEmail] = useState("");
   const [shownName, setShownName] = useState<string | null>(null);
   const [orgRole, setOrgRole] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [toEmail, setToEmail] = useState("");
+  const [sendNote, setSendNote] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
 
   const unfinished = d === null || (d !== undefined && !d.finishedAt);
   useEffect(() => {
@@ -234,18 +240,35 @@ export function ResolutionDocument() {
                   </span>
                 </div>
               ) : null}
-              {/* TODO(back-end merge): send the sign-in link and store the Resolution server-side. */}
+              {saveError ? (
+                <p className="mv-caption" style={{ color: "var(--mv-danger, #d93838)" }}>
+                  {saveError}
+                </p>
+              ) : null}
               <button
                 type="button"
                 className="mv-pill mv-pill--block"
-                onClick={() =>
-                  set({
-                    saved: { email, at: new Date().toISOString() },
+                disabled={isSaving}
+                onClick={async () => {
+                  const targetEmail = email.trim() || d.saved?.email;
+                  if (!targetEmail) {
+                    setSaveError("Please enter your email to save.");
+                    return;
+                  }
+                  setIsSaving(true);
+                  setSaveError(null);
+                  const res = await syncResolutionToBackend(d, {
+                    email: targetEmail,
                     name: shownName ?? d.name,
-                  })
-                }
+                    role: orgRole || d.role,
+                  });
+                  setIsSaving(false);
+                  if (!res.ok) {
+                    setSaveError(res.error || "Failed to save Resolution.");
+                  }
+                }}
               >
-                Save my Resolution
+                {isSaving ? "Saving…" : "Save my Resolution"}
               </button>
             </section>
           ) : (
@@ -282,9 +305,12 @@ export function ResolutionDocument() {
                   role="radio"
                   aria-checked={vis === key}
                   className="mv-radio"
-                  onClick={() => {
+                  onClick={async () => {
                     setCopied(false);
                     set({ visibility: key });
+                    if (saved) {
+                      await syncResolutionToBackend({ ...d, visibility: key });
+                    }
                   }}
                 >
                   <span aria-hidden="true" className="mv-radio-dot" />
@@ -308,22 +334,25 @@ export function ResolutionDocument() {
                 <label htmlFor="lk" className="mv-sr-only">
                   Link to your Resolution
                 </label>
-                {/* TODO(back-end merge): a real token per Resolution. The sample token renders R3-Shared. */}
                 <input
                   id="lk"
                   type="text"
                   readOnly
                   className="mv-field"
                   style={{ fontSize: 14.5 }}
-                  value={`movemental.ai/r/${SAMPLE_SHARED.token}`}
+                  value={`movemental.ai/r/${d.shareToken || SAMPLE_SHARED.token}`}
                 />
                 <button
                   type="button"
                   className="mv-pill mv-pill--outline"
                   style={{ flex: "0 0 auto" }}
                   onClick={() => {
+                    const token = d.shareToken || SAMPLE_SHARED.token;
+                    const url = typeof window !== "undefined"
+                      ? `${window.location.origin}/r/${token}`
+                      : `https://movemental.ai/r/${token}`;
                     try {
-                      void navigator.clipboard?.writeText(`movemental.ai/r/${SAMPLE_SHARED.token}`);
+                      void navigator.clipboard?.writeText(url);
                     } catch {
                       // Clipboard can be unavailable; the field stays selectable.
                     }
@@ -402,7 +431,14 @@ export function ResolutionDocument() {
             <label htmlFor="to" className="mv-label">
               Send to
             </label>
-            <input id="to" type="email" className="mv-field" />
+            <input
+              id="to"
+              type="email"
+              className="mv-field"
+              placeholder="colleague@yourorganization.org"
+              value={toEmail}
+              onChange={(e) => setToEmail(e.target.value)}
+            />
           </div>
           <div className="mv-field-group">
             <label htmlFor="nt" className="mv-label">
@@ -412,7 +448,11 @@ export function ResolutionDocument() {
               id="nt"
               rows={3}
               className="mv-field"
-              defaultValue={`I wrote down what I think ${org} should do about AI. I’d like twenty minutes on it at our next leadership meeting.`}
+              value={
+                sendNote ||
+                `I wrote down what I think ${org} should do about AI. I’d like twenty minutes on it at our next leadership meeting.`
+              }
+              onChange={(e) => setSendNote(e.target.value)}
             />
           </div>
           <div className="mv-preview-note">
@@ -423,10 +463,49 @@ export function ResolutionDocument() {
             </p>
           </div>
           <p className="mv-small mv-muted">Sending it this way doesn’t change who else can see it.</p>
+          {sendError ? (
+            <p className="mv-caption" style={{ color: "var(--mv-danger, #d93838)" }}>
+              {sendError}
+            </p>
+          ) : null}
           <div>
-            {/* TODO(back-end merge): send it. Front-end only for now. */}
-            <button type="button" className="mv-pill" onClick={() => setSend(false)}>
-              Send
+            <button
+              type="button"
+              className="mv-pill"
+              disabled={isSending || !toEmail.trim()}
+              onClick={async () => {
+                if (!toEmail.trim()) return;
+                setIsSending(true);
+                setSendError(null);
+                try {
+                  const res = await fetch("/api/resolve/invite", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      inviterEmail: d.saved?.email || email || "contributor@movemental.ai",
+                      inviteeEmail: toEmail.trim(),
+                      organizationLabel: org,
+                      note:
+                        sendNote ||
+                        `I wrote down what I think ${org} should do about AI. I’d like twenty minutes on it at our next leadership meeting.`,
+                    }),
+                  });
+                  const json = await res.json();
+                  if (json.ok) {
+                    setSend(false);
+                    setToEmail("");
+                    setSendNote("");
+                  } else {
+                    setSendError(json.error?.message || "Failed to send invitation.");
+                  }
+                } catch {
+                  setSendError("Network error sending invitation.");
+                } finally {
+                  setIsSending(false);
+                }
+              }}
+            >
+              {isSending ? "Sending…" : "Send"}
             </button>
           </div>
         </MvDialog>

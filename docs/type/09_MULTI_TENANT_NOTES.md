@@ -2,8 +2,8 @@
 
 > **High-level overview** of how tenant resolution and scoping works
 
-**Version**: 2.0.0  
-**Last Updated**: January 2026
+**Version**: 3.1.0  
+**Last Updated**: October 15, 2026
 
 ---
 

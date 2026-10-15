@@ -2,8 +2,8 @@
 
 > **Step-by-step execution guide** for adding/adjusting features in the type safety chain
 
-**Version**: 2.0.0  
-**Last Updated**: January 2026
+**Version**: 3.1.0  
+**Last Updated**: October 15, 2026
 
 ---
 
@@ -24,23 +24,31 @@ Use this checklist when:
 
 Use this runbook when validating the type safety chain or fixing type errors.
 
-### Validation Command
+### Validation Commands
 
 ```bash
-npx tsc --noEmit
+# Individual layer gates
+pnpm db:check            # Layer 1
+pnpm contracts:check     # Layer 2
+pnpm services:check      # Layer 3
+pnpm routes:check        # Layer 4
+pnpm hooks:check         # Layer 5
+
+# Full suite & TypeScript proof
+pnpm validate:all
+pnpm typecheck
 ```
 
-Or use the project script: `npm run typecheck` (same as above).
-
-- **Exit code 0** → All layers LOCKED. Stop. No action needed.
-- **Exit code 1** → Errors exist. Follow the process below.
+- **Exit code 0** → All layers LOCKED. Clean build.
+- **Exit code 1** → Errors exist. Follow the lock-before-proceed process below.
 
 ### Pre-deploy / Vercel: build:check
 
 Before deploying (e.g. to Vercel), run:
 
 ```bash
-npm run build:check
+pnpm prebuild
+pnpm build:check
 ```
 
 This runs type checking and writes **`reports/pre-build-validation.json`** with pass/fail and recommendations. On TypeScript failure, full output is saved to **`reports/tsc.txt`**. Use this in CI or locally to confirm the project is safe to build. Exit code 0 = pass, 1 = fail.

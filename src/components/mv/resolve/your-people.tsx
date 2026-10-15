@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { MV_ROUTES } from "../routes";
 import { MvDialog } from "./dialog";
@@ -41,8 +41,6 @@ type Tab = (typeof TABS)[number][0];
 
 /**
  * Your people (flow document 5.4). Board: R4-People, in its below-five state.
- * Fixture seam: every person, count and organization here is the board's sample data, labeled
- * as such. Invitations, reminders and connection requests are front-end only.
  */
 export function YourPeople() {
   const d = useDraft();
@@ -51,7 +49,48 @@ export function YourPeople() {
   const [tab, setTab] = useState<Tab>("line");
   const [asked, setAsked] = useState<Record<string, boolean>>({});
 
+  const org = d?.org.trim() || "Riverbend Youth & Family";
+  const [stats, setStats] = useState<{
+    unlocked: boolean;
+    contributorCount: number;
+    threshold: number;
+    message: string;
+  } | null>(null);
+
+  const [inviteEmails, setInviteEmails] = useState("");
+  const [inviteOrg, setInviteOrg] = useState(org);
+  const [inviteNote, setInviteNote] = useState("");
+  const [isInviting, setIsInviting] = useState(false);
+  const [inviteFeedback, setInviteFeedback] = useState<string | null>(null);
+
+  useEffect(() => {
+    setInviteOrg(org);
+  }, [org]);
+
+  useEffect(() => {
+    let active = true;
+    async function fetchStats() {
+      try {
+        const res = await fetch(`/api/resolve/people?org=${encodeURIComponent(org)}`);
+        if (res.ok) {
+          const json = await res.json();
+          if (active && json.ok && json.data) {
+            setStats(json.data);
+          }
+        }
+      } catch {
+        // Fallback to sample data gracefully
+      }
+    }
+    void fetchStats();
+    return () => {
+      active = false;
+    };
+  }, [org]);
+
   const privateMe = d ? d.visibility !== "public" : true;
+  const count = stats ? stats.contributorCount : SAMPLE_WRITTEN;
+  const unlocked = stats ? stats.unlocked : count >= 5;
 
   return (
     <div className="mv-rz mv-rz--people" style={{ gap: 52 }}>
@@ -65,27 +104,38 @@ export function YourPeople() {
           <button
             type="button"
             className="mv-pill"
-            onClick={() => setDialog({ title: "Invite someone to write theirs", note: "" })}
+            onClick={() => {
+              setInviteNote("");
+              setInviteFeedback(null);
+              setDialog({ title: "Invite someone to write theirs", note: "" });
+            }}
           >
             Invite someone to write theirs
           </button>
         </div>
-        <p className="mv-caption mv-muted">Sample data.</p>
+        {stats ? (
+          <p className="mv-caption mv-muted">
+            Live counts for {org} · {count} contributor{count === 1 ? "" : "s"}
+          </p>
+        ) : (
+          <p className="mv-caption mv-muted">Sample data.</p>
+        )}
       </div>
 
       <section aria-labelledby="agree" className="mv-stack" style={{ gap: 16 }}>
         <h2 id="agree" className="mv-rz-h2">
-          Where your people from Riverbend agree
+          Where your people from {org} agree
         </h2>
         <div className="mv-stack" style={{ gap: 12, padding: "22px 24px", background: "var(--mv-sheet)", borderRadius: 4 }}>
           <div className="mv-tally" aria-hidden="true">
             {[0, 1, 2, 3, 4].map((i) => (
-              <span key={i} data-on={i < SAMPLE_WRITTEN} />
+              <span key={i} data-on={i < count} />
             ))}
           </div>
           <p className="mv-reading" style={{ lineHeight: 1.5 }}>
-            {SAMPLE_WRITTEN} people from Riverbend you invited have written theirs. You’ll see where
-            you agree once five have.
+            {unlocked
+              ? `${count} people from ${org} have written their Resolution. Aggregated common grounds are unsealed.`
+              : `${count} of 5 people from ${org} have written theirs. You’ll see where you agree once five have.`}
           </p>
           <p className="mv-caption mv-muted">
             Five keeps anyone’s choices from being guessed. Until then, nothing here shows what
@@ -237,15 +287,28 @@ export function YourPeople() {
             <label htmlFor="ie" className="mv-label">
               Email addresses
             </label>
-            <input id="ie" type="text" className="mv-field" placeholder="Separate with commas" />
+            <input
+              id="ie"
+              type="text"
+              className="mv-field"
+              placeholder="Separate with commas"
+              value={inviteEmails}
+              onChange={(e) => setInviteEmails(e.target.value)}
+            />
           </div>
           <div className="mv-field-group">
             <label htmlFor="io" className="mv-label">
               For
             </label>
-            <input id="io" type="text" className="mv-field" defaultValue="Riverbend Youth & Family" />
+            <input
+              id="io"
+              type="text"
+              className="mv-field"
+              value={inviteOrg}
+              onChange={(e) => setInviteOrg(e.target.value)}
+            />
             <span className="mv-caption mv-muted">
-              Their Resolution counts with yours for Riverbend only if they say yes.
+              Their Resolution counts with yours for {inviteOrg} only if they say yes.
             </span>
           </div>
           <div className="mv-field-group">
@@ -256,10 +319,12 @@ export function YourPeople() {
               id="in"
               rows={4}
               className="mv-field"
-              defaultValue={
+              value={
+                inviteNote ||
                 dialog.note ||
-                "I’ve written down what I believe Riverbend should do about AI. I’d value knowing what you think. It takes about four minutes."
+                `I’ve written down what I believe ${inviteOrg} should do about AI. I’d value knowing what you think. It takes about four minutes.`
               }
+              onChange={(e) => setInviteNote(e.target.value)}
             />
           </div>
           <div className="mv-preview-note">
@@ -269,12 +334,71 @@ export function YourPeople() {
               anyone else’s until they finish theirs.
             </p>
           </div>
-          {/* TODO(back-end merge): send invitations and mint invitation links. */}
+          {inviteFeedback ? (
+            <p className="mv-caption" style={{ color: "var(--mv-accent, #2b6cb0)", fontWeight: 500 }}>
+              {inviteFeedback}
+            </p>
+          ) : null}
           <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
-            <button type="button" className="mv-pill" onClick={() => setDialog(null)}>
-              Send invitations
+            <button
+              type="button"
+              className="mv-pill"
+              disabled={isInviting || !inviteEmails.trim()}
+              onClick={async () => {
+                const emails = inviteEmails
+                  .split(",")
+                  .map((e) => e.trim())
+                  .filter((e) => e.includes("@"));
+                if (!emails.length) {
+                  setInviteFeedback("Please provide at least one valid email address.");
+                  return;
+                }
+                setIsInviting(true);
+                setInviteFeedback(null);
+                try {
+                  let sentCount = 0;
+                  for (const targetEmail of emails) {
+                    const res = await fetch("/api/resolve/invite", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        inviterEmail: d?.saved?.email || "contributor@movemental.ai",
+                        inviteeEmail: targetEmail,
+                        organizationLabel: inviteOrg,
+                        note:
+                          inviteNote ||
+                          dialog.note ||
+                          `I’ve written down what I believe ${inviteOrg} should do about AI. I’d value knowing what you think. It takes about four minutes.`,
+                      }),
+                    });
+                    if (res.ok) sentCount++;
+                  }
+                  setIsInviting(false);
+                  setInviteFeedback(`Sent ${sentCount} invitation${sentCount === 1 ? "" : "s"}!`);
+                  setInviteEmails("");
+                  setTimeout(() => setDialog(null), 1200);
+                } catch {
+                  setIsInviting(false);
+                  setInviteFeedback("Network error sending invitations.");
+                }
+              }}
+            >
+              {isInviting ? "Sending…" : "Send invitations"}
             </button>
-            <button type="button" className="mv-textbtn" onClick={() => setDialog(null)}>
+            <button
+              type="button"
+              className="mv-textbtn"
+              onClick={() => {
+                const origin = typeof window !== "undefined" ? window.location.origin : "https://movemental.ai";
+                const link = `${origin}/resolve?org=${encodeURIComponent(inviteOrg)}`;
+                try {
+                  void navigator.clipboard?.writeText(link);
+                  setInviteFeedback("Invitation link copied to clipboard!");
+                } catch {
+                  setInviteFeedback(`Link: ${link}`);
+                }
+              }}
+            >
               Copy an invitation link instead
             </button>
           </div>

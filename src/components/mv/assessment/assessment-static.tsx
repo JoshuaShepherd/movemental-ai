@@ -2,7 +2,8 @@ import Link from "next/link";
 
 import { MV_ROUTES } from "../routes";
 import { AssessmentStart } from "./assessment-views";
-import { SAMPLE_GAPS } from "./questions";
+import type { AssessmentResultsData } from "@/lib/services/assessment/reality-assessment.service";
+import { QUESTIONS, SAMPLE_GAPS } from "./questions";
 
 /** The explainer and the sample results. Board: Assessment. Copy verbatim. */
 
@@ -53,16 +54,103 @@ export function AssessmentIntro() {
   );
 }
 
-export function AssessmentResults() {
+export function AssessmentResults({
+  token,
+  data,
+  error,
+}: {
+  token?: string;
+  data?: AssessmentResultsData | null;
+  error?: string;
+}) {
+  // If data exists but below the 5-contributor threshold, render sealed notice
+  if (data && !data.unlocked) {
+    return (
+      <div className="mv-wrap mv-stack mv-settle" style={{ maxWidth: 900, paddingTop: 72, paddingBottom: 96, gap: 28 }}>
+        <p className="mv-small mv-muted">{data.organizationName} · Reality Assessment</p>
+        <h1 className="mv-rz-title">Results are sealed until five people have answered.</h1>
+        <div className="mv-stack" style={{ gap: 12, padding: "22px 24px", background: "var(--mv-sheet)", borderRadius: 4 }}>
+          <div className="mv-tally" aria-hidden="true">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <span key={i} data-on={i < data.contributorCount} />
+            ))}
+          </div>
+          <p className="mv-reading" style={{ lineHeight: 1.5 }}>
+            {data.contributorCount} of {data.threshold} people have answered anonymously.
+          </p>
+          <p className="mv-caption mv-muted">
+            Five keeps anyone’s answers from being guessed. Grouped views and reality gap calculations
+            unlock automatically as soon as the fifth response is recorded.
+          </p>
+        </div>
+        <div style={{ display: "flex", gap: 18, alignItems: "center" }}>
+          <Link
+            className="mv-pill"
+            href={`${MV_ROUTES.assessmentAnswer}${token ? `?token=${encodeURIComponent(token)}` : ""}`}
+          >
+            Answer the assessment
+          </Link>
+          <Link className="mv-link-target" href={MV_ROUTES.assessment}>
+            About the Reality Assessment
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // If live data is unlocked, calculate gaps
+  const orgName = data?.organizationName || "Riverbend Youth & Family";
+  const contributorCount = data ? data.contributorCount : 12;
+  const isSample = !data;
+
+  // Build rows: either computed from live database or fallback to sample
+  const gapRows = data && data.unlocked
+    ? QUESTIONS.map((q, idx) => {
+        const leaderPred = data.leaderPredictions?.[idx] ?? 0;
+        const leaderText = q.leaderOptions[leaderPred] || "Predicted";
+        const tW = Math.max(15, Math.round(((leaderPred + 1) / q.leaderOptions.length) * 100));
+
+        const avgScore = data.contributorAverages?.[idx] ?? 0;
+        const staffIndex = Math.min(Math.round(avgScore), q.staffOptions.length - 1);
+        const staffText = q.staffOptions[staffIndex] || "Reported";
+        const rW = Math.max(15, Math.round(((avgScore + 1) / q.staffOptions.length) * 100));
+
+        const gap = data.gaps?.[idx] ?? 0;
+        const tag = gap >= 1.5 ? "Wide gap" : gap >= 0.8 ? "Noticeable gap" : "Close";
+
+        return {
+          area: q.area,
+          question: q.staff,
+          thought: leaderText,
+          reported: staffText,
+          tag,
+          tW,
+          rW,
+          gap,
+        };
+      }).sort((a, b) => b.gap - a.gap)
+    : SAMPLE_GAPS.map(([area, q, thought, reported, tag, tW, rW]) => ({
+        area,
+        question: q,
+        thought,
+        reported,
+        tag,
+        tW,
+        rW,
+        gap: 0,
+      }));
+
   return (
     <>
       <section className="mv-wrap mv-stack" style={{ paddingTop: 72, paddingBottom: 40, gap: 16 }}>
-        <p className="mv-small mv-muted">Riverbend Youth &amp; Family · Reality Assessment, October 2026 · sample</p>
+        <p className="mv-small mv-muted">
+          {orgName} · Reality Assessment{isSample ? " · sample" : ""}
+        </p>
         <h1 className="mv-h1" style={{ maxWidth: 1000 }}>
           What you thought, and what your people reported
         </h1>
         <p className="mv-reading mv-soft" style={{ maxWidth: 720, fontSize: 19, lineHeight: 1.55 }}>
-          3 leaders predicted. 12 of 19 people answered anonymously. The widest gaps are first. None of
+          {contributorCount} people answered anonymously. The widest gaps are first. None of
           this is a grade. It is where your organization actually is.
         </p>
       </section>
@@ -72,34 +160,33 @@ export function AssessmentResults() {
           <span>What you thought</span>
           <span>What your people reported</span>
         </div>
-        {SAMPLE_GAPS.map(([area, q, thought, reported, tag, tW, rW]) => (
-          <div key={area} className="mv-gaprow">
+        {gapRows.map((row) => (
+          <div key={row.area} className="mv-gaprow">
             <div className="mv-stack" style={{ gap: 3 }}>
-              <span className="mv-caption mv-muted">{area}</span>
+              <span className="mv-caption mv-muted">{row.area}</span>
               <span className="mv-reading" style={{ fontSize: 18, lineHeight: 1.4 }}>
-                {q}
+                {row.question}
               </span>
-              <span className={tag === "Close" ? "mv-caption mv-muted" : "mv-caption"} style={{ fontWeight: 500 }}>
-                {tag}
+              <span className={row.tag === "Close" ? "mv-caption mv-muted" : "mv-caption"} style={{ fontWeight: 500 }}>
+                {row.tag}
               </span>
             </div>
             <div>
-              <span className="mv-small">{thought}</span>
+              <span className="mv-small">{row.thought}</span>
               <div className="mv-gapbar" aria-hidden="true">
-                <div style={{ width: `${tW}%` }} />
+                <div style={{ width: `${row.tW}%` }} />
               </div>
             </div>
             <div>
-              <span className="mv-small">{reported}</span>
+              <span className="mv-small">{row.reported}</span>
               <div className="mv-gapbar mv-gapbar--reported" aria-hidden="true">
-                <div style={{ width: `${rW}%` }} />
+                <div style={{ width: `${row.rW}%` }} />
               </div>
             </div>
           </div>
         ))}
         <p className="mv-caption mv-muted" style={{ paddingTop: 16, borderTop: "1px solid var(--mv-rule)" }}>
-          Answers by role appear only where at least five people share a role. Here: staff (8). Board
-          and volunteers are counted in the totals only.
+          Answers by role appear only where at least five people share a role.
         </p>
       </section>
       <section className="mv-section--sheet" style={{ padding: "72px 0 88px" }}>
@@ -107,7 +194,7 @@ export function AssessmentResults() {
           <div className="mv-stack" style={{ gap: 14 }}>
             <h2 className="mv-h2">Where this goes next</h2>
             <p className="mv-reading mv-soft" style={{ fontSize: 19, lineHeight: 1.55 }}>
-              These results are now part of Riverbend’s context in the Map. When your working group
+              These results are now part of {orgName}’s context in the Map. When your working group
               drafts the charter, the Context section starts from what your people reported here,
               marked as a sourced fact.
             </p>
@@ -125,17 +212,19 @@ export function AssessmentResults() {
             </p>
             <p className="mv-caption mv-muted">
               With your permission, these totals join anonymous research across organizations. Nothing
-              published can identify Riverbend or anyone in it.
+              published can identify {orgName} or anyone in it.
             </p>
           </div>
         </div>
       </section>
-      <section className="mv-wrap mv-stack" style={{ paddingTop: 64, paddingBottom: 88, gap: 14, alignItems: "flex-start" }}>
-        <p className="mv-caption mv-muted">This is an example, with sample data.</p>
-        <Link className="mv-pill" href={MV_ROUTES.assessment}>
-          Start the Reality Assessment
-        </Link>
-      </section>
+      {isSample ? (
+        <section className="mv-wrap mv-stack" style={{ paddingTop: 64, paddingBottom: 88, gap: 14, alignItems: "flex-start" }}>
+          <p className="mv-caption mv-muted">This is an example, with sample data.</p>
+          <Link className="mv-pill" href={MV_ROUTES.assessment}>
+            Start the Reality Assessment
+          </Link>
+        </section>
+      ) : null}
     </>
   );
 }

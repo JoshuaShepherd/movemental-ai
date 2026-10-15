@@ -5,7 +5,7 @@
 **Layer**: 5 of 6  
 **Directory**: `src/hooks/simplified/`  
 **Validation**: `pnpm hooks:check` → required `{"status":"LOCKED"}`  
-**Status**: ✅ **LOCKED** — 215 hook modules (verified 2026-06-13)  
+**Status**: ✅ **LOCKED** — 228 hook modules (verified 2026-10-15)  
 **Generate**: `pnpm generate:hooks` (`scripts/generate-hooks.ts`)  
 **Provider**: `QueryClientProvider` in `src/app/providers.tsx`
 

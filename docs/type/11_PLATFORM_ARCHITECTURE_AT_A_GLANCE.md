@@ -2,14 +2,14 @@
 
 > **What kind of site this is** - Technical stack and structure overview
 
-**Version**: 2.0.0  
-**Last Updated**: January 2026
+**Version**: 3.1.0  
+**Last Updated**: October 15, 2026
 
 ---
 
 ## Overview
 
-This platform is a **multi-tenant content and learning management system** built on modern web technologies. It provides a shared foundation ("bones") that can be customized for different organizations while maintaining type safety and architectural consistency.
+This platform is a **multi-tenant marketing, AI content, research, and learning management platform** built on modern web technologies. It provides a shared foundation that powers Movemental AI while maintaining strict seven-tier type safety and architectural consistency.
 
 ---
 
@@ -19,33 +19,36 @@ This platform is a **multi-tenant content and learning management system** built
 
 | Technology | Purpose | Version |
 |------------|---------|---------|
-| Next.js | React framework with App Router | 16.1.4 |
-| React | UI library | 19.2.3 |
-| TypeScript | Type-safe JavaScript | 5.9.3 |
-| Tailwind CSS | Utility-first CSS framework | 4.1.18 |
-| shadcn/ui | Component library (Radix-based) | Latest |
-| Framer Motion | Animation library | 12.29.0 |
+| Next.js | React framework with App Router | 16.2.3 |
+| React | UI library | 19.2.4 |
+| TypeScript | Type-safe JavaScript | 5.x |
+| Tailwind CSS | Utility-first CSS framework | 4.x |
+| Radix UI / shadcn | Accessible UI primitives | Latest |
+| Framer Motion / Motion | Animation library | 12.38.0 |
 
-### Backend
+### Backend & Database
 
-| Technology | Purpose | Version |
-|------------|---------|---------|
-| Next.js API Routes | Server-side API endpoints | Built-in |
-| Supabase | PostgreSQL database + authentication | 2.91.0 |
-| Drizzle ORM | Type-safe database queries | 0.45.1 |
-| drizzle-zod | Schema-to-Zod generation | 0.8.3 |
-| Zod | Runtime validation | 4.3.5 |
+| Technology | Purpose | Notes |
+|------------|---------|-------|
+| Supabase | PostgreSQL 17 database + Auth | Project `vhaiiiykcukrlyvwlgip` (471 public tables) |
+| Supabase MCP | Model Context Protocol database agent | Configured via `.mcp.json` |
+| Drizzle ORM | Type-safe database queries | `0.45.2` (228 pgTables) |
+| drizzle-zod | Schema-to-Zod generation | `0.8.3` |
+| Zod | Runtime validation & Types SSOT | `4.3.6` |
+| Next.js API Routes | Server-side API endpoints | App Router (`/api/simplified/*` & domain APIs) |
 
-### Data Layer
+### Seven-Tier Chain
 
-| Layer | Technology | Location |
-|-------|------------|----------|
-| Database | Supabase PostgreSQL | Cloud |
-| Schema | Drizzle ORM | `src/lib/db/schema.ts` |
-| Types | Zod schemas | `src/lib/schemas/` |
-| Services | TypeScript classes | `src/lib/services/simplified/` |
-| API Routes | Next.js handlers | `src/app/api/simplified/` |
-| Hooks | React Query | `src/hooks/simplified/` |
+| Tier | Technology | Location | SSOT Role |
+|------|------------|----------|-----------|
+| Ground 0 | Supabase Postgres 17 & MCP | Cloud (`vhaiiiykcukrlyvwlgip`) | Physical Database SSOT |
+| Ground Types | Supabase CLI (`gen types`) | `src/lib/supabase/database.types.ts` | Raw Supabase DB Types |
+| Layer 1 | Drizzle Schema | `src/lib/db/schema.ts` | Data Structure SSOT (228 tables) |
+| Layer 2 | Zod Schemas | `src/lib/schemas/index.ts` | Application Types SSOT (`z.infer<>`) |
+| Layer 3 | Services | `src/lib/services/simplified/` | Business Logic & Tenant Scoping (`Result<T>`) |
+| Layer 4 | API Routes | `src/app/api/simplified/` | HTTP Endpoints & Validation |
+| Layer 5 | React Hooks | `src/hooks/simplified/` | TanStack React Query Cache & Mutations |
+| Layer 6 | UI Components | `src/components/` & `src/app/` | Presentation Layer |
 
 ### State Management
 
