@@ -12,7 +12,7 @@ import {
   NETWORK_PULSE_TIMING,
   NETWORK_STARS,
 } from "../data/network";
-import { MV_ROUTES } from "../routes";
+import { MV_ROUTES, leaderHref } from "../routes";
 
 /** Index of JR Woodward, the leader the figure opens on (per the revision spec). */
 const START_INDEX = NETWORK_LEADERS.findIndex((l) => l.slug === "jr-woodward");
@@ -111,8 +111,7 @@ export function LeaderNetwork() {
         <div className="mv-network-label" aria-live="polite">
           <p className="mv-network-name">{leader.name}</p>
           <p className="mv-network-cred">{leader.credential}</p>
-          {/* TODO(S05-leaders-new): link each leader to /leaders-new/[slug]. */}
-          <Link className="mv-network-link" href={MV_ROUTES.leaders}>
+          <Link className="mv-network-link" href={leaderHref(leader.slug)}>
             View profile →
           </Link>
         </div>

@@ -24,8 +24,7 @@ export const MV_ROUTES = {
   editions: "/field-guide",
   assessment: "/assess",
   guidebook: "/guidebook-new",
-  /** TODO(S05-leaders-new): repoint to /leaders-new and /leaders-new/[slug]. */
-  leaders: "/voices",
+  leaders: "/leaders-new",
   about: "/home-page-new#about",
   discuss: "/work-with-us-new/inquire",
   work: "/work-with-us-new",
@@ -37,6 +36,9 @@ export const MV_ROUTES = {
 /** One chapter of the guidebook. Cutover: /guidebook/[chapter]. */
 export const guidebookChapterHref = (slug: string, edition?: string) =>
   `/guidebook-new/${slug}${edition ? `?edition=${edition}` : ""}`;
+
+/** One movement leader's profile. Cutover: /leaders/[slug]. */
+export const leaderHref = (slug: string) => `/leaders-new/${slug}`;
 
 /** One stage of the Map. Cutover: /map/[stage]. */
 export const mapStageHref = (slug: string) => `/map-new/${slug}`;
