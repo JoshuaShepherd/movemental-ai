@@ -28,9 +28,8 @@ export const MV_ROUTES = {
   /** TODO(S05-leaders-new): repoint to /leaders-new and /leaders-new/[slug]. */
   leaders: "/voices",
   about: "/home-page-new#about",
-  /** TODO(S06-work-new): repoint to /work-with-us-new/inquire once the inquiry form exists. */
-  discuss: "/enroll",
-  work: "/home-page-new#work",
+  discuss: "/work-with-us-new/inquire",
+  work: "/work-with-us-new",
   proof: "/home-page-new#proof",
   sources: "/sources",
   signIn: "/login",
