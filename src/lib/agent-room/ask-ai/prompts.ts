@@ -65,7 +65,7 @@ export const ASK_AI_PROMPTS = {
 
 **Continue** — if I paste content from the full About page, go deeper on ethics and fit.`,
 
-  howWeUseAi: `I'm reading Movemental's "How We Use AI" transparency page (movemental.ai/agent/how-we-use-ai) — their operational ethics for AI use, not marketing fluff.
+  howWeUseAi: `I'm reading Movemental's "How We Use AI" transparency page (movemental.ai/how-we-use-ai) — their operational ethics for AI use, not marketing fluff.
 
 **What the page covers:**
 - **Three named refusals:** (1) replacement of relationship — no AI simulating pastoral presence/mentoring/care; (2) formation without presence — nothing goes out under a human name without full engagement; (3) amplification without credibility — no looking bigger than the work/network warrant.

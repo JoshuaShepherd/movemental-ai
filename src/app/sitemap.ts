@@ -28,7 +28,7 @@ const STATIC_ROUTES: ReadonlyArray<{
   { path: "/leaders", changeFrequency: "monthly", priority: 0.85 },
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },
   { path: "/story", changeFrequency: "yearly", priority: 0.7 },
-  { path: "/agent/how-we-use-ai", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/how-we-use-ai", changeFrequency: "monthly", priority: 0.8 },
   { path: "/articles", changeFrequency: "weekly", priority: 0.85 },
   { path: "/research", changeFrequency: "weekly", priority: 0.85 },
   { path: "/research/findings", changeFrequency: "monthly", priority: 0.7 },

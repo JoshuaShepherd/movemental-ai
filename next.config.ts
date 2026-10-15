@@ -287,6 +287,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/agent/how-we-use-ai",
+        destination: "/how-we-use-ai",
+        permanent: true,
+      },
+      {
         source: "/manifesto",
         destination: "/",
         permanent: true,

@@ -26,7 +26,7 @@
 | `/agent/about` | About experience (agent room). `/about` redirects here | Merge | Yes | Into `/about` on Paper (S09). Its fragmentation, origins and refusals are the strongest source for the story. |
 | `/about` | `AboutPageView`, unreachable today because `next.config.ts` redirects `/about` → `/agent/about` | Replace | Yes | `/about-new` takes it in S09; remove that redirect at cutover |
 | `/about/[slug]` | Founder profiles (Josh, Alan, Brad) | Keep | Light | Update product descriptions; verify claims |
-| `/agent/how-we-use-ai`, `/how-we-use-ai` | Movemental's own AI practice; `/how-we-use-ai` redirects to the agent-room copy | Keep | Yes | One Paper page at `/how-we-use-ai`; update old-model references, keep the refusals |
+| `/agent/how-we-use-ai`, `/how-we-use-ai` | Movemental's own AI practice | Keep | Done (S16) | One Paper page at `/how-we-use-ai`; `/agent/how-we-use-ai` → 308 in `next.config.ts` |
 | `/agent/movement-voices`, `/movement-voices`, `/scenius` | Redirect chain to `/voices` | Merge | — | Point all of them at `/leaders` |
 | `/voices`, `/voices/[slug]` | "Trusted voices" hub and three editorial profiles (Liz Rios, JR Woodward, Rowland Smith in `src/lib/committed-voices.ts`) | Replace | — | `/leaders` and `/leaders/[slug]`; redirect slug to slug. **Bring those three 2–3 paragraph bios into the S05 profiles**: they are the only curated bios besides Brian Sanders. |
 | `/assess` | `RealityMapFlow`, the six-question four-stage assessment, with `/api/assess` | Replace (protect data) | — | `/assessment` takes over. Keep stored responses; redirect only after the data is checked. |
@@ -35,8 +35,8 @@
 | `/field-guide` | Old Safety and Sandbox field guides with PDF downloads | Merge | — | Into `/guidebook` as chapters are written; keep the PDFs and their redirects |
 | `/enroll` | Safety Sprint enrollment form | Archive (protect records) | — | Off navigation. Redirect to `/work-with-us` once enrollments and payments are confirmed preserved. The new pages already point "Discuss" at the inquiry form. |
 | `/program`, `/program/[category]/[templateId]` | Program and pricing; program templates behind sign-in | Archive (pricing) · Protected (templates) | — | No prices on the site. Check whether clients use the templates before touching them. |
-| `/articles`, `/articles/[slug]` | Articles hub and reader | Keep | Later | Durable URLs. Restyle after launch; consider one Writing and research index. |
-| `/research`, `/research/[slug]`, `/research/findings` | Research library, papers, findings | Keep | Later | Durable URLs. Audit each paper's claims and wording ("peer-reviewed" only where true). |
+| `/articles`, `/articles/[slug]` | Articles hub and reader | Keep | Restyled (S16) | Durable URLs on Paper. Consider one Writing and research index. |
+| `/research`, `/research/[slug]`, `/research/findings` | Research library, papers, findings | Keep | Restyled (S16) | Durable URLs on Paper. Still to do: audit each paper's claims and wording ("peer-reviewed" only where true). |
 | `/sources`, `/research/sources` | The same sources view at two URLs | Keep one | Later | `/sources` canonical; redirect `/research/sources` |
 | `/footnotes` | Claims and sources registry | Merge | Later | Into `/sources` (the flow document's plan); redirect, keeping anchors |
 | `/style-finder` | Style wizard for leader platforms | Keep | — | Leader tool, not public navigation |

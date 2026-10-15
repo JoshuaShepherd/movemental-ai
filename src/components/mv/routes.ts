@@ -35,8 +35,22 @@ export const MV_ROUTES = {
   about: "/about",
   /** Our story, the long-form page. */
   story: "/story",
-  /** Kept as is until it is restyled after launch. */
+  /** Kept pages, restyled on Paper in S16. */
   howWeUseAi: "/how-we-use-ai",
+  articles: "/articles",
+  research: "/research",
+  researchFindings: "/research/findings",
+  /** The flagship paper the findings page points to. */
+  researchFlagship: "/research/ai-credibility-crisis",
+  footnotes: "/footnotes",
+  fieldGuide: "/field-guide",
+  /** The agent room ("Ask your AI about this" on a paper). */
+  agent: "/agent",
+  privacy: "/privacy",
+  terms: "/terms",
+  cookies: "/cookies",
+  signUp: "/signup",
+  forgotPassword: "/forgot-password",
   discuss: "/work-with-us/inquire",
   work: "/work-with-us",
   proof: "/#proof",
@@ -47,6 +61,15 @@ export const MV_ROUTES = {
 /** One chapter of the guidebook. */
 export const guidebookChapterHref = (slug: string, edition?: string) =>
   `/guidebook/${slug}${edition ? `?edition=${edition}` : ""}`;
+
+/** One article. */
+export const articleHref = (slug: string) => `/articles/${slug}`;
+
+/** One research paper. */
+export const researchHref = (slug: string) => `/research/${slug}`;
+
+/** One founder profile. */
+export const founderHref = (slug: string) => `/about/${slug}`;
 
 /** One movement leader's profile. */
 export const leaderHref = (slug: string) => `/leaders/${slug}`;

@@ -155,7 +155,7 @@ export function AboutExperience() {
                   When we get it wrong, we say so. When we are early, we say that too. The point
                   is not to look more finished than we are. It is to be the kind of organization
                   you can actually trust with this. The full account is on{" "}
-                  <Link className={styles.textLink} href="/agent/how-we-use-ai">
+                  <Link className={styles.textLink} href="/how-we-use-ai">
                     How We Use AI
                   </Link>
                   .

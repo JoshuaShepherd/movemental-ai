@@ -651,7 +651,7 @@ export function HomeV4Content() {
               <div className="mt-3 flex flex-col gap-2 text-xs text-[var(--color-ink-band-ink)]">
                 <Link href="/about">Founders</Link>
                 <Link href="/voices">Voices</Link>
-                <Link href="/agent/how-we-use-ai">How We Use AI</Link>
+                <Link href="/how-we-use-ai">How We Use AI</Link>
                 <Link href="/login">Log In</Link>
               </div>
             </div>
