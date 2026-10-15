@@ -141,22 +141,23 @@ src/
       schema.ts                # Drizzle schema — single source of truth
 ```
 
-### Six-layer type safety chain — mirrors the tenant apps (`alan-hirsch`, `movemental-visual-editor`)
+### Seven-tier type safety chain — mirrors the tenant apps (`alan-hirsch`, `movemental-visual-editor`)
 
-**Full reference: [docs/architecture/TYPE_SAFETY_CHAIN.md](docs/architecture/TYPE_SAFETY_CHAIN.md)** — topology, per-layer detail, generate/validate commands, lock status, and the schema-change waterfall. This repo shares the live `movemental` Supabase DB (`vhaiiiykcukrlyvwlgip`) with both sibling repos.
+**Full reference: [docs/architecture/TYPE_SAFETY_CHAIN.md](docs/architecture/TYPE_SAFETY_CHAIN.md)** — topology, per-layer detail, generate/validate commands, lock status, and the schema-change waterfall. This repo shares the live `movemental` Supabase DB (`vhaiiiykcukrlyvwlgip`, Postgres 17) introspected directly via **Supabase MCP** (`.mcp.json`).
 
 **Layer-by-layer guides:** [docs/type/README.md](docs/type/README.md) — `01_OVERVIEW` through `07_LAYER_6_UI`, workflow checklist, multi-tenant notes, glossary.
 
 Types flow **downstream only** — never import from higher layers into lower:
 
-1. **Drizzle schema** (`src/lib/db/schema.ts`) — structure SSOT. Hand-maintained here (no `generate-schema` script); add the `pgTable` *and* a matching live-DB migration together.
-2. **Zod schemas** (`src/lib/schemas/index.ts`) — types SSOT; generated from Drizzle via `drizzle-zod` (`pnpm generate:schemas`)
+0. **Supabase & Postgres 17** (`vhaiiiykcukrlyvwlgip`) — Physical SSOT, introspected via Supabase MCP; `src/lib/supabase/database.types.ts` generated via `supabase gen types`
+1. **Drizzle schema** (`src/lib/db/schema.ts`) — structure SSOT (228 tables). Hand-maintained here; add the `pgTable` *and* a matching live-DB migration together.
+2. **Zod schemas** (`src/lib/schemas/index.ts`) — types SSOT (228 entities); generated from Drizzle via `drizzle-zod` (`pnpm generate:schemas`)
 3. **Services** (`src/lib/services/simplified/`) — `Result<T>`, never throw; `base.service.ts` adds CRUD + `TENANT_ORG_ID` scoping. Domain logic goes in sibling folders (e.g. `services/onboarding/`), never in generated files.
-4. **API routes** (`src/app/api/simplified/`) — generated CRUD backbone; hand-written product endpoints live in `api/{admin,leader,book,program,…}`
+4. **API routes** (`src/app/api/simplified/`) — generated CRUD backbone; hand-written product endpoints live in `api/{contact,newsletter,admin,leader,book,…}`
 5. **React hooks** (`src/hooks/simplified/`) — TanStack Query wrappers; never raw `fetch`. Requires `QueryClientProvider` (`src/app/providers.tsx`).
-6. **UI components** (`src/components/`) — consume hooks, never call APIs directly (not generated/validated in this repo)
+6. **UI components** (`src/components/` & `src/app/`) — consume hooks, never call APIs directly
 
-Fix errors bottom-up: trace to the source layer and fix there first. Never modify a lower layer to satisfy an upper layer's needs. Validate with `pnpm validate:all` (per-layer locks) and `pnpm typecheck` (the real proof).
+Fix errors bottom-up: trace to the source layer and fix there first. Never modify a lower layer to satisfy an upper layer's needs. Validate with `pnpm db:check`, `pnpm validate:all` (per-layer locks) and `pnpm typecheck` (the real proof).
 
 ## Design system rules (Ink Band only)
 

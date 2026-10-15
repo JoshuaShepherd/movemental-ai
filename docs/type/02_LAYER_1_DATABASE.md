@@ -1,400 +1,154 @@
-# Layer 1: Database (Drizzle Schema)
+# Layer 1: Database (Drizzle Schema) & Supabase MCP
 
-> **The Single Source of Truth** for all data structures
+> **The Single Source of Truth for Data Structure**
 
-**Layer**: 1 of 6  
-**File**: `src/lib/db/schema.ts`  
-**Validation**: `pnpm db:check` → required `{"status":"LOCKED"}`  
-**Status**: ✅ **LOCKED** — 215 tables (verified 2026-06-13)  
-**Repo note**: Layer 1 is **hand-maintained** (no `generate-schema` script). See [TYPE_SAFETY.md](./TYPE_SAFETY.md).
+**Layer:** 1 of 6  
+**File:** `src/lib/db/schema.ts`  
+**Ground Truth:** Supabase project `vhaiiiykcukrlyvwlgip` (Postgres 17, 471 public tables)  
+**Supabase MCP:** Enabled via `.mcp.json` (`https://mcp.supabase.com/mcp?project_ref=vhaiiiykcukrlyvwlgip`)  
+**Validation:** `pnpm db:check` → required `{"status":"LOCKED"}`  
+**Status:** ✅ **LOCKED** — 228 tables in schema.ts, all present in the live database (verified 2026-10-15)  
 
 ---
 
 ## Overview
 
-The Drizzle schema is the **immutable source of truth for data structure**. It defines the database structure using Drizzle ORM and is the only place where new data structures originate. All other layers derive from this schema.
+The database architecture consists of two tightly coupled anchors:
 
-### Key Principles
+1. **Ground 0: The Live Supabase Postgres 17 Database** — The physical single source of truth. All tables, constraints, indexes, and RLS policies are maintained here.
+2. **Layer 1: Drizzle Schema (`src/lib/db/schema.ts`)** — The in-code single source of truth for structure. It mirrors the database tables used by this application using Drizzle ORM.
 
-1. **Database-First Design**: Schema matches production database exactly
-2. **Migration-Based Changes**: All changes go through Drizzle migrations
-3. **Type Generation**: Drizzle types are automatically inferred by TypeScript
-4. **No Direct Edits**: Never edit the database directly—always use migrations
+All downstream application layers (Zod, Services, API Routes, React Hooks, and UI components) derive directly from Layer 1.
 
 ---
 
-## File Location
+## Role of Supabase MCP
 
-```
-db/
-├── index.ts     # Database connection configuration
-└── schema.ts    # Drizzle schema definitions (SINGLE SOURCE OF TRUTH)
-```
+In this platform, **Supabase MCP** is configured in `.mcp.json`:
 
----
-
-## Current Schema
-
-### Helper Functions
-
-The schema uses helper functions for common fields, ensuring consistency across all tables:
-
-```typescript
-import { pgTable, uuid, text, timestamp, boolean, jsonb } from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm";
-
-// Common field helpers
-function id() {
-  return uuid("id").primaryKey().defaultRandom();
-}
-
-function createdAt() {
-  return timestamp("created_at", { withTimezone: true }).defaultNow().notNull();
-}
-
-function updatedAt() {
-  return timestamp("updated_at", { withTimezone: true }).defaultNow().notNull();
-}
-```
-
-### Current Tables
-
-#### Organizations (Tenant Root)
-
-```typescript
-export const organizations = pgTable("organizations", {
-  id: id(),
-  name: text("name").notNull(),
-  slug: text("slug").notNull().unique(),
-  organizationType: text("organization_type").notNull(),
-  accountOwnerId: uuid("account_owner_id").notNull(),
-  createdAt: createdAt(),
-  updatedAt: updatedAt(),
-});
-```
-
-**Purpose**: Root entity for multi-tenant architecture. Every tenant-scoped entity references this table.
-
-#### Onboarding Responses (Tenant-Scoped)
-
-```typescript
-export const onboardingResponses = pgTable("onboarding_responses", {
-  id: id(),
-  organizationId: uuid("organization_id").references(() => organizations.id).notNull(),
-  
-  // Voice & Content Samples
-  bestWorkContent: jsonb("best_work_content"),
-  bestWorkSelected: jsonb("best_work_selected"),
-  
-  // Brand Assets
-  brandColors: text("brand_colors"),
-  fontPreferences: text("font_preferences"),
-  admiredWebsites: jsonb("admired_websites"),
-  siteFeelDescription: text("site_feel_description"),
-  visitorFeeling: text("visitor_feeling"),
-  styleConstraints: jsonb("style_constraints"),
-  
-  // Vision & Movemental Calling
-  movementalStory: text("movemental_story"),
-  movementalConversation: text("movemental_conversation"),
-  targetAudience: text("target_audience"),
-  threeYearImpact: text("three_year_impact"),
-  movementalCalling: text("movemental_calling"),
-  twelveMonthSuccess: text("twelve_month_success"),
-  whatExcitesHim: text("what_excites_him"),
-  
-  // Audience Understanding
-  whoToReach: text("who_to_reach"),
-  audienceQuestions: jsonb("audience_questions"),
-  currentContentLocations: jsonb("current_content_locations"),
-  audienceNeeds: text("audience_needs"),
-  
-  // Content Inventory
-  regularContentTypes: jsonb("regular_content_types"),
-  archiveContentToImport: jsonb("archive_content_to_import"),
-  existingBlogUrls: jsonb("existing_blog_urls"),
-  contentSources: jsonb("content_sources"),
-  
-  // Capacity & Timeline
-  timePerWeek: text("time_per_week"),
-  publishingCadence: text("publishing_cadence"),
-  callAvailability: jsonb("call_availability"),
-  timelineExpectations: text("timeline_expectations"),
-  
-  // Goals & Concerns
-  incomeGoal: text("income_goal"),
-  contentGoals: text("content_goals"),
-  audienceGrowthGoals: text("audience_growth_goals"),
-  digitalPublishingConcerns: text("digital_publishing_concerns"),
-  quitRiskFactors: text("quit_risk_factors"),
-  supportNeeds: text("support_needs"),
-  
-  // Decisions & Approvals
-  designReviewPreference: text("design_review_preference"),
-  preferredDomain: text("preferred_domain"),
-  domainOwnership: text("domain_ownership"),
-  emailSendingDomain: text("email_sending_domain"),
-  paymentProcessingPreferences: jsonb("payment_processing_preferences"),
-  featurePreferences: jsonb("feature_preferences"),
-  networkParticipation: boolean("network_participation").default(true),
-  networkCrossReferences: boolean("network_cross_references").default(true),
-  networkDiscovery: boolean("network_discovery").default(true),
-  networkIntroductionPreferences: jsonb("network_introduction_preferences"),
-  collaborationInterests: text("collaboration_interests"),
-  
-  // Profile Information
-  bio: text("bio"),
-  photoUrl: text("photo_url"),
-  socialMediaLinks: jsonb("social_media_links"),
-  email: text("email").notNull(),
-  contactInformation: jsonb("contact_information"),
-  
-  // Status & Progress
-  currentStep: text("current_step"),
-  isComplete: boolean("is_complete").default(false),
-  submittedAt: timestamp("submitted_at", { withTimezone: true }),
-  
-  createdAt: createdAt(),
-  updatedAt: updatedAt(),
-});
-```
-
-**Purpose**: Captures comprehensive onboarding data from movement leaders. This multi-step form collects everything needed to configure a tenant's platform.
-
----
-
-## Migration Workflow
-
-**CRITICAL**: You must **never** edit the database directly. All changes must go through Drizzle migrations.
-
-### Why Migrations Matter
-
-1. **Version Control**: Migrations are tracked in git
-2. **Reproducibility**: Same migrations work in dev, staging, production
-3. **Rollback Safety**: Migrations can be reversed
-4. **Team Coordination**: Everyone applies the same changes in order
-
-### Commands
-
-```bash
-# 1. Edit src/lib/db/schema.ts (make your changes)
-
-# 2. Generate migration
-npm run db:generate
-
-# 3. Review generated migration file in drizzle/ folder
-
-# 4. Apply migration to database
-npm run db:push
-
-# 5. Validate - no TypeScript errors
-npx tsc --noEmit
-```
-
----
-
-## How to Add a New Table
-
-### Step 1: Define Table in Schema
-
-Edit `src/lib/db/schema.ts`:
-
-```typescript
-// Example: Adding a new books table
-export const books = pgTable('books', {
-  id: id(),
-  title: text('title').notNull(),
-  description: text('description'),
-  organizationId: uuid('organization_id')
-    .references(() => organizations.id)
-    .notNull(),  // Required for tenant scoping
-  createdAt: createdAt(),
-  updatedAt: updatedAt(),
-});
-```
-
-### Step 2: Generate Migration
-
-```bash
-npm run db:generate
-```
-
-### Step 3: Apply Migration
-
-```bash
-npm run db:push
-```
-
-### Step 4: Validate
-
-```bash
-npx tsc --noEmit
-# Check for TypeScript errors - no errors means Layer 1 is LOCKED
-```
-
-### Step 5: Continue to Layer 2
-
-Once Layer 1 has no TypeScript errors, proceed to [03_LAYER_2_ZOD.md](./03_LAYER_2_ZOD.md).
-
----
-
-## Multi-Tenant Architecture
-
-### Tenant Scoping Pattern
-
-Every table that contains tenant-specific data **MUST** include an `organizationId` field:
-
-```typescript
-organizationId: uuid('organization_id')
-  .references(() => organizations.id)
-  .notNull(),  // Required for tenant scoping
-```
-
-### Current Tenant-Scoped Tables
-
-| Table | Tenant-Scoped | Organization Reference |
-|-------|--------------|------------------------|
-| `organizations` | No (tenant root) | N/A |
-| `onboardingResponses` | ✅ Yes | `organizationId → organizations.id` |
-
-### Tenant Resolution Flow
-
-1. **Middleware** resolves tenant from subdomain/custom domain
-2. **Services** (Layer 3) automatically filter by `organizationId`
-3. **UI** (Layer 6) never directly accesses tenant—it's transparent
-
----
-
-## Required Fields
-
-Every table **MUST** include these three fields using helper functions:
-
-```typescript
+```json
 {
-  id: id(),                    // UUID primary key (auto-generated)
-  createdAt: createdAt(),      // Timestamp with timezone (auto-set)
-  updatedAt: updatedAt(),      // Timestamp with timezone (auto-set)
+  "mcpServers": {
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?project_ref=vhaiiiykcukrlyvwlgip"
+    }
+  }
 }
 ```
 
----
-
-## Common Patterns
-
-### Foreign Keys
-
-```typescript
-authorId: uuid('author_id')
-  .references(() => userProfiles.id)
-  .notNull(),
-```
-
-### Optional Fields
-
-```typescript
-description: text('description'),  // Optional (no .notNull())
-```
-
-### Default Values
-
-```typescript
-status: text('status').default('draft'),
-isActive: boolean('is_active').default(true),
-```
-
-### Unique Constraints
-
-```typescript
-slug: text('slug').notNull().unique(),
-```
-
-### JSONB Fields
-
-```typescript
-metadata: jsonb('metadata'),
-socialMediaLinks: jsonb('social_media_links'),
-```
+Supabase MCP serves as the interactive tool for database operations:
+- **Schema Introspection:** View live table definitions, columns, data types, and nullability without guesswork.
+- **Foreign Key & Relationship Verification:** Inspect exact constraint names and foreign key references before authoring Drizzle code.
+- **Migration Application:** Apply tracked, non-destructive SQL migrations to the live database.
+- **Row Count & Data Audits:** Check data distribution across tables (e.g. verifying `subscribers` vs `newsletter_subscribers`).
 
 ---
 
-## Validation
+## Schema Conventions & Helpers
 
-After making any schema changes:
+Every table declared in `src/lib/db/schema.ts` adheres to strict structural standards:
 
+### Standard Helpers
+
+```typescript
+import { pgTable, uuid, text, timestamp, boolean, jsonb, integer } from "drizzle-orm/pg-core";
+
+function id(name = "id") {
+  return uuid(name).primaryKey().defaultRandom();
+}
+
+function createdAt(name = "created_at") {
+  return timestamp(name, { withTimezone: true, mode: "string" }).defaultNow().notNull();
+}
+
+function updatedAt(name = "updated_at") {
+  return timestamp(name, { withTimezone: true, mode: "string" }).defaultNow().notNull();
+}
+```
+
+### Table Structure Requirements
+
+1. **Primary Key:** Every table uses a UUID `id: id("id")`.
+2. **Timestamps:** Every table declares `created_at: createdAt("created_at")` and `updated_at: updatedAt("updated_at")`.
+3. **Tenant Scoping:** Every entity that belongs to an organization **MUST** declare:
+   ```typescript
+   organization_id: uuid("organization_id").notNull().references(() => organizations.id),
+   ```
+4. **Foreign Keys:** Explicitly declared with `.references(() => otherTable.id)`.
+
+---
+
+## Shared Database Subset Architecture
+
+The live Supabase database is shared across three repositories:
+- `movemental-ai` (this repo — public marketing, research library, and AI workflows)
+- `alan-hirsch` (tenant LMS and reader application)
+- `movemental-visual-editor-main` (studio and visual layout composition tools)
+
+Because the database contains 471 public tables, `movemental-ai` explicitly declares a **228-table subset**. Tables not utilized in this repo (such as LMS backup tables or editor-specific draft versions) are safely ignored by `pnpm db:check`.
+
+`pnpm db:check` passes (**LOCKED**) when:
+$$\text{Schema Tables} \subseteq \text{Live Database Tables}$$
+
+---
+
+## How to Add or Update a Table
+
+Always follow this exact bottom-up sequence:
+
+### Step 1: Introspect & Apply Migration via Supabase MCP / DDL
+1. Use Supabase MCP to inspect existing tables and confirm column types.
+2. Apply an additive SQL migration:
+   ```sql
+   CREATE TABLE IF NOT EXISTS "my_new_table" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "organization_id" uuid NOT NULL REFERENCES "organizations"("id"),
+     "title" text NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL,
+     "updated_at" timestamp with time zone DEFAULT now() NOT NULL
+   );
+   ```
+
+### Step 2: Regenerate Supabase TypeScript Types
+Run the automated type generator:
 ```bash
-npx tsc --noEmit
+export $(grep -v '^#' .env.local | grep DATABASE_URL | xargs) && \
+  npx -y supabase gen types typescript --db-url "$DATABASE_URL" --schema public > src/lib/supabase/database.types.ts
 ```
 
-**Required Status**: No TypeScript errors (Layer 1 LOCKED)
+### Step 3: Add `pgTable` Definition to `schema.ts`
+Add the table to `src/lib/db/schema.ts`:
+```typescript
+export const myNewTable = pgTable("my_new_table", {
+  id: id("id"),
+  organization_id: uuid("organization_id").notNull().references(() => organizations.id),
+  title: text("title").notNull(),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+```
 
-If validation fails:
-1. Check for missing required fields (`id`, `createdAt`, `updatedAt`)
-2. Verify migrations were applied (`npm run db:push`)
-3. Check for syntax errors in schema definitions
+### Step 4: Validate Layer 1 Alignment
+```bash
+pnpm db:check
+```
+Must output `{"layer": 1, "status": "LOCKED", ...}`.
 
----
-
-## Rules
-
-### ✅ Always Do
-
-- Use helper functions: `id()`, `createdAt()`, `updatedAt()`
-- Include `organizationId` for tenant-scoped tables
-- Define foreign keys with `.references()`
-- Run `npx tsc --noEmit` after EVERY schema change
-- Generate migrations before applying changes
-- Review migration files before applying
-
-### ❌ Never Do
-
-- Edit database directly (bypass migrations)
-- Skip migration generation
-- Proceed to Layer 2 if TypeScript compilation fails
-- Modify schema based on UI convenience
-- Add fields without proper types
-- Create tenant-scoped tables without `organizationId`
-
----
-
-## Troubleshooting
-
-### Migration Fails
-
-**Problem**: `npm run db:push` fails
-
-**Solution**:
-1. Check migration file for syntax errors
-2. Verify database connection (`DATABASE_URL` in `.env.local`)
-3. Check for conflicting migrations
-4. Review error message for specific issue
-
-### Validation Fails
-
-**Problem**: `npx tsc --noEmit` shows errors
-
-**Solution**:
-1. Check for missing required fields
-2. Verify all migrations were applied
-3. Check for schema drift (schema.ts vs actual database)
-4. Review TypeScript error messages for specific issues
-
-### Type Errors After Schema Change
-
-**Problem**: TypeScript errors appear after schema change
-
-**Solution**:
-1. Ensure migration was applied (`npm run db:push`)
-2. Validate Layer 1 (`npx tsc --noEmit`)
-3. Proceed to Layer 2—types will flow automatically via `drizzle-zod`
+### Step 5: Cascade Downstream
+Regenerate Layers 2 through 5:
+```bash
+pnpm generate:schemas && pnpm contracts:check
+pnpm generate:services && pnpm services:check
+pnpm generate:routes && pnpm routes:check
+pnpm generate:hooks && pnpm hooks:check
+pnpm typecheck
+```
 
 ---
 
-## Next Steps
+## Validation Rules
 
-- **Layer 2**: [03_LAYER_2_ZOD.md](./03_LAYER_2_ZOD.md) - Zod schemas (Types SSOT)
-- **Workflow**: [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) - Complete workflow
-- **Multi-Tenant**: [09_MULTI_TENANT_NOTES.md](./09_MULTI_TENANT_NOTES.md) - Tenant scoping details
-
----
-
-**Remember**: The database schema is the foundation. Get it right here, and everything else flows naturally.
+- **Never** add a table to `schema.ts` before it exists in the live database.
+- **Never** use ad-hoc naming discrepancies (e.g. `books_chapters` instead of `book_chapters`).
+- **Never** skip `pnpm db:check` before proceeding to generate downstream layers.

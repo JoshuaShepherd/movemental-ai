@@ -5,7 +5,7 @@
 **Layer**: 2 of 6  
 **Directory**: `src/lib/schemas/`  
 **Validation**: `pnpm contracts:check` → required `{"status":"LOCKED"}`  
-**Status**: ✅ **LOCKED** — 215 entities (verified 2026-06-13)  
+**Status**: ✅ **LOCKED** — 228 entities (verified 2026-10-15)  
 **Generate**: `pnpm generate:schemas` (`scripts/generate-zod-schemas.ts`)
 
 ---

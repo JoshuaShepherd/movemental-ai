@@ -5,7 +5,7 @@
 **Layer**: 4 of 6  
 **Directory**: `src/app/api/simplified/` (+ hand-written routes under `src/app/api/`)  
 **Validation**: `pnpm routes:check` → required `{"status":"VALIDATED"}`  
-**Status**: ✅ **VALIDATED** — 215 generated CRUD routes (verified 2026-06-13)  
+**Status**: ✅ **VALIDATED** — 228 generated CRUD routes (verified 2026-10-15)  
 **Generate**: `pnpm generate:routes` (`scripts/generate-routes.ts`)
 
 ---

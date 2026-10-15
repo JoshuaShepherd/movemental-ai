@@ -2,12 +2,27 @@
 
 > **Plain language definitions** for key terms in the type safety chain
 
-**Version**: 1.1.0  
-**Last Updated**: January 2026
+**Version**: 2.0.0  
+**Last Updated**: October 15, 2026
 
 ---
 
 ## Core Terms
+
+### Supabase MCP
+
+**What it is**: Model Context Protocol integration with Supabase project `vhaiiiykcukrlyvwlgip`.
+
+**What it does**:
+- Connects agentic workflows directly to the live Postgres 17 database.
+- Inspects tables, views, schema definitions, constraints, and migrations.
+- Executes non-destructive schema migrations and audits data distribution.
+
+**Where it's used**: Ground 0 (Physical Database SSOT)
+
+**Config**: `.mcp.json` (`https://mcp.supabase.com/mcp?project_ref=vhaiiiykcukrlyvwlgip`)
+
+---
 
 ### Drizzle
 

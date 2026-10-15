@@ -29,6 +29,8 @@ export interface Invitation {
 
 export interface ResolutionDraft {
   v: 1;
+  id?: string;
+  shareToken?: string;
   orgType: OrgType;
   org: string;
   /** "themeIndex-statementIndex" for every statement ticked. */
@@ -201,3 +203,64 @@ const NUMBER_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven
 export function numberWord(n: number): string {
   return NUMBER_WORDS[n] ?? String(n);
 }
+
+/**
+ * Persist the current draft to the database via /api/resolve/save.
+ * Updates local draft with returned shareToken, id, and saved timestamp.
+ */
+export async function syncResolutionToBackend(
+  draft: ResolutionDraft,
+  options?: { email?: string; name?: string; role?: string }
+): Promise<{ ok: boolean; shareToken?: string; error?: string }> {
+  try {
+    const email = options?.email ?? draft.saved?.email;
+    const displayName = options?.name ?? draft.name;
+    const roleText = options?.role ?? draft.role;
+
+    const lines = starredLines(draft).map((l) => `${l.theme}: ${l.text}`);
+
+    const res = await fetch("/api/resolve/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email || undefined,
+        orgType: draft.orgType,
+        orgLabel: draft.org.trim() || "our organization",
+        visibility: draft.visibility,
+        researchConsent: draft.research,
+        countInOrg: draft.countInOrg,
+        displayName: displayName || undefined,
+        roleText: roleText || undefined,
+        selections: {
+          ticks: draft.ticks,
+          stars: draft.stars,
+          skipped: draft.skipped,
+        },
+        hardestTheme: draft.hardest,
+        acts: draft.acts,
+        twoMinutes: draft.two,
+        lines,
+      }),
+    });
+
+    const json = await res.json();
+    if (!res.ok || !json.ok) {
+      return { ok: false, error: json.error?.message || "Failed to save Resolution" };
+    }
+
+    const { shareToken, resolutionId, savedAt } = json.data;
+    updateDraft((d) => ({
+      ...d,
+      id: resolutionId,
+      shareToken,
+      saved: email ? { email, at: savedAt } : (d.saved ? { ...d.saved, at: savedAt } : { email: "", at: savedAt }),
+      name: displayName ?? d.name,
+      role: roleText ?? d.role,
+    }));
+
+    return { ok: true, shareToken };
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : "Network error" };
+  }
+}
+

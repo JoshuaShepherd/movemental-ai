@@ -11,14 +11,15 @@ export default async function Page({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const { org } = await searchParams;
+  const { org, token } = await searchParams;
   const name = typeof org === "string" ? org : undefined;
+  const activeToken = typeof token === "string" ? token : undefined;
   return (
     <>
       <MvTaskHeader>
         <span className="mv-muted">{name ? `Anonymous · ${name}` : "Anonymous"}</span>
       </MvTaskHeader>
-      <AssessmentQuestions mode="staff" org={name} />
+      <AssessmentQuestions mode="staff" org={name} token={activeToken} />
     </>
   );
 }

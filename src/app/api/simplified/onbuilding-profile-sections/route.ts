@@ -1,16 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-
-import { requireOnbuildingAdmin } from "@/lib/auth/require-onbuilding-admin";
-import {
-  OnbuildingProfileSectionsFiltersSchema,
-  OnbuildingProfileSectionsInsertSchema,
-  OnbuildingProfileSectionsUpdateSchema,
-} from "@/lib/schemas";
 import { onbuildingProfileSectionsService } from "@/lib/services/simplified/onbuilding-profile-sections.service";
+import { OnbuildingProfileSectionsInsertSchema, OnbuildingProfileSectionsUpdateSchema, OnbuildingProfileSectionsFiltersSchema } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
-  const auth = await requireOnbuildingAdmin();
-  if ("error" in auth) return auth.error;
   const { searchParams } = new URL(request.url);
   const rawFilters: Record<string, string> = {};
   searchParams.forEach((value, key) => {
@@ -38,9 +30,6 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const auth = await requireOnbuildingAdmin();
-  if ("error" in auth) return auth.error;
-
   let body: unknown;
   try {
     body = await request.json();
@@ -67,9 +56,6 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
-  const auth = await requireOnbuildingAdmin();
-  if ("error" in auth) return auth.error;
-
   let body: unknown;
   try {
     body = await request.json();
@@ -105,9 +91,6 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  const auth = await requireOnbuildingAdmin();
-  if ("error" in auth) return auth.error;
-
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
 

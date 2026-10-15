@@ -1174,7 +1174,7 @@ export const bookChapters = pgTable("book_chapters", {
   organization_id: uuid("organization_id").notNull().references(() => organizations.id),
 });
 
-export const booksChapters = pgTable("books_chapters", {
+export const booksChapters = pgTable("book_chapters", {
   id: id("id"),
   book_id: uuid("book_id").notNull(),
   chapter_number: integer("chapter_number").notNull(),
@@ -4165,4 +4165,115 @@ export const aiRealityShareTokens = pgTable("ai_reality_share_tokens", {
   }),
   created_at: createdAt("created_at"),
   updated_at: updatedAt("updated_at"),
+});
+
+// ============================================================================
+// RESOLUTION SURFACE (S02 — /resolve, /resolve/document, /resolve/people, /r/[token])
+// ============================================================================
+
+export const resolutionStatements = pgTable("resolution_statements", {
+  id: text("id").primaryKey(),
+  theme: text("theme").notNull(),
+  position: integer("position").notNull(),
+  text: text("text").notNull(),
+  edition_override: text("edition_override"),
+  created_at: createdAt("created_at"),
+});
+
+export const resolutions = pgTable("resolutions", {
+  id: id("id"),
+  person_id: uuid("person_id").references(() => userProfiles.id),
+  email: text("email"),
+  org_type: text("org_type").notNull().default("Nonprofit"),
+  org_label: text("org_label").notNull(),
+  organization_id: uuid("organization_id").references(() => organizations.id),
+  visibility: text("visibility").notNull().default("private"),
+  share_token: text("share_token").unique(),
+  share_token_revoked: boolean("share_token_revoked").notNull().default(false),
+  research_consent: boolean("research_consent").notNull().default(false),
+  count_in_org: boolean("count_in_org").notNull().default(true),
+  display_name: text("display_name"),
+  role_text: text("role_text"),
+  org_role: text("org_role").default("served"),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+export const resolutionVersions = pgTable("resolution_versions", {
+  id: id("id"),
+  resolution_id: uuid("resolution_id")
+    .notNull()
+    .references(() => resolutions.id, { onDelete: "cascade" }),
+  version: integer("version").notNull().default(1),
+  selections: jsonb("selections").notNull().default({}),
+  hardest_theme: integer("hardest_theme"),
+  acts: jsonb("acts").notNull().default([]),
+  two_minutes: text("two_minutes"),
+  lines: jsonb("lines").notNull().default([]),
+  created_at: createdAt("created_at"),
+});
+
+export const resolutionInvitations = pgTable("resolution_invitations", {
+  id: id("id"),
+  inviter_id: uuid("inviter_id").references(() => userProfiles.id),
+  inviter_email: text("inviter_email").notNull(),
+  invitee_email: text("invitee_email").notNull(),
+  organization_label: text("organization_label").notNull(),
+  organization_id: uuid("organization_id").references(() => organizations.id),
+  note: text("note"),
+  token: text("token").notNull().unique(),
+  status: text("status").notNull().default("pending"),
+  status_visible_to_inviter: boolean("status_visible_to_inviter").notNull().default(true),
+  sent_at: createdAt("sent_at"),
+  accepted_at: timestamp("accepted_at", { withTimezone: true, mode: "string" }),
+  reminded_at: timestamp("reminded_at", { withTimezone: true, mode: "string" }),
+});
+
+// ============================================================================
+// REALITY ASSESSMENT (S07 — /assessment, /assessment/predict, /assessment/answer, /assessment/results)
+// ============================================================================
+
+export const realityAssessmentSessions = pgTable("reality_assessment_sessions", {
+  id: id("id"),
+  organization_name: text("organization_name").notNull(),
+  organization_type: text("organization_type").notNull().default("Nonprofit"),
+  organization_id: uuid("organization_id").references(() => organizations.id),
+  leader_email: text("leader_email").notNull(),
+  leader_token: text("leader_token").notNull().unique(),
+  contributor_token: text("contributor_token").notNull().unique(),
+  status: text("status").notNull().default("in_progress"),
+  predictions_sealed_at: timestamp("predictions_sealed_at", { withTimezone: true, mode: "string" }),
+  target_contributor_count: integer("target_contributor_count").default(10),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+export const realityAssessmentPredictions = pgTable("reality_assessment_predictions", {
+  id: id("id"),
+  session_id: uuid("session_id")
+    .notNull()
+    .references(() => realityAssessmentSessions.id, { onDelete: "cascade" }),
+  predictions: jsonb("predictions").notNull(),
+  sealed: boolean("sealed").notNull().default(true),
+  created_at: createdAt("created_at"),
+});
+
+export const realityAssessmentResponses = pgTable("reality_assessment_responses", {
+  id: id("id"),
+  session_id: uuid("session_id")
+    .notNull()
+    .references(() => realityAssessmentSessions.id, { onDelete: "cascade" }),
+  answers: jsonb("answers").notNull(),
+  respondent_role: text("respondent_role"),
+  submitted_at: createdAt("submitted_at"),
+});
+
+export const realityAssessmentInvites = pgTable("reality_assessment_invites", {
+  id: id("id"),
+  session_id: uuid("session_id")
+    .notNull()
+    .references(() => realityAssessmentSessions.id, { onDelete: "cascade" }),
+  email: text("email").notNull(),
+  sent_at: createdAt("sent_at"),
+  completed_at: timestamp("completed_at", { withTimezone: true, mode: "string" }),
 });

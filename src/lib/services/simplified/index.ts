@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-06-18T13:40:11.695Z
+// Generated at: 2026-10-15T11:21:01.199Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -233,3 +233,11 @@ export * from "./ai-reality-invites.service";
 export * from "./ai-reality-results.service";
 export * from "./ai-reality-org-results.service";
 export * from "./ai-reality-share-tokens.service";
+export * from "./resolution-statements.service";
+export * from "./resolutions.service";
+export * from "./resolution-versions.service";
+export * from "./resolution-invitations.service";
+export * from "./reality-assessment-sessions.service";
+export * from "./reality-assessment-predictions.service";
+export * from "./reality-assessment-responses.service";
+export * from "./reality-assessment-invites.service";
