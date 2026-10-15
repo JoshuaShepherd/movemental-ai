@@ -2261,3 +2261,70 @@
 @media (max-width: 700px) {
   .mv-leader-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
 }
+
+/* ------------------------------------------------------------------ */
+/* Reality Assessment (S07) — board: docs/handoff/assessment-new/      */
+/* ------------------------------------------------------------------ */
+
+.mv-opts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mv-opts .mv-choice[aria-checked="true"] {
+  background: var(--mv-accent-tint);
+  border: 1.5px solid var(--mv-ink);
+}
+
+.mv-gaprow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  padding: 18px 0;
+  border-top: 1px solid var(--mv-rule);
+}
+
+.mv-gaprow--head {
+  padding: 0 0 10px;
+  border-top: none;
+  font-size: 13.5px;
+  color: var(--mv-graphite);
+}
+
+.mv-gapbar {
+  height: 6px;
+  margin-top: 8px;
+  border-radius: 3px;
+  background: var(--mv-sheet);
+  overflow: hidden;
+}
+
+.mv-gapbar > div {
+  height: 100%;
+  background: var(--mv-graphite);
+}
+
+.mv-gapbar--reported > div { background: var(--mv-ink); }
+
+.mv-steps3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.mv-steps3 > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--mv-ink);
+}
+
+@media (max-width: 700px) {
+  .mv-opts,
+  .mv-steps3 { grid-template-columns: minmax(0, 1fr); }
+  .mv-gaprow { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .mv-gaprow--head { display: none; }
+}

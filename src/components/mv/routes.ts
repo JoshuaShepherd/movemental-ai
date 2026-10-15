@@ -22,7 +22,13 @@ export const MV_ROUTES = {
   map: "/map-new",
   /** TODO(S08-audience-new): repoint to /churches-new, /nonprofits-new, /institutions-new. */
   editions: "/field-guide",
-  assessment: "/assess",
+  assessment: "/assessment-new",
+  /** Leaders predict. Cutover: /assessment/predict. */
+  assessmentPredict: "/assessment-new/predict",
+  /** What your people see. Cutover: /a/[link]. */
+  assessmentAnswer: "/assessment-new/answer",
+  /** The gap, with the board's sample results. Cutover: /assessment/results. */
+  assessmentResults: "/assessment-new/results",
   guidebook: "/guidebook-new",
   leaders: "/leaders-new",
   about: "/home-page-new#about",

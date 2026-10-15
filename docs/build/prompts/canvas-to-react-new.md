@@ -32,6 +32,7 @@ Design rules live in [`docs/design/MV_DESIGN_CHARTER.md`](../../design/MV_DESIGN
 | Stitch project `2208910962065880866` is the only visual source | The new site is designed on the Claude Design canvas | For `(new)` pages, the committed board under `docs/handoff/<page>-new/source/` is the source of truth |
 | Ink Band is the only design system | Paper governs `(new)` | Follow `MV_DESIGN_CHARTER.md`; never mix the two |
 | Public label for the network is "Trusted voices" | The flow document and home spec use "Movement leaders" and nav "Leaders" | Use "Movement leaders" on Paper pages. Leave Ink Band pages alone. |
+| `next.config.ts` has no `-new` routes | It had legacy permanent redirects for `/assessment-new`, `/churches-new`, `/nonprofits-new`, `/institutions-new` | Removed in S07. Before any new `-new` route, grep `next.config.ts` for its path |
 | Four Map steps, Discern as step four | Home v3 and the platform proposal use five stages ending in Build and Review | Use the five stages. Build carries the pursue / keep simple / defer / refuse decision, with refusals written into the charter. |
 
 ## Locked decisions

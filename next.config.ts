@@ -134,17 +134,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/assessment-new",
-        destination: "/assess",
-        permanent: true,
-      },
-      {
         source: "/fragmentation-old",
-        destination: "/agent",
-        permanent: true,
-      },
-      {
-        source: "/nonprofits-new",
         destination: "/agent",
         permanent: true,
       },
@@ -154,17 +144,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/churches-new",
-        destination: "/agent",
-        permanent: true,
-      },
-      {
         source: "/movement-leaders-new",
-        destination: "/agent",
-        permanent: true,
-      },
-      {
-        source: "/institutions-new",
         destination: "/agent",
         permanent: true,
       },

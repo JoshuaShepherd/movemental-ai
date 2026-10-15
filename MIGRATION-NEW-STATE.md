@@ -12,7 +12,7 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | S04 | `/guidebook-new`, `/guidebook-new/[chapter]` | Guidebook | Done (1 of 17 chapters written) | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
 | S05 | `/leaders-new`, `/leaders-new/[slug]` | Leaders, Leader-Profile | Done (26 profiles; 1 curated) | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390 |
 | S06 | `/work-with-us-new`, `/work-with-us-new/inquire` | Work, Work-Inquire | Done (form live via `/api/contact`) | typecheck, lint, link:check, no color literals, 200 and no horizontal scroll at 1440 and 390, mocked form submission |
-| S07 | `/assessment-new` | Assessment | Not started | |
+| S07 | `/assessment-new` (+ `/predict`, `/answer`, `/results`) | Assessment | Done (front end only) | typecheck, lint, link:check, no color literals, walkthrough at 1440 and 390 |
 | S08 | `/churches-new`, `/nonprofits-new`, `/institutions-new` | Audience | Not started | |
 | S09 | `/about-new` | LongForm | Not started | |
 
@@ -25,7 +25,7 @@ Governing prompt: [docs/build/prompts/canvas-to-react-new.md](docs/build/prompts
 | Leader profile route | Yes (S05) | `MV_ROUTES.leaders`, `leaderHref(slug)` |
 | Inquiry form | Yes (S06) | `MV_ROUTES.discuss` → `/work-with-us-new/inquire` |
 | Guidebook route | Yes (S04) | `MV_ROUTES.guidebook` → `/guidebook-new` |
-| Assessment route | `/assess` | Linked |
+| Assessment route | Yes (S07) | `MV_ROUTES.assessment` → `/assessment-new`. Legacy `-new` redirects removed from `next.config.ts` (see S07 receipt) |
 | Proof screenshots | No | Labeled placeholders |
 
 ## Check-and-branch outcomes (S02)
