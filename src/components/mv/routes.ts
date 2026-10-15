@@ -14,10 +14,14 @@ export const MV_ROUTES = {
   resolvePeople: "/resolve-new/people",
   /** The board's one sample shared link. Cutover: /r/[token]. */
   resolveSharedSample: "/resolve-new/r/k7p2qx",
-  /** TODO(S03-map-new): "Begin your organization's response" lands on the Map until its bridge screen exists. */
-  respondBegin: "/home-page-new#respond",
-  /** TODO(S03-map-new): repoint to /map-new once the public Map page migrates. */
-  map: "/home-page-new#respond",
+  /**
+   * TODO(back-end merge): "Begin your organization's response" (R3-Respond) needs an organization
+   * space. Until then it lands on Your people, where inviting people is the first move.
+   */
+  respondBegin: "/resolve-new/people",
+  map: "/map-new",
+  /** TODO(S08-audience-new): repoint to /churches-new, /nonprofits-new, /institutions-new. */
+  editions: "/field-guide",
   assessment: "/assess",
   /** TODO(S04-guidebook-new): repoint to /guidebook-new. */
   guidebook: "/field-guide",
@@ -31,6 +35,9 @@ export const MV_ROUTES = {
   sources: "/sources",
   signIn: "/login",
 } as const;
+
+/** One stage of the Map. Cutover: /map/[stage]. */
+export const mapStageHref = (slug: string) => `/map-new/${slug}`;
 
 /** Public leader platforms featured in the proof section. Hosts verified in v_tenant_hosts. */
 export const MV_PROOF_SITES = {
