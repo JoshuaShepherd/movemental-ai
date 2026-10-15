@@ -6,7 +6,7 @@ import { OthersResolved } from "@/components/mv/resolve/others";
 import { MV_ROUTES } from "@/components/mv/routes";
 
 export const metadata: Metadata = {
-  title: "How others have resolved | Movemental",
+  title: "How others have resolved",
   alternates: { canonical: "/resolve/others" },
 };
 

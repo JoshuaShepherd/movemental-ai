@@ -5,7 +5,7 @@ import { MvHeader } from "@/components/mv/mv-header";
 import { WorkPage } from "@/components/mv/work/work-page";
 
 export const metadata: Metadata = {
-  title: "Work with Movemental | From conviction to working systems",
+  title: { absolute: "Work with Movemental | From conviction to working systems" },
   description:
     "Organizational guidance, context reconstruction, custom platforms and agents, and ongoing stewardship, for churches, nonprofits and institutions carrying their response to AI into practice.",
   alternates: { canonical: "/work-with-us" },

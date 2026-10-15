@@ -5,7 +5,7 @@ import { MvFooter } from "@/components/mv/mv-footer";
 import { MvHeader } from "@/components/mv/mv-header";
 
 export const metadata: Metadata = {
-  title: "The Map | Movemental",
+  title: "The Map",
   description:
     "Respond: help your organization live what it decides. Five stages, each leaving your organization with something it keeps. The Map is free.",
   alternates: { canonical: "/map" },

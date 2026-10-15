@@ -8,7 +8,7 @@ import { SharedResolution } from "@/components/mv/resolve/shared-resolution";
 import { MV_ROUTES } from "@/components/mv/routes";
 
 export const metadata: Metadata = {
-  title: "A shared Resolution | Movemental",
+  title: "A shared Resolution",
 };
 
 /**

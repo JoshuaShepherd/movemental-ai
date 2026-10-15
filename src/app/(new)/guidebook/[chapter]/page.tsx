@@ -10,7 +10,7 @@ import { MvHeader } from "@/components/mv/mv-header";
 const VIEWS: Record<string, typeof PolicyChapter> = { policy: PolicyChapter };
 
 export function generateMetadata(): Metadata {
-  return { title: "Policy: what people may and may not do | The guidebook | Movemental" };
+  return { title: "Policy: what people may and may not do | The guidebook" };
 }
 
 export default async function GuidebookChapterPage({
