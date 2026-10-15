@@ -5,8 +5,17 @@
  */
 export const MV_ROUTES = {
   home: "/home-page-new",
-  /** TODO(S02-resolve-new): repoint to /resolve-new once the Resolution exercise migrates. */
-  resolve: "/home-page-new#resolve",
+  resolve: "/resolve-new",
+  /** My Resolution (5.2). Cutover: /resolve/document/[id]. */
+  resolveDocument: "/resolve-new/document",
+  /** How others resolved (5.6). Cutover: /resolve/others. */
+  resolveOthers: "/resolve-new/others",
+  /** Your people (5.4). Cutover: /me/people. */
+  resolvePeople: "/resolve-new/people",
+  /** The board's one sample shared link. Cutover: /r/[token]. */
+  resolveSharedSample: "/resolve-new/r/k7p2qx",
+  /** TODO(S03-map-new): "Begin your organization's response" lands on the Map until its bridge screen exists. */
+  respondBegin: "/home-page-new#respond",
   /** TODO(S03-map-new): repoint to /map-new once the public Map page migrates. */
   map: "/home-page-new#respond",
   assessment: "/assess",

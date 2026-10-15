@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My Resolution</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.rz{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--accent-tint:#E8EBFA;color:var(--ink);background:var(--ground)}
+.rz a{color:var(--ink);text-underline-offset:4px}
+.rz button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.rz button:focus-visible,.rz a:focus-visible,.rz input:focus-visible,.rz textarea:focus-visible,.rz summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rz input,.rz textarea{font-family:'Geist','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.5;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:6px;padding:12px 14px;box-sizing:border-box;width:100%}
+.settle{animation:settle .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes settle{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.settle{animation:none}}
+.minegrid{display:grid;grid-template-columns:minmax(0,820px) 340px;gap:56px;align-items:start}
+@media (max-width:1180px){.minegrid{grid-template-columns:minmax(0,1fr);gap:36px}}
+@media (max-width:700px){.pad{padding-left:20px !important;padding-right:20px !important}.h1{font-size:36px !important}.docpad{padding:32px 22px !important}.docpad li{grid-template-columns:minmax(0,1fr) !important;gap:2px !important}}
+@media print{.noprint{display:none !important}}
+</style>
+</helmet>
+<div class="rz" style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; min-height: 100%; box-sizing: border-box">
+<header class="pad noprint" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 56px; border-bottom: 1px solid var(--rule)">
+<a href="#" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 22px; width: auto; display: block"></a>
+<nav aria-label="Your account" style="display: flex; gap: 24px; align-items: center"><a href="R4-People.dc.html" style="font-size: 14.5px">Your people</a><sc-if value="{{ saved }}" hint-placeholder-val="{{ true }}"><a href="#" style="font-size: 14.5px; color: var(--graphite)">Sign out</a></sc-if></nav>
+</header>
+<main class="pad minegrid" style="max-width: 1300px; margin: 0 auto; padding: 40px 56px 96px; box-sizing: border-box">
+<div style="display: flex; flex-direction: column; gap: 18px; min-width: 0">
+<div class="noprint" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<p style="margin: 0; font-size: 14.5px; color: var(--graphite)">{{ statusLine }}</p>
+<a href="R3-Flow.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Edit my Resolution</a>
+</div>
+<article class="docpad" style="background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 64px 72px 56px; display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-size: 14px; color: var(--graphite)">My Resolution for Riverbend Youth &amp; Family</p>
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 46px; line-height: 1.04; font-weight: 400">Resolved, that Riverbend Youth &amp; Family should…</h1>
+<ol style="margin: 0; padding: 0; list-style: none">
+<sc-for list="{{ lines }}" as="l" hint-placeholder-count="8"><li style="display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 18px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule)"><span style="font-size: 13px; color: var(--graphite)">{{ l.theme }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.45">{{ l.text }}</span></li></sc-for>
+</ol>
+<details style="border-top: 1px solid var(--rule); padding-top: 8px">
+<summary style="cursor: pointer; min-height: 44px; display: flex; align-items: center; font-size: 15px; color: var(--graphite)">The other statements I marked (5)</summary>
+<ul style="margin: 6px 0 4px; padding: 0; list-style: none; display: flex; flex-direction: column">
+<sc-for list="{{ others }}" as="o" hint-placeholder-count="5"><li style="display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 18px; align-items: baseline; padding: 10px 0"><span style="font-size: 13px; color: var(--graphite)">{{ o.theme }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.5; color: #34363F">{{ o.text }}</span></li></sc-for>
+</ul>
+</details>
+<div style="display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 14px; font-weight: 500">Hardest for us to adopt today</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5">We should say plainly how AI is used here, including by our leaders.</p></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 14px; font-weight: 500">What I’ll do</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5">I’ll share this with someone who decides.</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5">I’ll ask for this conversation at our next team meeting.</p></div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 24px; max-width: 420px"><div style="height: 36px; border-bottom: 1px solid var(--ink)"></div><p style="margin: 0; font-size: 14px; color: #34363F">Priya, Associate director of programs</p><p style="margin: 0; font-size: 13.5px; color: var(--graphite)">{{ dateLine }}</p></div>
+</article>
+<sc-if value="{{ amended }}" hint-placeholder-val="{{ false }}"><details class="noprint" style="font-size: 15px"><summary style="cursor: pointer; min-height: 44px; display: flex; align-items: center; color: var(--graphite)">Earlier versions (2)</summary><ul style="margin: 4px 0 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; border-left: 2px solid var(--rule)"><li style="list-style: none"><a href="#">October 14, 2026</a> <span style="color: var(--graphite)">· Time line changed on October 20</span></li><li style="list-style: none"><a href="#">October 6, 2026</a> <span style="color: var(--graphite)">· first version</span></li></ul><p style="margin: 10px 0 0; font-size: 14px; color: var(--graphite)">A shared link always shows the current version. Riverbend’s view counts only the current version.</p></details></sc-if>
+</div>
+
+<aside class="noprint" style="display: flex; flex-direction: column; gap: 28px">
+
+<sc-if value="{{ unsaved }}" hint-placeholder-val="{{ false }}"><section aria-labelledby="keep" style="display: flex; flex-direction: column; gap: 14px">
+<h2 id="keep" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1.08; font-weight: 400">Keep it</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #34363F">It stays on this device until you save it. Saving lets you share it, invite people and come back to change it.</p>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="em" style="font-size: 15px; font-weight: 500">Email</label><input id="em" type="email" placeholder="you@riverbendyf.org"><span style="font-size: 14px; color: var(--graphite)">We’ll send a link to sign in. No password.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="nm" style="font-size: 15px; font-weight: 500">Name to show if you share it</label><input id="nm" type="text" value="Priya"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="rl" style="font-size: 15px; font-weight: 500">Your role at Riverbend <span style="font-weight: 400; color: var(--graphite)">(optional)</span></label><input id="rl" type="text" placeholder="Staff, board, volunteer, member, or someone Riverbend serves"><span style="font-size: 14px; color: var(--graphite)">Only ever shown as a count, once five people share it.</span></div>
+<button type="button" onClick="{{ doSave }}" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; width: 100%">Save my Resolution</button>
+</section></sc-if>
+
+<sc-if value="{{ saved }}" hint-placeholder-val="{{ true }}"><section style="display: flex; flex-direction: column; gap: 4px">
+<button type="button" onClick="{{ openSend }}" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; width: 100%">Bring this to someone who decides</button>
+<a href="R4-People.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; margin-top: 6px">Invite people to write theirs</a>
+<a href="R3-Respond.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Begin Riverbend’s response</a>
+<div style="display: flex; gap: 22px"><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Print</a><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Download as PDF</a></div>
+</section></sc-if>
+
+<section aria-labelledby="vis" style="display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 1px solid var(--rule)">
+<h2 id="vis" style="margin: 0; font-size: 15px; font-weight: 500">Who can see it</h2>
+<div role="radiogroup" aria-labelledby="vis" style="display: flex; flex-direction: column; gap: 4px">
+<sc-for list="{{ levels }}" as="v" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{ v.on }}" onClick="{{ v.pick }}" style="display: flex; gap: 12px; align-items: flex-start; min-height: 44px; padding: 10px 12px; border: none; border-radius: 6px; text-align: left; cursor: pointer; color: var(--ink); {{ v.rowCss }}"><span aria-hidden="true" style="flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; border: 1.5px solid var(--ink); box-sizing: border-box; display: flex; align-items: center; justify-content: center"><span style="width: 8px; height: 8px; border-radius: 50%; {{ v.dotCss }}"></span></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15.5px; font-weight: 500">{{ v.title }}</span><span style="font-size: 14px; line-height: 1.5; color: var(--graphite)">{{ v.desc }}</span></span></button></sc-for>
+</div>
+<sc-if value="{{ needSave }}" hint-placeholder-val="{{ false }}"><p class="settle" style="margin: 0; padding: 12px 14px; background: var(--sheet); border-radius: 6px; font-size: 14.5px; line-height: 1.5">Save it first, above. We need an email to keep the link working and to let you change it later.</p></sc-if>
+<sc-if value="{{ showLink }}" hint-placeholder-val="{{ false }}"><div class="settle" style="display: flex; gap: 8px; align-items: center"><label for="lk" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Link to your Resolution</label><input id="lk" type="text" readonly value="movemental.ai/r/k7p2qx" style="font-size: 14.5px"><button type="button" onClick="{{ copy }}" style="flex: 0 0 auto; min-height: 44px; padding: 0 16px; font-size: 14.5px; font-weight: 500; color: var(--ink); background: #fff; border: 1px solid var(--ink); border-radius: 999px; cursor: pointer">{{ copyLabel }}</button></div></sc-if>
+<sc-if value="{{ showResearch }}" hint-placeholder-val="{{ false }}"><div class="settle" style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 6px">
+<button type="button" role="checkbox" aria-checked="{{ research }}" onClick="{{ toggleResearch }}" style="display: flex; align-items: flex-start; gap: 12px; min-height: 44px; padding: 0; font-size: 15px; line-height: 1.45; color: var(--ink); background: none; border: none; cursor: pointer; text-align: left"><span aria-hidden="true" style="flex: 0 0 auto; width: 22px; height: 22px; border: 1.5px solid var(--ink); border-radius: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; {{ researchBox }}">✓</span><span>Also count my choices in Movemental’s published research</span></button>
+<p style="margin: 0 0 0 34px; font-size: 14px; line-height: 1.5; color: var(--graphite)">Research shows only totals across many Resolutions, with how many each is based on. Nothing published can identify you or Riverbend. We ask once.</p>
+</div></sc-if>
+</section>
+
+<section aria-labelledby="org" style="display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 1px solid var(--rule)">
+<h2 id="org" style="margin: 0; font-size: 15px; font-weight: 500">Riverbend’s view</h2>
+<sc-if value="{{ invited }}" hint-placeholder-val="{{ true }}">
+<button type="button" role="checkbox" aria-checked="{{ count }}" onClick="{{ toggleCount }}" style="display: flex; align-items: flex-start; gap: 12px; min-height: 44px; padding: 0; font-size: 15px; line-height: 1.45; color: var(--ink); background: none; border: none; cursor: pointer; text-align: left"><span aria-hidden="true" style="flex: 0 0 auto; width: 22px; height: 22px; border: 1.5px solid var(--ink); border-radius: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; {{ countBox }}">✓</span><span>Count my choices in Riverbend’s view. Your name is never shown.</span></button>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">This is on because you came through James’s invitation for Riverbend. Turn it off and your Resolution stays yours alone.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">Riverbend’s view shows counts only, and only once five people have written theirs.</p>
+</sc-if>
+<sc-if value="{{ notInvited }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #34363F">Your Resolution names Riverbend, but it isn’t counted in anyone’s view. Only people Riverbend invites are counted together.</p>
+<sc-if value="{{ findable }}" hint-placeholder-val="{{ false }}"><div style="padding: 14px 16px; background: var(--sheet); border-radius: 6px; display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 15px; line-height: 1.5">People at Riverbend have started. If you’re part of Riverbend, ask to join.</p><button type="button" onClick="{{ askJoin }}" style="align-self: flex-start; min-height: 44px; padding: 0; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">{{ joinLabel }}</button></div></sc-if>
+<sc-if value="{{ notFindable }}" hint-placeholder-val="{{ true }}"><a href="R4-People.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Invite people from Riverbend</a><p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">Once five of them have written theirs, you’ll all see where you agree.</p></sc-if>
+</sc-if>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 4px; padding-top: 22px; border-top: 1px solid var(--rule)">
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--graphite)">Inviting someone never shows them your choices. They see yours only if you share it.</p>
+<a href="R3-Others.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">See how others resolved</a>
+</section>
+</aside>
+</main>
+
+<sc-if value="{{ send }}" hint-placeholder-val="{{ false }}">
+<div class="noprint" style="position: fixed; inset: 0; z-index: 10; background: rgba(28,29,36,.38); display: flex; align-items: flex-start; justify-content: center; padding: 64px 20px; box-sizing: border-box; overflow: auto">
+<div role="dialog" aria-modal="true" aria-labelledby="sendt" class="settle" style="width: 100%; max-width: 640px; background: #fff; border-radius: 10px; padding: 28px 32px 30px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px"><h2 id="sendt" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1.08; font-weight: 400">Bring this to someone who decides</h2><button type="button" onClick="{{ closeSend }}" style="min-height: 44px; padding: 0; font-size: 14.5px; color: var(--graphite); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px">Close</button></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="to" style="font-size: 15px; font-weight: 500">Send to</label><input id="to" type="email" value="james@riverbendyf.org"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="nt" style="font-size: 15px; font-weight: 500">Note</label><textarea id="nt" rows="3">James, I wrote down what I think Riverbend should do about AI. I’d like twenty minutes on it at our next leadership meeting.</textarea></div>
+<div style="padding: 16px 18px; background: var(--sheet); border-radius: 6px; display: flex; flex-direction: column; gap: 4px"><p style="margin: 0; font-size: 13px; color: var(--graphite)">What James will see</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5">Your note and your Resolution as it reads now. If you change it later, his link shows the new version, marked “Updated.”</p></div>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--graphite)">Sending it this way doesn’t change who else can see it.</p>
+<div><button type="button" onClick="{{ closeSend }}" style="min-height: 52px; padding: 0 28px; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer">Send</button></div>
+</div></div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"preview": {"editor": "enum", "options": ["Just finished", "Saved, private", "Shared by link", "Public", "Amended"], "default": "Saved, private"}, "invited": {"editor": "boolean", "default": true}, "findableSpace": {"editor": "boolean", "default": false}, "$preview": {"width": 1440, "height": 1900}}'>
+class Component extends DCLogic {
+  componentDidUpdate(prev) {
+    if (prev.preview !== this.props.preview || prev.invited !== this.props.invited || prev.findableSpace !== this.props.findableSpace) {
+      this.setState({ vis: null, savedNow: false, research: false, count: true, copied: false, send: false, joined: false });
+    }
+  }
+  renderVals() {
+    const s = this.state || {};
+    const set = (o) => this.setState(o);
+    const preview = this.props.preview ?? 'Saved, private';
+    const startVis = { 'Just finished': 'private', 'Saved, private': 'private', 'Shared by link': 'link', 'Public': 'public', 'Amended': 'link' }[preview] || 'private';
+    const vis = s.vis || startVis;
+    const saved = preview !== 'Just finished' || !!s.savedNow;
+    const amended = preview === 'Amended';
+    const invited = this.props.invited ?? true;
+    const findable = !!this.props.findableSpace;
+    const LV = [
+      ['private', 'Private', 'Only you. The default.'],
+      ['link', 'Anyone with the link', 'Not listed anywhere. You choose who gets it.'],
+      ['public', 'Public', 'Listed among public Resolutions with your name and Riverbend’s. People walking the same road can find it.']
+    ];
+    const levels = LV.map((l) => ({ title: l[1], desc: l[2], on: vis === l[0],
+      rowCss: vis === l[0] ? 'background: var(--accent-tint);' : 'background: none;',
+      dotCss: vis === l[0] ? 'background: var(--ink);' : 'background: transparent;',
+      pick: () => set({ vis: l[0], copied: false }) }));
+    const visWord = { private: 'Private', link: 'Anyone with the link can read it', public: 'Public' }[vis];
+    const statusLine = !saved ? 'Not saved yet. It stays on this device until you save it.'
+      : (amended ? 'Updated October 20, 2026 · ' : 'Saved October 14, 2026 · ') + visWord;
+    const lines = [['Presence', 'We should name the work that is made of presence, and keep it human.'], ['Voice', 'A person should remain responsible for anything sent in our name.'], ['Truth', 'We should say plainly how AI is used here, including by our leaders.'], ['Thinking', 'We should form our own views before we ask AI for one.'], ['Learning', 'We should keep learning as if we just arrived.'], ['Time', amended ? 'We should let roles change and help people grow into new work.' : 'We should give the time AI saves back to people, to creation and to play.'], ['People', 'We should find others beyond our walls who are walking it too.'], ['Leading', 'Leading through AI should be something we practice, not only a policy we write.']].map((x) => ({ theme: x[0], text: x[1] }));
+    const others = [['Presence', 'We should keep the moments of care human.'], ['Voice', 'We should say when AI substantially shaped something presented as ours.'], ['Thinking', 'We should notice when we’re becoming dependent, and step back.'], ['Learning', 'We should make time for everyone here to try new things with AI.'], ['People', 'We shouldn’t walk this alone.']].map((x) => ({ theme: x[0], text: x[1] }));
+    const count = s.count !== false;
+    const research = !!s.research;
+    const tick = (on) => on ? 'background: var(--ink); color: #fff;' : 'background: #fff; color: transparent;';
+    return {
+      saved, unsaved: !saved, amended, statusLine, lines, others,
+      dateLine: amended ? 'Updated October 20, 2026' : 'October 14, 2026',
+      levels, needSave: !saved && vis !== 'private', showLink: saved && vis === 'link', showResearch: vis === 'public',
+      copyLabel: s.copied ? 'Copied' : 'Copy link', copy: () => set({ copied: true }),
+      research, researchBox: tick(research), toggleResearch: () => set({ research: !research }),
+      invited, notInvited: !invited, findable, notFindable: !findable,
+      count, countBox: tick(count), toggleCount: () => set({ count: !count }),
+      joinLabel: s.joined ? 'Request sent to Riverbend’s owners' : 'Ask to join Riverbend', askJoin: () => set({ joined: true }),
+      doSave: () => set({ savedNow: true }),
+      send: !!s.send, openSend: () => set({ send: true }), closeSend: () => set({ send: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

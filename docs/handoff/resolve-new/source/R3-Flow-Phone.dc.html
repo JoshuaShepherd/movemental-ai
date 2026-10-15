@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Resolution, phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.rz{--ground:#FFFFFF;--sheet:#F6F7F9;--ink:#1C1D24;--graphite:#5B5E6B;--rule:#DDDFE5;--accent:#2236C4;--accent-tint:#E8EBFA;color:var(--ink);background:var(--ground)}
+.rz a{color:var(--ink);text-underline-offset:4px}
+.rz button{font-family:'Geist','Helvetica Neue',Arial,sans-serif}
+.rz button:focus-visible,.rz a:focus-visible,.rz input:focus-visible,.rz textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rz input,.rz textarea{font-family:'Geist','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.5;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:6px;padding:12px 14px;box-sizing:border-box;width:100%}
+.row{transition:background-color .2s ease}
+.row:hover{background:var(--sheet)}
+.settle{animation:settle .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes settle{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.ruleflash{animation:flash 1.6s ease forwards}
+@keyframes flash{0%{box-shadow:inset 3px 0 0 var(--accent)}70%{box-shadow:inset 3px 0 0 var(--accent)}100%{box-shadow:inset 3px 0 0 var(--ink)}}
+@media (prefers-reduced-motion:reduce){.settle,.ruleflash{animation:none}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:72px;align-items:start}
+@media (max-width:1100px){.two{grid-template-columns:minmax(0,1fr);gap:40px}}
+@media (max-width:640px){.pad{padding-left:20px !important;padding-right:20px !important}.h1{font-size:40px !important}.q{font-size:36px !important}}
+.phoneonly{display:none}
+@media (max-width:700px){.phoneonly{display:block}.deskonly{display:none !important}.minegrid{grid-template-columns:minmax(0,1fr) !important;gap:28px !important}.docpad{padding:32px 22px !important}.docpad li{grid-template-columns:minmax(0,1fr) !important;gap:2px !important}}
+@media (max-width:1100px){.minegrid{grid-template-columns:minmax(0,1fr) !important}}
+@media print{.noprint{display:none !important}}
+</style>
+</helmet>
+<div class="rz" style="font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; min-height: 100%; box-sizing: border-box">
+<header class="pad noprint" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 56px; border-bottom: 1px solid var(--rule)">
+<a href="#" aria-label="Movemental home" style="display: flex"><img src="/_blob/c96bbd4012589d4efb42f1b0ec8c048a" alt="movemental" style="height: 22px; width: auto; display: block"></a>
+<a href="#" style="font-size: 14.5px; color: var(--graphite)">Save and leave</a>
+</header><sc-if value="{{ isArrive }}" hint-placeholder-val="{{ false }}"><main class="pad" style="max-width: 900px; margin: 0 auto; padding: 80px 56px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px">
+<sc-if value="{{ invited }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 16px 20px; background: var(--sheet); border-left: 3px solid var(--ink); font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15.5px; line-height: 1.55">Priya invited you to write your own Resolution for {{ org }}. You won’t see what she chose until you’ve finished yours.</p></sc-if>
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 76px; line-height: 0.98; font-weight: 400; letter-spacing: -0.015em">Say what you believe your organization should do about AI.</h1>
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 640px">
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 23px; line-height: 1.4">Think as yourself, about your organization.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--graphite)">This isn’t a policy and it isn’t a test. Choose the language you could genuinely stand behind.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 10px">
+<p id="kind" style="margin: 0; font-size: 15px; font-weight: 500">What kind of organization?</p>
+<div role="group" aria-labelledby="kind" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 640px">
+<sc-for list="{{ types }}" as="t" hint-placeholder-count="4"><button type="button" aria-pressed="{{ t.pressed }}" onClick="{{ t.pick }}" style="min-height: 56px; padding: 0 18px; text-align: left; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; border: 1px solid; border-radius: 8px; cursor: pointer; transition: background-color .2s ease; {{ t.css }}">{{ t.label }}</button></sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 640px">
+<label for="orgname" style="font-size: 15px; font-weight: 500">Your organization’s name, if you’d like it on your Resolution</label>
+<input id="orgname" type="text" value="{{ orgVal }}" onInput="{{ onOrg }}" placeholder="Optional">
+</div>
+<div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; padding-top: 6px"><button type="button" onClick="{{ begin }}" style="min-height: 52px; padding: 0 28px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; ">Begin</button><p style="margin: 0; font-size: 14.5px; color: var(--graphite)">Nine themes, about four minutes, no account.</p></div>
+<p style="margin: 0; font-size: 14.5px; color: var(--graphite)">Your Resolution stays private until you choose to share it.</p>
+</main></sc-if>
+<sc-if value="{{ isTheme }}" hint-placeholder-val="{{ true }}"><main class="pad two" style="max-width: 1440px; margin: 0 auto; padding: 44px 56px 88px; box-sizing: border-box">
+<div style="display: flex; flex-direction: column; gap: 24px; min-width: 0">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 14px; color: var(--graphite)">Theme {{ pos }} of 9</p>
+<div style="display: flex; gap: 6px" aria-hidden="true"><sc-for list="{{ marks }}" as="m" hint-placeholder-count="9"><span title="{{ m.label }}" style="flex: 1; max-width: 64px; height: 3px; border-radius: 2px; transition: background-color .3s ease; {{ m.css }}"></span></sc-for></div>
+</div>
+<sc-if value="{{ resume }}" hint-placeholder-val="{{ false }}"><div style="display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 18px; background: var(--sheet); border-left: 3px solid var(--ink)"><p style="margin: 0; font-size: 15.5px; line-height: 1.5">Welcome back. You were on theme 6. Your five lines are saved.</p><button type="button" onClick="{{ closeResume }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; font-size: 14px; color: var(--graphite);">Dismiss</button></div></sc-if>
+<div class="phoneonly" style="border: 1px solid var(--rule); border-radius: 8px; padding: 12px 16px"><div style="display: flex; justify-content: space-between; align-items: center"><p style="margin: 0; font-size: 15px">{{ lineCount }}</p><button type="button" onClick="{{ toggleSheet }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; font-size: 14px;">{{ sheetSign }}</button></div>
+<sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}"><div style="margin-top: 12px"><div style="background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 30px 30px 34px">
+<p style="margin: 0 0 6px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; color: var(--graphite)">Your Resolution</p>
+<p style="margin: 0 0 18px; font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1.08">Resolved, that {{ org }} should…</p>
+<sc-if value="{{ sheetEmpty }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding-top: 14px; border-top: 1px solid var(--rule); font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--graphite)">Your lines will appear here as you star them.</p></sc-if>
+<sc-for list="{{ sheetLines }}" as="l" hint-placeholder-count="5">
+<div class="{{ l.cls }}" style="padding: 13px 0 13px 14px; border-top: 1px solid var(--rule); box-shadow: inset 3px 0 0 var(--ink)">
+<p style="margin: 0 0 3px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; color: var(--graphite)">{{ l.theme }}</p>
+<sc-if value="{{ l.skip }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 14px; color: var(--graphite)">{{ l.text }}</p></sc-if>
+<sc-if value="{{ l.line }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">{{ l.text }}</p></sc-if>
+</div>
+</sc-for>
+</div></div></sc-if></div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 12px">
+<p style="margin: 0; font-size: 16px; font-weight: 500">{{ thName }}</p>
+<h1 class="q" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 54px; line-height: 1.02; font-weight: 400; letter-spacing: -0.01em; max-width: 780px">{{ thQ }}</h1>
+<button type="button" onClick="{{ toggleNote }}" aria-expanded="{{ noteP }}" style="align-self: flex-start; min-height: 40px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--graphite); background: none; border: none; cursor: pointer">What’s at stake {{ noteSign }}</button>
+<sc-if value="{{ noteOpen }}" hint-placeholder-val="{{ false }}"><p class="settle" style="margin: 0; max-width: 700px; padding: 4px 0 4px 18px; border-left: 2px solid var(--rule); font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.65; color: #34363F">{{ thNote }}</p></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; border-top: 1px solid var(--rule); max-width: 820px">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+<div class="row" style="display: grid; grid-template-columns: minmax(0, 1fr) 56px; align-items: center; border-bottom: 1px solid var(--rule); {{ r.rowCss }}">
+<button type="button" role="checkbox" aria-checked="{{ r.onP }}" onClick="{{ r.tick }}" style="display: flex; align-items: center; gap: 18px; min-height: 72px; padding: 14px 12px 14px 14px; text-align: left; background: none; border: none; cursor: pointer; color: var(--ink)"><span aria-hidden="true" style="flex: 0 0 auto; width: 22px; height: 22px; border: 1.5px solid; border-radius: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; transition: background-color .2s ease; {{ r.box }}">✓</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.4">{{ r.text }}</span></button>
+<button type="button" aria-pressed="{{ r.stP }}" aria-label="{{ r.label }}" title="Most mine" onClick="{{ r.starIt }}" style="width: 56px; height: 56px; padding: 0; font-size: 24px; line-height: 1; background: none; border: none; cursor: pointer; transition: color .2s ease; {{ r.star }}">★</button>
+</div>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 14px; color: var(--graphite)">Tick everything you agree with. Star the one that is most yours.</p>
+<div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; padding-top: 6px"><button type="button" onClick="{{ next }}" style="min-height: 52px; padding: 0 28px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; ">{{ nextLabel }}</button><button type="button" onClick="{{ back }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; color: var(--graphite);">Back</button><span style="flex: 1"></span><button type="button" onClick="{{ none }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; color: var(--graphite); font-size: 14.5px;">None of these is mine</button></div>
+</div>
+<aside class="deskonly" style="position: sticky; top: 32px"><div style="background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 30px 30px 34px">
+<p style="margin: 0 0 6px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; color: var(--graphite)">Your Resolution</p>
+<p style="margin: 0 0 18px; font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1.08">Resolved, that {{ org }} should…</p>
+<sc-if value="{{ sheetEmpty }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding-top: 14px; border-top: 1px solid var(--rule); font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--graphite)">Your lines will appear here as you star them.</p></sc-if>
+<sc-for list="{{ sheetLines }}" as="l" hint-placeholder-count="5">
+<div class="{{ l.cls }}" style="padding: 13px 0 13px 14px; border-top: 1px solid var(--rule); box-shadow: inset 3px 0 0 var(--ink)">
+<p style="margin: 0 0 3px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; color: var(--graphite)">{{ l.theme }}</p>
+<sc-if value="{{ l.skip }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 14px; color: var(--graphite)">{{ l.text }}</p></sc-if>
+<sc-if value="{{ l.line }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45">{{ l.text }}</p></sc-if>
+</div>
+</sc-for>
+</div></aside>
+</main></sc-if>
+<sc-if value="{{ isReview }}" hint-placeholder-val="{{ false }}"><main class="pad" style="max-width: 900px; margin: 0 auto; padding: 64px 56px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px">
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 64px; line-height: 1; font-weight: 400">Here is what you resolved.</h1>
+<div style="background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 34px 40px">
+<p style="margin: 0 0 14px; font-family: 'Instrument Serif', Georgia, serif; font-size: 30px">Resolved, that {{ org }} should…</p>
+<sc-for list="{{ reviewLines }}" as="l" hint-placeholder-count="8"><div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule)"><span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 12.5px; color: var(--graphite)">{{ l.theme }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.45">{{ l.text }}</span></span><button type="button" onClick="{{ l.change }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; font-size: 14px; color: var(--graphite);">Change</button></div></sc-for>
+</div>
+<sc-if value="{{ hasSkipped }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 15.5px; color: var(--graphite)">{{ skippedText }}</p></sc-if>
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 18px">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; line-height: 1.1; font-weight: 400">Which of these would be hardest for {{ short }} to adopt today?</h2>
+<p style="margin: 0; font-size: 15.5px; color: var(--graphite)">Choose one. This helps you see where conviction and readiness are furthest apart.</p>
+<div role="radiogroup" aria-label="Hardest to adopt" style="display: flex; flex-direction: column; gap: 8px; padding-top: 6px">
+<sc-for list="{{ reviewLines }}" as="l" hint-placeholder-count="8"><button type="button" role="radio" aria-checked="{{ l.hardP }}" onClick="{{ l.pickHard }}" style="min-height: 56px; padding: 12px 18px; text-align: left; font-family: 'Source Serif 4', Georgia, serif; font-size: 17.5px; line-height: 1.4; color: var(--ink); border: 1px solid; border-radius: 8px; cursor: pointer; transition: background-color .2s ease; {{ l.hardCss }}">{{ l.text }}</button></sc-for>
+<button type="button" role="radio" aria-checked="{{ noneHard }}" onClick="{{ pickNone }}" style="min-height: 52px; padding: 12px 18px; text-align: left; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15.5px; color: var(--ink); border: 1px solid; border-radius: 8px; cursor: pointer; {{ noneHardCss }}">None of them</button>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 24px; padding-top: 8px"><button type="button" onClick="{{ toLead }}" style="min-height: 52px; padding: 0 28px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; ">Continue</button></div>
+</main></sc-if>
+<sc-if value="{{ isLead }}" hint-placeholder-val="{{ false }}"><main class="pad" style="max-width: 820px; margin: 0 auto; padding: 72px 56px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 68px; line-height: 1; font-weight: 400">Leadership is something you do.</h1>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.5; color: #34363F">You don’t need a title to help {{ short }} decide this. What will you do with what you just resolved?</p>
+<div role="group" aria-label="What you will do" style="display: flex; flex-direction: column; border-top: 1px solid var(--rule)">
+<sc-for list="{{ acts }}" as="a" hint-placeholder-count="5"><button type="button" role="checkbox" aria-checked="{{ a.onP }}" onClick="{{ a.toggle }}" class="row" style="display: flex; align-items: center; gap: 18px; min-height: 64px; padding: 12px 14px; text-align: left; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 17px; color: var(--ink); background: none; border: none; border-bottom: 1px solid var(--rule); cursor: pointer"><span aria-hidden="true" style="flex: 0 0 auto; width: 22px; height: 22px; border: 1.5px solid; border-radius: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; transition: background-color .2s ease; {{ a.box }}">✓</span><span>{{ a.text }}</span></button></sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 6px">
+<label for="two" style="font-size: 15.5px; font-weight: 500">If you had two minutes in the meeting where {{ short }} decides this, what would you say? <span style="font-weight: 400; color: var(--graphite)">Optional</span></label>
+<textarea id="two" rows="3" onInput="{{ onTwo }}">{{ two }}</textarea>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="nm" style="font-size: 15px; font-weight: 500">Your name <span style="font-weight: 400; color: var(--graphite)">Optional</span></label><input id="nm" type="text" value="{{ nameVal }}" onInput="{{ onName }}"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="rl" style="font-size: 15px; font-weight: 500">Your role <span style="font-weight: 400; color: var(--graphite)">Optional</span></label><input id="rl" type="text" value="{{ roleVal }}" onInput="{{ onRole }}"></div>
+</div>
+<div style="display: flex; align-items: center; gap: 24px; padding-top: 6px"><button type="button" onClick="{{ toMine }}" style="min-height: 52px; padding: 0 28px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; ">See my Resolution</button><button type="button" onClick="{{ toReview }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; color: var(--graphite);">Back</button></div>
+</main></sc-if>
+<sc-if value="{{ isMine }}" hint-placeholder-val="{{ false }}"><main class="pad" style="max-width: 1260px; margin: 0 auto; padding: 48px 56px 96px; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 820px) 300px; gap: 56px; align-items: start" class="minegrid">
+<article style="background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 64px 72px 56px; display: flex; flex-direction: column; gap: 22px" class="docpad">
+<p style="margin: 0; font-size: 14px; color: var(--graphite)">My Resolution for {{ org }}</p>
+<h1 class="h1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 46px; line-height: 1.04; font-weight: 400">Resolved, that {{ org }} should…</h1>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+<sc-for list="{{ docLines }}" as="l" hint-placeholder-count="8"><li style="display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 18px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule)"><span style="font-size: 13px; color: var(--graphite)">{{ l.theme }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.45">{{ l.text }}</span></li></sc-for>
+</ol>
+<sc-if value="{{ hasHard }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; gap: 6px; padding-top: 10px"><p style="margin: 0; font-size: 14px; font-weight: 500">Hardest for us to adopt today</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5">{{ hardLine }}</p></div></sc-if>
+<sc-if value="{{ hasActs }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 14px; font-weight: 500">What I’ll do</p><sc-for list="{{ chosenActs }}" as="a" hint-placeholder-count="2"><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5">{{ a.t }}</p></sc-for></div></sc-if>
+<sc-if value="{{ hasTwo }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 14px; font-weight: 500">If I had two minutes</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5">{{ twoText }}</p></div></sc-if>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 24px; max-width: 420px"><div style="height: 36px; border-bottom: 1px solid var(--ink)"></div><p style="margin: 0; font-size: 14px; color: #34363F">{{ signer }}</p><p style="margin: 0; font-size: 13.5px; color: var(--graphite)">{{ date }}</p></div>
+</article>
+<aside class="noprint" style="position: sticky; top: 32px; display: flex; flex-direction: column; gap: 16px">
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ openShare }}" style="min-height: 52px; padding: 0 28px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; width: 100%;">Share with someone who decides</button></sc-if>
+<sc-if value="{{ notReady }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ closeShare }}" style="min-height: 52px; padding: 0 28px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; width: 100%;">Keep it private for now</button><button type="button" onClick="{{ openShare }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; ">Share with someone who decides</button></sc-if>
+<div style="display: flex; flex-direction: column; gap: 2px"><button type="button" onClick="{{ openInvite }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; ">Invite colleagues to write theirs</button><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Download as PDF</a><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">Print</a></div>
+<p style="margin: 0; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 14px; line-height: 1.55; color: var(--graphite)">Only people you share this with can see it. Inviting a colleague never shows them your choices.</p>
+<a href="R3-Others.dc.html" style="font-size: 15px; padding-top: 6px">See how others have resolved</a>
+</aside>
+</main>
+<sc-if value="{{ share }}" hint-placeholder-val="{{ false }}">
+<div class="noprint" style="position: fixed; inset: 0; z-index: 10; background: rgba(28,29,36,.38); display: flex; align-items: flex-start; justify-content: center; padding: 64px 20px; box-sizing: border-box; overflow: auto">
+<div role="dialog" aria-modal="true" aria-label="Share and invite" class="settle" style="width: 100%; max-width: 760px; background: #fff; border-radius: 10px; padding: 28px 32px 30px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px"><div role="tablist" style="display: flex; gap: 22px"><button type="button" role="tab" aria-selected="{{ tabShare }}" onClick="{{ toShare }}" style="min-height: 44px; padding: 0; font-size: 16px; font-weight: 500; background: none; border: none; cursor: pointer; {{ tabShareCss }}">Share my Resolution</button><button type="button" role="tab" aria-selected="{{ tabInvite }}" onClick="{{ toInvite }}" style="min-height: 44px; padding: 0; font-size: 16px; font-weight: 500; background: none; border: none; cursor: pointer; {{ tabInviteCss }}">Invite colleagues</button></div><button type="button" onClick="{{ closeShare }}" style="min-height: 44px; padding: 0; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; color: var(--graphite); font-size: 14.5px;">Close</button></div>
+<sc-if value="{{ tabShare }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="to1" style="font-size: 15px; font-weight: 500">Send to</label><input id="to1" type="text" value="james@riverbendyf.org"></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><p style="margin: 0; font-size: 15px; font-weight: 500">Include</p>
+<button type="button" role="checkbox" aria-checked="{{ inclHardP }}" onClick="{{ toggleHard }}" style="display: flex; align-items: center; gap: 14px; min-height: 44px; padding: 0; font-size: 15.5px; color: var(--ink); background: none; border: none; cursor: pointer; text-align: left"><span aria-hidden="true" style="flex: 0 0 auto; width: 22px; height: 22px; border: 1.5px solid; border-radius: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; transition: background-color .2s ease; {{ inclHardBox }}">✓</span><span>The line I think is hardest to adopt</span></button>
+<button type="button" role="checkbox" aria-checked="{{ inclTwoP }}" onClick="{{ toggleTwo }}" style="display: flex; align-items: center; gap: 14px; min-height: 44px; padding: 0; font-size: 15.5px; color: var(--ink); background: none; border: none; cursor: pointer; text-align: left"><span aria-hidden="true" style="flex: 0 0 auto; width: 22px; height: 22px; border: 1.5px solid; border-radius: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; transition: background-color .2s ease; {{ inclTwoBox }}">✓</span><span>What I’d say with two minutes</span></button></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="n1" style="font-size: 15px; font-weight: 500">Note</label><textarea id="n1" rows="3">{{ shareNote }}</textarea></div>
+<div style="padding: 16px 18px; background: var(--sheet); border-radius: 6px; display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 13px; color: var(--graphite)">What James will see</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5">Your note, your Resolution’s lines and what you’ll do.</p><sc-if value="{{ prevHard }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5">The line you think is hardest to adopt.</p></sc-if><sc-if value="{{ prevTwo }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5">What you’d say with two minutes.</p></sc-if></div>
+<button type="button" role="switch" aria-checked="{{ pubP }}" onClick="{{ togglePub }}" style="display: flex; align-items: center; gap: 14px; min-height: 48px; padding: 0; text-align: left; font-size: 15px; color: var(--ink); background: none; border: none; cursor: pointer"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 22px; border-radius: 999px; padding: 2px; box-sizing: border-box; transition: background-color .2s ease; {{ pubTrack }}"><span style="display: block; width: 18px; height: 18px; border-radius: 50%; transition: transform .2s ease; {{ pubKnob }}"></span></span><span>Make it public, so others across the network can find it. Your name and organization will show.</span></button>
+<div><button type="button" onClick="{{ closeShare }}" style="min-height: 52px; padding: 0 28px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; ">Send</button></div>
+</div></sc-if>
+<sc-if value="{{ tabInvite }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="to2" style="font-size: 15px; font-weight: 500">Email addresses</label><input id="to2" type="text" placeholder="Separate with commas"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="n2" style="font-size: 15px; font-weight: 500">Note</label><textarea id="n2" rows="3">{{ inviteNote }}</textarea></div>
+<div style="padding: 16px 18px; background: var(--sheet); border-radius: 6px"><p style="margin: 0 0 4px; font-size: 13px; color: var(--graphite)">What they will see</p><p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5">Your note and a link to write their own. None of your choices.</p></div>
+<div style="display: flex; align-items: center; gap: 20px"><button type="button" onClick="{{ closeShare }}" style="min-height: 52px; padding: 0 28px; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; color: #fff; background: var(--ink); border: none; border-radius: 999px; cursor: pointer; ">Send invitations</button><a href="#" style="font-size: 15px">Copy link instead</a></div>
+</div></sc-if>
+</div></div>
+</sc-if></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"preview": {"editor": "enum", "options": ["Arrive", "Theme, fresh", "Theme, mid-way", "Resume", "Review", "Leadership turn", "My Resolution", "Share panel"], "default": "Theme, mid-way"}, "edition": {"editor": "enum", "options": ["Nonprofit", "Church", "Seminary", "Denomination"], "default": "Nonprofit"}, "invited": {"editor": "boolean", "default": false}, "$preview": {"width": 390, "height": 1700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = [["Presence", "Where must a person always be present in our work?", ["We should name the work that is made of presence, and keep it human.", "We should never put what someone told us in confidence into an AI tool.", "We should keep the moments of care human.", "No one we serve should believe a person attended to them when none did.", "If AI helps more people get a timely answer, that is care too."], "Some work matters because a person does it: a hospital visit, a hard conversation, a prayer, a welcome. Some leaders want that work named and kept human, whatever AI could offer. Others point out that a timely, accurate answer at two in the morning can be real care, especially when no person is available. The first guards something irreplaceable. The second reaches people the first might miss."], ["Voice", "When people receive words in our name, what should they be able to assume?", ["Everything we publish should sound like us and say what we believe.", "A person should remain responsible for anything sent in our name.", "We should say when AI substantially shaped something presented as ours.", "We should resist sounding, deciding and serving like everyone else.", "Clear and well made should matter more than whose words they are."], "AI writes clear, polished prose that sounds like everyone else\u2019s. Some leaders hold that what an organization publishes should sound like its people, and that readers deserve to know when a machine shaped it. Others care most that communication is clear and useful, whoever drafted it. The first takes more effort and some disclosure. The second risks an organization that slowly stops sounding like itself."], ["Truth", "How open should we be about how AI is used here?", ["We should say plainly how AI is used here, including by our leaders.", "We should name what\u2019s true now and expect to name it again.", "We should know what AI already tells people about us.", "How each person uses AI should stay their own business.", "Until we have a policy, we should keep our use of AI quiet."], "In most organizations, people are already using AI, often quietly. Some leaders want that use said out loud, including their own, so decisions start from what is actually happening. Others see each person\u2019s use as private, or would rather wait for a policy before talking about it. Openness can feel exposing and may surface uncomfortable things. Silence protects people for now, but decisions get made without the facts."], ["Thinking", "Which judgment should stay with us, even when AI could offer one?", ["We should form our own views before we ask AI for one.", "We should notice when we\u2019re becoming dependent, and step back.", "We should use AI as a thinking partner, not an answer machine.", "We should let AI draft first, and do our real thinking in the edit.", "For routine decisions, we should trust a good AI recommendation by default."], "AI can draft a memo, summarize a meeting and recommend a decision in seconds. Some leaders want people to think first and use AI to test their thinking, because judgment weakens when it isn\u2019t exercised. Others see letting AI draft first as a sensible division of labor, with the real thinking happening in the edit. The first is slower. The second is faster, but it becomes easy to stop noticing what you\u2019ve stopped deciding."], ["Learning", "How should our people learn to work with AI?", ["We should keep learning as if we just arrived.", "We should make time for everyone here to try new things with AI.", "We should learn from people whose wisdom predates AI.", "We should wait for tools to prove themselves before we train anyone.", "We should leave AI fluency to a few specialists."], "AI tools change every few months, so whatever anyone learned last year is already partly out of date. Some leaders want everyone experimenting now, because fluency only comes from use. Others would rather wait for the tools to settle, or leave fluency to a few people, so staff time stays on the mission. The first costs time and some false starts. The second risks a staff that can\u2019t judge what the specialists bring back."], ["Time", "What should happen to the time AI saves?", ["We should give the time AI saves back to people, to creation and to play.", "We should let roles change and help people grow into new work.", "We shouldn\u2019t assume saved time has to be filled with more output.", "Time AI saves should first lower our costs, so more reaches the mission.", "If AI can do a role well, we should let that role get smaller."], "When AI saves hours, someone decides where those hours go. Some leaders want them given back to people as more presence, more creativity and more rest, with room for roles to grow. Others want the savings to lower costs so more money reaches the mission, even if some roles get smaller. Both can be faithful choices. The first protects people and culture. The second stretches resources further for the people being served."], ["Risk", "How much should we try while the stakes are real?", ["We should keep a place to experiment where being wrong is survivable.", "We should tolerate the mess that experimenting brings.", "We should share what didn\u2019t work as readily as what did.", "When in doubt, we should slow down.", "With trust at stake, we should wait until others have proven it safe."], "Learning what AI is good for means trying things, and some of them won\u2019t work. Some leaders want a safe place to experiment and are willing to tolerate the mess. Others, knowing that trust is what the organization serves with, would rather wait until a use has been proven safe elsewhere. Experimenting risks visible mistakes. Waiting risks learning late, and on someone else\u2019s terms."], ["People", "Who should we work this out with?", ["We shouldn\u2019t walk this alone.", "We should find others beyond our walls who are walking it too.", "We should reach past the relationships we already have.", "We should help voices unlike ours, and still unseen, become easier to find.", "This is an internal matter, and we should keep it inside our walls."], "Few organizations have walked this road, and none have walked it far. Some leaders want to find others beyond their walls, learning together and building relationships they don\u2019t have yet. Others see AI decisions as internal matters best kept in-house. Reaching out takes time and means being seen while still figuring things out. Staying inside keeps things private, but it means learning alone."], ["Leading", "What kind of leadership does this need from us?", ["Leading through AI should be something we practice, not only a policy we write.", "We should decide what AI may touch before it touches anything that matters.", "We should make ethical decisions as we go, without waiting for certainty.", "Our leaders should put their own practice in order first.", "A clear policy should be most of the work, with the rest left to staff."], "A written policy can settle a lot: what\u2019s allowed, what isn\u2019t, and who decides. Some leaders see policy as most of the job, with the day-to-day left to staff. Others see leading through AI as an ongoing practice that leaders model, try and revise as they go. Policy-first is clear and contained, but it can go stale quickly. Practice-first asks more of leaders\u2019 time and attention."]]; const ACTS = ["I\u2019ll share this with someone who decides.", "I\u2019ll invite a colleague to write theirs.", "I\u2019ll ask for this conversation at our next team meeting.", "I have authority to begin this conversation for our organization.", "I\u2019m not ready to share this yet."];
+    const ed = this.props.edition ?? 'Nonprofit';
+    const preview = this.props.preview ?? 'Theme, mid-way';
+    const invited = !!this.props.invited;
+    const ORG = { Nonprofit: 'Riverbend Youth & Family', Church: 'Grace Street Church', Seminary: 'Northfield Seminary', Denomination: 'the Prairie Network' };
+    const TYPE = { Nonprofit: 'nonprofit', Church: 'church', Seminary: 'seminary', Denomination: 'network' };
+    const full8 = { 0: 0, 1: 1, 2: 0, 3: 0, 4: 0, 5: 0, 7: 1, 8: 0 };
+    const tickFrom = (st) => { const o = {}; Object.keys(st).forEach((i) => { o[i + '-' + st[i]] = 1; }); return o; };
+    const P = {
+      'Arrive': { step: 'arrive' },
+      'Theme, fresh': { step: 'theme', ti: 0 },
+      'Theme, mid-way': { step: 'theme', ti: 5, stars: { 0: 0, 1: 1, 2: 0, 3: 0, 4: 0 }, ticks: Object.assign(tickFrom({ 0: 0, 1: 1, 2: 0, 3: 0, 4: 0 }), { '0-1': 1, '1-0': 1, '1-2': 1, '2-1': 1, '3-2': 1, '5-2': 1 }), lastStar: 4 },
+      'Resume': { step: 'theme', ti: 5, resume: true, stars: { 0: 0, 1: 1, 2: 0, 3: 0, 4: 0 }, ticks: tickFrom({ 0: 0, 1: 1, 2: 0, 3: 0, 4: 0 }) },
+      'Review': { step: 'review', stars: full8, ticks: tickFrom(full8), skipped: { 6: true } },
+      'Leadership turn': { step: 'lead', stars: full8, ticks: tickFrom(full8), skipped: { 6: true }, hardest: 2 },
+      'My Resolution': { step: 'mine', stars: full8, ticks: tickFrom(full8), skipped: { 6: true }, hardest: 2, acts: { 0: 1, 2: 1 }, two: 'I would ask us to decide where the saved hours go before anyone decides it for us.', name: 'Priya', role: 'Associate director of programs' },
+      'Share panel': { step: 'mine', share: true, stars: full8, ticks: tickFrom(full8), skipped: { 6: true }, hardest: 2, acts: { 0: 1, 2: 1 }, two: 'I would ask us to decide where the saved hours go before anyone decides it for us.', name: 'Priya', role: 'Associate director of programs' }
+    };
+    const base = Object.assign({ step: 'arrive', ti: 0, stars: {}, ticks: {}, skipped: {}, acts: {}, two: '', name: '', role: '', hardest: null, note: -1, share: false, shareTab: 'share', inclHard: true, inclTwo: true, pub: false, sheetOpen: false, orgType: ed }, P[preview] || {});
+    const s = Object.assign({}, base, this.state || {});
+    const set = (o) => this.setState(Object.assign({}, s, o));
+    const org = (s.org && s.org.trim()) || ORG[s.orgType] || ORG.Nonprofit;
+    const short = org === 'Riverbend Youth & Family' ? 'Riverbend' : (org === 'Grace Street Church' ? 'Grace Street' : (org === 'Northfield Seminary' ? 'Northfield' : org));
+    const textOf = (i, j) => (s.orgType === 'Church' && i === 0 && j === 2) ? 'We should keep prayer human.' : T[i][2][j];
+    // theme screen
+    const ti = Math.max(0, Math.min(8, s.ti));
+    const th = T[ti];
+    const rows = th[2].map((txt, j) => {
+      const key = ti + '-' + j, on = !!s.ticks[key], st = s.stars[ti] === j;
+      return { text: textOf(ti, j), onP: on ? 'true' : 'false', stP: st ? 'true' : 'false', label: 'Most mine: ' + textOf(ti, j),
+        box: on ? 'background: var(--ink); border-color: var(--ink); color: #fff;' : 'background: #fff; border-color: #9A9DAA; color: transparent;',
+        star: st ? 'color: var(--accent);' : 'color: #C3C6D0;',
+        rowCss: st ? 'background: var(--accent-tint);' : '',
+        tick: () => { const t = Object.assign({}, s.ticks); const sr = Object.assign({}, s.stars); if (t[key]) { delete t[key]; if (sr[ti] === j) delete sr[ti]; } else { t[key] = 1; } set({ ticks: t, stars: sr }); },
+        starIt: () => { const t = Object.assign({}, s.ticks); const sr = Object.assign({}, s.stars); const sk = Object.assign({}, s.skipped); if (sr[ti] === j) { delete sr[ti]; } else { sr[ti] = j; t[key] = 1; delete sk[ti]; } set({ ticks: t, stars: sr, skipped: sk, lastStar: ti }); } };
+    });
+    const marks = T.map((x, i) => ({ css: i === ti && s.step === 'theme' ? 'background: var(--accent);' : (s.stars[i] !== undefined ? 'background: var(--ink);' : (s.skipped[i] ? 'background: repeating-linear-gradient(90deg, #9A9DAA 0 3px, transparent 3px 6px);' : 'background: var(--rule);')), label: x[0] }));
+    const lines = T.map((x, i) => s.stars[i] !== undefined ? { i, theme: x[0], text: textOf(i, s.stars[i]), cls: (s.lastStar === i && s.step === 'theme') ? 'settle ruleflash' : '', hard: s.hardest === i } : null).filter((x) => x);
+    const skippedNames = T.filter((x, i) => s.skipped[i] && s.stars[i] === undefined).map((x) => x[0]);
+    const sheetLines = T.map((x, i) => s.stars[i] !== undefined ? { theme: x[0], text: textOf(i, s.stars[i]), skip: false, line: true, cls: (s.lastStar === i) ? 'settle ruleflash' : '' } : (s.skipped[i] ? { theme: x[0], text: 'No line from this theme', skip: true, line: false, cls: '' } : null)).filter((x) => x);
+    const next = () => { const sk = Object.assign({}, s.skipped); if (s.stars[ti] === undefined) sk[ti] = true; if (ti < 8) set({ ti: ti + 1, skipped: sk, note: -1, resume: false, lastStar: -1 }); else set({ step: 'review', skipped: sk, note: -1, resume: false }); };
+    const none = () => { const sk = Object.assign({}, s.skipped); sk[ti] = true; const sr = Object.assign({}, s.stars); delete sr[ti]; const t = Object.assign({}, s.ticks); th[2].forEach((x, j) => delete t[ti + '-' + j]); if (ti < 8) set({ ti: ti + 1, skipped: sk, stars: sr, ticks: t, note: -1, lastStar: -1 }); else set({ step: 'review', skipped: sk, stars: sr, ticks: t }); };
+    const back = () => { if (ti > 0) set({ ti: ti - 1, note: -1, lastStar: -1 }); else set({ step: 'arrive' }); };
+    const types = ['Church', 'Nonprofit', 'Seminary', 'Denomination'].map((k) => ({ label: { Church: 'Church', Nonprofit: 'Nonprofit', Seminary: 'Seminary or college', Denomination: 'Denomination or network' }[k], pressed: s.orgType === k ? 'true' : 'false', css: s.orgType === k ? 'background: var(--ink); color: #fff; border-color: var(--ink);' : 'background: #fff; color: var(--ink); border-color: var(--rule);', pick: () => set({ orgType: k }) }));
+    const reviewLines = lines.map((l) => ({ theme: l.theme, text: l.text, change: () => set({ step: 'theme', ti: l.i, lastStar: -1 }), hardCss: s.hardest === l.i ? 'border-color: var(--accent); background: var(--accent-tint);' : 'border-color: var(--rule); background: #fff;', hardP: s.hardest === l.i ? 'true' : 'false', pickHard: () => set({ hardest: l.i }) }));
+    const acts = ACTS.map((a, i) => ({ text: a, onP: s.acts[i] ? 'true' : 'false', box: s.acts[i] ? 'background: var(--ink); border-color: var(--ink); color: #fff;' : 'background: #fff; border-color: #9A9DAA; color: transparent;', toggle: () => { const n = Object.assign({}, s.acts); if (n[i]) delete n[i]; else n[i] = 1; set({ acts: n }); } }));
+    const chosenActs = ACTS.filter((a, i) => s.acts[i] && i !== 4).map((t) => ({ t }));
+    const notReady = !!s.acts[4];
+    const hardLine = s.hardest !== null && s.hardest >= 0 && s.stars[s.hardest] !== undefined ? textOf(s.hardest, s.stars[s.hardest]) : '';
+    const today = 'October 6, 2026';
+    return {
+      isArrive: s.step === 'arrive', isTheme: s.step === 'theme', isReview: s.step === 'review', isLead: s.step === 'lead', isMine: s.step === 'mine',
+      invited, org, short, typeWord: TYPE[s.orgType] || 'organization', types, orgVal: s.org || '', onOrg: (e) => set({ org: e.target.value }),
+      begin: () => set({ step: 'theme', ti: 0 }),
+      pos: String(ti + 1), thName: th[0], thQ: th[1], thNote: th[3], noteOpen: s.note === ti, noteP: s.note === ti ? 'true' : 'false', noteSign: s.note === ti ? '\u2212' : '+', toggleNote: () => set({ note: s.note === ti ? -1 : ti }),
+      rows, marks, next, back, none, nextLabel: ti < 8 ? 'Next theme' : 'Review my Resolution', resume: !!s.resume, closeResume: () => set({ resume: false }),
+      sheetLines, sheetEmpty: sheetLines.length === 0, lineCount: String(lines.length) + (lines.length === 1 ? ' line so far' : ' lines so far'), sheetOpen: !!s.sheetOpen, toggleSheet: () => set({ sheetOpen: !s.sheetOpen }), sheetSign: s.sheetOpen ? 'Hide' : 'Show',
+      reviewLines, hasSkipped: skippedNames.length > 0, skippedText: skippedNames.length ? 'You left ' + skippedNames.join(' and ') + ' without a line. That\u2019s fine.' : '', noneHard: s.hardest === -1, noneHardCss: s.hardest === -1 ? 'border-color: var(--accent); background: var(--accent-tint);' : 'border-color: var(--rule); background: #fff;', pickNone: () => set({ hardest: -1 }), toLead: () => set({ step: 'lead' }), toReview: () => set({ step: 'review' }),
+      acts, two: s.two, onTwo: (e) => set({ two: e.target.value }), nameVal: s.name, onName: (e) => set({ name: e.target.value }), roleVal: s.role, onRole: (e) => set({ role: e.target.value }), toMine: () => set({ step: 'mine' }),
+      docLines: lines.map((l) => ({ theme: l.theme, text: l.text })), hasHard: !!hardLine, hardLine, chosenActs, hasActs: chosenActs.length > 0, hasTwo: !!(s.two && s.two.trim()), twoText: s.two,
+      signer: s.name ? s.name + (s.role ? ', ' + s.role : '') : 'A member of ' + org, date: today, notReady, ready: !notReady,
+      share: !!s.share, openShare: () => set({ share: true, shareTab: 'share' }), openInvite: () => set({ share: true, shareTab: 'invite' }), closeShare: () => set({ share: false }),
+      tabShare: s.shareTab === 'share', tabInvite: s.shareTab === 'invite', tabShareCss: s.shareTab === 'share' ? 'color: var(--ink); box-shadow: inset 0 -2px 0 var(--ink);' : 'color: var(--graphite);', tabInviteCss: s.shareTab === 'invite' ? 'color: var(--ink); box-shadow: inset 0 -2px 0 var(--ink);' : 'color: var(--graphite);', toShare: () => set({ shareTab: 'share' }), toInvite: () => set({ shareTab: 'invite' }),
+      inclHardP: s.inclHard ? 'true' : 'false', inclTwoP: s.inclTwo ? 'true' : 'false', pubP: s.pub ? 'true' : 'false', inclHardBox: s.inclHard ? 'background: var(--ink); border-color: var(--ink); color: #fff;' : 'background: #fff; border-color: #9A9DAA; color: transparent;', inclTwoBox: s.inclTwo ? 'background: var(--ink); border-color: var(--ink); color: #fff;' : 'background: #fff; border-color: #9A9DAA; color: transparent;', pubKnob: s.pub ? 'transform: translateX(18px); background: #fff;' : 'transform: none; background: #fff;', pubTrack: s.pub ? 'background: var(--ink);' : 'background: #C3C6D0;',
+      toggleHard: () => set({ inclHard: !s.inclHard }), toggleTwo: () => set({ inclTwo: !s.inclTwo }), togglePub: () => set({ pub: !s.pub }),
+      prevHard: s.inclHard && !!hardLine, prevTwo: s.inclTwo && !!(s.two && s.two.trim()),
+      shareNote: 'I wrote down what I believe ' + short + ' should do as AI changes our work. I\u2019d value ten minutes to talk it through.',
+      inviteNote: 'I wrote a Resolution for ' + short + ' about AI. It takes about four minutes. Would you write yours? You won\u2019t see mine first, and I won\u2019t see yours unless you share it.'
+    };
+  }
+}
+</script>
+</body>
+</html>

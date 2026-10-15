@@ -91,4 +91,4 @@ Paste every user-visible string from the board verbatim. If a line reads oddly, 
 
 ## Page queue
 
-Release 1, in order: S01 home-page-new (done), S02 resolve-new (the exercise, result page and Your people), S03 map-new, S04 guidebook-new, S05 leaders-new and leader profiles, S06 work-with-us-new with the inquiry form, S07 assessment-new, S08 audience pages (churches-new, nonprofits-new, institutions-new), S09 about-new on the long-form template. Signed-in Map workspaces come after the back-end merge.
+Release 1, in order: S01 home-page-new (done), S02 resolve-new (done, front end only), S03 map-new, S04 guidebook-new, S05 leaders-new and leader profiles, S06 work-with-us-new with the inquiry form, S07 assessment-new, S08 audience pages (churches-new, nonprofits-new, institutions-new), S09 about-new on the long-form template. Signed-in Map workspaces come after the back-end merge.
