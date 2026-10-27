@@ -173,7 +173,7 @@ export function StoryPage() {
           </div>
           <p style={{ marginTop: 32, fontFamily: "var(--mv-font-ui)", fontSize: 16 }}>
             What do you believe your organization should do about AI?{" "}
-            <Link href={MV_ROUTES.resolve}>Write your Resolution</Link>. About four minutes.
+            <Link href={MV_ROUTES.resolve}>Write your Resolution</Link>. About twelve minutes.
           </p>
         </article>
         <aside className="mv-toc" style={{ order: 2, gap: 24 }}>

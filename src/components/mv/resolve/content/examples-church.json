@@ -1,0 +1,397 @@
+{
+ "q01a": [
+  "We should review AI features in our church management software the way we review any church software.",
+  "We should judge each AI tool by whether it serves our ministry, not by how new it is.",
+  "We should add AI tools to the same approval process we use for giving and attendance software."
+ ],
+ "q01b": [
+  "We should check what AI tools say about our beliefs before we rely on them.",
+  "We should give AI only our own approved teaching when we ask it for study materials.",
+  "We should have a pastor review any AI summary of Scripture before it reaches a small group."
+ ],
+ "q01c": [
+  "We should ask who owns and profits from each AI tool our church adopts.",
+  "We should check what AI vendors do with our members’ giving and prayer records.",
+  "We should keep our sermons and teaching in files we control, not only inside one vendor’s platform."
+ ],
+ "q01d": [
+  "We should name the parts of our ministry that AI may not touch.",
+  "We should protect hospital visits, prayer and discipleship from being replaced by automated messages.",
+  "We should keep our children’s and youth ministry led by people, not AI tools."
+ ],
+ "q01e": [
+  "We should caption every service so members who are deaf or hard of hearing can follow.",
+  "We should use AI translation so families who speak other languages can follow announcements.",
+  "We should let a small church with no paid staff use AI to keep up with office work."
+ ],
+ "q02a": [
+  "We should test every AI decision against our statement of faith.",
+  "We should study what Scripture says about wisdom, work and truth before setting our AI guidelines.",
+  "We should ask our denomination or tradition what it has taught about new technology."
+ ],
+ "q02b": [
+  "We should ask how each AI use affects neighbors outside our congregation.",
+  "We should consider members and neighbors without smartphones or internet before any AI change.",
+  "We should make sure our AI choices do not put our neighbors’ information at risk."
+ ],
+ "q02c": [
+  "We should drop any AI use that saves staff time but weakens pastoral care.",
+  "We should keep calling and visiting members in person even when an automated message would be faster.",
+  "We should judge AI in discipleship by its effect on people, not by hours saved."
+ ],
+ "q02d": [
+  "We should ask whether members would still trust us if they saw how we use AI.",
+  "We should protect prayer requests and confidences before any gain in efficiency.",
+  "We should never use AI in a way we would be unwilling to explain from the pulpit."
+ ],
+ "q02e": [
+  "We should check how an AI use is working after one season before expanding it.",
+  "We should ask other churches what actually happened when they used AI in ministry.",
+  "We should stop any AI use that we find is causing confusion or harm."
+ ],
+ "q02f": [
+  "We should include our teenagers in writing our AI rules.",
+  "We should ask older members how AI changes in communication would affect them.",
+  "We should ask members with disabilities which AI accessibility tools actually help them."
+ ],
+ "q03a": [
+  "We should ask every staff member and key volunteer which AI tools they use and for what.",
+  "We should list every AI feature already built into our church software.",
+  "We should ask our worship and communications teams to show how they already use AI, without blame."
+ ],
+ "q03b": [
+  "We should teach older members how to spot AI voice-cloning scam calls.",
+  "We should warn members that we will never ask for gift cards or money by text or email.",
+  "We should teach families to agree on a code word to check calls that sound like a relative."
+ ],
+ "q03c": [
+  "We should keep pastoral notes and counseling records out of all AI tools.",
+  "We should never put prayer requests or children’s names into free AI tools.",
+  "We should write a one-page rule on sensitive information for staff and volunteers this month."
+ ],
+ "q03d": [
+  "We should let staff try AI on office tasks before deciding anything about ministry.",
+  "We should have our administrator try AI on the bulletin layout for one season.",
+  "We should let a few volunteers test AI on room scheduling before anyone else uses it."
+ ],
+ "q03e": [
+  "We should explain our current AI position to the congregation this year.",
+  "We should tell volunteers in writing which AI uses are allowed while we decide the rest.",
+  "We should have our pastor say plainly from the pulpit where we stand on AI so far."
+ ],
+ "q03f": [
+  "We should put AI guidelines on the elders’ agenda for a decision by a set date.",
+  "We should review our AI decisions at every annual congregational meeting.",
+  "We should set a date for our church plant’s leadership team to decide on AI."
+ ],
+ "q04a": [
+  "We should bring our AI guidelines to the elders for a recorded vote.",
+  "We should have our church council hear from staff and members before adopting an AI policy.",
+  "We should have one AI policy approved by our elders for every campus."
+ ],
+ "q04b": [
+  "We should hold listening sessions with members before setting AI guidelines.",
+  "We should discuss AI questions in small groups before the church decides.",
+  "We should decide our AI policy at a congregational meeting, not by leaders alone."
+ ],
+ "q04c": [
+  "We should adopt our denomination’s AI guidance and add our own rules for pastoral care.",
+  "We should ask our network what AI guidance it gives church plants before writing our own.",
+  "We should follow our denomination’s data rules for any AI that touches member records."
+ ],
+ "q04d": [
+  "We should ask parents before AI is used in anything involving children.",
+  "We should hear from care ministry volunteers before AI is used in follow-up with members.",
+  "We should include Spanish-speaking members in decisions about AI translation."
+ ],
+ "q04e": [
+  "We should name one elder accountable for our AI decisions.",
+  "We should list one staff contact for AI questions in our member handbook.",
+  "We should have a pastor, not only a technology volunteer, answer for our AI use."
+ ],
+ "q04f": [
+  "We should tell the congregation if AI mishandled member information.",
+  "We should contact a family directly if an AI error affected their child’s information.",
+  "We should correct and apologize publicly for any AI error in a sermon or announcement."
+ ],
+ "q05a": [
+  "We should turn off vendor AI features and explain why to the congregation.",
+  "We should still teach members to recognize AI scams even though we do not use AI.",
+  "We should still set rules for sensitive information for volunteers who use AI at home."
+ ],
+ "q05b": [
+  "We should keep AI out of preaching and pastoral care, and allow it for scheduling.",
+  "We should allow AI to format the bulletin but not to write prayers or teaching.",
+  "We should let our office use AI for bookkeeping and keep it out of care ministry."
+ ],
+ "q05c": [
+  "We should try each AI use for one season, then review it with the elders.",
+  "We should require a short written request before any ministry adopts an AI tool.",
+  "We should start with captions on Sunday and decide later about any other AI use."
+ ],
+ "q05d": [
+  "We should add AI to our existing technology, privacy and child safety policies.",
+  "We should review AI tools the way we review any church software.",
+  "We should have staff request AI tools through our usual budget process."
+ ],
+ "q05e": [
+  "We should caption services live with AI and correct errors afterward.",
+  "We should start using AI translation for newcomers now rather than wait.",
+  "We should use AI so our volunteer-run office can respond to visitors within a day."
+ ],
+ "q06a": [
+  "We should have only people, never AI, teach and care for our children and youth.",
+  "We should keep hospital and homebound visits personal, with no AI substitute.",
+  "We should have a person, not a chatbot, follow up with first-time guests."
+ ],
+ "q06b": [
+  "We should have elders, not AI, decide on membership and church discipline.",
+  "We should have the benevolence team, not AI, decide who receives financial help.",
+  "We should have people, not AI, screen and choose staff and volunteer leaders."
+ ],
+ "q06c": [
+  "We should never use AI chatbots to give pastoral counsel or spiritual direction.",
+  "We should keep AI note-takers out of counseling sessions and prayer meetings.",
+  "We should have a pastor or trained member respond to every request for care."
+ ],
+ "q06d": [
+  "We should have our pastors write their own sermons.",
+  "We should never publish an article or devotional under a pastor’s name that AI wrote.",
+  "We should have small group leaders prepare their own teaching rather than read AI scripts."
+ ],
+ "q06e": [
+  "We should keep members reading Scripture themselves rather than relying on AI summaries.",
+  "We should have new believers work through discipleship lessons with a person, not an AI tutor.",
+  "We should have students in confirmation class write their own answers without AI."
+ ],
+ "q07a": [
+  "We should never let a chatbot pray with someone as if it were a person.",
+  "We should label every automated text and email from the church as automated.",
+  "We should make sure our website chatbot says it is AI in its first message."
+ ],
+ "q07b": [
+  "We should never use AI to send pressure messages to members who have stopped attending.",
+  "We should never use AI to write giving appeals aimed at members’ fears or guilt.",
+  "We should never use AI to target newcomers with repeated messages they did not ask for."
+ ],
+ "q07c": [
+  "We should never paste prayer requests into a free AI tool.",
+  "We should never put counseling notes or children’s records into consumer AI tools.",
+  "We should never upload our membership directory to an AI tool we have not approved."
+ ],
+ "q07d": [
+  "We should never use AI to predict which members will leave.",
+  "We should never use AI to score members by giving or engagement.",
+  "We should never use facial recognition on our security cameras or at check-in."
+ ],
+ "q07e": [
+  "We should never create an AI version of our pastor’s voice or face.",
+  "We should never publish AI-written prayers or articles under a member’s name.",
+  "We should never make AI images of real members without their knowledge and consent."
+ ],
+ "q07f": [
+  "We should check that AI translation serves every language group in our church equally.",
+  "We should never use AI tools that sort applicants for church jobs by age or background.",
+  "We should keep a non-digital way to give, register and get help for members without internet."
+ ],
+ "q08a": [
+  "We should let AI draft announcements that a named staff member rewrites and approves.",
+  "We should have a pastor approve any AI-drafted letter before it goes to the congregation.",
+  "We should let volunteers use AI for newsletter drafts if the editor reviews each one."
+ ],
+ "q08b": [
+  "We should send any chatbot message about grief or crisis to a pastor right away.",
+  "We should show the church office phone number in every answer our website chatbot gives.",
+  "We should have the on-call pastor’s number available to anyone using the chatbot after hours."
+ ],
+ "q08c": [
+  "We should have native speakers review translated sermons before they are posted.",
+  "We should have a fluent member check every translated consent form and policy.",
+  "We should tell listeners that live AI translation may contain errors."
+ ],
+ "q08d": [
+  "We should ask members before AI is used to transcribe their testimony or story.",
+  "We should let members choose whether AI is used in any follow-up they receive.",
+  "We should get parents’ written consent before AI is used in children’s ministry."
+ ],
+ "q08e": [
+  "We should check every AI-supplied fact or quote before it appears in a sermon.",
+  "We should check AI Bible study notes against trusted commentaries before small groups use them.",
+  "We should check every AI-supplied historical claim in our church history booklet against a source."
+ ],
+ "q08f": [
+  "We should have elders review any new AI tool that touches member data.",
+  "We should check any AI feature in new church software against our policy before turning it on.",
+  "We should have each campus submit new AI tools for one shared review before use."
+ ],
+ "q09a": [
+  "We should make our sermon archive searchable.",
+  "We should make past elder minutes and policies easy to search for staff.",
+  "We should make our small group curriculum searchable by topic and Scripture passage."
+ ],
+ "q09b": [
+  "We should caption every service.",
+  "We should post transcripts of sermons for members who prefer to read.",
+  "We should offer large-print and audio versions of the bulletin."
+ ],
+ "q09c": [
+  "We should let AI handle room booking and reminders.",
+  "We should let AI format the bulletin and volunteer schedules.",
+  "We should let AI help prepare meeting agendas for staff and committees."
+ ],
+ "q09d": [
+  "We should use AI to see which ministries have too few volunteers.",
+  "We should use AI to sort years of visitor cards by the questions people asked.",
+  "We should use AI to compare total attendance across campuses by season."
+ ],
+ "q09e": [
+  "We should let AI help our volunteer-run office keep up.",
+  "We should use AI so our bivocational pastor spends less time on paperwork.",
+  "We should let our church plant use AI for design work we cannot afford to hire."
+ ],
+ "q09f": [
+  "We should run a short trial on office work before approving anything.",
+  "We should revisit this question at the elders’ meeting after a one-season trial.",
+  "We should let two staff members try AI on scheduling and report back."
+ ],
+ "q10a": [
+  "We should have our pastor explain to the congregation how they use AI and how they do not.",
+  "We should publish a plain statement of our AI use on our church website.",
+  "We should explain our AI guidelines in our new member class."
+ ],
+ "q10b": [
+  "We should label AI-generated images in our slides, bulletin and social media.",
+  "We should never show an AI image of a real event as if it were a photo.",
+  "We should label any AI-generated music or voice used in services or videos."
+ ],
+ "q10c": [
+  "We should tell members which tools handle their prayer requests.",
+  "We should explain in plain words who can see members’ giving records.",
+  "We should tell parents where children’s check-in information is stored."
+ ],
+ "q10d": [
+  "We should note when AI helped substantially with a teaching series or study guide.",
+  "We should disclose AI help in curriculum we share with other churches.",
+  "We should say when AI drafted most of a church-wide letter or report."
+ ],
+ "q10e": [
+  "We should tell members when an AI error sent their information to the wrong person.",
+  "We should correct from the pulpit any AI error that appeared in a sermon.",
+  "We should tell a family directly when an AI mistake affected their records."
+ ],
+ "q11a": [
+  "We should list which records, such as prayer requests and counseling notes, may never enter AI tools.",
+  "We should mark sermons and public announcements as safe for approved AI tools.",
+  "We should give volunteers a simple chart of what information may go into which tools."
+ ],
+ "q11b": [
+  "We should let members see and correct what our church software holds about them.",
+  "We should delete a former member’s information when they ask us to.",
+  "We should let parents ask us to remove their children’s photos from our records."
+ ],
+ "q11c": [
+  "We should gather years of sermons and teaching into one archive we control.",
+  "We should bring elder minutes and policies from personal drives into one church account.",
+  "We should collect each campus’s ministry documents into one shared library."
+ ],
+ "q11d": [
+  "We should record our founders’ stories and reasons.",
+  "We should interview our long-serving church secretary about how the work really gets done.",
+  "We should write down what retiring elders know about our church’s history and decisions."
+ ],
+ "q11e": [
+  "We should limit any church chatbot to our own teaching and policies.",
+  "We should require our website chatbot to link to the church page each answer comes from.",
+  "We should have the chatbot say it does not know rather than guess about our beliefs."
+ ],
+ "q11f": [
+  "We should make sure vendors do not train AI on our giving or member records.",
+  "We should require AI vendors to delete our data when we end a contract.",
+  "We should pay more for AI tools that do not learn from our records."
+ ],
+ "q12a": [
+  "We should decide where saved hours go before adopting any AI tool.",
+  "We should not plan more services or events because AI drafts faster.",
+  "We should agree with our administrator what saved time is for before adding AI."
+ ],
+ "q12b": [
+  "We should give pastors’ saved hours to prayer, study and visits.",
+  "We should give saved staff time back as Sabbath rest.",
+  "We should use saved volunteer time for visiting the sick and homebound."
+ ],
+ "q12c": [
+  "We should train our administrator in new tools rather than replace the position.",
+  "We should not cut any staff hours based on AI’s projected savings.",
+  "We should base staffing changes on actual results, not vendor promises."
+ ],
+ "q12d": [
+  "We should ask volunteers before changing how their work is done.",
+  "We should review our secretary’s role with her before adding AI tools.",
+  "We should have our personnel committee and staff agree on AI workload changes together."
+ ],
+ "q12e": [
+  "We should never require a pastor to use AI in sermons or care.",
+  "We should provide a non-AI way to do every required staff task.",
+  "We should never pressure a volunteer to use AI tools they object to."
+ ],
+ "q13a": [
+  "We should teach staff to check AI answers about Scripture against the text itself.",
+  "We should teach volunteers to confirm dates, names and facts before sending AI drafts.",
+  "We should show small group leaders examples of AI giving wrong answers about the Bible."
+ ],
+ "q13b": [
+  "We should teach a series on faith and AI.",
+  "We should include AI discernment in our elder and deacon training.",
+  "We should equip youth leaders to talk with teens about when AI use is wise."
+ ],
+ "q13c": [
+  "We should have preachers outline sermons before any AI help.",
+  "We should have small group leaders study the passage themselves before using AI tools.",
+  "We should have staff write their own first thoughts before asking AI for drafts."
+ ],
+ "q13d": [
+  "We should run a training period for staff and key volunteers together.",
+  "We should give every staff member paid hours to try AI on their own work.",
+  "We should include older and less technical volunteers in our AI training sessions."
+ ],
+ "q13e": [
+  "We should train two staff members in depth so others have someone to ask.",
+  "We should name one trained member at each campus as the contact for AI questions.",
+  "We should ask a member who works in technology to help our volunteers with AI questions."
+ ],
+ "q13f": [
+  "We should keep our times of prayer and worship planning free of AI.",
+  "We should have leaders go without AI for one season each year.",
+  "We should keep our children’s ministry free of AI tools."
+ ],
+ "q14a": [
+  "We should host a free class on AI scams for seniors in our neighborhood.",
+  "We should offer a workshop for local parents on how apps use AI to profile children.",
+  "We should share scam warnings with neighbors through our food pantry and community events."
+ ],
+ "q14b": [
+  "We should join other churches in our city to learn about AI together.",
+  "We should share AI tools and costs with nearby sister churches.",
+  "We should work through AI questions with other plants in our network."
+ ],
+ "q14c": [
+  "We should ask our elders and long-time members what they see.",
+  "We should read what our tradition has said about technology alongside current guidance.",
+  "We should study how earlier Christians responded to new tools such as printing."
+ ],
+ "q14d": [
+  "We should publish what our AI trials taught us, including failures.",
+  "We should offer our AI guidelines to smaller churches to adapt.",
+  "We should share our AI translation results with other multilingual churches."
+ ],
+ "q14e": [
+  "We should avoid AI image generation for routine slides and announcements.",
+  "We should prefer AI providers that publish their energy and water use.",
+  "We should include AI energy use in our creation care planning."
+ ],
+ "q14f": [
+  "We should speak up when AI is used to monitor our neighbors.",
+  "We should support members who lose jobs to AI with care and practical help.",
+  "We should urge our legislators to protect older people from AI fraud."
+ ]
+}

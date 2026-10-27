@@ -8,10 +8,12 @@ export const MV_ROUTES = {
   resolve: "/resolve",
   /** My Resolution (5.2). */
   resolveDocument: "/resolve/document",
-  /** How others resolved (5.6). */
+  /** How others answered. */
   resolveOthers: "/resolve/others",
   /** Your people (5.4). */
   resolvePeople: "/me/people",
+  /** An organization's view at five or more people, with the board's sample counts. */
+  resolveTeamSample: "/me/people/view",
   /** The board's one sample shared link. */
   resolveSharedSample: "/r/k7p2qx",
   /**

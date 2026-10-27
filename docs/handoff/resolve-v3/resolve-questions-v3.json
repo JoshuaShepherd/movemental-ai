@@ -1,0 +1,3664 @@
+{
+ "version": "resolve-questions-v3",
+ "parts": [
+  {
+   "id": "p1",
+   "name": "Your views",
+   "blurb": "your own views about AI."
+  },
+  {
+   "id": "p2",
+   "name": "Basic responsibilities",
+   "blurb": "what every organization should do, who decides, and how much to use AI."
+  },
+  {
+   "id": "p3",
+   "name": "Acceptable use",
+   "blurb": "what work stays with people, what is prohibited, what is allowed, and what to disclose."
+  },
+  {
+   "id": "p4",
+   "name": "Information, people and community",
+   "blurb": "information, staff and volunteers, training, and your community."
+  }
+ ],
+ "beliefs": [
+  {
+   "id": "b01",
+   "title": "AI is already in use.",
+   "text": "Staff already use AI tools, software vendors are adding AI to products organizations already pay for, and scammers already use AI against the people organizations serve. Not deciding is still a decision.",
+   "quote": "There is no neutral middle position. Inaction is a decision.",
+   "source": "It Starts With Safety"
+  },
+  {
+   "id": "b02",
+   "title": "AI reflects what it is given.",
+   "text": "AI produces its answers from what it was trained on and from what people give it. Good material and careful people get better results. Scattered material and careless use get worse ones. So the response to AI is mostly about people, not technology.",
+   "quote": "AI will mirror and amplify the humanity it finds sitting before it in any given interaction.",
+   "source": "It Starts With Safety"
+  },
+  {
+   "id": "b03",
+   "title": "Start with the mission and the people it serves.",
+   "text": "Decisions about AI should begin with what the organization exists to do and who it serves, not with what AI can do.",
+   "quote": "The answer is not primarily about AI. The answer is about whether organizations whose work depends on human covenant can carry that covenant into an age of machine fluency.",
+   "source": "It Starts With Safety"
+  },
+  {
+   "id": "b04",
+   "title": "Decisions need a clear process and clear authority.",
+   "text": "The people who contribute and the people who decide should be named in writing before any policy is drafted. The organization's governing body adopts the result.",
+   "quote": "A bad process can produce a good document and still fail, because the organization will not live by it.",
+   "source": "It Starts With Safety"
+  },
+  {
+   "id": "b05",
+   "title": "Learn before deciding.",
+   "text": "People cannot judge whether AI helps or harms their work without trying it on real tasks, with safeguards. This is true whether the organization ends up using AI a lot or not at all.",
+   "quote": "Technique without wisdom produces over-trust; wisdom without technique produces refusal.",
+   "source": "It Continues With Exploration"
+  },
+  {
+   "id": "b06",
+   "title": "Protect people first.",
+   "text": "Protecting people from the risks of AI comes before looking for its benefits. Organizations owe this protection whatever they decide about their own use of AI.",
+   "quote": "The threats have to be prevented before the search for opportunities begins.",
+   "source": "It Starts With Safety"
+  },
+  {
+   "id": "b07",
+   "title": "Sort uses into prohibited, allowed with safeguards, and allowed.",
+   "text": "Some uses cause harm however carefully they are done. Most help only with safeguards. Some help clearly and harm no one. Movemental calls these red, yellow and green.",
+   "quote": "Take the AI out of the story. Look at what remains.",
+   "source": "How Movemental Uses AI"
+  },
+  {
+   "id": "b08",
+   "title": "Some work must be done by people.",
+   "text": "Care, judgments about people, and words published under a person's name must stay with people. AI may help prepare that work but may not replace the person.",
+   "quote": "The distinction between authorship and infrastructure matters, and we observe it carefully.",
+   "source": "How Movemental Uses AI"
+  },
+  {
+   "id": "b09",
+   "title": "An organization's information is its memory.",
+   "text": "Records, documents, teaching and know-how hold what an organization has learned about its people and its work. Most of it is scattered. Kept well, it is what makes AI useful. Handled carelessly, it puts people at risk.",
+   "quote": "Slop is not simply low quality. Slop is fragmentation, reflected and multiplied.",
+   "source": "Movemental: the talk"
+  },
+  {
+   "id": "b10",
+   "title": "People matter more than efficiency.",
+   "text": "Time saved by AI should go back to people, not simply into more work. Some work is slow because doing it forms people.",
+   "quote": "Formation and integrity matter more than efficiency.",
+   "source": "A Guide to AI and Credibility"
+  },
+  {
+   "id": "b11",
+   "title": "Work this out with others.",
+   "text": "No organization should decide this alone. Organizations learn faster and decide better with peers and with people who were wise before AI.",
+   "quote": "The antidote to any individual lack of wisdom about AI is doing the work alongside people whose wisdom predates AI.",
+   "source": "How Movemental Uses AI"
+  },
+  {
+   "id": "b12",
+   "title": "Organizations share responsibility for their communities.",
+   "text": "Government policy cannot reach every person, so each organization decides for itself how AI will affect the people it serves and its wider community.",
+   "quote": "The people who love their neighbors should help decide what AI becomes.",
+   "source": "Movemental's founding essay"
+  }
+ ],
+ "questions": [
+  {
+   "id": "q01",
+   "part": "p1",
+   "title": "What do I believe about AI?",
+   "term": "Values and purpose",
+   "why": "People who welcome AI and people who distrust it often see the same technology differently. Saying what you believe makes your other answers easier to understand.",
+   "mode": "multi",
+   "how": "Tick every answer you agree with. Star the one closest to your view.",
+   "teach": [
+    {
+     "heading": "Why this question is about you",
+     "text": "Resolve starts with your own view. Your organization's decisions will be built from many people's views, and it helps to know your own first."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Choose the answers that match your experience so far. Most people choose more than one."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q01a",
+     "text": "I believe AI is a tool, like other software, that can be used well or badly.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should review AI features in our church management software the way we review any church software.",
+        "We should judge each AI tool by whether it serves our ministry, not by how new it is.",
+        "We should add AI tools to the same approval process we use for giving and attendance software."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should evaluate AI tools on cost, security and fit, like any vendor.",
+        "We should review AI features in our donor database the way we review any software update.",
+        "We should add AI tools to our existing technology inventory and acceptable use policy."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should review AI tools through the same IT approval process we use for our learning management system.",
+        "We should judge an AI tutor by what students actually learn, not by what the vendor promises.",
+        "We should add AI use to our existing academic integrity policy rather than writing a separate code."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should review AI features in our membership database the way we review any other software.",
+        "We should put AI tools through the same procurement and security review as other office software.",
+        "We should advise member churches to judge AI features by the same standards as their church software."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q01b",
+     "text": "I believe AI repeats and magnifies what it is trained on and what we give it.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should check what AI tools say about our beliefs before we rely on them.",
+        "We should give AI only our own approved teaching when we ask it for study materials.",
+        "We should have a pastor review any AI summary of Scripture before it reaches a small group."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should check what AI tools say about our mission and programs before relying on them.",
+        "We should test AI drafts of client letters for bias before using them.",
+        "We should keep our program information current so AI answers drawn from it are accurate."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should give our AI research assistant only library sources our faculty have reviewed.",
+        "We should check AI study guides for bias before teachers hand them to students.",
+        "We should teach faculty that careless prompts and poor course materials produce poor AI answers."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should test what AI tools say about our doctrine and polity before recommending them to member churches.",
+        "We should give any AI tool we offer our approved resources, not scattered drafts.",
+        "We should teach church planters that AI answers reflect their sources and the questions they are asked."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q01c",
+     "text": "I believe AI gives a few companies more control over work and information.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should ask who owns and profits from each AI tool our church adopts.",
+        "We should check what AI vendors do with our members' giving and prayer records.",
+        "We should keep our sermons and teaching in files we control, not only inside one vendor's platform."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should ask who profits from each AI tool we adopt.",
+        "We should check what AI vendors do with the data of the people we serve.",
+        "We should avoid depending on one AI vendor for both case management and fundraising."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should keep student records and course content on systems our school controls.",
+        "We should avoid building our curriculum around a single AI vendor we cannot easily leave.",
+        "We should ask faculty governance to review any AI contract that changes how teaching is done."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should ask what each AI vendor does with the data of our member churches and missionaries.",
+        "We should avoid locking member churches into one AI vendor through our shared contracts.",
+        "We should keep ownership of our publications and archives when AI companies ask to license them."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q01d",
+     "text": "I believe AI puts important human things at risk if we do not protect them.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should name the parts of our ministry that AI may not touch.",
+        "We should protect hospital visits, prayer and discipleship from being replaced by automated messages.",
+        "We should keep our children's and youth ministry led by people, not AI tools."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should name the parts of our work with clients that AI may not touch.",
+        "We should keep mentoring and camp counseling relationships between people, not apps.",
+        "We should protect face-to-face time between caseworkers and the families they serve."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should keep faculty grading and commenting on student theses themselves.",
+        "We should protect spiritual formation groups and chapel from AI tools.",
+        "We should keep teachers, not AI tutors, at the center of our elementary classrooms."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should name the parts of ordination, candidacy and member care that AI may not touch.",
+        "We should protect in-person visits between regional staff and member church pastors.",
+        "We should help member churches name the parts of their ministry they will keep free of AI."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q01e",
+     "text": "I believe AI can help people we could not otherwise reach.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should caption every service so members who are deaf or hard of hearing can follow.",
+        "We should use AI translation so families who speak other languages can follow announcements.",
+        "We should let a small church with no paid staff use AI to keep up with office work."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should use AI to answer families in their own language.",
+        "We should offer AI audio and plain-language versions of our application forms.",
+        "We should use AI so our small relief team can respond faster after disasters."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should offer AI-supported language study to distance students who cannot relocate to campus.",
+        "We should provide AI accessibility tools for students with documented learning disabilities.",
+        "We should use AI translation to help parents who do not speak English follow school news."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should use AI translation so minority-language congregations receive our resources in their own language.",
+        "We should caption and transcribe our conference sessions for pastors who cannot attend.",
+        "We should offer approved AI tools to small member churches that have no paid staff."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "AI repeats and magnifies what it is given. That is why each of the other answers can be true, depending on how it is used.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "AI is trained on a very large amount of human writing, and it produces its answers from that training and from what a person or organization gives it. Careful use with good material can help a great deal. Careless use, poor material or bad intent produce worse results, faster."
+     },
+     {
+      "kind": "p",
+      "value": "So the other answers are not wrong. AI is a tool. It does give a small number of companies a great deal of control. It can wear away human care and judgment if no one protects them, and it can reach a family at two in the morning in their own language. Which of these happens in your organization depends mostly on the people using it."
+     },
+     {
+      "kind": "p",
+      "value": "We have noticed that how people react to AI often shows what they already believe about people. Those most worried are often worried about what humans have already produced. Those most hopeful are often hopeful about people for the same reason."
+     },
+     {
+      "kind": "h",
+      "value": "Why this matters for the rest of Resolve"
+     },
+     {
+      "kind": "p",
+      "value": "If AI mostly reflects what it is given, the most important questions are about us: what we value, what we protect, how we keep our information and how we train our people. The questions that follow are in that order."
+     }
+    ]
+   },
+   "deeper": "It Starts With Safety, Authors' note · How Movemental Uses AI, Where we stand",
+   "beliefs": [
+    "b02"
+   ],
+   "label": "What I believe about AI",
+   "sector_titles": {}
+  },
+  {
+   "id": "q02",
+   "part": "p1",
+   "title": "What do I believe should guide our decisions about AI?",
+   "term": "Values and purpose",
+   "why": "Every AI policy rests on values. When values are not written down, hard cases turn into arguments with nothing to settle them.",
+   "mode": "multi",
+   "how": "Tick every answer you agree with. Star the one you would point to first.",
+   "teach": [
+    {
+     "heading": "What we mean by values",
+     "text": "The convictions you would keep even if the technology changed completely. If a value would need rewriting every time a new AI model came out, it is a preference about tools, not a value."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Think of two good people in your organization who disagree about using AI. What would you point to in order to settle it?"
+    }
+   ],
+   "answers": [
+    {
+     "id": "q02a",
+     "text": "Scripture and our tradition.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should test every AI decision against our statement of faith.",
+        "We should study what Scripture says about wisdom, work and truth before setting our AI guidelines.",
+        "We should ask our denomination or tradition what it has taught about new technology."
+       ],
+       "text": "Scripture and our tradition."
+      },
+      "nonprofit": {
+       "ex": [
+        "We should check every AI use against our mission statement.",
+        "We should revisit our founding documents before writing our AI policy.",
+        "We should ask our board whether each AI use fits the faith commitments we were founded on."
+       ],
+       "text": "Our mission and founding values."
+      },
+      "school": {
+       "ex": [
+        "We should have our theology faculty write the biblical basis for our AI policy.",
+        "We should test proposed AI uses in chapel and formation against our statement of faith.",
+        "We should draw on our tradition's teaching about vocation when deciding which faculty work AI may do."
+       ],
+       "text": "Scripture and our tradition."
+      },
+      "network": {
+       "ex": [
+        "We should test our AI guidance against our statement of faith and confessional standards.",
+        "We should ask our theological commission to review AI guidance before it goes to member churches.",
+        "We should ground our AI resources for member churches in our shared tradition, not vendor marketing."
+       ],
+       "text": "Scripture and our tradition."
+      }
+     }
+    },
+    {
+     "id": "q02b",
+     "text": "Love for our neighbors, including people outside our organization.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should ask how each AI use affects neighbors outside our congregation.",
+        "We should consider members and neighbors without smartphones or internet before any AI change.",
+        "We should make sure our AI choices do not put our neighbors' information at risk."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should consider AI's effect on our neighborhood, not only our clients.",
+        "We should ask how our AI choices affect partner agencies and local volunteers.",
+        "We should weigh how our AI tools affect families who never enroll in our programs."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should teach students to protect their families and churches from AI scams.",
+        "We should consider how our graduates' AI habits will affect the congregations they serve.",
+        "We should open our AI literacy evenings to parents and neighbors, not only enrolled families."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should ask how our AI guidance affects the neighborhoods our member churches serve.",
+        "We should consider how our AI choices affect the communities where our missionaries live.",
+        "We should ask how our church planting tools affect people who are not yet part of any church."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q02c",
+     "text": "The good of the people we serve, before efficiency.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should drop any AI use that saves staff time but weakens pastoral care.",
+        "We should keep calling and visiting members in person even when an automated message would be faster.",
+        "We should judge AI in discipleship by its effect on people, not by hours saved."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should drop any AI use that saves time but weakens care.",
+        "We should keep a person at intake even when AI could process applications faster.",
+        "We should judge AI in our youth programs by its effect on young people, not staff hours."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should keep small writing seminars even if AI feedback would let us enlarge classes.",
+        "We should choose AI tools for what helps students learn, not for what saves the most staff time.",
+        "We should keep in-person advising even when an AI chatbot could answer most registration questions."
+       ],
+       "text": "The good of our students, before efficiency."
+      },
+      "network": {
+       "ex": [
+        "We should drop any AI use in member care that saves staff time but weakens care.",
+        "We should judge AI tools for member churches by their effect on congregations, not on our costs.",
+        "We should keep candidacy mentoring personal even if AI could process candidates faster."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q02d",
+     "text": "The trust people have placed in us.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should ask whether members would still trust us if they saw how we use AI.",
+        "We should protect prayer requests and confidences before any gain in efficiency.",
+        "We should never use AI in a way we would be unwilling to explain from the pulpit."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should protect the trust of donors and clients before any gain.",
+        "We should ask whether families would still trust us if they saw how we use AI.",
+        "We should keep campers' and parents' information out of any tool we cannot vouch for."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should honor the trust parents place in us by never sharing student data with AI vendors without consent.",
+        "We should keep our promises to donors about how their gifts fund teaching, not AI replacements.",
+        "We should protect the confidence students place in counselors and chaplains."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should ask whether member churches would still trust us if they saw how we use AI.",
+        "We should protect the trust clergy place in us with their personnel files and pension records.",
+        "We should ask whether supporters would still trust our missionary updates if they knew how they were written."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q02e",
+     "text": "Evidence of what helps people and what harms them.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should check how an AI use is working after one season before expanding it.",
+        "We should ask other churches what actually happened when they used AI in ministry.",
+        "We should stop any AI use that we find is causing confusion or harm."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should measure program results before and after any AI change.",
+        "We should track AI errors at intake and review them every month.",
+        "We should ask peer agencies for evidence before adopting an AI tool they recommend."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should pilot AI tutoring in one course and measure learning before expanding it.",
+        "We should study how AI writing tools affect our students' reasoning before allowing them widely.",
+        "We should track whether AI-flagged early alerts actually help struggling students stay enrolled."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should pilot AI tools with a few member churches and measure results before wider rollout.",
+        "We should collect evidence from regions using AI before writing guidance for every member church.",
+        "We should track whether AI translation actually helps partner churches understand our resources."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q02f",
+     "text": "The views of the people most affected by our decisions.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should include our teenagers in writing our AI rules.",
+        "We should ask older members how AI changes in communication would affect them.",
+        "We should ask members with disabilities which AI accessibility tools actually help them."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should pay community members to advise our AI decisions.",
+        "We should include youth participants in writing the AI rules for our youth programs.",
+        "We should ask our client advisory council before any client-facing AI use."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should put students on the committee that writes our AI policy.",
+        "We should ask parents what they want before introducing AI tools in our K-12 classrooms.",
+        "We should hear adjunct faculty before deciding how AI will change grading."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should survey pastors and missionaries before issuing AI guidance.",
+        "We should include small and rural member churches on our AI guidance task force.",
+        "We should ask partner churches in other countries how our AI choices affect them."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Start with your mission and the people you serve, not with what AI can do. Write your values down before you write any rules.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "Much AI guidance begins with what the technology can do and asks how to use it. We begin with what the organization exists for and who it serves: a congregation, a neighborhood, students, clients, families. The question is whether AI helps that work or gets in its way."
+     },
+     {
+      "kind": "p",
+      "value": "Our own starting point is love of neighbor. For a church, Scripture and tradition shape decisions about AI the way they shape every other decision. For a nonprofit, its mission does the same. For a school, it is what it hopes its students become."
+     },
+     {
+      "kind": "p",
+      "value": "Values that are not written down get replaced by the values built into the tools: speed, scale, engagement and cost. Those decide close cases unless something else is written first."
+     },
+     {
+      "kind": "h",
+      "value": "Evidence matters too"
+     },
+     {
+      "kind": "p",
+      "value": "We would include evidence among your values, in support of them rather than in place of them. Evidence tells you what a tool does. Your values tell you whether you want it done."
+     }
+    ]
+   },
+   "deeper": "It Starts With Safety, Layer 01: the AI Organizational Statement",
+   "beliefs": [
+    "b03"
+   ],
+   "label": "What should guide us",
+   "sector_titles": {}
+  },
+  {
+   "id": "q03",
+   "part": "p2",
+   "title": "What should every organization do, even if it decides not to use AI?",
+   "term": "Risk management and safety",
+   "why": "Some responsibilities apply whether an organization uses AI a lot, a little or not at all. This question names them before anyone discusses how much to use AI.",
+   "mode": "multi",
+   "how": "Tick every answer you agree with. Star the one your organization should do first.",
+   "teach": [
+    {
+     "heading": "Can an organization avoid AI completely?",
+     "text": "It can decide not to use AI in its own work. It cannot avoid AI altogether. Most staff already use AI tools, usually without guidance. Vendors are adding AI to software organizations already use. Scammers already copy the voices of pastors and directors with AI to ask staff and members for money."
+    },
+    {
+     "heading": "What this means for deciding not to use AI",
+     "text": "Deciding not to use AI can be the right decision. To make it responsibly, an organization still needs to know what is already happening, protect its people, and understand AI well enough to decide."
+    },
+    {
+     "heading": "A question to ask about waiting",
+     "text": "Waiting can be wise. Our own writing asks whether a decision to wait is really a decision, or fear that has been put into words."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Ask which of these your organization could explain to a member, donor or parent if something went wrong next month."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q03a",
+     "text": "We should find out how AI is already being used in our organization, without blaming anyone.",
+     "ask": "Do we know how AI is already being used in our organization?",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should ask every staff member and key volunteer which AI tools they use and for what.",
+        "We should list every AI feature already built into our church software.",
+        "We should ask our worship and communications teams to show how they already use AI, without blame."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should ask every staff member which AI tools they use and for what.",
+        "We should list every AI feature already in our donor database and case management software.",
+        "We should ask volunteers and camp counselors which AI tools they use for our work."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should survey faculty on how they already use AI in courses, with answers kept anonymous.",
+        "We should ask registrar, admissions and finance staff which AI tools they already use at work.",
+        "We should list the AI features already switched on in our learning platform and student systems."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should ask every staff member in our national and regional offices which AI tools they use.",
+        "We should list the AI features already built into our membership, giving and credentialing software.",
+        "We should invite member churches to share how they already use AI, without judging their answers."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q03b",
+     "text": "We should protect our people from AI scams, cloned voices and fake images, and teach them to recognize these.",
+     "ask": "How are we protecting our people from AI scams, cloned voices and fake images?",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should teach older members how to spot AI voice-cloning scam calls.",
+        "We should warn members that we will never ask for gift cards or money by text or email.",
+        "We should teach families to agree on a code word to check calls that sound like a relative."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should warn clients about AI-driven benefit and immigration scams.",
+        "We should have staff confirm any urgent payment request from a leader by calling them back.",
+        "We should teach youth participants how to spot fake images and AI-made messages."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should warn students and parents about cloned voice calls asking for tuition payments or money.",
+        "We should teach business office staff to confirm any payment request by calling a known number.",
+        "We should train teachers to recognize fake AI images of students and report them right away."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should warn member churches about scams that use AI to impersonate our bishop or president.",
+        "We should require a callback to a known number before acting on any voice or video request for funds.",
+        "We should give member churches a short guide to protecting older members from AI voice scams."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q03c",
+     "text": "We should set rules for sensitive information right away.",
+     "ask": "What are our rules for sensitive information, and does everyone know them?",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should keep pastoral notes and counseling records out of all AI tools.",
+        "We should never put prayer requests or children's names into free AI tools.",
+        "We should write a one-page rule on sensitive information for staff and volunteers this month."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should allow client information only in our approved case management system for now.",
+        "We should keep survivors' and minors' information out of every AI tool until rules are set.",
+        "We should list the information staff may never paste into AI tools."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should forbid putting student records, grades or counseling notes into unapproved AI tools.",
+        "We should tell faculty this week which student information may never enter a public chatbot.",
+        "We should keep admissions files and financial aid documents out of AI tools until we approve one."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should forbid entering missionaries' names or locations into public AI tools.",
+        "We should keep clergy personnel, misconduct and pension records out of all AI tools.",
+        "We should give member churches a model rule for keeping pastoral notes out of AI tools."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q03d",
+     "text": "We should learn enough to decide well, by trying AI on low-risk work.",
+     "ask": "Who among us will try AI on low-risk work, so we can decide well?",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should let staff try AI on office tasks before deciding anything about ministry.",
+        "We should have our administrator try AI on the bulletin layout for one season.",
+        "We should let a few volunteers test AI on room scheduling before anyone else uses it."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should give a small team a few months to try AI on internal work.",
+        "We should try AI on grant research and meeting notes before any client-facing use.",
+        "We should let our development team test AI on newsletter formatting first."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should let a few staff try AI on event schedules and room bookings this term.",
+        "We should have faculty test AI on drafting a sample syllabus before deciding classroom rules.",
+        "We should try AI summaries of public committee minutes before using it with any student work."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should let a small team in our national office try AI on internal work for three months.",
+        "We should test AI on conference logistics before considering it for anything involving people.",
+        "We should pilot AI tools with a few willing member churches before offering them more widely."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q03e",
+     "text": "We should tell our people where we stand on AI, even if we have not decided yet.",
+     "ask": "When will we tell our people where we stand on AI?",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should explain our current AI position to the congregation this year.",
+        "We should tell volunteers in writing which AI uses are allowed while we decide the rest.",
+        "We should have our pastor say plainly from the pulpit where we stand on AI so far."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should publish a short AI statement for donors and clients.",
+        "We should explain our current AI rules at the next all-staff and volunteer meeting.",
+        "We should tell parents how our youth programs and camps use AI this season."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should tell students at orientation where the school currently stands on AI in coursework.",
+        "We should send parents a short note on our current AI rules while the full policy is drafted.",
+        "We should ask every instructor to state in the syllabus what AI use is allowed this term."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should send member churches a short statement of where we stand on AI this year.",
+        "We should tell our missionaries and field staff our current AI position, even before final guidance.",
+        "We should explain our AI position from the platform at our next annual gathering."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q03f",
+     "text": "We should set a date to decide, and a date to review our decisions.",
+     "ask": "When will we decide, and when will we review what we decide?",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should put AI guidelines on the elders' agenda for a decision by a set date.",
+        "We should review our AI decisions at every annual congregational meeting.",
+        "We should set a date for our church plant's leadership team to decide on AI."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should put AI on the board agenda for a recorded vote.",
+        "We should set a date this fiscal year to adopt an AI policy.",
+        "We should review our AI decisions each year when we prepare our annual report."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should set a date for the trustees to adopt our AI policy this academic year.",
+        "We should review our AI rules at the end of every semester.",
+        "We should put an annual AI policy review on the faculty senate calendar."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should put AI guidance on the agenda of our next assembly or synod for a vote.",
+        "We should review our AI decisions at every annual meeting.",
+        "We should set a date by which our national office will adopt its own AI policy."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "All six. These are the basic responsibilities. Every responsible approach to AI, including deciding not to use it, depends on them.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "We do not think every approach to AI is equally sound at the start. One approach is clearly unsound: making no decision. It is also the most common. In the research we rely on, about nine in ten churches and nearly half of nonprofits have no AI policy, while most of their staff already use AI."
+     },
+     {
+      "kind": "p",
+      "value": "So before any organization decides how much to use AI, we would ask it to do six things. Find out what is already happening. Protect people from AI scams, which reach your members whether or not you use AI yourself. Set rules for sensitive information. Learn enough by trying AI to make a real decision. Tell your people where you stand. Set a date to decide and a date to review."
+     },
+     {
+      "kind": "h",
+      "value": "Deciding not to use AI"
+     },
+     {
+      "kind": "p",
+      "value": "We respect organizations that decide not to use AI for reasons of conscience. We also want to be honest with them. Your staff use AI, your vendors include it, and it is used on the people you serve. Deciding not to use AI is a real decision about your own work. It does not remove these six responsibilities."
+     },
+     {
+      "kind": "p",
+      "value": "A decision not to use AI is also more trustworthy when it is informed. Our guides say to experiment before you adopt or refuse. That does not mean everyone must use AI. A person who objects on conscience can take full part in these six steps, for example by helping protect people and set rules, while others in the organization do the testing. Either way, the organization is making decisions about AI. The only question is whether it makes them on purpose."
+     }
+    ]
+   },
+   "deeper": "AI Has Already Arrived, Part one · It Starts With Safety, Why Safety",
+   "beliefs": [
+    "b01",
+    "b05",
+    "b06"
+   ],
+   "label": "First steps",
+   "sector_titles": {}
+  },
+  {
+   "id": "q04",
+   "part": "p2",
+   "title": "Who should make decisions about AI, and who is accountable?",
+   "term": "Governance and accountability",
+   "why": "People can agree on what should happen and still disagree about who should decide. Settling this first makes later decisions legitimate.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one that matters most. Wording changes for each kind of organization.",
+   "teach": [
+    {
+     "heading": "Three roles",
+     "text": "Who decides: the person or body with authority to approve AI policy. Who is consulted: the people whose work and lives are affected. Who is accountable: one named person who makes sure decisions are carried out, reviewed, and corrected when something goes wrong."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Think of how your organization made its last major decision, such as a building project or a change in programs. AI decisions probably belong with the same people."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q04a",
+     "text": "Our governing body should make the final decision, after hearing from our people. (Board, elders or trustees.)",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should bring our AI guidelines to the elders for a recorded vote.",
+        "We should have our church council hear from staff and members before adopting an AI policy.",
+        "We should have one AI policy approved by our elders for every campus."
+       ],
+       "text": "Our governing body should make the final decision, after hearing from our people. (Elders, session, vestry or church council.)"
+      },
+      "nonprofit": {
+       "ex": [
+        "We should have the board approve our AI policy.",
+        "We should gather comments from staff and our client advisory council before the board votes.",
+        "We should report our AI use to the board every quarter."
+       ],
+       "text": "Our board should make the final decision, after hearing from our people."
+      },
+      "school": {
+       "ex": [
+        "We should have the trustees adopt our AI policy after the faculty senate and student government comment.",
+        "We should bring any AI use in admissions or student records to the board for approval.",
+        "We should have the board's academic affairs committee review AI policy each year."
+       ],
+       "text": "Our board of trustees should make the final decision, after hearing from faculty, staff and students."
+      },
+      "network": {
+       "ex": [
+        "We should bring our AI standards to the assembly for a recorded vote.",
+        "We should have our board approve the AI policy for our national and regional offices.",
+        "We should have our council adopt AI guidance only after hearing from member churches."
+       ],
+       "text": "Our governing body should make the final decision, after hearing from our people. (Board, assembly, synod or council.)"
+      }
+     }
+    },
+    {
+     "id": "q04b",
+     "text": "We should decide together as a whole community, not leaders alone.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should hold listening sessions with members before setting AI guidelines.",
+        "We should discuss AI questions in small groups before the church decides.",
+        "We should decide our AI policy at a congregational meeting, not by leaders alone."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should include staff, volunteers and clients in shaping our AI policy.",
+        "We should share our draft AI policy with all staff for comment before adoption.",
+        "We should hold open sessions for volunteers and families before setting AI rules."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should write our AI policy through faculty, staff and students meeting together.",
+        "We should hold open campus forums before adopting AI rules for coursework.",
+        "We should invite parents, teachers and staff to shape our school's AI policy together."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should ask member churches to discern AI together before we issue guidance.",
+        "We should hold regional listening sessions with pastors and lay leaders before drafting AI guidance.",
+        "We should bring draft AI guidance to the full assembly for discussion, not only to staff."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q04c",
+     "text": "We should follow our denomination's or network's guidance, and adapt it to our setting.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should adopt our denomination's AI guidance and add our own rules for pastoral care.",
+        "We should ask our network what AI guidance it gives church plants before writing our own.",
+        "We should follow our denomination's data rules for any AI that touches member records."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should adopt our national affiliate's model AI policy and adapt it to our programs.",
+        "We should meet our accreditor's AI requirements before any client-facing use.",
+        "We should follow our denomination's AI guidance for our chaplaincy and spiritual care."
+       ],
+       "text": "We should follow our national affiliate's, network's or denomination's guidance, and adapt it to our setting."
+      },
+      "school": {
+       "ex": [
+        "We should adopt our sponsoring denomination's AI guidance and add rules for our classrooms.",
+        "We should start from our accrediting association's AI standards and fit them to our degree programs.",
+        "We should use our Christian school association's model AI policy and adjust it for our grade levels."
+       ],
+       "text": "We should follow guidance from our sponsoring denomination, network or school association, and adapt it to our setting."
+      },
+      "network": {
+       "ex": [
+        "We should follow our communion's guidance on AI and adapt it for our member churches.",
+        "We should adopt our mission alliance's AI standards and add rules for our field teams.",
+        "We should adapt the shared AI guidance of our ecumenical partners rather than write ours alone."
+       ],
+       "text": "We should follow the guidance of the wider body we belong to, such as a communion or alliance, and adapt it to our setting."
+      }
+     }
+    },
+    {
+     "id": "q04d",
+     "text": "We should consult the people most affected before we decide.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should ask parents before AI is used in anything involving children.",
+        "We should hear from care ministry volunteers before AI is used in follow-up with members.",
+        "We should include Spanish-speaking members in decisions about AI translation."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should hold a forum for program participants before any AI decision.",
+        "We should ask parents before AI is used in anything involving their children.",
+        "We should ask frontline caseworkers before AI changes how intake works."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should ask students how proposed AI rules would affect their coursework before we decide.",
+        "We should consult counselors and chaplains before any AI tool touches student care.",
+        "We should hear from teachers before choosing AI tools for their classrooms."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should survey missionaries before setting AI rules for field reports.",
+        "We should consult language communities before using AI on their Scripture translation.",
+        "We should ask safeguarding officers and youth leaders before AI is used with minors' records."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q04e",
+     "text": "We should make one named person accountable for our AI decisions.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should name one elder accountable for our AI decisions.",
+        "We should list one staff contact for AI questions in our member handbook.",
+        "We should have a pastor, not only a technology volunteer, answer for our AI use."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should name one board member responsible for AI oversight.",
+        "We should name one staff member responsible for every AI tool we use.",
+        "We should make our executive director accountable to the board for AI decisions."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should name the academic dean accountable for AI use in teaching and grading.",
+        "We should make our head of school responsible for AI policy across all grade levels.",
+        "We should name one person accountable for AI tools used with student records."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should name one senior officer accountable for all our AI decisions.",
+        "We should appoint one staff officer to coordinate AI across our agencies.",
+        "We should tell member churches which named officer is accountable for the AI tools we provide."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q04f",
+     "text": "When AI causes harm, we should tell the people affected and put it right before anything else.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should tell the congregation if AI mishandled member information.",
+        "We should contact a family directly if an AI error affected their child's information.",
+        "We should correct and apologize publicly for any AI error in a sermon or announcement."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should tell clients when an AI error affected their case.",
+        "We should correct any AI error in a client's file before any other work.",
+        "We should tell donors directly if an AI tool exposed their information."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should tell students right away when an AI grading error changed their marks, and correct them.",
+        "We should notify affected families first if student data is exposed through an AI tool.",
+        "We should withdraw any AI admissions screening that treated applicants unfairly and review those decisions."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should tell member churches promptly if AI mishandled their data in our systems.",
+        "We should tell a candidate directly if an AI error affected their credentialing file, and correct it.",
+        "We should correct and announce any AI error that reaches resources we sent to member churches."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Decide who decides before you decide anything else. Make AI decisions the way you already make decisions of similar importance, and never leave accountability to a vendor.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "The most common problem we see is not a bad decision about AI. It is AI decisions made by whoever knows the most about technology, or by no one. Every organization already has a way to make important decisions: a board, elders, a council, a congregation, faculty governance. AI decisions belong there."
+     },
+     {
+      "kind": "p",
+      "value": "Name the contributors and the decision makers in writing before anything is drafted. Contributors are the four to seven people whose work and views should shape the policy. Decision makers are the people with authority to approve it. When these roles are unclear, disagreements about who has authority tend to surface halfway through and stall the work."
+     },
+     {
+      "kind": "p",
+      "value": "The leader of the organization should not write the policy alone. The leader is responsible for making sure the process is fair and keeps moving. When the governing body approves the policy, the organization has committed to it together."
+     },
+     {
+      "kind": "h",
+      "value": "Accountability"
+     },
+     {
+      "kind": "p",
+      "value": "Something will go wrong. When it does, the organization is responsible, not the vendor. Name one person who makes sure someone is always responsible, and decide now that the person harmed comes first: tell them the truth, put it right, then fix the cause."
+     },
+     {
+      "kind": "h",
+      "value": "Movemental does not decide for you"
+     },
+     {
+      "kind": "p",
+      "value": "We can help an organization see what its people believe and lay out its options. We will not make the decision, and no count of Resolutions makes it either. Nothing is adopted until the people with authority adopt it."
+     }
+    ]
+   },
+   "deeper": "It Starts With Safety, Process and roles · Layer 05: Response Plans",
+   "beliefs": [
+    "b04"
+   ],
+   "label": "Decisions and accountability",
+   "sector_titles": {}
+  },
+  {
+   "id": "q05",
+   "part": "p2",
+   "title": "Overall, how much should we use AI?",
+   "term": "Overall approach",
+   "why": "This sets your organization's default. It comes after the basic responsibilities and after deciding who decides, so that the answer is a decision and not just a feeling.",
+   "mode": "single",
+   "how": "Choose the one closest to your view.",
+   "teach": [
+    {
+     "heading": "What an overall approach does",
+     "text": "It tells people what to expect when a new AI question comes up that no one has answered yet."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Imagine a staff member asks next week whether they may use a new AI feature. Which of these answers would you want them to hear?"
+    }
+   ],
+   "answers": [
+    {
+     "id": "q05a",
+     "text": "We should not use AI in our work, for reasons of conscience, and still meet the basic responsibilities.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should turn off vendor AI features and explain why to the congregation.",
+        "We should still teach members to recognize AI scams even though we do not use AI.",
+        "We should still set rules for sensitive information for volunteers who use AI at home."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should turn off AI features in our case management software.",
+        "We should decline donated AI tools and still train staff to recognize AI scams.",
+        "We should adopt a no-AI policy and still set rules for sensitive information."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should keep AI out of teaching, grading and admissions, while still protecting students from AI scams.",
+        "We should license no AI tools for faculty or staff, and still set rules for sensitive information.",
+        "We should turn off AI features in our learning platform and explain our reasons to families."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should turn off AI features in our denominational software and explain why to member churches.",
+        "We should not adopt AI in our offices or publications, and still warn member churches about AI scams.",
+        "We should state our conscientious refusal of AI in writing and review it at each assembly."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q05b",
+     "text": "We should use AI only for administrative work, and keep it out of our core mission work.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should keep AI out of preaching and pastoral care, and allow it for scheduling.",
+        "We should allow AI to format the bulletin but not to write prayers or teaching.",
+        "We should let our office use AI for bookkeeping and keep it out of care ministry."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should allow AI in bookkeeping, never in work with clients.",
+        "We should allow AI to schedule volunteers but keep it out of counseling and mentoring.",
+        "We should allow AI to format grant reports but not to write case notes."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should allow AI for room scheduling and registrar forms, but keep it out of courses.",
+        "We should let staff use AI for event logistics, but not in chapel, teaching or formation.",
+        "We should use AI to format the school newsletter, but keep it out of classrooms."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should allow AI for conference logistics and keep it out of ordination and candidacy work.",
+        "We should allow AI in accounting and scheduling, never in member care for clergy or missionaries.",
+        "We should recommend that member churches use AI for office tasks only, not preaching or pastoral care."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q05c",
+     "text": "We should approve each use of AI separately, start small, and review it regularly.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should try each AI use for one season, then review it with the elders.",
+        "We should require a short written request before any ministry adopts an AI tool.",
+        "We should start with captions on Sunday and decide later about any other AI use."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should require a short written proposal before adopting any AI tool.",
+        "We should pilot each approved AI use in one program for three months, then review it.",
+        "We should end each approved AI use unless the board renews it after review."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should have a faculty and staff committee approve each new AI use and review it each term.",
+        "We should pilot AI tutoring in one course before considering it for other courses.",
+        "We should approve AI tools one department at a time and report results to the trustees."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should require a short written proposal before any office adopts an AI tool.",
+        "We should pilot each AI tool with a few member churches for a set period, then review it.",
+        "We should have our AI task force approve each new use and report to the assembly yearly."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q05d",
+     "text": "We should treat AI like other software, under the policies we already have.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should add AI to our existing technology, privacy and child safety policies.",
+        "We should review AI tools the way we review any church software.",
+        "We should have staff request AI tools through our usual budget process."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should add AI to our existing technology and privacy policies.",
+        "We should send AI tools through our normal vendor review.",
+        "We should cover AI tools in new staff orientation like any other software."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should let campus IT approve AI tools through normal software procurement.",
+        "We should apply our existing data privacy and academic integrity policies to AI.",
+        "We should treat AI features in our student information system like any other software update."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should handle AI tools through our standard procurement and IT security review.",
+        "We should add AI to our existing technology, privacy and safeguarding policies.",
+        "We should include AI in the technology guidance we already give member churches."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q05e",
+     "text": "We should adopt AI quickly wherever it helps the people we serve.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should caption services live with AI and correct errors afterward.",
+        "We should start using AI translation for newcomers now rather than wait.",
+        "We should use AI so our volunteer-run office can respond to visitors within a day."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should start using AI translation for clients now rather than wait.",
+        "We should use AI routing now so relief supplies reach more families.",
+        "We should use AI to shorten application wait times this year and review errors weekly."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should give every student AI tools for language study this year.",
+        "We should offer AI-supported courses to students who cannot move to campus.",
+        "We should provide AI tutoring for students who cannot afford private tutors."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should provide AI translation to partner churches with no staff now rather than wait.",
+        "We should release AI guidance for member churches now and update it every year.",
+        "We should give every missionary approved AI tools this year and adjust as we learn."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "We believe the third answer is right for most organizations: approve each use separately, start small, and review it regularly. We take the other answers seriously.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "AI is not one thing. A church can rightly refuse AI in preaching and use it for translation. A nonprofit can keep it out of every conversation with a client and use it to prepare grant reports. That is not inconsistent. It is judgment applied to each use, which suits a technology that changes every few months. Most uses help only with safeguards, and those safeguards can only be set one use at a time."
+     },
+     {
+      "kind": "p",
+      "value": "Faithfulness does not require using AI. It requires deciding about it. An organization that thinks it through carefully and decides to use very little AI has done what we are asking. What we oppose is drifting into a position: adopting AI that no one decided to adopt, or refusing it without ever examining the question."
+     },
+     {
+      "kind": "p",
+      "value": "Each of the other answers can be sound under one condition:"
+     },
+     {
+      "kind": "ul",
+      "value": [
+       "<strong>Not using AI</strong> is sound when it comes from real consideration and the basic responsibilities are met. It is not sound when it is a way of avoiding the question.",
+       "<strong>Administrative use only</strong> works when the organization writes down exactly which work counts as core mission work, so staff can tell where the line is.",
+       "<strong>Treating AI like other software</strong> works only if existing policies cover tools that write, speak and make recommendations. Most were written before these tools existed, so check them first.",
+       "<strong>Adopting quickly</strong> works when the people who would bear the risk have a say, a person is always reachable, and mistakes can be undone."
+      ]
+     },
+     {
+      "kind": "h",
+      "value": "Speed"
+     },
+     {
+      "kind": "p",
+      "value": "We would protect people quickly and adopt tools slowly. Protection cannot wait. Adoption should go one task at a time, with a set trial period and a decision at the end to keep, change or stop. Waiting is not automatically safe either: a family who needed translation went without it, and a staff member burned out on work a tool could have handled. Count those costs too."
+     }
+    ]
+   },
+   "deeper": "It Continues With Exploration, Why Sandbox · Solutions: what deployment looks like when the order was right",
+   "beliefs": [
+    "b01",
+    "b05",
+    "b07"
+   ],
+   "label": "Overall approach",
+   "sector_titles": {}
+  },
+  {
+   "id": "q06",
+   "part": "p3",
+   "title": "What work should always be done by people?",
+   "term": "Human oversight",
+   "why": "Before deciding what AI may do, decide what it must not replace. This is the work that should stay with people even when AI could do it faster.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one that matters most.",
+   "teach": [
+    {
+     "heading": "Helping is not replacing",
+     "text": "This does not mean AI can never help. AI might help a pastor research a passage or a caseworker find a form. What stays with people is the care, the judgment and the responsibility."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Think of the part of your organization's work you would least want someone to discover was done by AI. Start there."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q06a",
+     "text": "Any work with children, or care that depends on a personal relationship.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should have only people, never AI, teach and care for our children and youth.",
+        "We should keep hospital and homebound visits personal, with no AI substitute.",
+        "We should have a person, not a chatbot, follow up with first-time guests."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should keep AI note-takers out of counseling and support groups.",
+        "We should have only people, never AI, mentor and supervise young people in our programs.",
+        "We should keep camp counselors, not AI apps, as the people campers turn to for help."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should keep teachers, not AI tutors, with our youngest students during instruction.",
+        "We should keep field education supervision a relationship between a supervisor and a student.",
+        "We should keep mentoring and advising conversations between faculty and their advisees."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should have only people, never AI, lead our youth camps and children's events.",
+        "We should keep AI out of member care for our missionaries and clergy families.",
+        "We should recommend that member churches keep AI out of children's ministry and youth mentoring."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q06b",
+     "text": "Every decision about a person, including who receives help, membership, admission or employment.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should have elders, not AI, decide on membership and church discipline.",
+        "We should have the benevolence team, not AI, decide who receives financial help.",
+        "We should have people, not AI, screen and choose staff and volunteer leaders."
+       ],
+       "text": "Every decision about a person, including who receives help, membership, leadership roles or employment."
+      },
+      "nonprofit": {
+       "ex": [
+        "We should never let AI decide who receives emergency assistance.",
+        "We should keep AI out of hiring and volunteer screening decisions.",
+        "We should have a person review every application before anyone is denied services."
+       ],
+       "text": "Every decision about a person, including who receives help, who joins our programs, or employment."
+      },
+      "school": {
+       "ex": [
+        "We should never let AI rank or reject applicants for admission.",
+        "We should have a dean, not AI, decide and communicate academic dismissal.",
+        "We should keep AI out of tenure, promotion and faculty hiring decisions."
+       ],
+       "text": "Every decision about a person, including admission, discipline, financial aid or employment."
+      },
+      "network": {
+       "ex": [
+        "We should decide ordination and credentialing without any AI screening of candidates.",
+        "We should never use AI to screen job applicants for our national or regional offices.",
+        "We should have people, not AI, decide which church planters and member churches receive grants."
+       ],
+       "text": "Every decision about a person, including credentialing, ordination, appointment, grants, membership or employment."
+      }
+     }
+    },
+    {
+     "id": "q06c",
+     "text": "Pastoral care, counseling and spiritual direction.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should never use AI chatbots to give pastoral counsel or spiritual direction.",
+        "We should keep AI note-takers out of counseling sessions and prayer meetings.",
+        "We should have a pastor or trained member respond to every request for care."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should have only trained staff provide counseling, never an AI chatbot.",
+        "We should keep AI out of chaplaincy visits and prayer with clients.",
+        "We should have a person answer every crisis call, even with long waits."
+       ],
+       "text": "Counseling, chaplaincy and spiritual care."
+      },
+      "school": {
+       "ex": [
+        "We should keep AI out of student counseling and chaplaincy sessions.",
+        "We should keep spiritual direction for seminarians face to face with a trained director.",
+        "We should have a person, not a chatbot, answer students who reach out in crisis."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should have a person, not AI, answer our clergy care line.",
+        "We should never route missionaries' care requests through AI first.",
+        "We should keep AI out of the counseling and coaching we offer pastors in crisis."
+       ],
+       "text": "Pastoral care, member care, counseling and spiritual direction."
+      }
+     }
+    },
+    {
+     "id": "q06d",
+     "text": "Preaching and teaching, and anything published under a person's name.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should have our pastors write their own sermons.",
+        "We should never publish an article or devotional under a pastor's name that AI wrote.",
+        "We should have small group leaders prepare their own teaching rather than read AI scripts."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should have staff write their own trainings and talks for youth and volunteers.",
+        "We should never publish AI-written pieces under our executive director's name.",
+        "We should write our testimony to lawmakers ourselves."
+       ],
+       "text": "Teaching and public speaking on our behalf, and anything published under a person's name."
+      },
+      "school": {
+       "ex": [
+        "We should have chapel speakers prepare their own sermons.",
+        "We should have faculty write and deliver their own lectures.",
+        "We should require students to write their own sermons and exegesis papers."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should never send AI-written letters in our bishop's or president's name.",
+        "We should have people write the sermons and addresses given at our assemblies.",
+        "We should require named authors to write the curriculum we publish for member churches."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q06e",
+     "text": "Work that helps people learn and grow, even when AI would be faster.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should keep members reading Scripture themselves rather than relying on AI summaries.",
+        "We should have new believers work through discipleship lessons with a person, not an AI tutor.",
+        "We should have students in confirmation class write their own answers without AI."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should have new caseworkers learn intake interviews without AI assistance.",
+        "We should keep AI out of reflective supervision and staff mentoring.",
+        "We should have youth in job programs write their own applications with a mentor's help."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should teach Greek and Hebrew without AI translation tools.",
+        "We should have students write first drafts themselves in writing courses.",
+        "We should keep elementary math practice on paper with teacher feedback."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should keep AI out of candidates' ordination papers and theological reflection.",
+        "We should keep church planter assessment and training in person, even when AI would be faster.",
+        "We should have ordination candidates write their exams in the room."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Keep decisions about people and personal care with people. AI may help prepare that work. It may not replace the person doing it.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "AI can gather information, prepare options and point out what needs attention. But when a decision is about a person, such as whether to help them, admit them, discipline them or hire them, that person deserves someone who can explain the decision, can be persuaded, and is responsible for the result."
+     },
+     {
+      "kind": "p",
+      "value": "Personal care is the second line. A hospital visit, a hard conversation, a prayer or a welcome matters because a person does it. Where children are involved, or care depends on trust, a person must be there. A quick answer at two in the morning can still be care when no person is available, as long as no one is misled about who answered and a person can always be reached."
+     },
+     {
+      "kind": "p",
+      "value": "The third line is authorship. AI can help draft. A named person must read, approve and be responsible for anything sent in the organization's name."
+     },
+     {
+      "kind": "h",
+      "value": "Write it down"
+     },
+     {
+      "kind": "p",
+      "value": "Our field guide recommends a written list of care boundaries: the specific kinds of work that must be done by a person, the kinds where AI may help a person but not replace them, and the reason for each. Without a written list, these boundaries tend to wear away one exception at a time."
+     }
+    ]
+   },
+   "deeper": "It Starts With Safety, Layer 04: Care Boundaries",
+   "beliefs": [
+    "b08"
+   ],
+   "label": "Work only people do",
+   "sector_titles": {}
+  },
+  {
+   "id": "q07",
+   "part": "p3",
+   "title": "What uses of AI should we prohibit?",
+   "term": "Prohibited uses",
+   "why": "Some uses cause harm however carefully they are done. Every organization needs a short list of them, written down before anyone is tempted.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one that matters most.",
+   "teach": [
+    {
+     "heading": "Why write them down",
+     "text": "A written list of prohibited uses can be pointed to when a vendor offers one anyway, and it settles arguments before they start. Movemental calls these named refusals."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Ask what would damage trust so badly that no explanation could repair it."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q07a",
+     "text": "Letting people think they are dealing with a person when it is AI.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should never let a chatbot pray with someone as if it were a person.",
+        "We should label every automated text and email from the church as automated.",
+        "We should make sure our website chatbot says it is AI in its first message."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should label every automated message as automated.",
+        "We should have our phone assistant say it is AI at the start of every call.",
+        "We should never give our AI chatbot a human name or face."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should never present an AI tutor or chatbot to students as a faculty member.",
+        "We should not let an AI assistant answer applicant emails under an admissions counselor's name.",
+        "We should not use AI avatars to teach online courses as if they were real instructors."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should never let a chatbot on our website present itself as a staff member.",
+        "We should label every automated message we send to member churches and missionaries as automated.",
+        "We should never let an AI tool pray with or counsel a pastor as if it were a person."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q07b",
+     "text": "Using AI to pressure people into attending, giving or staying.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should never use AI to send pressure messages to members who have stopped attending.",
+        "We should never use AI to write giving appeals aimed at members' fears or guilt.",
+        "We should never use AI to target newcomers with repeated messages they did not ask for."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should never use AI to find donors' emotional weak points for appeals.",
+        "We should never use AI to create false urgency in donation campaigns.",
+        "We should never use AI messages to pressure families into staying in our programs."
+       ],
+       "text": "Using AI to pressure people into giving, joining or staying."
+      },
+      "school": {
+       "ex": [
+        "We should not use AI to send prospective students personalized messages meant to pressure them to enroll.",
+        "We should not use AI to write guilt-based appeals to alumni donors.",
+        "We should not use AI to target withdrawing students with pressure to stay."
+       ],
+       "text": "Using AI to pressure people into enrolling, giving or staying."
+      },
+      "network": {
+       "ex": [
+        "We should never use AI to pressure member churches about unpaid dues or apportionments.",
+        "We should never use AI to find supporters' emotional weak points in missionary support appeals.",
+        "We should ask member churches not to use AI to pressure members about attending or giving."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q07c",
+     "text": "Putting sensitive information into AI tools that do not protect it.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should never paste prayer requests into a free AI tool.",
+        "We should never put counseling notes or children's records into consumer AI tools.",
+        "We should never upload our membership directory to an AI tool we have not approved."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should never put client records into consumer AI tools.",
+        "We should never paste counseling notes or survivors' stories into a free AI tool.",
+        "We should ban personal AI accounts for any work involving clients or donors."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should forbid entering student grades or disciplinary records into tools without a student privacy agreement.",
+        "We should keep counseling notes and health records out of every AI tool.",
+        "We should not paste applicant essays or recommendation letters into public chatbots."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should never paste misconduct complaints or clergy files into a free AI tool.",
+        "We should never put missionaries' names, locations or security plans into consumer AI tools.",
+        "We should recommend that member churches never paste prayer requests into free AI tools."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q07d",
+     "text": "Using AI to monitor, score or rank the people we serve or employ.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should never use AI to predict which members will leave.",
+        "We should never use AI to score members by giving or engagement.",
+        "We should never use facial recognition on our security cameras or at check-in."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should refuse vendors whose tools rank clients or staff.",
+        "We should never use AI to monitor staff productivity.",
+        "We should never use AI risk scores to decide which families get services first."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should not use AI proctoring that watches students through their webcams.",
+        "We should not use AI to score faculty performance from student emails or course data.",
+        "We should not use AI to rank students by predicted risk without their knowledge."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should never use AI to score or rank pastors for appointment or promotion.",
+        "We should never use AI to monitor the social media of our missionaries or staff.",
+        "We should refuse vendors whose tools rank church members by giving or attendance."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q07e",
+     "text": "Copying a real person's voice or image with AI, or publishing AI writing as a person's own.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should never create an AI version of our pastor's voice or face.",
+        "We should never publish AI-written prayers or articles under a member's name.",
+        "We should never make AI images of real members without their knowledge and consent."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should never clone a real person's voice for our appeals.",
+        "We should never use AI-generated images of the people we serve in fundraising.",
+        "We should never send AI-written letters to officials under supporters' names."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should never create AI voice or video copies of faculty, even for online courses.",
+        "We should not publish AI-written articles under our president's or faculty's names.",
+        "We should treat a student submitting AI writing as their own as an academic integrity violation."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should never create AI voice clones or avatars of our leaders.",
+        "We should never publish AI-written articles under a leader's name.",
+        "We should never use AI to make videos of a missionary saying words they did not say."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q07f",
+     "text": "Using AI in ways that treat people unfairly because of race, age, disability, language or income.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should check that AI translation serves every language group in our church equally.",
+        "We should never use AI tools that sort applicants for church jobs by age or background.",
+        "We should keep a non-digital way to give, register and get help for members without internet."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should test any AI eligibility tool for bias before using it with clients.",
+        "We should refuse AI tools that work poorly for clients with limited English.",
+        "We should check that our AI chatbot works for clients who use screen readers."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should not use AI admissions tools that disadvantage applicants by race, disability or income.",
+        "We should not rely on AI writing detectors that falsely flag students writing in a second language.",
+        "We should check that AI tutors work as well for students with disabilities as for others."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should never use AI tools that treat candidates unfairly because of race, age, disability or language.",
+        "We should check that AI translation serves minority-language congregations as well as majority-language ones.",
+        "We should never offer member churches AI resources that work only in English."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Keep this list short and absolute. Then set up your tools so these uses are not possible, rather than relying on people to remember the rules.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "We hold all six. Movemental's own public commitments include several of them: we do not imitate people with AI, we do not use AI in place of human care, and we do not use AI to decide who has access to what we offer. Each of these damages trust in a way that is very hard to repair, and no amount of convenience outweighs that."
+     },
+     {
+      "kind": "h",
+      "value": "Unfair treatment"
+     },
+     {
+      "kind": "p",
+      "value": "AI learns from records that already contain unfairness. A tool that sorts applications, translates or flags people as risks can treat them differently by race, age, disability, language or income without anyone intending it. Wherever AI touches information about people, check its results for this before relying on them."
+     },
+     {
+      "kind": "h",
+      "value": "Make it impossible, not just forbidden"
+     },
+     {
+      "kind": "p",
+      "value": "A rule against pasting counseling notes into a chatbot depends on every person remembering it on every busy day. Setting up your systems so those notes cannot reach the chatbot does not. We prefer the second whenever possible: control what each tool can see, what it can send and what it is connected to."
+     },
+     {
+      "kind": "p",
+      "value": "Each prohibited use also needs a plain statement, a reason people understand, a person responsible for it, and a known consequence when it is broken."
+     },
+     {
+      "kind": "h",
+      "value": "Keep the list short"
+     },
+     {
+      "kind": "p",
+      "value": "If everything is prohibited, people start working around the policy. Most uses of AI need judgment rather than a ban. They belong in the next question."
+     }
+    ]
+   },
+   "deeper": "It Starts With Safety, Layer 02: Named Refusals · How Movemental Uses AI, Red light",
+   "beliefs": [
+    "b07",
+    "b06"
+   ],
+   "label": "Prohibited uses",
+   "sector_titles": {}
+  },
+  {
+   "id": "q08",
+   "part": "p3",
+   "title": "What uses of AI should we allow only with safeguards?",
+   "term": "Conditional use and safeguards",
+   "why": "Most uses of AI fall here. They help only under the right conditions. Naming the use and its safeguard together gives staff a rule they can follow.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one you most want written down.",
+   "teach": [
+    {
+     "heading": "What a safeguard is",
+     "text": "A condition that makes a use acceptable, such as a person who reviews and approves the result, a person who can always be reached, a check against sources, consent from the people involved, or a trial period with a review date."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Pick the uses your staff are most likely already trying, and ask what would need to be true for you to be comfortable with them."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q08a",
+     "text": "AI may draft what we send, if a named person reviews, edits and approves it.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should let AI draft announcements that a named staff member rewrites and approves.",
+        "We should have a pastor approve any AI-drafted letter before it goes to the congregation.",
+        "We should let volunteers use AI for newsletter drafts if the editor reviews each one."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should have staff rewrite every AI-drafted appeal before it is sent.",
+        "We should let AI draft board minutes for the secretary to correct and approve.",
+        "We should have a named staff member approve every AI-drafted social media post."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should let staff use AI to draft parent newsletters that a named administrator reviews and approves.",
+        "We should let faculty use AI to draft feedback only if they revise and sign it themselves.",
+        "We should let admissions use AI for first drafts of letters that a counselor edits and sends."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should let AI draft routine letters to member churches that a named leader reviews and signs.",
+        "We should let missionaries draft prayer letters with AI if they personally edit and approve them.",
+        "We should let staff use AI to draft resources for member churches if a named editor approves them."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q08b",
+     "text": "AI may answer questions outside office hours, if people can always reach a person.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should send any chatbot message about grief or crisis to a pastor right away.",
+        "We should show the church office phone number in every answer our website chatbot gives.",
+        "We should have the on-call pastor's number available to anyone using the chatbot after hours."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should let clients reach a staff member from any AI chat.",
+        "We should send any after-hours chat about abuse or crisis to an on-call staff member.",
+        "We should list our staffed phone line on every page where our AI chat appears."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should let an AI assistant answer applicant questions overnight, with a clear link to a staff member.",
+        "We should let an AI tutor help students between classes, with a named instructor they can always contact.",
+        "We should let AI answer routine registrar questions after hours, with emergencies routed to campus staff."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should route any chatbot message about misconduct or crisis to a staff member right away.",
+        "We should let member church leaders reach a person from any AI help desk we run.",
+        "We should put a staff phone number on every page of our AI help desk for pastors."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q08c",
+     "text": "AI may translate, if a qualified person checks anything people will rely on.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should have native speakers review translated sermons before they are posted.",
+        "We should have a fluent member check every translated consent form and policy.",
+        "We should tell listeners that live AI translation may contain errors."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should have a fluent speaker review every translated legal or medical notice.",
+        "We should have native speakers check translated consent forms before use.",
+        "We should have bilingual staff review translated camp forms before parents receive them."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should have a qualified translator check AI-translated enrollment forms for families.",
+        "We should have a fluent faculty member review AI-translated course materials for international students.",
+        "We should have a bilingual staff member check AI translations of safety notices before sending them home."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should have native speakers check every AI translation of our resources before release.",
+        "We should let partner churches review and approve translations of their own words.",
+        "We should have qualified translators check AI-translated policies, contracts and safeguarding notices."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q08d",
+     "text": "AI may be used in our work with the people we serve, if they know about it and agree.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should ask members before AI is used to transcribe their testimony or story.",
+        "We should let members choose whether AI is used in any follow-up they receive.",
+        "We should get parents' written consent before AI is used in children's ministry."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should get clients' informed consent before AI processes their information.",
+        "We should get guardian consent before AI tools process any minor's case file.",
+        "We should let clients decline AI in their services without losing any service."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should tell students when AI helps flag struggling students, and let them decline.",
+        "We should get parental consent before AI tools analyze minor students' work.",
+        "We should let students opt out of AI-graded assignments and offer another way."
+       ],
+       "text": "AI may be used in our work with students, if they know about it and agree."
+      },
+      "network": {
+       "ex": [
+        "We should get missionaries' consent before AI summarizes their field reports.",
+        "We should use AI note-takers in member church consultations only when everyone present agrees.",
+        "We should get parents' consent before AI handles campers' data at our camps."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q08e",
+     "text": "AI may help with research, if we check every fact we use against a source.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should check every AI-supplied fact or quote before it appears in a sermon.",
+        "We should check AI Bible study notes against trusted commentaries before small groups use them.",
+        "We should check every AI-supplied historical claim in our church history booklet against a source."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should check every AI-generated statistic before it appears in a report.",
+        "We should verify every source AI finds for a grant proposal before submitting it.",
+        "We should check AI summaries of community needs data against the original data."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should let students use AI to find sources if they check every citation in the library.",
+        "We should require faculty to verify every AI-suggested fact before using it in a lecture.",
+        "We should have researchers disclose AI use to our review board and check its findings against sources."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should check every AI-generated statistic before it appears in our annual report.",
+        "We should verify every source an AI tool cites in resources for member churches.",
+        "We should confirm AI summaries of church statistics against the original reports."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q08f",
+     "text": "We may adopt a new AI tool, if it is reviewed against our policy first.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should have elders review any new AI tool that touches member data.",
+        "We should check any AI feature in new church software against our policy before turning it on.",
+        "We should have each campus submit new AI tools for one shared review before use."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should review every new AI tool against our policy before staff use it.",
+        "We should check what data a donated AI tool collects before accepting it.",
+        "We should get legal review before signing any AI contract that touches client data."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should have IT and the academic dean review any AI tool before faculty use it in courses.",
+        "We should check a new AI tool for student privacy compliance before signing the contract.",
+        "We should have the library vet every AI research tool before offering it to students."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should review every new AI tool against our policy before any office adopts it.",
+        "We should include safeguarding officers in approving any AI tool used in youth ministry.",
+        "We should review AI tools against our policy before recommending them to member churches."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Most AI decisions happen here. For each use, name the safeguard and the person who checks it, and try it on a small scale before expanding it.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "Movemental sorts AI uses into three groups, and most uses fall into this middle group: real benefit, but only with enough safeguards. Drafts a person reviews before sending. Research that is checked against sources. Help that never takes the place of the people involved."
+     },
+     {
+      "kind": "p",
+      "value": "A few safeguards cover most cases:"
+     },
+     {
+      "kind": "ul",
+      "value": [
+       "<strong>A named person approves it.</strong> Someone reviews the result, edits it and is responsible for it.",
+       "<strong>A person can be reached.</strong> No one's only contact with your organization is AI.",
+       "<strong>Facts are checked.</strong> Claims, numbers and quotations are verified before anyone relies on them.",
+       "<strong>Knowledge and consent.</strong> The people we serve know when AI is part of their care and can say no.",
+       "<strong>Trial and review.</strong> A use is tried for a set period and then kept, changed or stopped.",
+       "<strong>Review before adoption.</strong> A new tool is checked against your policy, including what it does with your information, before anyone uses it."
+      ]
+     },
+     {
+      "kind": "h",
+      "value": "When unsure, slow down"
+     },
+     {
+      "kind": "p",
+      "value": "The same tool can carry different risks. An internal summary is not a public statement, and a draft you will rewrite is not a post you will publish almost unchanged. When the result will shape people or represent you publicly, review it yourself. When it is internal and low-risk, less review is needed. The people setting these safeguards should have tried the uses themselves."
+     }
+    ]
+   },
+   "deeper": "How Movemental Uses AI, Yellow light · It Starts With Safety, Layer 04: Rules",
+   "beliefs": [
+    "b07",
+    "b05"
+   ],
+   "label": "Allowed with safeguards",
+   "sector_titles": {}
+  },
+  {
+   "id": "q09",
+   "part": "p3",
+   "title": "What uses of AI should we allow freely?",
+   "term": "Approved uses",
+   "why": "A policy that only lists what is forbidden does not tell people what is welcome. Some uses clearly help and harm no one. Naming them lets people use them with confidence.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one you would start with.",
+   "teach": [
+    {
+     "heading": "A simple test",
+     "text": "Imagine the same work without AI. If what remains is people doing valuable work that AI helped them do faster or for more people, the use is good."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Start with the tasks your staff find most draining and least meaningful."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q09a",
+     "text": "Making our own documents, teaching and records easy to search.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should make our sermon archive searchable.",
+        "We should make past elder minutes and policies easy to search for staff.",
+        "We should make our small group curriculum searchable by topic and Scripture passage."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should make past grant reports easy to search.",
+        "We should make our program manuals and training materials searchable for staff.",
+        "We should make our board minutes and policies searchable."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should make our recorded lectures and syllabi searchable for students and faculty.",
+        "We should make our library's archives and theses easy to search with AI.",
+        "We should make our school handbook and policies searchable for parents and staff."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should make our archive of assembly minutes and resolutions searchable.",
+        "We should make our book of order and policy handbooks easy for member churches to search.",
+        "We should make our past training resources for church planters searchable."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q09b",
+     "text": "Captions, transcripts and other accessibility help.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should caption every service.",
+        "We should post transcripts of sermons for members who prefer to read.",
+        "We should offer large-print and audio versions of the bulletin."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should caption every video and webinar we publish.",
+        "We should offer audio versions of our client forms for people who cannot read them.",
+        "We should transcribe volunteer trainings for those who cannot attend live."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should caption every chapel service and recorded lecture.",
+        "We should provide AI transcripts of class sessions for students with disabilities.",
+        "We should let students use text-to-speech tools for assigned readings."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should caption every session at our annual conference.",
+        "We should transcribe our webinars for pastors who are deaf or hard of hearing.",
+        "We should offer audio versions of our resources for pastors with low vision."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q09c",
+     "text": "Routine administrative work such as scheduling and formatting.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should let AI handle room booking and reminders.",
+        "We should let AI format the bulletin and volunteer schedules.",
+        "We should let AI help prepare meeting agendas for staff and committees."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should let AI format reports and schedule meetings.",
+        "We should let AI schedule volunteer shifts and send reminders.",
+        "We should let AI help track inventory at our food pantry."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should let AI help schedule classes, rooms and exams each term.",
+        "We should let staff use AI to format course catalogs and handbooks.",
+        "We should let AI organize field trip and event logistics."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should let AI assign conference sessions and rooms from registrations.",
+        "We should let AI format our newsletters and meeting agendas for member churches.",
+        "We should let AI schedule regional meetings and send reminders."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q09d",
+     "text": "Finding patterns in our own information that would take weeks by hand.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should use AI to see which ministries have too few volunteers.",
+        "We should use AI to sort years of visitor cards by the questions people asked.",
+        "We should use AI to compare total attendance across campuses by season."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should use AI to spot donors who may stop giving.",
+        "We should use AI to forecast food pantry demand and plan orders.",
+        "We should use AI to sort open-ended answers in our community needs assessments."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should use AI to find patterns in our retention and graduation data.",
+        "We should use AI to review years of course evaluations for common themes.",
+        "We should use AI to compare curriculum maps across departments for gaps and overlaps."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should use AI to see which member churches may need a call from regional staff.",
+        "We should use AI to find trends in our annual congregational statistics.",
+        "We should use AI to sort years of grant reports by what helped new churches grow."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q09e",
+     "text": "Work we could never afford to hire for, as long as no one loses their job.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should let AI help our volunteer-run office keep up.",
+        "We should use AI so our bivocational pastor spends less time on paperwork.",
+        "We should let our church plant use AI for design work we cannot afford to hire."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should use AI so a two-person staff can serve more families.",
+        "We should use AI for grant research we could never afford to hire for.",
+        "We should help all-volunteer partner pantries use AI for scheduling and reporting."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should use AI to help a small school offer translated family communications we could not otherwise afford.",
+        "We should use AI to tag our archive photos, a project we could never staff.",
+        "We should use AI to build practice exercises for rarely taught languages without cutting any teaching role."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should provide AI tools to member churches without a paid pastor so their volunteers can keep up.",
+        "We should use AI so our small regional office can answer more member church questions.",
+        "We should use AI to transcribe decades of recorded assembly sessions we could never pay staff to transcribe."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q09f",
+     "text": "Nothing yet. We should try AI on low-risk work first.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should run a short trial on office work before approving anything.",
+        "We should revisit this question at the elders' meeting after a one-season trial.",
+        "We should let two staff members try AI on scheduling and report back."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should revisit this question after a three-month trial.",
+        "We should run a short trial on back-office work before approving anything.",
+        "We should keep AI out of client services until trial results reach the board."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should try AI only on room scheduling this term before allowing it more freely.",
+        "We should allow nothing freely until our faculty committee reviews the first pilots.",
+        "We should let a few staff test AI on public documents before approving any free use."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should run a three-month trial in our national office before approving any AI use.",
+        "We should hold off recommending AI tools to member churches until our own trial ends.",
+        "We should revisit this question at our next annual meeting after a pilot."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Allow the uses that save people time, help people who would otherwise go without, and harm no one. Start with the work your staff find most draining.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "Making documents searchable, captioning and translating for access, and finding patterns that would take weeks by hand are clear benefits with no real harm. We use AI for work like this ourselves and encourage organizations to do the same."
+     },
+     {
+      "kind": "h",
+      "value": "The best uses depend on your own information"
+     },
+     {
+      "kind": "p",
+      "value": "Generic AI gives generic results. A chatbot that knows nothing about your organization writes what any organization might say. The real value comes when AI works from your own documents, history and ways of working. That is why the next questions are about your information, and why we spend so much effort helping organizations gather their scattered documents before building anything."
+     },
+     {
+      "kind": "h",
+      "value": "Small organizations"
+     },
+     {
+      "kind": "p",
+      "value": "For a church with no paid staff or a nonprofit where one person does five jobs, AI may make possible work they could never hire for. That is a good use, and it should be said openly. The test is whether current staff are treated fairly and the people served are better off."
+     },
+     {
+      "kind": "p",
+      "value": "Nothing yet is also a good answer, if it comes with a date to review it and the trial actually happens."
+     }
+    ]
+   },
+   "deeper": "How Movemental Uses AI, Green light · It Continues With Exploration, eighty use cases",
+   "beliefs": [
+    "b07",
+    "b09"
+   ],
+   "label": "Allowed freely",
+   "sector_titles": {}
+  },
+  {
+   "id": "q10",
+   "part": "p3",
+   "title": "When should we tell people that AI was used?",
+   "term": "Transparency and disclosure",
+   "why": "For churches, nonprofits and schools, trust is central to the work. Telling people how AI is used protects that trust. People finding out later damages it.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one that matters most.",
+   "teach": [
+    {
+     "heading": "The test for disclosure",
+     "text": "The question is not whether AI touched something. It is whether a person would understand it differently if they knew AI was involved."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Ask what a member, donor or student would feel misled to find out."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q10a",
+     "text": "We should tell people how we use AI and how we do not, with our leaders explaining their own use first.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should have our pastor explain to the congregation how they use AI and how they do not.",
+        "We should publish a plain statement of our AI use on our church website.",
+        "We should explain our AI guidelines in our new member class."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should publish a plain AI statement on our website.",
+        "We should have our executive director explain their own AI use to staff first.",
+        "We should describe how we use and do not use AI in our annual report."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should publish how our school uses AI and does not, with the president describing their own use.",
+        "We should have faculty explain their own AI use at the start of each course.",
+        "We should tell families at back-to-school night where AI is used and where it is not."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should have our bishop or president explain their own AI use to the assembly first.",
+        "We should publish a plain AI statement for member churches on our website.",
+        "We should state our AI practices once in our missionary handbook."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q10b",
+     "text": "We should label images, audio and video made with AI.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should label AI-generated images in our slides, bulletin and social media.",
+        "We should never show an AI image of a real event as if it were a photo.",
+        "We should label any AI-generated music or voice used in services or videos."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should label every AI-altered photo in our appeals.",
+        "We should label AI-generated images in our newsletters and social posts.",
+        "We should label any AI-generated voice or music in our fundraising videos."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should label AI-generated images in our admissions and fundraising materials.",
+        "We should mark AI-generated audio or video used in online courses.",
+        "We should label AI images in student publications and yearbooks."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should label AI voices narrating our mission videos.",
+        "We should label every AI-made image in our magazines and conference materials.",
+        "We should label every AI-restored photo in our digitized archives."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q10c",
+     "text": "We should tell people where their information goes and who can use it.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should tell members which tools handle their prayer requests.",
+        "We should explain in plain words who can see members' giving records.",
+        "We should tell parents where children's check-in information is stored."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should name our data vendors in our privacy policy.",
+        "We should tell clients on our consent forms how AI uses their information.",
+        "We should tell parents which tools handle their children's registration and health forms."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should tell students which companies receive their coursework when they use campus AI tools.",
+        "We should tell parents where student data goes when teachers use AI tools.",
+        "We should tell applicants whether AI tools process any part of their application."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should tell member churches which vendors handle the data in our membership database.",
+        "We should tell missionaries where their field reports are stored and who can read them.",
+        "We should tell clergy which tools process their credentialing and pension records."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q10d",
+     "text": "We should say when AI did much of the work on something published in our name.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should note when AI helped substantially with a teaching series or study guide.",
+        "We should disclose AI help in curriculum we share with other churches.",
+        "We should say when AI drafted most of a church-wide letter or report."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should disclose AI help in impact reports.",
+        "We should tell funders when AI helped write our grant proposals.",
+        "We should note when AI drafted much of a published report or training guide."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should note when AI did much of the drafting of course materials or reports.",
+        "We should require students to cite AI help like any other source.",
+        "We should disclose substantial AI use in research our faculty publish under the school's name."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should note when AI helped substantially with curriculum we publish for member churches.",
+        "We should tell supporters when AI did much of the writing in missionary newsletters.",
+        "We should disclose substantial AI help in our annual report to the assembly."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q10e",
+     "text": "We should tell people when an AI mistake affects them.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should tell members when an AI error sent their information to the wrong person.",
+        "We should correct from the pulpit any AI error that appeared in a sermon.",
+        "We should tell a family directly when an AI mistake affected their records."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should tell funders when an AI error affected reported results.",
+        "We should tell a family when an AI translation error gave them wrong information.",
+        "We should tell donors when an AI error sent them a wrong receipt or message."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should tell a student when an AI error affected their grade or record.",
+        "We should tell families when an AI translation error caused confusion about a school notice.",
+        "We should disclose AI errors found in our published research and correct them."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should publish corrections when AI errors reach resources sent to member churches.",
+        "We should tell a member church directly when an AI error affected its statistics or dues.",
+        "We should tell donors when an AI error affected the mission results we reported."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Two things are always required: no one should think a person answered them when none did, and no one should be surprised by where their information went. Beyond that, disclose in proportion to how much AI was involved.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "Trust is easy to lose. The fastest way to lose it is for people to find out later that something they thought was personal was automated, or that their information went somewhere they did not expect. Those two disclosures should always be made."
+     },
+     {
+      "kind": "p",
+      "value": "Beyond them, match the disclosure to the use. Spellcheck needs no label. A teaching series, a letter to a family or a public statement written largely with AI deserves an honest note. Our own rule: we disclose when not disclosing would mislead, and when in doubt, we disclose."
+     },
+     {
+      "kind": "p",
+      "value": "Label images, audio and video made with AI. A realistic picture of people who were never there, or a voice that was never recorded, misleads even when no one meant it to."
+     },
+     {
+      "kind": "h",
+      "value": "Leaders first"
+     },
+     {
+      "kind": "p",
+      "value": "In most organizations people use AI quietly, partly because they are not sure it is allowed. When leaders explain how they use AI themselves, others become willing to say so too, and decisions can be based on what is actually happening."
+     },
+     {
+      "kind": "p",
+      "value": "We would ask every organization to publish a short statement of how it uses AI and how it does not, written for the people it serves. Date it, and update it as things change."
+     }
+    ]
+   },
+   "deeper": "It Starts With Safety, Disclosure and Attribution Rules · How Movemental Uses AI, our five commitments",
+   "beliefs": [
+    "b08"
+   ],
+   "label": "Disclosure",
+   "sector_titles": {}
+  },
+  {
+   "id": "q11",
+   "part": "p4",
+   "title": "How should we protect and use our organization's information?",
+   "term": "Data privacy and data use",
+   "why": "Organizations hold years of information about their people and their work. How that information is kept decides both what is at risk and how useful AI can be.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one that matters most.",
+   "teach": [
+    {
+     "heading": "What we mean by information",
+     "text": "Not only data in the narrow sense. Records, documents, sermons and teaching, reports, decisions, relationships and know-how: what an organization has learned about its people and its work over the years. Much of it is scattered across files, inboxes and people's memories."
+    },
+    {
+     "heading": "Why AI makes this urgent",
+     "text": "AI produces answers from what it is given. Given scattered, incomplete information about your organization, it fills the gaps with confident guesses. Given your own information, gathered and organized, it can give useful answers no generic tool can. The same information that needs protecting is what makes AI useful."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Ask what your organization would lose if your longest-serving staff member left tomorrow."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q11a",
+     "text": "We should sort our information by how sensitive it is, and decide which tools may use each kind.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should list which records, such as prayer requests and counseling notes, may never enter AI tools.",
+        "We should mark sermons and public announcements as safe for approved AI tools.",
+        "We should give volunteers a simple chart of what information may go into which tools."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should mark case files, health records and immigration status as our most sensitive information.",
+        "We should list which AI tools may use public, internal and confidential information.",
+        "We should keep donor giving records in approved tools only."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should sort our information into public, internal and confidential, and assign approved AI tools to each.",
+        "We should treat student records, counseling notes and health files as our most sensitive information.",
+        "We should list which AI tools may use course materials and which may never see student data."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should sort our records into public, internal and confidential, and list approved tools for each.",
+        "We should treat missionary locations and misconduct files as our most sensitive information.",
+        "We should give member churches a simple model for sorting their records by sensitivity."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q11b",
+     "text": "We should let people see, correct and ask us to delete information about them wherever we can.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should let members see and correct what our church software holds about them.",
+        "We should delete a former member's information when they ask us to.",
+        "We should let parents ask us to remove their children's photos from our records."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should let clients correct any AI summary of their case.",
+        "We should let donors ask us to delete their information from our systems.",
+        "We should show clients any AI-edited version of their story before publishing it."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should let students see and correct any AI-drafted assessment of their progress.",
+        "We should let alumni ask us to delete information we no longer need about them.",
+        "We should let parents review what information AI tools hold about their children."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should let clergy see and correct the information in their credentialing files.",
+        "We should let former missionaries ask us to delete their photos from our websites.",
+        "We should let church members ask to be removed from our national mailing lists."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q11c",
+     "text": "We should gather our scattered documents and records so they are complete, easy to find and under our control.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should gather years of sermons and teaching into one archive we control.",
+        "We should bring elder minutes and policies from personal drives into one church account.",
+        "We should collect each campus's ministry documents into one shared library."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should bring our reports, proposals and evaluations into one searchable place.",
+        "We should move program records off staff personal drives into systems we control.",
+        "We should gather our training materials and program manuals in one place."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should gather scattered syllabi, lecture notes and course materials into one archive the school controls.",
+        "We should bring old student records and policies into one complete and searchable system.",
+        "We should collect our faculty's published writing and recorded lectures in our own library."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should bring our resolutions, policies and handbooks into one searchable place we control.",
+        "We should gather training materials from every region into one shared library.",
+        "We should move missionary field reports from scattered email accounts into our own records system."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q11d",
+     "text": "We should record what long-serving people know before they leave.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should record our founders' stories and reasons.",
+        "We should interview our long-serving church secretary about how the work really gets done.",
+        "We should write down what retiring elders know about our church's history and decisions."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should interview long-serving staff about how the work really gets done.",
+        "We should record our founder's stories and reasons for starting the work.",
+        "We should write down what veteran camp directors know before they retire."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should record the knowledge of retiring faculty about their courses and students.",
+        "We should document how our long-serving registrar handles unusual cases before they retire.",
+        "We should interview our founding teachers about our school's history and practices."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should interview retiring regional staff about how they support member churches.",
+        "We should record our founders' stories and reasons for starting the network.",
+        "We should record what long-serving missionaries know before they return home."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q11e",
+     "text": "When AI speaks for us, it should use only our own information and show its sources.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should limit any church chatbot to our own teaching and policies.",
+        "We should require our website chatbot to link to the church page each answer comes from.",
+        "We should have the chatbot say it does not know rather than guess about our beliefs."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should limit any client chatbot to our own program information.",
+        "We should require our chatbot to link to the source of every answer about services.",
+        "We should stop our AI phone assistant from answering eligibility questions it has no source for."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should limit any campus AI assistant to our own catalog and policies, with links to each source.",
+        "We should build any AI study helper only from our faculty's approved course materials.",
+        "We should require our applicant chatbot to quote our published admissions pages and cite them."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should limit any AI assistant we offer to our own polity and resources.",
+        "We should require every AI answer about our policies to cite the section it comes from.",
+        "We should limit any chatbot we provide to member churches to approved, cited sources."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q11f",
+     "text": "We should not let vendors train AI on our information or keep it after we leave.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should make sure vendors do not train AI on our giving or member records.",
+        "We should require AI vendors to delete our data when we end a contract.",
+        "We should pay more for AI tools that do not learn from our records."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should require AI vendors to return our data when contracts end.",
+        "We should pay for AI tools that do not train on our data.",
+        "We should set deletion dates for everything we put into AI tools."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should forbid AI vendors from training on student work or faculty lectures.",
+        "We should require vendors to delete our data when our contract ends.",
+        "We should let students decide whether their work is used to train any AI."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should require AI vendors to return and delete our data when contracts end.",
+        "We should use only AI tools that never train on our members' or missionaries' data.",
+        "We should include these data terms in any shared AI contract we offer member churches."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Your information is your organization's memory: what it has learned about its people and its work over many years. Protect it because it is about people. Organize it because it is what makes AI accurate about you.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "Most discussion of data and AI is about risk, and the risk is real. Donor records, pastoral notes, information about children, immigration status and health details need the most care. Start by knowing what you hold and sorting it by sensitivity, so the most sensitive information never reaches an outside AI tool and everything else goes only to tools whose terms protect it."
+     },
+     {
+      "kind": "p",
+      "value": "That is only half of it. An organization's records, teaching, history and know-how are what it has learned over the years. In most organizations they are scattered: sermons no one can search, grant reports filed by year, important know-how in one person's head. We have told churches plainly that the real value here is memory, not efficiency. An organization committed to continuity can still forget most of what it knows."
+     },
+     {
+      "kind": "h",
+      "value": "AI repeats what it is given"
+     },
+     {
+      "kind": "p",
+      "value": "Ask AI about an organization whose information is scattered, and it builds an answer from whatever pieces it can find. The result sounds right but is not accurate. People call this AI slop, and it comes from scattered information. Give the same tool the organization's own information, organized and complete, and it can answer from what the organization actually knows, with sources."
+     },
+     {
+      "kind": "p",
+      "value": "This is why we say gathering and organizing information is not just preparation. It is the main work. Real value comes where an organization's actual work meets its own organized information."
+     },
+     {
+      "kind": "h",
+      "value": "A caution"
+     },
+     {
+      "kind": "p",
+      "value": "Organizing information can also be used to build an organization's own name and reach. In the story of Babel, people built something unified for their own sake. At Pentecost, people were understood in their own languages. Organize your information to serve your people and your neighbors, not to replace your people with it."
+     }
+    ]
+   },
+   "deeper": "Movemental: the talk · The context method · Fragmentation Inventory",
+   "beliefs": [
+    "b09",
+    "b06"
+   ],
+   "label": "Our information",
+   "sector_titles": {}
+  },
+  {
+   "id": "q12",
+   "part": "p4",
+   "title": "How should we treat our staff and volunteers as AI changes their work?",
+   "term": "Workforce impact",
+   "why": "If AI changes the work, someone decides what happens to the saved time, the jobs and the people who object. If no one decides, the budget usually does.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one that matters most.",
+   "teach": [
+    {
+     "heading": "People who object",
+     "text": "Some people decline to use AI for reasons of conscience. Others avoid it out of fear, habit or overload. Both deserve care, but they are different. Telling them apart takes conversation, not a rule."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Ask what you would want to be told, in advance, if your own job were about to change."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q12a",
+     "text": "We should decide what saved time will be used for before adopting any AI tool.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should decide where saved hours go before adopting any AI tool.",
+        "We should not plan more services or events because AI drafts faster.",
+        "We should agree with our administrator what saved time is for before adding AI."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should decide where saved hours go before adopting any AI tool.",
+        "We should not raise fundraising targets because AI drafts appeals faster.",
+        "We should drop an old task whenever we add an AI task for staff."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should decide what faculty will do with saved grading time before adopting AI grading help.",
+        "We should agree how registrar staff will use saved time before automating data entry.",
+        "We should state in each AI proposal what saved time will go toward."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should decide where regional staff's saved hours will go before adopting any AI tool.",
+        "We should not add reporting duties for pastors because AI makes reports faster.",
+        "We should agree how missionaries' saved admin time will be used before giving them AI tools."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q12b",
+     "text": "We should give saved time back to people: more time with the people we serve, and more rest.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should give pastors' saved hours to prayer, study and visits.",
+        "We should give saved staff time back as Sabbath rest.",
+        "We should use saved volunteer time for visiting the sick and homebound."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should use AI savings to lower caseloads, not raise them.",
+        "We should use AI to free volunteers from paperwork for more time with families.",
+        "We should give frontline staff a paid rest day funded by AI time savings."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should give time AI saves back to mentoring students.",
+        "We should give faculty time AI saves for their own research and rest.",
+        "We should use saved administrative time to give teachers more planning time."
+       ],
+       "text": "We should give saved time back to people: more time with students, and more rest."
+      },
+      "network": {
+       "ex": [
+        "We should spend saved staff time visiting member churches in person.",
+        "We should give field missionaries extra rest from time AI saves on administration.",
+        "We should use AI for conference logistics so staff can spend time with attendees."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q12c",
+     "text": "We should retrain people before eliminating jobs, and never cut jobs based on projected savings.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should train our administrator in new tools rather than replace the position.",
+        "We should not cut any staff hours based on AI's projected savings.",
+        "We should base staffing changes on actual results, not vendor promises."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should retrain staff whose tasks AI takes over.",
+        "We should not cut caseworker positions based on AI forecasts.",
+        "We should not promise funders lower staffing costs from AI adoption."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should retrain library and advising staff before changing their roles because of AI.",
+        "We should not cut faculty lines based on projected AI teaching savings.",
+        "We should offer staff training in new work before eliminating any position."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should retrain headquarters staff whose tasks AI takes over.",
+        "We should not consolidate regional staff roles on projected AI savings.",
+        "We should advise member churches to retrain church office staff before changing their roles because of AI."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q12d",
+     "text": "We should agree any change in workload with the people who do the work.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should ask volunteers before changing how their work is done.",
+        "We should review our secretary's role with her before adding AI tools.",
+        "We should have our personnel committee and staff agree on AI workload changes together."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should negotiate AI-related workload changes with staff.",
+        "We should ask volunteers before changing how their work is done.",
+        "We should let frontline staff approve any caseload change tied to AI."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should agree any AI-related teaching load changes through faculty governance.",
+        "We should not raise course loads because AI speeds grading.",
+        "We should agree with admissions staff before changing their caseloads because of AI."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should consult field staff before changing their duties because of AI.",
+        "We should agree AI-related workload changes with our staff association.",
+        "We should ask volunteer committee members before changing how their work is done."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q12e",
+     "text": "We should never require AI use from someone who objects on conscience, and always offer another way to do the work.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should never require a pastor to use AI in sermons or care.",
+        "We should provide a non-AI way to do every required staff task.",
+        "We should never pressure a volunteer to use AI tools they object to."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should provide a non-AI way to do every required task.",
+        "We should keep AI use out of performance reviews for staff who decline it.",
+        "We should never require a chaplain or counselor to use AI in their work."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should let faculty teach without AI as a matter of conscience.",
+        "We should offer students AI-free versions of required coursework.",
+        "We should never require a teacher to use AI tools they object to on conscience."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should never make AI use a condition of ordination or credentialing.",
+        "We should provide a non-AI way to complete every report we require from member churches.",
+        "We should never require a missionary to use AI in their field ministry."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Decide what saved time is for before any time is saved. Retrain before cutting jobs. Fully protect people who object on conscience, and learn to tell objection from avoidance.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "When a task that took ten hours takes two, the eight hours go somewhere. Without a decision, they usually become more tasks, higher expectations or fewer staff. Any of these may sometimes be right, but none should happen by default. We believe saved time should first go back to people: more time with the people you serve, more rest, and more of the work only people can do."
+     },
+     {
+      "kind": "p",
+      "value": "We would not cut jobs based on projected savings. We would tell people early if their roles may change, and let them help decide how. For small organizations it is different: AI may make possible work they could never hire for, and that should be said openly."
+     },
+     {
+      "kind": "h",
+      "value": "People who object on conscience"
+     },
+     {
+      "kind": "p",
+      "value": "A person who declines AI from sincere conviction should be respected, not just tolerated. They should have another way to do their work, and their choice should never count against them. Organizations need these people because they notice what is being lost."
+     },
+     {
+      "kind": "p",
+      "value": "Avoidance is different. Some people avoid a workflow the organization has agreed on because they are overwhelmed, worried about looking unskilled, or unsure what is allowed. They need support and patience, not an exemption. Telling objection from avoidance is itself part of the organization's AI decisions, and the person who objects still belongs in the conversation."
+     }
+    ]
+   },
+   "deeper": "AI Organizational Map, Practice the judgment your people will need",
+   "beliefs": [
+    "b10"
+   ],
+   "label": "Staff and volunteers",
+   "sector_titles": {
+    "school": "How should we treat our faculty and staff as AI changes their work?"
+   }
+  },
+  {
+   "id": "q13",
+   "part": "p4",
+   "title": "How should we train our people to use AI wisely and avoid depending on it?",
+   "term": "AI literacy and training",
+   "why": "Training protects people from AI used against them, helps them use AI well, and keeps them able to think and work without it.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one that matters most.",
+   "teach": [
+    {
+     "heading": "Judgment lasts longer than skills",
+     "text": "Skills with a particular tool are out of date in months. Knowing when to use AI, what never to give it, and how to check its answers stays useful with every new tool."
+    },
+    {
+     "heading": "Signs of dependence",
+     "text": "A person can no longer do a task without AI, or no longer forms their own view before asking AI for one."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q13a",
+     "text": "We should teach people to check AI's answers before relying on them.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should teach staff to check AI answers about Scripture against the text itself.",
+        "We should teach volunteers to confirm dates, names and facts before sending AI drafts.",
+        "We should show small group leaders examples of AI giving wrong answers about the Bible."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should teach staff to spot errors in AI-drafted case notes.",
+        "We should teach grant writers to verify every fact AI provides.",
+        "We should teach intake staff to check AI eligibility answers against current program rules."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should teach students to check every AI answer against the assigned readings.",
+        "We should train staff to verify AI summaries of policies before sharing them.",
+        "We should show faculty how AI invents citations and how to catch it."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should teach staff to verify AI answers about our polity against the book of order.",
+        "We should train missionaries to tell when AI translations distort meaning.",
+        "We should teach member church pastors to check AI quotations of Scripture against the text."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q13b",
+     "text": "We should teach good judgment about AI more than skill with tools.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should teach a series on faith and AI.",
+        "We should include AI discernment in our elder and deacon training.",
+        "We should equip youth leaders to talk with teens about when AI use is wise."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should teach fundraisers when AI-written appeals cross ethical lines.",
+        "We should train staff on when not to use AI with clients before teaching any tool.",
+        "We should discuss AI and our faith commitments at our annual staff retreat."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should teach preaching students to critique AI-generated sermons.",
+        "We should require every student to take a course on theology and technology.",
+        "We should teach high school students when AI is and is not appropriate to use."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should offer a clergy continuing education course on faith and AI.",
+        "We should train church planters to guide their communities on AI.",
+        "We should teach regional staff when AI use crosses ethical lines in member care."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q13c",
+     "text": "We should think for ourselves first, then use AI.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should have preachers outline sermons before any AI help.",
+        "We should have small group leaders study the passage themselves before using AI tools.",
+        "We should have staff write their own first thoughts before asking AI for drafts."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should have grant writers outline the proposal before AI drafts anything.",
+        "We should have case managers record their own assessment before reading AI summaries.",
+        "We should have staff draft program plans before asking AI to critique them."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should require students to exegete a text before consulting any AI.",
+        "We should have students write their own outline before using AI for feedback.",
+        "We should ask faculty to plan their courses before seeking AI suggestions."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should have mission teams draft field assessments before any AI analysis.",
+        "We should have committees write their own findings before reading any AI summary.",
+        "We should have church planters write their own vision statement before any AI help."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q13d",
+     "text": "We should give everyone time to try AI on real, low-risk work, not only the most interested.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should run a training period for staff and key volunteers together.",
+        "We should give every staff member paid hours to try AI on their own work.",
+        "We should include older and less technical volunteers in our AI training sessions."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should give every staff member paid hours to try AI on their work.",
+        "We should train our board alongside staff on AI.",
+        "We should include part-time and frontline staff in every AI training."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should pay adjuncts to attend faculty AI training.",
+        "We should give every staff member time to try approved AI tools on low-risk tasks.",
+        "We should give faculty a course release to redesign assessments for AI."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should give every national office staff member paid hours to try AI on their work.",
+        "We should train missionaries in AI before they leave for the field.",
+        "We should fund AI learning grants so small member churches can take part."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q13e",
+     "text": "We should train a few people in depth so others have someone to ask.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should train two staff members in depth so others have someone to ask.",
+        "We should name one trained member at each campus as the contact for AI questions.",
+        "We should ask a member who works in technology to help our volunteers with AI questions."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should send two staff through in-depth training to help the rest.",
+        "We should name an AI guide on each program team.",
+        "We should train our operations manager to answer staff questions about approved tools."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should train one faculty member in each department to advise colleagues on AI.",
+        "We should have a librarian trained in depth to help students with AI research tools.",
+        "We should train a few teachers to support others on classroom AI questions."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should train an AI guide in each region.",
+        "We should send two national staff through in-depth training to support the rest.",
+        "We should train a few pastors in each cohort to help their peers with AI questions."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q13f",
+     "text": "We should keep some work free of AI on purpose.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should keep our times of prayer and worship planning free of AI.",
+        "We should have leaders go without AI for one season each year.",
+        "We should keep our children's ministry free of AI tools."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should keep our camp program days free of AI on purpose.",
+        "We should write every donor thank-you note without AI.",
+        "We should write our mission and values statements without AI."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should give some exams on paper, in the room.",
+        "We should keep spiritual formation groups free of AI tools.",
+        "We should require oral defenses of major papers."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should keep our ordination exams entirely free of AI.",
+        "We should keep our clergy retreats free of AI tools.",
+        "We should invite member churches to keep some part of their ministry free of AI on purpose."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Teach people to check AI and use judgment first, then skills. Learn together, and keep some work free of AI so people stay able to think for themselves.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "<strong>Checking first.</strong> AI gives wrong answers as confidently as right ones. Teaching people to check what AI tells them against sources and people they trust protects them and the people they serve. (Teaching people to recognize AI scams is covered in question 03, because every organization owes it whatever it decides.)"
+     },
+     {
+      "kind": "p",
+      "value": "<strong>Judgment second.</strong> When should I use AI, and when should I not? What should I never give it? How do I check its answers? These questions apply to every tool."
+     },
+     {
+      "kind": "p",
+      "value": "<strong>Skills third.</strong> Training everyone, not only the most interested, keeps an organization from splitting into people who can use AI and people who cannot. Most of the skill is clear communication: saying what you want, giving enough background, knowing what a finished result looks like, and revising."
+     },
+     {
+      "kind": "h",
+      "value": "Avoiding dependence"
+     },
+     {
+      "kind": "p",
+      "value": "Our training guide names three things to watch for in people who use AI a lot: tiredness of a different kind, a growing sense of working with someone rather than something, and a slow change in what seems like good writing or sound reasoning. None of these is a reason not to use AI. All are reasons to use it with care. Think first, keep some work free of AI, and talk together about how the tools are affecting your people."
+     },
+     {
+      "kind": "p",
+      "value": "Finally, everyone is new to this. AI tools as most people use them are only a few years old. Organizations that learn together and share what worked and what failed learn faster and more wisely than people learning alone."
+     }
+    ]
+   },
+   "deeper": "It Continues With Exploration, Personal boundaries · How to talk to it",
+   "beliefs": [
+    "b05",
+    "b10"
+   ],
+   "label": "Training",
+   "sector_titles": {}
+  },
+  {
+   "id": "q14",
+   "part": "p4",
+   "title": "What responsibility do we have to our community and to other organizations?",
+   "term": "Community impact and collaboration",
+   "why": "An organization's decisions about AI affect more than its own members: neighbors who are targeted by scams, people who bear AI's costs, and other organizations facing the same questions.",
+   "mode": "multi",
+   "how": "Tick every answer your organization should hold. Star the one that matters most.",
+   "teach": [
+    {
+     "heading": "Why this belongs in Resolve",
+     "text": "Most decisions about how AI affects ordinary people are being made one organization at a time. Each organization is making those decisions for its own community, whether it realizes it or not."
+    },
+    {
+     "heading": "If you are not sure",
+     "text": "Ask who near you is least able to protect themselves from AI scams and misuse."
+    }
+   ],
+   "answers": [
+    {
+     "id": "q14a",
+     "text": "We should help people in our wider community, not only our own members, recognize AI scams and manipulation.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should host a free class on AI scams for seniors in our neighborhood.",
+        "We should offer a workshop for local parents on how apps use AI to profile children.",
+        "We should share scam warnings with neighbors through our food pantry and community events."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should post plain warnings about AI fraud in our waiting rooms.",
+        "We should offer free workshops on AI scams for seniors in our neighborhood.",
+        "We should help partner churches and schools warn families about AI scams."
+       ],
+       "text": "We should help people in our wider community, not only the people in our programs, recognize AI scams and manipulation."
+      },
+      "school": {
+       "ex": [
+        "We should host community workshops on AI scams for parents and neighbors.",
+        "We should teach future pastors to recognize AI scams that target church members.",
+        "We should offer AI scam awareness sessions for alumni and supporters."
+       ],
+       "text": "We should help people in our wider community, not only our own students and staff, recognize AI scams and manipulation."
+      },
+      "network": {
+       "ex": [
+        "We should give member churches a guide on AI scams they can share with their neighbors.",
+        "We should offer AI scam awareness workshops open to the public at our regional gatherings.",
+        "We should warn the public when scammers use AI to impersonate our leaders or missionaries."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q14b",
+     "text": "We should work out our approach with other organizations, not alone.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should join other churches in our city to learn about AI together.",
+        "We should share AI tools and costs with nearby sister churches.",
+        "We should work through AI questions with other plants in our network."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should form a peer group with similar agencies.",
+        "We should join other nonprofits to negotiate AI vendor contracts.",
+        "We should study peer agencies' AI policies before writing ours."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should work out our AI approach with peer seminaries through our accrediting association.",
+        "We should develop AI policy with other schools in our Christian school association.",
+        "We should coordinate AI guidance for field education with our partner churches."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should work out AI together with other denominations and mission agencies.",
+        "We should convene member churches to work through AI decisions together.",
+        "We should join an ecumenical working group on AI and share our draft guidance."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q14c",
+     "text": "We should learn from people who were wise before AI.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should ask our elders and long-time members what they see.",
+        "We should read what our tradition has said about technology alongside current guidance.",
+        "We should study how earlier Christians responded to new tools such as printing."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should ask long-serving staff and volunteers what they see.",
+        "We should ask community elders what they want protected in our work.",
+        "We should read our founders' writings and our faith tradition on serving people."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should draw on the church's long thinking about tools, memory and learning.",
+        "We should study how earlier Christian educators responded to printing and new media.",
+        "We should ask retired faculty how they formed students before digital tools."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should ask retired pastors and missionaries what they see in AI.",
+        "We should study how our tradition responded to earlier technologies like printing and radio.",
+        "We should seek our theological commission's guidance before setting AI policy."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q14d",
+     "text": "We should share what we learn, including our mistakes.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should publish what our AI trials taught us, including failures.",
+        "We should offer our AI guidelines to smaller churches to adapt.",
+        "We should share our AI translation results with other multilingual churches."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should share our AI results with peer agencies.",
+        "We should present our AI mistakes and lessons at our network's annual conference.",
+        "We should share our AI policy templates with smaller nonprofits."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should share our course AI policies openly with peer seminaries.",
+        "We should publish what we learn from AI pilots, including what did not work.",
+        "We should share our classroom AI mistakes and lessons with other Christian schools."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should report what member churches learn about AI back to all of them.",
+        "We should share our AI guidance, and the mistakes we made, with other denominations.",
+        "We should publish a yearly report on our AI use, including what went wrong."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q14e",
+     "text": "We should consider AI's environmental costs in our choices.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should avoid AI image generation for routine slides and announcements.",
+        "We should prefer AI providers that publish their energy and water use.",
+        "We should include AI energy use in our creation care planning."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should choose smaller AI models when they meet the need.",
+        "We should ask vendors for energy and water data before signing.",
+        "We should count AI energy use in our annual sustainability report."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should include AI computing in our campus carbon accounting.",
+        "We should limit large AI model use in courses to clear needs.",
+        "We should ask AI vendors about energy use before signing campus contracts."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should set AI climate standards in our creation care policy.",
+        "We should ask AI vendors to report the energy use of the tools we provide member churches.",
+        "We should choose smaller AI tools for routine office work when they do the job."
+       ]
+      }
+     }
+    },
+    {
+     "id": "q14f",
+     "text": "We should support people harmed by AI, and speak publicly when needed.",
+     "sectors": {
+      "church": {
+       "ex": [
+        "We should speak up when AI is used to monitor our neighbors.",
+        "We should support members who lose jobs to AI with care and practical help.",
+        "We should urge our legislators to protect older people from AI fraud."
+       ]
+      },
+      "nonprofit": {
+       "ex": [
+        "We should advocate for workers who lose jobs to AI.",
+        "We should help clients appeal benefit denials made by automated systems.",
+        "We should testify on AI policy that affects our clients."
+       ]
+      },
+      "school": {
+       "ex": [
+        "We should support students harmed by AI deepfakes or harassment, and help them report it.",
+        "We should send faculty to testify on AI in education policy.",
+        "We should teach AI's costs to workers and communities in our ethics courses."
+       ]
+      },
+      "network": {
+       "ex": [
+        "We should advocate for workers who lose jobs to AI.",
+        "We should advocate alongside global South partners harmed by AI data extraction.",
+        "We should speak publicly when AI is used to surveil persecuted believers."
+       ]
+      }
+     }
+    }
+   ],
+   "take": {
+    "head": "Churches, nonprofits and schools should help decide how AI affects their communities. Protect your neighbors, work with others, and share what you learn.",
+    "body": [
+     {
+      "kind": "p",
+      "value": "Government policy cannot reach every person, and technology companies are not designed to. The decisions that most affect how AI touches ordinary lives are being made in congregations, agencies and classrooms. If churches, nonprofits and schools do not help lead, the people they serve will be left out of those decisions."
+     },
+     {
+      "kind": "p",
+      "value": "At a minimum, every organization owes its community protection. Teaching people to recognize scams, fake images and manipulation costs little and protects many, especially older people, isolated people and people new to a language or country."
+     },
+     {
+      "kind": "p",
+      "value": "Responsibility also includes cost to creation. Training and running AI uses large amounts of electricity and water. That is not a reason to refuse all AI, but it is a reason to use it where it matters and not by habit."
+     },
+     {
+      "kind": "h",
+      "value": "Work with others"
+     },
+     {
+      "kind": "p",
+      "value": "Movemental exists partly to make this possible: a network of trusted leaders and organizations working through the same questions together, sharing what worked and what failed, while staying rooted in their own places. One organization's tested decision can save many others from guessing. We would ask every organization to share what it learns and to learn from people whose wisdom came before AI."
+     },
+     {
+      "kind": "h",
+      "value": "Different ways to respond"
+     },
+     {
+      "kind": "p",
+      "value": "For some organizations, the best example will be a careful, humane way of using AI that others can see. For others, it will be public advocacy for people harmed by AI. Both are good responses. What we hope no organization does is assume this responsibility belongs to someone else."
+     }
+    ]
+   },
+   "deeper": "How Movemental Uses AI, On scenius and the local · Movemental's founding essay",
+   "beliefs": [
+    "b11",
+    "b12"
+   ],
+   "label": "Our community",
+   "sector_titles": {}
+  }
+ ],
+ "sectors": [
+  {
+   "id": "church",
+   "name": "Churches"
+  },
+  {
+   "id": "nonprofit",
+   "name": "Nonprofits"
+  },
+  {
+   "id": "school",
+   "name": "Seminaries and schools"
+  },
+  {
+   "id": "network",
+   "name": "Denominations and networks"
+  }
+ ]
+}

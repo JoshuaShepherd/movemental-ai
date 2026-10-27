@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Resolve</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #2236C4;outline-offset:3px}
+button:disabled{cursor:default}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #FFFFFF; color: #1C1D24; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif;">
+
+<header style="border-bottom: 1px solid #DDDFE5;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 20px; height: 84px; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+<button type="button" onClick="{{toIntro}}" aria-label="Movemental home" style="border: 0; background: none; padding: 0; display: inline-flex; align-items: center; gap: 11px; cursor: pointer; color: #1C1D24; font-family: inherit;">
+<img src="/_blob/80d1327f74281a94ce935bd0786f9071" alt="" style="width: 31px; height: 31px; display: block;">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 27px; line-height: 1; letter-spacing: -0.01em; padding-bottom: 2px;">movemental</span>
+</button>
+<sc-if value="{{showSave}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{toIntro}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Save and finish later</button>
+</sc-if>
+</div>
+</header>
+
+<sc-if value="{{isIntro}}" hint-placeholder-val="{{ true }}">
+<main style="max-width: 820px; margin: 0 auto; padding: 72px 20px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px;">
+<sc-if value="{{showResume}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 18px 22px; background: #E8EBFA; border-radius: 4px;">
+<span style="font-size: 16px; line-height: 1.5;">{{resumeText}}</span>
+<span style="display: flex; gap: 18px; align-items: center;">
+<button type="button" onClick="{{resumeGo}}" style="height: 44px; padding: 0 20px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer;">Pick up where you left off</button>
+<button type="button" onClick="{{dismissResume}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #34363F; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Dismiss</button>
+</span>
+</div>
+</sc-if>
+<sc-if value="{{showInvited}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 22px; background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px;">
+<span style="font-size: 16px; font-weight: 500;">Priya Nair invited you to write your Resolution for Riverbend Church.</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.5; color: #34363F;">“I’ve written down what I believe Riverbend should do about AI, and I’d value knowing what you think.”</span>
+<span style="font-size: 14px; line-height: 1.5; color: #5B5E6B;">Your answers count with others from Riverbend only if you say yes at the end. Priya never sees what you chose.</span>
+</div>
+</sc-if>
+<span style="font-size: 15px; font-weight: 500;">Your Resolution</span>
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(44px, 7vw, 72px); line-height: 1; letter-spacing: -0.01em;">What should your organization do about AI?</h1>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.55; color: #34363F;">Fourteen questions every church, nonprofit and school needs to answer about AI. Think as yourself, about your organization. Choose the answers you agree with, or write your own. If you are not sure, each question has a short explanation, and you can see Movemental’s own answer after you give yours.</p>
+<ol style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{partsIntro}}" as="p" hint-placeholder-count="4">
+<li style="display: flex; flex-wrap: wrap; gap: 4px 20px; padding: 14px 0; border-bottom: 1px solid #DDDFE5;">
+<span style="flex: 0 0 230px; font-size: 15px; font-weight: 500;">{{p.name}}</span>
+<span style="flex: 1 1 300px; min-width: 0; font-size: 15px; line-height: 1.55; color: #5B5E6B;">{{p.range}}</span>
+</li>
+</sc-for>
+</ol>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<span id="orgTypeLabel" style="font-size: 15px; font-weight: 500;">What kind of organization is it?</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;" role="group" aria-labelledby="orgTypeLabel">
+<sc-for list="{{sectors}}" as="s" hint-placeholder-count="4">
+<button type="button" onClick="{{s.pick}}" aria-pressed="{{s.on}}" style="{{s.style}}">{{s.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 460px;">
+<label for="orgName" style="font-size: 15px; font-weight: 500;">Its name <span style="color: #5B5E6B; font-weight: 400;">(optional)</span></label>
+<input id="orgName" type="text" value="{{orgName}}" onChange="{{onName}}" placeholder="{{namePlaceholder}}" style="height: 48px; padding: 0 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-size: 16px; font-family: inherit; color: #1C1D24; background: #FFFFFF;">
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; padding-top: 6px;">
+<button type="button" onClick="{{begin}}" style="height: 52px; padding: 0 30px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;">Start the questions</button>
+<span style="font-size: 14px; color: #5B5E6B;">About 12 minutes. No account needed.</span>
+</div>
+<p style="margin: 0; font-size: 14px; color: #5B5E6B;">Your Resolution stays private until you choose to share it. It isn’t a policy, a score or a vote.</p>
+</main>
+</sc-if>
+
+<sc-if value="{{isFlow}}" hint-placeholder-val="{{ false }}">
+<main style="max-width: 1296px; margin: 0 auto; padding: 40px 20px 96px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px 72px; align-items: flex-start;">
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 26px; max-width: 820px;">
+
+<nav aria-label="Progress" style="display: flex; flex-direction: column; gap: 12px;">
+<span style="font-size: 14px; color: #5B5E6B;">{{stepLabel}}</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 18px;">
+<sc-for list="{{progress}}" as="grp" hint-placeholder-count="4">
+<div style="display: flex; gap: 6px;">
+<sc-for list="{{grp.marks}}" as="m" hint-placeholder-count="3">
+<button type="button" onClick="{{m.go}}" aria-label="{{m.label}}" aria-current="{{m.current}}" title="{{m.label}}" style="{{m.style}}">{{m.num}}</button>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</nav>
+
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<span style="font-size: 14px; color: #5B5E6B;">{{qTerm}}</span>
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 5vw, 52px); line-height: 1.04; letter-spacing: -0.01em;">{{qTitle}}</h1>
+<p style="margin: 0; max-width: 700px; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.55; color: #34363F;">{{qWhy}}</p>
+<button type="button" onClick="{{toggleTeach}}" aria-expanded="{{teachOpen}}" style="align-self: flex-start; min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; font-weight: 500; color: #1C1D24; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">{{teachLabel}}</button>
+<sc-if value="{{teachOpen}}" hint-placeholder-val="{{ false }}">
+<div style="background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px; padding: 22px 24px; display: flex; flex-direction: column; gap: 16px; max-width: 720px;">
+<sc-for list="{{teach}}" as="t" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 4px;">
+<span style="font-size: 15px; font-weight: 500;">{{t.heading}}</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.6; color: #34363F;">{{t.text}}</span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 14px; color: #5B5E6B;">{{qHow}}</span>
+<div role="{{listRole}}" aria-label="{{qTitle}}" style="display: flex; flex-direction: column; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{answers}}" as="it" hint-placeholder-count="5">
+<div style="{{it.rowStyle}}">
+<sc-if value="{{it.single}}" hint-placeholder-val="{{ false }}">
+<button type="button" role="radio" aria-checked="{{it.on}}" onClick="{{it.choose}}" style="display: flex; align-items: center; gap: 18px; width: 100%; min-height: 72px; padding: 14px; border: 0; background: none; text-align: left; cursor: pointer; font-family: inherit; color: #1C1D24;">
+<span style="{{it.dotStyle}}"><span style="{{it.dotInner}}"></span></span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.42;">{{it.text}}</span>
+</button>
+</sc-if>
+<sc-if value="{{it.multi}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 56px; align-items: start;">
+<button type="button" role="checkbox" aria-checked="{{it.on}}" onClick="{{it.tick}}" style="display: flex; align-items: center; gap: 18px; min-height: 72px; padding: 14px 12px 14px 14px; border: 0; background: none; text-align: left; cursor: pointer; font-family: inherit; color: #1C1D24;">
+<span style="{{it.boxStyle}}"><svg viewBox="0 0 256 256" width="14" height="14" fill="#FFFFFF" aria-hidden="true" style="{{it.tickStyle}}"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path></svg></span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.42;">{{it.text}}</span>
+</button>
+<button type="button" onClick="{{it.star}}" aria-pressed="{{it.first}}" aria-label="{{it.starLabel}}" title="Most important" style="width: 56px; height: 72px; border: 0; background: none; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true" style="{{it.starStyle}}"><path d="{{it.starD}}"></path></svg></button>
+</div>
+</sc-if>
+<sc-if value="{{it.hasEx}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 0 14px 12px 54px;">
+<button type="button" onClick="{{it.toggleEx}}" aria-expanded="{{it.exOpen}}" style="min-height: 36px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 14px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">{{it.exLabel}}</button>
+<sc-if value="{{it.exOpen}}" hint-placeholder-val="{{ false }}">
+<ul style="list-style: none; margin: 6px 0 4px; padding: 4px 16px; background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px;">
+<sc-for list="{{it.examples}}" as="ex" hint-placeholder-count="3">
+<li style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; padding: 9px 0; border-bottom: 1px solid #DDDFE5;">{{ex.t}}</li>
+</sc-for>
+</ul>
+</sc-if>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<button type="button" onClick="{{noneToggle}}" aria-pressed="{{noneOn}}" style="{{noneStyle}}">None of these fits my view</button>
+<sc-if value="{{noneOn}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 640px;">
+<label for="ownWords" style="font-size: 15px; font-weight: 500;">What would you say instead? <span style="color: #5B5E6B; font-weight: 400;">(optional)</span></label>
+<textarea id="ownWords" value="{{ownText}}" onChange="{{onOwn}}" rows="3" placeholder="{{ownPlaceholder}}" style="padding: 12px 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.5; color: #1C1D24; background: #FFFFFF; resize: vertical;"></textarea>
+<span style="font-size: 13px; color: #5B5E6B;">Private to you. Never counted.</span>
+</div>
+</sc-if>
+</div>
+
+<section aria-label="Movemental’s answer" style="border-top: 1px solid #DDDFE5; padding-top: 22px; display: flex; flex-direction: column; gap: 16px;">
+<sc-if value="{{takeLocked}}" hint-placeholder-val="{{ true }}">
+<span style="font-size: 15px; color: #5B5E6B;">Answer the question to see Movemental’s answer.</span>
+</sc-if>
+<sc-if value="{{takeReady}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{toggleTake}}" aria-expanded="{{takeOpen}}" style="align-self: flex-start; min-height: 44px; padding: 0 18px; border: 1px solid #1C1D24; border-radius: 999px; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 500; color: #1C1D24; cursor: pointer;">{{takeLabel}}</button>
+</sc-if>
+<sc-if value="{{takeOpen}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px;">
+<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1.2;">{{takeHead}}</p>
+<sc-for list="{{takeBody}}" as="b" hint-placeholder-count="3">
+<div>
+<sc-if value="{{b.isH}}" hint-placeholder-val="{{ false }}">
+<h3 style="margin: 8px 0 0; font-size: 16px; font-weight: 600;">{{b.text}}</h3>
+</sc-if>
+<sc-if value="{{b.isP}}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.65; color: #34363F;">{{b.text}}</p>
+</sc-if>
+<sc-if value="{{b.isUl}}" hint-placeholder-val="{{ false }}">
+<ul style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px;">
+<sc-for list="{{b.items}}" as="li" hint-placeholder-count="4">
+<li style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.6; color: #34363F;"><strong style="color: #1C1D24; font-weight: 600;">{{li.b}}</strong> {{li.t}}</li>
+</sc-for>
+</ul>
+</sc-if>
+</div>
+</sc-for>
+<span style="font-size: 14px; color: #5B5E6B;">Read more: {{takeDeeper}}</span>
+<span style="font-size: 13px; color: #5B5E6B;">Movemental’s answer does not change yours and is never counted.</span>
+</div>
+</sc-if>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; padding-top: 4px;">
+<button type="button" onClick="{{next}}" style="height: 52px; padding: 0 30px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;">{{nextLabel}}</button>
+<button type="button" onClick="{{back}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Back</button>
+</div>
+</div>
+
+<aside aria-label="Your Resolution so far" style="flex: 1 1 340px; max-width: 420px; min-width: 0; background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px; padding: 28px 28px 30px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px;">
+<span style="font-size: 13px; color: #5B5E6B;">Your Resolution so far</span>
+<sc-if value="{{sideEmpty}}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.55; color: #5B5E6B;">The answers you star will appear here.</p>
+</sc-if>
+<sc-if value="{{hasSideBelief}}" hint-placeholder-val="{{ false }}">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 26px; line-height: 1.1;">I believe</h2>
+<ol style="list-style: none; margin: 0; padding: 0;">
+<sc-for list="{{sideBelief}}" as="ln" hint-placeholder-count="2">
+<li style="display: flex; flex-direction: column; gap: 3px; padding: 11px 0; border-top: 1px solid #DDDFE5;">
+<span style="font-size: 13px; color: #5B5E6B;">{{ln.label}}</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.45;">{{ln.text}}</span>
+</li>
+</sc-for>
+</ol>
+</sc-if>
+<sc-if value="{{hasSideOrg}}" hint-placeholder-val="{{ false }}">
+<h2 style="margin: 6px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 26px; line-height: 1.1;">{{sheetTitle}}</h2>
+<ol style="list-style: none; margin: 0; padding: 0;">
+<sc-for list="{{sideOrg}}" as="ln" hint-placeholder-count="3">
+<li style="display: flex; flex-direction: column; gap: 3px; padding: 11px 0; border-top: 1px solid #DDDFE5;">
+<span style="font-size: 13px; color: #5B5E6B;">{{ln.label}}</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.45;">{{ln.text}}</span>
+</li>
+</sc-for>
+</ol>
+</sc-if>
+</aside>
+</main>
+</sc-if>
+
+<sc-if value="{{isReview}}" hint-placeholder-val="{{ false }}">
+<main style="max-width: 900px; margin: 0 auto; padding: 56px 20px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px, 5.6vw, 58px); line-height: 1.02;">Here is what you resolved.</h1>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.55; color: #34363F;">Your starred answers, one for each question. Change any of them before you go on.</p>
+</div>
+<sc-if value="{{reviewEmpty}}" hint-placeholder-val="{{ false }}">
+<section style="background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px; padding: 28px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.1;">You didn’t choose an answer to any question.</h2>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.55; color: #34363F;">That can be an honest answer. Would you like to look at the questions again?</p>
+<button type="button" onClick="{{toFirst}}" style="height: 48px; padding: 0 24px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;">Look again</button>
+</section>
+</sc-if>
+<sc-if value="{{reviewHas}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{reviewParts}}" as="pt" hint-placeholder-count="3">
+<section style="display: flex; flex-direction: column;">
+<h2 style="margin: 0 0 8px; font-size: 15px; font-weight: 500;">{{pt.name}}</h2>
+<ol style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{pt.rows}}" as="r" hint-placeholder-count="3">
+<li style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 18px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid #DDDFE5;">
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+<span style="font-size: 13px; color: #5B5E6B;">{{r.label}}</span>
+<span style="{{r.textStyle}}">{{r.text}}</span>
+</span>
+<button type="button" onClick="{{r.change}}" aria-label="{{r.changeLabel}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Change</button>
+</li>
+</sc-for>
+</ol>
+</section>
+</sc-for>
+<section style="display: flex; flex-direction: column; gap: 12px;">
+<h2 id="hardLabel" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.1;">Which of these would be hardest for {{orgShort}} to do today?</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5B5E6B;">Choose one. It shows where your convictions and your organization’s readiness are furthest apart.</p>
+<div role="radiogroup" aria-labelledby="hardLabel" style="display: flex; flex-direction: column; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{hardOptions}}" as="h" hint-placeholder-count="5">
+<button type="button" role="radio" aria-checked="{{h.on}}" onClick="{{h.choose}}" style="{{h.rowStyle}}">
+<span style="{{h.dotStyle}}"><span style="{{h.dotInner}}"></span></span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.45;">{{h.text}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center;">
+<button type="button" onClick="{{next}}" style="height: 52px; padding: 0 30px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;">Continue</button>
+<button type="button" onClick="{{back}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Back to question 14</button>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{isLead}}" hint-placeholder-val="{{ false }}">
+<main style="max-width: 820px; margin: 0 auto; padding: 56px 20px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 6vw, 64px); line-height: 1;">Leadership is something you do.</h1>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.55; color: #34363F;">You don’t need a title to help {{orgShort}} decide this. What will you do with your Resolution?</p>
+</div>
+<div role="group" aria-label="What I’ll do" style="display: flex; flex-direction: column; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{acts}}" as="a" hint-placeholder-count="5">
+<button type="button" role="checkbox" aria-checked="{{a.on}}" onClick="{{a.toggle}}" style="{{a.rowStyle}}">
+<span style="{{a.boxStyle}}"><svg viewBox="0 0 256 256" width="14" height="14" fill="#FFFFFF" aria-hidden="true" style="{{a.tickStyle}}"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path></svg></span>
+<span style="font-size: 16px; line-height: 1.45;">{{a.text}}</span>
+</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="two" style="font-size: 15.5px; font-weight: 500;">If you had two minutes with the people who decide, what would you say? <span style="color: #5B5E6B; font-weight: 400;">(optional)</span></label>
+<textarea id="two" value="{{two}}" onChange="{{onTwo}}" rows="4" placeholder="{{twoPlaceholder}}" style="padding: 12px 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5; color: #1C1D24; background: #FFFFFF; resize: vertical;"></textarea>
+<sc-if value="{{showSuggest}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{useSuggest}}" style="align-self: flex-start; min-height: 40px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 14px; color: #1C1D24; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Start from your first step: “{{suggest}}”</button>
+</sc-if>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 8px;">
+<label for="nm" style="font-size: 15px; font-weight: 500;">Your name <span style="color: #5B5E6B; font-weight: 400;">(optional)</span></label>
+<input id="nm" type="text" value="{{name}}" onChange="{{onName2}}" style="height: 48px; padding: 0 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-size: 16px; font-family: inherit; color: #1C1D24; background: #FFFFFF;">
+</div>
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 8px;">
+<label for="rl" style="font-size: 15px; font-weight: 500;">Your role <span style="color: #5B5E6B; font-weight: 400;">(optional)</span></label>
+<input id="rl" type="text" value="{{role}}" onChange="{{onRole}}" placeholder="{{rolePlaceholder}}" style="height: 48px; padding: 0 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-size: 16px; font-family: inherit; color: #1C1D24; background: #FFFFFF;">
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center;">
+<button type="button" onClick="{{next}}" style="height: 52px; padding: 0 30px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;">See my Resolution</button>
+<button type="button" onClick="{{back}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Back</button>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{isDoc}}" hint-placeholder-val="{{ false }}">
+<main style="max-width: 1296px; margin: 0 auto; padding: 40px 20px 96px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: flex-start;">
+
+<div style="flex: 999 1 600px; min-width: 0; max-width: 840px; display: flex; flex-direction: column; gap: 18px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;">
+<span style="font-size: 14px; color: #5B5E6B;">{{statusLine}}</span>
+<button type="button" onClick="{{toFirst}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #1C1D24; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Edit my Resolution</button>
+</div>
+<article style="background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px; padding: clamp(24px, 5vw, 52px); display: flex; flex-direction: column; gap: 16px;">
+<span style="font-size: 14px; color: #5B5E6B;">My Resolution on AI{{forOrg}}</span>
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 4.6vw, 44px); line-height: 1.04;">I believe</h1>
+<ol style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{beliefRows}}" as="ln" hint-placeholder-count="2">
+<li style="{{ln.rowStyle}}">
+<span style="flex: 0 0 170px; align-self: flex-start; padding-top: 3px; font-size: 13px; color: #5B5E6B;">{{ln.label}}</span>
+<span style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+<span style="{{ln.textStyle}}">{{ln.text}}</span>
+<sc-for list="{{ln.others}}" as="o" hint-placeholder-count="1">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: #34363F;">{{o.t}}</span>
+</sc-for>
+<sc-if value="{{ln.hasOwn}}" hint-placeholder-val="{{ false }}">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: #34363F;"><span style="font-family: 'Geist', sans-serif; font-size: 13px; color: #5B5E6B;">In my words: </span>{{ln.own}}</span>
+</sc-if>
+</span>
+</li>
+</sc-for>
+</ol>
+<h2 style="margin: 22px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(30px, 4.2vw, 40px); line-height: 1.06;">{{sheetTitle}}</h2>
+<sc-for list="{{orgParts}}" as="pt" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column;">
+<span style="font-size: 14px; font-weight: 500; padding: 14px 0 8px;">{{pt.name}}</span>
+<ol style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{pt.rows}}" as="ln" hint-placeholder-count="3">
+<li style="{{ln.rowStyle}}">
+<span style="flex: 0 0 170px; align-self: flex-start; padding-top: 3px; font-size: 13px; color: #5B5E6B;">{{ln.label}}</span>
+<span style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+<span style="{{ln.textStyle}}">{{ln.text}}</span>
+<sc-for list="{{ln.others}}" as="o" hint-placeholder-count="1">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: #34363F;">{{o.t}}</span>
+</sc-for>
+<sc-if value="{{ln.hasOwn}}" hint-placeholder-val="{{ false }}">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: #34363F;"><span style="font-family: 'Geist', sans-serif; font-size: 13px; color: #5B5E6B;">In my words: </span>{{ln.own}}</span>
+</sc-if>
+</span>
+</li>
+</sc-for>
+</ol>
+</div>
+</sc-for>
+<sc-if value="{{hasHard}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 4px; padding-top: 18px;">
+<span style="font-size: 13px; color: #5B5E6B;">Hardest for us to do today</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.45;">{{hardText}}</span>
+</div>
+</sc-if>
+<sc-if value="{{hasActs}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 4px; padding-top: 8px;">
+<span style="font-size: 13px; color: #5B5E6B;">What I’ll do</span>
+<sc-for list="{{chosenActs}}" as="ca" hint-placeholder-count="2">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.45;">{{ca.t}}</span>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{hasTwo}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 4px; padding-top: 8px;">
+<span style="font-size: 13px; color: #5B5E6B;">If I had two minutes</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5;">{{two}}</span>
+</div>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; padding-top: 30px;">
+<div style="flex: 0 1 320px; display: flex; flex-direction: column; gap: 6px;">
+<div style="border-top: 1px solid #1C1D24;"></div>
+<span style="font-size: 14px; color: #34363F;">{{signer}}</span>
+</div>
+<span style="font-size: 14px; color: #5B5E6B;">{{dateText}}</span>
+</div>
+</article>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5B5E6B;">This is what I believe my organization should do. It becomes the organization’s position only when its leaders adopt it.</p>
+</div>
+
+<aside aria-label="What to do with your Resolution" style="flex: 1 1 340px; max-width: 420px; min-width: 0; display: flex; flex-direction: column; gap: 34px;">
+<sc-if value="{{notSaved}}" hint-placeholder-val="{{ true }}">
+<section style="display: flex; flex-direction: column; gap: 14px; padding: 26px; background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px;">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.1;">Keep it</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #34363F;">It stays on this device until you save it. Saving lets you share it, invite people and come back to change it.</p>
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<label for="em" style="font-size: 15px; font-weight: 500;">Email</label>
+<input id="em" type="email" value="{{email}}" onChange="{{onEmail}}" placeholder="you@yourorganization.org" style="height: 48px; padding: 0 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-size: 16px; font-family: inherit; color: #1C1D24; background: #FFFFFF;">
+<span style="font-size: 13px; color: #5B5E6B;">We’ll send a link to sign in. No password.</span>
+</div>
+<button type="button" onClick="{{save}}" style="height: 52px; padding: 0 26px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;">Save my Resolution</button>
+</section>
+</sc-if>
+<sc-if value="{{isSaved}}" hint-placeholder-val="{{ false }}">
+<section style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+<button type="button" onClick="{{openSend}}" style="height: 52px; padding: 0 26px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;">Bring this to someone who decides</button>
+<a href="People.dc.html" style="min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; color: #1C1D24; text-underline-offset: 4px;">Invite people to write theirs</a>
+<a href="#" style="min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; color: #1C1D24; text-underline-offset: 4px;">Begin {{orgPossessive}} response</a>
+<div style="display: flex; gap: 20px;">
+<button type="button" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Print</button>
+<button type="button" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Download as PDF</button>
+</div>
+</section>
+</sc-if>
+
+<section style="display: flex; flex-direction: column; gap: 10px;">
+<h2 id="visLabel" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px; line-height: 1.1;">Who can see it</h2>
+<div role="radiogroup" aria-labelledby="visLabel" style="display: flex; flex-direction: column; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{visOptions}}" as="v" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{v.on}}" onClick="{{v.choose}}" style="{{v.rowStyle}}">
+<span style="{{v.dotStyle}}"><span style="{{v.dotInner}}"></span></span>
+<span style="display: flex; flex-direction: column; gap: 2px;">
+<span style="font-size: 16px; font-weight: 500;">{{v.title}}</span>
+<span style="font-size: 14px; line-height: 1.5; color: #5B5E6B;">{{v.desc}}</span>
+</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{needSaveForShare}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #34363F;">Save it first, above. We need an email to keep the link working and to let you change it later.</p>
+</sc-if>
+<sc-if value="{{showLink}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<label for="lk" style="font-size: 14px; font-weight: 500;">Link to your Resolution</label>
+<div style="display: flex; gap: 8px;">
+<input id="lk" type="text" readonly="" value="movemental.ai/r/k7p2qx" style="flex: 1 1 auto; min-width: 0; height: 44px; padding: 0 12px; border: 1px solid #DDDFE5; border-radius: 6px; font-size: 15px; font-family: inherit; color: #1C1D24; background: #F6F7F9;">
+<button type="button" onClick="{{copyLink}}" style="height: 44px; padding: 0 16px; border: 1px solid #1C1D24; border-radius: 999px; background: #FFFFFF; font-family: inherit; font-size: 14px; color: #1C1D24; cursor: pointer;">{{copyLabel}}</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showResearch}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<button type="button" role="checkbox" aria-checked="{{research}}" onClick="{{toggleResearch}}" style="display: flex; align-items: flex-start; gap: 12px; min-height: 44px; border: 0; background: none; padding: 6px 0; text-align: left; font-family: inherit; font-size: 15px; line-height: 1.5; color: #1C1D24; cursor: pointer;">
+<span style="{{researchBox}}"><svg viewBox="0 0 256 256" width="12" height="12" fill="#FFFFFF" aria-hidden="true" style="{{researchTick}}"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path></svg></span>
+Also count my answers in Movemental’s published research
+</button>
+<span style="font-size: 13px; line-height: 1.5; color: #5B5E6B;">Research shows only totals across many Resolutions, with how many each is based on. Nothing published can identify you or {{orgShort}}. We ask once.</span>
+</div>
+</sc-if>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 10px;">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px; line-height: 1.1;">{{orgPossessiveCap}} view</h2>
+<sc-if value="{{invited}}" hint-placeholder-val="{{ false }}">
+<button type="button" role="checkbox" aria-checked="{{countInOrg}}" onClick="{{toggleCount}}" style="display: flex; align-items: flex-start; gap: 12px; min-height: 44px; border: 0; background: none; padding: 6px 0; text-align: left; font-family: inherit; font-size: 15px; line-height: 1.5; color: #1C1D24; cursor: pointer;">
+<span style="{{countBox}}"><svg viewBox="0 0 256 256" width="12" height="12" fill="#FFFFFF" aria-hidden="true" style="{{countTick}}"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path></svg></span>
+Count my answers in {{orgPossessive}} view. Your name is never shown.
+</button>
+<span style="font-size: 13px; line-height: 1.5; color: #5B5E6B;">This is on because you came through Priya’s invitation for {{orgShort}}. Turn it off and your Resolution stays yours alone.</span>
+</sc-if>
+<sc-if value="{{notInvited}}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #34363F;">Your Resolution names {{orgShort}}, but it isn’t counted in anyone’s view. Only people {{orgShort}} invites are counted together.</p>
+<a href="People.dc.html" style="font-size: 15px; color: #1C1D24; text-underline-offset: 4px;">Invite people from {{orgShort}}</a>
+</sc-if>
+<span style="font-size: 13px; line-height: 1.5; color: #5B5E6B;">{{orgPossessiveCap}} view shows counts only, and only once five people have written theirs.</span>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 10px;">
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5B5E6B;">Inviting someone never shows them your answers. They see yours only if you share it.</p>
+<a href="Others.dc.html" style="font-size: 15px; color: #1C1D24; text-underline-offset: 4px;">See how others answered</a>
+</section>
+</aside>
+
+<sc-if value="{{sendOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: fixed; inset: 0; background: rgba(28, 29, 36, 0.42); display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; z-index: 20;">
+<div role="dialog" aria-modal="true" aria-labelledby="sendTitle" style="width: 100%; max-width: 560px; max-height: calc(100vh - 40px); overflow: auto; background: #FFFFFF; border-radius: 10px; padding: 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+<h2 id="sendTitle" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.1;">Bring this to someone who decides</h2>
+<button type="button" onClick="{{closeSend}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #5B5E6B; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Close</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<label for="to" style="font-size: 15px; font-weight: 500;">Send to</label>
+<input id="to" type="email" placeholder="colleague@yourorganization.org" style="height: 48px; padding: 0 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-size: 16px; font-family: inherit; color: #1C1D24; background: #FFFFFF;">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<label for="nt" style="font-size: 15px; font-weight: 500;">Note</label>
+<textarea id="nt" rows="4" value="{{sendNote}}" style="padding: 12px 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.5; color: #1C1D24; background: #FFFFFF; resize: vertical;"></textarea>
+</div>
+<div style="background: #F6F7F9; border-radius: 4px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;">
+<span style="font-size: 14px; font-weight: 500;">What they will see</span>
+<span style="font-size: 14px; line-height: 1.55; color: #34363F;">Your note and your Resolution as it reads now. If you change it later, their link shows the new version, marked “Updated.” Sending it this way doesn’t change who else can see it.</span>
+</div>
+<button type="button" onClick="{{closeSend}}" style="align-self: flex-start; height: 52px; padding: 0 30px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer;">Send</button>
+</div>
+</div>
+</sc-if>
+</main>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"openAt":{"editor":"enum","options":["arrive","invited","resume","question","review","lead","document","saved","send"],"default":"arrive","section":"Preview"},"q":{"editor":"int","min":1,"max":14,"default":1,"section":"Preview"},"demo":{"editor":"boolean","default":false,"section":"Preview"},"sector":{"editor":"enum","options":["church","nonprofit","school","network"],"default":"church","section":"Preview"},"$preview":{"width":1280,"height":1700}}'>
+// Content: generated from resolve-content/resolve-questions-v3.json. Sector wording and examples load from the examples file.
+const CORE = {"version": "resolve-questions-v3", "parts": [{"id": "p1", "name": "Your views", "blurb": "your own views about AI."}, {"id": "p2", "name": "Basic responsibilities", "blurb": "what every organization should do, who decides, and how much to use AI."}, {"id": "p3", "name": "Acceptable use", "blurb": "what work stays with people, what is prohibited, what is allowed, and what to disclose."}, {"id": "p4", "name": "Information, people and community", "blurb": "information, staff and volunteers, training, and your community."}], "beliefs": [{"id": "b01", "title": "AI is already in use.", "text": "Staff already use AI tools, software vendors are adding AI to products organizations already pay for, and scammers already use AI against the people organizations serve. Not deciding is still a decision.", "quote": "There is no neutral middle position. Inaction is a decision.", "source": "It Starts With Safety"}, {"id": "b02", "title": "AI reflects what it is given.", "text": "AI produces its answers from what it was trained on and from what people give it. Good material and careful people get better results. Scattered material and careless use get worse ones. So the response to AI is mostly about people, not technology.", "quote": "AI will mirror and amplify the humanity it finds sitting before it in any given interaction.", "source": "It Starts With Safety"}, {"id": "b03", "title": "Start with the mission and the people it serves.", "text": "Decisions about AI should begin with what the organization exists to do and who it serves, not with what AI can do.", "quote": "The answer is not primarily about AI. The answer is about whether organizations whose work depends on human covenant can carry that covenant into an age of machine fluency.", "source": "It Starts With Safety"}, {"id": "b04", "title": "Decisions need a clear process and clear authority.", "text": "The people who contribute and the people who decide should be named in writing before any policy is drafted. The organization's governing body adopts the result.", "quote": "A bad process can produce a good document and still fail, because the organization will not live by it.", "source": "It Starts With Safety"}, {"id": "b05", "title": "Learn before deciding.", "text": "People cannot judge whether AI helps or harms their work without trying it on real tasks, with safeguards. This is true whether the organization ends up using AI a lot or not at all.", "quote": "Technique without wisdom produces over-trust; wisdom without technique produces refusal.", "source": "It Continues With Exploration"}, {"id": "b06", "title": "Protect people first.", "text": "Protecting people from the risks of AI comes before looking for its benefits. Organizations owe this protection whatever they decide about their own use of AI.", "quote": "The threats have to be prevented before the search for opportunities begins.", "source": "It Starts With Safety"}, {"id": "b07", "title": "Sort uses into prohibited, allowed with safeguards, and allowed.", "text": "Some uses cause harm however carefully they are done. Most help only with safeguards. Some help clearly and harm no one. Movemental calls these red, yellow and green.", "quote": "Take the AI out of the story. Look at what remains.", "source": "How Movemental Uses AI"}, {"id": "b08", "title": "Some work must be done by people.", "text": "Care, judgments about people, and words published under a person's name must stay with people. AI may help prepare that work but may not replace the person.", "quote": "The distinction between authorship and infrastructure matters, and we observe it carefully.", "source": "How Movemental Uses AI"}, {"id": "b09", "title": "An organization's information is its memory.", "text": "Records, documents, teaching and know-how hold what an organization has learned about its people and its work. Most of it is scattered. Kept well, it is what makes AI useful. Handled carelessly, it puts people at risk.", "quote": "Slop is not simply low quality. Slop is fragmentation, reflected and multiplied.", "source": "Movemental: the talk"}, {"id": "b10", "title": "People matter more than efficiency.", "text": "Time saved by AI should go back to people, not simply into more work. Some work is slow because doing it forms people.", "quote": "Formation and integrity matter more than efficiency.", "source": "A Guide to AI and Credibility"}, {"id": "b11", "title": "Work this out with others.", "text": "No organization should decide this alone. Organizations learn faster and decide better with peers and with people who were wise before AI.", "quote": "The antidote to any individual lack of wisdom about AI is doing the work alongside people whose wisdom predates AI.", "source": "How Movemental Uses AI"}, {"id": "b12", "title": "Organizations share responsibility for their communities.", "text": "Government policy cannot reach every person, so each organization decides for itself how AI will affect the people it serves and its wider community.", "quote": "The people who love their neighbors should help decide what AI becomes.", "source": "Movemental's founding essay"}], "questions": [{"id": "q01", "part": "p1", "title": "What do I believe about AI?", "term": "Values and purpose", "why": "People who welcome AI and people who distrust it often see the same technology differently. Saying what you believe makes your other answers easier to understand.", "mode": "multi", "how": "Tick every answer you agree with. Star the one closest to your view.", "teach": [{"heading": "Why this question is about you", "text": "Resolve starts with your own view. Your organization's decisions will be built from many people's views, and it helps to know your own first."}, {"heading": "If you are not sure", "text": "Choose the answers that match your experience so far. Most people choose more than one."}], "answers": [{"id": "q01a", "text": "I believe AI is a tool, like other software, that can be used well or badly."}, {"id": "q01b", "text": "I believe AI repeats and magnifies what it is trained on and what we give it."}, {"id": "q01c", "text": "I believe AI gives a few companies more control over work and information."}, {"id": "q01d", "text": "I believe AI puts important human things at risk if we do not protect them."}, {"id": "q01e", "text": "I believe AI can help people we could not otherwise reach."}], "take": {"head": "AI repeats and magnifies what it is given. That is why each of the other answers can be true, depending on how it is used.", "body": [{"kind": "p", "value": "AI is trained on a very large amount of human writing, and it produces its answers from that training and from what a person or organization gives it. Careful use with good material can help a great deal. Careless use, poor material or bad intent produce worse results, faster."}, {"kind": "p", "value": "So the other answers are not wrong. AI is a tool. It does give a small number of companies a great deal of control. It can wear away human care and judgment if no one protects them, and it can reach a family at two in the morning in their own language. Which of these happens in your organization depends mostly on the people using it."}, {"kind": "p", "value": "We have noticed that how people react to AI often shows what they already believe about people. Those most worried are often worried about what humans have already produced. Those most hopeful are often hopeful about people for the same reason."}, {"kind": "h", "value": "Why this matters for the rest of Resolve"}, {"kind": "p", "value": "If AI mostly reflects what it is given, the most important questions are about us: what we value, what we protect, how we keep our information and how we train our people. The questions that follow are in that order."}]}, "deeper": "It Starts With Safety, Authors' note · How Movemental Uses AI, Where we stand", "beliefs": ["b02"], "label": "What I believe about AI"}, {"id": "q02", "part": "p1", "title": "What do I believe should guide our decisions about AI?", "term": "Values and purpose", "why": "Every AI policy rests on values. When values are not written down, hard cases turn into arguments with nothing to settle them.", "mode": "multi", "how": "Tick every answer you agree with. Star the one you would point to first.", "teach": [{"heading": "What we mean by values", "text": "The convictions you would keep even if the technology changed completely. If a value would need rewriting every time a new AI model came out, it is a preference about tools, not a value."}, {"heading": "If you are not sure", "text": "Think of two good people in your organization who disagree about using AI. What would you point to in order to settle it?"}], "answers": [{"id": "q02a", "text": "Scripture and our tradition."}, {"id": "q02b", "text": "Love for our neighbors, including people outside our organization."}, {"id": "q02c", "text": "The good of the people we serve, before efficiency."}, {"id": "q02d", "text": "The trust people have placed in us."}, {"id": "q02e", "text": "Evidence of what helps people and what harms them."}, {"id": "q02f", "text": "The views of the people most affected by our decisions."}], "take": {"head": "Start with your mission and the people you serve, not with what AI can do. Write your values down before you write any rules.", "body": [{"kind": "p", "value": "Much AI guidance begins with what the technology can do and asks how to use it. We begin with what the organization exists for and who it serves: a congregation, a neighborhood, students, clients, families. The question is whether AI helps that work or gets in its way."}, {"kind": "p", "value": "Our own starting point is love of neighbor. For a church, Scripture and tradition shape decisions about AI the way they shape every other decision. For a nonprofit, its mission does the same. For a school, it is what it hopes its students become."}, {"kind": "p", "value": "Values that are not written down get replaced by the values built into the tools: speed, scale, engagement and cost. Those decide close cases unless something else is written first."}, {"kind": "h", "value": "Evidence matters too"}, {"kind": "p", "value": "We would include evidence among your values, in support of them rather than in place of them. Evidence tells you what a tool does. Your values tell you whether you want it done."}]}, "deeper": "It Starts With Safety, Layer 01: the AI Organizational Statement", "beliefs": ["b03"], "label": "What should guide us"}, {"id": "q03", "part": "p2", "title": "What should every organization do, even if it decides not to use AI?", "term": "Risk management and safety", "why": "Some responsibilities apply whether an organization uses AI a lot, a little or not at all. This question names them before anyone discusses how much to use AI.", "mode": "multi", "how": "Tick every answer you agree with. Star the one your organization should do first.", "teach": [{"heading": "Can an organization avoid AI completely?", "text": "It can decide not to use AI in its own work. It cannot avoid AI altogether. Most staff already use AI tools, usually without guidance. Vendors are adding AI to software organizations already use. Scammers already copy the voices of pastors and directors with AI to ask staff and members for money."}, {"heading": "What this means for deciding not to use AI", "text": "Deciding not to use AI can be the right decision. To make it responsibly, an organization still needs to know what is already happening, protect its people, and understand AI well enough to decide."}, {"heading": "A question to ask about waiting", "text": "Waiting can be wise. Our own writing asks whether a decision to wait is really a decision, or fear that has been put into words."}, {"heading": "If you are not sure", "text": "Ask which of these your organization could explain to a member, donor or parent if something went wrong next month."}], "answers": [{"id": "q03a", "text": "We should find out how AI is already being used in our organization, without blaming anyone.", "ask": "Do we know how AI is already being used in our organization?"}, {"id": "q03b", "text": "We should protect our people from AI scams, cloned voices and fake images, and teach them to recognize these.", "ask": "How are we protecting our people from AI scams, cloned voices and fake images?"}, {"id": "q03c", "text": "We should set rules for sensitive information right away.", "ask": "What are our rules for sensitive information, and does everyone know them?"}, {"id": "q03d", "text": "We should learn enough to decide well, by trying AI on low-risk work.", "ask": "Who among us will try AI on low-risk work, so we can decide well?"}, {"id": "q03e", "text": "We should tell our people where we stand on AI, even if we have not decided yet.", "ask": "When will we tell our people where we stand on AI?"}, {"id": "q03f", "text": "We should set a date to decide, and a date to review our decisions.", "ask": "When will we decide, and when will we review what we decide?"}], "take": {"head": "All six. These are the basic responsibilities. Every responsible approach to AI, including deciding not to use it, depends on them.", "body": [{"kind": "p", "value": "We do not think every approach to AI is equally sound at the start. One approach is clearly unsound: making no decision. It is also the most common. In the research we rely on, about nine in ten churches and nearly half of nonprofits have no AI policy, while most of their staff already use AI."}, {"kind": "p", "value": "So before any organization decides how much to use AI, we would ask it to do six things. Find out what is already happening. Protect people from AI scams, which reach your members whether or not you use AI yourself. Set rules for sensitive information. Learn enough by trying AI to make a real decision. Tell your people where you stand. Set a date to decide and a date to review."}, {"kind": "h", "value": "Deciding not to use AI"}, {"kind": "p", "value": "We respect organizations that decide not to use AI for reasons of conscience. We also want to be honest with them. Your staff use AI, your vendors include it, and it is used on the people you serve. Deciding not to use AI is a real decision about your own work. It does not remove these six responsibilities."}, {"kind": "p", "value": "A decision not to use AI is also more trustworthy when it is informed. Our guides say to experiment before you adopt or refuse. That does not mean everyone must use AI. A person who objects on conscience can take full part in these six steps, for example by helping protect people and set rules, while others in the organization do the testing. Either way, the organization is making decisions about AI. The only question is whether it makes them on purpose."}]}, "deeper": "AI Has Already Arrived, Part one · It Starts With Safety, Why Safety", "beliefs": ["b01", "b05", "b06"], "label": "First steps"}, {"id": "q04", "part": "p2", "title": "Who should make decisions about AI, and who is accountable?", "term": "Governance and accountability", "why": "People can agree on what should happen and still disagree about who should decide. Settling this first makes later decisions legitimate.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one that matters most. Wording changes for each kind of organization.", "teach": [{"heading": "Three roles", "text": "Who decides: the person or body with authority to approve AI policy. Who is consulted: the people whose work and lives are affected. Who is accountable: one named person who makes sure decisions are carried out, reviewed, and corrected when something goes wrong."}, {"heading": "If you are not sure", "text": "Think of how your organization made its last major decision, such as a building project or a change in programs. AI decisions probably belong with the same people."}], "answers": [{"id": "q04a", "text": "Our governing body should make the final decision, after hearing from our people. (Board, elders or trustees.)"}, {"id": "q04b", "text": "We should decide together as a whole community, not leaders alone."}, {"id": "q04c", "text": "We should follow our denomination's or network's guidance, and adapt it to our setting."}, {"id": "q04d", "text": "We should consult the people most affected before we decide."}, {"id": "q04e", "text": "We should make one named person accountable for our AI decisions."}, {"id": "q04f", "text": "When AI causes harm, we should tell the people affected and put it right before anything else."}], "take": {"head": "Decide who decides before you decide anything else. Make AI decisions the way you already make decisions of similar importance, and never leave accountability to a vendor.", "body": [{"kind": "p", "value": "The most common problem we see is not a bad decision about AI. It is AI decisions made by whoever knows the most about technology, or by no one. Every organization already has a way to make important decisions: a board, elders, a council, a congregation, faculty governance. AI decisions belong there."}, {"kind": "p", "value": "Name the contributors and the decision makers in writing before anything is drafted. Contributors are the four to seven people whose work and views should shape the policy. Decision makers are the people with authority to approve it. When these roles are unclear, disagreements about who has authority tend to surface halfway through and stall the work."}, {"kind": "p", "value": "The leader of the organization should not write the policy alone. The leader is responsible for making sure the process is fair and keeps moving. When the governing body approves the policy, the organization has committed to it together."}, {"kind": "h", "value": "Accountability"}, {"kind": "p", "value": "Something will go wrong. When it does, the organization is responsible, not the vendor. Name one person who makes sure someone is always responsible, and decide now that the person harmed comes first: tell them the truth, put it right, then fix the cause."}, {"kind": "h", "value": "Movemental does not decide for you"}, {"kind": "p", "value": "We can help an organization see what its people believe and lay out its options. We will not make the decision, and no count of Resolutions makes it either. Nothing is adopted until the people with authority adopt it."}]}, "deeper": "It Starts With Safety, Process and roles · Layer 05: Response Plans", "beliefs": ["b04"], "label": "Decisions and accountability"}, {"id": "q05", "part": "p2", "title": "Overall, how much should we use AI?", "term": "Overall approach", "why": "This sets your organization's default. It comes after the basic responsibilities and after deciding who decides, so that the answer is a decision and not just a feeling.", "mode": "single", "how": "Choose the one closest to your view.", "teach": [{"heading": "What an overall approach does", "text": "It tells people what to expect when a new AI question comes up that no one has answered yet."}, {"heading": "If you are not sure", "text": "Imagine a staff member asks next week whether they may use a new AI feature. Which of these answers would you want them to hear?"}], "answers": [{"id": "q05a", "text": "We should not use AI in our work, for reasons of conscience, and still meet the basic responsibilities."}, {"id": "q05b", "text": "We should use AI only for administrative work, and keep it out of our core mission work."}, {"id": "q05c", "text": "We should approve each use of AI separately, start small, and review it regularly."}, {"id": "q05d", "text": "We should treat AI like other software, under the policies we already have."}, {"id": "q05e", "text": "We should adopt AI quickly wherever it helps the people we serve."}], "take": {"head": "We believe the third answer is right for most organizations: approve each use separately, start small, and review it regularly. We take the other answers seriously.", "body": [{"kind": "p", "value": "AI is not one thing. A church can rightly refuse AI in preaching and use it for translation. A nonprofit can keep it out of every conversation with a client and use it to prepare grant reports. That is not inconsistent. It is judgment applied to each use, which suits a technology that changes every few months. Most uses help only with safeguards, and those safeguards can only be set one use at a time."}, {"kind": "p", "value": "Faithfulness does not require using AI. It requires deciding about it. An organization that thinks it through carefully and decides to use very little AI has done what we are asking. What we oppose is drifting into a position: adopting AI that no one decided to adopt, or refusing it without ever examining the question."}, {"kind": "p", "value": "Each of the other answers can be sound under one condition:"}, {"kind": "ul", "value": [{"b": "Not using AI", "t": "is sound when it comes from real consideration and the basic responsibilities are met. It is not sound when it is a way of avoiding the question."}, {"b": "Administrative use only", "t": "works when the organization writes down exactly which work counts as core mission work, so staff can tell where the line is."}, {"b": "Treating AI like other software", "t": "works only if existing policies cover tools that write, speak and make recommendations. Most were written before these tools existed, so check them first."}, {"b": "Adopting quickly", "t": "works when the people who would bear the risk have a say, a person is always reachable, and mistakes can be undone."}]}, {"kind": "h", "value": "Speed"}, {"kind": "p", "value": "We would protect people quickly and adopt tools slowly. Protection cannot wait. Adoption should go one task at a time, with a set trial period and a decision at the end to keep, change or stop. Waiting is not automatically safe either: a family who needed translation went without it, and a staff member burned out on work a tool could have handled. Count those costs too."}]}, "deeper": "It Continues With Exploration, Why Sandbox · Solutions: what deployment looks like when the order was right", "beliefs": ["b01", "b05", "b07"], "label": "Overall approach"}, {"id": "q06", "part": "p3", "title": "What work should always be done by people?", "term": "Human oversight", "why": "Before deciding what AI may do, decide what it must not replace. This is the work that should stay with people even when AI could do it faster.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one that matters most.", "teach": [{"heading": "Helping is not replacing", "text": "This does not mean AI can never help. AI might help a pastor research a passage or a caseworker find a form. What stays with people is the care, the judgment and the responsibility."}, {"heading": "If you are not sure", "text": "Think of the part of your organization's work you would least want someone to discover was done by AI. Start there."}], "answers": [{"id": "q06a", "text": "Any work with children, or care that depends on a personal relationship."}, {"id": "q06b", "text": "Every decision about a person, including who receives help, membership, admission or employment."}, {"id": "q06c", "text": "Pastoral care, counseling and spiritual direction."}, {"id": "q06d", "text": "Preaching and teaching, and anything published under a person's name."}, {"id": "q06e", "text": "Work that helps people learn and grow, even when AI would be faster."}], "take": {"head": "Keep decisions about people and personal care with people. AI may help prepare that work. It may not replace the person doing it.", "body": [{"kind": "p", "value": "AI can gather information, prepare options and point out what needs attention. But when a decision is about a person, such as whether to help them, admit them, discipline them or hire them, that person deserves someone who can explain the decision, can be persuaded, and is responsible for the result."}, {"kind": "p", "value": "Personal care is the second line. A hospital visit, a hard conversation, a prayer or a welcome matters because a person does it. Where children are involved, or care depends on trust, a person must be there. A quick answer at two in the morning can still be care when no person is available, as long as no one is misled about who answered and a person can always be reached."}, {"kind": "p", "value": "The third line is authorship. AI can help draft. A named person must read, approve and be responsible for anything sent in the organization's name."}, {"kind": "h", "value": "Write it down"}, {"kind": "p", "value": "Our field guide recommends a written list of care boundaries: the specific kinds of work that must be done by a person, the kinds where AI may help a person but not replace them, and the reason for each. Without a written list, these boundaries tend to wear away one exception at a time."}]}, "deeper": "It Starts With Safety, Layer 04: Care Boundaries", "beliefs": ["b08"], "label": "Work only people do"}, {"id": "q07", "part": "p3", "title": "What uses of AI should we prohibit?", "term": "Prohibited uses", "why": "Some uses cause harm however carefully they are done. Every organization needs a short list of them, written down before anyone is tempted.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one that matters most.", "teach": [{"heading": "Why write them down", "text": "A written list of prohibited uses can be pointed to when a vendor offers one anyway, and it settles arguments before they start. Movemental calls these named refusals."}, {"heading": "If you are not sure", "text": "Ask what would damage trust so badly that no explanation could repair it."}], "answers": [{"id": "q07a", "text": "Letting people think they are dealing with a person when it is AI."}, {"id": "q07b", "text": "Using AI to pressure people into attending, giving or staying."}, {"id": "q07c", "text": "Putting sensitive information into AI tools that do not protect it."}, {"id": "q07d", "text": "Using AI to monitor, score or rank the people we serve or employ."}, {"id": "q07e", "text": "Copying a real person's voice or image with AI, or publishing AI writing as a person's own."}, {"id": "q07f", "text": "Using AI in ways that treat people unfairly because of race, age, disability, language or income."}], "take": {"head": "Keep this list short and absolute. Then set up your tools so these uses are not possible, rather than relying on people to remember the rules.", "body": [{"kind": "p", "value": "We hold all six. Movemental's own public commitments include several of them: we do not imitate people with AI, we do not use AI in place of human care, and we do not use AI to decide who has access to what we offer. Each of these damages trust in a way that is very hard to repair, and no amount of convenience outweighs that."}, {"kind": "h", "value": "Unfair treatment"}, {"kind": "p", "value": "AI learns from records that already contain unfairness. A tool that sorts applications, translates or flags people as risks can treat them differently by race, age, disability, language or income without anyone intending it. Wherever AI touches information about people, check its results for this before relying on them."}, {"kind": "h", "value": "Make it impossible, not just forbidden"}, {"kind": "p", "value": "A rule against pasting counseling notes into a chatbot depends on every person remembering it on every busy day. Setting up your systems so those notes cannot reach the chatbot does not. We prefer the second whenever possible: control what each tool can see, what it can send and what it is connected to."}, {"kind": "p", "value": "Each prohibited use also needs a plain statement, a reason people understand, a person responsible for it, and a known consequence when it is broken."}, {"kind": "h", "value": "Keep the list short"}, {"kind": "p", "value": "If everything is prohibited, people start working around the policy. Most uses of AI need judgment rather than a ban. They belong in the next question."}]}, "deeper": "It Starts With Safety, Layer 02: Named Refusals · How Movemental Uses AI, Red light", "beliefs": ["b07", "b06"], "label": "Prohibited uses"}, {"id": "q08", "part": "p3", "title": "What uses of AI should we allow only with safeguards?", "term": "Conditional use and safeguards", "why": "Most uses of AI fall here. They help only under the right conditions. Naming the use and its safeguard together gives staff a rule they can follow.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one you most want written down.", "teach": [{"heading": "What a safeguard is", "text": "A condition that makes a use acceptable, such as a person who reviews and approves the result, a person who can always be reached, a check against sources, consent from the people involved, or a trial period with a review date."}, {"heading": "If you are not sure", "text": "Pick the uses your staff are most likely already trying, and ask what would need to be true for you to be comfortable with them."}], "answers": [{"id": "q08a", "text": "AI may draft what we send, if a named person reviews, edits and approves it."}, {"id": "q08b", "text": "AI may answer questions outside office hours, if people can always reach a person."}, {"id": "q08c", "text": "AI may translate, if a qualified person checks anything people will rely on."}, {"id": "q08d", "text": "AI may be used in our work with the people we serve, if they know about it and agree."}, {"id": "q08e", "text": "AI may help with research, if we check every fact we use against a source."}, {"id": "q08f", "text": "We may adopt a new AI tool, if it is reviewed against our policy first."}], "take": {"head": "Most AI decisions happen here. For each use, name the safeguard and the person who checks it, and try it on a small scale before expanding it.", "body": [{"kind": "p", "value": "Movemental sorts AI uses into three groups, and most uses fall into this middle group: real benefit, but only with enough safeguards. Drafts a person reviews before sending. Research that is checked against sources. Help that never takes the place of the people involved."}, {"kind": "p", "value": "A few safeguards cover most cases:"}, {"kind": "ul", "value": [{"b": "A named person approves it.", "t": "Someone reviews the result, edits it and is responsible for it."}, {"b": "A person can be reached.", "t": "No one's only contact with your organization is AI."}, {"b": "Facts are checked.", "t": "Claims, numbers and quotations are verified before anyone relies on them."}, {"b": "Knowledge and consent.", "t": "The people we serve know when AI is part of their care and can say no."}, {"b": "Trial and review.", "t": "A use is tried for a set period and then kept, changed or stopped."}, {"b": "Review before adoption.", "t": "A new tool is checked against your policy, including what it does with your information, before anyone uses it."}]}, {"kind": "h", "value": "When unsure, slow down"}, {"kind": "p", "value": "The same tool can carry different risks. An internal summary is not a public statement, and a draft you will rewrite is not a post you will publish almost unchanged. When the result will shape people or represent you publicly, review it yourself. When it is internal and low-risk, less review is needed. The people setting these safeguards should have tried the uses themselves."}]}, "deeper": "How Movemental Uses AI, Yellow light · It Starts With Safety, Layer 04: Rules", "beliefs": ["b07", "b05"], "label": "Allowed with safeguards"}, {"id": "q09", "part": "p3", "title": "What uses of AI should we allow freely?", "term": "Approved uses", "why": "A policy that only lists what is forbidden does not tell people what is welcome. Some uses clearly help and harm no one. Naming them lets people use them with confidence.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one you would start with.", "teach": [{"heading": "A simple test", "text": "Imagine the same work without AI. If what remains is people doing valuable work that AI helped them do faster or for more people, the use is good."}, {"heading": "If you are not sure", "text": "Start with the tasks your staff find most draining and least meaningful."}], "answers": [{"id": "q09a", "text": "Making our own documents, teaching and records easy to search."}, {"id": "q09b", "text": "Captions, transcripts and other accessibility help."}, {"id": "q09c", "text": "Routine administrative work such as scheduling and formatting."}, {"id": "q09d", "text": "Finding patterns in our own information that would take weeks by hand."}, {"id": "q09e", "text": "Work we could never afford to hire for, as long as no one loses their job."}, {"id": "q09f", "text": "Nothing yet. We should try AI on low-risk work first."}], "take": {"head": "Allow the uses that save people time, help people who would otherwise go without, and harm no one. Start with the work your staff find most draining.", "body": [{"kind": "p", "value": "Making documents searchable, captioning and translating for access, and finding patterns that would take weeks by hand are clear benefits with no real harm. We use AI for work like this ourselves and encourage organizations to do the same."}, {"kind": "h", "value": "The best uses depend on your own information"}, {"kind": "p", "value": "Generic AI gives generic results. A chatbot that knows nothing about your organization writes what any organization might say. The real value comes when AI works from your own documents, history and ways of working. That is why the next questions are about your information, and why we spend so much effort helping organizations gather their scattered documents before building anything."}, {"kind": "h", "value": "Small organizations"}, {"kind": "p", "value": "For a church with no paid staff or a nonprofit where one person does five jobs, AI may make possible work they could never hire for. That is a good use, and it should be said openly. The test is whether current staff are treated fairly and the people served are better off."}, {"kind": "p", "value": "Nothing yet is also a good answer, if it comes with a date to review it and the trial actually happens."}]}, "deeper": "How Movemental Uses AI, Green light · It Continues With Exploration, eighty use cases", "beliefs": ["b07", "b09"], "label": "Allowed freely"}, {"id": "q10", "part": "p3", "title": "When should we tell people that AI was used?", "term": "Transparency and disclosure", "why": "For churches, nonprofits and schools, trust is central to the work. Telling people how AI is used protects that trust. People finding out later damages it.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one that matters most.", "teach": [{"heading": "The test for disclosure", "text": "The question is not whether AI touched something. It is whether a person would understand it differently if they knew AI was involved."}, {"heading": "If you are not sure", "text": "Ask what a member, donor or student would feel misled to find out."}], "answers": [{"id": "q10a", "text": "We should tell people how we use AI and how we do not, with our leaders explaining their own use first."}, {"id": "q10b", "text": "We should label images, audio and video made with AI."}, {"id": "q10c", "text": "We should tell people where their information goes and who can use it."}, {"id": "q10d", "text": "We should say when AI did much of the work on something published in our name."}, {"id": "q10e", "text": "We should tell people when an AI mistake affects them."}], "take": {"head": "Two things are always required: no one should think a person answered them when none did, and no one should be surprised by where their information went. Beyond that, disclose in proportion to how much AI was involved.", "body": [{"kind": "p", "value": "Trust is easy to lose. The fastest way to lose it is for people to find out later that something they thought was personal was automated, or that their information went somewhere they did not expect. Those two disclosures should always be made."}, {"kind": "p", "value": "Beyond them, match the disclosure to the use. Spellcheck needs no label. A teaching series, a letter to a family or a public statement written largely with AI deserves an honest note. Our own rule: we disclose when not disclosing would mislead, and when in doubt, we disclose."}, {"kind": "p", "value": "Label images, audio and video made with AI. A realistic picture of people who were never there, or a voice that was never recorded, misleads even when no one meant it to."}, {"kind": "h", "value": "Leaders first"}, {"kind": "p", "value": "In most organizations people use AI quietly, partly because they are not sure it is allowed. When leaders explain how they use AI themselves, others become willing to say so too, and decisions can be based on what is actually happening."}, {"kind": "p", "value": "We would ask every organization to publish a short statement of how it uses AI and how it does not, written for the people it serves. Date it, and update it as things change."}]}, "deeper": "It Starts With Safety, Disclosure and Attribution Rules · How Movemental Uses AI, our five commitments", "beliefs": ["b08"], "label": "Disclosure"}, {"id": "q11", "part": "p4", "title": "How should we protect and use our organization's information?", "term": "Data privacy and data use", "why": "Organizations hold years of information about their people and their work. How that information is kept decides both what is at risk and how useful AI can be.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one that matters most.", "teach": [{"heading": "What we mean by information", "text": "Not only data in the narrow sense. Records, documents, sermons and teaching, reports, decisions, relationships and know-how: what an organization has learned about its people and its work over the years. Much of it is scattered across files, inboxes and people's memories."}, {"heading": "Why AI makes this urgent", "text": "AI produces answers from what it is given. Given scattered, incomplete information about your organization, it fills the gaps with confident guesses. Given your own information, gathered and organized, it can give useful answers no generic tool can. The same information that needs protecting is what makes AI useful."}, {"heading": "If you are not sure", "text": "Ask what your organization would lose if your longest-serving staff member left tomorrow."}], "answers": [{"id": "q11a", "text": "We should sort our information by how sensitive it is, and decide which tools may use each kind."}, {"id": "q11b", "text": "We should let people see, correct and ask us to delete information about them wherever we can."}, {"id": "q11c", "text": "We should gather our scattered documents and records so they are complete, easy to find and under our control."}, {"id": "q11d", "text": "We should record what long-serving people know before they leave."}, {"id": "q11e", "text": "When AI speaks for us, it should use only our own information and show its sources."}, {"id": "q11f", "text": "We should not let vendors train AI on our information or keep it after we leave."}], "take": {"head": "Your information is your organization's memory: what it has learned about its people and its work over many years. Protect it because it is about people. Organize it because it is what makes AI accurate about you.", "body": [{"kind": "p", "value": "Most discussion of data and AI is about risk, and the risk is real. Donor records, pastoral notes, information about children, immigration status and health details need the most care. Start by knowing what you hold and sorting it by sensitivity, so the most sensitive information never reaches an outside AI tool and everything else goes only to tools whose terms protect it."}, {"kind": "p", "value": "That is only half of it. An organization's records, teaching, history and know-how are what it has learned over the years. In most organizations they are scattered: sermons no one can search, grant reports filed by year, important know-how in one person's head. We have told churches plainly that the real value here is memory, not efficiency. An organization committed to continuity can still forget most of what it knows."}, {"kind": "h", "value": "AI repeats what it is given"}, {"kind": "p", "value": "Ask AI about an organization whose information is scattered, and it builds an answer from whatever pieces it can find. The result sounds right but is not accurate. People call this AI slop, and it comes from scattered information. Give the same tool the organization's own information, organized and complete, and it can answer from what the organization actually knows, with sources."}, {"kind": "p", "value": "This is why we say gathering and organizing information is not just preparation. It is the main work. Real value comes where an organization's actual work meets its own organized information."}, {"kind": "h", "value": "A caution"}, {"kind": "p", "value": "Organizing information can also be used to build an organization's own name and reach. In the story of Babel, people built something unified for their own sake. At Pentecost, people were understood in their own languages. Organize your information to serve your people and your neighbors, not to replace your people with it."}]}, "deeper": "Movemental: the talk · The context method · Fragmentation Inventory", "beliefs": ["b09", "b06"], "label": "Our information"}, {"id": "q12", "part": "p4", "title": "How should we treat our staff and volunteers as AI changes their work?", "term": "Workforce impact", "why": "If AI changes the work, someone decides what happens to the saved time, the jobs and the people who object. If no one decides, the budget usually does.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one that matters most.", "teach": [{"heading": "People who object", "text": "Some people decline to use AI for reasons of conscience. Others avoid it out of fear, habit or overload. Both deserve care, but they are different. Telling them apart takes conversation, not a rule."}, {"heading": "If you are not sure", "text": "Ask what you would want to be told, in advance, if your own job were about to change."}], "answers": [{"id": "q12a", "text": "We should decide what saved time will be used for before adopting any AI tool."}, {"id": "q12b", "text": "We should give saved time back to people: more time with the people we serve, and more rest."}, {"id": "q12c", "text": "We should retrain people before eliminating jobs, and never cut jobs based on projected savings."}, {"id": "q12d", "text": "We should agree any change in workload with the people who do the work."}, {"id": "q12e", "text": "We should never require AI use from someone who objects on conscience, and always offer another way to do the work."}], "take": {"head": "Decide what saved time is for before any time is saved. Retrain before cutting jobs. Fully protect people who object on conscience, and learn to tell objection from avoidance.", "body": [{"kind": "p", "value": "When a task that took ten hours takes two, the eight hours go somewhere. Without a decision, they usually become more tasks, higher expectations or fewer staff. Any of these may sometimes be right, but none should happen by default. We believe saved time should first go back to people: more time with the people you serve, more rest, and more of the work only people can do."}, {"kind": "p", "value": "We would not cut jobs based on projected savings. We would tell people early if their roles may change, and let them help decide how. For small organizations it is different: AI may make possible work they could never hire for, and that should be said openly."}, {"kind": "h", "value": "People who object on conscience"}, {"kind": "p", "value": "A person who declines AI from sincere conviction should be respected, not just tolerated. They should have another way to do their work, and their choice should never count against them. Organizations need these people because they notice what is being lost."}, {"kind": "p", "value": "Avoidance is different. Some people avoid a workflow the organization has agreed on because they are overwhelmed, worried about looking unskilled, or unsure what is allowed. They need support and patience, not an exemption. Telling objection from avoidance is itself part of the organization's AI decisions, and the person who objects still belongs in the conversation."}]}, "deeper": "AI Organizational Map, Practice the judgment your people will need", "beliefs": ["b10"], "label": "Staff and volunteers"}, {"id": "q13", "part": "p4", "title": "How should we train our people to use AI wisely and avoid depending on it?", "term": "AI literacy and training", "why": "Training protects people from AI used against them, helps them use AI well, and keeps them able to think and work without it.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one that matters most.", "teach": [{"heading": "Judgment lasts longer than skills", "text": "Skills with a particular tool are out of date in months. Knowing when to use AI, what never to give it, and how to check its answers stays useful with every new tool."}, {"heading": "Signs of dependence", "text": "A person can no longer do a task without AI, or no longer forms their own view before asking AI for one."}], "answers": [{"id": "q13a", "text": "We should teach people to check AI's answers before relying on them."}, {"id": "q13b", "text": "We should teach good judgment about AI more than skill with tools."}, {"id": "q13c", "text": "We should think for ourselves first, then use AI."}, {"id": "q13d", "text": "We should give everyone time to try AI on real, low-risk work, not only the most interested."}, {"id": "q13e", "text": "We should train a few people in depth so others have someone to ask."}, {"id": "q13f", "text": "We should keep some work free of AI on purpose."}], "take": {"head": "Teach people to check AI and use judgment first, then skills. Learn together, and keep some work free of AI so people stay able to think for themselves.", "body": [{"kind": "p", "value": "Checking first. AI gives wrong answers as confidently as right ones. Teaching people to check what AI tells them against sources and people they trust protects them and the people they serve. (Teaching people to recognize AI scams is covered in question 03, because every organization owes it whatever it decides.)"}, {"kind": "p", "value": "Judgment second. When should I use AI, and when should I not? What should I never give it? How do I check its answers? These questions apply to every tool."}, {"kind": "p", "value": "Skills third. Training everyone, not only the most interested, keeps an organization from splitting into people who can use AI and people who cannot. Most of the skill is clear communication: saying what you want, giving enough background, knowing what a finished result looks like, and revising."}, {"kind": "h", "value": "Avoiding dependence"}, {"kind": "p", "value": "Our training guide names three things to watch for in people who use AI a lot: tiredness of a different kind, a growing sense of working with someone rather than something, and a slow change in what seems like good writing or sound reasoning. None of these is a reason not to use AI. All are reasons to use it with care. Think first, keep some work free of AI, and talk together about how the tools are affecting your people."}, {"kind": "p", "value": "Finally, everyone is new to this. AI tools as most people use them are only a few years old. Organizations that learn together and share what worked and what failed learn faster and more wisely than people learning alone."}]}, "deeper": "It Continues With Exploration, Personal boundaries · How to talk to it", "beliefs": ["b05", "b10"], "label": "Training"}, {"id": "q14", "part": "p4", "title": "What responsibility do we have to our community and to other organizations?", "term": "Community impact and collaboration", "why": "An organization's decisions about AI affect more than its own members: neighbors who are targeted by scams, people who bear AI's costs, and other organizations facing the same questions.", "mode": "multi", "how": "Tick every answer your organization should hold. Star the one that matters most.", "teach": [{"heading": "Why this belongs in Resolve", "text": "Most decisions about how AI affects ordinary people are being made one organization at a time. Each organization is making those decisions for its own community, whether it realizes it or not."}, {"heading": "If you are not sure", "text": "Ask who near you is least able to protect themselves from AI scams and misuse."}], "answers": [{"id": "q14a", "text": "We should help people in our wider community, not only our own members, recognize AI scams and manipulation."}, {"id": "q14b", "text": "We should work out our approach with other organizations, not alone."}, {"id": "q14c", "text": "We should learn from people who were wise before AI."}, {"id": "q14d", "text": "We should share what we learn, including our mistakes."}, {"id": "q14e", "text": "We should consider AI's environmental costs in our choices."}, {"id": "q14f", "text": "We should support people harmed by AI, and speak publicly when needed."}], "take": {"head": "Churches, nonprofits and schools should help decide how AI affects their communities. Protect your neighbors, work with others, and share what you learn.", "body": [{"kind": "p", "value": "Government policy cannot reach every person, and technology companies are not designed to. The decisions that most affect how AI touches ordinary lives are being made in congregations, agencies and classrooms. If churches, nonprofits and schools do not help lead, the people they serve will be left out of those decisions."}, {"kind": "p", "value": "At a minimum, every organization owes its community protection. Teaching people to recognize scams, fake images and manipulation costs little and protects many, especially older people, isolated people and people new to a language or country."}, {"kind": "p", "value": "Responsibility also includes cost to creation. Training and running AI uses large amounts of electricity and water. That is not a reason to refuse all AI, but it is a reason to use it where it matters and not by habit."}, {"kind": "h", "value": "Work with others"}, {"kind": "p", "value": "Movemental exists partly to make this possible: a network of trusted leaders and organizations working through the same questions together, sharing what worked and what failed, while staying rooted in their own places. One organization's tested decision can save many others from guessing. We would ask every organization to share what it learns and to learn from people whose wisdom came before AI."}, {"kind": "h", "value": "Different ways to respond"}, {"kind": "p", "value": "For some organizations, the best example will be a careful, humane way of using AI that others can see. For others, it will be public advocacy for people harmed by AI. Both are good responses. What we hope no organization does is assume this responsibility belongs to someone else."}]}, "deeper": "How Movemental Uses AI, On scenius and the local · Movemental's founding essay", "beliefs": ["b11", "b12"], "label": "Our community"}]};
+const EX_URL = '/_blob/622349c84458a2c06b57e8efa50c7719';
+const DEMO = {"sector": "church", "orgName": "Riverbend Church", "picks": {"q01": {"ticks": {"q01b": true, "q01d": true, "q01e": true}, "star": "q01b", "choice": null, "none": false, "own": ""}, "q02": {"ticks": {"q02a": true, "q02b": true, "q02c": true}, "star": "q02b", "choice": null, "none": false, "own": ""}, "q03": {"ticks": {"q03a": true, "q03b": true, "q03c": true, "q03e": true, "q03f": true}, "star": "q03c", "choice": null, "none": false, "own": ""}, "q04": {"ticks": {"q04a": true, "q04d": true, "q04e": true, "q04f": true}, "star": "q04e", "choice": null, "none": false, "own": ""}, "q05": {"ticks": {}, "star": null, "choice": "q05c", "none": false, "own": ""}, "q06": {"ticks": {"q06a": true, "q06b": true, "q06c": true, "q06d": true}, "star": "q06a", "choice": null, "none": false, "own": ""}, "q07": {"ticks": {"q07a": true, "q07b": true, "q07c": true, "q07d": true, "q07e": true}, "star": "q07a", "choice": null, "none": false, "own": ""}, "q08": {"ticks": {"q08a": true, "q08b": true, "q08c": true, "q08e": true, "q08f": true}, "star": "q08b", "choice": null, "none": false, "own": ""}, "q09": {"ticks": {"q09a": true, "q09b": true, "q09c": true}, "star": "q09b", "choice": null, "none": false, "own": ""}, "q10": {"ticks": {"q10a": true, "q10b": true, "q10c": true, "q10e": true}, "star": "q10a", "choice": null, "none": false, "own": ""}, "q11": {"ticks": {"q11a": true, "q11b": true, "q11c": true, "q11d": true}, "star": "q11c", "choice": null, "none": false, "own": ""}, "q12": {"ticks": {"q12a": true, "q12b": true, "q12c": true, "q12e": true}, "star": "q12b", "choice": null, "none": false, "own": "We should ask our volunteers before any change to how their work is done."}, "q13": {"ticks": {"q13a": true, "q13b": true, "q13c": true, "q13d": true, "q13f": true}, "star": "q13c", "choice": null, "none": false, "own": ""}, "q14": {"ticks": {"q14a": true, "q14b": true, "q14d": true}, "star": "q14a", "choice": null, "none": false, "own": ""}}, "teach": {"q08": true}, "take": {"q08": true}, "open": {"q08b": true}, "act": 0, "hardest": "q11c", "acts": {"0": true, "2": true}, "two": "Half our staff already use AI and we have never said what is off limits. Before anything else, can we agree this month on what never goes into an AI tool?", "name": "Priya Nair", "role": "Associate pastor", "email": "priya@riverbendchurch.org", "invited": false};
+
+const ICON = {
+  Star: 'M237.28,97.87A14.18,14.18,0,0,0,224.76,88l-60.25-4.87-23.22-56.2a14.37,14.37,0,0,0-26.58,0L91.49,83.11,31.24,88a14.18,14.18,0,0,0-12.52,9.89A14.43,14.43,0,0,0,23,113.32L69,152.93l-14,59.25a14.4,14.4,0,0,0,5.59,15,14.1,14.1,0,0,0,15.91.6L128,196.12l51.58,31.71a14.1,14.1,0,0,0,15.91-.6,14.4,14.4,0,0,0,5.59-15l-14-59.25L233,113.32A14.43,14.43,0,0,0,237.28,97.87Zm-12.14,6.37-48.69,42a6,6,0,0,0-1.92,5.92l14.88,62.79a2.35,2.35,0,0,1-.95,2.57,2.24,2.24,0,0,1-2.6.1L131.14,184a6,6,0,0,0-6.28,0L70.14,217.61a2.24,2.24,0,0,1-2.6-.1,2.35,2.35,0,0,1-1-2.57l14.88-62.79a6,6,0,0,0-1.92-5.92l-48.69-42a2.37,2.37,0,0,1-.73-2.65,2.28,2.28,0,0,1,2.07-1.65l63.92-5.16a6,6,0,0,0,5.06-3.69l24.63-59.6a2.35,2.35,0,0,1,4.38,0l24.63,59.6a6,6,0,0,0,5.06,3.69l63.92,5.16a2.28,2.28,0,0,1,2.07,1.65A2.37,2.37,0,0,1,225.14,104.24Z',
+  StarFill: 'M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z'
+};
+
+const SECTORS = [
+  { id: 'church', label: 'Church', org: 'our church', exName: 'churches', ph: 'Riverbend Church', role: 'Staff, elder, volunteer or member' },
+  { id: 'nonprofit', label: 'Nonprofit', org: 'our organization', exName: 'nonprofits', ph: 'Eastside Family Services', role: 'Staff, board, volunteer or someone we serve' },
+  { id: 'school', label: 'Seminary or school', org: 'our school', exName: 'seminaries and schools', ph: 'Northgate Seminary', role: 'Faculty, staff, trustee or student' },
+  { id: 'network', label: 'Denomination or network', org: 'our network', exName: 'denominations and networks', ph: 'Plains Conference', role: 'Staff, board or member church leader' }
+];
+const ACTS = [
+  'I’ll share this with someone who decides.',
+  'I’ll invite a colleague to write theirs.',
+  'I’ll ask for this conversation at our next team meeting.',
+  'I have authority to begin this conversation for our organization.'
+];
+const ACCENT = '#2236C4';
+const N = CORE.questions.length;
+const S_REVIEW = N + 1, S_LEAD = N + 2, S_DOC = N + 3;
+const cap = (t) => t ? t.charAt(0).toUpperCase() + t.slice(1) : t;
+const lineOf = (qid, t) => (qid === 'q01' || qid === 'q02') ? t : cap(t.replace(/^We should\s+/, ''));
+const emptyPick = () => ({ ticks: {}, star: null, choice: null, none: false, own: '' });
+const OPEN = { arrive: 0, invited: 0, resume: 0, question: 1, review: S_REVIEW, lead: S_LEAD, document: S_DOC, saved: S_DOC, send: S_DOC };
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const at = props.openAt || 'arrive';
+    const q = Math.max(1, Math.min(N, props.q || 1));
+    const base = { screen: at === 'question' ? q : (OPEN[at] || 0), sector: props.sector || 'church', orgName: '', picks: {}, teach: {}, take: {}, open: {},
+      hardest: null, acts: {}, two: '', name: '', role: '', email: '', saved: false, vis: 'private', research: false, countInOrg: true,
+      invited: at === 'invited', resume: at === 'resume', send: at === 'send', copied: false, ex: null };
+    if (props.demo || at === 'resume') {
+      const d = JSON.parse(JSON.stringify(DEMO));
+      Object.assign(base, d, { screen: base.screen, sector: props.sector || d.sector, invited: d.invited || at === 'invited', resume: at === 'resume', send: at === 'send' });
+      if (at === 'saved' || at === 'send') { base.saved = true; base.vis = 'link'; }
+      if (at === 'resume') { const keep = {}; ['q01', 'q02', 'q03', 'q04', 'q05', 'q06'].forEach((k) => { keep[k] = d.picks[k]; }); base.picks = keep; }
+    }
+    this.state = base;
+  }
+  componentDidMount() { fetch(EX_URL).then((r) => r.json()).then((ex) => this.setState({ ex })).catch(() => {}); }
+  go(n) { this.setState({ screen: Math.max(0, Math.min(S_DOC, n)) }); try { window.scrollTo(0, 0); } catch (e) {} }
+  pick(qid) { return this.state.picks[qid] || emptyPick(); }
+  setPick(qid, p) { this.setState({ picks: Object.assign({}, this.state.picks, { [qid]: p }) }); }
+  sec() { return SECTORS.find((x) => x.id === this.state.sector) || SECTORS[0]; }
+  title(q) { const v = this.state.ex && this.state.ex.t && this.state.ex.t[q.id]; return (v && v[this.state.sector]) || q.title; }
+  text(a) { const v = this.state.ex && this.state.ex.a && this.state.ex.a[a.id]; return (v && v[this.state.sector] && v[this.state.sector].text) || a.text; }
+  examples(a) { const v = this.state.ex && this.state.ex.a && this.state.ex.a[a.id]; return (v && v[this.state.sector] && v[this.state.sector].ex) || []; }
+  answered(q) { const p = this.pick(q.id); return p.none || !!p.choice || Object.keys(p.ticks).some((k) => p.ticks[k]); }
+  rows(q) {
+    const p = this.pick(q.id);
+    const chosen = q.mode === 'single' ? q.answers.filter((a) => a.id === p.choice) : q.answers.filter((a) => p.ticks[a.id]);
+    const lead = q.mode === 'single' ? chosen[0] : (q.answers.find((a) => a.id === p.star) || chosen[0]);
+    const others = chosen.filter((a) => a !== lead).map((a) => ({ t: lineOf(q.id, this.text(a)) }));
+    return { lead, others, own: (p.own || '').trim(), none: p.none };
+  }
+  renderVals() {
+    const s = this.state;
+    const sec = this.sec();
+    const orgName = s.orgName.trim();
+    const orgShort = orgName || sec.org;
+    const orgCap = orgName || cap(sec.org);
+    const orgPossessive = orgName ? orgName + '’s' : sec.org.replace(/^our /, 'our ') + '’s';
+    const screen = s.screen;
+    const isFlow = screen >= 1 && screen <= N;
+    const q = CORE.questions[Math.max(0, Math.min(N - 1, screen - 1))];
+    const p = this.pick(q.id);
+    const single = q.mode === 'single';
+    const pill = (on) => 'min-height: 44px; padding: 0 18px; border-radius: 999px; font-family: inherit; font-size: 15px; cursor: pointer; border: 1px solid ' + (on ? '#1C1D24' : '#DDDFE5') + '; background: ' + (on ? '#1C1D24' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#1C1D24') + ';';
+    const row = (sel) => 'border-bottom: 1px solid #DDDFE5; background: ' + (sel ? '#E8EBFA' : 'transparent') + '; transition: background-color .2s ease;';
+    const dot = (on) => 'flex: 0 0 auto; width: 22px; height: 22px; border-radius: 999px; box-sizing: border-box; border: 1.5px solid ' + (on ? '#1C1D24' : '#9A9DAA') + '; display: flex; align-items: center; justify-content: center;';
+    const dotIn = (on) => 'width: 10px; height: 10px; border-radius: 999px; background: ' + (on ? '#1C1D24' : 'transparent') + ';';
+    const box = (on, size) => 'flex: 0 0 auto; width: ' + size + 'px; height: ' + size + 'px; border-radius: 5px; box-sizing: border-box; margin-top: 2px; border: 1.5px solid ' + (on ? '#1C1D24' : '#9A9DAA') + '; background: ' + (on ? '#1C1D24' : '#FFFFFF') + '; display: flex; align-items: center; justify-content: center;';
+    const choiceRow = (on) => 'display: flex; align-items: center; gap: 16px; width: 100%; min-height: 60px; padding: 12px 14px; border: 0; border-bottom: 1px solid #DDDFE5; background: ' + (on ? '#E8EBFA' : 'transparent') + '; text-align: left; cursor: pointer; font-family: inherit; color: #1C1D24;';
+
+    const progress = CORE.parts.map((pt) => ({ marks: CORE.questions.map((qq, i) => ({ qq, i })).filter((x) => x.qq.part === pt.id).map(({ qq, i }) => {
+      const n = i + 1; const cur = n === screen; const done = this.answered(qq);
+      return { num: String(n).padStart(2, '0'), label: 'Question ' + n + ': ' + this.title(qq), current: cur ? 'step' : 'false', go: () => this.go(n),
+        style: 'min-width: 44px; height: 44px; border-radius: 999px; padding: 0 4px; font-family: inherit; font-size: 14px; font-variant-numeric: tabular-nums; cursor: pointer; box-sizing: border-box; '
+          + (cur ? 'background: #E8EBFA; border: 1.5px solid ' + ACCENT + '; color: ' + ACCENT + '; font-weight: 600;'
+            : done ? 'background: #1C1D24; border: 1px solid #1C1D24; color: #FFFFFF;'
+            : 'background: #FFFFFF; border: 1px solid #DDDFE5; color: #5B5E6B;') };
+    }) }));
+
+    const answers = q.answers.map((a) => {
+      const text = this.text(a);
+      const exs = this.examples(a).map((t) => ({ t }));
+      const open = !!s.open[a.id];
+      const common = { text, single, multi: !single, hasEx: exs.length > 0, examples: exs, exOpen: open && exs.length > 0,
+        exLabel: open ? 'Hide examples' : 'Examples for ' + sec.exName,
+        toggleEx: () => this.setState({ open: Object.assign({}, s.open, { [a.id]: !open }) }) };
+      if (single) {
+        const on = p.choice === a.id;
+        return Object.assign(common, { on, rowStyle: row(on), dotStyle: dot(on), dotInner: dotIn(on),
+          choose: () => this.setPick(q.id, Object.assign({}, p, { choice: on ? null : a.id, none: false })) });
+      }
+      const on = !!p.ticks[a.id]; const first = p.star === a.id;
+      return Object.assign(common, { on, first, rowStyle: row(first),
+        tick: () => { const ticks = Object.assign({}, p.ticks, { [a.id]: !on }); this.setPick(q.id, Object.assign({}, p, { ticks, star: on && first ? null : p.star, none: false })); },
+        star: () => { const ticks = Object.assign({}, p.ticks, { [a.id]: true }); this.setPick(q.id, Object.assign({}, p, { ticks, star: first ? null : a.id, none: false })); },
+        boxStyle: 'flex: 0 0 auto; width: 22px; height: 22px; border-radius: 5px; box-sizing: border-box; border: 1.5px solid ' + (on ? '#1C1D24' : '#9A9DAA') + '; background: ' + (on ? '#1C1D24' : '#FFFFFF') + '; display: flex; align-items: center; justify-content: center;',
+        tickStyle: 'opacity: ' + (on ? 1 : 0) + ';',
+        starD: first ? ICON.StarFill : ICON.Star, starStyle: 'fill: ' + (first ? ACCENT : '#9A9DAA') + ';',
+        starLabel: 'Mark as most important: ' + text });
+    });
+
+    const isAnswered = this.answered(q);
+    const takeOpen = isAnswered && !!s.take[q.id];
+    const takeBody = q.take.body.map((b) => ({ isH: b.kind === 'h', isP: b.kind === 'p', isUl: b.kind === 'ul', text: b.kind === 'ul' ? '' : b.value, items: b.kind === 'ul' ? b.value : [] }));
+
+    const sideBelief = []; const sideOrg = []; const leads = [];
+    CORE.questions.forEach((qq, i) => {
+      const r = this.rows(qq);
+      if (!r.lead) return;
+      const item = { label: qq.label, text: lineOf(qq.id, this.text(r.lead)) };
+      if (qq.part === 'p1') sideBelief.push(item); else { sideOrg.push(item); leads.push({ id: r.lead.id, text: item.text, n: i + 1 }); }
+    });
+
+    const lineStyle = (has) => 'font-family: \'Source Serif 4\', Georgia, serif; font-size: 19px; line-height: 1.45; color: ' + (has ? '#1C1D24' : '#5B5E6B') + ';';
+    const sheetRow = (qq) => {
+      const r = this.rows(qq);
+      const text = r.lead ? lineOf(qq.id, this.text(r.lead)) : (r.none ? 'None of the options fit my view.' : 'Not answered.');
+      return { label: qq.label, text, textStyle: lineStyle(!!r.lead), others: r.others, hasOwn: !!r.own, own: r.own,
+        rowStyle: 'display: flex; flex-wrap: wrap; gap: 6px 20px; padding: 16px 0; border-bottom: 1px solid #DDDFE5;' };
+    };
+    const beliefRows = CORE.questions.filter((qq) => qq.part === 'p1').map(sheetRow);
+    const orgParts = CORE.parts.filter((pt) => pt.id !== 'p1').map((pt) => ({ name: pt.name, rows: CORE.questions.filter((qq) => qq.part === pt.id).map(sheetRow) }));
+
+    const reviewParts = CORE.parts.map((pt) => ({ name: pt.name, rows: CORE.questions.map((qq, i) => ({ qq, i })).filter((x) => x.qq.part === pt.id).map(({ qq, i }) => {
+      const r = this.rows(qq);
+      return { label: String(i + 1).padStart(2, '0') + ' · ' + qq.label, text: r.lead ? lineOf(qq.id, this.text(r.lead)) : (r.none ? 'None of the options fit my view.' : 'Not answered.'),
+        textStyle: 'font-family: \'Source Serif 4\', Georgia, serif; font-size: 18px; line-height: 1.45; color: ' + (r.lead ? '#1C1D24' : '#5B5E6B') + ';',
+        change: () => this.go(i + 1), changeLabel: 'Change your answer to question ' + (i + 1) };
+    }) }));
+
+    const hardList = leads.filter((l) => l.n !== 5).map((l) => ({ id: l.id, text: l.text })).concat([{ id: 'none', text: 'None of them' }]);
+    const hardOptions = hardList.map((h) => { const on = s.hardest === h.id;
+      return { text: h.text, on, rowStyle: choiceRow(on), dotStyle: dot(on), dotInner: dotIn(on), choose: () => this.setState({ hardest: on ? null : h.id }) }; });
+    const hardLead = leads.find((l) => l.id === s.hardest);
+
+    const q3 = CORE.questions.find((qq) => qq.id === 'q03');
+    const q3r = this.rows(q3);
+    const suggest = (q3r.lead && q3r.lead.ask) || '';
+
+    const partIdx = CORE.parts.findIndex((pt) => pt.id === q.part);
+    const firstNum = (pid) => CORE.questions.findIndex((qq) => qq.part === pid) + 1;
+    const lastNum = (pid) => CORE.questions.length - CORE.questions.slice().reverse().findIndex((qq) => qq.part === pid);
+    const answeredCount = CORE.questions.filter((qq) => this.answered(qq)).length;
+    const nextOpen = CORE.questions.findIndex((qq) => !this.answered(qq)) + 1 || 1;
+
+    const visDefs = [
+      ['private', 'Private', 'Only you. The default.'],
+      ['link', 'Anyone with the link', 'Not listed anywhere. You choose who gets it.'],
+      ['public', 'Public', 'Listed among public Resolutions with your name and ' + orgPossessive + '. People working through the same questions can find it.']
+    ];
+    const chosenActs = ACTS.filter((t, i) => s.acts[i]).map((t) => ({ t }));
+    const signer = s.name.trim() ? s.name.trim() + (s.role.trim() ? ', ' + s.role.trim() : '') : 'A member of ' + orgShort;
+
+    return {
+      showSave: screen > 0 && screen < S_DOC,
+      isIntro: screen === 0, isFlow, isReview: screen === S_REVIEW, isLead: screen === S_LEAD, isDoc: screen === S_DOC,
+      showResume: screen === 0 && s.resume, resumeText: 'Welcome back. You have answered ' + answeredCount + ' of ' + N + ' questions, and your answers are saved on this device.',
+      resumeGo: () => this.setState({ resume: false, screen: nextOpen }), dismissResume: () => this.setState({ resume: false }),
+      showInvited: screen === 0 && s.invited,
+      partsIntro: CORE.parts.map((pt) => ({ name: pt.name, range: 'Questions ' + String(firstNum(pt.id)).padStart(2, '0') + ' to ' + String(lastNum(pt.id)).padStart(2, '0') + ': ' + pt.blurb })),
+      sectors: SECTORS.map((x) => ({ label: x.label, on: x.id === s.sector, style: pill(x.id === s.sector), pick: () => this.setState({ sector: x.id }) })),
+      orgName: s.orgName, namePlaceholder: 'For example, ' + sec.ph,
+      onName: (e) => this.setState({ orgName: e && e.target ? e.target.value : '' }),
+      begin: () => this.go(1), next: () => this.go(screen + 1), back: () => this.go(screen - 1), toIntro: () => this.go(0), toFirst: () => this.go(1),
+      stepLabel: 'Part ' + (partIdx + 1) + ' of ' + CORE.parts.length + ': ' + CORE.parts[Math.max(0, partIdx)].name + ' · Question ' + Math.max(1, screen) + ' of ' + N,
+      progress,
+      qTerm: q.term, qTitle: this.title(q), qWhy: q.why, qHow: q.how,
+      teach: q.teach, teachOpen: !!s.teach[q.id], teachLabel: s.teach[q.id] ? 'Before you answer −' : 'Before you answer +',
+      toggleTeach: () => this.setState({ teach: Object.assign({}, s.teach, { [q.id]: !s.teach[q.id] }) }),
+      listRole: single ? 'radiogroup' : 'group',
+      answers,
+      noneOn: p.none,
+      noneToggle: () => this.setPick(q.id, Object.assign({}, p, p.none ? { none: false } : { none: true, ticks: {}, star: null, choice: null })),
+      noneStyle: 'align-self: flex-start; min-height: 44px; padding: 0 16px; border-radius: 999px; font-family: inherit; font-size: 15px; cursor: pointer; border: 1px solid ' + (p.none ? '#1C1D24' : '#DDDFE5') + '; background: ' + (p.none ? '#E8EBFA' : '#FFFFFF') + '; color: #1C1D24;',
+      ownText: p.own || '', ownPlaceholder: q.part === 'p1' ? 'I believe…' : 'We should…',
+      onOwn: (e) => this.setPick(q.id, Object.assign({}, p, { own: e && e.target ? e.target.value : '' })),
+      takeLocked: !isAnswered, takeReady: isAnswered, takeOpen,
+      takeLabel: takeOpen ? 'Hide Movemental’s answer' : 'See Movemental’s answer',
+      toggleTake: () => this.setState({ take: Object.assign({}, s.take, { [q.id]: !s.take[q.id] }) }),
+      takeHead: q.take.head, takeBody, takeDeeper: q.deeper,
+      nextLabel: screen === N ? 'Review my answers' : 'Next question',
+      sheetTitle: 'Resolved, that ' + orgCap + ' should',
+      sideEmpty: sideBelief.length + sideOrg.length === 0, hasSideBelief: sideBelief.length > 0, hasSideOrg: sideOrg.length > 0, sideBelief, sideOrg,
+      reviewEmpty: leads.length + sideBelief.length === 0, reviewHas: leads.length + sideBelief.length > 0, reviewParts, hardOptions, orgShort,
+      acts: ACTS.map((t, i) => { const on = !!s.acts[i]; return { text: t, on, toggle: () => this.setState({ acts: Object.assign({}, s.acts, { [i]: !on }) }),
+        rowStyle: 'display: flex; align-items: center; gap: 16px; width: 100%; min-height: 60px; padding: 12px 14px; border: 0; border-bottom: 1px solid #DDDFE5; background: ' + (on ? '#E8EBFA' : 'transparent') + '; text-align: left; cursor: pointer; font-family: inherit; color: #1C1D24;',
+        boxStyle: box(on, 22), tickStyle: 'opacity: ' + (on ? 1 : 0) + ';' }; }),
+      two: s.two, onTwo: (e) => this.setState({ two: e && e.target ? e.target.value : '' }), twoPlaceholder: suggest || 'What should we decide first?',
+      showSuggest: !!suggest && !s.two.trim(), suggest, useSuggest: () => this.setState({ two: suggest }),
+      name: s.name, role: s.role, rolePlaceholder: sec.role,
+      onName2: (e) => this.setState({ name: e && e.target ? e.target.value : '' }), onRole: (e) => this.setState({ role: e && e.target ? e.target.value : '' }),
+      forOrg: orgName ? ' for ' + orgName : '',
+      beliefRows, orgParts,
+      hasHard: !!hardLead, hardText: hardLead ? hardLead.text : '',
+      hasActs: chosenActs.length > 0, chosenActs, hasTwo: !!s.two.trim(),
+      signer, dateText: 'October 27, 2026',
+      statusLine: s.saved ? 'Saved October 27, 2026 · ' + (s.vis === 'private' ? 'Private' : s.vis === 'link' ? 'Anyone with the link can read it' : 'Public') : 'Not saved yet. It stays on this device until you save it.',
+      notSaved: !s.saved, isSaved: s.saved, email: s.email, onEmail: (e) => this.setState({ email: e && e.target ? e.target.value : '' }),
+      save: () => this.setState({ saved: true }),
+      openSend: () => this.setState({ send: true }), closeSend: () => this.setState({ send: false }), sendOpen: screen === S_DOC && s.send,
+      sendNote: 'I wrote down what I think ' + orgShort + ' should do about AI. I’d like twenty minutes on it at our next leadership meeting.',
+      orgPossessive, orgPossessiveCap: cap(orgPossessive),
+      visOptions: visDefs.map(([k, t, d]) => { const on = s.vis === k; return { title: t, desc: d, on, choose: () => this.setState({ vis: k, copied: false }),
+        rowStyle: 'display: flex; align-items: flex-start; gap: 14px; width: 100%; min-height: 60px; padding: 12px 10px; border: 0; border-bottom: 1px solid #DDDFE5; background: ' + (on ? '#E8EBFA' : 'transparent') + '; text-align: left; cursor: pointer; font-family: inherit; color: #1C1D24;',
+        dotStyle: dot(on) + ' margin-top: 1px;', dotInner: dotIn(on) }; }),
+      needSaveForShare: !s.saved && s.vis !== 'private', showLink: s.saved && s.vis === 'link', showResearch: s.vis === 'public',
+      copyLabel: s.copied ? 'Copied' : 'Copy link', copyLink: () => this.setState({ copied: true }),
+      research: s.research, toggleResearch: () => this.setState({ research: !s.research }), researchBox: box(s.research, 20), researchTick: 'opacity: ' + (s.research ? 1 : 0) + ';',
+      invited: s.invited, notInvited: !s.invited, countInOrg: s.countInOrg, toggleCount: () => this.setState({ countInOrg: !s.countInOrg }),
+      countBox: box(s.countInOrg, 20), countTick: 'opacity: ' + (s.countInOrg ? 1 : 0) + ';'
+    };
+  }
+}
+</script>
+</body>
+</html>

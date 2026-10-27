@@ -1,0 +1,397 @@
+{
+ "q01a": [
+  "We should review AI tools through the same IT approval process we use for our learning management system.",
+  "We should judge an AI tutor by what students actually learn, not by what the vendor promises.",
+  "We should add AI use to our existing academic integrity policy rather than writing a separate code."
+ ],
+ "q01b": [
+  "We should give our AI research assistant only library sources our faculty have reviewed.",
+  "We should check AI study guides for bias before teachers hand them to students.",
+  "We should teach faculty that careless prompts and poor course materials produce poor AI answers."
+ ],
+ "q01c": [
+  "We should keep student records and course content on systems our school controls.",
+  "We should avoid building our curriculum around a single AI vendor we cannot easily leave.",
+  "We should ask faculty governance to review any AI contract that changes how teaching is done."
+ ],
+ "q01d": [
+  "We should keep faculty grading and commenting on student theses themselves.",
+  "We should protect spiritual formation groups and chapel from AI tools.",
+  "We should keep teachers, not AI tutors, at the center of our elementary classrooms."
+ ],
+ "q01e": [
+  "We should offer AI-supported language study to distance students who cannot relocate to campus.",
+  "We should provide AI accessibility tools for students with documented learning disabilities.",
+  "We should use AI translation to help parents who do not speak English follow school news."
+ ],
+ "q02a": [
+  "We should have our theology faculty write the biblical basis for our AI policy.",
+  "We should test proposed AI uses in chapel and formation against our statement of faith.",
+  "We should draw on our tradition’s teaching about vocation when deciding which faculty work AI may do."
+ ],
+ "q02b": [
+  "We should teach students to protect their families and churches from AI scams.",
+  "We should consider how our graduates’ AI habits will affect the congregations they serve.",
+  "We should open our AI literacy evenings to parents and neighbors, not only enrolled families."
+ ],
+ "q02c": [
+  "We should keep small writing seminars even if AI feedback would let us enlarge classes.",
+  "We should choose AI tools for what helps students learn, not for what saves the most staff time.",
+  "We should keep in-person advising even when an AI chatbot could answer most registration questions."
+ ],
+ "q02d": [
+  "We should honor the trust parents place in us by never sharing student data with AI vendors without consent.",
+  "We should keep our promises to donors about how their gifts fund teaching, not AI replacements.",
+  "We should protect the confidence students place in counselors and chaplains."
+ ],
+ "q02e": [
+  "We should pilot AI tutoring in one course and measure learning before expanding it.",
+  "We should study how AI writing tools affect our students’ reasoning before allowing them widely.",
+  "We should track whether AI-flagged early alerts actually help struggling students stay enrolled."
+ ],
+ "q02f": [
+  "We should put students on the committee that writes our AI policy.",
+  "We should ask parents what they want before introducing AI tools in our K-12 classrooms.",
+  "We should hear adjunct faculty before deciding how AI will change grading."
+ ],
+ "q03a": [
+  "We should survey faculty on how they already use AI in courses, with answers kept anonymous.",
+  "We should ask registrar, admissions and finance staff which AI tools they already use at work.",
+  "We should list the AI features already switched on in our learning platform and student systems."
+ ],
+ "q03b": [
+  "We should warn students and parents about cloned voice calls asking for tuition payments or money.",
+  "We should teach business office staff to confirm any payment request by calling a known number.",
+  "We should train teachers to recognize fake AI images of students and report them right away."
+ ],
+ "q03c": [
+  "We should forbid putting student records, grades or counseling notes into unapproved AI tools.",
+  "We should tell faculty this week which student information may never enter a public chatbot.",
+  "We should keep admissions files and financial aid documents out of AI tools until we approve one."
+ ],
+ "q03d": [
+  "We should let a few staff try AI on event schedules and room bookings this term.",
+  "We should have faculty test AI on drafting a sample syllabus before deciding classroom rules.",
+  "We should try AI summaries of public committee minutes before using it with any student work."
+ ],
+ "q03e": [
+  "We should tell students at orientation where the school currently stands on AI in coursework.",
+  "We should send parents a short note on our current AI rules while the full policy is drafted.",
+  "We should ask every instructor to state in the syllabus what AI use is allowed this term."
+ ],
+ "q03f": [
+  "We should set a date for the trustees to adopt our AI policy this academic year.",
+  "We should review our AI rules at the end of every semester.",
+  "We should put an annual AI policy review on the faculty senate calendar."
+ ],
+ "q04a": [
+  "We should have the trustees adopt our AI policy after the faculty senate and student government comment.",
+  "We should bring any AI use in admissions or student records to the board for approval.",
+  "We should have the board’s academic affairs committee review AI policy each year."
+ ],
+ "q04b": [
+  "We should write our AI policy through faculty, staff and students meeting together.",
+  "We should hold open campus forums before adopting AI rules for coursework.",
+  "We should invite parents, teachers and staff to shape our school’s AI policy together."
+ ],
+ "q04c": [
+  "We should adopt our sponsoring denomination’s AI guidance and add rules for our classrooms.",
+  "We should start from our accrediting association’s AI standards and fit them to our degree programs.",
+  "We should use our Christian school association’s model AI policy and adjust it for our grade levels."
+ ],
+ "q04d": [
+  "We should ask students how proposed AI rules would affect their coursework before we decide.",
+  "We should consult counselors and chaplains before any AI tool touches student care.",
+  "We should hear from teachers before choosing AI tools for their classrooms."
+ ],
+ "q04e": [
+  "We should name the academic dean accountable for AI use in teaching and grading.",
+  "We should make our head of school responsible for AI policy across all grade levels.",
+  "We should name one person accountable for AI tools used with student records."
+ ],
+ "q04f": [
+  "We should tell students right away when an AI grading error changed their marks, and correct them.",
+  "We should notify affected families first if student data is exposed through an AI tool.",
+  "We should withdraw any AI admissions screening that treated applicants unfairly and review those decisions."
+ ],
+ "q05a": [
+  "We should keep AI out of teaching, grading and admissions, while still protecting students from AI scams.",
+  "We should license no AI tools for faculty or staff, and still set rules for sensitive information.",
+  "We should turn off AI features in our learning platform and explain our reasons to families."
+ ],
+ "q05b": [
+  "We should allow AI for room scheduling and registrar forms, but keep it out of courses.",
+  "We should let staff use AI for event logistics, but not in chapel, teaching or formation.",
+  "We should use AI to format the school newsletter, but keep it out of classrooms."
+ ],
+ "q05c": [
+  "We should have a faculty and staff committee approve each new AI use and review it each term.",
+  "We should pilot AI tutoring in one course before considering it for other courses.",
+  "We should approve AI tools one department at a time and report results to the trustees."
+ ],
+ "q05d": [
+  "We should let campus IT approve AI tools through normal software procurement.",
+  "We should apply our existing data privacy and academic integrity policies to AI.",
+  "We should treat AI features in our student information system like any other software update."
+ ],
+ "q05e": [
+  "We should give every student AI tools for language study this year.",
+  "We should offer AI-supported courses to students who cannot move to campus.",
+  "We should provide AI tutoring for students who cannot afford private tutors."
+ ],
+ "q06a": [
+  "We should keep teachers, not AI tutors, with our youngest students during instruction.",
+  "We should keep field education supervision a relationship between a supervisor and a student.",
+  "We should keep mentoring and advising conversations between faculty and their advisees."
+ ],
+ "q06b": [
+  "We should never let AI rank or reject applicants for admission.",
+  "We should have a dean, not AI, decide and communicate academic dismissal.",
+  "We should keep AI out of tenure, promotion and faculty hiring decisions."
+ ],
+ "q06c": [
+  "We should keep AI out of student counseling and chaplaincy sessions.",
+  "We should keep spiritual direction for seminarians face to face with a trained director.",
+  "We should have a person, not a chatbot, answer students who reach out in crisis."
+ ],
+ "q06d": [
+  "We should have chapel speakers prepare their own sermons.",
+  "We should have faculty write and deliver their own lectures.",
+  "We should require students to write their own sermons and exegesis papers."
+ ],
+ "q06e": [
+  "We should teach Greek and Hebrew without AI translation tools.",
+  "We should have students write first drafts themselves in writing courses.",
+  "We should keep elementary math practice on paper with teacher feedback."
+ ],
+ "q07a": [
+  "We should never present an AI tutor or chatbot to students as a faculty member.",
+  "We should not let an AI assistant answer applicant emails under an admissions counselor’s name.",
+  "We should not use AI avatars to teach online courses as if they were real instructors."
+ ],
+ "q07b": [
+  "We should not use AI to send prospective students personalized messages meant to pressure them to enroll.",
+  "We should not use AI to write guilt-based appeals to alumni donors.",
+  "We should not use AI to target withdrawing students with pressure to stay."
+ ],
+ "q07c": [
+  "We should forbid entering student grades or disciplinary records into tools without a student privacy agreement.",
+  "We should keep counseling notes and health records out of every AI tool.",
+  "We should not paste applicant essays or recommendation letters into public chatbots."
+ ],
+ "q07d": [
+  "We should not use AI proctoring that watches students through their webcams.",
+  "We should not use AI to score faculty performance from student emails or course data.",
+  "We should not use AI to rank students by predicted risk without their knowledge."
+ ],
+ "q07e": [
+  "We should never create AI voice or video copies of faculty, even for online courses.",
+  "We should not publish AI-written articles under our president’s or faculty’s names.",
+  "We should treat a student submitting AI writing as their own as an academic integrity violation."
+ ],
+ "q07f": [
+  "We should not use AI admissions tools that disadvantage applicants by race, disability or income.",
+  "We should not rely on AI writing detectors that falsely flag students writing in a second language.",
+  "We should check that AI tutors work as well for students with disabilities as for others."
+ ],
+ "q08a": [
+  "We should let staff use AI to draft parent newsletters that a named administrator reviews and approves.",
+  "We should let faculty use AI to draft feedback only if they revise and sign it themselves.",
+  "We should let admissions use AI for first drafts of letters that a counselor edits and sends."
+ ],
+ "q08b": [
+  "We should let an AI assistant answer applicant questions overnight, with a clear link to a staff member.",
+  "We should let an AI tutor help students between classes, with a named instructor they can always contact.",
+  "We should let AI answer routine registrar questions after hours, with emergencies routed to campus staff."
+ ],
+ "q08c": [
+  "We should have a qualified translator check AI-translated enrollment forms for families.",
+  "We should have a fluent faculty member review AI-translated course materials for international students.",
+  "We should have a bilingual staff member check AI translations of safety notices before sending them home."
+ ],
+ "q08d": [
+  "We should tell students when AI helps flag struggling students, and let them decline.",
+  "We should get parental consent before AI tools analyze minor students’ work.",
+  "We should let students opt out of AI-graded assignments and offer another way."
+ ],
+ "q08e": [
+  "We should let students use AI to find sources if they check every citation in the library.",
+  "We should require faculty to verify every AI-suggested fact before using it in a lecture.",
+  "We should have researchers disclose AI use to our review board and check its findings against sources."
+ ],
+ "q08f": [
+  "We should have IT and the academic dean review any AI tool before faculty use it in courses.",
+  "We should check a new AI tool for student privacy compliance before signing the contract.",
+  "We should have the library vet every AI research tool before offering it to students."
+ ],
+ "q09a": [
+  "We should make our recorded lectures and syllabi searchable for students and faculty.",
+  "We should make our library’s archives and theses easy to search with AI.",
+  "We should make our school handbook and policies searchable for parents and staff."
+ ],
+ "q09b": [
+  "We should caption every chapel service and recorded lecture.",
+  "We should provide AI transcripts of class sessions for students with disabilities.",
+  "We should let students use text-to-speech tools for assigned readings."
+ ],
+ "q09c": [
+  "We should let AI help schedule classes, rooms and exams each term.",
+  "We should let staff use AI to format course catalogs and handbooks.",
+  "We should let AI organize field trip and event logistics."
+ ],
+ "q09d": [
+  "We should use AI to find patterns in our retention and graduation data.",
+  "We should use AI to review years of course evaluations for common themes.",
+  "We should use AI to compare curriculum maps across departments for gaps and overlaps."
+ ],
+ "q09e": [
+  "We should use AI to help a small school offer translated family communications we could not otherwise afford.",
+  "We should use AI to tag our archive photos, a project we could never staff.",
+  "We should use AI to build practice exercises for rarely taught languages without cutting any teaching role."
+ ],
+ "q09f": [
+  "We should try AI only on room scheduling this term before allowing it more freely.",
+  "We should allow nothing freely until our faculty committee reviews the first pilots.",
+  "We should let a few staff test AI on public documents before approving any free use."
+ ],
+ "q10a": [
+  "We should publish how our school uses AI and does not, with the president describing their own use.",
+  "We should have faculty explain their own AI use at the start of each course.",
+  "We should tell families at back-to-school night where AI is used and where it is not."
+ ],
+ "q10b": [
+  "We should label AI-generated images in our admissions and fundraising materials.",
+  "We should mark AI-generated audio or video used in online courses.",
+  "We should label AI images in student publications and yearbooks."
+ ],
+ "q10c": [
+  "We should tell students which companies receive their coursework when they use campus AI tools.",
+  "We should tell parents where student data goes when teachers use AI tools.",
+  "We should tell applicants whether AI tools process any part of their application."
+ ],
+ "q10d": [
+  "We should note when AI did much of the drafting of course materials or reports.",
+  "We should require students to cite AI help like any other source.",
+  "We should disclose substantial AI use in research our faculty publish under the school’s name."
+ ],
+ "q10e": [
+  "We should tell a student when an AI error affected their grade or record.",
+  "We should tell families when an AI translation error caused confusion about a school notice.",
+  "We should disclose AI errors found in our published research and correct them."
+ ],
+ "q11a": [
+  "We should sort our information into public, internal and confidential, and assign approved AI tools to each.",
+  "We should treat student records, counseling notes and health files as our most sensitive information.",
+  "We should list which AI tools may use course materials and which may never see student data."
+ ],
+ "q11b": [
+  "We should let students see and correct any AI-drafted assessment of their progress.",
+  "We should let alumni ask us to delete information we no longer need about them.",
+  "We should let parents review what information AI tools hold about their children."
+ ],
+ "q11c": [
+  "We should gather scattered syllabi, lecture notes and course materials into one archive the school controls.",
+  "We should bring old student records and policies into one complete and searchable system.",
+  "We should collect our faculty’s published writing and recorded lectures in our own library."
+ ],
+ "q11d": [
+  "We should record the knowledge of retiring faculty about their courses and students.",
+  "We should document how our long-serving registrar handles unusual cases before they retire.",
+  "We should interview our founding teachers about our school’s history and practices."
+ ],
+ "q11e": [
+  "We should limit any campus AI assistant to our own catalog and policies, with links to each source.",
+  "We should build any AI study helper only from our faculty’s approved course materials.",
+  "We should require our applicant chatbot to quote our published admissions pages and cite them."
+ ],
+ "q11f": [
+  "We should forbid AI vendors from training on student work or faculty lectures.",
+  "We should require vendors to delete our data when our contract ends.",
+  "We should let students decide whether their work is used to train any AI."
+ ],
+ "q12a": [
+  "We should decide what faculty will do with saved grading time before adopting AI grading help.",
+  "We should agree how registrar staff will use saved time before automating data entry.",
+  "We should state in each AI proposal what saved time will go toward."
+ ],
+ "q12b": [
+  "We should give time AI saves back to mentoring students.",
+  "We should give faculty time AI saves for their own research and rest.",
+  "We should use saved administrative time to give teachers more planning time."
+ ],
+ "q12c": [
+  "We should retrain library and advising staff before changing their roles because of AI.",
+  "We should not cut faculty lines based on projected AI teaching savings.",
+  "We should offer staff training in new work before eliminating any position."
+ ],
+ "q12d": [
+  "We should agree any AI-related teaching load changes through faculty governance.",
+  "We should not raise course loads because AI speeds grading.",
+  "We should agree with admissions staff before changing their caseloads because of AI."
+ ],
+ "q12e": [
+  "We should let faculty teach without AI as a matter of conscience.",
+  "We should offer students AI-free versions of required coursework.",
+  "We should never require a teacher to use AI tools they object to on conscience."
+ ],
+ "q13a": [
+  "We should teach students to check every AI answer against the assigned readings.",
+  "We should train staff to verify AI summaries of policies before sharing them.",
+  "We should show faculty how AI invents citations and how to catch it."
+ ],
+ "q13b": [
+  "We should teach preaching students to critique AI-generated sermons.",
+  "We should require every student to take a course on theology and technology.",
+  "We should teach high school students when AI is and is not appropriate to use."
+ ],
+ "q13c": [
+  "We should require students to exegete a text before consulting any AI.",
+  "We should have students write their own outline before using AI for feedback.",
+  "We should ask faculty to plan their courses before seeking AI suggestions."
+ ],
+ "q13d": [
+  "We should pay adjuncts to attend faculty AI training.",
+  "We should give every staff member time to try approved AI tools on low-risk tasks.",
+  "We should give faculty a course release to redesign assessments for AI."
+ ],
+ "q13e": [
+  "We should train one faculty member in each department to advise colleagues on AI.",
+  "We should have a librarian trained in depth to help students with AI research tools.",
+  "We should train a few teachers to support others on classroom AI questions."
+ ],
+ "q13f": [
+  "We should give some exams on paper, in the room.",
+  "We should keep spiritual formation groups free of AI tools.",
+  "We should require oral defenses of major papers."
+ ],
+ "q14a": [
+  "We should host community workshops on AI scams for parents and neighbors.",
+  "We should teach future pastors to recognize AI scams that target church members.",
+  "We should offer AI scam awareness sessions for alumni and supporters."
+ ],
+ "q14b": [
+  "We should work out our AI approach with peer seminaries through our accrediting association.",
+  "We should develop AI policy with other schools in our Christian school association.",
+  "We should coordinate AI guidance for field education with our partner churches."
+ ],
+ "q14c": [
+  "We should draw on the church’s long thinking about tools, memory and learning.",
+  "We should study how earlier Christian educators responded to printing and new media.",
+  "We should ask retired faculty how they formed students before digital tools."
+ ],
+ "q14d": [
+  "We should share our course AI policies openly with peer seminaries.",
+  "We should publish what we learn from AI pilots, including what did not work.",
+  "We should share our classroom AI mistakes and lessons with other Christian schools."
+ ],
+ "q14e": [
+  "We should include AI computing in our campus carbon accounting.",
+  "We should limit large AI model use in courses to clear needs.",
+  "We should ask AI vendors about energy use before signing campus contracts."
+ ],
+ "q14f": [
+  "We should support students harmed by AI deepfakes or harassment, and help them report it.",
+  "We should send faculty to testify on AI in education policy.",
+  "We should teach AI’s costs to workers and communities in our ethics courses."
+ ]
+}

@@ -1,0 +1,397 @@
+{
+ "q01a": [
+  "We should review AI features in our membership database the way we review any other software.",
+  "We should put AI tools through the same procurement and security review as other office software.",
+  "We should advise member churches to judge AI features by the same standards as their church software."
+ ],
+ "q01b": [
+  "We should test what AI tools say about our doctrine and polity before recommending them to member churches.",
+  "We should give any AI tool we offer our approved resources, not scattered drafts.",
+  "We should teach church planters that AI answers reflect their sources and the questions they are asked."
+ ],
+ "q01c": [
+  "We should ask what each AI vendor does with the data of our member churches and missionaries.",
+  "We should avoid locking member churches into one AI vendor through our shared contracts.",
+  "We should keep ownership of our publications and archives when AI companies ask to license them."
+ ],
+ "q01d": [
+  "We should name the parts of ordination, candidacy and member care that AI may not touch.",
+  "We should protect in-person visits between regional staff and member church pastors.",
+  "We should help member churches name the parts of their ministry they will keep free of AI."
+ ],
+ "q01e": [
+  "We should use AI translation so minority-language congregations receive our resources in their own language.",
+  "We should caption and transcribe our conference sessions for pastors who cannot attend.",
+  "We should offer approved AI tools to small member churches that have no paid staff."
+ ],
+ "q02a": [
+  "We should test our AI guidance against our statement of faith and confessional standards.",
+  "We should ask our theological commission to review AI guidance before it goes to member churches.",
+  "We should ground our AI resources for member churches in our shared tradition, not vendor marketing."
+ ],
+ "q02b": [
+  "We should ask how our AI guidance affects the neighborhoods our member churches serve.",
+  "We should consider how our AI choices affect the communities where our missionaries live.",
+  "We should ask how our church planting tools affect people who are not yet part of any church."
+ ],
+ "q02c": [
+  "We should drop any AI use in member care that saves staff time but weakens care.",
+  "We should judge AI tools for member churches by their effect on congregations, not on our costs.",
+  "We should keep candidacy mentoring personal even if AI could process candidates faster."
+ ],
+ "q02d": [
+  "We should ask whether member churches would still trust us if they saw how we use AI.",
+  "We should protect the trust clergy place in us with their personnel files and pension records.",
+  "We should ask whether supporters would still trust our missionary updates if they knew how they were written."
+ ],
+ "q02e": [
+  "We should pilot AI tools with a few member churches and measure results before wider rollout.",
+  "We should collect evidence from regions using AI before writing guidance for every member church.",
+  "We should track whether AI translation actually helps partner churches understand our resources."
+ ],
+ "q02f": [
+  "We should survey pastors and missionaries before issuing AI guidance.",
+  "We should include small and rural member churches on our AI guidance task force.",
+  "We should ask partner churches in other countries how our AI choices affect them."
+ ],
+ "q03a": [
+  "We should ask every staff member in our national and regional offices which AI tools they use.",
+  "We should list the AI features already built into our membership, giving and credentialing software.",
+  "We should invite member churches to share how they already use AI, without judging their answers."
+ ],
+ "q03b": [
+  "We should warn member churches about scams that use AI to impersonate our bishop or president.",
+  "We should require a callback to a known number before acting on any voice or video request for funds.",
+  "We should give member churches a short guide to protecting older members from AI voice scams."
+ ],
+ "q03c": [
+  "We should forbid entering missionaries’ names or locations into public AI tools.",
+  "We should keep clergy personnel, misconduct and pension records out of all AI tools.",
+  "We should give member churches a model rule for keeping pastoral notes out of AI tools."
+ ],
+ "q03d": [
+  "We should let a small team in our national office try AI on internal work for three months.",
+  "We should test AI on conference logistics before considering it for anything involving people.",
+  "We should pilot AI tools with a few willing member churches before offering them more widely."
+ ],
+ "q03e": [
+  "We should send member churches a short statement of where we stand on AI this year.",
+  "We should tell our missionaries and field staff our current AI position, even before final guidance.",
+  "We should explain our AI position from the platform at our next annual gathering."
+ ],
+ "q03f": [
+  "We should put AI guidance on the agenda of our next assembly or synod for a vote.",
+  "We should review our AI decisions at every annual meeting.",
+  "We should set a date by which our national office will adopt its own AI policy."
+ ],
+ "q04a": [
+  "We should bring our AI standards to the assembly for a recorded vote.",
+  "We should have our board approve the AI policy for our national and regional offices.",
+  "We should have our council adopt AI guidance only after hearing from member churches."
+ ],
+ "q04b": [
+  "We should ask member churches to discern AI together before we issue guidance.",
+  "We should hold regional listening sessions with pastors and lay leaders before drafting AI guidance.",
+  "We should bring draft AI guidance to the full assembly for discussion, not only to staff."
+ ],
+ "q04c": [
+  "We should follow our communion’s guidance on AI and adapt it for our member churches.",
+  "We should adopt our mission alliance’s AI standards and add rules for our field teams.",
+  "We should adapt the shared AI guidance of our ecumenical partners rather than write ours alone."
+ ],
+ "q04d": [
+  "We should survey missionaries before setting AI rules for field reports.",
+  "We should consult language communities before using AI on their Scripture translation.",
+  "We should ask safeguarding officers and youth leaders before AI is used with minors’ records."
+ ],
+ "q04e": [
+  "We should name one senior officer accountable for all our AI decisions.",
+  "We should appoint one staff officer to coordinate AI across our agencies.",
+  "We should tell member churches which named officer is accountable for the AI tools we provide."
+ ],
+ "q04f": [
+  "We should tell member churches promptly if AI mishandled their data in our systems.",
+  "We should tell a candidate directly if an AI error affected their credentialing file, and correct it.",
+  "We should correct and announce any AI error that reaches resources we sent to member churches."
+ ],
+ "q05a": [
+  "We should turn off AI features in our denominational software and explain why to member churches.",
+  "We should not adopt AI in our offices or publications, and still warn member churches about AI scams.",
+  "We should state our conscientious refusal of AI in writing and review it at each assembly."
+ ],
+ "q05b": [
+  "We should allow AI for conference logistics and keep it out of ordination and candidacy work.",
+  "We should allow AI in accounting and scheduling, never in member care for clergy or missionaries.",
+  "We should recommend that member churches use AI for office tasks only, not preaching or pastoral care."
+ ],
+ "q05c": [
+  "We should require a short written proposal before any office adopts an AI tool.",
+  "We should pilot each AI tool with a few member churches for a set period, then review it.",
+  "We should have our AI task force approve each new use and report to the assembly yearly."
+ ],
+ "q05d": [
+  "We should handle AI tools through our standard procurement and IT security review.",
+  "We should add AI to our existing technology, privacy and safeguarding policies.",
+  "We should include AI in the technology guidance we already give member churches."
+ ],
+ "q05e": [
+  "We should provide AI translation to partner churches with no staff now rather than wait.",
+  "We should release AI guidance for member churches now and update it every year.",
+  "We should give every missionary approved AI tools this year and adjust as we learn."
+ ],
+ "q06a": [
+  "We should have only people, never AI, lead our youth camps and children’s events.",
+  "We should keep AI out of member care for our missionaries and clergy families.",
+  "We should recommend that member churches keep AI out of children’s ministry and youth mentoring."
+ ],
+ "q06b": [
+  "We should decide ordination and credentialing without any AI screening of candidates.",
+  "We should never use AI to screen job applicants for our national or regional offices.",
+  "We should have people, not AI, decide which church planters and member churches receive grants."
+ ],
+ "q06c": [
+  "We should have a person, not AI, answer our clergy care line.",
+  "We should never route missionaries’ care requests through AI first.",
+  "We should keep AI out of the counseling and coaching we offer pastors in crisis."
+ ],
+ "q06d": [
+  "We should never send AI-written letters in our bishop’s or president’s name.",
+  "We should have people write the sermons and addresses given at our assemblies.",
+  "We should require named authors to write the curriculum we publish for member churches."
+ ],
+ "q06e": [
+  "We should keep AI out of candidates’ ordination papers and theological reflection.",
+  "We should keep church planter assessment and training in person, even when AI would be faster.",
+  "We should have ordination candidates write their exams in the room."
+ ],
+ "q07a": [
+  "We should never let a chatbot on our website present itself as a staff member.",
+  "We should label every automated message we send to member churches and missionaries as automated.",
+  "We should never let an AI tool pray with or counsel a pastor as if it were a person."
+ ],
+ "q07b": [
+  "We should never use AI to pressure member churches about unpaid dues or apportionments.",
+  "We should never use AI to find supporters’ emotional weak points in missionary support appeals.",
+  "We should ask member churches not to use AI to pressure members about attending or giving."
+ ],
+ "q07c": [
+  "We should never paste misconduct complaints or clergy files into a free AI tool.",
+  "We should never put missionaries’ names, locations or security plans into consumer AI tools.",
+  "We should recommend that member churches never paste prayer requests into free AI tools."
+ ],
+ "q07d": [
+  "We should never use AI to score or rank pastors for appointment or promotion.",
+  "We should never use AI to monitor the social media of our missionaries or staff.",
+  "We should refuse vendors whose tools rank church members by giving or attendance."
+ ],
+ "q07e": [
+  "We should never create AI voice clones or avatars of our leaders.",
+  "We should never publish AI-written articles under a leader’s name.",
+  "We should never use AI to make videos of a missionary saying words they did not say."
+ ],
+ "q07f": [
+  "We should never use AI tools that treat candidates unfairly because of race, age, disability or language.",
+  "We should check that AI translation serves minority-language congregations as well as majority-language ones.",
+  "We should never offer member churches AI resources that work only in English."
+ ],
+ "q08a": [
+  "We should let AI draft routine letters to member churches that a named leader reviews and signs.",
+  "We should let missionaries draft prayer letters with AI if they personally edit and approve them.",
+  "We should let staff use AI to draft resources for member churches if a named editor approves them."
+ ],
+ "q08b": [
+  "We should route any chatbot message about misconduct or crisis to a staff member right away.",
+  "We should let member church leaders reach a person from any AI help desk we run.",
+  "We should put a staff phone number on every page of our AI help desk for pastors."
+ ],
+ "q08c": [
+  "We should have native speakers check every AI translation of our resources before release.",
+  "We should let partner churches review and approve translations of their own words.",
+  "We should have qualified translators check AI-translated policies, contracts and safeguarding notices."
+ ],
+ "q08d": [
+  "We should get missionaries’ consent before AI summarizes their field reports.",
+  "We should use AI note-takers in member church consultations only when everyone present agrees.",
+  "We should get parents’ consent before AI handles campers’ data at our camps."
+ ],
+ "q08e": [
+  "We should check every AI-generated statistic before it appears in our annual report.",
+  "We should verify every source an AI tool cites in resources for member churches.",
+  "We should confirm AI summaries of church statistics against the original reports."
+ ],
+ "q08f": [
+  "We should review every new AI tool against our policy before any office adopts it.",
+  "We should include safeguarding officers in approving any AI tool used in youth ministry.",
+  "We should review AI tools against our policy before recommending them to member churches."
+ ],
+ "q09a": [
+  "We should make our archive of assembly minutes and resolutions searchable.",
+  "We should make our book of order and policy handbooks easy for member churches to search.",
+  "We should make our past training resources for church planters searchable."
+ ],
+ "q09b": [
+  "We should caption every session at our annual conference.",
+  "We should transcribe our webinars for pastors who are deaf or hard of hearing.",
+  "We should offer audio versions of our resources for pastors with low vision."
+ ],
+ "q09c": [
+  "We should let AI assign conference sessions and rooms from registrations.",
+  "We should let AI format our newsletters and meeting agendas for member churches.",
+  "We should let AI schedule regional meetings and send reminders."
+ ],
+ "q09d": [
+  "We should use AI to see which member churches may need a call from regional staff.",
+  "We should use AI to find trends in our annual congregational statistics.",
+  "We should use AI to sort years of grant reports by what helped new churches grow."
+ ],
+ "q09e": [
+  "We should provide AI tools to member churches without a paid pastor so their volunteers can keep up.",
+  "We should use AI so our small regional office can answer more member church questions.",
+  "We should use AI to transcribe decades of recorded assembly sessions we could never pay staff to transcribe."
+ ],
+ "q09f": [
+  "We should run a three-month trial in our national office before approving any AI use.",
+  "We should hold off recommending AI tools to member churches until our own trial ends.",
+  "We should revisit this question at our next annual meeting after a pilot."
+ ],
+ "q10a": [
+  "We should have our bishop or president explain their own AI use to the assembly first.",
+  "We should publish a plain AI statement for member churches on our website.",
+  "We should state our AI practices once in our missionary handbook."
+ ],
+ "q10b": [
+  "We should label AI voices narrating our mission videos.",
+  "We should label every AI-made image in our magazines and conference materials.",
+  "We should label every AI-restored photo in our digitized archives."
+ ],
+ "q10c": [
+  "We should tell member churches which vendors handle the data in our membership database.",
+  "We should tell missionaries where their field reports are stored and who can read them.",
+  "We should tell clergy which tools process their credentialing and pension records."
+ ],
+ "q10d": [
+  "We should note when AI helped substantially with curriculum we publish for member churches.",
+  "We should tell supporters when AI did much of the writing in missionary newsletters.",
+  "We should disclose substantial AI help in our annual report to the assembly."
+ ],
+ "q10e": [
+  "We should publish corrections when AI errors reach resources sent to member churches.",
+  "We should tell a member church directly when an AI error affected its statistics or dues.",
+  "We should tell donors when an AI error affected the mission results we reported."
+ ],
+ "q11a": [
+  "We should sort our records into public, internal and confidential, and list approved tools for each.",
+  "We should treat missionary locations and misconduct files as our most sensitive information.",
+  "We should give member churches a simple model for sorting their records by sensitivity."
+ ],
+ "q11b": [
+  "We should let clergy see and correct the information in their credentialing files.",
+  "We should let former missionaries ask us to delete their photos from our websites.",
+  "We should let church members ask to be removed from our national mailing lists."
+ ],
+ "q11c": [
+  "We should bring our resolutions, policies and handbooks into one searchable place we control.",
+  "We should gather training materials from every region into one shared library.",
+  "We should move missionary field reports from scattered email accounts into our own records system."
+ ],
+ "q11d": [
+  "We should interview retiring regional staff about how they support member churches.",
+  "We should record our founders’ stories and reasons for starting the network.",
+  "We should record what long-serving missionaries know before they return home."
+ ],
+ "q11e": [
+  "We should limit any AI assistant we offer to our own polity and resources.",
+  "We should require every AI answer about our policies to cite the section it comes from.",
+  "We should limit any chatbot we provide to member churches to approved, cited sources."
+ ],
+ "q11f": [
+  "We should require AI vendors to return and delete our data when contracts end.",
+  "We should use only AI tools that never train on our members’ or missionaries’ data.",
+  "We should include these data terms in any shared AI contract we offer member churches."
+ ],
+ "q12a": [
+  "We should decide where regional staff’s saved hours will go before adopting any AI tool.",
+  "We should not add reporting duties for pastors because AI makes reports faster.",
+  "We should agree how missionaries’ saved admin time will be used before giving them AI tools."
+ ],
+ "q12b": [
+  "We should spend saved staff time visiting member churches in person.",
+  "We should give field missionaries extra rest from time AI saves on administration.",
+  "We should use AI for conference logistics so staff can spend time with attendees."
+ ],
+ "q12c": [
+  "We should retrain headquarters staff whose tasks AI takes over.",
+  "We should not consolidate regional staff roles on projected AI savings.",
+  "We should advise member churches to retrain church office staff before changing their roles because of AI."
+ ],
+ "q12d": [
+  "We should consult field staff before changing their duties because of AI.",
+  "We should agree AI-related workload changes with our staff association.",
+  "We should ask volunteer committee members before changing how their work is done."
+ ],
+ "q12e": [
+  "We should never make AI use a condition of ordination or credentialing.",
+  "We should provide a non-AI way to complete every report we require from member churches.",
+  "We should never require a missionary to use AI in their field ministry."
+ ],
+ "q13a": [
+  "We should teach staff to verify AI answers about our polity against the book of order.",
+  "We should train missionaries to tell when AI translations distort meaning.",
+  "We should teach member church pastors to check AI quotations of Scripture against the text."
+ ],
+ "q13b": [
+  "We should offer a clergy continuing education course on faith and AI.",
+  "We should train church planters to guide their communities on AI.",
+  "We should teach regional staff when AI use crosses ethical lines in member care."
+ ],
+ "q13c": [
+  "We should have mission teams draft field assessments before any AI analysis.",
+  "We should have committees write their own findings before reading any AI summary.",
+  "We should have church planters write their own vision statement before any AI help."
+ ],
+ "q13d": [
+  "We should give every national office staff member paid hours to try AI on their work.",
+  "We should train missionaries in AI before they leave for the field.",
+  "We should fund AI learning grants so small member churches can take part."
+ ],
+ "q13e": [
+  "We should train an AI guide in each region.",
+  "We should send two national staff through in-depth training to support the rest.",
+  "We should train a few pastors in each cohort to help their peers with AI questions."
+ ],
+ "q13f": [
+  "We should keep our ordination exams entirely free of AI.",
+  "We should keep our clergy retreats free of AI tools.",
+  "We should invite member churches to keep some part of their ministry free of AI on purpose."
+ ],
+ "q14a": [
+  "We should give member churches a guide on AI scams they can share with their neighbors.",
+  "We should offer AI scam awareness workshops open to the public at our regional gatherings.",
+  "We should warn the public when scammers use AI to impersonate our leaders or missionaries."
+ ],
+ "q14b": [
+  "We should work out AI together with other denominations and mission agencies.",
+  "We should convene member churches to work through AI decisions together.",
+  "We should join an ecumenical working group on AI and share our draft guidance."
+ ],
+ "q14c": [
+  "We should ask retired pastors and missionaries what they see in AI.",
+  "We should study how our tradition responded to earlier technologies like printing and radio.",
+  "We should seek our theological commission’s guidance before setting AI policy."
+ ],
+ "q14d": [
+  "We should report what member churches learn about AI back to all of them.",
+  "We should share our AI guidance, and the mistakes we made, with other denominations.",
+  "We should publish a yearly report on our AI use, including what went wrong."
+ ],
+ "q14e": [
+  "We should set AI climate standards in our creation care policy.",
+  "We should ask AI vendors to report the energy use of the tools we provide member churches.",
+  "We should choose smaller AI tools for routine office work when they do the job."
+ ],
+ "q14f": [
+  "We should advocate for workers who lose jobs to AI.",
+  "We should advocate alongside global South partners harmed by AI data extraction.",
+  "We should speak publicly when AI is used to surveil persecuted believers."
+ ]
+}

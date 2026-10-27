@@ -1,72 +1,76 @@
+import { ANSWER_BY_ID, BELIEF_PART, PARTS, QUESTIONS, lineText } from "./questions";
+
 /**
- * Sample data from the canvas boards, shown until the back end exists. Every screen that
- * renders these labels them "Sample data." (fixture seam; see docs/handoff/resolve-new/README.md).
- * Riverbend, Priya, James and everyone else here are fictional.
+ * Sample data from the canvas boards, shown until enough real Resolutions exist. Every screen
+ * that renders these labels them "Sample data." Riverbend, Priya and everyone else here are
+ * fictional. Counts are keyed by answer id: t = ticked or chosen, s = starred.
  */
 
 /** The board's sample invitation, used only with `?invited=sample` on /resolve. */
-export const SAMPLE_INVITATION = { from: "Priya", pronoun: "she", org: "Riverbend Youth & Family" } as const;
+export const SAMPLE_INVITATION = { from: "Priya", pronoun: "she", org: "Riverbend Church" } as const;
 
-/** R3-Shared: the one shared Resolution that exists, at the board's sample link. */
+/** Nine people from one organization (board: Team). */
+export const SAMPLE_TEAM_SIZE = 9;
+export const SAMPLE_COUNTS: Record<string, Record<string, { t: number; s: number }>> = {"q01": {"q01a": {"t": 5, "s": 1}, "q01b": {"t": 6, "s": 2}, "q01c": {"t": 5, "s": 3}, "q01d": {"t": 5, "s": 1}, "q01e": {"t": 6, "s": 2}}, "q02": {"q02a": {"t": 7, "s": 5}, "q02b": {"t": 7, "s": 1}, "q02c": {"t": 2, "s": 0}, "q02d": {"t": 6, "s": 3}, "q02e": {"t": 5, "s": 0}, "q02f": {"t": 5, "s": 0}}, "q03": {"q03a": {"t": 5, "s": 3}, "q03b": {"t": 8, "s": 2}, "q03c": {"t": 9, "s": 2}, "q03d": {"t": 6, "s": 1}, "q03e": {"t": 3, "s": 0}, "q03f": {"t": 6, "s": 1}}, "q04": {"q04a": {"t": 6, "s": 4}, "q04b": {"t": 6, "s": 4}, "q04c": {"t": 3, "s": 0}, "q04d": {"t": 7, "s": 0}, "q04e": {"t": 8, "s": 1}, "q04f": {"t": 8, "s": 0}}, "q05": {"q05a": {"t": 1, "s": 0}, "q05b": {"t": 2, "s": 0}, "q05c": {"t": 5, "s": 0}, "q05d": {"t": 0, "s": 0}, "q05e": {"t": 1, "s": 0}}, "q06": {"q06a": {"t": 9, "s": 2}, "q06b": {"t": 8, "s": 4}, "q06c": {"t": 5, "s": 1}, "q06d": {"t": 7, "s": 1}, "q06e": {"t": 5, "s": 1}}, "q07": {"q07a": {"t": 9, "s": 1}, "q07b": {"t": 3, "s": 2}, "q07c": {"t": 9, "s": 5}, "q07d": {"t": 2, "s": 0}, "q07e": {"t": 2, "s": 0}, "q07f": {"t": 2, "s": 1}}, "q08": {"q08a": {"t": 8, "s": 3}, "q08b": {"t": 7, "s": 2}, "q08c": {"t": 3, "s": 0}, "q08d": {"t": 2, "s": 1}, "q08e": {"t": 4, "s": 0}, "q08f": {"t": 6, "s": 3}}, "q09": {"q09a": {"t": 4, "s": 2}, "q09b": {"t": 2, "s": 0}, "q09c": {"t": 6, "s": 3}, "q09d": {"t": 4, "s": 3}, "q09e": {"t": 4, "s": 0}, "q09f": {"t": 5, "s": 1}}, "q10": {"q10a": {"t": 8, "s": 4}, "q10b": {"t": 3, "s": 0}, "q10c": {"t": 5, "s": 0}, "q10d": {"t": 3, "s": 0}, "q10e": {"t": 7, "s": 5}}, "q11": {"q11a": {"t": 8, "s": 2}, "q11b": {"t": 6, "s": 5}, "q11c": {"t": 2, "s": 0}, "q11d": {"t": 5, "s": 1}, "q11e": {"t": 2, "s": 1}, "q11f": {"t": 2, "s": 0}}, "q12": {"q12a": {"t": 6, "s": 1}, "q12b": {"t": 7, "s": 4}, "q12c": {"t": 7, "s": 4}, "q12d": {"t": 5, "s": 0}, "q12e": {"t": 6, "s": 0}}, "q13": {"q13a": {"t": 2, "s": 0}, "q13b": {"t": 2, "s": 2}, "q13c": {"t": 7, "s": 1}, "q13d": {"t": 4, "s": 2}, "q13e": {"t": 4, "s": 2}, "q13f": {"t": 6, "s": 2}}, "q14": {"q14a": {"t": 2, "s": 2}, "q14b": {"t": 2, "s": 0}, "q14c": {"t": 5, "s": 1}, "q14d": {"t": 4, "s": 1}, "q14e": {"t": 7, "s": 3}, "q14f": {"t": 4, "s": 2}}};
+
+/** Public Resolutions in the sample (board: Others). */
+export const SAMPLE_PUBLIC = 1074;
+
+/** The sample writer's starred answers (boards: Shared, Others). */
+export const SAMPLE_PICKS: Record<string, string> = {
+  q01: "q01b", q02: "q02b", q03: "q03c", q04: "q04e", q05: "q05c", q06: "q06a", q07: "q07a",
+  q08: "q08b", q09: "q09b", q10: "q10a", q11: "q11c", q12: "q12b", q13: "q13c", q14: "q14a",
+};
+
+function sampleLine(aid: string): string {
+  return lineText(aid.slice(0, 3), ANSWER_BY_ID.get(aid)?.text ?? "");
+}
+
+const row = (qid: string, label: string) => ({ label, text: sampleLine(SAMPLE_PICKS[qid]!), others: [] as string[] });
+
+/** Board: Shared. The one shared Resolution at the board's sample link. */
 export const SAMPLE_SHARED = {
   token: "k7p2qx",
-  author: "Priya",
-  role: "Associate director of programs",
-  org: "Riverbend Youth & Family",
-  short: "Riverbend",
-  date: "October 6, 2026",
-  lines: [
-    ["Presence", "We should name the work that is made of presence, and keep it human."],
-    ["Voice", "A person should remain responsible for anything sent in our name."],
-    ["Truth", "We should say plainly how AI is used here, including by our leaders."],
-    ["Thinking", "We should form our own views before we ask AI for one."],
-    ["Learning", "We should keep learning as if we just arrived."],
-    ["Time", "We should give the time AI saves back to people, to creation and to play."],
-    ["People", "We should find others beyond our walls who are walking it too."],
-    ["Leading", "Leading through AI should be something we practice, not only a policy we write."],
-  ] as const,
-  hardest: "We should say plainly how AI is used here, including by our leaders.",
-  acts: [
-    "I’ll share this with someone who decides.",
-    "I’ll ask for this conversation at our next team meeting.",
-  ],
-} as const;
+  author: "Priya Nair",
+  role: "Associate pastor",
+  org: "Riverbend Church",
+  short: "Riverbend Church",
+  date: "October 20, 2026",
+  beliefs: QUESTIONS.filter((q) => q.part === BELIEF_PART).map((q) => row(q.id, q.label)),
+  parts: PARTS.filter((p) => p.id !== BELIEF_PART).map((p) => ({
+    name: p.name,
+    rows: QUESTIONS.filter((q) => q.part === p.id).map((q) => row(q.id, q.label)),
+  })),
+  lines: [] as [string, string][],
+  hardest: sampleLine("q11c"),
+  acts: ["I’ll share this with someone who decides.", "I’ll ask for this conversation at our next team meeting."],
+  two: "Half our staff already use AI and we have never said what is off limits. Before anything else, can we agree this month on what never goes into an AI tool?",
+};
 
-/** R3-Others: how public Resolutions divide on Time. */
-export const SAMPLE_TIME_SPLIT = {
-  total: "1,074",
-  rows: [
-    ["We should give the time AI saves back to people, to creation and to play.", 412],
-    ["Time AI saves should first lower our costs, so more reaches the mission.", 301],
-    ["We should let roles change and help people grow into new work.", 188],
-    ["We shouldn’t assume saved time has to be filled with more output.", 129],
-    ["If AI can do a role well, we should let that role get smaller.", 44],
-  ] as const,
-} as const;
-
-/** R4-People: the people a sample writer invited, below the five-person threshold. */
+/** Board: People. The people a sample writer invited, below the five-person threshold. */
 export const SAMPLE_INVITEES = [
-  ["James Okafor", "Executive director · invited October 6", "Written theirs"],
-  ["Dana Reyes", "Program staff · invited October 6", "Written theirs"],
-  ["Tom Whitlock", "Board · invited October 8", "Written theirs"],
-  ["Ana Lima", "Volunteer · invited October 8", "Not yet"],
-  ["Sam Ortiz", "Program staff · invited October 9", "Prefers not to say"],
-  ["dmorgan@riverbendyf.org", "Invited October 12", "Not yet"],
+  ["James Okafor", "Senior pastor", "Written theirs"],
+  ["Ana Ruiz", "Children’s ministry", "Written theirs"],
+  ["Daniel Kim", "Elder", "Not yet"],
+  ["Grace Liu", "Operations", "Doesn’t share status"],
 ] as const;
 
 export const SAMPLE_WRITTEN = 3;
 
+/** Board: People. Public Resolutions from people working through the same questions. */
 export const SAMPLE_ROAD = {
-  line: [
-    ["Marcus Bell", "Grace Street Church", "Also starred, in Time", "We should give the time AI saves back to people, to creation and to play."],
-    ["Helen Park", "Northside Food Partners", "Also starred, in Truth", "We should say plainly how AI is used here, including by our leaders."],
-    ["Rev. Luis Mendoza", "Iglesia La Roca", "Also starred, in People", "We should find others beyond our walls who are walking it too."],
+  same: [
+    ["Marcus Bell", "Harbor Street Church", "Starred the same answer to question 12", sampleLine("q12b")],
+    ["Ruth Adeyemi", "Northside Family Center", "Starred the same answer to question 03", sampleLine("q03c")],
+    ["Tom Becker", "Plains Conference", "Starred the same answer to question 06", sampleLine("q06a")],
   ],
   kind: [
-    ["Helen Park", "Northside Food Partners · nonprofit", "Also a youth and family nonprofit", "We should keep the moments of care human."],
-    ["Ruth Adeyemi", "Open Door Mentoring · nonprofit", "Also a youth and family nonprofit", "We should make time for everyone here to try new things with AI."],
+    ["Elena Santos", "Grace Fellowship", "Also a church", sampleLine("q08b")],
+    ["Paul Whitaker", "Cedar Hill Church", "Also a church", sampleLine("q05c")],
+    ["Hannah Cole", "St. Luke’s Parish", "Also a church", sampleLine("q07a")],
   ],
   near: [
-    ["Marcus Bell", "Grace Street Church · Lawrence", "Showed their city", "We should give the time AI saves back to people, to creation and to play."],
+    ["Joy Mensah", "Eastside Family Services", "Kansas City", sampleLine("q11c")],
+    ["Luis Ortega", "Westport Community Church", "Kansas City", sampleLine("q13c")],
   ],
 } as const;

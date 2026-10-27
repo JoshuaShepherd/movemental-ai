@@ -410,7 +410,7 @@ function Close() {
         </Link>
         <p className="mv-muted" style={{ fontSize: 14.5 }}>
           Haven’t written your own Resolution yet? <Link href={MV_ROUTES.resolve}>Start there</Link>.
-          About four minutes.
+          About twelve minutes.
         </p>
       </div>
     </section>

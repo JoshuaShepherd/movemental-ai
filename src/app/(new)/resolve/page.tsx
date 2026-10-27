@@ -7,12 +7,12 @@ import { MV_ROUTES } from "@/components/mv/routes";
 
 export const metadata: Metadata = {
   title: "Write your Resolution",
-  description: "Say what you believe your organization should do about AI. Nine themes, about four minutes, no account.",
+  description: "Say what you believe your organization should do about AI. Fourteen questions every church, nonprofit and school needs to answer. About twelve minutes, no account.",
   alternates: { canonical: "/resolve" },
 };
 
 /**
- * The Resolution exercise (flow document section 5). Board: R3-Flow.
+ * Resolve: fourteen questions. Board: canvas "Resolve: Fourteen Questions", Main.
  * `?invited=sample` shows the board's invited state (fixture seam until invitations exist).
  */
 export default async function ResolveNewPage({

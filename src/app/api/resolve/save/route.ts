@@ -2,6 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { resolutionService } from "@/lib/services/resolutions/resolution.service";
 
+const LineSchema = z.object({
+  label: z.string().max(80),
+  text: z.string().max(400),
+  others: z.array(z.string().max(400)).max(8),
+});
+
 const SaveResolutionRequestSchema = z.object({
   email: z.string().email().optional().nullable(),
   orgType: z.string().optional(),
@@ -12,15 +18,24 @@ const SaveResolutionRequestSchema = z.object({
   displayName: z.string().optional().nullable(),
   roleText: z.string().optional().nullable(),
   orgRole: z.string().optional().nullable(),
-  selections: z
-    .object({
-      ticks: z.record(z.string(), z.boolean()).optional(),
-      stars: z.record(z.string(), z.number()).optional(),
-      skipped: z.record(z.string(), z.boolean()).optional(),
-    })
-    .default({}),
-  hardestTheme: z.number().nullable().optional(),
-  acts: z.array(z.number()).default([]),
+  /** Resolve v3: the fourteen questions. Own words never reach the server. */
+  v2: z.object({
+    sector: z.enum(["church", "nonprofit", "school", "network"]),
+    picks: z.record(
+      z.string().regex(/^q\d{2}$/),
+      z.object({
+        ticks: z.array(z.string().regex(/^q\d{2}[a-z]$/)).max(8),
+        star: z.string().regex(/^q\d{2}[a-z]$/).nullable(),
+        choice: z.string().regex(/^q\d{2}[a-z]$/).nullable(),
+        none: z.boolean(),
+      }),
+    ),
+    hardest: z.string().max(8).nullable(),
+    hardestText: z.string().max(400),
+    beliefs: z.array(LineSchema).max(4),
+    parts: z.array(z.object({ name: z.string().max(80), rows: z.array(LineSchema).max(8) })).max(6),
+  }),
+  acts: z.array(z.string().max(200)).max(8).default([]),
   twoMinutes: z.string().optional(),
   lines: z.array(z.string()).default([]),
 });
@@ -38,19 +53,6 @@ export async function POST(req: NextRequest) {
     }
 
     const { data } = parsed;
-    const starsConverted: Record<number, number> = {};
-    if (data.selections.stars) {
-      for (const [k, v] of Object.entries(data.selections.stars)) {
-        starsConverted[parseInt(k, 10)] = v;
-      }
-    }
-
-    const skippedConverted: Record<number, boolean> = {};
-    if (data.selections.skipped) {
-      for (const [k, v] of Object.entries(data.selections.skipped)) {
-        skippedConverted[parseInt(k, 10)] = v;
-      }
-    }
 
     const result = await resolutionService.saveResolution({
       email: data.email,
@@ -62,12 +64,7 @@ export async function POST(req: NextRequest) {
       displayName: data.displayName,
       roleText: data.roleText,
       orgRole: data.orgRole,
-      selections: {
-        ticks: data.selections.ticks,
-        stars: starsConverted,
-        skipped: skippedConverted,
-      },
-      hardestTheme: data.hardestTheme,
+      v2: data.v2,
       acts: data.acts,
       twoMinutes: data.twoMinutes,
       lines: data.lines,

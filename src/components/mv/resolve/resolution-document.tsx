@@ -8,15 +8,17 @@ import { MV_ROUTES } from "../routes";
 import { MvTaskHeader } from "../mv-task-header";
 import { Check, MvDialog } from "./dialog";
 import {
+  type QuestionLines,
   type ResolutionDraft,
   type Visibility,
+  beliefLines,
   chosenActs,
   formatDate,
   hardestLine,
   hasOrgName,
+  orgLineParts,
   orgName,
-  otherMarkedLines,
-  starredLines,
+  orgTitle,
   syncResolutionToBackend,
   updateDraft,
   useDraft,
@@ -31,7 +33,7 @@ const LEVELS: readonly [Visibility, string, (org: string) => string][] = [
     "public",
     "Public",
     (org) =>
-      `Listed among public Resolutions with your name and ${org}’s. People walking the same road can find it.`,
+      `Listed among public Resolutions with your name and ${org}’s. People working through the same questions can find it.`,
   ],
 ];
 
@@ -41,8 +43,37 @@ const VIS_WORD: Record<Visibility, string> = {
   public: "Public",
 };
 
+function Rows({ rows }: { rows: QuestionLines[] }) {
+  return (
+    <ol className="mv-doc-rows">
+      {rows.map((l) => (
+        <li key={l.qid}>
+          <span>{l.label}</span>
+          <span>
+            <span className="mv-doc-lead" data-empty={!l.lead}>
+              {l.lead ? l.lead.text : l.none ? "None of the options fit my view." : "Not answered."}
+            </span>
+            {l.others.map((o) => (
+              <span key={o} className="mv-doc-other">
+                {o}
+              </span>
+            ))}
+            {l.own ? (
+              <span className="mv-doc-other">
+                <span className="mv-caption mv-muted">In my words: </span>
+                {l.own}
+              </span>
+            ) : null}
+          </span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 /**
- * My Resolution (flow document 5.2). Board: R4-Result, which supersedes R3-Flow screen 5.
+ * My Resolution. Board: canvas "Resolve: Fourteen Questions", Document and Document-Saved.
+ * Own words show here, on this device, and are never sent to the server.
  */
 export function ResolutionDocument() {
   const d = useDraft();
@@ -77,8 +108,8 @@ export function ResolutionDocument() {
   const org = orgName(d);
   const saved = !!d.saved;
   const vis = d.visibility;
-  const lines = starredLines(d);
-  const others = otherMarkedLines(d);
+  const beliefs = beliefLines(d);
+  const parts = orgLineParts(d);
   const hard = hardestLine(d);
   const acts = chosenActs(d);
   const amended = d.versions.length > 1;
@@ -108,32 +139,19 @@ export function ResolutionDocument() {
             </Link>
           </div>
           <article className="mv-doc">
-            <p className="mv-caption mv-muted">My Resolution for {org}</p>
-            <h1 className="mv-doc-title">Resolved, that {org} should…</h1>
-            <ol className="mv-doc-lines">
-              {lines.map((l) => (
-                <li key={l.ti} className="mv-doc-line">
-                  <span>{l.theme}</span>
-                  <span>{l.text}</span>
-                </li>
-              ))}
-            </ol>
-            {others.length ? (
-              <details className="mv-details" style={{ borderTop: "1px solid var(--mv-rule)", paddingTop: 8 }}>
-                <summary>The other statements I marked ({others.length})</summary>
-                <ul className="mv-doc-lines" style={{ margin: "6px 0 4px" }}>
-                  {others.map((o) => (
-                    <li key={o.text} className="mv-doc-line mv-doc-line--other">
-                      <span>{o.theme}</span>
-                      <span>{o.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            ) : null}
+            <p className="mv-caption mv-muted">My Resolution on AI{named ? ` for ${org}` : ""}</p>
+            <h1 className="mv-doc-title">I believe</h1>
+            <Rows rows={beliefs} />
+            <h2 className="mv-doc-title mv-doc-h2">Resolved, that {orgTitle(d)} should</h2>
+            {parts.map((p) => (
+              <div key={p.name}>
+                <p className="mv-doc-part">{p.name}</p>
+                <Rows rows={p.rows} />
+              </div>
+            ))}
             {hard ? (
               <div className="mv-doc-block">
-                <p>Hardest for us to adopt today</p>
+                <p>Hardest for us to do today</p>
                 <p>{hard}</p>
               </div>
             ) : null}
@@ -161,6 +179,10 @@ export function ResolutionDocument() {
               </p>
             </div>
           </article>
+          <p className="mv-caption mv-muted" style={{ fontSize: 14, lineHeight: 1.55 }}>
+            This is what I believe my organization should do. It becomes the organization’s position
+            only when its leaders adopt it.
+          </p>
           {amended ? (
             <details className="mv-details mv-no-print" style={{ fontSize: 15 }}>
               <summary>Earlier versions ({d.versions.length - 1})</summary>
@@ -369,7 +391,7 @@ export function ResolutionDocument() {
                 style={{ gap: 4, padding: "12px 14px", border: "1px solid var(--mv-rule)", borderRadius: 6 }}
               >
                 <Check checked={d.research} onToggle={() => set({ research: !d.research })}>
-                  Also count my choices in Movemental’s published research
+                  Also count my answers in Movemental’s published research
                 </Check>
                 <p className="mv-caption mv-muted" style={{ marginLeft: 34, lineHeight: 1.5 }}>
                   Research shows only totals across many Resolutions, with how many each is based on.
@@ -387,7 +409,7 @@ export function ResolutionDocument() {
               {d.invitation ? (
                 <>
                   <Check checked={d.countInOrg} onToggle={() => set({ countInOrg: !d.countInOrg })}>
-                    Count my choices in {org}’s view. Your name is never shown.
+                    Count my answers in {org}’s view. Your name is never shown.
                   </Check>
                   <p className="mv-caption mv-muted">
                     This is on because you came through {d.invitation.from}’s invitation for {org}.
@@ -416,10 +438,10 @@ export function ResolutionDocument() {
 
           <section className="mv-side-section" style={{ gap: 4 }}>
             <p className="mv-caption mv-muted">
-              Inviting someone never shows them your choices. They see yours only if you share it.
+              Inviting someone never shows them your answers. They see yours only if you share it.
             </p>
             <Link className="mv-link-target" href={MV_ROUTES.resolveOthers}>
-              See how others resolved
+              See how others answered
             </Link>
           </section>
         </aside>
@@ -459,7 +481,7 @@ export function ResolutionDocument() {
             <p>What they will see</p>
             <p>
               Your note and your Resolution as it reads now. If you change it later, their link
-              shows the new version, marked “Updated.”
+              shows the new version, marked “Updated.” Your own words stay private.
             </p>
           </div>
           <p className="mv-small mv-muted">Sending it this way doesn’t change who else can see it.</p>
