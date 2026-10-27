@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Riverbend Church’s view</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #2236C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #FFFFFF; color: #1C1D24; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif;">
+<header style="border-bottom: 1px solid #DDDFE5;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 20px; height: 84px; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+<a href="Main.dc.html" aria-label="Movemental home" style="display: inline-flex; align-items: center; gap: 11px; color: #1C1D24; text-decoration: none;">
+<img src="/_blob/80d1327f74281a94ce935bd0786f9071" alt="" style="width: 31px; height: 31px; display: block;">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 27px; line-height: 1; letter-spacing: -0.01em; padding-bottom: 2px;">movemental</span>
+</a>
+<nav aria-label="Resolve" style="display: flex; gap: 22px; align-items: center;"><a href="Main.dc.html" style="min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; color: #5B5E6B;  text-decoration: none; text-underline-offset: 6px;">My Resolution</a><a href="Team.dc.html" style="min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; color: #1C1D24; font-weight: 500; text-decoration: underline; text-underline-offset: 6px;">Riverbend Church’s view</a><a href="People.dc.html" style="min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; color: #5B5E6B;  text-decoration: none; text-underline-offset: 6px;">Your people</a></nav>
+</div>
+</header>
+<main style="max-width: 1180px; margin: 0 auto; padding: 56px 20px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px;">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px;">
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 6vw, 64px); line-height: 1;">What Riverbend Church’s people said</h1>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.55; color: #34363F;">Nine people from Riverbend Church have written their Resolutions and agreed to be counted. You see counts only, never names or anyone’s own words.</p>
+<p style="margin: 0; font-size: 14px; color: #5B5E6B;">Agreement is a starting point. Nothing here is a decision until the people responsible for deciding have decided.</p>
+</div>
+
+<section aria-labelledby="h-approach" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px 64px; padding-top: 4px;">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<h2 id="h-approach" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.1;">Overall approach</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5B5E6B;">Question 05: Overall, how much should we use AI? Each person chose one.</p>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{approach}}" as="r" hint-placeholder-count="5">
+<li style="display: grid; grid-template-columns: minmax(0, 1fr) 48px; gap: 8px 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid #DDDFE5;">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.4;">{{r.text}}</span>
+<span style="font-size: 15px; text-align: right; font-variant-numeric: tabular-nums;">{{r.n}}</span>
+<span style="grid-column: 1 / -1; display: block; height: 8px; border-radius: 999px; background: #EEEFF3;"><span style="{{r.bar}}"></span></span>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<section aria-labelledby="h-agree" style="display: flex; flex-direction: column; gap: 14px;">
+<h2 id="h-agree" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.1;">Where you agree</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5B5E6B;">Answers at least seven of the nine people chose.</p>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{agree}}" as="r" hint-placeholder-count="6">
+<li style="display: grid; grid-template-columns: minmax(0, 1fr) 64px; gap: 6px 20px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid #DDDFE5;">
+<span style="display: flex; flex-direction: column; gap: 3px; min-width: 0;"><span style="font-size: 13px; color: #5B5E6B;">{{r.label}}</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.42;">{{r.text}}</span></span>
+<span style="font-size: 15px; text-align: right; font-variant-numeric: tabular-nums;">{{r.n}}</span>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<section aria-labelledby="h-differ" style="display: flex; flex-direction: column; gap: 14px;">
+<h2 id="h-differ" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.1;">Where you differ</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5B5E6B;">Questions where people starred different answers as most important. These are good places to start a conversation.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+<sc-for list="{{differ}}" as="d" hint-placeholder-count="2">
+<div style="padding: 24px; background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 6px; display: flex; flex-direction: column; gap: 12px;">
+<span style="font-size: 13px; color: #5B5E6B;">{{d.num}}</span>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 26px; line-height: 1.15;">{{d.title}}</h3>
+<sc-for list="{{d.rows}}" as="r" hint-placeholder-count="2">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 70px; gap: 8px; align-items: baseline; padding-top: 10px; border-top: 1px solid #DDDFE5;">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.42;">{{r.text}}</span>
+<span style="font-size: 14px; text-align: right; font-variant-numeric: tabular-nums;">{{r.n}}</span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="h-each" style="display: flex; flex-direction: column; gap: 16px;">
+<h2 id="h-each" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.1;">Question by question</h2>
+<div role="tablist" aria-label="Question" style="display: flex; flex-wrap: wrap; gap: 6px;">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="14">
+<button type="button" role="tab" aria-selected="{{c.on}}" aria-label="{{c.label}}" title="{{c.label}}" onClick="{{c.pick}}" style="{{c.style}}">{{c.num}}</button>
+</sc-for>
+</div>
+<h3 style="margin: 8px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.12;">{{selTitle}}</h3>
+<div role="tabpanel" style="display: flex; flex-direction: column; border-top: 1px solid #DDDFE5;">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 90px 90px; gap: 16px; padding: 10px 0; font-size: 13px; color: #5B5E6B; border-bottom: 1px solid #DDDFE5;"><span>Answer</span><span style="text-align: right;">Chose it</span><span style="text-align: right;">Starred it</span></div>
+<sc-for list="{{selRows}}" as="r" hint-placeholder-count="6">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 90px 90px; gap: 8px 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid #DDDFE5;">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.42;">{{r.text}}</span>
+<span style="font-size: 15px; text-align: right; font-variant-numeric: tabular-nums;">{{r.t}}</span>
+<span style="font-size: 15px; text-align: right; font-variant-numeric: tabular-nums;">{{r.s}}</span>
+<span style="grid-column: 1 / -1; display: block; height: 6px; border-radius: 999px; background: #EEEFF3;"><span style="{{r.bar}}"></span></span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px; padding: 30px; background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px;">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1;">Bring this to the people who decide</h2>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.55; color: #34363F; max-width: 720px;">The Map turns these answers into decisions. Riverbend Church’s working group starts with what you agree on, and the places you differ become its agenda.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+<a href="#" style="height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; text-decoration: none;">Begin Riverbend Church’s response</a>
+<a href="People.dc.html" style="font-size: 15px; color: #1C1D24; text-underline-offset: 4px;">Invite more people</a>
+</div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1280, "height": 3400}}'>
+const C = {"parts": [{"id": "p1", "name": "Your views"}, {"id": "p2", "name": "Basic responsibilities"}, {"id": "p3", "name": "Acceptable use"}, {"id": "p4", "name": "Information, people and community"}], "questions": [{"id": "q01", "part": "p1", "label": "What I believe about AI", "title": "What do I believe about AI?", "mode": "multi", "answers": [{"id": "q01a", "text": "I believe AI is a tool, like other software, that can be used well or badly."}, {"id": "q01b", "text": "I believe AI repeats and magnifies what it is trained on and what we give it."}, {"id": "q01c", "text": "I believe AI gives a few companies more control over work and information."}, {"id": "q01d", "text": "I believe AI puts important human things at risk if we do not protect them."}, {"id": "q01e", "text": "I believe AI can help people we could not otherwise reach."}]}, {"id": "q02", "part": "p1", "label": "What should guide us", "title": "What do I believe should guide our decisions about AI?", "mode": "multi", "answers": [{"id": "q02a", "text": "Scripture and our tradition."}, {"id": "q02b", "text": "Love for our neighbors, including people outside our organization."}, {"id": "q02c", "text": "The good of the people we serve, before efficiency."}, {"id": "q02d", "text": "The trust people have placed in us."}, {"id": "q02e", "text": "Evidence of what helps people and what harms them."}, {"id": "q02f", "text": "The views of the people most affected by our decisions."}]}, {"id": "q03", "part": "p2", "label": "First steps", "title": "What should every organization do, even if it decides not to use AI?", "mode": "multi", "answers": [{"id": "q03a", "text": "We should find out how AI is already being used in our organization, without blaming anyone."}, {"id": "q03b", "text": "We should protect our people from AI scams, cloned voices and fake images, and teach them to recognize these."}, {"id": "q03c", "text": "We should set rules for sensitive information right away."}, {"id": "q03d", "text": "We should learn enough to decide well, by trying AI on low-risk work."}, {"id": "q03e", "text": "We should tell our people where we stand on AI, even if we have not decided yet."}, {"id": "q03f", "text": "We should set a date to decide, and a date to review our decisions."}]}, {"id": "q04", "part": "p2", "label": "Decisions and accountability", "title": "Who should make decisions about AI, and who is accountable?", "mode": "multi", "answers": [{"id": "q04a", "text": "Our governing body should make the final decision, after hearing from our people. (Elders, session, vestry or church council.)"}, {"id": "q04b", "text": "We should decide together as a whole community, not leaders alone."}, {"id": "q04c", "text": "We should follow our denomination's or network's guidance, and adapt it to our setting."}, {"id": "q04d", "text": "We should consult the people most affected before we decide."}, {"id": "q04e", "text": "We should make one named person accountable for our AI decisions."}, {"id": "q04f", "text": "When AI causes harm, we should tell the people affected and put it right before anything else."}]}, {"id": "q05", "part": "p2", "label": "Overall approach", "title": "Overall, how much should we use AI?", "mode": "single", "answers": [{"id": "q05a", "text": "We should not use AI in our work, for reasons of conscience, and still meet the basic responsibilities."}, {"id": "q05b", "text": "We should use AI only for administrative work, and keep it out of our core mission work."}, {"id": "q05c", "text": "We should approve each use of AI separately, start small, and review it regularly."}, {"id": "q05d", "text": "We should treat AI like other software, under the policies we already have."}, {"id": "q05e", "text": "We should adopt AI quickly wherever it helps the people we serve."}]}, {"id": "q06", "part": "p3", "label": "Work only people do", "title": "What work should always be done by people?", "mode": "multi", "answers": [{"id": "q06a", "text": "Any work with children, or care that depends on a personal relationship."}, {"id": "q06b", "text": "Every decision about a person, including who receives help, membership, leadership roles or employment."}, {"id": "q06c", "text": "Pastoral care, counseling and spiritual direction."}, {"id": "q06d", "text": "Preaching and teaching, and anything published under a person's name."}, {"id": "q06e", "text": "Work that helps people learn and grow, even when AI would be faster."}]}, {"id": "q07", "part": "p3", "label": "Prohibited uses", "title": "What uses of AI should we prohibit?", "mode": "multi", "answers": [{"id": "q07a", "text": "Letting people think they are dealing with a person when it is AI."}, {"id": "q07b", "text": "Using AI to pressure people into attending, giving or staying."}, {"id": "q07c", "text": "Putting sensitive information into AI tools that do not protect it."}, {"id": "q07d", "text": "Using AI to monitor, score or rank the people we serve or employ."}, {"id": "q07e", "text": "Copying a real person's voice or image with AI, or publishing AI writing as a person's own."}, {"id": "q07f", "text": "Using AI in ways that treat people unfairly because of race, age, disability, language or income."}]}, {"id": "q08", "part": "p3", "label": "Allowed with safeguards", "title": "What uses of AI should we allow only with safeguards?", "mode": "multi", "answers": [{"id": "q08a", "text": "AI may draft what we send, if a named person reviews, edits and approves it."}, {"id": "q08b", "text": "AI may answer questions outside office hours, if people can always reach a person."}, {"id": "q08c", "text": "AI may translate, if a qualified person checks anything people will rely on."}, {"id": "q08d", "text": "AI may be used in our work with the people we serve, if they know about it and agree."}, {"id": "q08e", "text": "AI may help with research, if we check every fact we use against a source."}, {"id": "q08f", "text": "We may adopt a new AI tool, if it is reviewed against our policy first."}]}, {"id": "q09", "part": "p3", "label": "Allowed freely", "title": "What uses of AI should we allow freely?", "mode": "multi", "answers": [{"id": "q09a", "text": "Making our own documents, teaching and records easy to search."}, {"id": "q09b", "text": "Captions, transcripts and other accessibility help."}, {"id": "q09c", "text": "Routine administrative work such as scheduling and formatting."}, {"id": "q09d", "text": "Finding patterns in our own information that would take weeks by hand."}, {"id": "q09e", "text": "Work we could never afford to hire for, as long as no one loses their job."}, {"id": "q09f", "text": "Nothing yet. We should try AI on low-risk work first."}]}, {"id": "q10", "part": "p3", "label": "Disclosure", "title": "When should we tell people that AI was used?", "mode": "multi", "answers": [{"id": "q10a", "text": "We should tell people how we use AI and how we do not, with our leaders explaining their own use first."}, {"id": "q10b", "text": "We should label images, audio and video made with AI."}, {"id": "q10c", "text": "We should tell people where their information goes and who can use it."}, {"id": "q10d", "text": "We should say when AI did much of the work on something published in our name."}, {"id": "q10e", "text": "We should tell people when an AI mistake affects them."}]}, {"id": "q11", "part": "p4", "label": "Our information", "title": "How should we protect and use our organization's information?", "mode": "multi", "answers": [{"id": "q11a", "text": "We should sort our information by how sensitive it is, and decide which tools may use each kind."}, {"id": "q11b", "text": "We should let people see, correct and ask us to delete information about them wherever we can."}, {"id": "q11c", "text": "We should gather our scattered documents and records so they are complete, easy to find and under our control."}, {"id": "q11d", "text": "We should record what long-serving people know before they leave."}, {"id": "q11e", "text": "When AI speaks for us, it should use only our own information and show its sources."}, {"id": "q11f", "text": "We should not let vendors train AI on our information or keep it after we leave."}]}, {"id": "q12", "part": "p4", "label": "Staff and volunteers", "title": "How should we treat our staff and volunteers as AI changes their work?", "mode": "multi", "answers": [{"id": "q12a", "text": "We should decide what saved time will be used for before adopting any AI tool."}, {"id": "q12b", "text": "We should give saved time back to people: more time with the people we serve, and more rest."}, {"id": "q12c", "text": "We should retrain people before eliminating jobs, and never cut jobs based on projected savings."}, {"id": "q12d", "text": "We should agree any change in workload with the people who do the work."}, {"id": "q12e", "text": "We should never require AI use from someone who objects on conscience, and always offer another way to do the work."}]}, {"id": "q13", "part": "p4", "label": "Training", "title": "How should we train our people to use AI wisely and avoid depending on it?", "mode": "multi", "answers": [{"id": "q13a", "text": "We should teach people to check AI's answers before relying on them."}, {"id": "q13b", "text": "We should teach good judgment about AI more than skill with tools."}, {"id": "q13c", "text": "We should think for ourselves first, then use AI."}, {"id": "q13d", "text": "We should give everyone time to try AI on real, low-risk work, not only the most interested."}, {"id": "q13e", "text": "We should train a few people in depth so others have someone to ask."}, {"id": "q13f", "text": "We should keep some work free of AI on purpose."}]}, {"id": "q14", "part": "p4", "label": "Our community", "title": "What responsibility do we have to our community and to other organizations?", "mode": "multi", "answers": [{"id": "q14a", "text": "We should help people in our wider community, not only our own members, recognize AI scams and manipulation."}, {"id": "q14b", "text": "We should work out our approach with other organizations, not alone."}, {"id": "q14c", "text": "We should learn from people who were wise before AI."}, {"id": "q14d", "text": "We should share what we learn, including our mistakes."}, {"id": "q14e", "text": "We should consider AI's environmental costs in our choices."}, {"id": "q14f", "text": "We should support people harmed by AI, and speak publicly when needed."}]}]};
+const COUNTS = {"q01": {"q01a": {"t": 5, "s": 1}, "q01b": {"t": 6, "s": 2}, "q01c": {"t": 5, "s": 3}, "q01d": {"t": 5, "s": 1}, "q01e": {"t": 6, "s": 2}}, "q02": {"q02a": {"t": 7, "s": 5}, "q02b": {"t": 7, "s": 1}, "q02c": {"t": 2, "s": 0}, "q02d": {"t": 6, "s": 3}, "q02e": {"t": 5, "s": 0}, "q02f": {"t": 5, "s": 0}}, "q03": {"q03a": {"t": 5, "s": 3}, "q03b": {"t": 8, "s": 2}, "q03c": {"t": 9, "s": 2}, "q03d": {"t": 6, "s": 1}, "q03e": {"t": 3, "s": 0}, "q03f": {"t": 6, "s": 1}}, "q04": {"q04a": {"t": 6, "s": 4}, "q04b": {"t": 6, "s": 4}, "q04c": {"t": 3, "s": 0}, "q04d": {"t": 7, "s": 0}, "q04e": {"t": 8, "s": 1}, "q04f": {"t": 8, "s": 0}}, "q05": {"q05a": {"t": 1, "s": 0}, "q05b": {"t": 2, "s": 0}, "q05c": {"t": 5, "s": 0}, "q05d": {"t": 0, "s": 0}, "q05e": {"t": 1, "s": 0}}, "q06": {"q06a": {"t": 9, "s": 2}, "q06b": {"t": 8, "s": 4}, "q06c": {"t": 5, "s": 1}, "q06d": {"t": 7, "s": 1}, "q06e": {"t": 5, "s": 1}}, "q07": {"q07a": {"t": 9, "s": 1}, "q07b": {"t": 3, "s": 2}, "q07c": {"t": 9, "s": 5}, "q07d": {"t": 2, "s": 0}, "q07e": {"t": 2, "s": 0}, "q07f": {"t": 2, "s": 1}}, "q08": {"q08a": {"t": 8, "s": 3}, "q08b": {"t": 7, "s": 2}, "q08c": {"t": 3, "s": 0}, "q08d": {"t": 2, "s": 1}, "q08e": {"t": 4, "s": 0}, "q08f": {"t": 6, "s": 3}}, "q09": {"q09a": {"t": 4, "s": 2}, "q09b": {"t": 2, "s": 0}, "q09c": {"t": 6, "s": 3}, "q09d": {"t": 4, "s": 3}, "q09e": {"t": 4, "s": 0}, "q09f": {"t": 5, "s": 1}}, "q10": {"q10a": {"t": 8, "s": 4}, "q10b": {"t": 3, "s": 0}, "q10c": {"t": 5, "s": 0}, "q10d": {"t": 3, "s": 0}, "q10e": {"t": 7, "s": 5}}, "q11": {"q11a": {"t": 8, "s": 2}, "q11b": {"t": 6, "s": 5}, "q11c": {"t": 2, "s": 0}, "q11d": {"t": 5, "s": 1}, "q11e": {"t": 2, "s": 1}, "q11f": {"t": 2, "s": 0}}, "q12": {"q12a": {"t": 6, "s": 1}, "q12b": {"t": 7, "s": 4}, "q12c": {"t": 7, "s": 4}, "q12d": {"t": 5, "s": 0}, "q12e": {"t": 6, "s": 0}}, "q13": {"q13a": {"t": 2, "s": 0}, "q13b": {"t": 2, "s": 2}, "q13c": {"t": 7, "s": 1}, "q13d": {"t": 4, "s": 2}, "q13e": {"t": 4, "s": 2}, "q13f": {"t": 6, "s": 2}}, "q14": {"q14a": {"t": 2, "s": 2}, "q14b": {"t": 2, "s": 0}, "q14c": {"t": 5, "s": 1}, "q14d": {"t": 4, "s": 1}, "q14e": {"t": 7, "s": 3}, "q14f": {"t": 4, "s": 2}}};
+const Q = (id) => C.questions.find((q) => q.id === id);
+const A = (id) => Q(id.slice(0, 3)).answers.find((a) => a.id === id);
+const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+const line = (id) => { const t = A(id).text; return (id.startsWith('q01') || id.startsWith('q02')) ? t : cap(t.replace(/^We should\s+/, '')); };
+const pill = (on) => 'min-height: 44px; padding: 0 16px; border-radius: 999px; font-family: inherit; font-size: 14px; cursor: pointer; font-variant-numeric: tabular-nums; border: 1px solid ' + (on ? '#1C1D24' : '#DDDFE5') + '; background: ' + (on ? '#1C1D24' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#1C1D24') + ';';
+const bar = (n, max, mine) => 'display: block; height: 8px; border-radius: 999px; background: ' + (mine ? '#2236C4' : '#1C1D24') + '; width: ' + Math.round(100 * n / Math.max(1, max)) + '%;';
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { sel: 'q12' }; }
+  renderVals() {
+    const total = 9;
+    const q5 = Q('q05');
+    const max5 = Math.max(...q5.answers.map((a) => COUNTS.q05[a.id].t));
+    const approach = q5.answers.map((a) => ({ text: line(a.id), n: COUNTS.q05[a.id].t, bar: bar(COUNTS.q05[a.id].t, total, false) }));
+    const agree = [];
+    C.questions.forEach((q) => { if (q.mode === 'single') return; q.answers.forEach((a) => { const c = COUNTS[q.id][a.id]; if (c.t >= 7) agree.push({ label: q.label, text: line(a.id), n: c.t + ' of ' + total, k: c.t }); }); });
+    agree.sort((x, y) => y.k - x.k);
+    const differ = ['q04', 'q12'].map((qid) => { const q = Q(qid); const rows = q.answers.map((a) => ({ text: line(a.id), s: COUNTS[qid][a.id].s })).filter((r) => r.s > 0).sort((a, b) => b.s - a.s).slice(0, 3).map((r) => ({ text: r.text, n: r.s + ' starred' }));
+      return { num: 'Question ' + qid.slice(1) + ' · ' + q.label, title: q.title, rows }; });
+    const sq = Q(this.state.sel);
+    const selRows = sq.answers.map((a) => { const c = COUNTS[sq.id][a.id]; return { text: sq.mode === 'single' ? line(a.id) : line(a.id), t: c.t, s: sq.mode === 'single' ? '' : c.s, bar: bar(c.t, total, false) }; });
+    const chips = C.questions.map((q, i) => ({ num: String(i + 1).padStart(2, '0'), label: 'Question ' + (i + 1) + ': ' + q.title, on: q.id === this.state.sel, style: pill(q.id === this.state.sel), pick: () => this.setState({ sel: q.id }) }));
+    return { approach, agree: agree.slice(0, 9), differ, chips, selTitle: sq.title, selRows };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home page: leaders arc and Resolve</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #2236C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+.rh{border-bottom:1px solid #DDDFE5}
+.rh-head{display:flex;align-items:center;justify-content:space-between;height:76px;padding:0 40px;max-width:1440px;margin:0 auto;box-sizing:border-box}
+.rh-brand{display:inline-flex;align-items:center;gap:10px;font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1;text-decoration:none;color:#1C1D24}
+.rh-nav{display:flex;gap:8px}
+.rh-fill,.rh-line{display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:999px;font-size:15px;font-weight:500;text-decoration:none}
+.rh-fill{background:#1C1D24;color:#FFFFFF}.rh-line{border:1px solid #1C1D24;color:#1C1D24}
+.rh-stage{position:relative;width:1440px;height:800px;margin:0 auto}
+.rh-ring{list-style:none;margin:0;padding:0}
+.rh-tile{position:absolute;width:76px;height:76px;margin:-38px 0 0 -38px;animation:rhBloom 1.1s cubic-bezier(.2,.8,.2,1) both}
+.rh-face{display:flex;align-items:center;justify-content:center;width:100%;height:100%;box-sizing:border-box;border:3px solid #FFFFFF;border-radius:22px;overflow:hidden;background:#E8EBFA;color:#2236C4;font-size:20px;font-weight:500;text-decoration:none;box-shadow:0 10px 24px rgba(28,29,36,.16);transition:transform .35s cubic-bezier(.2,.7,.1,1),border-color .25s ease,box-shadow .35s ease}
+.rh-face img{display:block;width:100%;height:100%;object-fit:cover}
+.rh-face:focus-visible{outline:2px solid #2236C4;outline-offset:4px}
+.rh-card{position:absolute;z-index:20;transform:translateX(-50%);pointer-events:none;transition:left .45s cubic-bezier(.2,.7,.1,1),top .45s cubic-bezier(.2,.7,.1,1)}
+.rh-card-in{position:relative;width:max-content;max-width:232px;padding:11px 16px 12px;box-sizing:border-box;background:#FFFFFF;border:1px solid #DDDFE5;border-radius:12px;box-shadow:0 1px 2px rgba(28,29,36,.06),0 12px 28px rgba(28,29,36,.12);text-align:center;animation:rhCard .32s cubic-bezier(.2,.7,.1,1) both}
+.rh-card-caret{position:absolute;top:-6px;width:10px;height:10px;margin-left:-5px;background:#FFFFFF;border-left:1px solid #DDDFE5;border-top:1px solid #DDDFE5;transform:rotate(45deg)}
+.rh-card-name{margin:0;font-size:15px;font-weight:500;line-height:1.3;color:#1C1D24;text-wrap:balance}
+.rh-card-cred{margin:3px 0 0;font-size:13px;line-height:1.38;color:#5B5E6B;text-wrap:balance}
+@keyframes rhCard{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.rh-copywrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.rh-copy{pointer-events:auto;width:700px;display:flex;flex-direction:column;align-items:center;text-align:center;animation:rhFade .6s ease both}
+.rh-h1{margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:50px;line-height:1.04;text-wrap:balance}
+.rh-sub{margin:20px 0 0;font-family:'Source Serif 4',Georgia,serif;font-size:20px;line-height:1.45;color:#34363F}
+.rh-go{margin-top:26px;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 30px;border-radius:999px;background:#1C1D24;color:#FFFFFF;font-size:17px;font-weight:500;text-decoration:none}
+.rh-note{margin:14px 0 0;font-size:14px;color:#5B5E6B}
+@keyframes rhBloom{from{opacity:0;transform:translate(var(--bx),var(--by)) scale(.4)}40%{opacity:1}to{opacity:1;transform:none}}
+@keyframes rhFade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.rh-tile,.rh-copy,.rh-card-in{animation:none}.rh-face,.rh-card{transition:none}}
+
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #FFFFFF; color: #1C1D24; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif;">
+<section id="top" class="rh" aria-labelledby="rh-title">
+<header class="rh-head"><a href="#top" aria-label="Movemental home" class="rh-brand"><img src="/_blob/f18382300391f8de20b2508494d764b0" alt="" style="width: 28px; height: 28px;">movemental</a><nav aria-label="Begin" class="rh-nav"><a class="rh-fill" href="Main.dc.html" aria-label="Resolve, for you as an individual">Resolve</a><a class="rh-line" href="#" aria-label="Respond, for your organization">Respond</a></nav></header>
+<div class="rh-stage">
+<ul class="rh-ring" aria-label="The leaders who shape Movemental">
+<sc-for list="{{ring}}" as="t" hint-placeholder-count="25">
+<li class="rh-tile" style="{{t.pos}}"><a class="rh-face" href="{{t.href}}" aria-label="{{t.label}}" style="{{t.look}}" onMouseEnter="{{t.enter}}" onFocus="{{t.enter}}" onMouseLeave="{{leave}}" onBlur="{{leave}}"><sc-if value="{{t.hasSrc}}" hint-placeholder-val="{{ true }}"><img src="{{t.src}}" alt=""></sc-if><sc-if value="{{t.noSrc}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true">{{t.initials}}</span></sc-if></a></li>
+</sc-for>
+</ul>
+<div class="rh-card" aria-hidden="true" style="{{cardStyle}}"><div class="rh-card-in" key="{{capKey}}"><span class="rh-card-caret" style="{{caretStyle}}"></span><p class="rh-card-name">{{capName}}</p><sc-if value="{{capHasCred}}" hint-placeholder-val="{{ true }}"><p class="rh-card-cred">{{capCred}}</p></sc-if></div></div>
+<div class="rh-copywrap" style="transform: translateY(88px);"><div class="rh-copy">
+<h1 id="rh-title" class="rh-h1">Movemental is an organizational response to AI, shaped by nonprofit, church, and seminary leaders.</h1>
+<p class="rh-sub">Say what you believe about AI in your organization.</p>
+<a class="rh-go" href="Main.dc.html">Start with Resolve <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></a>
+<p class="rh-note">Fourteen questions. About twelve minutes. No account.</p>
+</div></div>
+</div>
+</section>
+<section id="resolve" style="padding: 96px 20px; border-bottom: 1px solid #DDDFE5;">
+<div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px 56px;">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(64px, 10vw, 128px); line-height: 0.9;">Resolve</h2>
+<div style="flex: 0 1 600px; display: flex; flex-direction: column; gap: 14px; font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.55; color: #34363F;">
+<p style="margin: 0;">Say, in writing, what you believe your organization should do about AI.</p>
+<p style="margin: 0;">Answer fourteen questions every church, nonprofit and school needs to answer, about values, basic responsibilities, acceptable use, information, people and community. Choose the answers you agree with and star the ones that matter most.</p>
+<p style="margin: 0;">Your Resolution belongs to you. It stays private unless you choose to share it.</p>
+<p style="margin: 0; font-family: 'Geist', sans-serif; font-size: 14px; color: #5B5E6B;">About twelve minutes. No account. It isn’t a policy, a score or a vote. It is what you believe.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: flex-start;">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<p style="margin: 0; font-size: 14px; color: #5B5E6B;">Question 07 of 14 · Prohibited uses</p>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 4vw, 44px); line-height: 1.08;">What uses of AI should we prohibit?</h3>
+<div role="group" aria-label="Possible answers" style="display: flex; flex-direction: column; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="6">
+<button type="button" role="checkbox" aria-checked="{{it.on}}" onClick="{{it.toggle}}" style="{{it.rowStyle}}">
+<span style="{{it.boxStyle}}"><svg viewBox="0 0 256 256" width="14" height="14" fill="#FFFFFF" aria-hidden="true" style="{{it.tickStyle}}"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"></path></svg></span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.42;">{{it.text}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="flex: 1 1 340px; max-width: 440px; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
+<div style="background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px; line-height: 1.12;">Resolved, that our organization should prohibit</p>
+<sc-if value="{{empty}}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 14px; color: #5B5E6B;">Tick an answer and it is written here.</p></sc-if>
+<ol aria-live="polite" style="list-style: none; margin: 0; padding: 0;">
+<sc-for list="{{sheet}}" as="l" hint-placeholder-count="2"><li style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.45; padding: 12px 0; border-top: 1px solid #DDDFE5;">{{l.t}}</li></sc-for>
+</ol>
+</div>
+<a href="Main.dc.html" style="height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; text-decoration: none; align-self: flex-start;">{{cta}}</a>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5B5E6B;">Thirteen more questions follow. Each has a short explanation for anyone unsure how to answer.</p>
+</div>
+</div>
+</div>
+</section>
+<section style="padding: 96px 20px;">
+<div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px 72px; align-items: flex-start;">
+<figure style="flex: 999 1 520px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;">
+<p style="margin: 0 0 6px; font-size: 14px; color: #5B5E6B;">Most of the team resolved that we should</p>
+<ul style="list-style: none; margin: 0; padding: 0;">
+<sc-for list="{{agree}}" as="a" hint-placeholder-count="3">
+<li style="display: grid; grid-template-columns: minmax(0, 1fr) 72px; gap: 8px 24px; padding: 18px 0; border-top: 1px solid #DDDFE5;">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.42;">{{a.text}}</span>
+<span style="font-size: 14px; text-align: right; font-variant-numeric: tabular-nums;">{{a.count}}</span>
+<span aria-hidden="true" style="grid-column: 1 / -1; display: block; height: 8px; border-radius: 999px; background: #EEEFF3;"><span style="{{a.bar}}"></span></span>
+</li>
+</sc-for>
+</ul>
+</figure>
+<div style="flex: 1 1 340px; max-width: 460px; display: flex; flex-direction: column; gap: 18px;">
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 52px); line-height: 1.02;">When several people resolve, you can see where you agree.</h2>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.55; color: #34363F;">Agreement becomes a starting point. Difference becomes an agenda.</p>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.55; color: #34363F;">Neither becomes policy until the people responsible for deciding have decided.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5B5E6B;">Each Resolution stays private unless its author shares it. An organization sees only counts, once five people have written theirs.</p>
+</div>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1440, "height": 2880}}'>
+const C = {"parts": [{"id": "p1", "name": "Your views"}, {"id": "p2", "name": "Basic responsibilities"}, {"id": "p3", "name": "Acceptable use"}, {"id": "p4", "name": "Information, people and community"}], "questions": [{"id": "q01", "part": "p1", "label": "What I believe about AI", "title": "What do I believe about AI?", "mode": "multi", "answers": [{"id": "q01a", "text": "I believe AI is a tool, like other software, that can be used well or badly."}, {"id": "q01b", "text": "I believe AI repeats and magnifies what it is trained on and what we give it."}, {"id": "q01c", "text": "I believe AI gives a few companies more control over work and information."}, {"id": "q01d", "text": "I believe AI puts important human things at risk if we do not protect them."}, {"id": "q01e", "text": "I believe AI can help people we could not otherwise reach."}]}, {"id": "q02", "part": "p1", "label": "What should guide us", "title": "What do I believe should guide our decisions about AI?", "mode": "multi", "answers": [{"id": "q02a", "text": "Scripture and our tradition."}, {"id": "q02b", "text": "Love for our neighbors, including people outside our organization."}, {"id": "q02c", "text": "The good of the people we serve, before efficiency."}, {"id": "q02d", "text": "The trust people have placed in us."}, {"id": "q02e", "text": "Evidence of what helps people and what harms them."}, {"id": "q02f", "text": "The views of the people most affected by our decisions."}]}, {"id": "q03", "part": "p2", "label": "First steps", "title": "What should every organization do, even if it decides not to use AI?", "mode": "multi", "answers": [{"id": "q03a", "text": "We should find out how AI is already being used in our organization, without blaming anyone."}, {"id": "q03b", "text": "We should protect our people from AI scams, cloned voices and fake images, and teach them to recognize these."}, {"id": "q03c", "text": "We should set rules for sensitive information right away."}, {"id": "q03d", "text": "We should learn enough to decide well, by trying AI on low-risk work."}, {"id": "q03e", "text": "We should tell our people where we stand on AI, even if we have not decided yet."}, {"id": "q03f", "text": "We should set a date to decide, and a date to review our decisions."}]}, {"id": "q04", "part": "p2", "label": "Decisions and accountability", "title": "Who should make decisions about AI, and who is accountable?", "mode": "multi", "answers": [{"id": "q04a", "text": "Our governing body should make the final decision, after hearing from our people. (Elders, session, vestry or church council.)"}, {"id": "q04b", "text": "We should decide together as a whole community, not leaders alone."}, {"id": "q04c", "text": "We should follow our denomination's or network's guidance, and adapt it to our setting."}, {"id": "q04d", "text": "We should consult the people most affected before we decide."}, {"id": "q04e", "text": "We should make one named person accountable for our AI decisions."}, {"id": "q04f", "text": "When AI causes harm, we should tell the people affected and put it right before anything else."}]}, {"id": "q05", "part": "p2", "label": "Overall approach", "title": "Overall, how much should we use AI?", "mode": "single", "answers": [{"id": "q05a", "text": "We should not use AI in our work, for reasons of conscience, and still meet the basic responsibilities."}, {"id": "q05b", "text": "We should use AI only for administrative work, and keep it out of our core mission work."}, {"id": "q05c", "text": "We should approve each use of AI separately, start small, and review it regularly."}, {"id": "q05d", "text": "We should treat AI like other software, under the policies we already have."}, {"id": "q05e", "text": "We should adopt AI quickly wherever it helps the people we serve."}]}, {"id": "q06", "part": "p3", "label": "Work only people do", "title": "What work should always be done by people?", "mode": "multi", "answers": [{"id": "q06a", "text": "Any work with children, or care that depends on a personal relationship."}, {"id": "q06b", "text": "Every decision about a person, including who receives help, membership, leadership roles or employment."}, {"id": "q06c", "text": "Pastoral care, counseling and spiritual direction."}, {"id": "q06d", "text": "Preaching and teaching, and anything published under a person's name."}, {"id": "q06e", "text": "Work that helps people learn and grow, even when AI would be faster."}]}, {"id": "q07", "part": "p3", "label": "Prohibited uses", "title": "What uses of AI should we prohibit?", "mode": "multi", "answers": [{"id": "q07a", "text": "Letting people think they are dealing with a person when it is AI."}, {"id": "q07b", "text": "Using AI to pressure people into attending, giving or staying."}, {"id": "q07c", "text": "Putting sensitive information into AI tools that do not protect it."}, {"id": "q07d", "text": "Using AI to monitor, score or rank the people we serve or employ."}, {"id": "q07e", "text": "Copying a real person's voice or image with AI, or publishing AI writing as a person's own."}, {"id": "q07f", "text": "Using AI in ways that treat people unfairly because of race, age, disability, language or income."}]}, {"id": "q08", "part": "p3", "label": "Allowed with safeguards", "title": "What uses of AI should we allow only with safeguards?", "mode": "multi", "answers": [{"id": "q08a", "text": "AI may draft what we send, if a named person reviews, edits and approves it."}, {"id": "q08b", "text": "AI may answer questions outside office hours, if people can always reach a person."}, {"id": "q08c", "text": "AI may translate, if a qualified person checks anything people will rely on."}, {"id": "q08d", "text": "AI may be used in our work with the people we serve, if they know about it and agree."}, {"id": "q08e", "text": "AI may help with research, if we check every fact we use against a source."}, {"id": "q08f", "text": "We may adopt a new AI tool, if it is reviewed against our policy first."}]}, {"id": "q09", "part": "p3", "label": "Allowed freely", "title": "What uses of AI should we allow freely?", "mode": "multi", "answers": [{"id": "q09a", "text": "Making our own documents, teaching and records easy to search."}, {"id": "q09b", "text": "Captions, transcripts and other accessibility help."}, {"id": "q09c", "text": "Routine administrative work such as scheduling and formatting."}, {"id": "q09d", "text": "Finding patterns in our own information that would take weeks by hand."}, {"id": "q09e", "text": "Work we could never afford to hire for, as long as no one loses their job."}, {"id": "q09f", "text": "Nothing yet. We should try AI on low-risk work first."}]}, {"id": "q10", "part": "p3", "label": "Disclosure", "title": "When should we tell people that AI was used?", "mode": "multi", "answers": [{"id": "q10a", "text": "We should tell people how we use AI and how we do not, with our leaders explaining their own use first."}, {"id": "q10b", "text": "We should label images, audio and video made with AI."}, {"id": "q10c", "text": "We should tell people where their information goes and who can use it."}, {"id": "q10d", "text": "We should say when AI did much of the work on something published in our name."}, {"id": "q10e", "text": "We should tell people when an AI mistake affects them."}]}, {"id": "q11", "part": "p4", "label": "Our information", "title": "How should we protect and use our organization's information?", "mode": "multi", "answers": [{"id": "q11a", "text": "We should sort our information by how sensitive it is, and decide which tools may use each kind."}, {"id": "q11b", "text": "We should let people see, correct and ask us to delete information about them wherever we can."}, {"id": "q11c", "text": "We should gather our scattered documents and records so they are complete, easy to find and under our control."}, {"id": "q11d", "text": "We should record what long-serving people know before they leave."}, {"id": "q11e", "text": "When AI speaks for us, it should use only our own information and show its sources."}, {"id": "q11f", "text": "We should not let vendors train AI on our information or keep it after we leave."}]}, {"id": "q12", "part": "p4", "label": "Staff and volunteers", "title": "How should we treat our staff and volunteers as AI changes their work?", "mode": "multi", "answers": [{"id": "q12a", "text": "We should decide what saved time will be used for before adopting any AI tool."}, {"id": "q12b", "text": "We should give saved time back to people: more time with the people we serve, and more rest."}, {"id": "q12c", "text": "We should retrain people before eliminating jobs, and never cut jobs based on projected savings."}, {"id": "q12d", "text": "We should agree any change in workload with the people who do the work."}, {"id": "q12e", "text": "We should never require AI use from someone who objects on conscience, and always offer another way to do the work."}]}, {"id": "q13", "part": "p4", "label": "Training", "title": "How should we train our people to use AI wisely and avoid depending on it?", "mode": "multi", "answers": [{"id": "q13a", "text": "We should teach people to check AI's answers before relying on them."}, {"id": "q13b", "text": "We should teach good judgment about AI more than skill with tools."}, {"id": "q13c", "text": "We should think for ourselves first, then use AI."}, {"id": "q13d", "text": "We should give everyone time to try AI on real, low-risk work, not only the most interested."}, {"id": "q13e", "text": "We should train a few people in depth so others have someone to ask."}, {"id": "q13f", "text": "We should keep some work free of AI on purpose."}]}, {"id": "q14", "part": "p4", "label": "Our community", "title": "What responsibility do we have to our community and to other organizations?", "mode": "multi", "answers": [{"id": "q14a", "text": "We should help people in our wider community, not only our own members, recognize AI scams and manipulation."}, {"id": "q14b", "text": "We should work out our approach with other organizations, not alone."}, {"id": "q14c", "text": "We should learn from people who were wise before AI."}, {"id": "q14d", "text": "We should share what we learn, including our mistakes."}, {"id": "q14e", "text": "We should consider AI's environmental costs in our choices."}, {"id": "q14f", "text": "We should support people harmed by AI, and speak publicly when needed."}]}]};
+const COUNTS = {"q01": {"q01a": {"t": 5, "s": 1}, "q01b": {"t": 6, "s": 2}, "q01c": {"t": 5, "s": 3}, "q01d": {"t": 5, "s": 1}, "q01e": {"t": 6, "s": 2}}, "q02": {"q02a": {"t": 7, "s": 5}, "q02b": {"t": 7, "s": 1}, "q02c": {"t": 2, "s": 0}, "q02d": {"t": 6, "s": 3}, "q02e": {"t": 5, "s": 0}, "q02f": {"t": 5, "s": 0}}, "q03": {"q03a": {"t": 5, "s": 3}, "q03b": {"t": 8, "s": 2}, "q03c": {"t": 9, "s": 2}, "q03d": {"t": 6, "s": 1}, "q03e": {"t": 3, "s": 0}, "q03f": {"t": 6, "s": 1}}, "q04": {"q04a": {"t": 6, "s": 4}, "q04b": {"t": 6, "s": 4}, "q04c": {"t": 3, "s": 0}, "q04d": {"t": 7, "s": 0}, "q04e": {"t": 8, "s": 1}, "q04f": {"t": 8, "s": 0}}, "q05": {"q05a": {"t": 1, "s": 0}, "q05b": {"t": 2, "s": 0}, "q05c": {"t": 5, "s": 0}, "q05d": {"t": 0, "s": 0}, "q05e": {"t": 1, "s": 0}}, "q06": {"q06a": {"t": 9, "s": 2}, "q06b": {"t": 8, "s": 4}, "q06c": {"t": 5, "s": 1}, "q06d": {"t": 7, "s": 1}, "q06e": {"t": 5, "s": 1}}, "q07": {"q07a": {"t": 9, "s": 1}, "q07b": {"t": 3, "s": 2}, "q07c": {"t": 9, "s": 5}, "q07d": {"t": 2, "s": 0}, "q07e": {"t": 2, "s": 0}, "q07f": {"t": 2, "s": 1}}, "q08": {"q08a": {"t": 8, "s": 3}, "q08b": {"t": 7, "s": 2}, "q08c": {"t": 3, "s": 0}, "q08d": {"t": 2, "s": 1}, "q08e": {"t": 4, "s": 0}, "q08f": {"t": 6, "s": 3}}, "q09": {"q09a": {"t": 4, "s": 2}, "q09b": {"t": 2, "s": 0}, "q09c": {"t": 6, "s": 3}, "q09d": {"t": 4, "s": 3}, "q09e": {"t": 4, "s": 0}, "q09f": {"t": 5, "s": 1}}, "q10": {"q10a": {"t": 8, "s": 4}, "q10b": {"t": 3, "s": 0}, "q10c": {"t": 5, "s": 0}, "q10d": {"t": 3, "s": 0}, "q10e": {"t": 7, "s": 5}}, "q11": {"q11a": {"t": 8, "s": 2}, "q11b": {"t": 6, "s": 5}, "q11c": {"t": 2, "s": 0}, "q11d": {"t": 5, "s": 1}, "q11e": {"t": 2, "s": 1}, "q11f": {"t": 2, "s": 0}}, "q12": {"q12a": {"t": 6, "s": 1}, "q12b": {"t": 7, "s": 4}, "q12c": {"t": 7, "s": 4}, "q12d": {"t": 5, "s": 0}, "q12e": {"t": 6, "s": 0}}, "q13": {"q13a": {"t": 2, "s": 0}, "q13b": {"t": 2, "s": 2}, "q13c": {"t": 7, "s": 1}, "q13d": {"t": 4, "s": 2}, "q13e": {"t": 4, "s": 2}, "q13f": {"t": 6, "s": 2}}, "q14": {"q14a": {"t": 2, "s": 2}, "q14b": {"t": 2, "s": 0}, "q14c": {"t": 5, "s": 1}, "q14d": {"t": 4, "s": 1}, "q14e": {"t": 7, "s": 3}, "q14f": {"t": 4, "s": 2}}};
+const Q = (id) => C.questions.find((q) => q.id === id);
+const A = (id) => Q(id.slice(0, 3)).answers.find((a) => a.id === id);
+const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+const line = (id) => { const t = A(id).text; return (id.startsWith('q01') || id.startsWith('q02')) ? t : cap(t.replace(/^We should\s+/, '')); };
+const pill = (on) => 'min-height: 44px; padding: 0 16px; border-radius: 999px; font-family: inherit; font-size: 14px; cursor: pointer; font-variant-numeric: tabular-nums; border: 1px solid ' + (on ? '#1C1D24' : '#DDDFE5') + '; background: ' + (on ? '#1C1D24' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#1C1D24') + ';';
+const bar = (n, max, mine) => 'display: block; height: 8px; border-radius: 999px; background: ' + (mine ? '#2236C4' : '#1C1D24') + '; width: ' + Math.round(100 * n / Math.max(1, max)) + '%;';
+const RING = [{"name": "Daniel Bravo", "cred": "", "src": "/_blob/1b21228e4780b175931eeac6ba52fe5d", "initials": "DB", "href": "https://movemental.ai/leaders/daniel-bravo", "x": 174, "y": 680, "r": -10, "bx": 546, "by": -210, "delay": 0.1}, {"name": "Brad Brisco", "cred": "Covocational church planting at Send Network", "src": "/_blob/34e50888dcc7ea97998af19925402ddf", "initials": "BB", "href": "https://movemental.ai/leaders/brad-brisco", "x": 124, "y": 607, "r": 8, "bx": 596, "by": -137, "delay": 0.13}, {"name": "Jeremy and Monica Chambers", "cred": "The Art of Missional Spirituality; Forge America", "src": "/_blob/a82165f2da0de029119b4853bd6b6b98", "initials": "JM", "href": "https://movemental.ai/leaders/jeremy-chambers", "x": 95, "y": 524, "r": -5, "bx": 625, "by": -54, "delay": 0.16}, {"name": "Neil Cole", "cred": "Organic Church and the simple-church movement", "src": "/_blob/fb61636dc1e8c003f875fe380003094e", "initials": "NC", "href": "https://movemental.ai/leaders/neil-cole", "x": 92, "y": 435, "r": 12, "bx": 628, "by": 35, "delay": 0.19}, {"name": "Kate Coleman and Cham Kaur-Mann", "cred": "Next Leadership, mentoring leaders in church and society", "src": "/_blob/49f3ad502089f1338d916e4acc4476c8", "initials": "KC", "href": "https://movemental.ai/leaders/kate-coleman", "x": 116, "y": 350, "r": -8, "bx": 604, "by": 120, "delay": 0.22}, {"name": "Michael Cooper", "cred": "Ephesiology, the study of the Ephesus movement", "src": "/_blob/6025d95f6c753ab566591d7e0dceb921", "initials": "MC", "href": "https://movemental.ai/leaders/michael-cooper", "x": 162, "y": 275, "r": 5, "bx": 558, "by": 195, "delay": 0.25}, {"name": "David Docusen", "cred": "Neighborliness and Center City Church", "src": "/_blob/aed1a941cdef02cb1e74c01a4242a461", "initials": "DD", "href": "https://movemental.ai/leaders/david-docusen", "x": 224, "y": 211, "r": -12, "bx": 496, "by": 259, "delay": 0.28}, {"name": "Dave Ferguson", "cred": "Exponential and Community Christian Church", "src": "/_blob/f290c49fd705066a2ee4a8b628fb394f", "initials": "DF", "href": "https://movemental.ai/leaders/dave-ferguson", "x": 296, "y": 159, "r": 10, "bx": 424, "by": 311, "delay": 0.31}, {"name": "Meghan Larissa Good", "cred": "Divine Gravity and The Bible Unwrapped", "src": "/_blob/2a437f3773fa3f528c2242068bde182a", "initials": "ML", "href": "https://movemental.ai/leaders/meghan-good", "x": 375, "y": 119, "r": -6, "bx": 345, "by": 351, "delay": 0.34}, {"name": "Hugh Halter", "cred": "The Tangible Kingdom and incarnational community", "src": "/_blob/e28346885c494394a842ed22b3302e99", "initials": "HH", "href": "https://movemental.ai/leaders/hugh-halter", "x": 458, "y": 88, "r": 11, "bx": 262, "by": 382, "delay": 0.37}, {"name": "Alan Hirsch", "cred": "Author of The Forgotten Ways; created APEST", "src": "/_blob/4dc7c05924668c78a965650af10083a1", "initials": "AH", "href": "https://movemental.ai/leaders/alan-hirsch", "x": 544, "y": 67, "r": -9, "bx": 176, "by": 403, "delay": 0.4}, {"name": "Debra Hirsch", "cred": "Redeeming Sex; co-founder of Forge", "src": "/_blob/2c74c9ec99a2eb600fc599c460df37e9", "initials": "DH", "href": "https://movemental.ai/leaders/deb-hirsch", "x": 631, "y": 54, "r": 4, "bx": 89, "by": 416, "delay": 0.43}, {"name": "Andrew Jones", "cred": "Tall Skinny Kiwi, early voice of the emerging church", "src": "/_blob/7d14cc75a4cd21c49a4c28080f11e3b1", "initials": "AJ", "href": "https://movemental.ai/leaders/andrew-jones", "x": 720, "y": 50, "r": -10, "bx": 0, "by": 420, "delay": 0.46}, {"name": "Peyton Jones", "cred": "Church Plantology and NewBreed Training", "src": "/_blob/52d1ecb3dbb153e261e242638b22b111", "initials": "PJ", "href": "https://movemental.ai/leaders/peyton-jones", "x": 809, "y": 54, "r": 8, "bx": -89, "by": 416, "delay": 0.49}, {"name": "Dhati Lewis", "cred": "Among Wolves; Blueprint Church, Atlanta", "src": "/_blob/b1a1432e1fd2d61ac008859e852b14d8", "initials": "DL", "href": "https://movemental.ai/leaders/dhati-lewis", "x": 896, "y": 67, "r": -5, "bx": -176, "by": 403, "delay": 0.52}, {"name": "Bree Mills", "cred": "", "src": "/_blob/f7694f6e00ee2c7d37d91572ff8f3fc7", "initials": "BM", "href": "https://movemental.ai/leaders/bree-mills", "x": 982, "y": 88, "r": 12, "bx": -262, "by": 382, "delay": 0.55}, {"name": "Roy Moran", "cred": "Spent Matches and the Hybrid Church model", "src": "/_blob/07dd7b091075a08ca97574810d7b53a4", "initials": "RM", "href": "https://movemental.ai/leaders/roy-moran", "x": 1066, "y": 119, "r": -8, "bx": -346, "by": 351, "delay": 0.58}, {"name": "Lucas Pulley", "cred": "Leading the Underground microchurch network", "src": "/_blob/0082e79665471bd0384772fa5932492d", "initials": "LP", "href": "https://movemental.ai/leaders/lucas-pulley", "x": 1144, "y": 160, "r": 5, "bx": -424, "by": 310, "delay": 0.61}, {"name": "Liz Rios", "cred": "Founder of Passion2Plant and the Púlpito Fellows", "src": "/_blob/7cec4120e14f16ae8e84dc72f4798396", "initials": "LR", "href": "https://movemental.ai/leaders/liz-rios", "x": 1216, "y": 211, "r": -12, "bx": -496, "by": 259, "delay": 0.64}, {"name": "Brian Sanders", "cred": "Underground Church and the Tampa Underground", "src": "/_blob/7bc6800bf7e8ecee5e55c52062d1b8a8", "initials": "BS", "href": "https://movemental.ai/leaders/brian-sanders", "x": 1278, "y": 275, "r": 10, "bx": -558, "by": 195, "delay": 0.67}, {"name": "Rowland Smith", "cred": "Forge America and The Pando Collective", "src": "/_blob/16c18cb6bb2439ab475d5abc3259b6d7", "initials": "RS", "href": "https://movemental.ai/leaders/rowland-smith", "x": 1324, "y": 350, "r": -6, "bx": -604, "by": 120, "delay": 0.7}, {"name": "Tiffany Smith", "cred": "Missional Mayhem; Send Network strategist", "src": "/_blob/92ad30ad740f7f33fce84277468cc35a", "initials": "TS", "href": "https://movemental.ai/leaders/tiffany-smith", "x": 1348, "y": 435, "r": 11, "bx": -628, "by": 35, "delay": 0.73}, {"name": "Danielle Strickland", "cred": "Anti-trafficking work; the Right Side Up podcast", "src": "/_blob/603976d287c400f7ba817fd5c1796748", "initials": "DS", "href": "https://movemental.ai/leaders/danielle-strickland", "x": 1345, "y": 524, "r": -9, "bx": -625, "by": -54, "delay": 0.76}, {"name": "Rob Wegner", "cred": "The Starfish and the Spirit; Kansas City Underground", "src": "/_blob/0a77a66d93dce8ead41a90c94a039781", "initials": "RW", "href": "https://movemental.ai/leaders/rob-wegner", "x": 1316, "y": 607, "r": 4, "bx": -596, "by": -137, "delay": 0.79}, {"name": "JR Woodward", "cred": "Creating a Missional Culture; the V3 movement", "src": "/_blob/1f91e8d8ce7ea07443cb117ff204e129", "initials": "JW", "href": "https://movemental.ai/leaders/jr-woodward", "x": 1266, "y": 680, "r": -10, "bx": -546, "by": -210, "delay": 0.82}];
+const RING_START = 10;
+function ringVals(self, RING) {
+  const act = self.state.active;
+  const cur = RING[act];
+  return {
+    capKey: 'c' + act, capName: cur.name, capCred: cur.cred, capHasCred: !!cur.cred,
+    cardStyle: 'left: ' + Math.min(1440 - 132, Math.max(132, cur.x)) + 'px; top: ' + (cur.y + 56) + 'px;',
+    caretStyle: 'left: calc(50% + ' + (cur.x - Math.min(1440 - 132, Math.max(132, cur.x))) + 'px);',
+    leave: () => self.setState({ hover: false }),
+    ring: RING.map((p, i) => {
+      const on = i === act;
+      return { href: p.href, src: p.src, hasSrc: !!p.src, noSrc: !p.src, initials: p.initials,
+        label: p.name + (p.cred ? ', ' + p.cred : ''),
+        pos: 'left: ' + p.x + 'px; top: ' + p.y + 'px; --bx: ' + p.bx + 'px; --by: ' + p.by + 'px; animation-delay: ' + p.delay + 's; z-index: ' + (on ? 5 : 1) + ';',
+        look: 'transform: rotate(' + (on ? 0 : p.r) + 'deg) scale(' + (on ? 1.14 : 1) + '); border-color: ' + (on ? '#2236C4' : '#FFFFFF') + '; box-shadow: ' + (on ? '0 14px 30px rgba(34,54,196,.22)' : '0 10px 24px rgba(28,29,36,.16)') + ';',
+        enter: () => self.setState({ active: i, hover: true }) };
+    })
+  };
+}
+function ringStart(self, RING) {
+  self.state = Object.assign(self.state || {}, { active: RING_START, hover: false });
+}
+function ringMount(self, RING) {
+  if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  self._ringTimer = setInterval(() => { if (!self.state.hover) self.setState({ active: (self.state.active + 1) % RING.length }); }, 3200);
+}
+function ringUnmount(self) { if (self._ringTimer) clearInterval(self._ringTimer); }
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { on: {} }; ringStart(this, RING); }
+  componentDidMount() { ringMount(this, RING); }
+  componentWillUnmount() { ringUnmount(this); }
+  renderVals() {
+    const q = Q('q07');
+    const items = q.answers.map((a) => { const on = !!this.state.on[a.id]; return { text: a.text, on, toggle: () => this.setState({ on: Object.assign({}, this.state.on, { [a.id]: !on }) }),
+      rowStyle: 'display: flex; align-items: center; gap: 18px; width: 100%; min-height: 64px; padding: 12px 14px; border: 0; border-bottom: 1px solid #DDDFE5; background: ' + (on ? '#E8EBFA' : 'transparent') + '; text-align: left; cursor: pointer; font-family: inherit; color: #1C1D24; transition: background-color .2s ease;',
+      boxStyle: 'flex: 0 0 auto; width: 22px; height: 22px; border-radius: 5px; box-sizing: border-box; border: 1.5px solid ' + (on ? '#1C1D24' : '#9A9DAA') + '; background: ' + (on ? '#1C1D24' : '#FFFFFF') + '; display: flex; align-items: center; justify-content: center;',
+      tickStyle: 'opacity: ' + (on ? 1 : 0) + ';' }; });
+    const sheet = q.answers.filter((a) => this.state.on[a.id]).map((a) => ({ t: a.text.charAt(0).toLowerCase() + a.text.slice(1) }));
+    const agree = [['q07a', 9], ['q03c', 9], ['q10a', 8]].map(([id, n]) => ({ text: line(id).charAt(0).toLowerCase() + line(id).slice(1), count: n + ' of 9', bar: bar(n, 9, false) }));
+    return Object.assign(ringVals(this, RING), { items, sheet, empty: sheet.length === 0, cta: sheet.length ? 'Continue your Resolution' : 'Write your Resolution', agree });
+  }
+}
+</script>
+</body>
+</html>

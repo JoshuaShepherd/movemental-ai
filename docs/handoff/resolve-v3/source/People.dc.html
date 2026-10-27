@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your people</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=Geist:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #2236C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #FFFFFF; color: #1C1D24; font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif;">
+<header style="border-bottom: 1px solid #DDDFE5;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 20px; height: 84px; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+<a href="Main.dc.html" aria-label="Movemental home" style="display: inline-flex; align-items: center; gap: 11px; color: #1C1D24; text-decoration: none;">
+<img src="/_blob/80d1327f74281a94ce935bd0786f9071" alt="" style="width: 31px; height: 31px; display: block;">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 27px; line-height: 1; letter-spacing: -0.01em; padding-bottom: 2px;">movemental</span>
+</a>
+<nav aria-label="Resolve" style="display: flex; gap: 22px; align-items: center;"><a href="Main.dc.html" style="min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; color: #5B5E6B;  text-decoration: none; text-underline-offset: 6px;">My Resolution</a><a href="People.dc.html" style="min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; color: #1C1D24; font-weight: 500; text-decoration: underline; text-underline-offset: 6px;">Your people</a></nav>
+</div>
+</header>
+<main style="max-width: 1080px; margin: 0 auto; padding: 56px 20px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 52px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 6vw, 64px); line-height: 1;">Your people</h1>
+<p style="margin: 0; max-width: 680px; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.5; color: #34363F;">The people you’ve asked to write theirs, and people elsewhere working through the same questions. No one here can see your answers unless you shared them.</p>
+<div style="padding-top: 6px;"><button type="button" onClick="{{openInvite}}" style="height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; text-decoration: none;">Invite someone to write theirs</button></div>
+</div>
+
+<section aria-labelledby="agree" style="display: flex; flex-direction: column; gap: 14px;">
+<h2 id="agree" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.1;">Riverbend Church’s view</h2>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #F6F7F9; border: 1px solid #DDDFE5; border-radius: 4px;">
+<div aria-hidden="true" style="display: flex; gap: 6px;">
+<sc-for list="{{tally}}" as="t" hint-placeholder-count="5"><span style="{{t.style}}"></span></sc-for>
+</div>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5;">3 of 5 people from Riverbend Church have written theirs. You’ll see where you agree once five have.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5B5E6B;">Five keeps anyone’s answers from being guessed. Until then, nothing here shows what anyone chose.</p>
+<a href="Team.dc.html" style="font-size: 14px; color: #1C1D24; text-underline-offset: 4px;">See what the view looks like at five</a>
+</div>
+</section>
+
+<section aria-labelledby="inv" style="display: flex; flex-direction: column; gap: 12px;">
+<h2 id="inv" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.1;">Who you invited</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5B5E6B;">You see whether each person has written theirs, if they agree to let you know. You never see their answers.</p>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{invitees}}" as="p" hint-placeholder-count="4">
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 20px; padding: 14px 0; border-bottom: 1px solid #DDDFE5;">
+<span style="display: flex; flex-direction: column; gap: 2px;"><span style="font-weight: 500;">{{p.name}}</span><span style="font-size: 13px; color: #5B5E6B;">{{p.sub}}</span></span>
+<span style="display: flex; gap: 18px; align-items: center;">
+<span style="{{p.statusStyle}}">{{p.status}}</span>
+<sc-if value="{{p.canNudge}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{p.nudge}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #1C1D24; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; font-size: 14.5px;">{{p.nudgeLabel}}</button></sc-if>
+</span>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<section aria-labelledby="ask" style="display: flex; flex-direction: column; gap: 14px;">
+<h2 id="ask" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.1;">People you might ask</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5B5E6B;">A Resolution is most useful when a few different kinds of people write theirs. You know who they are; we don’t look through your contacts.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px;">
+<sc-for list="{{roles}}" as="r" hint-placeholder-count="4">
+<div style="padding: 22px; border: 1px solid #DDDFE5; border-radius: 6px; display: flex; flex-direction: column; gap: 10px;">
+<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 23px; line-height: 1.15;">{{r.title}}</p>
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: #34363F;">{{r.why}}</p>
+<button type="button" onClick="{{r.open}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #1C1D24; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; align-self: flex-start;">Write an invitation</button>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="road" style="display: flex; flex-direction: column; gap: 14px;">
+<h2 id="road" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.1;">People working through the same questions</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5B5E6B;">Only people who made their Resolution public appear here. Connecting takes a yes from both of you, and no one sees how many connections anyone has.</p>
+<p style="margin: 0; padding: 14px 16px; background: #E8EBFA; border-radius: 4px; font-size: 15px; line-height: 1.5;">Your Resolution is private, so you can see people here but they can’t find you. <a href="Main.dc.html" style="color: #1C1D24; text-underline-offset: 4px;">Change who can see it</a></p>
+<div role="tablist" aria-label="Show people who" style="display: flex; gap: 8px; flex-wrap: wrap;">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button></sc-for>
+</div>
+<ul role="tabpanel" style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DDDFE5;">
+<sc-for list="{{road}}" as="p" hint-placeholder-count="3">
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 16px 0; border-bottom: 1px solid #DDDFE5;">
+<span style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+<span style="font-weight: 500;">{{p.name}} <span style="font-weight: 400; color: #5B5E6B;">· {{p.org}}</span></span>
+<span style="font-size: 13px; color: #5B5E6B;">{{p.why}}</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.45;">{{p.line}}</span>
+</span>
+<span style="display: flex; gap: 18px; align-items: center;">
+<a href="Shared.dc.html" style="font-size: 14.5px; color: #1C1D24; text-underline-offset: 4px;">Read theirs</a>
+<button type="button" aria-pressed="{{p.asked}}" onClick="{{p.ask}}" style="min-height: 44px; padding: 0 16px; border: 1px solid #1C1D24; border-radius: 999px; background: #FFFFFF; font-family: inherit; font-size: 14px; color: #1C1D24; cursor: pointer;">{{p.askLabel}}</button>
+</span>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<sc-if value="{{dialog}}" hint-placeholder-val="{{ false }}">
+<div style="position: fixed; inset: 0; background: rgba(28, 29, 36, 0.42); display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; z-index: 20;">
+<div role="dialog" aria-modal="true" aria-labelledby="invTitle" style="width: 100%; max-width: 560px; max-height: calc(100vh - 40px); overflow: auto; background: #FFFFFF; border-radius: 10px; padding: 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+<h2 id="invTitle" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.1;">{{dialogTitle}}</h2>
+<button type="button" onClick="{{closeDialog}}" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #1C1D24; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; color: #5B5E6B;">Close</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><label for="ie" style="font-size: 15px; font-weight: 500;">Email addresses</label><input id="ie" type="text" placeholder="Separate with commas" style="height: 48px; padding: 0 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-size: 16px; font-family: inherit; color: #1C1D24; background: #FFFFFF;"></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><label for="io" style="font-size: 15px; font-weight: 500;">For</label><input id="io" type="text" value="Riverbend Church" style="height: 48px; padding: 0 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-size: 16px; font-family: inherit; color: #1C1D24; background: #FFFFFF;"><span style="font-size: 13px; color: #5B5E6B;">Their Resolution counts with yours for Riverbend Church only if they say yes.</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><label for="in" style="font-size: 15px; font-weight: 500;">Note</label><textarea id="in" rows="4" value="{{dialogNote}}" style="padding: 12px 14px; border: 1px solid #9A9DAA; border-radius: 6px; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.5; color: #1C1D24; background: #FFFFFF; resize: vertical;"></textarea></div>
+<div style="background: #F6F7F9; border-radius: 4px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 14px; font-weight: 500;">What they will see</span><span style="font-size: 14px; line-height: 1.55; color: #34363F;">Your note, your name, and a link to answer the fourteen questions themselves. None of your answers, and none of anyone else’s until they finish theirs.</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;"><button type="button" onClick="{{closeDialog}}" style="height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: #1C1D24; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; text-decoration: none;">Send invitations</button><button type="button" style="min-height: 44px; border: 0; background: none; padding: 0; font-family: inherit; font-size: 15px; color: #1C1D24; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;">Copy an invitation link instead</button></div>
+</div>
+</div>
+</sc-if>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"openDialog": {"editor": "boolean", "default": false}, "$preview": {"width": 1280, "height": 3000}}'>
+const C = {"parts": [{"id": "p1", "name": "Your views"}, {"id": "p2", "name": "Basic responsibilities"}, {"id": "p3", "name": "Acceptable use"}, {"id": "p4", "name": "Information, people and community"}], "questions": [{"id": "q01", "part": "p1", "label": "What I believe about AI", "title": "What do I believe about AI?", "mode": "multi", "answers": [{"id": "q01a", "text": "I believe AI is a tool, like other software, that can be used well or badly."}, {"id": "q01b", "text": "I believe AI repeats and magnifies what it is trained on and what we give it."}, {"id": "q01c", "text": "I believe AI gives a few companies more control over work and information."}, {"id": "q01d", "text": "I believe AI puts important human things at risk if we do not protect them."}, {"id": "q01e", "text": "I believe AI can help people we could not otherwise reach."}]}, {"id": "q02", "part": "p1", "label": "What should guide us", "title": "What do I believe should guide our decisions about AI?", "mode": "multi", "answers": [{"id": "q02a", "text": "Scripture and our tradition."}, {"id": "q02b", "text": "Love for our neighbors, including people outside our organization."}, {"id": "q02c", "text": "The good of the people we serve, before efficiency."}, {"id": "q02d", "text": "The trust people have placed in us."}, {"id": "q02e", "text": "Evidence of what helps people and what harms them."}, {"id": "q02f", "text": "The views of the people most affected by our decisions."}]}, {"id": "q03", "part": "p2", "label": "First steps", "title": "What should every organization do, even if it decides not to use AI?", "mode": "multi", "answers": [{"id": "q03a", "text": "We should find out how AI is already being used in our organization, without blaming anyone."}, {"id": "q03b", "text": "We should protect our people from AI scams, cloned voices and fake images, and teach them to recognize these."}, {"id": "q03c", "text": "We should set rules for sensitive information right away."}, {"id": "q03d", "text": "We should learn enough to decide well, by trying AI on low-risk work."}, {"id": "q03e", "text": "We should tell our people where we stand on AI, even if we have not decided yet."}, {"id": "q03f", "text": "We should set a date to decide, and a date to review our decisions."}]}, {"id": "q04", "part": "p2", "label": "Decisions and accountability", "title": "Who should make decisions about AI, and who is accountable?", "mode": "multi", "answers": [{"id": "q04a", "text": "Our governing body should make the final decision, after hearing from our people. (Elders, session, vestry or church council.)"}, {"id": "q04b", "text": "We should decide together as a whole community, not leaders alone."}, {"id": "q04c", "text": "We should follow our denomination's or network's guidance, and adapt it to our setting."}, {"id": "q04d", "text": "We should consult the people most affected before we decide."}, {"id": "q04e", "text": "We should make one named person accountable for our AI decisions."}, {"id": "q04f", "text": "When AI causes harm, we should tell the people affected and put it right before anything else."}]}, {"id": "q05", "part": "p2", "label": "Overall approach", "title": "Overall, how much should we use AI?", "mode": "single", "answers": [{"id": "q05a", "text": "We should not use AI in our work, for reasons of conscience, and still meet the basic responsibilities."}, {"id": "q05b", "text": "We should use AI only for administrative work, and keep it out of our core mission work."}, {"id": "q05c", "text": "We should approve each use of AI separately, start small, and review it regularly."}, {"id": "q05d", "text": "We should treat AI like other software, under the policies we already have."}, {"id": "q05e", "text": "We should adopt AI quickly wherever it helps the people we serve."}]}, {"id": "q06", "part": "p3", "label": "Work only people do", "title": "What work should always be done by people?", "mode": "multi", "answers": [{"id": "q06a", "text": "Any work with children, or care that depends on a personal relationship."}, {"id": "q06b", "text": "Every decision about a person, including who receives help, membership, leadership roles or employment."}, {"id": "q06c", "text": "Pastoral care, counseling and spiritual direction."}, {"id": "q06d", "text": "Preaching and teaching, and anything published under a person's name."}, {"id": "q06e", "text": "Work that helps people learn and grow, even when AI would be faster."}]}, {"id": "q07", "part": "p3", "label": "Prohibited uses", "title": "What uses of AI should we prohibit?", "mode": "multi", "answers": [{"id": "q07a", "text": "Letting people think they are dealing with a person when it is AI."}, {"id": "q07b", "text": "Using AI to pressure people into attending, giving or staying."}, {"id": "q07c", "text": "Putting sensitive information into AI tools that do not protect it."}, {"id": "q07d", "text": "Using AI to monitor, score or rank the people we serve or employ."}, {"id": "q07e", "text": "Copying a real person's voice or image with AI, or publishing AI writing as a person's own."}, {"id": "q07f", "text": "Using AI in ways that treat people unfairly because of race, age, disability, language or income."}]}, {"id": "q08", "part": "p3", "label": "Allowed with safeguards", "title": "What uses of AI should we allow only with safeguards?", "mode": "multi", "answers": [{"id": "q08a", "text": "AI may draft what we send, if a named person reviews, edits and approves it."}, {"id": "q08b", "text": "AI may answer questions outside office hours, if people can always reach a person."}, {"id": "q08c", "text": "AI may translate, if a qualified person checks anything people will rely on."}, {"id": "q08d", "text": "AI may be used in our work with the people we serve, if they know about it and agree."}, {"id": "q08e", "text": "AI may help with research, if we check every fact we use against a source."}, {"id": "q08f", "text": "We may adopt a new AI tool, if it is reviewed against our policy first."}]}, {"id": "q09", "part": "p3", "label": "Allowed freely", "title": "What uses of AI should we allow freely?", "mode": "multi", "answers": [{"id": "q09a", "text": "Making our own documents, teaching and records easy to search."}, {"id": "q09b", "text": "Captions, transcripts and other accessibility help."}, {"id": "q09c", "text": "Routine administrative work such as scheduling and formatting."}, {"id": "q09d", "text": "Finding patterns in our own information that would take weeks by hand."}, {"id": "q09e", "text": "Work we could never afford to hire for, as long as no one loses their job."}, {"id": "q09f", "text": "Nothing yet. We should try AI on low-risk work first."}]}, {"id": "q10", "part": "p3", "label": "Disclosure", "title": "When should we tell people that AI was used?", "mode": "multi", "answers": [{"id": "q10a", "text": "We should tell people how we use AI and how we do not, with our leaders explaining their own use first."}, {"id": "q10b", "text": "We should label images, audio and video made with AI."}, {"id": "q10c", "text": "We should tell people where their information goes and who can use it."}, {"id": "q10d", "text": "We should say when AI did much of the work on something published in our name."}, {"id": "q10e", "text": "We should tell people when an AI mistake affects them."}]}, {"id": "q11", "part": "p4", "label": "Our information", "title": "How should we protect and use our organization's information?", "mode": "multi", "answers": [{"id": "q11a", "text": "We should sort our information by how sensitive it is, and decide which tools may use each kind."}, {"id": "q11b", "text": "We should let people see, correct and ask us to delete information about them wherever we can."}, {"id": "q11c", "text": "We should gather our scattered documents and records so they are complete, easy to find and under our control."}, {"id": "q11d", "text": "We should record what long-serving people know before they leave."}, {"id": "q11e", "text": "When AI speaks for us, it should use only our own information and show its sources."}, {"id": "q11f", "text": "We should not let vendors train AI on our information or keep it after we leave."}]}, {"id": "q12", "part": "p4", "label": "Staff and volunteers", "title": "How should we treat our staff and volunteers as AI changes their work?", "mode": "multi", "answers": [{"id": "q12a", "text": "We should decide what saved time will be used for before adopting any AI tool."}, {"id": "q12b", "text": "We should give saved time back to people: more time with the people we serve, and more rest."}, {"id": "q12c", "text": "We should retrain people before eliminating jobs, and never cut jobs based on projected savings."}, {"id": "q12d", "text": "We should agree any change in workload with the people who do the work."}, {"id": "q12e", "text": "We should never require AI use from someone who objects on conscience, and always offer another way to do the work."}]}, {"id": "q13", "part": "p4", "label": "Training", "title": "How should we train our people to use AI wisely and avoid depending on it?", "mode": "multi", "answers": [{"id": "q13a", "text": "We should teach people to check AI's answers before relying on them."}, {"id": "q13b", "text": "We should teach good judgment about AI more than skill with tools."}, {"id": "q13c", "text": "We should think for ourselves first, then use AI."}, {"id": "q13d", "text": "We should give everyone time to try AI on real, low-risk work, not only the most interested."}, {"id": "q13e", "text": "We should train a few people in depth so others have someone to ask."}, {"id": "q13f", "text": "We should keep some work free of AI on purpose."}]}, {"id": "q14", "part": "p4", "label": "Our community", "title": "What responsibility do we have to our community and to other organizations?", "mode": "multi", "answers": [{"id": "q14a", "text": "We should help people in our wider community, not only our own members, recognize AI scams and manipulation."}, {"id": "q14b", "text": "We should work out our approach with other organizations, not alone."}, {"id": "q14c", "text": "We should learn from people who were wise before AI."}, {"id": "q14d", "text": "We should share what we learn, including our mistakes."}, {"id": "q14e", "text": "We should consider AI's environmental costs in our choices."}, {"id": "q14f", "text": "We should support people harmed by AI, and speak publicly when needed."}]}]};
+const COUNTS = {"q01": {"q01a": {"t": 5, "s": 1}, "q01b": {"t": 6, "s": 2}, "q01c": {"t": 5, "s": 3}, "q01d": {"t": 5, "s": 1}, "q01e": {"t": 6, "s": 2}}, "q02": {"q02a": {"t": 7, "s": 5}, "q02b": {"t": 7, "s": 1}, "q02c": {"t": 2, "s": 0}, "q02d": {"t": 6, "s": 3}, "q02e": {"t": 5, "s": 0}, "q02f": {"t": 5, "s": 0}}, "q03": {"q03a": {"t": 5, "s": 3}, "q03b": {"t": 8, "s": 2}, "q03c": {"t": 9, "s": 2}, "q03d": {"t": 6, "s": 1}, "q03e": {"t": 3, "s": 0}, "q03f": {"t": 6, "s": 1}}, "q04": {"q04a": {"t": 6, "s": 4}, "q04b": {"t": 6, "s": 4}, "q04c": {"t": 3, "s": 0}, "q04d": {"t": 7, "s": 0}, "q04e": {"t": 8, "s": 1}, "q04f": {"t": 8, "s": 0}}, "q05": {"q05a": {"t": 1, "s": 0}, "q05b": {"t": 2, "s": 0}, "q05c": {"t": 5, "s": 0}, "q05d": {"t": 0, "s": 0}, "q05e": {"t": 1, "s": 0}}, "q06": {"q06a": {"t": 9, "s": 2}, "q06b": {"t": 8, "s": 4}, "q06c": {"t": 5, "s": 1}, "q06d": {"t": 7, "s": 1}, "q06e": {"t": 5, "s": 1}}, "q07": {"q07a": {"t": 9, "s": 1}, "q07b": {"t": 3, "s": 2}, "q07c": {"t": 9, "s": 5}, "q07d": {"t": 2, "s": 0}, "q07e": {"t": 2, "s": 0}, "q07f": {"t": 2, "s": 1}}, "q08": {"q08a": {"t": 8, "s": 3}, "q08b": {"t": 7, "s": 2}, "q08c": {"t": 3, "s": 0}, "q08d": {"t": 2, "s": 1}, "q08e": {"t": 4, "s": 0}, "q08f": {"t": 6, "s": 3}}, "q09": {"q09a": {"t": 4, "s": 2}, "q09b": {"t": 2, "s": 0}, "q09c": {"t": 6, "s": 3}, "q09d": {"t": 4, "s": 3}, "q09e": {"t": 4, "s": 0}, "q09f": {"t": 5, "s": 1}}, "q10": {"q10a": {"t": 8, "s": 4}, "q10b": {"t": 3, "s": 0}, "q10c": {"t": 5, "s": 0}, "q10d": {"t": 3, "s": 0}, "q10e": {"t": 7, "s": 5}}, "q11": {"q11a": {"t": 8, "s": 2}, "q11b": {"t": 6, "s": 5}, "q11c": {"t": 2, "s": 0}, "q11d": {"t": 5, "s": 1}, "q11e": {"t": 2, "s": 1}, "q11f": {"t": 2, "s": 0}}, "q12": {"q12a": {"t": 6, "s": 1}, "q12b": {"t": 7, "s": 4}, "q12c": {"t": 7, "s": 4}, "q12d": {"t": 5, "s": 0}, "q12e": {"t": 6, "s": 0}}, "q13": {"q13a": {"t": 2, "s": 0}, "q13b": {"t": 2, "s": 2}, "q13c": {"t": 7, "s": 1}, "q13d": {"t": 4, "s": 2}, "q13e": {"t": 4, "s": 2}, "q13f": {"t": 6, "s": 2}}, "q14": {"q14a": {"t": 2, "s": 2}, "q14b": {"t": 2, "s": 0}, "q14c": {"t": 5, "s": 1}, "q14d": {"t": 4, "s": 1}, "q14e": {"t": 7, "s": 3}, "q14f": {"t": 4, "s": 2}}};
+const Q = (id) => C.questions.find((q) => q.id === id);
+const A = (id) => Q(id.slice(0, 3)).answers.find((a) => a.id === id);
+const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+const line = (id) => { const t = A(id).text; return (id.startsWith('q01') || id.startsWith('q02')) ? t : cap(t.replace(/^We should\s+/, '')); };
+const pill = (on) => 'min-height: 44px; padding: 0 16px; border-radius: 999px; font-family: inherit; font-size: 14px; cursor: pointer; font-variant-numeric: tabular-nums; border: 1px solid ' + (on ? '#1C1D24' : '#DDDFE5') + '; background: ' + (on ? '#1C1D24' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#1C1D24') + ';';
+const bar = (n, max, mine) => 'display: block; height: 8px; border-radius: 999px; background: ' + (mine ? '#2236C4' : '#1C1D24') + '; width: ' + Math.round(100 * n / Math.max(1, max)) + '%;';
+const INVITEES = [['James Okafor', 'Senior pastor', 'Written theirs'], ['Ana Ruiz', 'Children’s ministry', 'Written theirs'], ['Daniel Kim', 'Elder', 'Not yet'], ['Grace Liu', 'Operations', 'Doesn’t share status']];
+const ROLES = [
+ ['Someone who decides', 'The person or people who would have to say yes. Your Resolution is most useful in front of them.', 'James, I’ve answered fourteen questions about what I believe Riverbend should do about AI, and I’d value your answers too. It takes about twelve minutes.'],
+ ['Someone who knows how the work actually gets done', 'The person who knows where the real work happens, and where AI is already in it.', 'You know how our work actually gets done better than anyone. I’d like to know what you think Riverbend should do about AI.'],
+ ['Someone close to the people you serve', 'Someone who would notice first if care started to feel automated.', 'You’re closest to the families we serve. Would you answer the fourteen questions about what Riverbend should do about AI?'],
+ ['Someone at another organization', 'A peer elsewhere working through the same questions.', 'I answered fourteen questions about what my church should do about AI. I’d love to see your answers for yours.']];
+const ROAD = {
+ same: [['Marcus Bell', 'Harbor Street Church', 'Starred the same answer to question 12', 'q12b'], ['Ruth Adeyemi', 'Northside Family Center', 'Starred the same answer to question 03', 'q03c'], ['Tom Becker', 'Plains Conference', 'Starred the same answer to question 06', 'q06a']],
+ kind: [['Elena Santos', 'Grace Fellowship', 'Also a church', 'q08b'], ['Paul Whitaker', 'Cedar Hill Church', 'Also a church', 'q05c'], ['Hannah Cole', 'St. Luke’s Parish', 'Also a church', 'q07a']],
+ near: [['Joy Mensah', 'Eastside Family Services', 'Kansas City', 'q11c'], ['Luis Ortega', 'Westport Community Church', 'Kansas City', 'q13c']]};
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { tab: 'same', asked: {}, nudged: {}, dialog: props.openDialog ? { title: 'Invite someone to write theirs', note: '' } : null }; }
+  renderVals() {
+    const s = this.state;
+    const tabStyle = (on) => 'min-height: 44px; padding: 0 16px; border-radius: 999px; font-family: inherit; font-size: 14px; cursor: pointer; border: 1px solid ' + (on ? '#1C1D24' : '#DDDFE5') + '; background: ' + (on ? '#E8EBFA' : '#FFFFFF') + '; color: #1C1D24;';
+    return {
+      tally: [0, 1, 2, 3, 4].map((i) => ({ style: 'width: 28px; height: 8px; border-radius: 999px; background: ' + (i < 3 ? '#1C1D24' : '#DDDFE5') + ';' })),
+      invitees: INVITEES.map(([name, sub, status], i) => ({ name, sub, status, statusStyle: 'font-size: 14.5px; color: ' + (status === 'Written theirs' ? '#1C1D24' : '#5B5E6B') + ';',
+        canNudge: status === 'Not yet', nudgeLabel: s.nudged[i] ? 'Reminder sent' : 'Send a reminder', nudge: () => this.setState({ nudged: Object.assign({}, s.nudged, { [i]: true }) }) })),
+      roles: ROLES.map(([title, why, note]) => ({ title, why, open: () => this.setState({ dialog: { title: 'Invite ' + title.charAt(0).toLowerCase() + title.slice(1), note } }) })),
+      tabs: [['same', 'Starred the same answers'], ['kind', 'Same kind of organization'], ['near', 'Nearby']].map(([k, label]) => ({ label, on: s.tab === k, style: tabStyle(s.tab === k), pick: () => this.setState({ tab: k }) })),
+      road: ROAD[s.tab].map(([name, org, why, aid]) => { const k = s.tab + name; const on = !!s.asked[k]; return { name, org, why, line: line(aid), asked: on, askLabel: on ? 'Asked. Waiting for their yes' : 'Ask to connect', ask: () => this.setState({ asked: Object.assign({}, s.asked, { [k]: !on }) }) }; }),
+      dialog: !!s.dialog, dialogTitle: s.dialog ? s.dialog.title : '', dialogNote: s.dialog ? (s.dialog.note || 'I’ve answered fourteen questions about what I believe Riverbend Church should do about AI. I’d value knowing what you think. It takes about twelve minutes.') : '',
+      openInvite: () => this.setState({ dialog: { title: 'Invite someone to write theirs', note: '' } }), closeDialog: () => this.setState({ dialog: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

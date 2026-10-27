@@ -12,27 +12,27 @@ const ROLES: readonly [string, string, string][] = [
   [
     "Someone who decides",
     "The person or people who would have to say yes. Your Resolution is most useful in front of them.",
-    "James, I’ve written down what I believe Riverbend should do about AI, and I’d value yours too. It takes about four minutes.",
+    "James, I’ve answered fourteen questions about what I believe Riverbend should do about AI, and I’d value your answers too. It takes about twelve minutes.",
   ],
   [
-    "Someone who knows how the work actually moves",
-    "The person who knows where the real workflows run, and where AI is already in them.",
+    "Someone who knows how the work actually gets done",
+    "The person who knows where the real work happens, and where AI is already in it.",
     "You know how our work actually gets done better than anyone. I’d like to know what you think Riverbend should do about AI.",
   ],
   [
     "Someone close to the people you serve",
     "Someone who would notice first if care started to feel automated.",
-    "You’re closest to the families we serve. Would you say what you think Riverbend should do about AI? About four minutes.",
+    "You’re closest to the families we serve. Would you answer the fourteen questions about what Riverbend should do about AI?",
   ],
   [
-    "Someone outside your walls walking the same road",
-    "A peer at another organization working through the same questions.",
-    "I wrote a Resolution about what my organization should do with AI. I’d love to see what you’d write for yours.",
+    "Someone at another organization",
+    "A peer elsewhere working through the same questions.",
+    "I answered fourteen questions about what my church should do about AI. I’d love to see your answers for yours.",
   ],
 ];
 
 const TABS = [
-  ["line", "Starred the same line"],
+  ["same", "Starred the same answers"],
   ["kind", "Same kind of organization"],
   ["near", "Nearby"],
 ] as const;
@@ -46,10 +46,10 @@ export function YourPeople() {
   const d = useDraft();
   const [dialog, setDialog] = useState<{ title: string; note: string } | null>(null);
   const [nudged, setNudged] = useState<Record<number, boolean>>({});
-  const [tab, setTab] = useState<Tab>("line");
+  const [tab, setTab] = useState<Tab>("same");
   const [asked, setAsked] = useState<Record<string, boolean>>({});
 
-  const org = d?.org.trim() || "Riverbend Youth & Family";
+  const org = d?.org.trim() || "Riverbend Church";
   const [stats, setStats] = useState<{
     unlocked: boolean;
     contributorCount: number;
@@ -97,8 +97,8 @@ export function YourPeople() {
       <div className="mv-stack" style={{ gap: 14 }}>
         <h1 className="mv-rz-title">Your people</h1>
         <p className="mv-reading mv-soft" style={{ maxWidth: 640, fontSize: 19, lineHeight: 1.5 }}>
-          The people you’ve brought into this, and people elsewhere walking the same road. No one
-          here can see what you chose unless you shared it with them.
+          The people you’ve asked to write theirs, and people elsewhere working through the same
+          questions. No one here can see your answers unless you shared them.
         </p>
         <div style={{ paddingTop: 6 }}>
           <button
@@ -124,7 +124,7 @@ export function YourPeople() {
 
       <section aria-labelledby="agree" className="mv-stack" style={{ gap: 16 }}>
         <h2 id="agree" className="mv-rz-h2">
-          Where your people from {org} agree
+          {org}’s view
         </h2>
         <div className="mv-stack" style={{ gap: 12, padding: "22px 24px", background: "var(--mv-sheet)", borderRadius: 4 }}>
           <div className="mv-tally" aria-hidden="true">
@@ -134,13 +134,16 @@ export function YourPeople() {
           </div>
           <p className="mv-reading" style={{ lineHeight: 1.5 }}>
             {unlocked
-              ? `${count} people from ${org} have written their Resolution. Aggregated common grounds are unsealed.`
+              ? `${count} people from ${org} have written theirs. You can now see where you agree.`
               : `${count} of 5 people from ${org} have written theirs. You’ll see where you agree once five have.`}
           </p>
           <p className="mv-caption mv-muted">
-            Five keeps anyone’s choices from being guessed. Until then, nothing here shows what
+            Five keeps anyone’s answers from being guessed. Until then, nothing here shows what
             anyone chose.
           </p>
+          <Link href={MV_ROUTES.resolveTeamSample} style={{ fontSize: 15, alignSelf: "flex-start" }}>
+            See what the view looks like at five
+          </Link>
         </div>
       </section>
 
@@ -150,7 +153,7 @@ export function YourPeople() {
         </h2>
         <p className="mv-small mv-muted">
           You see whether each person has written theirs, if they agree to let you know. You never
-          see what they chose.
+          see their answers.
         </p>
         <ul style={{ listStyle: "none", padding: 0, borderBottom: "1px solid var(--mv-rule)" }}>
           {SAMPLE_INVITEES.map(([name, sub, status], i) => (
@@ -184,8 +187,8 @@ export function YourPeople() {
           People you might ask
         </h2>
         <p className="mv-small mv-muted">
-          A Resolution travels best when it reaches a few different kinds of people. You know who
-          they are; we don’t look through your contacts.
+          A Resolution is most useful when a few different kinds of people write theirs. You know
+          who they are; we don’t look through your contacts.
         </p>
         <div className="mv-roles">
           {ROLES.map(([title, why, note]) => (
@@ -211,7 +214,7 @@ export function YourPeople() {
 
       <section aria-labelledby="road" className="mv-stack" style={{ gap: 14 }}>
         <h2 id="road" className="mv-rz-h2">
-          People walking the same road
+          People working through the same questions
         </h2>
         <p className="mv-small mv-muted">
           Only people who made their Resolution public appear here. Connecting takes a yes from both
@@ -322,7 +325,7 @@ export function YourPeople() {
               value={
                 inviteNote ||
                 dialog.note ||
-                `I’ve written down what I believe ${inviteOrg} should do about AI. I’d value knowing what you think. It takes about four minutes.`
+                `I’ve answered fourteen questions about what I believe ${inviteOrg} should do about AI. I’d value knowing what you think. It takes about twelve minutes.`
               }
               onChange={(e) => setInviteNote(e.target.value)}
             />
@@ -330,8 +333,8 @@ export function YourPeople() {
           <div className="mv-preview-note">
             <p>What they will see</p>
             <p>
-              Your note, your name, and a link to write their own. None of your choices, and none of
-              anyone else’s until they finish theirs.
+              Your note, your name, and a link to answer the fourteen questions themselves. None of
+              your answers, and none of anyone else’s until they finish theirs.
             </p>
           </div>
           {inviteFeedback ? (
@@ -368,7 +371,7 @@ export function YourPeople() {
                         note:
                           inviteNote ||
                           dialog.note ||
-                          `I’ve written down what I believe ${inviteOrg} should do about AI. I’d value knowing what you think. It takes about four minutes.`,
+                          `I’ve answered fourteen questions about what I believe ${inviteOrg} should do about AI. I’d value knowing what you think. It takes about twelve minutes.`,
                       }),
                     });
                     if (res.ok) sentCount++;

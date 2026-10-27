@@ -5,7 +5,6 @@ import {
   AlreadyResponding,
   ClosingBand,
   CompanySection,
-  HomeHero,
   HumanQuestions,
   LeadersBand,
   ProofInPractice,
@@ -14,7 +13,7 @@ import {
   WorkWithMovemental,
 } from "@/components/mv/home/sections";
 import { MvFooter } from "@/components/mv/mv-footer";
-import { MovementalLeaders } from "@/components/mv/home/movemental-leaders";
+import { LeadersArc } from "@/components/mv/home/leaders-arc";
 import { MvHomeHeader } from "@/components/mv/mv-home-header";
 
 export const metadata: Metadata = {
@@ -24,13 +23,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-/** The home page: board Home v3, with the first screen and network from Home-Headline-C (Oct 15, 2026). */
+/** The home page: board Home v3, with the first screen from the leaders arc (Home-Resolve, Oct 27, 2026). */
 export default function HomePageNew() {
   return (
     <>
       <MvHomeHeader />
-      <HomeHero />
-      <MovementalLeaders />
+      <LeadersArc />
       <AlreadyResponding />
       <HumanQuestions />
       <ResolveSection />

@@ -107,7 +107,7 @@ export function InquiryForm() {
           <p style={{ padding: "16px 0 6px", fontSize: 15, fontWeight: 500 }}>While you wait</p>
           {(
             [
-              [MV_ROUTES.resolve, "Write your own Resolution", "About four minutes"],
+              [MV_ROUTES.resolve, "Write your own Resolution", "About twelve minutes"],
               [MV_ROUTES.assessment, "Start the Reality Assessment", "See what is actually happening"],
               [MV_ROUTES.guidebook, "Read the guidebook", "The whole method, free"],
             ] as const

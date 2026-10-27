@@ -30,15 +30,26 @@ export interface SaveResolutionInput {
   displayName?: string | null;
   roleText?: string | null;
   orgRole?: string | null;
-  selections: {
-    ticks?: Record<string, boolean>;
-    stars?: Record<number, number>;
-    skipped?: Record<number, boolean>;
-  };
-  hardestTheme?: number | null;
-  acts?: number[];
+  /** Resolve v3 snapshot: picks by answer id, plus the readable lines. */
+  v2: ResolutionV2Snapshot;
+  acts?: string[];
   twoMinutes?: string;
   lines: string[];
+}
+
+export interface ResolutionLineData {
+  label: string;
+  text: string;
+  others: string[];
+}
+
+export interface ResolutionV2Snapshot {
+  sector: "church" | "nonprofit" | "school" | "network";
+  picks: Record<string, { ticks: string[]; star: string | null; choice: string | null; none: boolean }>;
+  hardest: string | null;
+  hardestText: string;
+  beliefs: ResolutionLineData[];
+  parts: { name: string; rows: ResolutionLineData[] }[];
 }
 
 export interface SharedResolutionData {
@@ -47,9 +58,14 @@ export interface SharedResolutionData {
   org: string;
   short: string;
   date: string;
+  /** v2 records (fourteen questions). Empty for nine-theme records. */
+  beliefs: ResolutionLineData[];
+  parts: { name: string; rows: ResolutionLineData[] }[];
+  /** Nine-theme records only: [theme, text]. */
   lines: [string, string][];
   hardest: string;
   acts: string[];
+  two: string;
 }
 
 export interface PeopleSummaryData {
@@ -146,8 +162,8 @@ export class ResolutionService {
       await db.insert(resolutionVersions).values({
         resolution_id: resolutionId!,
         version: nextVersion,
-        selections: input.selections,
-        hardest_theme: input.hardestTheme ?? null,
+        selections: { v: 2, ...input.v2 },
+        hardest_theme: null,
         acts: input.acts ?? [],
         two_minutes: input.twoMinutes ?? "",
         lines: input.lines,
@@ -196,9 +212,11 @@ export class ResolutionService {
       // Fetch the latest version
       const [ver] = await db
         .select({
+          selections: resolutionVersions.selections,
           lines: resolutionVersions.lines,
           hardest_theme: resolutionVersions.hardest_theme,
           acts: resolutionVersions.acts,
+          two_minutes: resolutionVersions.two_minutes,
           created_at: resolutionVersions.created_at,
         })
         .from(resolutionVersions)
@@ -208,35 +226,39 @@ export class ResolutionService {
 
       if (!ver) return Ok(null);
 
-      const linesParsed = (
-        Array.isArray(ver.lines) ? ver.lines : []
-      ) as unknown[];
-      const formattedLines: [string, string][] = linesParsed.map((l) => {
-        if (typeof l === "object" && l !== null && "theme" in l && "text" in l) {
-          const obj = l as { theme: string; text: string };
-          return [obj.theme, obj.text];
-        }
-        return ["Statement", String(l)];
-      });
-
-      const actsParsed = (Array.isArray(ver.acts) ? ver.acts : []).map(String);
+      const sel = (ver.selections ?? {}) as Partial<ResolutionV2Snapshot> & { v?: number };
+      const isV2 = sel.v === 2;
+      const legacyLines: [string, string][] = isV2
+        ? []
+        : ((Array.isArray(ver.lines) ? ver.lines : []) as unknown[]).map((l) => {
+            if (typeof l === "object" && l !== null && "theme" in l && "text" in l) {
+              const obj = l as { theme: string; text: string };
+              return [obj.theme, obj.text];
+            }
+            const str = String(l);
+            const i = str.indexOf(": ");
+            return i > 0 ? [str.slice(0, i), str.slice(i + 2)] : ["", str];
+          });
+      const acts = (Array.isArray(ver.acts) ? ver.acts : []).filter(
+        (a): a is string => typeof a === "string",
+      );
 
       return Ok({
-        author: res.display_name || "A contributor",
-        role: res.role_text || "Member",
+        author: res.display_name || "Someone",
+        role: res.role_text || "",
         org: res.org_label,
-        short: res.org_label.split(" ")[0] || res.org_label,
+        short: res.org_label,
         date: new Date(ver.created_at).toLocaleDateString("en-US", {
           month: "long",
           day: "numeric",
           year: "numeric",
         }),
-        lines: formattedLines,
-        hardest:
-          ver.hardest_theme !== null
-            ? `Theme ${ver.hardest_theme + 1}`
-            : "None specified",
-        acts: actsParsed.length > 0 ? actsParsed : ["Discuss with leadership"],
+        beliefs: isV2 ? (sel.beliefs ?? []) : [],
+        parts: isV2 ? (sel.parts ?? []) : [],
+        lines: legacyLines,
+        hardest: isV2 ? (sel.hardestText ?? "") : "",
+        acts,
+        two: ver.two_minutes ?? "",
       });
     } catch (err) {
       return Err(err instanceof Error ? err : new Error(String(err)));

@@ -1,43 +1,65 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { MV_ROUTES } from "../routes";
 import { Check } from "./dialog";
 import {
-  ORG_TYPE_LABELS,
-  ORG_TYPES,
+  type Pick,
   type ResolutionDraft,
+  answeredCount,
+  beliefLines,
   emptyDraft,
-  numberWord,
+  emptyPick,
+  firstOpenIndex,
+  hardestCandidates,
+  hasAnyAnswer,
+  isAnswered,
+  leaderQuestion,
+  orgLineParts,
   orgName,
-  starredLines,
-  statementText,
+  orgTitle,
+  pickOf,
+  questionLines,
+  snapshotLines,
   updateDraft,
   useDraft,
 } from "./draft";
 import { SAMPLE_INVITATION } from "./fixtures";
-import { RESOLVE_ACTS, RESOLVE_THEMES } from "./themes";
+import {
+  BELIEF_PART,
+  PARTS,
+  QUESTIONS,
+  QUESTION_COUNT,
+  RESOLVE_ACTS,
+  SECTORS,
+  type ResolveQuestion,
+  type Sector,
+  answerText,
+  loadExamples,
+  pad2,
+  partRange,
+  questionTitle,
+  richSegments,
+  sectorDef,
+} from "./questions";
 
 /**
- * The Resolution exercise: arrive, nine themes, review, the leadership turn.
- * Board: R3-Flow (and R3-Flow-Phone, R3-States). Copy verbatim.
- * Finishing goes to the document page (R4-Result), which supersedes R3-Flow's screen 5.
+ * Resolve: arrive, fourteen questions, review, the leadership turn.
+ * Board: canvas "Resolve: Fourteen Questions", Main (docs/handoff/resolve-v3/).
+ * Finishing goes to the document page.
  */
 export function ResolveFlow({ invitedSample }: { invitedSample: boolean }) {
   const stored = useDraft();
   const router = useRouter();
-  const [note, setNote] = useState(-1);
-  const [sheetOpen, setSheetOpen] = useState(false);
-  const [lastStar, setLastStar] = useState(-1);
-  const [resumeDismissed, setResumeDismissed] = useState(false);
-  // A draft that was mid-theme when this visit began gets the welcome-back note.
+  // A draft that was mid-way when this visit began gets the welcome-back note on the start screen.
   const [resumeAt, setResumeAt] = useState<number | null>(null);
+  const [resumeDismissed, setResumeDismissed] = useState(false);
 
   if (stored === undefined) return <FlowLoading />;
   if (resumeAt === null) {
-    setResumeAt(stored && !stored.finishedAt && stored.step === "theme" && stored.ti > 0 ? stored.ti : -1);
+    setResumeAt(stored && !stored.finishedAt && answeredCount(stored) > 0 ? answeredCount(stored) : -1);
   }
 
   const d: ResolutionDraft =
@@ -45,427 +67,50 @@ export function ResolveFlow({ invitedSample }: { invitedSample: boolean }) {
     (invitedSample
       ? {
           ...emptyDraft(),
+          sector: "church",
           org: SAMPLE_INVITATION.org,
           invitation: { from: SAMPLE_INVITATION.from, pronoun: SAMPLE_INVITATION.pronoun },
         }
       : emptyDraft());
   const set = (patch: Partial<ResolutionDraft>) => updateDraft((cur) => ({ ...cur, ...d, ...patch }));
-  const org = orgName(d);
-  const lines = starredLines(d);
-  const resume = resumeAt !== null && resumeAt >= 0 && !resumeDismissed && d.step === "theme" && d.ti === resumeAt;
+  const go = (patch: Partial<ResolutionDraft>) => {
+    set(patch);
+    window.scrollTo({ top: 0 });
+  };
 
   if (d.step === "arrive") {
+    const showResume = !!resumeAt && resumeAt > 0 && !resumeDismissed && !d.finishedAt;
     return (
-      <div className="mv-rz mv-rz--text" style={{ paddingTop: 80, gap: 30 }}>
-        {d.invitation ? (
-          <p className="mv-note">
-            {d.invitation.from} invited you to write your own Resolution for {org}. You won’t see
-            what {d.invitation.pronoun} chose until you’ve finished yours.
-          </p>
-        ) : null}
-        <h1 className="mv-rz-title mv-rz-title--arrive">
-          Say what you believe your organization should do about AI.
-        </h1>
-        <div className="mv-stack" style={{ gap: 10, maxWidth: 640 }}>
-          <p className="mv-reading" style={{ fontSize: 23, lineHeight: 1.4 }}>
-            Think as yourself, about your organization.
-          </p>
-          <p className="mv-body mv-muted">
-            This isn’t a policy and it isn’t a test. Choose the language you could genuinely stand
-            behind.
-          </p>
-        </div>
-        <div className="mv-stack" style={{ gap: 12, paddingTop: 10 }}>
-          <p id="kind" className="mv-label">
-            What kind of organization?
-          </p>
-          <div role="group" aria-labelledby="kind" className="mv-choice-grid">
-            {ORG_TYPES.map((k) => (
-              <button
-                key={k}
-                type="button"
-                className="mv-choice"
-                aria-pressed={d.orgType === k}
-                onClick={() => set({ orgType: k })}
-              >
-                {ORG_TYPE_LABELS[k]}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="mv-field-group" style={{ maxWidth: 640 }}>
-          <label htmlFor="orgname" className="mv-label">
-            Your organization’s name, if you’d like it on your Resolution
-          </label>
-          <input
-            id="orgname"
-            type="text"
-            className="mv-field"
-            value={d.org}
-            onChange={(e) => set({ org: e.target.value })}
-            placeholder="Optional"
-          />
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap", paddingTop: 6 }}>
-          <button type="button" className="mv-pill" onClick={() => set({ step: "theme", ti: 0 })}>
-            Begin
-          </button>
-          <p className="mv-caption mv-muted" style={{ fontSize: 14.5 }}>
-            Nine themes, about four minutes, no account.
-          </p>
-        </div>
-        <p className="mv-caption mv-muted" style={{ fontSize: 14.5 }}>
-          Your Resolution stays private until you choose to share it.
-        </p>
-      </div>
+      <Arrive
+        d={d}
+        set={set}
+        resume={
+          showResume
+            ? {
+                text: `Welcome back. You have answered ${answeredCount(d)} of ${QUESTION_COUNT} questions, and your answers are saved on this device.`,
+                go: () => go({ step: "question", qi: firstOpenIndex(d) }),
+                dismiss: () => setResumeDismissed(true),
+              }
+            : null
+        }
+        begin={() => go({ step: "question", qi: 0 })}
+      />
     );
   }
 
-  if (d.step === "theme") {
-    const ti = Math.max(0, Math.min(8, d.ti));
-    const th = RESOLVE_THEMES[ti]!;
-    const go = (patch: Partial<ResolutionDraft>) => {
-      setNote(-1);
-      setLastStar(-1);
-      set(patch);
-      window.scrollTo({ top: 0 });
-    };
-    const next = () => {
-      const skipped = { ...d.skipped };
-      if (d.stars[ti] === undefined) skipped[ti] = true;
-      go(ti < 8 ? { ti: ti + 1, skipped } : { step: "review", skipped });
-    };
-    const none = () => {
-      const skipped = { ...d.skipped, [ti]: true as const };
-      const stars = { ...d.stars };
-      delete stars[ti];
-      const ticks = { ...d.ticks };
-      th.statements.forEach((_, j) => delete ticks[`${ti}-${j}`]);
-      go(ti < 8 ? { ti: ti + 1, skipped, stars, ticks } : { step: "review", skipped, stars, ticks });
-    };
-    const back = () => go(ti > 0 ? { ti: ti - 1 } : { step: "arrive" });
-
-    const sheet = (
-      <div className="mv-rz-sheet">
-        <p className="mv-caption mv-muted" style={{ fontSize: 13, marginBottom: 6 }}>
-          Your Resolution
-        </p>
-        <p className="mv-rz-sheet-title">Resolved, that {org} should…</p>
-        {RESOLVE_THEMES.every((_, i) => d.stars[i] === undefined && !d.skipped[i]) ? (
-          <p
-            className="mv-muted"
-            style={{ paddingTop: 14, borderTop: "1px solid var(--mv-rule)", fontSize: 14.5, lineHeight: 1.55 }}
-          >
-            Your lines will appear here as you star them.
-          </p>
-        ) : null}
-        <div aria-live="polite">
-          {RESOLVE_THEMES.map((t, i) => {
-            const j = d.stars[i];
-            if (j === undefined && !d.skipped[i]) return null;
-            return (
-              <div
-                key={t.name}
-                className={`mv-rz-sheet-line${lastStar === i ? " mv-rz-sheet-line--new" : ""}`}
-              >
-                <p className="mv-muted" style={{ fontSize: 12.5, marginBottom: 3 }}>
-                  {t.name}
-                </p>
-                {j === undefined ? (
-                  <p className="mv-muted" style={{ fontSize: 14 }}>
-                    No line from this theme
-                  </p>
-                ) : (
-                  <p className="mv-reading">{statementText(d.orgType, i, j)}</p>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-
-    return (
-      <div className="mv-rz mv-rz-two" style={{ paddingBottom: 88 }}>
-        <div className="mv-stack" style={{ gap: 24, minWidth: 0 }}>
-          <div className="mv-stack" style={{ gap: 10 }}>
-            <p className="mv-caption mv-muted">Theme {ti + 1} of 9</p>
-            <div className="mv-themebar" aria-hidden="true">
-              {RESOLVE_THEMES.map((t, i) => (
-                <span
-                  key={t.name}
-                  title={t.name}
-                  data-state={
-                    i === ti
-                      ? "current"
-                      : d.stars[i] !== undefined
-                        ? "done"
-                        : d.skipped[i]
-                          ? "skipped"
-                          : undefined
-                  }
-                />
-              ))}
-            </div>
-          </div>
-          {resume ? (
-            <div
-              className="mv-note"
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14, padding: "14px 18px" }}
-            >
-              <p>
-                Welcome back. You were on theme {ti + 1}.{" "}
-                {lines.length === 1
-                  ? "Your one line is saved."
-                  : `Your ${numberWord(lines.length)} lines are saved.`}
-              </p>
-              <button
-                type="button"
-                className="mv-textbtn mv-textbtn--muted"
-                style={{ fontSize: 14 }}
-                onClick={() => setResumeDismissed(true)}
-              >
-                Dismiss
-              </button>
-            </div>
-          ) : null}
-          <div
-            className="mv-phone-only"
-            style={{ border: "1px solid var(--mv-rule)", borderRadius: 8, padding: "12px 16px" }}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <p className="mv-small">
-                {lines.length} {lines.length === 1 ? "line so far" : "lines so far"}
-              </p>
-              <button
-                type="button"
-                className="mv-textbtn"
-                style={{ fontSize: 14 }}
-                aria-expanded={sheetOpen}
-                onClick={() => setSheetOpen((o) => !o)}
-              >
-                {sheetOpen ? "Hide" : "Show"}
-              </button>
-            </div>
-            {sheetOpen ? <div style={{ marginTop: 12 }}>{sheet}</div> : null}
-          </div>
-          <div className="mv-stack" style={{ gap: 12, paddingTop: 12 }}>
-            <p style={{ fontSize: 16, fontWeight: 500 }}>{th.name}</p>
-            <h1 className="mv-rz-q">{th.question}</h1>
-            <button
-              type="button"
-              className="mv-textbtn mv-textbtn--muted"
-              style={{ alignSelf: "flex-start", textDecoration: "none", minHeight: 40 }}
-              aria-expanded={note === ti}
-              onClick={() => setNote(note === ti ? -1 : ti)}
-            >
-              What’s at stake {note === ti ? "−" : "+"}
-            </button>
-            {note === ti ? <p className="mv-stake mv-settle">{th.stake}</p> : null}
-          </div>
-          <div className="mv-rows">
-            {th.statements.map((_, j) => {
-              const key = `${ti}-${j}`;
-              const text = statementText(d.orgType, ti, j);
-              const on = !!d.ticks[key];
-              const starred = d.stars[ti] === j;
-              return (
-                <div key={key} className="mv-row" data-starred={starred}>
-                  <button
-                    type="button"
-                    role="checkbox"
-                    aria-checked={on}
-                    className="mv-check"
-                    onClick={() => {
-                      const ticks = { ...d.ticks };
-                      const stars = { ...d.stars };
-                      if (ticks[key]) {
-                        delete ticks[key];
-                        if (stars[ti] === j) delete stars[ti];
-                      } else {
-                        ticks[key] = true;
-                      }
-                      set({ ticks, stars });
-                    }}
-                  >
-                    <span aria-hidden="true" className="mv-check-box">
-                      ✓
-                    </span>
-                    <span className="mv-check-text">{text}</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="mv-star"
-                    aria-pressed={starred}
-                    aria-label={`Most mine: ${text}`}
-                    title="Most mine"
-                    onClick={() => {
-                      const ticks = { ...d.ticks };
-                      const stars = { ...d.stars };
-                      const skipped = { ...d.skipped };
-                      if (stars[ti] === j) {
-                        delete stars[ti];
-                      } else {
-                        stars[ti] = j;
-                        ticks[key] = true;
-                        delete skipped[ti];
-                      }
-                      setLastStar(ti);
-                      set({ ticks, stars, skipped });
-                    }}
-                  >
-                    ★
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-          <p className="mv-caption mv-muted">
-            Tick everything you agree with. Star the one that is most yours.
-          </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap", paddingTop: 6 }}>
-            <button type="button" className="mv-pill" onClick={next}>
-              {ti < 8 ? "Next theme" : "Review my Resolution"}
-            </button>
-            <button type="button" className="mv-textbtn mv-textbtn--muted" onClick={back}>
-              Back
-            </button>
-            <span style={{ flex: 1 }} />
-            <button
-              type="button"
-              className="mv-textbtn mv-textbtn--muted"
-              style={{ fontSize: 14.5 }}
-              onClick={none}
-            >
-              None of these is mine
-            </button>
-          </div>
-        </div>
-        <aside className="mv-rz-aside mv-desk-only">{sheet}</aside>
-      </div>
-    );
+  if (d.step === "question") {
+    return <QuestionScreen key={d.qi} d={d} set={set} go={go} />;
   }
 
   if (d.step === "review") {
-    const short = org;
-    const skippedNames = RESOLVE_THEMES.filter((_, i) => d.skipped[i] && d.stars[i] === undefined).map(
-      (t) => t.name,
-    );
-    return (
-      <div className="mv-rz mv-rz--text" style={{ paddingTop: 64, gap: 30 }}>
-        <h1 className="mv-rz-title">Here is what you resolved.</h1>
-        {lines.length === 0 ? (
-          <section className="mv-stack" style={{ gap: 12 }}>
-            <h2 className="mv-h3--sm">You didn’t choose a line in any theme.</h2>
-            <p className="mv-soft" style={{ fontSize: 16, lineHeight: 1.6, maxWidth: 640 }}>
-              That can be an honest answer. Want to look again at one?
-            </p>
-            <button
-              type="button"
-              className="mv-pill"
-              style={{ alignSelf: "flex-start", minHeight: 44, padding: "0 20px", fontSize: 15 }}
-              onClick={() => set({ step: "theme", ti: 0 })}
-            >
-              Look again
-            </button>
-          </section>
-        ) : (
-          <>
-            <div className="mv-rz-sheet" style={{ padding: "34px 40px" }}>
-              <p className="mv-rz-sheet-title" style={{ marginBottom: 14 }}>
-                Resolved, that {org} should…
-              </p>
-              {lines.map((l) => (
-                <div
-                  key={l.ti}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "minmax(0, 1fr) auto",
-                    gap: 18,
-                    alignItems: "baseline",
-                    padding: "14px 0",
-                    borderTop: "1px solid var(--mv-rule)",
-                  }}
-                >
-                  <span className="mv-stack" style={{ gap: 3 }}>
-                    <span className="mv-muted" style={{ fontSize: 12.5 }}>
-                      {l.theme}
-                    </span>
-                    <span className="mv-reading" style={{ fontSize: 19 }}>
-                      {l.text}
-                    </span>
-                  </span>
-                  <button
-                    type="button"
-                    className="mv-textbtn mv-textbtn--muted"
-                    style={{ fontSize: 14 }}
-                    onClick={() => set({ step: "theme", ti: l.ti })}
-                  >
-                    Change
-                  </button>
-                </div>
-              ))}
-            </div>
-            {skippedNames.length ? (
-              <p className="mv-muted" style={{ fontSize: 15.5 }}>
-                You left {skippedNames.join(" and ")} without a line. That’s fine.
-              </p>
-            ) : null}
-            <div className="mv-stack" style={{ gap: 12, paddingTop: 18 }}>
-              <h2 className="mv-rz-h2">Which of these would be hardest for {short} to adopt today?</h2>
-              <p className="mv-muted" style={{ fontSize: 15.5 }}>
-                Choose one. This helps you see where conviction and readiness are furthest apart.
-              </p>
-              <div role="radiogroup" aria-label="Hardest to adopt" className="mv-stack" style={{ gap: 8, paddingTop: 6 }}>
-                {lines.map((l) => (
-                  <button
-                    key={l.ti}
-                    type="button"
-                    role="radio"
-                    aria-checked={d.hardest === l.ti}
-                    className="mv-choice mv-choice--reading"
-                    onClick={() => set({ hardest: l.ti })}
-                  >
-                    {l.text}
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={d.hardest === -1}
-                  className="mv-choice"
-                  style={{ minHeight: 52, fontSize: 15.5 }}
-                  onClick={() => set({ hardest: -1 })}
-                >
-                  None of them
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-        <div style={{ paddingTop: 8 }}>
-          <button
-            type="button"
-            className="mv-pill"
-            onClick={() => {
-              set({ step: "lead" });
-              window.scrollTo({ top: 0 });
-            }}
-          >
-            Continue
-          </button>
-        </div>
-      </div>
-    );
+    return <Review d={d} set={set} go={go} />;
   }
 
-  // The leadership turn
-  const short = org;
   const finish = () => {
     const now = new Date().toISOString();
     updateDraft((cur) => {
       const merged = { ...cur, ...d };
-      const nowLines = starredLines(merged).map((l) => `${l.theme}: ${l.text}`);
+      const nowLines = snapshotLines(merged);
       const last = merged.versions.at(-1);
       const changed = !last || last.lines.join("|") !== nowLines.join("|");
       return {
@@ -477,72 +122,670 @@ export function ResolveFlow({ invitedSample }: { invitedSample: boolean }) {
     });
     router.push(MV_ROUTES.resolveDocument);
   };
+  return <Lead d={d} set={set} go={go} finish={finish} />;
+}
+
+type Setter = (patch: Partial<ResolutionDraft>) => void;
+
+/* ---------------------------------------------------------------- arrive */
+
+function Arrive({
+  d,
+  set,
+  resume,
+  begin,
+}: {
+  d: ResolutionDraft;
+  set: Setter;
+  resume: { text: string; go: () => void; dismiss: () => void } | null;
+  begin: () => void;
+}) {
+  const sec = sectorDef(d.sector);
+  return (
+    <div className="mv-rz mv-rz--narrow" style={{ paddingTop: 72, gap: 30 }}>
+      {d.invitation ? (
+        <p className="mv-note">
+          {d.invitation.from} invited you to write your own Resolution for {orgName(d)}. You won’t see
+          what {d.invitation.pronoun} chose until you’ve finished yours.
+        </p>
+      ) : null}
+      {resume ? (
+        <div className="mv-note mv-rq-resume">
+          <p>{resume.text}</p>
+          <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+            <button type="button" className="mv-pill mv-pill--outline" onClick={resume.go}>
+              Continue where you left off
+            </button>
+            <button type="button" className="mv-textbtn mv-textbtn--muted" onClick={resume.dismiss}>
+              Dismiss
+            </button>
+          </div>
+        </div>
+      ) : null}
+      <p style={{ fontSize: 15, fontWeight: 500 }}>Your Resolution</p>
+      <h1 className="mv-rz-title mv-rz-title--arrive">What should your organization do about AI?</h1>
+      <p className="mv-reading mv-soft" style={{ fontSize: 21, lineHeight: 1.55 }}>
+        Fourteen questions every church, nonprofit and school needs to answer about AI. Choose the
+        answers you agree with, or write your own. If you are not sure, each question has a short
+        explanation, and you can see Movemental’s own answer after you give yours.
+      </p>
+      <ol className="mv-rq-parts">
+        {PARTS.map((p) => {
+          const [a, b] = partRange(p.id);
+          return (
+            <li key={p.id}>
+              <span>{p.name}</span>
+              <span>
+                Questions {pad2(a)} to {pad2(b)}: {p.blurb}
+              </span>
+            </li>
+          );
+        })}
+      </ol>
+      <div className="mv-stack" style={{ gap: 12 }}>
+        <p id="kind" className="mv-label">
+          What kind of organization is it?
+        </p>
+        <div role="group" aria-labelledby="kind" className="mv-rq-sectors">
+          {SECTORS.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              className="mv-rq-sector"
+              aria-pressed={d.sector === s.id}
+              onClick={() => set({ sector: s.id })}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="mv-field-group" style={{ maxWidth: 460 }}>
+        <label htmlFor="orgname" className="mv-label">
+          Its name <span className="mv-label-note">(optional)</span>
+        </label>
+        <input
+          id="orgname"
+          type="text"
+          className="mv-field"
+          value={d.org}
+          onChange={(e) => set({ org: e.target.value })}
+          placeholder={`For example, ${sec.namePlaceholder}`}
+        />
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap", paddingTop: 6 }}>
+        <button type="button" className="mv-pill" onClick={begin}>
+          Start the questions
+        </button>
+        <p className="mv-caption mv-muted" style={{ fontSize: 14 }}>
+          About twelve minutes. No account needed.
+        </p>
+      </div>
+      <p className="mv-caption mv-muted" style={{ fontSize: 14 }}>
+        Only you see your answers unless you choose to share them.
+      </p>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------- question */
+
+function useExamples(sector: Sector, wanted: boolean) {
+  const [ex, setEx] = useState<{ sector: Sector; data: Record<string, string[]> } | null>(null);
+  useEffect(() => {
+    if (!wanted || ex?.sector === sector) return;
+    let live = true;
+    loadExamples(sector)
+      .then((data) => {
+        if (live) setEx({ sector, data });
+      })
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [sector, wanted, ex?.sector]);
+  return ex?.sector === sector ? ex.data : null;
+}
+
+function QuestionScreen({ d, set, go }: { d: ResolutionDraft; set: Setter; go: Setter }) {
+  const qi = Math.max(0, Math.min(QUESTION_COUNT - 1, d.qi));
+  const q = QUESTIONS[qi]!;
+  const p = pickOf(d, q.id);
+  const single = q.mode === "single";
+  const sec = sectorDef(d.sector);
+  const [teach, setTeach] = useState(false);
+  const [take, setTake] = useState(false);
+  const [open, setOpen] = useState<Record<string, boolean>>({});
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const examples = useExamples(d.sector, Object.values(open).some(Boolean));
+  const answered = isAnswered(d, q);
+  const part = PARTS.find((x) => x.id === q.part)!;
+  const partIdx = PARTS.indexOf(part);
+  const title = questionTitle(q, d.sector);
+  const setPick = (next: Pick) => set({ picks: { ...d.picks, [q.id]: next } });
+
+  const next = () => go(qi < QUESTION_COUNT - 1 ? { qi: qi + 1 } : { step: "review" });
+  const back = () => go(qi > 0 ? { qi: qi - 1 } : { step: "arrive" });
 
   return (
-    <div className="mv-rz mv-rz--narrow" style={{ paddingTop: 72, gap: 28 }}>
-      <h1 className="mv-rz-title mv-rz-title--lead">Leadership is something you do.</h1>
-      <p className="mv-reading mv-soft" style={{ fontSize: 21, lineHeight: 1.5 }}>
-        You don’t need a title to help {short} decide this. What will you do with what you just
-        resolved?
+    <div className="mv-rz mv-rz-two" style={{ paddingBottom: 96 }}>
+      <div className="mv-stack" style={{ gap: 26, minWidth: 0, maxWidth: 820 }}>
+        <nav aria-label="Questions" className="mv-stack" style={{ gap: 12 }}>
+          <p className="mv-caption mv-muted" style={{ fontSize: 14 }}>
+            Part {partIdx + 1} of {PARTS.length}: {part.name} · Question {qi + 1} of {QUESTION_COUNT}
+          </p>
+          <div className="mv-rq-nav">
+            {PARTS.map((pt) => (
+              <div key={pt.id}>
+                {QUESTIONS.map((qq, i) =>
+                  qq.part !== pt.id ? null : (
+                    <button
+                      key={qq.id}
+                      type="button"
+                      className="mv-rq-num"
+                      data-state={i === qi ? "current" : isAnswered(d, qq) ? "done" : undefined}
+                      aria-current={i === qi ? "step" : undefined}
+                      aria-label={`Question ${i + 1}: ${questionTitle(qq, d.sector)}`}
+                      title={questionTitle(qq, d.sector)}
+                      onClick={() => go({ qi: i })}
+                    >
+                      {pad2(i + 1)}
+                    </button>
+                  ),
+                )}
+              </div>
+            ))}
+          </div>
+        </nav>
+
+        <div className="mv-phone-only mv-rq-sheet-toggle">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <p className="mv-small">Your Resolution so far</p>
+            <button
+              type="button"
+              className="mv-textbtn"
+              style={{ fontSize: 14 }}
+              aria-expanded={sheetOpen}
+              onClick={() => setSheetOpen((o) => !o)}
+            >
+              {sheetOpen ? "Hide" : "Show"}
+            </button>
+          </div>
+          {sheetOpen ? (
+            <div style={{ marginTop: 12 }}>
+              <SoFar d={d} />
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mv-stack" style={{ gap: 14 }}>
+          <p className="mv-caption mv-muted" style={{ fontSize: 14 }}>
+            {q.term}
+          </p>
+          <h1 className="mv-rz-q">{title}</h1>
+          <p className="mv-reading mv-soft" style={{ fontSize: 19, lineHeight: 1.55, maxWidth: 700 }}>
+            {q.why}
+          </p>
+          <button
+            type="button"
+            className="mv-rq-disclose"
+            aria-expanded={teach}
+            aria-controls={`teach-${q.id}`}
+            onClick={() => setTeach((t) => !t)}
+          >
+            Before you answer {teach ? "−" : "+"}
+          </button>
+          {teach ? (
+            <div id={`teach-${q.id}`} className="mv-rq-teach mv-settle">
+              {q.teach.map((t) => (
+                <div key={t.heading}>
+                  <p>{t.heading}</p>
+                  <p>{t.text}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mv-stack" style={{ gap: 10 }}>
+          <p className="mv-caption mv-muted" style={{ fontSize: 14 }}>
+            {q.how}
+          </p>
+          <div role={single ? "radiogroup" : "group"} aria-label={title} className="mv-rows">
+            {q.answers.map((a) => {
+              const text = answerText(a, d.sector);
+              const exs = examples?.[a.id] ?? [];
+              const exOpen = !!open[a.id];
+              const exToggle = (
+                <div className="mv-rq-exwrap">
+                  <button
+                    type="button"
+                    className="mv-rq-exbtn"
+                    aria-expanded={exOpen}
+                    onClick={() => setOpen((o) => ({ ...o, [a.id]: !o[a.id] }))}
+                  >
+                    {exOpen ? "Hide examples" : `Examples for ${sec.exName}`}
+                  </button>
+                  {exOpen ? (
+                    exs.length ? (
+                      <ul className="mv-rq-ex mv-settle">
+                        {exs.map((t) => (
+                          <li key={t}>{t}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="mv-caption mv-muted" style={{ padding: "6px 0" }}>
+                        Loading examples…
+                      </p>
+                    )
+                  ) : null}
+                </div>
+              );
+              if (single) {
+                const on = p.choice === a.id;
+                return (
+                  <div key={a.id} className="mv-rq-row" data-starred={on}>
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={on}
+                      className="mv-check mv-rq-radio"
+                      onClick={() => setPick({ ...p, choice: on ? null : a.id, none: false })}
+                    >
+                      <span aria-hidden="true" className="mv-radio-dot" />
+                      <span className="mv-check-text">{text}</span>
+                    </button>
+                    {exToggle}
+                  </div>
+                );
+              }
+              const on = !!p.ticks[a.id];
+              const starred = p.star === a.id;
+              return (
+                <div key={a.id} className="mv-rq-row" data-starred={starred}>
+                  <div className="mv-row" style={{ borderBottom: "none" }}>
+                    <button
+                      type="button"
+                      role="checkbox"
+                      aria-checked={on}
+                      className="mv-check"
+                      onClick={() => {
+                        const ticks = { ...p.ticks };
+                        if (on) delete ticks[a.id];
+                        else ticks[a.id] = true;
+                        setPick({ ...p, ticks, star: on && starred ? null : p.star, none: false });
+                      }}
+                    >
+                      <span aria-hidden="true" className="mv-check-box">
+                        ✓
+                      </span>
+                      <span className="mv-check-text">{text}</span>
+                    </button>
+                    <button
+                      type="button"
+                      className="mv-star"
+                      aria-pressed={starred}
+                      aria-label={`Mark as most important: ${text}`}
+                      title="Most important"
+                      onClick={() =>
+                        setPick({
+                          ...p,
+                          ticks: { ...p.ticks, [a.id]: true },
+                          star: starred ? null : a.id,
+                          none: false,
+                        })
+                      }
+                    >
+                      ★
+                    </button>
+                  </div>
+                  {exToggle}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mv-stack" style={{ gap: 12 }}>
+          <button
+            type="button"
+            className="mv-rq-none"
+            aria-pressed={p.none}
+            onClick={() =>
+              setPick(p.none ? { ...p, none: false } : { ...emptyPick(), none: true, own: p.own })
+            }
+          >
+            None of these fits my view
+          </button>
+          {p.none ? (
+            <div className="mv-field-group mv-settle" style={{ maxWidth: 640 }}>
+              <label htmlFor={`own-${q.id}`} className="mv-label">
+                What would you say instead? <span className="mv-label-note">(optional)</span>
+              </label>
+              <textarea
+                id={`own-${q.id}`}
+                rows={3}
+                className="mv-field mv-rq-own"
+                value={p.own}
+                placeholder={q.part === BELIEF_PART ? "I believe…" : "We should…"}
+                onChange={(e) => setPick({ ...p, own: e.target.value })}
+              />
+              <span className="mv-caption mv-muted">Private to you. Never counted.</span>
+            </div>
+          ) : null}
+        </div>
+
+        <section aria-label="Movemental’s answer" className="mv-rq-take">
+          {answered ? (
+            <button
+              type="button"
+              className="mv-pill mv-pill--outline"
+              aria-expanded={take}
+              aria-controls={`take-${q.id}`}
+              style={{ alignSelf: "flex-start" }}
+              onClick={() => setTake((t) => !t)}
+            >
+              {take ? "Hide Movemental’s answer" : "See Movemental’s answer"}
+            </button>
+          ) : (
+            <p className="mv-muted" style={{ fontSize: 15 }}>
+              Answer the question to see Movemental’s answer.
+            </p>
+          )}
+          {answered && take ? <Take q={q} /> : null}
+        </section>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap", paddingTop: 4 }}>
+          <button type="button" className="mv-pill" onClick={next}>
+            {qi === QUESTION_COUNT - 1 ? "Review my answers" : "Next question"}
+          </button>
+          <button type="button" className="mv-textbtn mv-textbtn--muted" onClick={back}>
+            Back
+          </button>
+        </div>
+      </div>
+      <aside className="mv-rz-aside mv-desk-only" aria-label="Your Resolution so far">
+        <div className="mv-rz-sheet">
+          <p className="mv-caption mv-muted" style={{ fontSize: 13, marginBottom: 10 }}>
+            Your Resolution so far
+          </p>
+          <SoFar d={d} />
+        </div>
+      </aside>
+    </div>
+  );
+}
+
+function Rich({ value }: { value: string }) {
+  return (
+    <>
+      {richSegments(value).map((s, i) =>
+        s.strong ? (
+          <strong key={i} style={{ color: "var(--mv-ink)", fontWeight: 600 }}>
+            {s.text}
+          </strong>
+        ) : (
+          <span key={i}>{s.text}</span>
+        ),
+      )}
+    </>
+  );
+}
+
+function Take({ q }: { q: ResolveQuestion }) {
+  return (
+    <div id={`take-${q.id}`} className="mv-rq-takebody mv-settle">
+      <p className="mv-rq-takehead">{q.take.head}</p>
+      {q.take.body.map((b, i) =>
+        b.kind === "h" ? (
+          <h3 key={i}>{b.value}</h3>
+        ) : b.kind === "p" ? (
+          <p key={i}>
+            <Rich value={b.value} />
+          </p>
+        ) : (
+          <ul key={i}>
+            {b.value.map((li) => (
+              <li key={li}>
+                <Rich value={li} />
+              </li>
+            ))}
+          </ul>
+        ),
+      )}
+      <p className="mv-rq-takemeta">Read more: {q.deeper}</p>
+      <p className="mv-rq-takemeta">Movemental’s answer does not change yours and is never counted.</p>
+    </div>
+  );
+}
+
+/** The side sheet: each starred answer (or the q05 choice) as it builds. */
+function SoFar({ d }: { d: ResolutionDraft }) {
+  const beliefs = beliefLines(d).filter((l) => l.lead);
+  const org = orgLineParts(d)
+    .flatMap((p) => p.rows)
+    .filter((l) => l.lead);
+  if (!beliefs.length && !org.length) {
+    return (
+      <p className="mv-reading mv-muted" style={{ fontSize: 16, lineHeight: 1.55 }}>
+        The answers you star will appear here.
       </p>
-      <div role="group" aria-label="What you will do" className="mv-stack" style={{ borderTop: "1px solid var(--mv-rule)" }}>
+    );
+  }
+  return (
+    <div className="mv-stack" style={{ gap: 6 }} aria-live="polite">
+      {beliefs.length ? (
+        <>
+          <p className="mv-rz-sheet-title" style={{ fontSize: 26, margin: "0 0 4px" }}>
+            I believe
+          </p>
+          {beliefs.map((l) => (
+            <div key={l.qid} className="mv-rq-soline">
+              <span>{l.label}</span>
+              <span>{l.lead!.text}</span>
+            </div>
+          ))}
+        </>
+      ) : null}
+      {org.length ? (
+        <>
+          <p className="mv-rz-sheet-title" style={{ fontSize: 26, margin: "10px 0 4px" }}>
+            Resolved, that {orgTitle(d)} should
+          </p>
+          {org.map((l) => (
+            <div key={l.qid} className="mv-rq-soline">
+              <span>{l.label}</span>
+              <span>{l.lead!.text}</span>
+            </div>
+          ))}
+        </>
+      ) : null}
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------- review */
+
+function Review({ d, set, go }: { d: ResolutionDraft; set: Setter; go: Setter }) {
+  const org = orgName(d);
+  const any = hasAnyAnswer(d);
+  const hard = hardestCandidates(d);
+  return (
+    <div className="mv-rz mv-rz--text" style={{ paddingTop: 56, gap: 40 }}>
+      <div className="mv-stack" style={{ gap: 12 }}>
+        <h1 className="mv-rz-title">Here is what you resolved.</h1>
+        <p className="mv-reading mv-soft" style={{ fontSize: 19, lineHeight: 1.55 }}>
+          Your starred answers, one for each question. Change any of them before you go on.
+        </p>
+      </div>
+      {!any ? (
+        <section className="mv-rz-sheet mv-stack" style={{ gap: 12, alignItems: "flex-start" }}>
+          <h2 className="mv-rz-h2--sm">You didn’t choose an answer to any question.</h2>
+          <p className="mv-reading mv-soft" style={{ fontSize: 17, lineHeight: 1.55 }}>
+            That can be an honest answer. Would you like to look at the questions again?
+          </p>
+          <button type="button" className="mv-pill" onClick={() => go({ step: "question", qi: 0 })}>
+            Look again
+          </button>
+        </section>
+      ) : (
+        <>
+          {PARTS.map((pt) => (
+            <section key={pt.id} className="mv-stack" style={{ gap: 0 }}>
+              <h2 style={{ fontSize: 15, fontWeight: 500, marginBottom: 8 }}>{pt.name}</h2>
+              <ol className="mv-rq-review">
+                {QUESTIONS.map((q, i) => {
+                  if (q.part !== pt.id) return null;
+                  const l = questionLines(d, q);
+                  return (
+                    <li key={q.id}>
+                      <span className="mv-stack" style={{ gap: 4, minWidth: 0 }}>
+                        <span className="mv-caption mv-muted">
+                          {pad2(i + 1)} · {q.label}
+                        </span>
+                        <span className="mv-reading" data-empty={!l.lead}>
+                          {l.lead ? l.lead.text : l.none ? "None of the options fit my view." : "Not answered."}
+                        </span>
+                      </span>
+                      <button
+                        type="button"
+                        className="mv-textbtn mv-textbtn--muted"
+                        aria-label={`Change your answer to question ${i + 1}`}
+                        onClick={() => go({ step: "question", qi: i })}
+                      >
+                        Change
+                      </button>
+                    </li>
+                  );
+                })}
+              </ol>
+            </section>
+          ))}
+          {hard.length ? (
+            <section className="mv-stack" style={{ gap: 12 }}>
+              <h2 id="hardLabel" className="mv-rz-h2">
+                Which of these would be hardest for {org} to do today?
+              </h2>
+              <p className="mv-muted" style={{ fontSize: 15, lineHeight: 1.55 }}>
+                Choose one. It shows where your convictions and your organization’s readiness are
+                furthest apart.
+              </p>
+              <div role="radiogroup" aria-labelledby="hardLabel" className="mv-rq-hard">
+                {[...hard, { id: "none", text: "None of them" }].map((h) => {
+                  const on = d.hardest === h.id;
+                  return (
+                    <button
+                      key={h.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={on}
+                      className="mv-radio"
+                      onClick={() => set({ hardest: on ? null : h.id })}
+                    >
+                      <span aria-hidden="true" className="mv-radio-dot" />
+                      <span className={h.id === "none" ? undefined : "mv-reading"} style={{ fontSize: h.id === "none" ? 15.5 : 17, lineHeight: 1.45 }}>
+                        {h.text}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
+        </>
+      )}
+      <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
+        <button type="button" className="mv-pill" onClick={() => go({ step: "lead" })}>
+          Continue
+        </button>
+        <button
+          type="button"
+          className="mv-textbtn mv-textbtn--muted"
+          onClick={() => go({ step: "question", qi: QUESTION_COUNT - 1 })}
+        >
+          Back to question {QUESTION_COUNT}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ lead */
+
+function Lead({ d, set, go, finish }: { d: ResolutionDraft; set: Setter; go: Setter; finish: () => void }) {
+  const org = orgName(d);
+  const suggest = leaderQuestion(d);
+  const sec = sectorDef(d.sector);
+  return (
+    <div className="mv-rz mv-rz--narrow" style={{ paddingTop: 56, gap: 32 }}>
+      <div className="mv-stack" style={{ gap: 14 }}>
+        <h1 className="mv-rz-title mv-rz-title--lead">Leadership is something you do.</h1>
+        <p className="mv-reading mv-soft" style={{ fontSize: 19, lineHeight: 1.55 }}>
+          You don’t need a title to help {org} decide this. What will you do with your Resolution?
+        </p>
+      </div>
+      <div role="group" aria-label="What I’ll do" className="mv-stack" style={{ borderTop: "1px solid var(--mv-rule)" }}>
         {RESOLVE_ACTS.map((a, i) => (
           <Check
             key={a}
             variant="act"
             checked={d.acts.includes(i)}
-            onToggle={() =>
-              set({ acts: d.acts.includes(i) ? d.acts.filter((x) => x !== i) : [...d.acts, i] })
-            }
+            onToggle={() => set({ acts: d.acts.includes(i) ? d.acts.filter((x) => x !== i) : [...d.acts, i] })}
           >
             {a}
           </Check>
         ))}
       </div>
-      <div className="mv-field-group" style={{ paddingTop: 6 }}>
+      <div className="mv-field-group">
         <label htmlFor="two" className="mv-label" style={{ fontSize: 15.5 }}>
-          If you had two minutes in the meeting where {short} decides this, what would you say?{" "}
-          <span className="mv-label-note">Optional</span>
+          If you had two minutes with the people who decide, what would you say?{" "}
+          <span className="mv-label-note">(optional)</span>
         </label>
         <textarea
           id="two"
-          rows={3}
-          className="mv-field"
+          rows={4}
+          className="mv-field mv-rq-own"
           value={d.two}
+          placeholder={suggest || "What should we decide first?"}
           onChange={(e) => set({ two: e.target.value })}
         />
+        {suggest && !d.two.trim() ? (
+          <button
+            type="button"
+            className="mv-textbtn"
+            style={{ alignSelf: "flex-start", fontSize: 14, textAlign: "left" }}
+            onClick={() => set({ two: suggest })}
+          >
+            Start from your first step: “{suggest}”
+          </button>
+        ) : null}
       </div>
       <div className="mv-choice-grid" style={{ gap: 14, maxWidth: "none" }}>
         <div className="mv-field-group">
           <label htmlFor="nm" className="mv-label">
-            Your name <span className="mv-label-note">Optional</span>
+            Your name <span className="mv-label-note">(optional)</span>
           </label>
-          <input
-            id="nm"
-            type="text"
-            className="mv-field"
-            value={d.name}
-            onChange={(e) => set({ name: e.target.value })}
-          />
+          <input id="nm" type="text" className="mv-field" value={d.name} onChange={(e) => set({ name: e.target.value })} />
         </div>
         <div className="mv-field-group">
           <label htmlFor="rl" className="mv-label">
-            Your role <span className="mv-label-note">Optional</span>
+            Your role <span className="mv-label-note">(optional)</span>
           </label>
           <input
             id="rl"
             type="text"
             className="mv-field"
             value={d.role}
+            placeholder={sec.rolePlaceholder}
             onChange={(e) => set({ role: e.target.value })}
           />
         </div>
       </div>
-      <div style={{ display: "flex", alignItems: "center", gap: 24, paddingTop: 6 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
         <button type="button" className="mv-pill" onClick={finish}>
           See my Resolution
         </button>
-        <button type="button" className="mv-textbtn mv-textbtn--muted" onClick={() => set({ step: "review" })}>
+        <button type="button" className="mv-textbtn mv-textbtn--muted" onClick={() => go({ step: "review" })}>
           Back
         </button>
       </div>
@@ -552,10 +795,11 @@ export function ResolveFlow({ invitedSample }: { invitedSample: boolean }) {
 
 export function FlowLoading() {
   return (
-    <div className="mv-rz mv-rz--text" role="status" aria-label="Loading" style={{ gap: 12 }}>
+    <div className="mv-rz mv-rz--text" role="status" aria-label="Loading your Resolution" style={{ gap: 12 }}>
       <span className="mv-shimmer" style={{ height: 30, width: "55%" }} />
       <span className="mv-shimmer" style={{ height: 14, width: "90%" }} />
       <span className="mv-shimmer" style={{ height: 14, width: "70%" }} />
     </div>
   );
 }
+

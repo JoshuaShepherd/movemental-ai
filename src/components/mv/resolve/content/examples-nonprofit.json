@@ -1,0 +1,397 @@
+{
+ "q01a": [
+  "We should evaluate AI tools on cost, security and fit, like any vendor.",
+  "We should review AI features in our donor database the way we review any software update.",
+  "We should add AI tools to our existing technology inventory and acceptable use policy."
+ ],
+ "q01b": [
+  "We should check what AI tools say about our mission and programs before relying on them.",
+  "We should test AI drafts of client letters for bias before using them.",
+  "We should keep our program information current so AI answers drawn from it are accurate."
+ ],
+ "q01c": [
+  "We should ask who profits from each AI tool we adopt.",
+  "We should check what AI vendors do with the data of the people we serve.",
+  "We should avoid depending on one AI vendor for both case management and fundraising."
+ ],
+ "q01d": [
+  "We should name the parts of our work with clients that AI may not touch.",
+  "We should keep mentoring and camp counseling relationships between people, not apps.",
+  "We should protect face-to-face time between caseworkers and the families they serve."
+ ],
+ "q01e": [
+  "We should use AI to answer families in their own language.",
+  "We should offer AI audio and plain-language versions of our application forms.",
+  "We should use AI so our small relief team can respond faster after disasters."
+ ],
+ "q02a": [
+  "We should check every AI use against our mission statement.",
+  "We should revisit our founding documents before writing our AI policy.",
+  "We should ask our board whether each AI use fits the faith commitments we were founded on."
+ ],
+ "q02b": [
+  "We should consider AI’s effect on our neighborhood, not only our clients.",
+  "We should ask how our AI choices affect partner agencies and local volunteers.",
+  "We should weigh how our AI tools affect families who never enroll in our programs."
+ ],
+ "q02c": [
+  "We should drop any AI use that saves time but weakens care.",
+  "We should keep a person at intake even when AI could process applications faster.",
+  "We should judge AI in our youth programs by its effect on young people, not staff hours."
+ ],
+ "q02d": [
+  "We should protect the trust of donors and clients before any gain.",
+  "We should ask whether families would still trust us if they saw how we use AI.",
+  "We should keep campers’ and parents’ information out of any tool we cannot vouch for."
+ ],
+ "q02e": [
+  "We should measure program results before and after any AI change.",
+  "We should track AI errors at intake and review them every month.",
+  "We should ask peer agencies for evidence before adopting an AI tool they recommend."
+ ],
+ "q02f": [
+  "We should pay community members to advise our AI decisions.",
+  "We should include youth participants in writing the AI rules for our youth programs.",
+  "We should ask our client advisory council before any client-facing AI use."
+ ],
+ "q03a": [
+  "We should ask every staff member which AI tools they use and for what.",
+  "We should list every AI feature already in our donor database and case management software.",
+  "We should ask volunteers and camp counselors which AI tools they use for our work."
+ ],
+ "q03b": [
+  "We should warn clients about AI-driven benefit and immigration scams.",
+  "We should have staff confirm any urgent payment request from a leader by calling them back.",
+  "We should teach youth participants how to spot fake images and AI-made messages."
+ ],
+ "q03c": [
+  "We should allow client information only in our approved case management system for now.",
+  "We should keep survivors’ and minors’ information out of every AI tool until rules are set.",
+  "We should list the information staff may never paste into AI tools."
+ ],
+ "q03d": [
+  "We should give a small team a few months to try AI on internal work.",
+  "We should try AI on grant research and meeting notes before any client-facing use.",
+  "We should let our development team test AI on newsletter formatting first."
+ ],
+ "q03e": [
+  "We should publish a short AI statement for donors and clients.",
+  "We should explain our current AI rules at the next all-staff and volunteer meeting.",
+  "We should tell parents how our youth programs and camps use AI this season."
+ ],
+ "q03f": [
+  "We should put AI on the board agenda for a recorded vote.",
+  "We should set a date this fiscal year to adopt an AI policy.",
+  "We should review our AI decisions each year when we prepare our annual report."
+ ],
+ "q04a": [
+  "We should have the board approve our AI policy.",
+  "We should gather comments from staff and our client advisory council before the board votes.",
+  "We should report our AI use to the board every quarter."
+ ],
+ "q04b": [
+  "We should include staff, volunteers and clients in shaping our AI policy.",
+  "We should share our draft AI policy with all staff for comment before adoption.",
+  "We should hold open sessions for volunteers and families before setting AI rules."
+ ],
+ "q04c": [
+  "We should adopt our national affiliate’s model AI policy and adapt it to our programs.",
+  "We should meet our accreditor’s AI requirements before any client-facing use.",
+  "We should follow our denomination’s AI guidance for our chaplaincy and spiritual care."
+ ],
+ "q04d": [
+  "We should hold a forum for program participants before any AI decision.",
+  "We should ask parents before AI is used in anything involving their children.",
+  "We should ask frontline caseworkers before AI changes how intake works."
+ ],
+ "q04e": [
+  "We should name one board member responsible for AI oversight.",
+  "We should name one staff member responsible for every AI tool we use.",
+  "We should make our executive director accountable to the board for AI decisions."
+ ],
+ "q04f": [
+  "We should tell clients when an AI error affected their case.",
+  "We should correct any AI error in a client’s file before any other work.",
+  "We should tell donors directly if an AI tool exposed their information."
+ ],
+ "q05a": [
+  "We should turn off AI features in our case management software.",
+  "We should decline donated AI tools and still train staff to recognize AI scams.",
+  "We should adopt a no-AI policy and still set rules for sensitive information."
+ ],
+ "q05b": [
+  "We should allow AI in bookkeeping, never in work with clients.",
+  "We should allow AI to schedule volunteers but keep it out of counseling and mentoring.",
+  "We should allow AI to format grant reports but not to write case notes."
+ ],
+ "q05c": [
+  "We should require a short written proposal before adopting any AI tool.",
+  "We should pilot each approved AI use in one program for three months, then review it.",
+  "We should end each approved AI use unless the board renews it after review."
+ ],
+ "q05d": [
+  "We should add AI to our existing technology and privacy policies.",
+  "We should send AI tools through our normal vendor review.",
+  "We should cover AI tools in new staff orientation like any other software."
+ ],
+ "q05e": [
+  "We should start using AI translation for clients now rather than wait.",
+  "We should use AI routing now so relief supplies reach more families.",
+  "We should use AI to shorten application wait times this year and review errors weekly."
+ ],
+ "q06a": [
+  "We should keep AI note-takers out of counseling and support groups.",
+  "We should have only people, never AI, mentor and supervise young people in our programs.",
+  "We should keep camp counselors, not AI apps, as the people campers turn to for help."
+ ],
+ "q06b": [
+  "We should never let AI decide who receives emergency assistance.",
+  "We should keep AI out of hiring and volunteer screening decisions.",
+  "We should have a person review every application before anyone is denied services."
+ ],
+ "q06c": [
+  "We should have only trained staff provide counseling, never an AI chatbot.",
+  "We should keep AI out of chaplaincy visits and prayer with clients.",
+  "We should have a person answer every crisis call, even with long waits."
+ ],
+ "q06d": [
+  "We should have staff write their own trainings and talks for youth and volunteers.",
+  "We should never publish AI-written pieces under our executive director’s name.",
+  "We should write our testimony to lawmakers ourselves."
+ ],
+ "q06e": [
+  "We should have new caseworkers learn intake interviews without AI assistance.",
+  "We should keep AI out of reflective supervision and staff mentoring.",
+  "We should have youth in job programs write their own applications with a mentor’s help."
+ ],
+ "q07a": [
+  "We should label every automated message as automated.",
+  "We should have our phone assistant say it is AI at the start of every call.",
+  "We should never give our AI chatbot a human name or face."
+ ],
+ "q07b": [
+  "We should never use AI to find donors’ emotional weak points for appeals.",
+  "We should never use AI to create false urgency in donation campaigns.",
+  "We should never use AI messages to pressure families into staying in our programs."
+ ],
+ "q07c": [
+  "We should never put client records into consumer AI tools.",
+  "We should never paste counseling notes or survivors’ stories into a free AI tool.",
+  "We should ban personal AI accounts for any work involving clients or donors."
+ ],
+ "q07d": [
+  "We should refuse vendors whose tools rank clients or staff.",
+  "We should never use AI to monitor staff productivity.",
+  "We should never use AI risk scores to decide which families get services first."
+ ],
+ "q07e": [
+  "We should never clone a real person’s voice for our appeals.",
+  "We should never use AI-generated images of the people we serve in fundraising.",
+  "We should never send AI-written letters to officials under supporters’ names."
+ ],
+ "q07f": [
+  "We should test any AI eligibility tool for bias before using it with clients.",
+  "We should refuse AI tools that work poorly for clients with limited English.",
+  "We should check that our AI chatbot works for clients who use screen readers."
+ ],
+ "q08a": [
+  "We should have staff rewrite every AI-drafted appeal before it is sent.",
+  "We should let AI draft board minutes for the secretary to correct and approve.",
+  "We should have a named staff member approve every AI-drafted social media post."
+ ],
+ "q08b": [
+  "We should let clients reach a staff member from any AI chat.",
+  "We should send any after-hours chat about abuse or crisis to an on-call staff member.",
+  "We should list our staffed phone line on every page where our AI chat appears."
+ ],
+ "q08c": [
+  "We should have a fluent speaker review every translated legal or medical notice.",
+  "We should have native speakers check translated consent forms before use.",
+  "We should have bilingual staff review translated camp forms before parents receive them."
+ ],
+ "q08d": [
+  "We should get clients’ informed consent before AI processes their information.",
+  "We should get guardian consent before AI tools process any minor’s case file.",
+  "We should let clients decline AI in their services without losing any service."
+ ],
+ "q08e": [
+  "We should check every AI-generated statistic before it appears in a report.",
+  "We should verify every source AI finds for a grant proposal before submitting it.",
+  "We should check AI summaries of community needs data against the original data."
+ ],
+ "q08f": [
+  "We should review every new AI tool against our policy before staff use it.",
+  "We should check what data a donated AI tool collects before accepting it.",
+  "We should get legal review before signing any AI contract that touches client data."
+ ],
+ "q09a": [
+  "We should make past grant reports easy to search.",
+  "We should make our program manuals and training materials searchable for staff.",
+  "We should make our board minutes and policies searchable."
+ ],
+ "q09b": [
+  "We should caption every video and webinar we publish.",
+  "We should offer audio versions of our client forms for people who cannot read them.",
+  "We should transcribe volunteer trainings for those who cannot attend live."
+ ],
+ "q09c": [
+  "We should let AI format reports and schedule meetings.",
+  "We should let AI schedule volunteer shifts and send reminders.",
+  "We should let AI help track inventory at our food pantry."
+ ],
+ "q09d": [
+  "We should use AI to spot donors who may stop giving.",
+  "We should use AI to forecast food pantry demand and plan orders.",
+  "We should use AI to sort open-ended answers in our community needs assessments."
+ ],
+ "q09e": [
+  "We should use AI so a two-person staff can serve more families.",
+  "We should use AI for grant research we could never afford to hire for.",
+  "We should help all-volunteer partner pantries use AI for scheduling and reporting."
+ ],
+ "q09f": [
+  "We should revisit this question after a three-month trial.",
+  "We should run a short trial on back-office work before approving anything.",
+  "We should keep AI out of client services until trial results reach the board."
+ ],
+ "q10a": [
+  "We should publish a plain AI statement on our website.",
+  "We should have our executive director explain their own AI use to staff first.",
+  "We should describe how we use and do not use AI in our annual report."
+ ],
+ "q10b": [
+  "We should label every AI-altered photo in our appeals.",
+  "We should label AI-generated images in our newsletters and social posts.",
+  "We should label any AI-generated voice or music in our fundraising videos."
+ ],
+ "q10c": [
+  "We should name our data vendors in our privacy policy.",
+  "We should tell clients on our consent forms how AI uses their information.",
+  "We should tell parents which tools handle their children’s registration and health forms."
+ ],
+ "q10d": [
+  "We should disclose AI help in impact reports.",
+  "We should tell funders when AI helped write our grant proposals.",
+  "We should note when AI drafted much of a published report or training guide."
+ ],
+ "q10e": [
+  "We should tell funders when an AI error affected reported results.",
+  "We should tell a family when an AI translation error gave them wrong information.",
+  "We should tell donors when an AI error sent them a wrong receipt or message."
+ ],
+ "q11a": [
+  "We should mark case files, health records and immigration status as our most sensitive information.",
+  "We should list which AI tools may use public, internal and confidential information.",
+  "We should keep donor giving records in approved tools only."
+ ],
+ "q11b": [
+  "We should let clients correct any AI summary of their case.",
+  "We should let donors ask us to delete their information from our systems.",
+  "We should show clients any AI-edited version of their story before publishing it."
+ ],
+ "q11c": [
+  "We should bring our reports, proposals and evaluations into one searchable place.",
+  "We should move program records off staff personal drives into systems we control.",
+  "We should gather our training materials and program manuals in one place."
+ ],
+ "q11d": [
+  "We should interview long-serving staff about how the work really gets done.",
+  "We should record our founder’s stories and reasons for starting the work.",
+  "We should write down what veteran camp directors know before they retire."
+ ],
+ "q11e": [
+  "We should limit any client chatbot to our own program information.",
+  "We should require our chatbot to link to the source of every answer about services.",
+  "We should stop our AI phone assistant from answering eligibility questions it has no source for."
+ ],
+ "q11f": [
+  "We should require AI vendors to return our data when contracts end.",
+  "We should pay for AI tools that do not train on our data.",
+  "We should set deletion dates for everything we put into AI tools."
+ ],
+ "q12a": [
+  "We should decide where saved hours go before adopting any AI tool.",
+  "We should not raise fundraising targets because AI drafts appeals faster.",
+  "We should drop an old task whenever we add an AI task for staff."
+ ],
+ "q12b": [
+  "We should use AI savings to lower caseloads, not raise them.",
+  "We should use AI to free volunteers from paperwork for more time with families.",
+  "We should give frontline staff a paid rest day funded by AI time savings."
+ ],
+ "q12c": [
+  "We should retrain staff whose tasks AI takes over.",
+  "We should not cut caseworker positions based on AI forecasts.",
+  "We should not promise funders lower staffing costs from AI adoption."
+ ],
+ "q12d": [
+  "We should negotiate AI-related workload changes with staff.",
+  "We should ask volunteers before changing how their work is done.",
+  "We should let frontline staff approve any caseload change tied to AI."
+ ],
+ "q12e": [
+  "We should provide a non-AI way to do every required task.",
+  "We should keep AI use out of performance reviews for staff who decline it.",
+  "We should never require a chaplain or counselor to use AI in their work."
+ ],
+ "q13a": [
+  "We should teach staff to spot errors in AI-drafted case notes.",
+  "We should teach grant writers to verify every fact AI provides.",
+  "We should teach intake staff to check AI eligibility answers against current program rules."
+ ],
+ "q13b": [
+  "We should teach fundraisers when AI-written appeals cross ethical lines.",
+  "We should train staff on when not to use AI with clients before teaching any tool.",
+  "We should discuss AI and our faith commitments at our annual staff retreat."
+ ],
+ "q13c": [
+  "We should have grant writers outline the proposal before AI drafts anything.",
+  "We should have case managers record their own assessment before reading AI summaries.",
+  "We should have staff draft program plans before asking AI to critique them."
+ ],
+ "q13d": [
+  "We should give every staff member paid hours to try AI on their work.",
+  "We should train our board alongside staff on AI.",
+  "We should include part-time and frontline staff in every AI training."
+ ],
+ "q13e": [
+  "We should send two staff through in-depth training to help the rest.",
+  "We should name an AI guide on each program team.",
+  "We should train our operations manager to answer staff questions about approved tools."
+ ],
+ "q13f": [
+  "We should keep our camp program days free of AI on purpose.",
+  "We should write every donor thank-you note without AI.",
+  "We should write our mission and values statements without AI."
+ ],
+ "q14a": [
+  "We should post plain warnings about AI fraud in our waiting rooms.",
+  "We should offer free workshops on AI scams for seniors in our neighborhood.",
+  "We should help partner churches and schools warn families about AI scams."
+ ],
+ "q14b": [
+  "We should form a peer group with similar agencies.",
+  "We should join other nonprofits to negotiate AI vendor contracts.",
+  "We should study peer agencies’ AI policies before writing ours."
+ ],
+ "q14c": [
+  "We should ask long-serving staff and volunteers what they see.",
+  "We should ask community elders what they want protected in our work.",
+  "We should read our founders’ writings and our faith tradition on serving people."
+ ],
+ "q14d": [
+  "We should share our AI results with peer agencies.",
+  "We should present our AI mistakes and lessons at our network’s annual conference.",
+  "We should share our AI policy templates with smaller nonprofits."
+ ],
+ "q14e": [
+  "We should choose smaller AI models when they meet the need.",
+  "We should ask vendors for energy and water data before signing.",
+  "We should count AI energy use in our annual sustainability report."
+ ],
+ "q14f": [
+  "We should advocate for workers who lose jobs to AI.",
+  "We should help clients appeal benefit denials made by automated systems.",
+  "We should testify on AI policy that affects our clients."
+ ]
+}

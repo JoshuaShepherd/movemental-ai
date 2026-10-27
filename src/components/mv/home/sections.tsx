@@ -10,35 +10,6 @@ import { ResolvePreview } from "./resolve-preview";
  * and layout. Do not paraphrase; record questions in docs/handoff/home-page-new/README.md.
  */
 
-/**
- * The first screen (board Home-Headline-C): the headline centered on two lines, broken after "AI,",
- * sized from the page width so each line always fits; one call; the network peeking at the fold.
- */
-export function HomeHero() {
-  return (
-    <section id="top" className="mv-hl-stage">
-      <div className="mv-hl-band">
-        <h1
-          className="mv-hl"
-          aria-label="Movemental is an organizational response to AI, shaped by nonprofit, church, and seminary leaders."
-        >
-          <span aria-hidden="true">Movemental is an organizational response to AI,</span>
-          <span aria-hidden="true">shaped by nonprofit, church, and seminary leaders.</span>
-        </h1>
-      </div>
-      <p className="mv-hl-sub">Say what you believe about AI in your organization.</p>
-      <Link className="mv-hl-go" href={MV_ROUTES.resolve}>
-        Start with Resolve
-        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
-          <path d="M5 12h14" />
-          <path d="m13 6 6 6-6 6" />
-        </svg>
-      </Link>
-      <p className="mv-hl-note">4 minutes. 9 statements. Optionally share with your organization.</p>
-    </section>
-  );
-}
-
 const STATS: readonly { n: string; text: string; source: string; href: string }[] = [
   {
     n: "81%",
@@ -145,14 +116,15 @@ export function ResolveSection() {
         <div className="mv-split mv-split--end">
           <h2 className="mv-big">Resolve</h2>
           <div className="mv-stack mv-body-lg" style={{ gap: 14, maxWidth: 600 }}>
-            <p>Say, in writing, what you believe your organization should do as AI changes its work.</p>
+            <p>Say, in writing, what you believe your organization should do about AI.</p>
             <p>
-              Across nine themes, mark the statements you agree with and identify the ones that
-              matter most to you.
+              Answer fourteen questions every church, nonprofit and school needs to answer, about
+              values, basic responsibilities, acceptable use, information, people and community.
+              Choose the answers you agree with and star the ones that matter most.
             </p>
             <p>Your Resolution belongs to you. It stays private unless you choose to share it.</p>
             <p className="mv-caption mv-muted">
-              About four minutes. No account. It isn’t a policy, a score or a vote. It is what you
+              About twelve minutes. No account. It isn’t a policy, a score or a vote. It is what you
               believe.
             </p>
           </div>
@@ -163,10 +135,15 @@ export function ResolveSection() {
   );
 }
 
+/** Three answers from the Team board's sample of nine (questions 03, 10 and 04). */
 const AGREEMENT: readonly { text: string; count: string; width: string }[] = [
-  { text: "say plainly how AI is used here, including by our leaders.", count: "8 of 9", width: "89%" },
-  { text: "keep the moments of care human.", count: "7 of 9", width: "78%" },
-  { text: "form our own views before we ask AI for one.", count: "6 of 9", width: "67%" },
+  { text: "set rules for sensitive information right away.", count: "9 of 9", width: "100%" },
+  {
+    text: "tell people how we use AI and how we do not, with our leaders explaining their own use first.",
+    count: "8 of 9",
+    width: "89%",
+  },
+  { text: "make one named person accountable for our AI decisions.", count: "8 of 9", width: "89%" },
 ];
 
 export function Agreement() {
@@ -180,7 +157,7 @@ export function Agreement() {
             <p>Neither becomes policy until the people responsible for deciding have decided.</p>
             <p className="mv-small">
               Each Resolution stays private unless its author shares it. An organization sees only
-              counts, drawn from what participants have chosen to contribute.
+              counts, once five people have written theirs.
             </p>
           </div>
         </div>
@@ -211,32 +188,6 @@ export function Agreement() {
                   </span>
                 </li>
               ))}
-            </ul>
-          </div>
-          <div>
-            <p className="mv-small mv-muted" style={{ marginBottom: 6 }}>
-              The team is divided on whether we should
-            </p>
-            <ul className="mv-ruled-list">
-              <li className="mv-stack" style={{ gap: 14, padding: "18px 0" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 24 }}>
-                  <span className="mv-reading">give the time AI saves back to people, to creation and to play.</span>
-                  <span className="mv-reading" style={{ textAlign: "right" }}>
-                    lower our costs first, so more reaches the mission.
-                  </span>
-                </div>
-                <span aria-hidden="true" style={{ display: "flex", height: 6, gap: 3 }}>
-                  <span style={{ width: "44%", background: "var(--mv-ink)" }} />
-                  <span style={{ width: "56%", background: "var(--mv-graphite)", opacity: 0.55 }} />
-                </span>
-                <div
-                  className="mv-small"
-                  style={{ display: "flex", justifyContent: "space-between", fontVariantNumeric: "tabular-nums" }}
-                >
-                  <span>4 of 9</span>
-                  <span>5 of 9</span>
-                </div>
-              </li>
             </ul>
           </div>
           <figcaption className="mv-caption mv-muted">An illustrative team of nine.</figcaption>

@@ -3,58 +3,39 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { QUESTIONS } from "../resolve/questions";
 import { MV_ROUTES } from "../routes";
 
 /**
- * First-theme preview of the Resolution. Selections stay in component state only:
- * nothing is saved or sent (fixture seam: the real exercise is S02-resolve-new).
- * Copy is verbatim from the canvas board.
+ * A preview of one Resolve question on the home page: question 07, prohibited uses.
+ * Selections stay in component state only; nothing is saved or sent.
+ * Board: canvas "Resolve: Fourteen Questions", Home-Resolve.
  */
-const STATEMENTS: readonly { text: string; sheet: string }[] = [
-  {
-    text: "We should name the work that is made of presence, and keep it human.",
-    sheet: "name the work that is made of presence, and keep it human.",
-  },
-  {
-    text: "We should never put what someone told us in confidence into an AI tool.",
-    sheet: "never put what someone told us in confidence into an AI tool.",
-  },
-  {
-    text: "We should keep the moments of care human.",
-    sheet: "keep the moments of care human.",
-  },
-  {
-    text: "No one we serve should believe a person attended to them when none did.",
-    sheet: "make sure no one we serve believes a person attended to them when none did.",
-  },
-  {
-    text: "If AI helps more people get a timely answer, that is care too.",
-    sheet: "count a timely answer from AI as care, when it reaches people who would otherwise wait.",
-  },
-];
+const Q = QUESTIONS.find((q) => q.id === "q07")!;
+const ANSWERS = Q.answers.map((a) => ({ id: a.id, text: a.text, sheet: a.text.charAt(0).toLowerCase() + a.text.slice(1) }));
 
 export function ResolvePreview() {
-  const [marked, setMarked] = useState<boolean[]>(() => STATEMENTS.map(() => false));
-  const sheet = STATEMENTS.filter((_, i) => marked[i]);
+  const [marked, setMarked] = useState<Record<string, boolean>>({});
+  const sheet = ANSWERS.filter((a) => marked[a.id]);
 
   return (
     <div className="mv-desk">
       <div className="mv-stack" style={{ gap: 24 }}>
-        <p className="mv-small mv-muted">Presence, the first of nine themes</p>
-        <h3 className="mv-h3">Where must a person always be present in our work?</h3>
-        <div role="group" aria-label="Statements about presence" className="mv-stack" style={{ gap: 10 }}>
-          {STATEMENTS.map((s, i) => (
+        <p className="mv-small mv-muted">Question 07 of 14 · {Q.term}</p>
+        <h3 className="mv-h3">{Q.title}</h3>
+        <div role="group" aria-label={Q.title} className="mv-stack" style={{ gap: 10 }}>
+          {ANSWERS.map((a) => (
             <button
-              key={s.text}
+              key={a.id}
               type="button"
               className="mv-stmt"
-              aria-pressed={marked[i]}
-              onClick={() => setMarked((m) => m.map((v, j) => (j === i ? !v : v)))}
+              aria-pressed={!!marked[a.id]}
+              onClick={() => setMarked((m) => ({ ...m, [a.id]: !m[a.id] }))}
             >
               <span aria-hidden="true" className="mv-stmt-box">
-                {marked[i] ? "✓" : ""}
+                {marked[a.id] ? "✓" : ""}
               </span>
-              <span className="mv-reading">{s.text}</span>
+              <span className="mv-reading">{a.text}</span>
             </button>
           ))}
         </div>
@@ -62,15 +43,13 @@ export function ResolvePreview() {
       <div className="mv-stack" style={{ gap: 24, position: "sticky", top: 40 }}>
         <div className="mv-sheet">
           <p className="mv-reading mv-italic" style={{ fontSize: 22, lineHeight: 1.4 }}>
-            Resolved, that our organization should…
+            Resolved, that our organization should prohibit
           </p>
-          {sheet.length === 0 ? (
-            <p className="mv-small mv-muted">Mark a statement and it is written here.</p>
-          ) : null}
+          {sheet.length === 0 ? <p className="mv-small mv-muted">Tick an answer and it is written here.</p> : null}
           <ol className="mv-ruled-list" style={{ borderBottom: "none" }} aria-live="polite">
-            {sheet.map((s) => (
-              <li key={s.sheet} className="mv-settle mv-reading" style={{ padding: "14px 0" }}>
-                {s.sheet}
+            {sheet.map((a) => (
+              <li key={a.id} className="mv-settle mv-reading" style={{ padding: "14px 0" }}>
+                {a.sheet}
               </li>
             ))}
           </ol>
@@ -80,8 +59,8 @@ export function ResolvePreview() {
             {sheet.length ? "Continue your Resolution" : "Write your Resolution"}
           </Link>
           <p className="mv-caption mv-muted">
-            Eight more themes follow: voice, truth, thinking, learning, time, risk, people and
-            leading.
+            Thirteen more questions follow. Each has a short explanation for anyone unsure how to
+            answer.
           </p>
         </div>
       </div>
